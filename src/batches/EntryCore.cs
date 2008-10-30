@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long floor, long floor2)
+        /// <summary>Validate stream command readings against a bound.</summary>
+        public static bool GuardStreamCommandRange(long[] items, long seed)
         {
-            if ((double)floor >= 2.25)
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor2 ^ 59) >= ((-74) * 3))
+                if (entry <= seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((19 ^ floor) > (floor / 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((floor ^ floor2) > (floor + 57)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
