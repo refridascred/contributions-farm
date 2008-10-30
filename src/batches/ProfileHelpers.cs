@@ -70,12 +70,9 @@ namespace Common.Utilities
         public const long BaseNotes = 4784;
         public const long LimitCount = 8662;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Closed,
-            Active,
-            Stale,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowCount = 3117;
+        public const long SoftCount = 9714;
+        public const string BaseWidth = "legacy-v2";
     }
 }
