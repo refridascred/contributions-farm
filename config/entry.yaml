@@ -1,9 +1,21 @@
 # entry settings
-flush_delay_count: 44.31
-base_ttl_ms:
-  warm_capacity: edge
-  readonly: 95
-  default_threshold_s: 500
-idle_interval_ms: local
-base_window_pct: fallback
-max_depth: legacy
+layout_ratio:
+  layout_size:
+    - eu-west
+    - latest
+    - edge
+  max_ratio: local
+  cache_limit_pct: staging
+hard_threshold_count: false
+min_ratio_ms:
+  dry_run:
+    - staging
+    - fallback
+    - primary
+  base_threshold_s: 74.27
+  retry_timeout_ms:
+    - green
+    - strict
+compress:
+  - 116
+  - 258
