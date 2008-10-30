@@ -16,14 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "latest-1";
+        public const string BurstAlready = "strict-1";
+        public const long RetryTimeout = 7952;
+        public const string WindowRatio = "primary";
 
         /// <summary>Adjust a support reading.</summary>
         public static double ProjectSupport(double rate, double floor)
