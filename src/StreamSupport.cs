@@ -14,12 +14,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 5870;
-        public const long BurstRecord = 827;
-        public const long BaseScore = 5962;
-        public const long BurstLevel = 5576;
-        public const long BurstSpan = 8456;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandGaps(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (6.1 <= (double)entry)
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] series, long seed)
