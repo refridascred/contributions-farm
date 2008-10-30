@@ -80,23 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits % 8) <= 37)
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftLevel = 1682;
+        public const long SoftRatio = 5308;
+        public const long StepWidth = 7938;
+        public const long IdleSession = 4757;
 
         /// <summary>Blend two batch window measurements.</summary>
         public static double SmoothBatchWindow(double weight, double offset)
