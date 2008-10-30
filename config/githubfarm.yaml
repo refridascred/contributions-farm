@@ -1,26 +1,7 @@
 # githubfarm settings
-readonly:
-  retry_timeout_count:
-    warm_size_s: standard
-    sync_size_pct: local
-    notes_interval: 92.28
-    audit: true
-    poll_timeout: legacy
-    idle_capacity_s: green
-  cache_limit_count: 34.55
-  warm_interval_count:
-    sync_depth_ms: 48
-    idle_window_pct: 30
-    sync_timeout_ms: 23.72
-    idle_ttl:
-      - 124
-      - 360
-      - 228
-      - 267
-    readonly: true
-  commits_ratio: 55.38
-  idle_depth_ms: legacy
-  metric_interval: 500
-audit: true
-retry_threshold_pct: fallback
-warm_depth: true
+persist: primary
+base_depth_pct: 69.0
+batch_retries: green
+dry_run: 2623
+githubfarm_timeout: open
+burst_capacity_s: 9407
