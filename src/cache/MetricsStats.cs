@@ -45,19 +45,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] levels, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (value != limit)
+                if (reading > limit)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Describe the account phase values.</summary>
