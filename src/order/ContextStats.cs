@@ -50,17 +50,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 9603;
+        public const long BaseCluster = 5121;
+        public const long StepLevel = 985;
+        public const long DefaultCluster = 6226;
+        public const long SoftCount = 4526;
     }
 }
