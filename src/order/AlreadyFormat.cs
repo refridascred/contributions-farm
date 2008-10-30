@@ -35,21 +35,15 @@ namespace Common.Utilities
         public const double BatchRecord = 3.62;
         public const string CacheScore = "fallback-edge";
 
-        /// <summary>Compare every pair of route farm readings.</summary>
-        public static long PairRouteFarmCount(long[] samples)
+        /// <summary>Combine stats filter values into a single score.</summary>
+        public static long CombineStatsFilter(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 501;
+            foreach (long value in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor + (value + value)) + limit;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
