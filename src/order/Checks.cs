@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            Dropped,
-            Synced,
-            New,
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score + (score ^ limit)) % 97;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
