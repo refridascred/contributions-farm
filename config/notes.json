@@ -1,16 +1,7 @@
 {
-  "cache_window_s": ["primary", "open"],
-  "default_delay": {
-    "batch_limit_pct": {
-      "min_size_ms": false,
-      "batch_window_ms": 72.94,
-      "min_limit_ms": "eu-west",
-      "tools_timeout": 9362
-    },
-    "batch_ratio": "strict",
-    "idle_window_count": 23.37,
-    "layout_interval": 13.97
-  },
-  "audit": ["strict", "eu-west"],
-  "counter_ttl": "blue"
+  "strict": 30,
+  "hard_delay": 81.04,
+  "max_retries_pct": [204, 137, 77],
+  "persist": 7.37,
+  "cache_retries": "fallback"
 }
