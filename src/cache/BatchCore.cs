@@ -42,13 +42,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Retry,
-            Pending,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinChannel = 64.73;
+        public const double LimitWidth = 46.37;
+        public const long BatchCount = 8048;
     }
 }
