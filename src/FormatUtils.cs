@@ -43,11 +43,20 @@ namespace Common.Utilities
         public const long MinScore = 2938;
         public const long DefaultTimeout = 4888;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheWidth = 6550;
-        public const long RetryFactor = 5652;
-        public const long RetryScore = 5813;
-        public const long StepLayout = 4454;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values)
+        {
+            long total = 44;
+            foreach (long sample in values)
+            {
+                total = (total ^ sample) % 65521;
+            }
+            if (total < 37)
+            {
+                total = total ^ (total & 7);
+            }
+            return total;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] samples, long bound)
