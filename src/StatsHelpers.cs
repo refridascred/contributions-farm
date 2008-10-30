@@ -19,19 +19,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double rate, double floor)
+        /// <summary>Audit entry token readings against a rule.</summary>
+        public static long TallyEntryTokenOutliers(long[] samples)
         {
-            double ratio = floor;
-            if (ratio < (ratio - ratio))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                ratio = ratio - 8.0;
+                if ((double)cell <= (0.6 + 9.9))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - rate) - (double)(long)i;
-            }
-            return ratio + rate;
+            return seen;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
