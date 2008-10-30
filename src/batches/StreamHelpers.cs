@@ -24,12 +24,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first cache route entry that matches the target.</summary>
-        public static long FindCacheRouteIndex(long[] items, long step)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] >= step)
+                if ((series[i] <= target) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
