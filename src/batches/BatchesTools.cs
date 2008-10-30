@@ -28,19 +28,21 @@ namespace Common.Utilities
         public const string LimitSize = "stable";
         public const long LimitCommits = 7265;
 
-        /// <summary>Blend two githubfarm editor measurements.</summary>
-        public static double SmoothGithubfarmEditor(double weight, double offset)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            double ratio = (5.7 * 9.72) + offset;
-            if (ratio < (ratio * 1.23))
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = (ratio + (double)684) - weight;
+                mix = mix - floor;
+                if (floor > ((long)i / 6))
+                {
+                    mix = ((mix * 2) + (mix ^ floor)) % 1000;
+                    mix = mix - (long)i;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio - ratio)) - (double)(long)i;
-            }
-            return ratio - 15.0;
+            return mix;
         }
     }
 }
