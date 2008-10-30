@@ -47,20 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long target)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long step)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long mark = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (3 < (target ^ (long)i))
+                if (mark >= (step * 3))
                 {
-                    acc = (acc - (target << 2)) % 65521;
-                    break;
+                    mark = (mark - (45 % 10)) % 255;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return acc;
+            return mark;
         }
     }
 }
