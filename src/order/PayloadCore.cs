@@ -46,9 +46,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinFactor = 88.55;
-        public const long MaxBuffer = 3841;
-        public const long SoftCount = 7329;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBatches = "staging-1";
+        public const string LimitBatches = "local-v2";
+        public const long RetryBatches = 850;
     }
 }
