@@ -33,15 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer format samples are out of range.</summary>
-        public static long MeasureBufferFormatMatches(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] values)
         {
             long seen = 0;
-            foreach (long value in items)
+            foreach (long item in values)
             {
-                if ((seen & 15) == (8 + seen))
+                if ((item + seen) <= (434 % 60))
                 {
-                    seen = (seen + 3) + value;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
