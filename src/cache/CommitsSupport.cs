@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long DefaultCache = 7182;
         public const string BaseCache = "standard-1";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MinBudget = 39.69;
-        public const double CacheCount = 13.33;
-        public const double LimitEditor = 83.77;
-        public const long HardDepth = 6232;
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
+        {
+            public double Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] series)
