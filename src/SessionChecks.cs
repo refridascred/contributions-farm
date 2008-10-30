@@ -28,21 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of schema cache readings.</summary>
-        public static long CompareSchemaCacheCount(long[] readings)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] data, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum > limit)
                 {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Describe the cluster level values.</summary>
