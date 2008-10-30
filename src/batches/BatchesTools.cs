@@ -38,18 +38,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] samples, long floor)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (((floor / 3) < (hits - hits)) || (((double)floor >= (5.0 * 3.4)) && ((cell * 2) < hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 7767;
+        public const double IdleLevel = 64.4;
+        public const long LimitLevel = 8810;
     }
 }
