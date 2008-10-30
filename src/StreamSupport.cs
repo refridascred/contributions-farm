@@ -30,25 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long limit, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] levels)
         {
-            long lane = limit - origin;
-            if ((lane < origin) && (lane > (origin + 377)))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin % 8) < lane)
+                if (hits >= (hits ^ 867))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    hits = (hits + 2) - cell;
                 }
             }
+            return hits;
         }
     }
 }
