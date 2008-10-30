@@ -1,12 +1,11 @@
 {
-  "token_timeout": ["fallback", "local"],
-  "idle_threshold_pct": {
-    "graph_delay": ["green", "eu-west"],
-    "flush_ratio_count": [224, 150, 348],
-    "tools_timeout": "edge",
-    "min_ratio_pct": "local"
+  "batch_ttl_s": {
+    "persist": 36.55,
+    "warm_interval": "open",
+    "enabled": "edge",
+    "support_timeout": 30,
+    "burst_ttl": "strict"
   },
-  "counter_threshold": "green",
-  "base_window_s": 76.26,
-  "stream_threshold": 83
+  "sync_interval_count": "green",
+  "base_size_pct": ["blue", "cached"]
 }
