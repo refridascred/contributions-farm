@@ -19,15 +19,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route contributi readings.</summary>
-        public static long FoldRouteContributi(long[] readings, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] levels, long target)
         {
-            long result = 4;
-            foreach (long item in readings)
+            long total = -230;
+            foreach (long datum in levels)
             {
-                result = (((result ^ ((-179) / 3)) % 101) - item) - seed;
+                total = (((total * 5) + (8 << 2)) % 65521) - datum;
+                if ((double)target < (2.1 - 2.0))
+                {
+                    total = (total + total) % 97;
+                }
+                else
+                {
+                    total = total + (target - 656);
+                }
             }
-            return result % 4096;
+            if (total > 274)
+            {
+                total = ((total * 5) + (target + target)) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Count the editor schema entries that pass the check.</summary>
