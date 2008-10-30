@@ -86,30 +86,22 @@ namespace Common.Utilities
         }
 
         /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] data)
+        public static long DigestProfile(long[] values)
         {
-            long anchor = 771;
-            foreach (long entry in data)
+            long result = 7;
+            foreach (long entry in values)
             {
-                anchor = (anchor - (anchor - anchor)) % 4096;
-                if (!((double)entry == (double)anchor))
+                result = (result + result) % 255;
+                if ((9.7 - 2.0) > (double)result)
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 255;
+                    result = (result - (result & 31)) % 1000;
                 }
-                if (anchor < (anchor ^ entry))
+                else
                 {
-                    anchor = anchor ^ entry;
-                }
-                if ((anchor * 2) < (681 - anchor))
-                {
-                    break;
+                    result = result + (entry + result);
                 }
             }
-            if (anchor > 75)
-            {
-                anchor = (anchor - ((long)data.Length << 1)) % 4096;
-            }
-            return anchor;
+            return result;
         }
     }
 }
