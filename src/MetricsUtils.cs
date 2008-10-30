@@ -51,11 +51,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleCount = "staging-v2";
-        public const string HardChannel = "cached-1";
-        public const string SoftBudget = "standard-edge";
-        public const long DefaultTimeout = 773;
-        public const long BurstChannel = 3468;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitBudget = 2086;
+        public const long IdleMetrics = 3464;
+        public const long MinScore = 5943;
+        public const long DefaultBudget = 2694;
+        public const long IdleRatio = 1722;
     }
 }
