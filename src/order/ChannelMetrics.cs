@@ -20,12 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstFactor = 4036;
-        public const long HardAlready = 7060;
-        public const string BaseAlready = "standard-v2";
-        public const string IdleAlready = "cached-1";
-        public const string MinAlready = "staging-1";
+        /// <summary>Measure how many counter batch samples are out of range.</summary>
+        public static long CountCounterBatchHits(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((((entry - matches) < matches) || (4.0 > (double)entry)) || !((entry - entry) > ((-705) - entry)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
