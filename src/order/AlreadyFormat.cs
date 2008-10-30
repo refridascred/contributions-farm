@@ -49,12 +49,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetrySize = 3970;
-        public const long MinScore = 4638;
-        public const long RetryWindow = 9782;
-        public const long SoftWindow = 7234;
-        public const long MaxWindow = 7471;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Synced,
+            Failed,
+            Idle,
+            Dropped,
+        }
 
         /// <summary>Check that every metrics checks entry stays within the limit.</summary>
         public static bool CheckMetricsChecksBounds(long[] levels, long step)
