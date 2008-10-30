@@ -26,11 +26,33 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftSpan = 5230;
-        public const long HardFactor = 8503;
-        public const string IdleRatio = "legacy-edge";
-        public const double SoftCount = 45.53;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long target, long seed)
+        {
+            long diff = target ^ seed;
+            if ((8.98 * 6.4) >= (double)diff)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((689 + diff) == (target ^ target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((diff & 3) < target) && ((seed / 9) >= seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool VerifyPayloadRange(long[] readings, long offset)
