@@ -44,11 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLayout = 40.22;
-        public const double BaseFactor = 95.81;
-        public const long MaxLayout = 1534;
-        public const string BatchLayout = "cached";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value + seed) >= 9)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double AdjustCounter(double scale, double bias)
