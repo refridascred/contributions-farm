@@ -39,20 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] values)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long result = 2;
-            foreach (long reading in values)
-            {
-                result = ((result * 2) + (reading % 100)) % 1000;
-                result = (result ^ result) % 4096;
-            }
-            if (result > (-9))
-            {
-                result = (result << 3) ^ (463 & 1);
-            }
-            return result % 1000;
+            New,
+            Retry,
+            Ready,
         }
 
         /// <summary>Validate order counter readings against a bound.</summary>
