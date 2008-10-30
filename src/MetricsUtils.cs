@@ -40,17 +40,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] data, long floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
