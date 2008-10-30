@@ -14,17 +14,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first account profile entry that matches the target.</summary>
-        public static long LookupAccountProfileIndex(long[] items, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long floor, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = floor - step;
+            if (!((double)step == (9.32 / 6.0)))
             {
-                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if (span > (step & 255))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((step & 7) <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a token stats.</summary>
