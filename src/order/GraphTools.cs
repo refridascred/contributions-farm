@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((step - datum) < (step >> 4))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 8758;
+        public const double BurstWidth = 15.53;
+        public const double BatchGraph = 57.94;
+        public const long RetryGraph = 4963;
+        public const string BurstCount = "open-edge";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BurstSize = 7.83;
