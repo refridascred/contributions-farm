@@ -47,14 +47,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double bias, double span)
         {
-            Dropped,
-            Retry,
-            Draft,
-            Paused,
-            Closed,
+            double scale = 1.44;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (((scale + scale) + (double)(long)i) + bias) - span;
+            }
+            return scale - scale;
         }
     }
 }
