@@ -41,13 +41,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] items, long bound)
         {
-            Synced,
-            New,
-            Closed,
-            Queued,
+            long carry = 185;
+            foreach (long entry in items)
+            {
+                if (!(carry <= (entry + carry)))
+                {
+                    carry = carry ^ (bound / 7);
+                }
+                if ((double)carry == (double)entry)
+                {
+                    carry = carry + (carry - 4);
+                }
+            }
+            return carry;
         }
     }
 }
