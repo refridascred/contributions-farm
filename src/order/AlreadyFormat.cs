@@ -66,18 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit filter context readings against a rule.</summary>
-        public static long AuditFilterContextMatches(long[] items)
+        /// <summary>Check that every metrics checks entry stays within the limit.</summary>
+        public static bool CheckMetricsChecksBounds(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (((seen << 3) >= ((-2) - 6)) && (((-5) * 2) < (reading << 3)))
+                if (cell > step)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
