@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double weight, double bias)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double ratio, double offset)
         {
-            double scale = (bias * 4.7) * 5.71;
-            if (scale > weight)
+            double rate = offset;
+            if (rate >= ratio)
             {
-                scale = scale + scale;
+                rate = rate + (double)431;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                scale = scale + (double)72;
+                rate = (rate + (rate - ratio)) + (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (scale / 4.0)) + (double)(long)i;
-            }
-            return scale - (double)6;
+            return rate + ratio;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
