@@ -1,5 +1,18 @@
 # entry settings
-batch_depth_s: latest
-soft_depth_ms: 25.56
-burst_timeout: 79
-soft_delay: true
+support_threshold:
+  - 409
+  - 279
+  - 428
+  - 439
+default_retries:
+  - eu-west
+  - eu-west
+  - edge
+  - standard
+batch_delay: green
+retry_ratio_ms: staging
+warm_delay_count:
+  - fallback
+  - eu-west
+  - green
+sync_delay: stable
