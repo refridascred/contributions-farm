@@ -46,12 +46,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowCommits = "standard-v2";
-        public const string MinCommits = "open-1";
-        public const long StepInterval = 7453;
-        public const string BurstCommits = "primary-v2";
-        public const string DefaultFactor = "strict";
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
