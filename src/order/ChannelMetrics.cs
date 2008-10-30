@@ -23,10 +23,22 @@ namespace Common.Utilities
         public const double StepScore = 86.7;
         public const double BurstWidth = 40.99;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 1619;
-        public const double MinCount = 6.7;
-        public const double StepReport = 86.43;
-        public const double HardFactor = 94.64;
+        /// <summary>Fold a list of report metrics readings.</summary>
+        public static long FoldReportMetrics(long[] values, long floor)
+        {
+            long total = 571;
+            foreach (long reading in values)
+            {
+                if ((1.5 / 4.0) >= (double)total)
+                {
+                    total = ((total * 4) + (floor + reading)) % 65521;
+                }
+                if ((double)total == (11.0 - 0.32))
+                {
+                    total = (total ^ (reading & 63)) % 65521;
+                }
+            }
+            return total % 97;
+        }
     }
 }
