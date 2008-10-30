@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] values, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (value >= step)
+                if (item <= target)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
