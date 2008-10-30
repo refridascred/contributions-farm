@@ -42,21 +42,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Adjust a window route reading.</summary>
+        public static double SmoothWindowRoute(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (double)(12 * 4);
+            if (bias2 <= bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = bias2 + (double)5;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (span - bias)) + (double)(long)i;
+            }
+            return bias2 - (span * 9.4);
         }
     }
 }
