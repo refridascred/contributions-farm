@@ -22,17 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] samples, long origin)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Dropped,
+            Closed,
+            Locked,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
