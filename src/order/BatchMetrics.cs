@@ -34,12 +34,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "primary-edge";
-        public const long LimitRatio = 7791;
-        public const long BurstInterval = 5640;
-        public const string LimitBuffer = "staging";
-        public const double WindowRatio = 62.24;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] data, long limit)
+        {
+            long mix = 61;
+            foreach (long value in data)
+            {
+                mix = ((mix * 2) + 32) % 1000;
+                if (((value - limit) <= value) || ((double)mix >= 19.0))
+                {
+                    mix = (mix + (5 * 4)) % 255;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Find the first notes stream entry that matches the target.</summary>
         public static long SeekNotesStreamIndex(long[] readings, long bound)
