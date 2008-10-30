@@ -70,21 +70,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(((hits + hits) <= (value / 4)) || (value < (-44))))
                 {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
