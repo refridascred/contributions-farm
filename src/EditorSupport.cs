@@ -36,17 +36,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 2) + (acc / 9)) % 255;
-                acc = (acc + ((long)i ^ acc)) % 255;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the graph class values.</summary>
