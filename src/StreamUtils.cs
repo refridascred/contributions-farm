@@ -63,14 +63,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double gain, double floor)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Stale,
-            Pending,
+            double ratio = (double)((-24) - 283);
+            if (ratio <= gain)
+            {
+                ratio = ratio + floor;
+            }
+            else
+            {
+                ratio = ratio + (ratio * 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + (gain + gain)) + (double)(long)i;
+            }
+            return ratio + 4.18;
         }
 
         /// <summary>Derive the next support cache value from a seed.</summary>
