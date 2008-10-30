@@ -1,6 +1,16 @@
 {
-  "base_limit_s": "green",
-  "commits_delay": ["legacy", "eu-west", "open"],
-  "flush_retries": 15.72,
-  "poll_timeout": 6304
+  "cache_window_s": ["primary", "open"],
+  "default_delay": {
+    "batch_limit_pct": {
+      "min_size_ms": false,
+      "batch_window_ms": 72.94,
+      "min_limit_ms": "eu-west",
+      "tools_timeout": 9362
+    },
+    "batch_ratio": "strict",
+    "idle_window_count": 23.37,
+    "layout_interval": 13.97
+  },
+  "audit": ["strict", "eu-west"],
+  "counter_ttl": "blue"
 }
