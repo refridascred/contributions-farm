@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long limit, long floor)
+        /// <summary>Iterate the format graph series from a seed.</summary>
+        public static long RollFormatGraph(long limit)
         {
-            if ((1.91 + 4.0) <= (double)floor)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit > floor)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 0;
+                    acc = ((acc + (acc * 2)) % 97) + (long)i2;
                 }
-                else
-                {
-                    return 1;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Accumulate filter samples.</summary>
