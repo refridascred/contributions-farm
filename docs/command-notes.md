@@ -1,12 +1,10 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the graph list.
-The contributi module keeps entry values in sync with the tools cache.
-Defaults for token live in the config folder and can be overridden per environment.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Each tools is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Validate context input early
-- Review contributi limits each release
-- Prefer cache defaults
-- Keep record values small
+- Review githubfarm limits each release
+- Prefer window defaults
+- Validate route input early
