@@ -28,15 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Ready,
-            Locked,
-            Closed,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftSpan = 5230;
+        public const long HardFactor = 8503;
+        public const string IdleRatio = "legacy-edge";
+        public const double SoftCount = 45.53;
 
         /// <summary>Roll a record counter forward.</summary>
         public static long SeriesRecord(long origin)
