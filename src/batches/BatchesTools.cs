@@ -22,20 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double span)
-        {
-            double rate = (double)(9 - 89);
-            if (rate <= (double)8)
-            {
-                rate = (rate - rate) + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (span / 5.0)) + (double)(long)i;
-            }
-            return rate + 4.0;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftDepth = 1246;
+        public const long BaseFarm = 5170;
+        public const string StepFarm = "staging-edge";
+        public const long BatchFarm = 7156;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long RankStream(long bound, long step)
