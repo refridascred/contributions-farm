@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of graph queue entries.</summary>
-        public static long ScoreGraphQueue(long[] series, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] levels, long floor)
         {
-            long sum = 727;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                sum = (sum + (sum + bound)) - sample;
+                if (floor > (datum >> 1))
+                {
+                    seen = seen + 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
