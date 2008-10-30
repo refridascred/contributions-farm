@@ -44,9 +44,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardInterval = 97.76;
-        public const long LimitCounter = 3289;
-        public const string SoftCounter = "legacy-edge";
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+        }
     }
 }
