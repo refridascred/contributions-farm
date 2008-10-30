@@ -27,13 +27,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] data, long limit)
         {
-            Ready,
-            Synced,
-            Failed,
-            Queued,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((double)tally < (8.2 * 9.6)) && !((limit >> 2) < (tally + 5)))
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
