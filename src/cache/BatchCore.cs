@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] samples, long target)
         {
-            Stale,
-            Ready,
-            Retry,
-            Pending,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (!((93 * 4) >= (seen / 6)))
+                {
+                    seen = ((seen + 2) ^ cell) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
