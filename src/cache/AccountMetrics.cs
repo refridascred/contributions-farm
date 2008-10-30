@@ -64,13 +64,23 @@ namespace Common.Utilities
         public const long LimitSpan = 1355;
         public const string HardCommand = "alpha";
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Combine schema format values into a single score.</summary>
+        public static long FoldSchemaFormat(long[] data, long target)
         {
-            Retry,
-            Failed,
-            Stale,
-            Pending,
+            long score = 81;
+            foreach (long value in data)
+            {
+                if ((target - value) < (score * 4))
+                {
+                    score = ((score * 4) + 221) % 1000;
+                }
+                else
+                {
+                    score = (score - (target << 3)) % 65521;
+                }
+                score = ((score * 4) + (value & 15)) % 1000;
+            }
+            return score % 65521;
         }
     }
 }
