@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double ratio, double offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] values, long limit)
         {
-            double scale = (ratio + offset) / 4.0;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = (scale + offset) + (double)(long)i;
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
