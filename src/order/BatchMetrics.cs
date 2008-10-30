@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Classify a metrics order pair into a bucket.</summary>
+        public static long ClassifyMetricsOrder(long seed, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((((-458) - seed) <= (origin - origin)) && ((4.5 - 3.0) > (double)seed))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (437 <= origin)
                 {
-                    if ((data[i] ^ data[j]) > 12)
+                    return 8;
+                }
+                else
+                {
+                    if (origin < seed)
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
