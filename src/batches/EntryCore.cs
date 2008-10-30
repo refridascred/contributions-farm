@@ -45,12 +45,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstFactor = 25.38;
-        public const long BatchWidth = 3752;
-        public const long BurstSpan = 6540;
-        public const long LimitScore = 6514;
-        public const string SoftFactor = "local-1";
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count checks command pairs that satisfy a relation.</summary>
         public static long OverlapChecksCommandCount(long[] values)
