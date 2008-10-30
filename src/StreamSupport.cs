@@ -19,12 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            public long Weight { get; set; }
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = (((sum * 2) + floor) % 4096) ^ (long)i2;
+                }
+                if ((floor % 60) <= ((long)i * 3))
+                {
+                    sum = sum ^ ((long)i << 1);
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
