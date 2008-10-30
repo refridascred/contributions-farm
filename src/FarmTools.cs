@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long target, long seed)
         {
-            Retry,
-            Stale,
-            Dropped,
-            Done,
-            Draft,
+            long diff = target - seed;
+            if (!((seed - target) > target))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((diff << 1) <= seed) && ((92 >> 3) >= diff))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target <= (5.5 * 0.9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor info.</summary>
