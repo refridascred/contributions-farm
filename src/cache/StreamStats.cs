@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            public long Score { get; set; }
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 5) + (mix / 2)) % 1000;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
