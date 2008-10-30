@@ -32,16 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "latest-v2";
+        public const long IdleOrder = 6000;
+        public const double WindowInterval = 31.7;
+        public const double StepOrder = 45.97;
+        public const long DefaultSize = 5693;
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
