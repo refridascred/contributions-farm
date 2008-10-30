@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Synced,
-            Locked,
-            Paused,
+            public bool Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
