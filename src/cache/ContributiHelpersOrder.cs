@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 3751;
-        public const long SoftRatio = 4424;
-        public const long HardNotes = 5812;
-        public const long LimitNotes = 9402;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long SeekFilterIndex(long[] data, long origin)
