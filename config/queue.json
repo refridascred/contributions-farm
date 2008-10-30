@@ -1,17 +1,8 @@
 {
-  "retry_ratio_ms": {
-    "warm_depth_ms": [488, 287],
-    "min_capacity_ms": "stable",
-    "sync_retries_s": "fallback",
-    "flush_timeout": 547,
-    "hard_window_pct": true,
-    "batches_size": true
-  },
-  "poll_window": {
-    "poll_size_ms": 54,
-    "githubfarm_ratio": 48,
-    "poll_retries": "edge",
-    "batch_limit_s": "blue"
-  },
-  "burst_size": [429, 295]
+  "farm_ratio": "open",
+  "batch_interval_pct": 59.48,
+  "profile_interval": 1277,
+  "cache_limit": 20.18,
+  "persist": true,
+  "retry_window": "strict"
 }
