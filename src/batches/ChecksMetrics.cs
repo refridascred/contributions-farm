@@ -39,16 +39,32 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long bound, long origin)
         {
-            long acc = 311;
-            foreach (long cell in items)
+            long next = bound + origin;
+            if (next < bound)
             {
-                acc = acc + acc;
-                acc = (acc ^ (cell + acc)) % 1000;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((next << 1) >= (origin - next))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound <= (origin - bound)) || (origin <= (next + bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token stats.</summary>
