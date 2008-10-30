@@ -30,10 +30,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 96.48;
-        public const double CacheNotes = 83.89;
-        public const double BaseLevel = 2.61;
-        public const long MaxWidth = 8815;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double rate, double offset)
+        {
+            double mean = (double)((-779) + 651);
+            if (mean <= (double)(-32))
+            {
+                mean = (mean + (offset + 2.3)) - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (8.9 * 6.91)) + (double)(long)i;
+            }
+            return mean + 13.0;
+        }
     }
 }
