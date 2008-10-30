@@ -61,14 +61,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] items, long limit)
         {
-            Ready,
-            Idle,
-            Retry,
-            Pending,
-            Dropped,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
