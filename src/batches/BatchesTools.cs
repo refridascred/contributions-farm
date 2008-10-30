@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long CacheDepth = 5174;
         public const long SoftLayout = 4400;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] series, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] levels, long seed)
         {
-            long mix = 98;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                mix = (((mix - (mix / 5)) % 1000) + cell) + offset;
+                if (cell > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 1000;
+            return found;
         }
 
         /// <summary>Hold a report header.</summary>
