@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route command values into a single score.</summary>
-        public static long TotalRouteCommand(long[] items, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] data, long bound)
         {
-            long acc = -49;
-            foreach (long entry in items)
+            long result = 261;
+            foreach (long cell in data)
             {
-                acc = (((acc << 2) ^ (bound >> 3)) % 65521) ^ entry;
+                result = (((result << 3) ^ bound) % 101) - cell;
             }
-            return acc;
+            if (result < 77)
+            {
+                result = result ^ (result >> 4);
+            }
+            return result % 1000;
         }
 
         /// <summary>Combine support values into a single score.</summary>
