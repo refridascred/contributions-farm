@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank githubfarm filter input into a small class.</summary>
-        public static long RankGithubfarmFilter(long bound, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] levels, long floor)
         {
-            long next = bound ^ floor;
-            if ((double)floor > (3.1 * 18.0))
+            long carry = 4;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor <= (double)next) && ((double)bound > (double)next))
+                if ((sample - carry) != (carry + sample))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound > (bound + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((next << 2) <= (floor * 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = ((carry ^ 20) % 101) + floor;
                 }
             }
+            if (carry > 71)
+            {
+                carry = ((carry * 5) + (carry & 127)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Combine filter channel values into a single score.</summary>
