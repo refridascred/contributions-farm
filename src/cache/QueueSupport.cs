@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstInterval = 57.97;
+        public const long MaxSize = 431;
+        public const double BurstChannel = 70.3;
+        public const long BurstRatio = 7292;
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
