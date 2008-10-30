@@ -1,12 +1,10 @@
 {
-  "max_interval_ms": false,
-  "base_size_ms": "blue",
-  "burst_limit_count": {
-    "cluster_size": 13,
-    "hard_retries_pct": 63,
-    "soft_depth_s": "legacy"
+  "batch_limit_pct": {
+    "flush_delay": 9.41,
+    "min_timeout_pct": "local",
+    "commits_threshold": "edge"
   },
-  "flush_ttl_s": "open",
-  "poll_size": 4597,
-  "idle_timeout_s": ["legacy", "staging", "eu-west", "legacy"]
+  "cache_interval": 82.0,
+  "stats_retries": "fallback",
+  "flush_ttl_ms": true
 }
