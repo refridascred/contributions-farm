@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit report schema readings against a rule.</summary>
-        public static long MeasureReportSchemaHits(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long sum = -146;
+            foreach (long cell in levels)
             {
-                if ((double)hits == (19.0 / 2.0))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
+                sum = (((sum * 4) + sum) % 4096) - cell;
             }
-            return hits;
+            if (sum < (-65))
+            {
+                sum = sum ^ (sum + 66);
+            }
+            return sum;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
