@@ -20,12 +20,31 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
+        public static long SortBufferCluster(long floor, long origin)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
+            if ((1.0 * 2.9) >= (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)floor != (4.38 - 8.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin >= floor) && ((origin / 7) > (3 + floor)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
