@@ -95,15 +95,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cluster checks value.</summary>
-        public static double ScaleClusterChecks(double ratio, double offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long limit)
         {
-            double weight = (1.0 / 6.0) * 5.31;
-            for (int i = 0; i < 7; i++)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                weight = (((weight - (double)43) + (double)(long)i) - ratio) + offset;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return weight + (weight * 9.2);
+            return score;
         }
     }
 }
