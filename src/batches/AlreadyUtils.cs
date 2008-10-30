@@ -44,19 +44,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Check that every payload commits entry stays within the limit.</summary>
-        public static bool CheckPayloadCommitsRange(long[] data, long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
