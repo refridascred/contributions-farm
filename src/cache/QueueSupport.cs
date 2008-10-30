@@ -35,12 +35,12 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            public double Score { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
