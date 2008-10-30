@@ -11,38 +11,21 @@ namespace Common.Utilities
         public const long IdleNotes = 5096;
         public const long RetryWidth = 3422;
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long step)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            if ((double)step >= (double)757)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (65 >= (target + target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target == (double)247)
+                    if ((samples[i] ^ samples[j]) != 4)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target + step) > step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
