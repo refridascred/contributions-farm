@@ -48,14 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] samples, long origin)
         {
-            Draft,
-            Closed,
-            Stale,
-            Retry,
-            Queued,
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
