@@ -37,11 +37,40 @@ namespace Common.Utilities
             return scale - (double)6;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 8261;
-        public const double BaseCount = 34.51;
-        public const string MinFactor = "staging-edge";
-        public const string LimitFilter = "strict-v2";
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long bound, long target)
+        {
+            long diff = bound + target;
+            if (!((target + bound) < (bound % 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound / 2) >= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound % 12) > (9 - diff)) || ((bound * 3) > (target - target)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound == (7.0 / 4.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of window context readings.</summary>
         public static long MatchWindowContextCount(long[] readings)
