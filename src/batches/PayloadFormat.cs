@@ -22,39 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long origin)
+        /// <summary>Count the channel schema entries that pass the check.</summary>
+        public static long AuditChannelSchemaGaps(long[] samples)
         {
-            long delta = offset + origin;
-            if ((offset % 10) > (offset ^ 14))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (delta > origin)
+                if ((((1.0 + 9.0) > (double)reading) || ((hits >> 1) < reading)) || ((hits & 63) < (reading * 2)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin << 2) > (delta ^ delta)) && ((150 - offset) == (offset / 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((0 + offset) >= origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the stream phase values.</summary>
