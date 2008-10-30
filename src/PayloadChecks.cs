@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] values, long step)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (sample <= (step - 2))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
