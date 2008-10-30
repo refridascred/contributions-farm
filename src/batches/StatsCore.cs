@@ -67,9 +67,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 1208;
-        public const long CacheQueue = 8940;
-        public const double HardDepth = 59.46;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((item >> 5) == (count * 2))
+                {
+                    count = (count + 2) - offset;
+                }
+            }
+            return count;
+        }
     }
 }
