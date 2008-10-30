@@ -20,12 +20,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinWidth = 4928;
-        public const double IdleTimeout = 66.08;
-        public const string CacheBatch = "fallback-1";
-        public const string RetryBatch = "local-edge";
-        public const long SoftBatch = 1949;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] series, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long MinFilter = 9863;
