@@ -29,24 +29,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long step, long bound)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double rate, double floor)
         {
-            if ((bound - step) >= (4 + step))
+            double scale = rate;
+            if (scale >= floor)
             {
-                return 0;
+                scale = scale + (double)88;
             }
-            else
-            {
-                if (bound > (9 - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return scale + rate;
         }
     }
 }
