@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "local";
+        public const long RetrySize = 4676;
+        public const string SoftCluster = "standard-1";
+        public const double RetryCluster = 25.9;
+        public const long MinInterval = 3711;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long CountRouteOutliers(long[] levels)
