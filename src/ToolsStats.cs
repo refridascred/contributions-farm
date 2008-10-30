@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5393;
         public const double IdleTools = 78.82;
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] data, long seed)
+        /// <summary>Measure how many token profile samples are out of range.</summary>
+        public static long MeasureTokenProfileMatches(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) == 0))
+                if ((sample - seen) > sample)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a editor order counter forward.</summary>
