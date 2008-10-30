@@ -31,11 +31,21 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 7618;
-        public const long LimitWidth = 3867;
-        public const string MaxDepth = "legacy";
-        public const long StepInterval = 8334;
-        public const long SoftFactor = 7790;
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
