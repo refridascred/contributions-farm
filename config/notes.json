@@ -1,5 +1,7 @@
 {
-  "hard_delay_s": ["open", "edge", "standard", "blue"],
-  "idle_delay": true,
-  "entry_threshold": ["stable", "latest", "edge", "legacy"]
+  "enabled": 48,
+  "layout_threshold": 47.87,
+  "max_window_s": ["latest", "fallback", "staging"],
+  "batches_delay": true,
+  "idle_limit_ms": 250
 }
