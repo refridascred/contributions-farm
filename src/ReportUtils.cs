@@ -26,19 +26,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] data, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long score = -8;
+            foreach (long reading in items)
             {
-                if (reading < target)
+                if (offset > (66 % 64))
                 {
-                    found = false;
-                    break;
+                    score = ((score - 94) % 1000) - reading;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Describe the queue level values.</summary>
