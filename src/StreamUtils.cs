@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((217 - sample) > (sample + matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 2559;
+        public const long HardEntry = 1254;
+        public const long MinFactor = 8728;
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double bias, double span)
