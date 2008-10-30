@@ -27,10 +27,17 @@ namespace Common.Utilities
         public const long BurstCache = 1336;
         public const long IdleCache = 4341;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryContributi = 9.78;
-        public const long LimitFactor = 2905;
-        public const string LimitContributi = "standard-v2";
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc << 2) ^ (acc & 63)) % 255;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long WindowOrder = 5215;
