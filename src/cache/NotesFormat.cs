@@ -29,22 +29,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long seed, long bound)
         {
-            long sum = -51;
-            foreach (long sample in levels)
+            if (((bound >> 1) != (seed - bound)) || ((bound ^ bound) > 9))
             {
-                if (((double)sample <= (double)sum) || (sample >= (48 ^ sample)))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound != (9.5 - 0.9))
                 {
-                    sum = (sum ^ sample) % 101;
+                    return 6;
                 }
-                if (!((847 ^ sum) == (0 >> 5)))
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            return sum;
         }
     }
 }
