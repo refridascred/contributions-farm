@@ -67,19 +67,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] levels, long floor)
+        /// <summary>Accumulate record order samples.</summary>
+        public static long WeighRecordOrder(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long anchor = 3;
+            foreach (long cell in items)
             {
-                if (cell > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor * 2) + (cell & 7);
             }
-            return valid;
+            return anchor;
         }
     }
 }
