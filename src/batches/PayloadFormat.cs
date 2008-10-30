@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long WindowWidth = 8086;
         public const string BaseInterval = "primary";
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Idle,
+            Dropped,
+            Failed,
+            Draft,
         }
 
         /// <summary>Match up farm samples.</summary>
