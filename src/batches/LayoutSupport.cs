@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long BaseMetric = 8667;
         public const double BatchMetric = 53.34;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] series, long floor)
         {
-            Active,
-            Retry,
-            Synced,
-            Pending,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the entry status values.</summary>
