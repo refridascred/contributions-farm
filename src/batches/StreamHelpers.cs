@@ -32,18 +32,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandHits(long[] items)
+        /// <summary>Derive the next token buffer value from a seed.</summary>
+        public static long SeriesTokenBuffer(long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((matches & 15) > reading))
-                {
-                    matches = matches + 2;
-                }
+                state = (state - (94 + state)) % 4096;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Fold a list of route readings.</summary>
