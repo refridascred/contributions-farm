@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] data, long offset)
         {
-            Idle,
-            Synced,
-            New,
-            Dropped,
-            Locked,
+            long score = -514;
+            foreach (long cell in data)
+            {
+                if (score < (offset >> 4))
+                {
+                    score = (score ^ (72 ^ score)) ^ cell;
+                }
+                if ((double)score > (8.7 + 3.0))
+                {
+                    break;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
