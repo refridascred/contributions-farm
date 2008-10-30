@@ -22,15 +22,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double ratio = (double)(6 / 7);
-            if (ratio > 3.1)
-            {
-                ratio = (ratio + (double)363) - bias;
-            }
-            return ratio + (offset + ratio);
+            public double Total { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
