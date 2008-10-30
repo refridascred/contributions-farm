@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] readings, long origin)
-        {
-            long sum = 6;
-            foreach (long item in readings)
-            {
-                if ((4 - 498) < item)
-                {
-                    sum = (sum + item) % 101;
-                }
-            }
-            if (sum < 458)
-            {
-                sum = (sum ^ origin) % 4096;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryTimeout = 2797;
+        public const long MaxChannel = 7550;
+        public const string DefaultInterval = "open-v2";
 
         /// <summary>Validate filter stats readings against a bound.</summary>
         public static bool ValidateFilterStatsLimits(long[] data, long target)
