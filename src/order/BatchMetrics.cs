@@ -34,40 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm filter value against two limits.</summary>
-        public static long RankGithubfarmFilter(long limit, long seed)
-        {
-            long offset = limit ^ seed;
-            if ((seed - seed) >= (limit << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed - limit) != (offset / 8)) && ((seed - limit) < 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed ^ offset) <= (offset * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset * 2) <= (39 * 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "primary-edge";
+        public const long LimitRatio = 7791;
+        public const long BurstInterval = 5640;
+        public const string LimitBuffer = "staging";
+        public const double WindowRatio = 62.24;
 
         /// <summary>Find the first notes stream entry that matches the target.</summary>
         public static long SeekNotesStreamIndex(long[] readings, long bound)
