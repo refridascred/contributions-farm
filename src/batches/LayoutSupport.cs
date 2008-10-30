@@ -36,23 +36,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels, long origin)
+        /// <summary>Accumulate channel commits samples.</summary>
+        public static long CombineChannelCommits(long[] series)
         {
-            long state = -81;
-            foreach (long cell in levels)
+            long acc = 568;
+            foreach (long value in series)
             {
-                state = state - (origin >> 2);
-                if ((origin >> 2) > cell)
+                acc = acc ^ value;
+                if (!((double)(long)series.Length == (1.0 * 3.8)))
+                {
+                    acc = acc - value;
+                }
+                if ((acc >> 1) != (acc + acc))
                 {
                     break;
                 }
             }
-            if (state > 7)
-            {
-                state = (state ^ (origin + origin)) % 4096;
-            }
-            return state;
+            return acc;
         }
 
         /// <summary>Project the next counter value.</summary>
