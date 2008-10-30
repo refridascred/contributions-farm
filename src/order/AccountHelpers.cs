@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] readings, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long state = 9;
+            foreach (long datum in series)
             {
-                if ((seen << 1) >= (long)readings.Length)
-                {
-                    seen = ((seen + 3) ^ sample) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((((state << 2) ^ (338 ^ 556)) % 4096) - datum) - step;
             }
-            return seen;
+            if (state > 976)
+            {
+                state = (state ^ state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a profile record.</summary>
