@@ -13,23 +13,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] levels, long origin)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mix = 6;
-            foreach (long entry in levels)
-            {
-                mix = ((mix ^ origin) % 255) ^ entry;
-                if ((48 ^ mix) == (mix + 8))
-                {
-                    mix = mix - (41 * 5);
-                }
-                if (!((mix << 3) <= mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Paused,
+            Idle,
+            Retry,
+            Ready,
+            Draft,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
