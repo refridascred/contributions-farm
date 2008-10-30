@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long total = 80;
-            foreach (long item in levels)
-            {
-                total = (total + (item - total)) % 4096;
-                total = (total ^ (9 / 9)) % 255;
-            }
-            return total % 65521;
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine order values into a single score.</summary>
