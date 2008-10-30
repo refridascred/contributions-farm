@@ -1,7 +1,6 @@
 # support settings
-githubfarm_depth: 9084
-batch_ratio_ms: 7039
-channel_interval:
-  - cached
-  - blue
-  - fallback
+route_delay: 17.52
+format_window: 5804
+flush_interval_count: 21
+warm_window: strict
+hard_interval_count: local
