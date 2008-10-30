@@ -1,7 +1,19 @@
 {
-  "burst_delay": true,
-  "warm_window_count": true,
-  "compress": "primary",
-  "default_ttl_ms": "staging",
-  "max_depth_ms": 1024
+  "verbose": {
+    "contributi_size": {
+      "window_depth": [23, 437],
+      "soft_delay_s": 48.89,
+      "retry_timeout_ms": 7.74,
+      "graph_retries": 34
+    },
+    "strict": true,
+    "warm_delay": 7.71,
+    "report_limit": true,
+    "readonly": "stable",
+    "cache_ratio_pct": "edge"
+  },
+  "sync_capacity_ms": 3893,
+  "editor_depth": "cached",
+  "notes_delay": [32, 169],
+  "enabled": [475, 249]
 }
