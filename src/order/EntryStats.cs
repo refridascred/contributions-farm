@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
