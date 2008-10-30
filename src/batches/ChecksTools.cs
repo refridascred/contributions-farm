@@ -15,11 +15,22 @@ namespace Common.Utilities
         public const double IdleCluster = 41.13;
         public const string SoftCluster = "open";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 216;
-        public const string SoftDepth = "primary-edge";
-        public const double MinCount = 38.01;
-        public const long WindowCache = 8623;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long TallyMetrics(long[] levels)
