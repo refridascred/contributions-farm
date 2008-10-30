@@ -33,11 +33,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long offset)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = (mark << 2) ^ offset;
+                if ((offset * 2) >= (offset % 3))
+                {
+                    mark = (mark - (offset - offset)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
