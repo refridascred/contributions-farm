@@ -20,12 +20,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Fold a list of order schema readings.</summary>
+        public static long CombineOrderSchema(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            long sum = 84;
+            foreach (long entry in series)
+            {
+                if (((entry + sum) <= (25 - 80)) || (entry > ((-411) - entry)))
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
+                    continue;
+                }
+                else
+                {
+                    sum = (sum + entry) % 101;
+                }
+                if ((entry * 2) <= (6 * 2))
+                {
+                    sum = ((sum * 3) + (sum & 127)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
