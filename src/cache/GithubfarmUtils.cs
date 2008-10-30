@@ -49,21 +49,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long PairAlreadyCount(long[] samples)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((state + (long)i) < state)
                 {
-                    if ((samples[i] ^ samples[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state + (695 ^ state);
+                    state = (state ^ (long)i) % 1000;
                 }
+                else
+                {
+                    state = state - (bound << 3);
+                }
+                state = state + (state % 10);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
