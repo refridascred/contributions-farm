@@ -67,14 +67,12 @@ namespace Common.Utilities
         public const long BaseNotes = 4784;
         public const long LimitCount = 8662;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Idle,
+            Closed,
+            Active,
             Stale,
-            Pending,
-            Queued,
-            Locked,
         }
     }
 }
