@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((offset >> 2) < (matches + offset))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftLevel = 4072;
+        public const long RetryLevel = 8397;
+        public const long MaxRecord = 6073;
+        public const long DefaultRecord = 6766;
+        public const long BurstSize = 1281;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long offset)
