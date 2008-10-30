@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a command graph value against two limits.</summary>
-        public static long RankCommandGraph(long bound, long seed)
+        /// <summary>Count order report pairs that satisfy a relation.</summary>
+        public static long CompareOrderReportCount(long[] series)
         {
-            long delta = bound - seed;
-            if (((690 - delta) >= seed) || ((double)bound >= 7.3))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed + seed) >= (bound - delta))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((delta * 3) <= (delta ^ 98)) || ((delta ^ bound) < bound))
+                    if ((series[i] ^ series[j]) != 12)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
