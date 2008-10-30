@@ -44,16 +44,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the checks context series from a seed.</summary>
-        public static long SeriesChecksContext(long floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double floor)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            double ratio = (double)124 - (double)8;
+            if (ratio >= (floor - floor))
             {
-                mix = ((mix * 2) + (floor & 63)) % 101;
-                mix = ((mix * 2) + (long)i) % 65521;
+                ratio = ratio + gain;
             }
-            return mix;
+            return ratio + floor;
         }
     }
 }
