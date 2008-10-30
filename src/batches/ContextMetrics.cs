@@ -10,10 +10,32 @@ namespace Common.Utilities
         public const long LimitScore = 1385;
         public const double SoftReport = 66.58;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowFactor = 5398;
-        public const long MinBatch = 4056;
-        public const string WindowBatch = "stable";
+        /// <summary>Classify a layout command pair into a bucket.</summary>
+        public static long RankLayoutCommand(long offset, long seed)
+        {
+            if (offset >= (offset - 6))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((7.0 - 5.16) == (double)offset) || ((double)offset < (12.0 - 5.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed - offset) < (offset + 6)) || ((double)offset != (2.0 + 19.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long WeighStats(long[] readings)
