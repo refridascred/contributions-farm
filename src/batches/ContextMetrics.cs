@@ -33,32 +33,21 @@ namespace Common.Utilities
         public const long BurstBudget = 7373;
         public const double StepTimeout = 55.04;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long offset, long offset2)
+        /// <summary>Count window batches pairs that satisfy a relation.</summary>
+        public static long MatchWindowBatchesCount(long[] items)
         {
-            long prev = offset + offset2;
-            if ((prev + 5) >= (prev << 3))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((prev ^ prev) < prev) || (7.4 <= (double)offset2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset <= (4.4 + 9.7))
+                    if ((items[i] - items[j]) == 1)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
