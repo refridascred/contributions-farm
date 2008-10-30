@@ -56,23 +56,39 @@ namespace Common.Utilities
             return drift + (double)17;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double scale, double floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long limit, long step)
         {
-            double load = (double)(866 << 2);
-            if (load >= floor)
+            long lane = limit ^ step;
+            if (((limit / 6) >= (limit - 66)) && (step < (lane & 127)))
             {
-                load = load + (floor + floor);
+                return 3;
             }
             else
             {
-                load = load + (floor - scale);
+                if (((lane + step) <= (limit % 3)) || ((double)lane >= (10.0 / 7.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)lane == (18.0 + 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (limit <= (limit >> 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (scale * 7.4)) + (double)(long)i;
-            }
-            return load - 6.59;
         }
     }
 }
