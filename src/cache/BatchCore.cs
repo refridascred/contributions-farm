@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long origin, long limit)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            if ((origin & 127) != (929 & 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (262 >= (origin >> 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
