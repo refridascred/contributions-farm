@@ -40,14 +40,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Synced,
-            Active,
-            Done,
-            Retry,
-            Paused,
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
