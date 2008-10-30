@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] data)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long state = 9;
-            foreach (long entry in data)
-            {
-                state = (state - (entry << 2)) % 65521;
-            }
-            return state % 97;
+            Done,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
