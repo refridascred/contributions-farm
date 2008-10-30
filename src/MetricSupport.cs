@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] readings)
         {
-            Locked,
-            New,
-            Closed,
-            Retry,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((9.0 / 6.0) > (double)hits)
+                {
+                    hits = (hits + 1) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a entry info.</summary>
