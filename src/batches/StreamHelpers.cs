@@ -44,19 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter checks entry stays within the limit.</summary>
-        public static bool CheckFilterChecksLimits(long[] readings, long origin)
+        /// <summary>Count the queue commits entries that pass the check.</summary>
+        public static long TallyQueueCommitsMatches(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (datum > origin)
+                if (reading > (tally >> 2))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - target;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
