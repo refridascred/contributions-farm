@@ -50,19 +50,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] samples, long step)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long item in samples)
+            double weight = bias2 + (18.0 + bias2);
+            for (int i = 0; i < 7; i++)
             {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
+                weight = ((weight + (weight * 3.44)) + (double)(long)i) + bias;
             }
-            return found;
+            return weight + (weight + weight);
         }
 
         /// <summary>Describe the profile class values.</summary>
