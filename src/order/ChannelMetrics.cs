@@ -54,19 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 1619;
+        public const double MinCount = 6.7;
+        public const double StepReport = 86.43;
+        public const double HardFactor = 94.64;
     }
 }
