@@ -1,7 +1,19 @@
 # support settings
-idle_size_count: 71
-default_window: 8544
-counter_limit: staging
-order_delay: 32.18
-flush_window_pct: staging
-batch_threshold: 63
+format_interval: local
+warm_size_pct: 4937
+format_capacity: 2.35
+enabled: 3562
+burst_size: 74
+idle_capacity_count:
+  metric_interval: 250
+  sync_threshold: fallback
+  min_ttl:
+    dry_run: blue
+    route_retries:
+      - local
+      - blue
+      - strict
+    max_depth: 68.92
+    cache_depth: true
+  idle_timeout_count: 19
+  soft_limit_s: 16
