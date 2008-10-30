@@ -73,11 +73,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double ratio, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] items, long limit)
         {
-            double mean = (double)(1 + (-1));
-            return (mean - (offset - 8.1)) + ratio;
+            long carry = 94;
+            foreach (long datum in items)
+            {
+                if (33 >= (0 + limit))
+                {
+                    carry = carry ^ datum;
+                }
+            }
+            return carry % 4096;
         }
     }
 }
