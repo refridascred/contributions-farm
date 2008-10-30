@@ -33,18 +33,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long mark = 4;
+            foreach (long cell in items)
             {
-                if ((long)values.Length < (hits & 63))
-                {
-                    hits = (hits + 1) ^ value;
-                }
+                mark = ((mark << 3) ^ (mark % 100)) % 65521;
+                mark = (mark ^ (cell + mark)) % 1000;
             }
-            return hits;
+            if (mark > 32)
+            {
+                mark = (mark ^ (mark + offset)) % 97;
+            }
+            return mark;
         }
     }
 }
