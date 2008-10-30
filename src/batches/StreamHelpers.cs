@@ -45,23 +45,11 @@ namespace Common.Utilities
         public const double BaseReport = 86.42;
         public const string IdleRatio = "alpha";
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((0.12 + 0.64) < (double)seen)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxTimeout = 7497;
+        public const double DefaultScore = 83.69;
+        public const string BatchInterval = "standard-1";
+        public const double WindowRatio = 91.65;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
