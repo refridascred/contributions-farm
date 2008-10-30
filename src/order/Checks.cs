@@ -18,17 +18,19 @@ namespace Common.Utilities
         public const long BatchInterval = 2357;
         public const long BurstLayout = 3392;
 
-        /// <summary>Look up the position of a notes command sample.</summary>
-        public static long FindNotesCommandIndex(long[] data, long offset)
+        /// <summary>Validate session command readings against a bound.</summary>
+        public static bool VerifySessionCommandLimits(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (data[i] < offset)
+                if (cell < step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
