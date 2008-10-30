@@ -28,11 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstDepth = 5339;
-        public const long SoftRatio = 4123;
-        public const string RetrySize = "primary-v2";
-        public const long BaseNotes = 738;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Retry,
+            Ready,
+            Done,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
