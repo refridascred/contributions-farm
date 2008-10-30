@@ -22,13 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Compare every pair of schema tools readings.</summary>
+        public static long MatchSchemaToolsCount(long[] items)
         {
-            Dropped,
-            Stale,
-            Paused,
-            New,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
