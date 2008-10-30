@@ -12,19 +12,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate token payload readings against a bound.</summary>
-        public static bool VerifyTokenPayloadRange(long[] data, long floor)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Pending,
+            Queued,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define session limits and defaults.</summary>
