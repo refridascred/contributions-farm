@@ -33,19 +33,22 @@ namespace Common.Utilities
             return ratio + (offset + ratio);
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double scale, double bias)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] items, long target)
         {
-            double mean = (bias * 4.4) + scale;
-            if (mean >= scale)
+            long anchor = -8;
+            foreach (long entry in items)
             {
-                mean = mean - (scale - mean);
+                if ((anchor & 31) >= (37 + target))
+                {
+                    anchor = ((anchor ^ (target - anchor)) % 101) ^ entry;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor % 8);
+                }
             }
-            else
-            {
-                mean = mean + (double)32;
-            }
-            return mean + (9.35 + bias);
+            return anchor;
         }
     }
 }
