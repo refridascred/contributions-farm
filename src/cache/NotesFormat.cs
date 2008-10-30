@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long floor, long origin)
-        {
-            if ((origin / 9) <= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor != (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + floor) > (origin >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)floor > (double)0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitBudget = 59;
+        public const long WindowProfile = 4230;
+        public const double BurstProfile = 95.89;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
