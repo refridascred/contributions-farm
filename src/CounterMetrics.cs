@@ -39,18 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] series, long origin)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin - origin) >= cell)
+                if (series[i] == step)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
