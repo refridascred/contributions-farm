@@ -60,14 +60,14 @@ namespace Common.Utilities
             return bias + (8.0 / 7.0);
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Locked,
-            New,
-            Retry,
+            Synced,
+            Ready,
+            Draft,
             Done,
-            Stale,
+            Closed,
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
