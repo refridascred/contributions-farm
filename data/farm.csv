@@ -1,6 +1,6 @@
-id,score,region,level
-1,233,693,647
-2,edge,217,local
-3,primary,448,edge
-4,365,local,652
-5,38.53,93.95,eu-west
+id,rank,token
+1,462,119
+2,814,110
+3,5.34,strict
+4,primary,952
+5,primary,cached
