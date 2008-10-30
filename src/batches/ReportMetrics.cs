@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 8718;
+        public const double BaseScore = 55.63;
+        public const string WindowSchema = "alpha-1";
+        public const long DefaultLevel = 8731;
 
         /// <summary>Count the graph metrics entries that pass the check.</summary>
         public static long CountGraphMetricsMatches(long[] items)
