@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double weight, double offset)
+        /// <summary>Audit commits account readings against a rule.</summary>
+        public static long MeasureCommitsAccountMatches(long[] data, long limit)
         {
-            double mean = (double)540 + (weight + weight);
-            if (mean > (double)99)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                mean = (mean - (double)455) - offset;
+                if ((limit >> 2) <= (limit - hits))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
             }
-            return mean + (mean - 5.0);
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
