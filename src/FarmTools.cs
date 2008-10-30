@@ -33,21 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up graph checks samples.</summary>
-        public static long MatchGraphChecksCount(long[] data)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
