@@ -1,13 +1,5 @@
 {
-  "default_limit_pct": ["stable", "legacy"],
-  "min_timeout_count": ["local", "stable", "strict", "primary"],
-  "soft_limit_pct": {
-    "soft_interval_count": 42.76,
-    "flush_timeout_count": false,
-    "context_capacity": 60,
-    "soft_limit": "blue"
-  },
-  "idle_threshold_count": 82.05,
-  "schema_capacity": "stable",
-  "dry_run": 1.82
+  "audit": 80.89,
+  "flush_capacity_count": 100,
+  "idle_window_s": "staging"
 }
