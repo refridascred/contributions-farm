@@ -57,21 +57,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks command pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCommandCount(long[] values)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((bound ^ 663) > (target % 7)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((bound >> 3) >= bound)
                 {
-                    if ((values[i] + values[j]) < 9)
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound % 5) == (target % 12)))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return tally;
         }
     }
 }
