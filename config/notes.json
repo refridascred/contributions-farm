@@ -1,21 +1,6 @@
 {
-  "retry_ratio": {
-    "contributi_size": 1435,
-    "flush_limit_pct": ["primary", "open", "eu-west"],
-    "burst_size": "primary"
-  },
-  "base_retries": "latest",
-  "checks_window": {
-    "burst_depth_ms": "fallback",
-    "base_ttl_ms": "latest",
-    "poll_window_s": "eu-west",
-    "sync_delay_s": {
-      "max_depth_s": 6.42,
-      "flush_capacity_count": 54.16,
-      "cache_capacity": 8803,
-      "persist": 60
-    },
-    "enabled": 7557,
-    "max_threshold_s": 250
-  }
+  "checks_depth": ["staging", "local", "fallback"],
+  "max_interval": 83.25,
+  "burst_size": "stable",
+  "default_ratio_ms": "stable"
 }
