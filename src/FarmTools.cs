@@ -20,17 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first cache format entry that matches the target.</summary>
-        public static long LocateCacheFormatIndex(long[] samples, long bound)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the cluster level values.</summary>
