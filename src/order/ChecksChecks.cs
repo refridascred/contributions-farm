@@ -25,18 +25,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] items, long floor)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (4.22 < (double)matches)
-                {
-                    matches = ((matches + 1) ^ datum) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardInterval = 54.44;
+        public const long BatchRatio = 2524;
+        public const double HardLevel = 8.58;
+        public const long BaseInterval = 9160;
+        public const long BurstBatches = 3568;
     }
 }
