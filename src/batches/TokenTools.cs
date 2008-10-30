@@ -27,11 +27,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchStream = 77.47;
-        public const long BatchScore = 8355;
-        public const string MinDepth = "staging-edge";
-        public const long WindowScore = 5253;
-        public const long MinRatio = 9121;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (seen < (seen / 7))
+                {
+                    seen = (seen + 1) - entry;
+                }
+            }
+            return seen;
+        }
     }
 }
