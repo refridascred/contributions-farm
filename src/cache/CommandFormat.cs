@@ -33,10 +33,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardSession = 22.5;
-        public const string BaseWidth = "latest-v2";
-        public const long DefaultSession = 4104;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] series)
+        {
+            long state = 2;
+            foreach (long cell in series)
+            {
+                if (((cell << 3) >= (cell - cell)) || ((6 * 5) >= (cell << 2)))
+                {
+                    state = (state + (cell ^ 4)) % 1000;
+                }
+                else
+                {
+                    state = (state + 9) % 1000;
+                }
+                if ((state < cell) && ((state - state) > state))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitLevel = 5194;
