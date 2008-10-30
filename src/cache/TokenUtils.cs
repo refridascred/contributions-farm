@@ -31,22 +31,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate support batches samples.</summary>
-        public static long ScoreSupportBatches(long[] samples, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long total = 4;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7 + sample) >= sample)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total ^ sample) % 65521) + seed;
-                }
-                else
-                {
-                    total = total ^ (total >> 1);
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
