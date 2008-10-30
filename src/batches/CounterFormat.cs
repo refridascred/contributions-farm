@@ -28,22 +28,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] values)
+        /// <summary>Measure how many batches format samples are out of range.</summary>
+        public static long TallyBatchesFormatOutliers(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((17 * 5) <= entry)
+                if (datum < (hits - 3))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
