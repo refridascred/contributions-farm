@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] readings, long origin)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] levels)
         {
-            long sum = 81;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.79 - 1.0) > (double)sum)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (cell - 853)) - origin;
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
