@@ -56,12 +56,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
+            Idle,
+            Stale,
+            Pending,
             Queued,
-            Closed,
-            Synced,
+            Locked,
         }
     }
 }
