@@ -22,13 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricOutliers(long[] samples)
         {
-            Done,
-            Ready,
-            Active,
-            Failed,
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)8 >= (double)cell)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
