@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 5345;
-        public const long BatchDepth = 7120;
-        public const long MinReport = 4758;
-        public const double MaxReport = 34.04;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result * 3) + (5 / 9);
+                result = result + 6;
+                result = (result + (floor ^ result)) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] levels)
