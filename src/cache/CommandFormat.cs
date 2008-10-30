@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long origin, long seed)
+        /// <summary>Grade a command graph value against two limits.</summary>
+        public static long RankCommandGraph(long bound, long seed)
         {
-            if ((9.6 * 20.0) <= (double)seed)
+            long delta = bound - seed;
+            if (((690 - delta) >= seed) || ((double)bound >= 7.3))
             {
                 return 6;
             }
             else
             {
-                if (seed < origin)
+                if ((seed + seed) >= (bound - delta))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    return 0;
+                    if (((delta * 3) <= (delta ^ 98)) || ((delta ^ bound) < bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
