@@ -13,12 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 86.92;
-        public const long BaseWidth = 7236;
-        public const long StepBuffer = 8800;
-        public const string MinBuffer = "cached-v2";
-        public const long RetryFactor = 9985;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitScore = 187;
