@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 6835;
-        public const long LimitScore = 1385;
-        public const double SoftReport = 66.58;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Synced,
+            New,
+            Done,
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadGaps(long[] readings)
