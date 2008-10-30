@@ -38,18 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] data)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double mean = ratio;
+            if (mean < mean)
             {
-                if (6.6 < (double)hits)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
+                mean = (mean - ratio) - span;
             }
-            return hits;
+            else
+            {
+                mean = mean + (ratio / 4.0);
+            }
+            return mean + ratio;
         }
 
         /// <summary>Count the schema githubfarm entries that pass the check.</summary>
