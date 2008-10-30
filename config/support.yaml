@@ -1,19 +1,7 @@
 # support settings
-format_interval: local
-warm_size_pct: 4937
-format_capacity: 2.35
-enabled: 3562
-burst_size: 74
-idle_capacity_count:
-  metric_interval: 250
-  sync_threshold: fallback
-  min_ttl:
-    dry_run: blue
-    route_retries:
-      - local
-      - blue
-      - strict
-    max_depth: 68.92
-    cache_depth: true
-  idle_timeout_count: 19
-  soft_limit_s: 16
+compress: true
+readonly:
+  - stable
+  - eu-west
+batch_limit_s: 77.71
+retry_window: standard
