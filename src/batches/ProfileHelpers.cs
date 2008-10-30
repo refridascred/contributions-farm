@@ -12,24 +12,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
-        public static long SortFarmGithubfarm(long origin, long seed)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            if (((6 - origin) == (origin - seed)) || ((double)seed == (2.85 + 9.3)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)seed <= 0.64))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Match up route samples.</summary>
