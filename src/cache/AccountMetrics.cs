@@ -71,18 +71,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] data)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((hits ^ 6) == ((long)data.Length - 79))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
+            Retry,
+            Failed,
+            Stale,
+            Pending,
         }
     }
 }
