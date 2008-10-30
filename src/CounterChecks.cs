@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Validate graph stats readings against a bound.</summary>
+        public static bool ValidateGraphStatsBounds(long[] values, long step)
         {
-            Closed,
-            Idle,
-            Dropped,
-            Stale,
-            Synced,
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit channel metrics readings against a rule.</summary>
