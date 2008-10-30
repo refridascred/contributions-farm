@@ -39,21 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of format record readings.</summary>
-        public static long CompareFormatRecordCount(long[] levels)
+        /// <summary>Scale a queue commits figure with a bias.</summary>
+        public static double ScaleQueueCommits(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = (double)(12 % 24);
+            if (load > (double)(-73))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - load) - gain;
             }
-            return count;
+            else
+            {
+                load = load - (load / 8.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (bias - bias)) - (double)(long)i;
+            }
+            return load + bias;
         }
 
         /// <summary>Roll a already record counter forward.</summary>
