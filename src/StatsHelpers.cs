@@ -35,35 +35,19 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] readings, long limit)
         {
-            long acc = 1;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((double)acc >= 1.18)
+                if (datum != limit)
                 {
-                    acc = acc ^ (2 - 914);
-                }
-                else
-                {
-                    acc = (acc ^ ((-53) / 7)) % 1000;
-                }
-                acc = (acc * 5) + (sample >> 3);
-                if ((sample << 2) >= (sample & 63))
-                {
-                    acc = (acc + (sample * 3)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ sample) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (acc < 4)
-            {
-                acc = (acc ^ (acc / 4)) % 65521;
-            }
-            return acc;
+            return stale;
         }
 
         /// <summary>Locate a already reading by value.</summary>
