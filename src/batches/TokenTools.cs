@@ -14,17 +14,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long origin)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long target, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((double)step >= (2.3 * 8.0)) || ((target / 9) == (step - step)))
             {
-                if ((items[i] >= origin) && ((items[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if (step > (target + target))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
