@@ -70,19 +70,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 8342;
+        public const long DefaultDepth = 6259;
+        public const double MaxCount = 60.52;
     }
 }
