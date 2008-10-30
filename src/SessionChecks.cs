@@ -20,22 +20,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] items)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + sample) != (sample - sample))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Done,
+            Locked,
+            Synced,
+            Ready,
+            Idle,
         }
 
         /// <summary>Adjust a route reading.</summary>
