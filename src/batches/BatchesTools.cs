@@ -22,20 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] series, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double span)
         {
-            long mark = 14;
-            foreach (long value in series)
+            double rate = (double)(9 - 89);
+            if (rate <= (double)8)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = (((mark + value) % 97) + (long)i) + seed;
-                }
-                mark = (mark * 3) + (value ^ mark);
-                mark = mark - (-14);
+                rate = (rate - rate) + bias;
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (span / 5.0)) + (double)(long)i;
+            }
+            return rate + 4.0;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
