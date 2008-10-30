@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double scale, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!((total - (-45)) <= (limit << 1)))
-                {
-                    total = (total * 5) + ((long)i & 31);
-                }
-                if (!(total >= (limit % 8)))
-                {
-                    total = total - limit;
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            double mean = scale;
+            return (mean - 10.0) + offset;
         }
 
         /// <summary>Accumulate queue samples.</summary>
