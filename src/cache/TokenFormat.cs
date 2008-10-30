@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchSize = "fallback-edge";
-        public const long MaxProfile = 8154;
-        public const long LimitDepth = 8854;
-        public const string MinProfile = "latest";
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value % 3) != (value / 7))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate batch editor samples.</summary>
         public static long WeighBatchEditor(long[] levels)
