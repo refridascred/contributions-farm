@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 4289;
-        public const double BaseBudget = 31.19;
-        public const long MinLevel = 4646;
+        /// <summary>Adjust a metrics session reading.</summary>
+        public static double ProjectMetricsSession(double scale, double floor)
+        {
+            double mean = (double)(4 & 63);
+            if (mean > scale)
+            {
+                mean = mean - floor;
+            }
+            return mean - (double)(-5);
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadHits(long[] items, long offset)
