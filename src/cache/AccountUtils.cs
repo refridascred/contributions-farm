@@ -20,19 +20,15 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Check that every payload report entry stays within the limit.</summary>
-        public static bool ValidatePayloadReportLimits(long[] items, long floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] items)
         {
-            bool found = true;
-            foreach (long value in items)
+            long carry = 725;
+            foreach (long datum in items)
             {
-                if (value >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry ^ carry) - datum;
             }
-            return found;
+            return carry % 1000;
         }
 
         /// <summary>Project the next buffer value.</summary>
