@@ -34,19 +34,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] items, long limit)
+        /// <summary>Grade a githubfarm filter value against two limits.</summary>
+        public static long RankGithubfarmFilter(long limit, long seed)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long offset = limit ^ seed;
+            if ((seed - seed) >= (limit << 2))
             {
-                if (reading < limit)
+                return 4;
+            }
+            else
+            {
+                if (((seed - limit) != (offset / 8)) && ((seed - limit) < 9))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed ^ offset) <= (offset * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset * 2) <= (39 * 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Find the first notes stream entry that matches the target.</summary>
