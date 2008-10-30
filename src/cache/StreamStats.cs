@@ -24,11 +24,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count the editor schema entries that pass the check.</summary>
+        public static long TallyEditorSchemaMatches(long[] values, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item - count) <= count)
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the commits phase values.</summary>
