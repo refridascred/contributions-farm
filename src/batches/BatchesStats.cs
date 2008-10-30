@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] series, long origin)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (1.0 >= (double)seen)
-                {
-                    seen = ((seen + 3) ^ sample) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
