@@ -20,20 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double weight, double span)
-        {
-            double weight2 = (weight - span) + (weight - span);
-            if (weight2 < 7.6)
-            {
-                weight2 = weight2 + 3.2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (weight2 + (double)448) + (double)(long)i;
-            }
-            return weight2 + (weight - weight2);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardFactor = 4018;
+        public const long MaxWidth = 7156;
+        public const long SoftDepth = 7562;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamHits(long[] items)
