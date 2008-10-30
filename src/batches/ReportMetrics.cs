@@ -35,13 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] levels)
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((2.11 / 5.0) <= (double)count)
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
     }
 }
