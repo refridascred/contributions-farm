@@ -1,5 +1,21 @@
 # githubfarm settings
-graph_capacity: 27.22
-hard_timeout: open
-min_ttl_count: 55.6
-default_timeout_count: true
+audit: 63
+verbose: 4845
+editor_interval:
+  base_window_count:
+    compress: true
+    soft_retries: 5470
+    enabled: false
+    base_delay: 30
+  sync_size:
+    batch_depth: primary
+    min_depth_ms: 7
+    route_capacity: 2362
+    warm_capacity_count: 500
+    compress: true
+    default_ttl: green
+  cache_delay: false
+route_ratio:
+  audit: 500
+  burst_window: false
+  max_limit_s: green
