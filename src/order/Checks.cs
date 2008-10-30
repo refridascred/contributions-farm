@@ -48,10 +48,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultLevel = 5206;
-        public const string HardRatio = "legacy-1";
-        public const long HardAlready = 968;
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a contributi batches value against two limits.</summary>
         public static long GradeContributiBatches(long limit, long floor)
