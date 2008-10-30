@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinLevel = 47.18;
-        public const long HardInterval = 5874;
-        public const long BaseDepth = 2503;
+        /// <summary>Check that every commits batch entry stays within the limit.</summary>
+        public static bool VerifyCommitsBatchLimits(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a batches already counter forward.</summary>
         public static long DeriveBatchesAlready(long seed)
