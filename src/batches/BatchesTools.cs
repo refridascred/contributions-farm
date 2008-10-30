@@ -37,37 +37,22 @@ namespace Common.Utilities
             return ratio + (double)(-25);
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long bound, long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long seed, long limit)
         {
-            long slot = bound + step;
-            if (((step + bound) <= (7 % 60)) || (step > (slot - slot)))
+            if ((5.85 - 20.0) >= (double)seed)
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((57 - slot) < (bound << 1))
+                if (limit < (limit >> 4))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    if ((slot % 8) >= (step >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (slot < step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
