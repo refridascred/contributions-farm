@@ -37,31 +37,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long origin, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] samples, long step)
         {
-            if ((38 & 63) > target)
+            long carry = 723;
+            foreach (long reading in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target > (19.0 / 6.0))
+                if (!((double)carry == (double)step))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target * 3) > (target * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    carry = (carry + carry) + reading;
                 }
             }
+            if (carry < 61)
+            {
+                carry = ((carry * 2) + (carry & 127)) % 101;
+            }
+            return carry;
         }
     }
 }
