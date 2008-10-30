@@ -25,11 +25,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] items, long floor)
         {
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (4.22 < (double)matches)
+                {
+                    matches = ((matches + 1) ^ datum) - floor;
+                }
+            }
+            return matches;
         }
     }
 }
