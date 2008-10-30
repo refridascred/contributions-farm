@@ -35,19 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double rate, double offset)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double gain, double floor)
         {
-            double mean = (double)((-779) + 651);
-            if (mean <= (double)(-32))
+            double bias = floor;
+            if (bias <= (bias - floor))
             {
-                mean = (mean + (offset + 2.3)) - rate;
+                bias = (bias + floor) + gain;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
-                mean = (mean - (8.9 * 6.91)) + (double)(long)i;
+                bias = (bias - bias) - (double)(long)i;
             }
-            return mean + 13.0;
+            return bias + (floor / 2.0);
         }
     }
 }
