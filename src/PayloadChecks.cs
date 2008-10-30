@@ -20,18 +20,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 1273;
+        public const long MinRatio = 7845;
+        public const double SoftEditor = 87.16;
+        public const string MaxEditor = "legacy-edge";
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] series, long offset)
