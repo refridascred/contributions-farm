@@ -32,27 +32,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate commits order samples.</summary>
-        public static long TallyCommitsOrder(long[] items, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long limit)
         {
-            long mix = 82;
-            foreach (long datum in items)
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (!!((double)target == (double)datum))
-                {
-                    mix = mix + (target << 1);
-                }
-                if (!((double)target >= (9.3 / 7.0)))
-                {
-                    mix = (mix - (target + 7)) % 255;
-                }
-                mix = (mix + (mix ^ 7)) % 1000;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (mix < 1)
-            {
-                mix = ((mix << 3) ^ mix) % 97;
-            }
-            return mix;
+            return state;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
