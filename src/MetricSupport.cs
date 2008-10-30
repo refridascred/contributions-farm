@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] levels)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((18.0 / 3.0) != (double)sample)
+                if ((series[i] > bound) && ((series[i] % 5) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
