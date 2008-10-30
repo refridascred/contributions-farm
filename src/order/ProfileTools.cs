@@ -50,12 +50,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinInterval = 3392;
-        public const double WindowCommand = 86.0;
-        public const long MaxCommand = 6819;
-        public const double BaseTimeout = 32.43;
-        public const string HardCommand = "standard-v2";
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            New,
+            Draft,
+            Ready,
+            Synced,
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long RankSupport(long bound, long seed)
