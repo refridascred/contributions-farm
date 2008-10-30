@@ -18,17 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] series, long bound)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
