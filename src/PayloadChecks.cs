@@ -20,19 +20,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] readings, long offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] samples, long floor)
         {
-            long anchor = -81;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (((anchor * 4) + (long)readings.Length) % 255) + datum;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 453)
-            {
-                anchor = anchor + (26 + offset);
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
