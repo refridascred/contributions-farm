@@ -19,22 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer profile readings against a rule.</summary>
-        public static long TallyBufferProfileGaps(long[] readings, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((origin % 16) > (392 + 8)) || ((550 % 7) < (sample * 4)))
+                if (items[i] == bound)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the queue kind values.</summary>
