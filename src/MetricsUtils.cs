@@ -14,12 +14,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Find the first account profile entry that matches the target.</summary>
+        public static long LookupAccountProfileIndex(long[] items, long offset)
         {
-            Idle,
-            Draft,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a token stats.</summary>
