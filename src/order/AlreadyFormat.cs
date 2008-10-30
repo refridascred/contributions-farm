@@ -16,18 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the order schema entries that pass the check.</summary>
-        public static long AuditOrderSchemaGaps(long[] items)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (seen >= (seen - seen))
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            Synced,
+            Ready,
+            Retry,
+            Paused,
         }
 
         /// <summary>Project the next batches value.</summary>
