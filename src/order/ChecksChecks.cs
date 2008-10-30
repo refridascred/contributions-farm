@@ -29,18 +29,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the profile stats entries that pass the check.</summary>
-        public static long AuditProfileStatsOutliers(long[] values)
+        /// <summary>Roll a already record counter forward.</summary>
+        public static long SeriesAlreadyRecord(long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((6.8 - 16.0) == (double)cell)
-                {
-                    matches = matches + 3;
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
     }
 }
