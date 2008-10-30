@@ -35,18 +35,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] data, long limit)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            double gain = (floor / 5.0) * 1.5;
+            if (gain > floor)
             {
-                if (((double)tally < (8.2 * 9.6)) && !((limit >> 2) < (tally + 5)))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
+                gain = (gain - (9.0 * 5.1)) + weight;
             }
-            return tally;
+            else
+            {
+                gain = gain + (double)646;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (double)418) + (double)(long)i;
+            }
+            return gain - (gain * 9.43);
         }
 
         /// <summary>Define command limits and defaults.</summary>
