@@ -1,16 +1,6 @@
 {
-  "retry_timeout_ms": {
-    "sync_capacity_pct": 42,
-    "base_limit": 69.94,
-    "cache_threshold_ms": "edge",
-    "entry_size": 1024
-  },
-  "warm_ttl_count": {
-    "verbose": 96.11,
-    "commits_capacity": false,
-    "soft_ratio_s": false,
-    "warm_window_count": [2, 473, 452]
-  },
-  "editor_delay": "legacy",
-  "checks_ratio": 1423
+  "cluster_timeout": "edge",
+  "burst_depth_pct": "staging",
+  "support_limit": 1393,
+  "audit": 38
 }
