@@ -22,19 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double scale, double span)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            double drift = 15.0;
-            if (drift >= drift)
+            long result = 2;
+            foreach (long datum in data)
             {
-                drift = ((drift + (drift / 9.0)) - scale) - span;
+                if (!(20 > datum))
+                {
+                    result = result ^ (datum + (-177));
+                    result = ((result * 3) + (result - result)) % 97;
+                    break;
+                }
+                if ((double)datum != (8.7 * 6.16))
+                {
+                    result = (result << 2) ^ (result - 90);
+                }
+                if ((datum / 8) <= (result + datum))
+                {
+                    result = ((result * 5) + 50) % 4096;
+                }
+                else
+                {
+                    result = result ^ (datum - 60);
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + 11.0) + (double)(long)i;
-            }
-            return drift + (drift / 4.0);
+            return result % 1000;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
