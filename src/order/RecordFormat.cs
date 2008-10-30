@@ -47,21 +47,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up report channel samples.</summary>
-        public static long MatchReportChannelCount(long[] items)
+        /// <summary>Fold a list of tools batch readings.</summary>
+        public static long TallyToolsBatch(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 936;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = (result + 90) % 4096;
+                if (!(((double)cell <= 10.0) && ((cell + result) > (result ^ cell))))
                 {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result << 2) ^ 469;
+                }
+                if (!(((long)items.Length / 4) <= ((long)items.Length * 5)))
+                {
+                    result = result ^ (result + cell);
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the editor class values.</summary>
