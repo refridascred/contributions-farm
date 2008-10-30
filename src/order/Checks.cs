@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine support stream values into a single score.</summary>
-        public static long CombineSupportStream(long[] values, long target)
+        /// <summary>Roll a cache context counter forward.</summary>
+        public static long StepCacheContext(long bound)
         {
-            long score = 996;
-            foreach (long reading in values)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                score = (score - 89) + reading;
-                if ((double)target == (19.0 * 4.0))
+                if ((303 + bound) <= ((long)i >> 3))
                 {
-                    break;
+                    mix = (mix - ((long)i - 533)) % 101;
                 }
+                mix = (mix * 5) + (3 & 127);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return score % 65521;
+            return mix;
         }
 
         /// <summary>Combine graph account values into a single score.</summary>
