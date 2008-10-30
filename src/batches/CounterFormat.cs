@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double ratio, double floor)
         {
-            Idle,
-            Dropped,
-            Retry,
-            Failed,
+            double weight = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight - floor) + (double)(long)i) + ratio;
+            }
+            return weight - floor;
         }
 
         /// <summary>Audit context account readings against a rule.</summary>
