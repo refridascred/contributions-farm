@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate already queue samples.</summary>
-        public static long TotalAlreadyQueue(long[] series)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] values)
         {
-            long state = -209;
-            foreach (long value in series)
+            long score = 6;
+            foreach (long cell in values)
             {
-                if ((double)state < 1.2)
+                if ((score - 56) > score)
                 {
-                    state = state ^ 72;
-                }
-                if ((double)value == (double)state)
-                {
-                    state = state + (state + state);
+                    score = (score - 57) - cell;
                 }
             }
-            return state % 65521;
+            if (score < 5)
+            {
+                score = score + (90 - score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
