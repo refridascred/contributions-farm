@@ -21,22 +21,22 @@ namespace Common.Utilities
         public const double StepLevel = 88.23;
         public const double BaseAlready = 57.1;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] levels)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long sum = 8;
+            foreach (long cell in readings)
             {
-                if ((double)tally >= 3.77)
+                if ((sum - cell) >= sum)
                 {
-                    tally = (tally + 3) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = sum + (sum % 10);
                 }
             }
-            return tally;
+            if (sum < 30)
+            {
+                sum = ((sum * 3) + (sum % 16)) % 4096;
+            }
+            return sum;
         }
     }
 }
