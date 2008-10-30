@@ -80,13 +80,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long seed)
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
