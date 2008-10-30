@@ -28,22 +28,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] items, long target)
-        {
-            long anchor = -8;
-            foreach (long entry in items)
-            {
-                if ((anchor & 31) >= (37 + target))
-                {
-                    anchor = ((anchor ^ (target - anchor)) % 101) ^ entry;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor % 8);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 9578;
+        public const long MinWidth = 8462;
+        public const string MinGraph = "fallback";
+        public const double SoftGraph = 31.62;
+        public const long RetryGraph = 7151;
     }
 }
