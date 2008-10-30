@@ -1,6 +1,18 @@
 {
-  "batch_ttl": 5782,
-  "max_ttl": 6.65,
-  "command_depth": "blue",
-  "compress": 500
+  "flush_delay": 30,
+  "stats_timeout": 100,
+  "compress": {
+    "sync_delay": 100,
+    "hard_depth": {
+      "report_capacity": [7, 53, 190, 174],
+      "batch_size_ms": false,
+      "cache_limit_count": 18,
+      "default_retries_pct": "blue",
+      "burst_capacity_count": "legacy"
+    },
+    "persist": "strict",
+    "metric_threshold": ["eu-west", "edge", "eu-west"],
+    "min_depth": [349, 138, 337]
+  },
+  "verbose": 26
 }
