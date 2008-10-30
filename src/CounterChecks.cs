@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate graph stats readings against a bound.</summary>
-        public static bool ValidateGraphStatsBounds(long[] values, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double bias = (offset / 9.0) * 0.6;
+            if (bias < (offset / 9.0))
             {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = (bias + bias) - rate;
             }
-            return valid;
+            return bias - offset;
         }
 
         /// <summary>Audit channel metrics readings against a rule.</summary>
