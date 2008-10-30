@@ -89,11 +89,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public bool Count { get; set; }
-            public double Mode { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
     }
 }
