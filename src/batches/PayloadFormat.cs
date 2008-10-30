@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Accumulate already queue samples.</summary>
+        public static long TotalAlreadyQueue(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            long state = -209;
+            foreach (long value in series)
             {
-                total = total + 708;
-                total = ((total * 4) + (long)i) % 101;
+                if ((double)state < 1.2)
+                {
+                    state = state ^ 72;
+                }
+                if ((double)value == (double)state)
+                {
+                    state = state + (state + state);
+                }
             }
-            return total;
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
