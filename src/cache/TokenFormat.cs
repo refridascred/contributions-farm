@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the report stream series from a seed.</summary>
-        public static long StepReportStream(long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                mark = (mark * 3) + (floor - 64);
-                mark = (mark + (floor + mark)) % 1000;
-                mark = (mark ^ ((-2) - floor)) % 255;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (((datum <= 7) && ((double)(long)values.Length > (5.47 / 4.0))) && (((3.0 + 7.8) <= (double)datum) || ((hits << 3) < hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
