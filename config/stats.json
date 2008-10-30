@@ -1,7 +1,5 @@
 {
-  "warm_ratio_count": false,
-  "burst_window": 43,
-  "min_delay_ms": "blue",
-  "buffer_timeout": "open",
-  "base_delay_pct": "staging"
+  "tools_capacity": 500,
+  "entry_capacity": "cached",
+  "channel_timeout": 5643
 }
