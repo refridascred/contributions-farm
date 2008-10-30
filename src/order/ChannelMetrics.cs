@@ -18,15 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel cache value.</summary>
-        public static double AdjustChannelCache(double bias, double bias2)
+        /// <summary>Combine commits notes values into a single score.</summary>
+        public static long DigestCommitsNotes(long[] samples, long offset)
         {
-            double load = 10.0;
-            if (load < (double)8)
+            long acc = 62;
+            foreach (long value in samples)
             {
-                load = (load + (load / 8.0)) - bias;
+                if ((offset >= (value % 60)) && ((9 & 3) > (offset + value)))
+                {
+                    acc = (acc ^ (9 / 8)) % 4096;
+                }
+                acc = (acc << 2) ^ (34 - 0);
+                acc = acc - (offset + value);
             }
-            return load - bias2;
+            return acc % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
