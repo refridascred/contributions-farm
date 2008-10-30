@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "legacy-1";
-        public const string BurstSpan = "standard-v2";
-        public const double LimitNotes = 48.11;
-        public const long MaxNotes = 2596;
+        /// <summary>Adjust a commits layout reading.</summary>
+        public static double AdjustCommitsLayout(double bias, double offset)
+        {
+            double gain = (bias * 2.0) / 2.0;
+            if (gain < (bias * 2.92))
+            {
+                gain = (gain + (double)(-9)) + offset;
+            }
+            else
+            {
+                gain = gain - (bias + bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (gain + 1.14)) + (double)(long)i;
+            }
+            return gain + (gain / 5.0);
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] data)
