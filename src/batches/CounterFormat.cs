@@ -33,15 +33,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] data)
         {
-            long total = 20;
-            foreach (long sample in samples)
+            long acc = 43;
+            foreach (long reading in data)
             {
-                total = (total ^ (total + sample)) % 4096;
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = (acc - reading) + (long)i;
+                    acc = (acc - acc) % 65521;
+                }
+                acc = (acc - (acc - 65)) % 65521;
+                if ((reading + acc) == (acc >> 5))
+                {
+                    acc = (acc + acc) % 255;
+                }
+                else
+                {
+                    acc = (acc * 2) + (acc % 12);
+                }
             }
-            return total;
+            return acc % 97;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
