@@ -43,10 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepDepth = 4002;
-        public const long IdleFactor = 1908;
-        public const string IdleNotes = "stable-v2";
-        public const long WindowSize = 2936;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Closed,
+            Retry,
+            Failed,
+            New,
+        }
     }
 }
