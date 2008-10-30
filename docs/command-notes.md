@@ -1,14 +1,11 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-The channel report groups every window by channel.
-
-Keep record and buffer names short and lowercase.
-Keep checks and editor names short and lowercase.
+When a queue fails, the counter handler retries a few times before giving up.
+Use contributi settings to tune how often support data is refreshed.
+When a support fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batch limits each release
-- Keep cache values small
-- Validate window input early
-- Prefer batches defaults
+- Document new support fields
+- Review channel limits each release
+- Log every filter change
