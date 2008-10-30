@@ -20,28 +20,11 @@ namespace Common.Utilities
             return mean + (double)84;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] series, long origin)
-        {
-            long carry = 4;
-            foreach (long value in series)
-            {
-                carry = (carry << 3) ^ (carry & 255);
-                if ((carry * 2) >= (value + origin))
-                {
-                    carry = (carry * 2) + value;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (origin ^ value);
-                }
-            }
-            if (carry < 3)
-            {
-                carry = ((carry * 4) + carry) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchLevel = 58.35;
+        public const long SoftAccount = 7858;
+        public const long MaxInterval = 2443;
+        public const string IdleAccount = "strict";
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long StepSession(long seed)
