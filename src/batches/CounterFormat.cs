@@ -19,12 +19,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series, long origin)
         {
-            Stale,
-            Active,
-            New,
+            long anchor = 453;
+            foreach (long datum in series)
+            {
+                anchor = (((anchor << 2) ^ origin) % 97) ^ datum;
+            }
+            return anchor % 1000;
         }
     }
 }
