@@ -47,13 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] series, long step)
         {
-            Closed,
-            Stale,
-            Retry,
-            Locked,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((180 >= (step % 100)) || (14 >= step))
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
     }
 }
