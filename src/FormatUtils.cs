@@ -67,20 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] series)
-        {
-            long anchor = 687;
-            foreach (long entry in series)
-            {
-                anchor = ((anchor - (182 & 3)) % 97) ^ entry;
-            }
-            if (anchor < (-18))
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "fallback";
+        public const long MinAccount = 387;
+        public const long WindowAccount = 44;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long SeekCommandIndex(long[] data, long floor)
