@@ -35,18 +35,15 @@ namespace Common.Utilities
             return scale + (span - span);
         }
 
-        /// <summary>Count the stream cache entries that pass the check.</summary>
-        public static long MeasureStreamCacheHits(long[] readings, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mix = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((18.0 - 15.0) > (double)reading)
-                {
-                    hits = (hits + 2) + seed;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
