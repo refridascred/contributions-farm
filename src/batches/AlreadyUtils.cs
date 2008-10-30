@@ -17,11 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Count the session tools entries that pass the check.</summary>
+        public static long MeasureSessionToolsGaps(long[] items, long bound)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally + tally) < (tally + datum))
+                {
+                    tally = (tally + 2) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
