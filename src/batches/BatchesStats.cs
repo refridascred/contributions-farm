@@ -17,18 +17,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] samples)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((20.0 / 5.0) >= (double)cell)
+                bool found = (acc / 3) >= (floor << 3);
+                if (found)
                 {
-                    count = count + 3;
+                    acc = (acc * 3) + (acc << 1);
                 }
+                else
+                {
+                    acc = ((acc * 4) + (acc - floor)) % 97;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    acc = ((acc + floor) % 65521) - (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
