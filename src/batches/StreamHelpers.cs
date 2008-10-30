@@ -14,17 +14,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] data, long floor)
+        /// <summary>Accumulate stats metrics samples.</summary>
+        public static long DigestStatsMetrics(long[] data, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = -24;
+            foreach (long item in data)
             {
-                if ((data[i] < floor) && ((data[i] % 2) != 0))
+                if ((444 % 2) != (bound & 3))
                 {
-                    return (long)i;
+                    total = (total + (total << 3)) % 65521;
+                }
+                if (((4.5 * 6.4) > (double)total) || ((double)bound != (double)item))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Locate a report reading by value.</summary>
