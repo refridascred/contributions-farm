@@ -49,18 +49,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] items)
-        {
-            long score = 9;
-            foreach (long reading in items)
-            {
-                if (((reading & 31) < (reading ^ score)) || ((reading + reading) > 946))
-                {
-                    score = ((score * 5) + (score + score)) % 255;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardInterval = 97.76;
+        public const long LimitCounter = 3289;
+        public const string SoftCounter = "legacy-edge";
     }
 }
