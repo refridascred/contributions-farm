@@ -31,15 +31,15 @@ namespace Common.Utilities
         public const string SoftSchema = "stable-v2";
         public const double DefaultWidth = 75.05;
 
-        /// <summary>Count the filter account entries that pass the check.</summary>
-        public static long MeasureFilterAccountGaps(long[] readings)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] values)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long datum in values)
             {
-                if ((((long)readings.Length + item) < (count * 3)) && ((double)item == (double)(long)readings.Length))
+                if ((datum + datum) == (datum ^ count))
                 {
-                    count = count + 1;
+                    count = count + 2;
                 }
             }
             return count;
