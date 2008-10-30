@@ -46,18 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long result = 510;
+            foreach (long value in readings)
             {
-                if (count < (590 & 255))
+                result = (result ^ value) % 1000;
+                if ((value << 2) < (result / 2))
                 {
-                    count = (count + 2) + sample;
+                    break;
                 }
             }
-            return count;
+            return result % 65521;
         }
     }
 }
