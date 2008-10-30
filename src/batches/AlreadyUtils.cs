@@ -39,19 +39,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long score = 73;
-            foreach (long datum in values)
-            {
-                score = (score * 5) + (datum % 16);
-            }
-            if (score < 12)
-            {
-                score = (score + (score << 2)) % 255;
-            }
-            return score % 97;
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
