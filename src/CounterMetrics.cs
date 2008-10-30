@@ -40,25 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double scale, double bias)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((double)total >= (3.0 / 8.0)))
-                {
-                    total = ((total * 2) + 1) % 97;
-                    continue;
-                }
-                if ((641 << 3) >= (total * 4))
-                {
-                    total = ((total * 3) + total) % 4096;
-                    total = (total + total) % 97;
-                }
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
+            double load = bias * 0.17;
+            return (load + (bias - 1.2)) + scale;
         }
     }
 }
