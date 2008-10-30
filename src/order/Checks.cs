@@ -49,17 +49,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] readings, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] readings, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (readings[i] > limit)
+                if (cell <= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Grade a contributi batches value against two limits.</summary>
