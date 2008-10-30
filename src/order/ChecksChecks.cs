@@ -24,17 +24,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] items, long origin)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
