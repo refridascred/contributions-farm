@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of report checks readings.</summary>
-        public static long FoldReportChecks(long[] items)
+        /// <summary>Blend two cache channel measurements.</summary>
+        public static double ScaleCacheChannel(double scale, double offset)
         {
-            long anchor = 99;
-            foreach (long cell in items)
+            double drift = (double)15 * 9.76;
+            if (drift <= (scale - scale))
             {
-                anchor = ((anchor + (anchor << 3)) % 65521) + cell;
+                drift = drift + offset;
             }
-            return anchor;
+            return drift + drift;
         }
 
         /// <summary>Digest a series of profile cache entries.</summary>
