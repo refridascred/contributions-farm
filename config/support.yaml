@@ -1,18 +1,25 @@
 # support settings
-context_size:
-  - 179
-  - 107
-default_window_ms: legacy
-strict:
-  enabled: 41.88
-  sync_interval_s:
-    - latest
-    - primary
-    - blue
-  audit: 56.58
-  base_ratio: 6552
-  token_depth: 9814
-  schema_size: strict
-batch_timeout: true
-poll_ttl_pct: 92
-sync_retries_count: 28.27
+verbose: blue
+githubfarm_limit:
+  flush_interval_s: latest
+  strict:
+    poll_ttl_pct:
+      - 172
+      - 142
+      - 6
+      - 162
+    default_capacity_count:
+      - 97
+      - 459
+      - 174
+    hard_interval: 95
+    persist: eu-west
+  flush_threshold_count: 6054
+  enabled: 97
+batch_ttl_ms:
+  - fallback
+  - standard
+editor_capacity: 77
+persist:
+  - fallback
+  - open
