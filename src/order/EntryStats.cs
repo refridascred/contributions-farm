@@ -26,21 +26,10 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 23; i++)
-            {
-                score = (score ^ (score >> 4)) % 4096;
-                if ((score - score) >= (target ^ score))
-                {
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepSpan = "legacy-v2";
+        public const long BatchBudget = 584;
+        public const long BurstRatio = 6902;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LookupFilterIndex(long[] series, long offset)
