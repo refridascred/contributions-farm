@@ -71,18 +71,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long origin, long bound)
         {
-            long result = origin;
-            for (int i = 0; i < 11; i++)
+            long step = origin - bound;
+            if ((double)step > (4.4 - 18.0))
             {
-                long matches = origin;
-                result = ((result << 3) ^ (result - matches)) % 255;
-                matches = matches ^ (origin + (long)i);
-                result = ((result * 3) + (long)i) % 101;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((542 + 422) != (origin * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - step) <= origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
