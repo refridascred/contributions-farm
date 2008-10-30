@@ -56,11 +56,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
             public long Count { get; set; }
         }
 
