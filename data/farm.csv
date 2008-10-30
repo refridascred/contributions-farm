@@ -1,6 +1,6 @@
-id,weight,token,label,region
-1,805,cached,757,202
-2,edge,315,137,49.43
-3,392,572,legacy,86
-4,490,79.7,fallback,open
-5,536,2.42,73,730
+id,score,region,level
+1,233,693,647
+2,edge,217,local
+3,primary,448,edge
+4,365,local,652
+5,38.53,93.95,eu-west
