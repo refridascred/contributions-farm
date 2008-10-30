@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            Synced,
             New,
-            Done,
+            Stale,
+            Dropped,
+            Ready,
+            Failed,
         }
 
         /// <summary>Scale a window stream figure with a bias.</summary>
