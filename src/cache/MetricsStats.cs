@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first schema layout entry that matches the target.</summary>
-        public static long FindSchemaLayoutIndex(long[] levels, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
+                if ((matches ^ matches) > matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
