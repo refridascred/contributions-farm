@@ -1,18 +1,5 @@
 # githubfarm settings
-persist:
-  - eu-west
-  - standard
-  - edge
-  - local
-contributi_ratio:
-  stats_window: false
-  commits_depth:
-    warm_interval_ms:
-      - primary
-      - edge
-    graph_retries: 56.58
-    dry_run: true
-  flush_window_count: 25.59
-audit:
-  - 454
-  - 232
+farm_ttl: 28.2
+default_ttl_ms: fallback
+batches_ratio: edge
+schema_timeout: false
