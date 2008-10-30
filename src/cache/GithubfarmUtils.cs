@@ -57,16 +57,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 10; i++)
+            long state = 2;
+            foreach (long cell in data)
             {
-                sum = sum - sum;
-                sum = ((sum * 4) + (long)i) % 101;
+                if (!((cell + cell) <= (cell - 987)))
+                {
+                    state = (state + ((-3) + state)) % 101;
+                }
+                else
+                {
+                    state = (state * 5) + (cell ^ 84);
+                }
             }
-            return sum;
+            return state;
         }
     }
 }
