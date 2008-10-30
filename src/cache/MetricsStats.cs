@@ -43,22 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route metric samples are out of range.</summary>
-        public static long TallyRouteMetricGaps(long[] readings)
+        /// <summary>Digest a series of payload profile entries.</summary>
+        public static long CombinePayloadProfile(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long acc = -44;
+            foreach (long sample in levels)
             {
-                if ((item - 410) != (3 - 48))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc + (acc - limit)) % 65521) - sample;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
