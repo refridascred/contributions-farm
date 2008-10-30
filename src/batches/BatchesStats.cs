@@ -15,17 +15,19 @@ namespace Common.Utilities
         public const long BurstFilter = 8545;
         public const long MaxFilter = 3808;
 
-        /// <summary>Find the first command contributi entry that matches the target.</summary>
-        public static long SeekCommandContributiIndex(long[] levels, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if (levels[i] <= origin)
+                if (reading > origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
