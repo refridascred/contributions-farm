@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderOutliers(long[] levels)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((18.0 / 3.0) != (double)sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
