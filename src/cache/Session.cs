@@ -32,19 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format context readings against a bound.</summary>
-        public static bool CheckFormatContextRange(long[] data, long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != step)
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
