@@ -64,32 +64,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long step, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] levels)
         {
-            long prev = step ^ limit;
-            if ((10 * 4) == (step & 15))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit >> 4) <= limit)
+                if (((6 + count) <= (count >> 2)) || (8.0 >= (double)count))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.35 / 9.0) != (double)prev)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = (count + 2) + cell;
                 }
             }
+            return count;
         }
     }
 }
