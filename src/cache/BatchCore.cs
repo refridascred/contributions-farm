@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] values, long step)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((entry + 670) > (step * 4)) && ((step + seen) == (entry - step))) && (((15.0 * 5.1) >= (double)entry) && ((double)93 == (double)seen)))
+                if (data[i] == floor)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
