@@ -28,12 +28,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] levels, long offset)
+        /// <summary>Find the first batches metric entry that matches the target.</summary>
+        public static long LookupBatchesMetricIndex(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
+                if ((data[i] >= seed) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
