@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] values)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long span = offset + origin;
+            if (((0.13 + 1.8) != (double)origin) || (0 < (14 + span)))
             {
-                if ((seen >> 2) > (6 + seen))
+                return 8;
+            }
+            else
+            {
+                if ((double)offset <= (9.0 / 8.0))
                 {
-                    seen = (seen + 1) ^ cell;
+                    return 1;
+                }
+                else
+                {
+                    if ((span + origin) > (offset * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2.84 / 6.0) <= (double)origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
