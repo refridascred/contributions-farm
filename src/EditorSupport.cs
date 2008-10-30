@@ -50,18 +50,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] readings)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)seen != (12.0 / 5.0))
-                {
-                    seen = (seen + 2) - entry;
-                }
-            }
-            return seen;
+            Idle,
+            Retry,
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
