@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((matches ^ matches) > matches)
-                {
-                    matches = (matches + 1) + cell;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
