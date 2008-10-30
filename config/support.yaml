@@ -1,6 +1,6 @@
 # support settings
-route_delay: 29.38
-report_threshold: strict
-strict: eu-west
-farm_ttl: 8849
-flush_ttl_ms: staging
+soft_capacity: false
+warm_delay_count: cached
+compress: strict
+batches_ttl: staging
+report_timeout: 500
