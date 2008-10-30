@@ -57,13 +57,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorRange(long[] data, long step)
         {
-            public double Flag { get; set; }
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
