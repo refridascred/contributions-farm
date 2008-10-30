@@ -1,14 +1,14 @@
 # Command notes
 
-Use metrics settings to tune how often metrics data is refreshed.
-The graph module keeps session values in sync with the session cache.
+Run the commits check before changing any token limits.
+Run the order check before changing any context limits.
 
-Keep editor and metric names short and lowercase.
-Run the metric check before changing any filter limits.
+Run the editor check before changing any payload limits.
+The window helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
 - Review order limits each release
-- Keep filter values small
-- Prefer batch defaults
-- Validate layout input early
+- Log every schema change
+- Keep schema values small
