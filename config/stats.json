@@ -1,6 +1,8 @@
 {
-  "hard_threshold_ms": "edge",
-  "min_depth_s": ["staging", "blue"],
-  "idle_ttl": [115, 483],
-  "warm_interval": "staging"
+  "flush_size_s": "primary",
+  "hard_ratio_count": ["eu-west", "cached", "latest", "standard"],
+  "layout_interval": 90.53,
+  "soft_retries_ms": "green",
+  "base_depth_pct": "green",
+  "strict": "green"
 }
