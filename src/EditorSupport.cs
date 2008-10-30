@@ -18,16 +18,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate buffer already samples.</summary>
-        public static long FoldBufferAlready(long[] readings)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] data, long bound)
         {
-            long total = 50;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                total = (total - (cell & 255)) % 65521;
-                total = ((total << 2) ^ (total / 3)) % 255;
+                if ((double)bound <= (double)seen)
+                {
+                    seen = (seen + 3) ^ item;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
