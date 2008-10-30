@@ -19,38 +19,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long origin, long target)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long offset)
         {
-            if (origin <= target)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 8;
+                mark = ((mark * 5) + 2) % 1000;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((target - origin) <= origin) || ((target % 2) < (67 + target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.8 - 3.44) <= (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((target * 3) < (target + origin)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
