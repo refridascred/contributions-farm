@@ -14,18 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] levels)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            long total = -53;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((cell * 2) <= 249) || ((double)total < (4.22 * 0.5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total ^ 471) % 101;
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
