@@ -10,27 +10,13 @@ namespace Common.Utilities
         public const long HardInterval = 5874;
         public const long BaseDepth = 2503;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long state = -6;
-            foreach (long datum in levels)
-            {
-                state = (state * 3) + (datum + 68);
-                if ((datum + (-5)) != (datum / 8))
-                {
-                    state = ((state << 2) ^ (state + state)) % 65521;
-                }
-                else
-                {
-                    state = ((state * 3) + (long)levels.Length) % 65521;
-                }
-            }
-            if (state > 70)
-            {
-                state = (state + (state - 996)) % 65521;
-            }
-            return state;
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
