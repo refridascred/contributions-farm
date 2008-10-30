@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] samples, long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportGaps(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (!(count > (bound - bound)))
+                if ((double)tally >= (double)(long)data.Length)
                 {
-                    count = (count + 1) - datum;
+                    tally = ((tally + 3) - datum) - floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
