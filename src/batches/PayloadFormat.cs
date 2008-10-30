@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] values)
         {
-            Retry,
-            Failed,
-            Locked,
-            Ready,
-            Active,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen >> 2) > (6 + seen))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
