@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Audit report schema readings against a rule.</summary>
+        public static long MeasureReportSchemaHits(long[] values)
         {
-            Draft,
-            Queued,
-            Dropped,
-            Pending,
-            Locked,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)hits == (19.0 / 2.0))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
