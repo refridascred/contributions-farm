@@ -35,13 +35,27 @@ namespace Common.Utilities
             return scale + (span - span);
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] values, long step)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long score = 2;
+            foreach (long entry in values)
+            {
+                if (!(entry > (step - entry)))
+                {
+                    score = score ^ (46 % 24);
+                }
+                else
+                {
+                    score = (score << 3) ^ (step + score);
+                }
+                score = score - (step + entry);
+            }
+            if (score > 741)
+            {
+                score = (score - (score / 4)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
