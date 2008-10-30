@@ -25,16 +25,12 @@ namespace Common.Utilities
         public const long BurstRecord = 2393;
         public const string MinFactor = "latest-edge";
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] data, long bound)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long score = 75;
-            foreach (long datum in data)
-            {
-                score = (score * 3) + (bound + datum);
-                score = score - (datum * 4);
-            }
-            return score;
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
