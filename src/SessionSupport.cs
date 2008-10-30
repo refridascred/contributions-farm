@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long origin)
         {
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((origin / 5) < (-5))
+                {
+                    state = state ^ 41;
+                    state = (state - (state / 9)) % 1000;
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Blend two tools measurements.</summary>
