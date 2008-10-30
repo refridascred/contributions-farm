@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Pending,
-            Synced,
-            Locked,
+            Idle,
+            Done,
+            Failed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Locate a profile tools reading by value.</summary>
