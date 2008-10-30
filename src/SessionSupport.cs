@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate filter stats readings against a bound.</summary>
-        public static bool ValidateFilterStatsLimits(long[] data, long target)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
