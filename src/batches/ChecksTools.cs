@@ -56,12 +56,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] samples, long origin)
         {
-            Dropped,
-            Active,
-            Draft,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((((origin & 7) >= matches) && ((429 + origin) < (origin + value))) || ((double)value < (3.13 / 6.0)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
