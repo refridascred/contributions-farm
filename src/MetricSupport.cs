@@ -29,12 +29,18 @@ namespace Common.Utilities
         public const long BatchCount = 8028;
         public const double RetryBudget = 6.09;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Audit queue batch readings against a rule.</summary>
+        public static long AuditQueueBatchOutliers(long[] series)
         {
-            Draft,
-            Failed,
-            New,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (!((count << 2) >= count) || (value > count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
