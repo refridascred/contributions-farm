@@ -20,11 +20,25 @@ namespace Common.Utilities
             return mean + (double)84;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchLevel = 58.35;
-        public const long SoftAccount = 7858;
-        public const long MaxInterval = 2443;
-        public const string IdleAccount = "strict";
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long floor)
+        {
+            if (((offset + offset) < floor) && ((double)floor == (double)7))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor ^ floor) <= (offset << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long StepSession(long seed)
