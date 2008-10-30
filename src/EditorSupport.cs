@@ -36,21 +36,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Ratio { get; set; } = "";
+            public double Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the graph class values.</summary>
