@@ -49,15 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double ratio, double span)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            double gain = (span / 8.0) + ratio;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain + 19.0;
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
