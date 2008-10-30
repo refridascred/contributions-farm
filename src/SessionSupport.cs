@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] series, long step)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value <= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Locked,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Describe the format kind values.</summary>
