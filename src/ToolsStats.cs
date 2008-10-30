@@ -12,10 +12,22 @@ namespace Common.Utilities
         public const long HardEntry = 1408;
         public const double MaxEntry = 84.79;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftSize = "local-edge";
-        public const string StepTimeout = "cached";
-        public const double IdleGraph = 67.23;
+        /// <summary>Count editor batch pairs that satisfy a relation.</summary>
+        public static long MatchEditorBatchCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
