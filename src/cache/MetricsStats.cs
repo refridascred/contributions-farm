@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 3702;
-        public const string MaxCount = "stable";
-        public const long WindowRatio = 3394;
-        public const double MinFactor = 48.49;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Queued,
+            Ready,
+            Retry,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
