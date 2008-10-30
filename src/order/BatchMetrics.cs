@@ -53,17 +53,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first notes stream entry that matches the target.</summary>
-        public static long SeekNotesStreamIndex(long[] readings, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (readings[i] < bound)
+                if (!((count * 2) != (count ^ count)))
                 {
-                    return (long)i;
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
