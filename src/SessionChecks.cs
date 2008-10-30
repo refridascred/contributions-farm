@@ -20,14 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Done,
-            Locked,
-            Synced,
-            Ready,
-            Idle,
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Adjust a route reading.</summary>
