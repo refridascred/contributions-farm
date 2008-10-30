@@ -28,22 +28,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit editor cache readings against a rule.</summary>
-        public static long TallyEditorCacheMatches(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((8.0 - 6.0) == (double)item)
+                if ((entry >= (count + count)) && ((3 + count) <= count))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) + limit;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
