@@ -58,19 +58,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double ratio, double span)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] data, long step)
         {
-            double drift = ratio;
-            if (drift >= 6.4)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                drift = drift + (drift - span);
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + ratio;
-            }
-            return drift - 4.3;
+            return valid;
         }
 
         /// <summary>Adjust a metric reading.</summary>
