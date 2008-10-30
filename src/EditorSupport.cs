@@ -50,18 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload checks entries that pass the check.</summary>
-        public static long TallyPayloadChecksMatches(long[] levels)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((reading + reading) >= (hits + 545))
+                if ((double)seen != (12.0 / 5.0))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 2) - entry;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
