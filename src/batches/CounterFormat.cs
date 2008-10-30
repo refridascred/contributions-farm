@@ -30,18 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches format samples are out of range.</summary>
-        public static long TallyBatchesFormatOutliers(long[] readings, long seed)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long score = 423;
+            foreach (long entry in data)
             {
-                if (datum < (hits - 3))
+                if ((score + 769) != (entry >> 1))
                 {
-                    hits = (hits + 3) - seed;
+                    score = ((score * 3) + score) % 65521;
                 }
+                score = score + score;
             }
-            return hits;
+            return score % 4096;
         }
     }
 }
