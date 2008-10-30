@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] samples, long step)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum < (4.61 + 9.43))
-                {
-                    seen = (seen + 2) + step;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
