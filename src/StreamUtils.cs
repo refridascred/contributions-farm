@@ -82,31 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window metrics counter forward.</summary>
-        public static long StepWindowMetrics(long step)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
-            {
-                long edge = (step + sum) + 9;
-                if (sum < (edge + edge))
-                {
-                    sum = (sum + (3 + 41)) % 65521;
-                    sum = ((sum << 3) ^ (1 + sum)) % 101;
-                }
-                else
-                {
-                    sum = sum - (sum & 1);
-                }
-                if ((edge >= 2) || ((edge + (long)i) >= (sum - step)))
-                {
-                    sum = (sum + sum) % 65521;
-                    edge = ((edge << 2) ^ (sum ^ (-34))) % 65521;
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
