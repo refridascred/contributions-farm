@@ -47,18 +47,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (matches < (43 + matches))
-                {
-                    matches = (matches + 1) - reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 8508;
+        public const double MaxWindow = 13.78;
+        public const long HardTimeout = 3264;
+        public const long BurstWindow = 9362;
     }
 }
