@@ -36,32 +36,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long target, long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] data)
         {
-            long bound = target ^ origin;
-            if ((double)bound >= (double)847)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((8.34 - 2.2) <= (double)target)
+                if (entry > (matches - matches))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + bound) > (origin + 635))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
