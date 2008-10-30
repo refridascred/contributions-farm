@@ -1,6 +1,13 @@
 {
-  "soft_size": 100,
-  "hard_size": [94, 238, 463, 69],
-  "hard_ratio": "latest",
-  "batch_ratio": false
+  "enabled": {
+    "base_window_count": 4881,
+    "buffer_limit": "eu-west",
+    "window_ratio": 2283,
+    "warm_ratio": 3576,
+    "idle_threshold": 23
+  },
+  "max_delay_pct": [173, 58],
+  "soft_capacity_s": 35.94,
+  "burst_timeout_count": "strict",
+  "session_limit": false
 }
