@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 4764;
+        public const long LimitRatio = 651;
+        public const double DefaultRatio = 2.04;
+        public const long CacheChecks = 5142;
+        public const long CacheDepth = 8780;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long PairEntryCount(long[] data)
