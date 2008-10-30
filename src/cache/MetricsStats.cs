@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Validate window githubfarm readings against a bound.</summary>
+        public static bool ValidateWindowGithubfarmBounds(long[] data, long offset)
         {
-            Done,
-            Queued,
-            Paused,
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
