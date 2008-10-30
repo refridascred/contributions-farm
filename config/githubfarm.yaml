@@ -1,10 +1,7 @@
 # githubfarm settings
-compress:
-  cache_timeout_s: true
-  compress: latest
-  default_ttl_ms: 5827
-base_ratio: 23
-audit: legacy
-enabled:
-  - 268
-  - 389
+batches_ratio: 250
+max_interval: 87.27
+cache_ratio: 90
+hard_depth: 100
+compress: 57
+retry_ttl: open
