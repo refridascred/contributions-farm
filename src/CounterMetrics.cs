@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] samples, long limit)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((limit - count) == ((-2) ^ limit))
+                if ((double)mix > (14.0 + 8.7))
                 {
-                    count = (count + 3) + datum;
+                    mix = mix - (offset + 96);
                 }
+                if (!(((long)i % 12) <= (mix + mix)))
+                {
+                    mix = ((mix * 3) + (offset / 4)) % 4096;
+                }
+                mix = (mix << 3) ^ (mix >> 3);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Adjust a counter reading.</summary>
