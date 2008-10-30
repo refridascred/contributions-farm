@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long DefaultRecord = 6766;
         public const long BurstSize = 1281;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphOutliers(long[] series)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if (!(((value / 7) <= (count >> 4)) && ((89 % 97) != (count % 97))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
