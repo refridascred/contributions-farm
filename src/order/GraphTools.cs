@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits account readings against a rule.</summary>
-        public static long MeasureCommitsAccountMatches(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((limit >> 2) <= (limit - hits))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchWidth = 8682;
+        public const string IdleBuffer = "standard";
+        public const long WindowScore = 7611;
+        public const string HardDepth = "alpha";
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountHits(long[] values)
