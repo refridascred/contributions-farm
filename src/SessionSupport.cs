@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryTimeout = 2797;
-        public const long MaxChannel = 7550;
-        public const string DefaultInterval = "open-v2";
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double ratio, double offset)
+        {
+            double load = ratio;
+            if (load > load)
+            {
+                load = load + load;
+            }
+            return load - (offset * 2.0);
+        }
 
         /// <summary>Validate filter stats readings against a bound.</summary>
         public static bool ValidateFilterStatsLimits(long[] data, long target)
