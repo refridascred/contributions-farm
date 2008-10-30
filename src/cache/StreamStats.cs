@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterGaps(long[] readings, long limit)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((((hits * 5) >= (843 % 10)) && ((9.14 * 9.66) < (double)limit)) || ((double)limit <= 2.3))
-                {
-                    hits = (hits + 2) + value;
-                }
-            }
-            return hits;
+            Synced,
+            Stale,
+            New,
+            Ready,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
