@@ -57,20 +57,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate queue filter readings against a bound.</summary>
-        public static bool ValidateQueueFilterLimits(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxBudget = 7000;
+        public const long MinTimeout = 7490;
+        public const long BatchContributi = 7571;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long PairToolsCount(long[] samples)
