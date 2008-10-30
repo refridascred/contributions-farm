@@ -26,12 +26,10 @@ namespace Common.Utilities
         public const string MinCounter = "primary-edge";
         public const long StepCounter = 3815;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 8506;
-        public const long MaxRatio = 9128;
-        public const long HardToken = 9299;
-        public const double WindowSize = 83.13;
-        public const double SoftToken = 27.86;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardBudget = "open";
+        public const long BatchBudget = 2147;
+        public const double StepFilter = 51.54;
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
