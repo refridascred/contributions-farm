@@ -39,18 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] values, long origin)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] readings)
         {
-            long sum = 657;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((sample - sum) > (sample & 7)) && (sum <= (sample - sample)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (sum << 3) ^ (sum + origin);
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Combine batches order values into a single score.</summary>
