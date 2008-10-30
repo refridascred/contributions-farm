@@ -13,14 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] items)
         {
-            Retry,
-            Idle,
-            Dropped,
-            Failed,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
