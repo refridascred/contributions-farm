@@ -41,23 +41,32 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of counter checks entries.</summary>
-        public static long CombineCounterChecks(long[] levels)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long target, long origin)
         {
-            long sum = 717;
-            foreach (long sample in levels)
+            long bound = target ^ origin;
+            if ((double)bound >= (double)847)
             {
-                sum = (sum << 3) ^ (sample ^ sample);
-                if ((sample / 4) == (sum - 987))
+                return 1;
+            }
+            else
+            {
+                if ((8.34 - 2.2) <= (double)target)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + bound) > (origin + 635))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (sum > 92)
-            {
-                sum = ((sum * 5) + (sum % 8)) % 101;
-            }
-            return sum;
         }
     }
 }
