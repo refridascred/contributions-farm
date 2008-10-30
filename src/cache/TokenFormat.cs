@@ -34,21 +34,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of batch session readings.</summary>
-        public static long MatchBatchSessionCount(long[] readings)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long origin, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long next = origin - offset;
+            if ((7.5 <= (double)next) && ((offset + offset) > (offset + next)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((double)origin <= (9.24 - 9.8))
                 {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
     }
 }
