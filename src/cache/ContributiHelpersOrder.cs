@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits ^ hits) >= (cell - cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleWidth = 31.19;
+        public const string BatchDepth = "legacy-1";
+        public const double SoftFactor = 32.2;
+        public const long BatchCluster = 1469;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long SeriesWindow(long offset)
