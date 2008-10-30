@@ -1,5 +1,5 @@
 # githubfarm settings
-farm_ttl: 28.2
-default_ttl_ms: fallback
-batches_ratio: edge
-schema_timeout: false
+persist: 3635
+hard_interval_count: 1024
+burst_threshold: 30
+enabled: 55
