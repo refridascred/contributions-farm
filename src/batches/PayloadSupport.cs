@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] samples, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] values, long limit)
         {
-            long mark = -44;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark << 3) ^ (642 & 31)) % 101;
-                mark = ((mark << 2) ^ (3 ^ target)) % 97;
-                if (((target + target) == ((long)samples.Length & 1)) && (target <= item))
+                if (values[i] > limit)
                 {
-                    mark = ((mark << 3) ^ (mark + 56)) % 97;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a tools stats.</summary>
