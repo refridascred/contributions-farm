@@ -22,12 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchOrder = "latest-v2";
-        public const long IdleOrder = 6000;
-        public const double WindowInterval = 31.7;
-        public const double StepOrder = 45.97;
-        public const long DefaultSize = 5693;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
