@@ -19,23 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] samples)
-        {
-            long result = -32;
-            foreach (long reading in samples)
-            {
-                if (((result << 1) > reading) || ((reading >> 3) < reading))
-                {
-                    result = result ^ (reading ^ result);
-                }
-            }
-            if (result < 1)
-            {
-                result = result - (7 ^ result);
-            }
-            return result % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepScore = 45.72;
+        public const long LimitPayload = 9159;
+        public const long SoftBudget = 2021;
+        public const string SoftPayload = "open";
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
