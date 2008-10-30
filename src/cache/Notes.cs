@@ -59,19 +59,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] series, long target)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (entry >= target)
+                if (cell > floor)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
     }
 }
