@@ -33,20 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] series, long seed)
         {
-            long mark = 4;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                mark = ((mark << 3) ^ (mark % 100)) % 65521;
-                mark = (mark ^ (cell + mark)) % 1000;
+                if (!((double)(long)series.Length >= (9.0 + 9.47)))
+                {
+                    count = ((count + 3) + reading) - seed;
+                }
             }
-            if (mark > 32)
-            {
-                mark = (mark ^ (mark + offset)) % 97;
-            }
-            return mark;
+            return count;
         }
     }
 }
