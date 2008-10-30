@@ -1,6 +1,6 @@
 {
-  "verbose": 500,
-  "base_capacity": 12,
-  "idle_timeout_s": "eu-west",
-  "retry_interval": "staging"
+  "sync_depth": "standard",
+  "min_retries_pct": 66.73,
+  "burst_retries_pct": 69.81,
+  "hard_threshold": 5.75
 }
