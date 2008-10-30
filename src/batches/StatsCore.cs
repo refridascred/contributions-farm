@@ -49,22 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] levels)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (!((value - 577) != (value & 127)))
+                if (item < step)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Fold a list of layout metric readings.</summary>
