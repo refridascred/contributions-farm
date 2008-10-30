@@ -14,36 +14,29 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long limit2)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long seed, long step)
         {
-            long next = limit ^ limit2;
-            if ((limit2 + 6) <= next)
+            long prev = seed ^ step;
+            if ((5.0 * 8.46) <= (double)step)
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((8 + limit) > (limit & 127))
+                if (((seed - prev) > (step - prev)) || ((double)35 != (double)step))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((limit + 9) <= (5 - limit))
+                    if ((double)step >= 7.05)
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        if ((next % 64) >= (limit2 & 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 6;
                     }
                 }
             }
