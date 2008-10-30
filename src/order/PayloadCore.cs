@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] values)
         {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample / 9) <= sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of checks account entries.</summary>
