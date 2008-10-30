@@ -1,21 +1,15 @@
 # githubfarm settings
-audit: 63
-verbose: 4845
-editor_interval:
-  base_window_count:
-    compress: true
-    soft_retries: 5470
-    enabled: false
-    base_delay: 30
-  sync_size:
-    batch_depth: primary
-    min_depth_ms: 7
-    route_capacity: 2362
-    warm_capacity_count: 500
-    compress: true
-    default_ttl: green
-  cache_delay: false
-route_ratio:
-  audit: 500
-  burst_window: false
-  max_limit_s: green
+burst_timeout_ms: fallback
+min_window_count: 8464
+editor_depth:
+  - staging
+  - eu-west
+order_delay:
+  readonly: 3164
+  verbose:
+    - legacy
+    - cached
+    - blue
+    - strict
+  poll_size_ms: 34
+  soft_interval: green
