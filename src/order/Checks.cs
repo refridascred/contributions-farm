@@ -35,10 +35,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstProfile = 8193;
-        public const long CacheSpan = 6014;
-        public const long WindowSize = 3653;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            Locked,
+            Retry,
+            Stale,
+            Active,
+            Draft,
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long DefaultLevel = 5206;
