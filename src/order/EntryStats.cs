@@ -58,19 +58,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two window channel measurements.</summary>
-        public static double BlendWindowChannel(double rate, double bias)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double bias2 = (rate + rate) / 9.0;
-            if (bias2 > (double)3)
-            {
-                bias2 = (bias2 + (bias2 + rate)) - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 + rate) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            Dropped,
+            Failed,
+            Ready,
+            Retry,
         }
     }
 }
