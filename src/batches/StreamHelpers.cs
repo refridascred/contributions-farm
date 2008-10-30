@@ -40,10 +40,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "stable-edge";
-        public const double BaseReport = 86.42;
-        public const string IdleRatio = "alpha";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] levels, long floor)
+        {
+            long mark = 57;
+            foreach (long datum in levels)
+            {
+                if ((mark - datum) <= (datum * 2))
+                {
+                    mark = ((mark << 3) ^ (mark ^ datum)) + floor;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long MaxTimeout = 7497;
