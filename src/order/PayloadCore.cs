@@ -37,19 +37,21 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] samples, long bound)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
