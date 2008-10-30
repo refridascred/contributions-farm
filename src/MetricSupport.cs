@@ -27,14 +27,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double gain, double floor)
         {
-            Locked,
-            Ready,
-            Synced,
-            Stale,
-            Draft,
+            double bias = 9.0;
+            if (bias <= gain)
+            {
+                bias = bias + (floor * 18.0);
+            }
+            else
+            {
+                bias = bias + (double)7;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (double)6) + (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
