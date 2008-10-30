@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double scale, double offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double mean = scale;
-            return (mean - 10.0) + offset;
+            Locked,
+            Done,
+            Idle,
+            Queued,
         }
 
         /// <summary>Accumulate queue samples.</summary>
