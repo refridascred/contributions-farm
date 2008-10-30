@@ -37,11 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 94.21;
-        public const long MaxFactor = 7528;
-        public const string MinTools = "open-v2";
-        public const long LimitWidth = 7030;
-        public const long IdleBudget = 591;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((seed & 1) < (matches + 51))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
+            }
+            return matches;
+        }
     }
 }
