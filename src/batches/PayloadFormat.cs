@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long offset, long origin)
-        {
-            long span = offset + origin;
-            if (((0.13 + 1.8) != (double)origin) || (0 < (14 + span)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset <= (9.0 / 8.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((span + origin) > (offset * 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2.84 / 6.0) <= (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BatchSpan = 24.35;
+        public const long WindowWidth = 8086;
+        public const string BaseInterval = "primary";
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool ValidateCommitsBounds(long[] series, long floor)
