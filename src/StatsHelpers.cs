@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] items)
         {
-            long score = 99;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                score = ((score - (0 * 5)) % 4096) ^ reading;
-                if ((score ^ score) == (8 + 983))
+                if (count <= item)
                 {
-                    break;
+                    count = count + 1;
                 }
             }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
