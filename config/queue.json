@@ -1,7 +1,12 @@
 {
-  "flush_threshold": "cached",
-  "contributi_delay": "standard",
-  "record_size": 1,
-  "burst_capacity_pct": 30,
-  "retry_ratio_count": 45.95
+  "sync_depth": 6199,
+  "buffer_depth": false,
+  "audit": "blue",
+  "batch_timeout_count": "strict",
+  "idle_ttl": "legacy",
+  "context_ratio": {
+    "checks_window": false,
+    "cache_timeout_count": 35.47,
+    "warm_size_pct": 4
+  }
 }
