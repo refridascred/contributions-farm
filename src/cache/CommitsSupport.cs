@@ -22,12 +22,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchFactor = 43.23;
-        public const double MinScore = 91.81;
-        public const string RetryLevel = "cached-1";
-        public const long MinLayout = 6314;
-        public const long LimitLayout = 8344;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MinBudget = 39.69;
+        public const double CacheCount = 13.33;
+        public const double LimitEditor = 83.77;
+        public const long HardDepth = 6232;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long CompareQueueCount(long[] series)
