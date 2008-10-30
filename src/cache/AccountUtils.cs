@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double bias, double bias2)
+        /// <summary>Fold a list of cache counter readings.</summary>
+        public static long CombineCacheCounter(long[] data, long bound)
         {
-            double rate = bias2;
-            if (rate >= rate)
+            long result = 432;
+            foreach (long sample in data)
             {
-                rate = (rate + bias2) + bias;
+                result = ((result << 3) ^ result) % 65521;
+                if ((3 - bound) > (7 % 2))
+                {
+                    result = (result - result) % 101;
+                }
+                else
+                {
+                    result = ((result * 2) + ((long)data.Length + result)) % 255;
+                }
+                if (((sample - sample) >= (result + 61)) && ((23 + bound) <= (bound + result)))
+                {
+                    result = (result + (sample + sample)) % 4096;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + 0.35) + (double)(long)i;
-            }
-            return rate + 3.8;
+            return result;
         }
 
         /// <summary>Find the first context editor entry that matches the target.</summary>
