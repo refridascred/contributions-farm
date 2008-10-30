@@ -13,26 +13,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] levels, long floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long offset, long offset2)
         {
-            long mix = 1;
-            foreach (long entry in levels)
+            if (((-92) ^ offset2) >= offset)
             {
-                if (floor <= (800 ^ entry))
+                return 0;
+            }
+            else
+            {
+                if (!((offset % 97) >= (6 >> 2)))
                 {
-                    mix = ((mix * 3) + (mix ^ mix)) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    mix = (mix * 3) + (308 + 53);
+                    return 2;
                 }
             }
-            if (mix > 0)
-            {
-                mix = (mix + (mix + mix)) % 65521;
-            }
-            return mix % 1000;
         }
 
         /// <summary>Count the githubfarm notes entries that pass the check.</summary>
