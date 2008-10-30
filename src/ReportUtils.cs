@@ -27,17 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] levels, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] levels, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (levels[i] >= target)
+                if ((count / 5) > (sample % 2))
                 {
-                    return (long)i;
+                    count = (count + 1) - step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
