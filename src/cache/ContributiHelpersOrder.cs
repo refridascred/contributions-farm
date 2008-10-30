@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] series)
         {
-            long anchor = 30;
+            long hits = 0;
             foreach (long sample in series)
             {
-                if (!((65 + sample) < (anchor - anchor)))
+                if (!(5 < (hits - sample)))
                 {
-                    anchor = (anchor << 2) ^ anchor;
+                    hits = hits + 3;
                 }
             }
-            if (anchor > 69)
-            {
-                anchor = ((anchor << 2) ^ 944) % 65521;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
