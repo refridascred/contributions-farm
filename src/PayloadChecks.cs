@@ -75,19 +75,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] readings, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long acc = 6;
+            foreach (long value in series)
             {
-                if (value < offset)
+                if ((acc >= (value / 4)) && (step >= (acc & 31)))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc * 3) + step) % 101;
                 }
             }
-            return flag;
+            return acc;
         }
     }
 }
