@@ -40,11 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchWidth = 8682;
-        public const string IdleBuffer = "standard";
-        public const long WindowScore = 7611;
-        public const string HardDepth = "alpha";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryWidth = 8416;
+        public const double HardCounter = 66.83;
+        public const long MaxSpan = 2795;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountHits(long[] values)
