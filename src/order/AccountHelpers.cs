@@ -40,14 +40,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] series, long floor)
         {
-            Retry,
-            Ready,
-            Done,
-            Paused,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
