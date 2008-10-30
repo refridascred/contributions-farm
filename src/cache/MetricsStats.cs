@@ -34,20 +34,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultTimeout = 7077;
+        public const long WindowWidth = 8401;
+        public const double RetryReport = 54.92;
+        public const long IdleTimeout = 5597;
+        public const long BatchReport = 7974;
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] samples, long bound)
