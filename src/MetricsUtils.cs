@@ -66,13 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
