@@ -1,35 +1,12 @@
 # entry settings
-poll_ratio:
-  burst_limit_pct:
-    - 277
-    - 173
-    - 114
-    - 9
-  strict:
-    dry_run: 48.46
-    max_limit:
-      - 320
-      - 423
-    tools_ratio: stable
-    verbose:
-      - 1
-      - 401
-      - 262
-  sync_ttl_pct: 85.99
-  persist:
-    - 315
-    - 248
-    - 187
-idle_limit_pct: blue
-poll_retries_s: 250
-order_retries:
-  persist: strict
-  default_ratio:
-    counter_interval: 33
-    burst_timeout_pct: 96.46
-    base_delay: local
-    sync_depth_pct: 97.06
-    already_delay: false
-    warm_depth_count: 60
-  max_ratio: green
-  default_timeout_pct: true
+base_capacity_s: eu-west
+batch_limit_ms:
+  - 375
+  - 128
+  - 442
+  - 76
+command_ttl:
+  - local
+  - local
+token_capacity: 9126
+already_capacity: blue
