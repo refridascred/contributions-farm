@@ -27,31 +27,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long offset, long floor)
-        {
-            if (((double)offset < (8.0 - 4.0)) || ((floor + offset) == (offset << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor - offset) < (offset % 60))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset <= (floor % 100))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchStream = 77.47;
+        public const long BatchScore = 8355;
+        public const string MinDepth = "staging-edge";
+        public const long WindowScore = 5253;
+        public const long MinRatio = 9121;
     }
 }
