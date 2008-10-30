@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const string StepBatches = "staging";
         public const long BaseBatches = 5028;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] items)
+        /// <summary>Digest a series of route githubfarm entries.</summary>
+        public static long TotalRouteGithubfarm(long[] levels)
         {
-            long score = -8;
-            foreach (long value in items)
+            long anchor = 70;
+            foreach (long cell in levels)
             {
-                if (((long)items.Length & 127) != (score + score))
+                if ((cell + anchor) != (572 << 1))
                 {
-                    score = ((score * 4) + (value + value)) % 255;
+                    anchor = ((anchor << 3) ^ (cell >> 2)) % 65521;
                 }
             }
-            if (score < 635)
-            {
-                score = ((score << 3) ^ (score * 4)) % 97;
-            }
-            return score % 1000;
+            return anchor;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
