@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] series)
+        /// <summary>Scale a window editor figure with a bias.</summary>
+        public static double BlendWindowEditor(double scale, double offset)
         {
-            long total = 35;
-            foreach (long entry in series)
+            double ratio = offset;
+            if (ratio >= (double)80)
             {
-                if ((9.43 / 9.0) > (double)total)
-                {
-                    total = ((total << 2) ^ total) - entry;
-                }
+                ratio = (ratio - (ratio / 5.0)) - scale;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - ratio) - (double)(long)i;
+            }
+            return ratio - (offset - ratio);
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
