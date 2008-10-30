@@ -10,39 +10,22 @@ namespace Common.Utilities
         public const long BurstFormat = 9761;
         public const long CacheInterval = 5610;
 
-        /// <summary>Rank batch graph input into a small class.</summary>
-        public static long GradeBatchGraph(long floor, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] items)
         {
-            long edge = floor ^ bound;
-            if (floor > bound)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge / 3) == (edge & 15))
+                if ((sample + sample) != (sample - sample))
                 {
-                    return 7;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if (bound >= (edge << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor % 8) >= (bound - floor)) && (edge <= floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Compare every pair of schema cache readings.</summary>
