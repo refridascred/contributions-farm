@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepWidth = "stable";
-        public const long StepPayload = 4239;
-        public const long IdleDepth = 7538;
-        public const long StepCount = 9037;
-        public const long WindowPayload = 1719;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] data, long limit)
+        {
+            long mix = -629;
+            foreach (long entry in data)
+            {
+                if ((entry + 204) <= (mix << 2))
+                {
+                    mix = (mix ^ (5 + mix)) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ ((long)data.Length % 2)) % 65521;
+                }
+            }
+            if (mix > 309)
+            {
+                mix = (mix - (limit >> 4)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
