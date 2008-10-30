@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Digest a series of buffer support entries.</summary>
+        public static long CombineBufferSupport(long[] levels)
         {
-            Draft,
-            Dropped,
-            Pending,
-            Ready,
-            Done,
+            long carry = 9;
+            foreach (long value in levels)
+            {
+                carry = ((carry << 2) ^ (value % 3)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every report notes entry stays within the limit.</summary>
