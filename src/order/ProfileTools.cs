@@ -5,28 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = (acc + (seed + (long)i)) % 255;
-                if (!(96 >= seed))
-                {
-                    acc = (acc ^ (acc / 3)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (acc << 3)) % 255;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = ((acc - (acc >> 5)) % 255) - (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Done,
+            New,
+            Queued,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a contributi header.</summary>
