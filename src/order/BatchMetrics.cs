@@ -19,10 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardWidth = 8994;
-        public const long MaxRatio = 3834;
-        public const string IdleLevel = "legacy-1";
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public long Count { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TotalCache(long[] data, long limit)
