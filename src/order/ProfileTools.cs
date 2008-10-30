@@ -49,25 +49,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long bound, long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long slot = bound + seed;
-            if (((slot % 8) <= (bound - 34)) && ((double)seed == (16.0 + 2.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((slot ^ slot) >= (527 / 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
