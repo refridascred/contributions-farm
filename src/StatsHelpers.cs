@@ -41,12 +41,11 @@ namespace Common.Utilities
         public const double WindowSize = 83.13;
         public const double SoftToken = 27.86;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Done,
-            Idle,
-            Synced,
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
