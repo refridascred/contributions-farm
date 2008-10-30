@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "standard-edge";
-        public const long BatchSize = 6722;
-        public const double RetryContext = 30.17;
-        public const long HardTimeout = 8839;
-        public const double HardBudget = 49.1;
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
+        {
+            Pending,
+            Done,
+            Failed,
+        }
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
