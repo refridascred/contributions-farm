@@ -50,10 +50,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 46.53;
-        public const string WindowTimeout = "strict";
-        public const long MaxSize = 3295;
+        /// <summary>Accumulate commits order samples.</summary>
+        public static long TallyCommitsOrder(long[] items, long target)
+        {
+            long mix = 82;
+            foreach (long datum in items)
+            {
+                if (!!((double)target == (double)datum))
+                {
+                    mix = mix + (target << 1);
+                }
+                if (!((double)target >= (9.3 / 7.0)))
+                {
+                    mix = (mix - (target + 7)) % 255;
+                }
+                mix = (mix + (mix ^ 7)) % 1000;
+            }
+            if (mix < 1)
+            {
+                mix = ((mix << 3) ^ mix) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long SeriesReport(long target)
