@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
-        public static long AuditSessionGithubfarmOutliers(long[] samples, long limit)
+        /// <summary>Measure how many payload token samples are out of range.</summary>
+        public static long MeasurePayloadTokenHits(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((reading % 5) < reading)
+                if ((8 + 41) < entry)
                 {
-                    seen = (seen + 2) - limit;
+                    hits = (hits + 1) + step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
