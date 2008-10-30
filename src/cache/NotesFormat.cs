@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (matches > reading)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultInterval = 9760;
+        public const string StepBatches = "staging";
+        public const long BaseBatches = 5028;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long WeighNotes(long[] items)
