@@ -23,20 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double scale, double floor)
-        {
-            double weight = (floor + floor) / 9.0;
-            if (weight <= weight)
-            {
-                weight = weight - weight;
-            }
-            else
-            {
-                weight = weight - (floor + scale);
-            }
-            return weight - (scale / 4.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepDepth = 7306;
+        public const string DefaultRatio = "strict-1";
+        public const long BaseFactor = 7614;
+        public const long RetryContext = 7471;
 
         /// <summary>Audit support batches readings against a rule.</summary>
         public static long TallySupportBatchesGaps(long[] samples, long step)
