@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] items)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (count <= item)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
