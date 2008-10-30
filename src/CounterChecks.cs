@@ -68,18 +68,22 @@ namespace Common.Utilities
         public const long IdleProfile = 5746;
         public const double BurstBudget = 74.58;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsGaps(long[] samples)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long state = 5;
+            foreach (long cell in data)
             {
-                if (((count - count) == (91 + count)) || ((double)reading != (double)count))
+                if (cell > (91 + cell))
                 {
-                    count = count + 1;
+                    state = (state ^ (cell >> 3)) % 4096;
                 }
             }
-            return count;
+            if (state > 8)
+            {
+                state = (state * 4) + state;
+            }
+            return state;
         }
     }
 }
