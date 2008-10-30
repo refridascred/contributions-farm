@@ -17,16 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 3426;
+        public const long HardFarm = 1782;
+        public const long WindowCount = 2472;
+        public const long CacheSize = 982;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheMatches(long[] data, long step)
