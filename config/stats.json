@@ -1,6 +1,19 @@
 {
-  "cache_ttl_pct": [6, 8],
-  "hard_ratio": 26.38,
-  "sync_capacity_s": "blue",
-  "layout_window": false
+  "idle_retries": true,
+  "githubfarm_ratio": ["legacy", "staging"],
+  "dry_run": {
+    "warm_depth_s": "latest",
+    "base_size_pct": "blue",
+    "flush_capacity": 79.54,
+    "max_retries": {
+      "min_capacity": "legacy",
+      "idle_depth_pct": [444, 462],
+      "default_ratio_s": 1024,
+      "min_interval": 60
+    },
+    "token_size": 51,
+    "poll_timeout_count": 16
+  },
+  "hard_window_s": 8823,
+  "readonly": 49.29
 }
