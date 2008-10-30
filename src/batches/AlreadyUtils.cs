@@ -46,19 +46,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] values, long origin)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Score { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
