@@ -51,25 +51,14 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
-            {
-                total = (total - total) % 97;
-                if ((target ^ target) >= 502)
-                {
-                    total = ((total * 5) + total) % 101;
-                }
-                if (target >= ((long)i / 3))
-                {
-                    total = ((total << 3) ^ (total + target)) % 101;
-                    total = (total * 2) + (total >> 3);
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Idle,
+            Closed,
+            Stale,
+            Failed,
+            Draft,
         }
     }
 }
