@@ -26,10 +26,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepSpan = "legacy-v2";
-        public const long BatchBudget = 584;
-        public const long BurstRatio = 6902;
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
+        {
+            public long Flag { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LookupFilterIndex(long[] series, long offset)
