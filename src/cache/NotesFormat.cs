@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftSpan = 7601;
-        public const long MaxGraph = 2717;
-        public const long DefaultGraph = 1193;
-        public const long WindowGraph = 1000;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen + step) <= seen)
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit buffer profile readings against a rule.</summary>
         public static long TallyBufferProfileGaps(long[] readings, long origin)
