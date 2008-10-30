@@ -1,26 +1,10 @@
 # entry settings
-default_threshold_s: staging
-retry_timeout_pct: 88.99
-commits_ratio:
-  route_delay: true
-  sync_delay_pct: 100
-  strict:
-    commits_depth: 79.7
-    batch_timeout: 4915
-    flush_window_ms: latest
-  window_capacity:
-    queue_capacity:
-      - 409
-      - 190
-      - 225
-    flush_window_count: 9654
-    persist: standard
-    readonly: 55.56
-  filter_threshold:
-    - 122
-    - 117
-    - 428
-  hard_ratio_count: 32.36
-compress:
-  - 214
-  - 419
+verbose: 4441
+queue_limit:
+  - 344
+  - 292
+  - 235
+  - 304
+batch_capacity_pct: 28
+compress: cached
+cache_size_count: eu-west
