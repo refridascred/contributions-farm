@@ -20,15 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long seed)
+        /// <summary>Look up the position of a queue account sample.</summary>
+        public static long SeekQueueAccountIndex(long[] readings, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 4093;
+                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
