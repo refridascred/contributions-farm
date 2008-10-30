@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit metric farm readings against a rule.</summary>
+        public static long AuditMetricFarmMatches(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell >> 5) <= (cell + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a notes reading.</summary>
