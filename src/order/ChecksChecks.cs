@@ -32,11 +32,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardInterval = 54.44;
-        public const long BatchRatio = 2524;
-        public const double HardLevel = 8.58;
-        public const long BaseInterval = 9160;
-        public const long BurstBatches = 3568;
+        /// <summary>Derive the next entry stream value from a seed.</summary>
+        public static long SeriesEntryStream(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry - (long)i) % 255;
+                carry = ((carry * 2) + (step / 7)) % 97;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
