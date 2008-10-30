@@ -15,19 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] data, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] readings)
         {
-            long total = 89;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                total = (((total - (545 - total)) % 65521) - cell) - limit;
+                if (((cell & 1) < tally) && (((cell + cell) > (18 + tally)) || ((double)cell < (0.6 * 3.6))))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (total > 3)
-            {
-                total = (total ^ total) % 255;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Digest a series of context entries.</summary>
