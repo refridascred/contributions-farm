@@ -1,9 +1,7 @@
 {
-  "soft_threshold_count": "fallback",
-  "audit": 5936,
-  "base_limit_pct": {
-    "base_capacity_ms": 1024,
-    "enabled": true,
-    "record_threshold": 250
-  }
+  "base_ttl_s": 76.12,
+  "farm_delay": "stable",
+  "hard_timeout": false,
+  "idle_ttl_pct": [22, 392, 274],
+  "support_size": 468
 }
