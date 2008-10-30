@@ -76,18 +76,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] levels)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((-922) << 2) < (datum % 10))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double bias = (double)(-124) - (scale - 8.2);
+            return bias - (offset + offset);
         }
     }
 }
