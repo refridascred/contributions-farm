@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 3751;
+        public const long SoftRatio = 4424;
+        public const long HardNotes = 5812;
+        public const long LimitNotes = 9402;
 
         /// <summary>Audit support context readings against a rule.</summary>
         public static long AuditSupportContextGaps(long[] samples, long bound)
