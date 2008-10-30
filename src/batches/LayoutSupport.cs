@@ -36,18 +36,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] readings, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long carry = 2;
+            foreach (long entry in levels)
             {
-                if ((value / 9) >= matches)
-                {
-                    matches = (matches + 3) + target;
-                }
+                carry = ((carry ^ entry) % 4096) + limit;
             }
-            return matches;
+            if (carry > (-871))
+            {
+                carry = (carry + (carry + 448)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
