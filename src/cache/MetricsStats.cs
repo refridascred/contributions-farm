@@ -26,13 +26,12 @@ namespace Common.Utilities
         public const long WindowRatio = 3394;
         public const double MinFactor = 48.49;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public double Owner { get; set; }
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
