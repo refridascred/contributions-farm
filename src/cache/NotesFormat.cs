@@ -52,12 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Combine cache schema values into a single score.</summary>
+        public static long FoldCacheSchema(long[] values)
         {
-            Pending,
-            Idle,
-            Done,
+            long carry = 2;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = carry ^ ((long)i % 24);
+                }
+                if ((4.2 * 9.16) > (double)carry)
+                {
+                    carry = (carry * 4) + (cell % 16);
+                }
+            }
+            return carry % 97;
         }
     }
 }
