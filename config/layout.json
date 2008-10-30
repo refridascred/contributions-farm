@@ -1,17 +1,5 @@
 {
-  "strict": {
-    "dry_run": "staging",
-    "persist": {
-      "base_limit_pct": [278, 429, 486, 287],
-      "cache_ttl_count": 44.44,
-      "command_ttl": "fallback"
-    },
-    "sync_timeout": "cached",
-    "flush_size": "eu-west",
-    "checks_delay": true
-  },
-  "burst_window_pct": "stable",
-  "dry_run": 2969,
-  "counter_depth": 2280,
-  "persist": 26.9
+  "flush_delay": true,
+  "channel_capacity": 59,
+  "cache_window_count": "legacy"
 }
