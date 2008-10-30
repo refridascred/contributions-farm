@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            Retry,
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
