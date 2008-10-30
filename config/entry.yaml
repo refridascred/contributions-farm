@@ -1,12 +1,5 @@
 # entry settings
-entry_size:
-  graph_capacity:
-    - 246
-    - 369
-  retry_interval: staging
-  warm_limit_s: 93
-  tools_size: 98
-poll_depth_count: 2628
-retry_retries_ms: false
-farm_threshold: 5287
-sync_size_pct: blue
+audit: false
+dry_run: 4861
+context_delay: 53.79
+profile_retries: true
