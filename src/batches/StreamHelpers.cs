@@ -32,12 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] items)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!((matches & 15) > reading))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of route readings.</summary>
