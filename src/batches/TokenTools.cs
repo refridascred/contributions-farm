@@ -13,19 +13,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double ratio, double bias)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] items, long origin)
         {
-            double load = (bias + bias) - ratio;
-            if (load >= bias)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (double)58;
+                if ((items[i] >= origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (double)5;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
