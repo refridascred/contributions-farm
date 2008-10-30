@@ -66,19 +66,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next session window value from a seed.</summary>
-        public static long DeriveSessionWindow(long bound)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    mark = ((mark + (bound - bound)) % 101) ^ (long)i3;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
