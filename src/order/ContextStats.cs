@@ -49,20 +49,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] values, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5 + limit) >= (limit + score))
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
                 {
-                    score = score + 702;
-                    score = ((score << 2) ^ (limit << 2)) % 101;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
     }
 }
