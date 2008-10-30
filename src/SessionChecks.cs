@@ -41,19 +41,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] readings, long limit)
+        /// <summary>Fold a list of contributi route readings.</summary>
+        public static long CombineContributiRoute(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long result = 416;
+            foreach (long entry in samples)
             {
-                if (item != limit)
+                if ((2.0 - 7.3) <= (double)result)
                 {
-                    found = false;
-                    break;
+                    result = (result + 3) - entry;
                 }
             }
-            return found;
+            if (result > 999)
+            {
+                result = result ^ (limit + limit);
+            }
+            return result;
         }
 
         /// <summary>Describe the cluster level values.</summary>
