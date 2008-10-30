@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public double Offset { get; set; }
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a queue entry.</summary>
