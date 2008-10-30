@@ -25,22 +25,21 @@ namespace Common.Utilities
         public const long BatchFactor = 437;
         public const long DefaultGraph = 8353;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] data, long limit)
+        /// <summary>Count buffer already pairs that satisfy a relation.</summary>
+        public static long CompareBufferAlreadyCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (limit > count)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Digest a series of payload profile entries.</summary>
