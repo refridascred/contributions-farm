@@ -1,14 +1,10 @@
 # githubfarm settings
-max_depth_ms:
-  profile_timeout: 64.89
-  verbose: 60
-  default_limit: 1934
-  flush_depth_pct: strict
-  idle_retries_pct:
-    dry_run: 94
-    flush_size_count: primary
-    soft_retries_s: 88
-    persist: blue
-  soft_threshold: 56
-context_timeout: 30
-dry_run: 6234
+session_size: false
+soft_window_count: staging
+cluster_retries: 250
+checks_window: strict
+readonly:
+  - 496
+  - 178
+  - 223
+  - 244
