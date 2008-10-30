@@ -1,6 +1,18 @@
 {
-  "flush_interval": "standard",
-  "profile_retries": "blue",
-  "cache_size_pct": "primary",
-  "retry_delay": "legacy"
+  "route_delay": 6895,
+  "sync_capacity_s": "green",
+  "default_threshold": "local",
+  "strict": {
+    "base_retries_count": {
+      "readonly": 1024,
+      "burst_limit": false,
+      "default_capacity_s": "cached",
+      "sync_interval": "fallback",
+      "dry_run": "cached"
+    },
+    "flush_timeout": "stable",
+    "stats_retries": true,
+    "base_ratio": 30,
+    "retry_timeout": [54, 334, 267, 452]
+  }
 }
