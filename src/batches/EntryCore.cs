@@ -70,16 +70,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] levels)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + ((long)i - bound)) % 97;
-                state = ((state * 2) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
