@@ -39,9 +39,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleLevel = 22.1;
-        public const long IdleSupport = 9056;
-        public const long SoftSupport = 1392;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryScore = 6748;
+        public const double RetryLayout = 70.77;
+        public const double IdleSpan = 65.86;
     }
 }
