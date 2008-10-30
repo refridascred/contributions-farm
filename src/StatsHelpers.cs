@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
-        {
-            Closed,
-            Active,
-            Failed,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRatio = 5559;
+        public const long StepRoute = 1971;
+        public const double WindowFactor = 1.12;
+        public const long BatchSize = 72;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
