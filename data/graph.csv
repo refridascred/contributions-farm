@@ -1,10 +1,6 @@
-id,weight,token,count,active
-1,local,111,strict,461
-2,standard,48.99,34,local
-3,299,latest,731,177
-4,27.19,678,950,12.23
-5,71,60.57,green,2.46
-6,legacy,37.94,609,fallback
-7,361,553,167,29.8
-8,63.83,897,994,25.05
-9,28.57,744,63.86,green
+id,rank,region,token,weight
+1,439,208,55.78,20.44
+2,65.25,313,51.7,831
+3,primary,706,14.05,blue
+4,458,518,65.52,31.61
+5,33.11,staging,standard,728
