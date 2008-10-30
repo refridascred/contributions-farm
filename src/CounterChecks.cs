@@ -46,13 +46,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Classify a context schema pair into a bucket.</summary>
+        public static long ClassifyContextSchema(long floor, long step)
         {
-            Queued,
-            Draft,
-            Stale,
-            Failed,
+            long gap = floor + step;
+            if ((floor <= (step & 7)) || (floor >= (step + step)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (911 <= (gap + 46))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor <= (5 << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((14.0 * 9.0) > (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
