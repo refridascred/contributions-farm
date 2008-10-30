@@ -1,8 +1,5 @@
 {
-  "farm_ratio": "open",
-  "batch_interval_pct": 59.48,
-  "profile_interval": 1277,
-  "cache_limit": 20.18,
-  "persist": true,
-  "retry_window": "strict"
+  "retry_timeout": false,
+  "dry_run": 27.86,
+  "sync_ratio": 42.42
 }
