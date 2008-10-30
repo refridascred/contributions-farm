@@ -39,29 +39,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long SortCommits(long origin, long limit)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long limit, long origin)
         {
-            if ((14.0 / 7.0) == (double)origin)
+            long lane = limit - origin;
+            if ((lane < origin) && (lane > (origin + 377)))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if ((double)limit != (double)origin)
+                if ((origin % 8) < lane)
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)origin >= (9.4 + 5.94))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 1;
                 }
             }
         }
