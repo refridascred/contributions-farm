@@ -1,6 +1,24 @@
 {
-  "max_capacity": 87.76,
-  "channel_size": 1915,
-  "min_delay_ms": "stable",
-  "counter_timeout": ["blue", "local"]
+  "batch_ttl_ms": {
+    "channel_capacity": 43,
+    "sync_depth_ms": {
+      "strict": 9.76,
+      "cache_ratio_pct": 2955,
+      "commits_retries": 85.12,
+      "max_ratio_pct": 9,
+      "idle_ttl_pct": 1,
+      "githubfarm_interval": "strict"
+    },
+    "max_retries": 75.4,
+    "retry_interval_ms": 1042
+  },
+  "retry_depth_ms": [281, 89, 131, 349],
+  "burst_ttl_s": {
+    "schema_retries": "blue",
+    "tools_delay": true,
+    "contributi_delay": [339, 490],
+    "burst_depth_s": 1024,
+    "poll_depth_count": [133, 344, 227]
+  },
+  "default_threshold": false
 }
