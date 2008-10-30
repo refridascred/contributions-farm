@@ -47,15 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
