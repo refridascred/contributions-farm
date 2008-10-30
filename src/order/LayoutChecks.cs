@@ -44,16 +44,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] readings, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                anchor = (anchor ^ anchor) % 97;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
