@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] levels, long target)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
