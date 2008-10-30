@@ -23,20 +23,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Validate filter stats readings against a bound.</summary>
+        public static bool ValidateFilterStatsLimits(long[] data, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (!((mark * 2) == (mark + step)))
+                if (sample <= target)
                 {
-                    mark = (mark << 3) ^ (mark >> 1);
-                    mark = (mark ^ step) % 101;
+                    flag = false;
+                    break;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
