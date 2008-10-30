@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            long total = 7;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (12 <= (sample * 4))
+                if (matches > reading)
                 {
-                    total = ((total << 3) ^ total) % 1000;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
