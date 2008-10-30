@@ -1,14 +1,14 @@
 # githubfarm settings
-default_capacity:
-  - 54
-  - 39
-  - 393
-burst_timeout_count: legacy
-sync_ttl:
-  hard_retries_s: staging
-  retry_window: fallback
-  readonly: 69.97
-  format_limit: 25
-  base_threshold: 66.22
-  compress: strict
-retry_timeout: 68
+max_depth_ms:
+  profile_timeout: 64.89
+  verbose: 60
+  default_limit: 1934
+  flush_depth_pct: strict
+  idle_retries_pct:
+    dry_run: 94
+    flush_size_count: primary
+    soft_retries_s: 88
+    persist: blue
+  soft_threshold: 56
+context_timeout: 30
+dry_run: 6234
