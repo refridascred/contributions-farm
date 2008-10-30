@@ -76,18 +76,39 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Audit metrics buffer readings against a rule.</summary>
-        public static long MeasureMetricsBufferHits(long[] series)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long origin, long limit)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long prev = origin + limit;
+            if ((limit % 5) >= (prev << 2))
             {
-                if ((double)datum == (9.5 / 6.0))
+                return 6;
+            }
+            else
+            {
+                if ((origin % 97) <= limit)
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (6.7 <= (double)prev)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((prev & 15) > limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
