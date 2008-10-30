@@ -81,12 +81,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch options.</summary>
