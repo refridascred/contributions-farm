@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long limit, long limit2)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            long bound = limit - limit2;
-            if (((-530) + 8) <= bound)
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((13.0 / 7.0) >= (double)limit2)
+                if ((long)i >= (carry + bound))
                 {
-                    return 2;
+                    carry = carry - (bound << 3);
                 }
-                else
-                {
-                    if ((double)limit2 != (6.5 + 4.8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((80 << 3) >= (limit - bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
+            return carry;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
