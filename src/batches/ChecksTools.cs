@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((tally / 5) != (tally << 3)) && ((entry - tally) > (tally - entry))) || (504 > (entry + tally)))
                 {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the contributi state values.</summary>
