@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank layout cluster input into a small class.</summary>
-        public static long ClassifyLayoutCluster(long offset, long offset2)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            if (!(offset <= (offset2 * 4)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset2 >= (678 ^ 69))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset2 > (offset2 * 2))
+                    if ((readings[i] - readings[j]) == 15)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
