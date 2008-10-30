@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "local";
-        public const long RetrySize = 4676;
-        public const string SoftCluster = "standard-1";
-        public const double RetryCluster = 25.9;
-        public const long MinInterval = 3711;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (item < (item - 24))
+                {
+                    seen = (seen + 1) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double BlendOrder(double gain, double offset)
