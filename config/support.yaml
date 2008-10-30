@@ -1,7 +1,9 @@
 # support settings
-min_limit: 97.96
-min_timeout_s:
-  - 442
-  - 199
-  - 454
-window_delay: eu-west
+strict:
+  - 491
+  - 400
+min_ratio_count: staging
+cache_ratio_ms:
+  - green
+  - edge
+dry_run: 100
