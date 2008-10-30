@@ -1,11 +1,7 @@
 # support settings
-idle_ratio_s:
-  base_ratio:
-    - primary
-    - eu-west
-    - edge
-    - open
-  sync_depth_count: 5929
-  buffer_retries: false
-notes_ratio: 87.65
-batch_size_s: 62
+idle_size_count: 71
+default_window: 8544
+counter_limit: staging
+order_delay: 32.18
+flush_window_pct: staging
+batch_threshold: 63
