@@ -43,12 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinFormat = "local";
-        public const double BaseFormat = 91.83;
-        public const string WindowWidth = "alpha-edge";
-        public const string StepScore = "fallback";
-        public const string DefaultFormat = "stable";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "legacy-v2";
+        public const long IdleCount = 6435;
+        public const long MinGraph = 4086;
+        public const double DefaultGraph = 41.63;
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
