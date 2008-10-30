@@ -50,11 +50,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Derive the next farm profile value from a seed.</summary>
+        public static long IterateFarmProfile(long offset)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum << 2) ^ (213 + offset)) % 4096;
+                sum = (sum - offset) % 1000;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a token stats.</summary>
