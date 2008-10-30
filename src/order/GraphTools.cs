@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long limit, long offset)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long diff = limit + offset;
-            if ((13 - offset) <= ((-4) & 31))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((16 * 3) < (diff & 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((diff << 2) > (diff + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(8 > offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
