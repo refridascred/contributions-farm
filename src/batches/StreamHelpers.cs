@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public double Label { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
