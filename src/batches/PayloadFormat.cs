@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long floor)
         {
-            Paused,
-            Retry,
-            Done,
-            Failed,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count payload filter pairs that satisfy a relation.</summary>
