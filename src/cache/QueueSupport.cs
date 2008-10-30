@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] levels, long origin)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long total = 35;
+            foreach (long entry in series)
             {
-                if (value >= origin)
+                if ((9.43 / 9.0) > (double)total)
                 {
-                    found = false;
-                    break;
+                    total = ((total << 2) ^ total) - entry;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
