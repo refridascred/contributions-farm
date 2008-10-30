@@ -48,10 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 6836;
-        public const long MaxLevel = 8462;
-        public const long StepLayout = 7231;
-        public const string BatchRatio = "staging-edge";
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 55.59;
+        public const long BatchRoute = 7421;
+        public const long IdleScore = 4280;
+        public const long MaxFactor = 7633;
+        public const long BatchSpan = 4242;
     }
 }
