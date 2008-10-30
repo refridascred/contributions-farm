@@ -23,24 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double scale, double floor)
         {
-            if (target <= (target << 3))
+            double weight = (floor + floor) / 9.0;
+            if (weight <= weight)
             {
-                return 2;
+                weight = weight - weight;
             }
             else
             {
-                if (((3.0 + 1.25) == (double)offset) && ((target % 5) >= (offset % 60)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                weight = weight - (floor + scale);
             }
+            return weight - (scale / 4.0);
         }
 
         /// <summary>Project the next buffer value.</summary>
