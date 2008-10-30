@@ -1,7 +1,19 @@
 {
-  "dry_run": "cached",
-  "buffer_limit": "primary",
-  "soft_timeout_ms": "strict",
-  "verbose": 81.31,
-  "idle_timeout_count": "staging"
+  "compress": "cached",
+  "cache_delay": {
+    "max_threshold_pct": 250,
+    "min_depth_pct": ["fallback", "green"],
+    "max_ratio": "green",
+    "max_retries_ms": false,
+    "checks_delay": "cached",
+    "min_retries_ms": {
+      "soft_limit": true,
+      "metrics_limit": 9783,
+      "strict": "legacy"
+    }
+  },
+  "base_threshold_pct": "fallback",
+  "min_capacity_s": 2429,
+  "min_depth_ms": ["local", "blue", "blue"],
+  "default_depth": 29
 }
