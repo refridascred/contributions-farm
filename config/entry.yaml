@@ -1,16 +1,12 @@
 # entry settings
-poll_ratio_count: 60
-base_limit_pct: stable
-min_ttl: false
-checks_depth:
+counter_limit:
   - 442
-  - 179
-  - 74
-filter_capacity:
-  base_ttl_count: 78
-  max_size_s: 44
-  token_ratio: green
-  readonly: open
-  command_depth: 1070
-  batch_threshold_pct: cached
-dry_run: legacy
+  - 350
+  - 256
+  - 396
+min_limit: 12.46
+burst_capacity_count:
+  warm_limit_pct: staging
+  enabled: 5269
+  githubfarm_depth: 85
+sync_retries_s: edge
