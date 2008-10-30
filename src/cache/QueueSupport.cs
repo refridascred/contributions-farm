@@ -35,12 +35,19 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] data, long step)
         {
-            public double Score { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
