@@ -16,19 +16,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every report notes entry stays within the limit.</summary>
-        public static bool ValidateReportNotesLimits(long[] readings, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long limit)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry >= seed)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Digest a series of token batch entries.</summary>
