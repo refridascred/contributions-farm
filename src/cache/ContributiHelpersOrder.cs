@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long HardNotes = 5812;
         public const long LimitNotes = 9402;
 
-        /// <summary>Audit support context readings against a rule.</summary>
-        public static long AuditSupportContextGaps(long[] samples, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((bound << 1) >= value) && !((hits - hits) >= (hits - bound)))
+                if (data[i] < origin)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a metrics options.</summary>
