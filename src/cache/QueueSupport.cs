@@ -14,32 +14,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long seed, long seed2)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double ratio, double offset)
         {
-            long lane = seed + seed2;
-            if (((-940) + seed2) < (seed2 >> 4))
+            double rate = ratio;
+            if (rate > (offset * 0.2))
             {
-                return 4;
+                rate = rate + offset;
             }
             else
             {
-                if ((-359) >= seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((86 << 3) < lane)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                rate = rate - ratio;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + (offset - offset)) - (double)(long)i;
+            }
+            return rate + (rate - ratio);
         }
 
         /// <summary>Accumulate stats samples.</summary>
