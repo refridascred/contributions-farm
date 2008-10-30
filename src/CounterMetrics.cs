@@ -39,17 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] series, long step)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] == step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
