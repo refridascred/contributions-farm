@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the graph account entries that pass the check.</summary>
-        public static long CountGraphAccountGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((-586) < item)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 653;
+        public const double CacheCounter = 45.57;
+        public const string MinBudget = "standard-1";
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long origin, long target)
