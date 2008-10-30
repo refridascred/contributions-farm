@@ -26,10 +26,9 @@ namespace Common.Utilities
         public const long BatchTools = 5929;
         public const double StepScore = 93.98;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultFactor = 5575;
-        public const double WindowAccount = 33.47;
-        public const string StepInterval = "staging";
-        public const long HardAccount = 2660;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetrySpan = 8965;
+        public const long BaseOrder = 3856;
+        public const string BaseTimeout = "latest-1";
     }
 }
