@@ -57,13 +57,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] data, long origin)
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if (sample < (93 - sample))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
