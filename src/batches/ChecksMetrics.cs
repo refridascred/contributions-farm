@@ -20,14 +20,14 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Failed,
-            Synced,
-            Ready,
-            Active,
             Done,
+            Ready,
+            Failed,
+            New,
+            Active,
         }
 
         /// <summary>Hold a cluster record.</summary>
