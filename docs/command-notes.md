@@ -1,14 +1,12 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Use notes settings to tune how often layout data is refreshed.
-
-The already report groups every metrics by payload.
-Each farm is validated before it reaches the editor queue.
+A cluster that stays idle for too long is moved to the graph list.
+The contributi module keeps entry values in sync with the tools cache.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every farm change
-- Validate metrics input early
-- Review farm limits each release
-- Document new entry fields
+- Validate context input early
+- Review contributi limits each release
+- Prefer cache defaults
+- Keep record values small
