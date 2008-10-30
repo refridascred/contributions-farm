@@ -37,19 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] items)
         {
-            long state = 3;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                state = (state * 4) + state;
-                if ((double)sample <= (3.93 * 8.0))
+                if ((double)matches < (17.0 + 9.1))
                 {
-                    break;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
