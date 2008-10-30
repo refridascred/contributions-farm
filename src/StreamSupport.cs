@@ -37,11 +37,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultContributi = 9413;
-        public const double HardContributi = 53.04;
-        public const long LimitBudget = 3260;
-        public const long HardInterval = 2571;
-        public const long StepContributi = 8529;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long origin, long limit)
+        {
+            if ((14.0 / 7.0) == (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit != (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)origin >= (9.4 + 5.94))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
