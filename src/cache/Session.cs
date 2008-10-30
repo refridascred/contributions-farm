@@ -33,39 +33,19 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long bound, long target)
+        /// <summary>Validate format context readings against a bound.</summary>
+        public static bool CheckFormatContextRange(long[] data, long step)
         {
-            long diff = bound + target;
-            if (!((target + bound) < (bound % 2)))
+            bool found = true;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 2) >= target)
+                if (item != step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((bound % 12) > (9 - diff)) || ((bound * 3) > (target - target)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound == (7.0 / 4.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
