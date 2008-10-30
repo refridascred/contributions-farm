@@ -23,11 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftSpan = "cached-v2";
-        public const long IdleBatch = 8158;
-        public const long BaseBatch = 2084;
-        public const long CacheBatch = 8426;
+        /// <summary>Check that every record githubfarm entry stays within the limit.</summary>
+        public static bool ValidateRecordGithubfarmBounds(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] data)
