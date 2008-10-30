@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double rate, double offset)
-        {
-            double bias = (offset / 9.0) * 0.6;
-            if (bias < (offset / 9.0))
-            {
-                bias = (bias + bias) - rate;
-            }
-            return bias - offset;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultCluster = "legacy-v2";
+        public const string MinDepth = "strict-1";
+        public const string WindowCluster = "open-v2";
+        public const long RetryBudget = 6098;
+        public const string IdleCount = "fallback-1";
 
         /// <summary>Combine farm stats values into a single score.</summary>
         public static long ScoreFarmStats(long[] values, long offset)
