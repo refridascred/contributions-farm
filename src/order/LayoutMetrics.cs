@@ -13,17 +13,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] values, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
