@@ -1,6 +1,6 @@
 {
-  "burst_limit_ms": "edge",
-  "poll_window_pct": 19.32,
-  "metrics_threshold": 96.9,
-  "batches_delay": ["stable", "blue", "strict", "strict"]
+  "command_limit": ["standard", "blue", "standard", "open"],
+  "queue_threshold": 63,
+  "retry_limit": "local",
+  "sync_interval_s": "edge"
 }
