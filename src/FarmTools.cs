@@ -42,22 +42,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of checks layout entries.</summary>
-        public static long WeighChecksLayout(long[] data, long target)
+        /// <summary>Check that every graph tools entry stays within the limit.</summary>
+        public static bool CheckGraphToolsRange(long[] series, long floor)
         {
-            long result = -966;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((target ^ target) < datum)
+                if (value != floor)
                 {
-                    result = result ^ (target >> 1);
-                }
-                if ((result + target) >= (target ^ result))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return result % 65521;
+            return valid;
         }
     }
 }
