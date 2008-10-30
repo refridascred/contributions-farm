@@ -103,17 +103,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a account payload sample.</summary>
-        public static long LookupAccountPayloadIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFilter = "strict-v2";
+        public const long BatchFilter = 8648;
+        public const long BatchFactor = 3496;
     }
 }
