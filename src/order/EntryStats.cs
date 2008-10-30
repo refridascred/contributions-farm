@@ -22,32 +22,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long step, long step2)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] items, long floor)
         {
-            long next = step ^ step2;
-            if ((step2 - 491) < (34 + step))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)step2 == (6.67 / 3.0)) || ((double)step >= 9.99))
+                if ((datum << 1) >= tally)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step2 >> 3) < (next - step2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = (tally + 2) - floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
