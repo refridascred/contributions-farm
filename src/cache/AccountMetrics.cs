@@ -73,23 +73,19 @@ namespace Common.Utilities
             return drift - 4.3;
         }
 
-        /// <summary>Combine schema format values into a single score.</summary>
-        public static long FoldSchemaFormat(long[] data, long target)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double gain, double floor)
         {
-            long score = 81;
-            foreach (long value in data)
+            double weight = (double)(804 / 2);
+            if (weight <= (floor + 8.2))
             {
-                if ((target - value) < (score * 4))
-                {
-                    score = ((score * 4) + 221) % 1000;
-                }
-                else
-                {
-                    score = (score - (target << 3)) % 65521;
-                }
-                score = ((score * 4) + (value & 15)) % 1000;
+                weight = weight + (weight - gain);
             }
-            return score % 65521;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (gain + weight)) + (double)(long)i;
+            }
+            return weight - 14.0;
         }
     }
 }
