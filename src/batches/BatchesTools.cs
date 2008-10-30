@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 586;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = sum ^ (782 - item);
+                sum = (sum + (sum + step)) % 255;
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
