@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate window githubfarm readings against a bound.</summary>
-        public static bool ValidateWindowGithubfarmBounds(long[] data, long offset)
+        /// <summary>Check that every support filter entry stays within the limit.</summary>
+        public static bool VerifySupportFilterRange(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (value != offset)
+                if (cell != target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
