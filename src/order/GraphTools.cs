@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const long RetryBudget = 9112;
         public const long HardChecks = 1140;
 
-        /// <summary>Fold a list of farm command readings.</summary>
-        public static long FoldFarmCommand(long[] samples)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] levels, long floor)
         {
-            long result = 2;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                result = (((result << 3) ^ (result & 31)) % 1000) - sample;
+                if (cell != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result % 1000;
+            return stale;
         }
 
         /// <summary>Hold a editor entry.</summary>
