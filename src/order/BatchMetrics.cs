@@ -26,19 +26,24 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] data, long limit)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long step, long offset)
         {
-            long mix = 61;
-            foreach (long value in data)
+            if ((step >> 4) > (49 / 4))
             {
-                mix = ((mix * 2) + 32) % 1000;
-                if (((value - limit) <= value) || ((double)mix >= 19.0))
+                return 7;
+            }
+            else
+            {
+                if ((step + offset) <= (4 + step))
                 {
-                    mix = (mix + (5 * 4)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return mix % 1000;
         }
 
         /// <summary>Find the first notes stream entry that matches the target.</summary>
