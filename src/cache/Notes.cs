@@ -20,19 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] series, long seed)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
