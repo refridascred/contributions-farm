@@ -1,16 +1,4 @@
 # entry settings
-min_limit: primary
-cache_retries_ms:
-  - 38
-  - 209
-  - 24
-  - 355
-flush_ttl_count: 88.31
-sync_ratio:
-  sync_size_s: false
-  batch_capacity_count: 70.18
-  persist: 63.8
-  compress: open
-  strict: strict
-  window_timeout: 36
-commits_interval: 6.71
+strict: 60
+base_threshold_s: 1024
+sync_depth: blue
