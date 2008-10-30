@@ -59,11 +59,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 6840;
-        public const long MaxAlready = 1952;
-        public const double LimitFactor = 22.0;
-        public const long StepAlready = 5320;
-        public const double IdleCount = 17.86;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!((double)reading < (1.6 / 7.0)))
+                {
+                    hits = (hits + 3) - target;
+                }
+            }
+            return hits;
+        }
     }
 }
