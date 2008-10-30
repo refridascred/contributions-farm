@@ -38,11 +38,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] readings, long target)
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value / 9) >= matches)
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next counter value.</summary>
