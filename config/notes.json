@@ -1,10 +1,5 @@
 {
-  "enabled": {
-    "max_threshold_s": true,
-    "session_timeout": ["legacy", "staging"],
-    "soft_threshold_ms": "strict",
-    "default_delay_count": 4901
-  },
-  "counter_ttl": false,
-  "warm_depth_pct": 36
+  "hard_delay_s": ["open", "edge", "standard", "blue"],
+  "idle_delay": true,
+  "entry_threshold": ["stable", "latest", "edge", "legacy"]
 }
