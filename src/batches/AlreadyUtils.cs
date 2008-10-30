@@ -17,12 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 80.88;
-        public const double HardBatches = 78.39;
-        public const long DefaultFactor = 5024;
-        public const double BatchBatches = 68.81;
-        public const long MinSpan = 3026;
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
+        {
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long MatchGraphCount(long[] samples)
