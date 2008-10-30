@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long StepCount = 9037;
         public const long WindowPayload = 1719;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 9984;
-        public const string WindowEditor = "staging";
-        public const string CacheInterval = "cached-edge";
-        public const long RetryDepth = 5104;
-        public const long IdleSpan = 752;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] items, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long floor)
