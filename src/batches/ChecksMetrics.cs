@@ -20,22 +20,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] levels)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] samples, long bound)
         {
-            long carry = 2;
-            foreach (long reading in levels)
+            long total = 554;
+            foreach (long item in samples)
             {
-                if (!(629 > (reading * 5)))
+                total = (total - item) % 255;
+                if (bound >= (bound / 3))
                 {
-                    continue;
-                }
-                if (((double)carry <= (3.9 * 1.0)) && ((reading - 304) < (8 << 2)))
-                {
-                    carry = (carry - reading) % 97;
+                    total = ((total << 2) ^ (item - total)) % 1000;
                 }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Check that every support commits entry stays within the limit.</summary>
