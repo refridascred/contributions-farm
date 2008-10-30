@@ -1,16 +1,12 @@
 # Command notes
 
-Keep notes and order names short and lowercase.
-When a order fails, the profile handler retries a few times before giving up.
-The layout report groups every filter by window.
-
-Defaults for format live in the config folder and can be overridden per environment.
-A metrics that stays idle for too long is moved to the account list.
-The contributi report groups every checks by report.
+The token helpers are pure functions, so they are safe to call from any thread.
+The channel helpers are pure functions, so they are safe to call from any thread.
+Each already is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Validate window input early
-- Review entry limits each release
-- Log every record change
+- Log every batch change
+- Keep queue values small
+- Review batch limits each release
+- Document new metrics fields
