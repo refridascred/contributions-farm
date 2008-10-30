@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5393;
         public const double IdleTools = 78.82;
 
-        /// <summary>Measure how many token profile samples are out of range.</summary>
-        public static long MeasureTokenProfileMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample - seen) > sample)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardSize = 7402;
+        public const long BatchCount = 7940;
+        public const long SoftCluster = 452;
+        public const long BurstScore = 103;
+        public const long MinDepth = 5386;
 
         /// <summary>Roll a editor order counter forward.</summary>
         public static long SeriesEditorOrder(long limit)
