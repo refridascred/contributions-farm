@@ -66,11 +66,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
