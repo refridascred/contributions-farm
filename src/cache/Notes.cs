@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] samples)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((9 ^ entry) < entry)
+                if (reading < offset)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
