@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            Paused,
-            Active,
             Idle,
+            Pending,
+            Failed,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
