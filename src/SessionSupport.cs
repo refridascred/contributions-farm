@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Audit account command readings against a rule.</summary>
+        public static long MeasureAccountCommandHits(long[] readings, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((origin / 5) < (-5))
+                if ((bound % 5) == (2 >> 4))
                 {
-                    state = state ^ 41;
-                    state = (state - (state / 9)) % 1000;
-                    break;
+                    hits = (hits + 2) ^ entry;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Hold a stats summary.</summary>
