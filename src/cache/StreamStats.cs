@@ -22,11 +22,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Combine already payload values into a single score.</summary>
+        public static long CombineAlreadyPayload(long[] items, long limit)
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
+            long acc = 482;
+            foreach (long cell in items)
+            {
+                acc = (((acc * 2) + (50 << 2)) % 255) ^ cell;
+                if ((9.1 + 0.39) >= (double)limit)
+                {
+                    acc = acc ^ (limit & 3);
+                }
+            }
+            if (acc < (-5))
+            {
+                acc = ((acc << 3) ^ (acc << 3)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
