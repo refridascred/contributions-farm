@@ -44,18 +44,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((8.88 - 1.94) == (double)datum)
+                if (count < (590 & 255))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) + sample;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
