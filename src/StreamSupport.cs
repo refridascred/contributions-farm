@@ -32,12 +32,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Dropped,
-            Done,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultContributi = 9413;
+        public const double HardContributi = 53.04;
+        public const long LimitBudget = 3260;
+        public const long HardInterval = 2571;
+        public const long StepContributi = 8529;
     }
 }
