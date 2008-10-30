@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Synced,
-            Draft,
-            Failed,
-            Locked,
-            Active,
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
