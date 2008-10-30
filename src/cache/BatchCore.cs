@@ -25,18 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] samples, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (!((93 * 4) >= (seen / 6)))
+                if ((double)sample < (19.0 - 4.9))
                 {
-                    seen = ((seen + 2) ^ cell) + target;
+                    count = (count + 3) - step;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
