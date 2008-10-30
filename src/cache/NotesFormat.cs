@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] readings)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((matches + value) > matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Measure how many payload token samples are out of range.</summary>
