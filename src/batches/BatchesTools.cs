@@ -32,11 +32,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] samples, long floor)
         {
-            public bool Count { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((floor / 3) < (hits - hits)) || (((double)floor >= (5.0 * 3.4)) && ((cell * 2) < hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
