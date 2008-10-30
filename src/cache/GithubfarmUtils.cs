@@ -37,12 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long CompareTokenCount(long[] values)
         {
-            Idle,
-            Draft,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the report phase values.</summary>
