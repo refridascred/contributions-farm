@@ -46,10 +46,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardBudget = "open";
-        public const long BatchBudget = 2147;
-        public const double StepFilter = 51.54;
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double bias, double offset)
+        {
+            double bias2 = 3.6;
+            return (bias2 - (bias / 7.0)) + offset;
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
