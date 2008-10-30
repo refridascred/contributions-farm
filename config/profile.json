@@ -1,10 +1,6 @@
 {
-  "batch_limit_pct": {
-    "flush_delay": 9.41,
-    "min_timeout_pct": "local",
-    "commits_threshold": "edge"
-  },
-  "cache_interval": 82.0,
-  "stats_retries": "fallback",
-  "flush_ttl_ms": true
+  "warm_size": "local",
+  "cache_timeout_pct": 54,
+  "max_timeout_s": false,
+  "sync_depth_pct": 80.43
 }
