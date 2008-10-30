@@ -57,35 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] data, long floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long mix = 1;
-            foreach (long datum in data)
-            {
-                if ((7.5 + 8.0) > (double)mix)
-                {
-                    mix = (mix - (datum >> 1)) % 97;
-                    mix = (mix + datum) % 101;
-                }
-                else
-                {
-                    mix = (mix * 4) + (mix & 63);
-                }
-                if (floor < (mix + mix))
-                {
-                    mix = ((mix << 2) ^ ((long)data.Length >> 1)) % 101;
-                }
-                else
-                {
-                    mix = mix + (mix - datum);
-                }
-            }
-            if (mix < 837)
-            {
-                mix = (mix + 624) % 97;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
