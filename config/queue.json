@@ -1,5 +1,6 @@
 {
-  "retry_timeout": false,
-  "dry_run": 27.86,
-  "sync_ratio": 42.42
+  "max_capacity": 87.76,
+  "channel_size": 1915,
+  "min_delay_ms": "stable",
+  "counter_timeout": ["blue", "local"]
 }
