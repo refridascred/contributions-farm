@@ -11,14 +11,22 @@ namespace Common.Utilities
         public const double IdleDepth = 13.58;
         public const long WindowLayout = 5103;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Audit editor contributi readings against a rule.</summary>
+        public static long CountEditorContributiHits(long[] items)
         {
-            Active,
-            Closed,
-            Ready,
-            Done,
-            Failed,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((37 + 716) > (hits - hits))
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
