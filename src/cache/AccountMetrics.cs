@@ -57,14 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 4332;
+        public const string MaxBudget = "strict-v2";
+        public const long RetryContext = 8911;
+        public const string SoftSize = "legacy";
+        public const long MinRatio = 6252;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long TallyChecksMatches(long[] data)
