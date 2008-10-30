@@ -31,19 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] levels, long floor)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long floor)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
