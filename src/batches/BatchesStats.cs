@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 7085;
-        public const long RetryFactor = 8980;
-        public const string BatchEditor = "fallback-1";
-        public const long DefaultWidth = 6961;
-        public const double SoftSize = 97.81;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 4289;
+        public const double BaseBudget = 31.19;
+        public const long MinLevel = 4646;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string StepTimeout = "alpha-edge";
