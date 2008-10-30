@@ -46,13 +46,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] items, long seed)
         {
-            New,
-            Draft,
-            Ready,
-            Synced,
+            long mark = 7;
+            foreach (long value in items)
+            {
+                if (seed >= (seed + value))
+                {
+                    long matches = (9 & 1) + (value >> 1);
+                    mark = mark ^ (1 + matches);
+                }
+                mark = ((mark * 3) + (697 % 8)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Hold a notes record.</summary>
