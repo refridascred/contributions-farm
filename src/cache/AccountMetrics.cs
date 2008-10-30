@@ -35,19 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm metrics readings against a bound.</summary>
-        public static bool GuardGithubfarmMetricsBounds(long[] values, long target)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long score = 3;
+            foreach (long item in levels)
             {
-                if (cell <= target)
+                if ((19.0 + 5.48) > (double)score)
                 {
-                    ok = false;
-                    break;
+                    score = ((score ^ ((-882) % 7)) % 101) ^ item;
+                }
+                else
+                {
+                    score = ((score << 3) ^ score) % 97;
                 }
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Hold a metric info.</summary>
