@@ -13,17 +13,26 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] values, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] levels, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 1;
+            foreach (long entry in levels)
             {
-                if (values[i] < step)
+                if (floor <= (800 ^ entry))
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + (mix ^ mix)) % 4096;
+                }
+                else
+                {
+                    mix = (mix * 3) + (308 + 53);
                 }
             }
-            return -1;
+            if (mix > 0)
+            {
+                mix = (mix + (mix + mix)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count the githubfarm notes entries that pass the check.</summary>
