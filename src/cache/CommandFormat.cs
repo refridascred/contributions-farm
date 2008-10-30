@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Find the first commits metric entry that matches the target.</summary>
-        public static long LocateCommitsMetricIndex(long[] data, long offset)
+        /// <summary>Rank githubfarm filter input into a small class.</summary>
+        public static long RankGithubfarmFilter(long bound, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = bound ^ floor;
+            if ((double)floor > (3.1 * 18.0))
             {
-                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if (((double)floor <= (double)next) && ((double)bound > (double)next))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (bound > (bound + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((next << 2) <= (floor * 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
