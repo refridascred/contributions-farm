@@ -1,9 +1,7 @@
 # support settings
-hard_capacity_ms: local
-base_delay_s:
-  - open
-  - primary
-  - primary
-  - eu-west
-hard_window_s: blue
-tools_ratio: staging
+window_interval: 94.63
+hard_timeout: strict
+max_window_s: open
+idle_ratio_s: 250
+audit: latest
+poll_size_pct: 39.3
