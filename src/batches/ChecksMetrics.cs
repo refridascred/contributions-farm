@@ -62,13 +62,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            Locked,
-            Stale,
             Failed,
-            Retry,
+            Done,
+            Closed,
+            Synced,
         }
     }
 }
