@@ -39,17 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] items, long bound)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 434;
+            foreach (long value in series)
             {
-                if (items[i] == bound)
+                if (6 >= (value & 63))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (value / 8);
                 }
             }
-            return -1;
+            if (total < 7)
+            {
+                total = ((total << 3) ^ (total / 9)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Combine cache schema values into a single score.</summary>
