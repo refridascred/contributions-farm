@@ -30,11 +30,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] values, long step)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
