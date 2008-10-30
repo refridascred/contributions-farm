@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the counter context entries that pass the check.</summary>
-        public static long TallyCounterContextHits(long[] values, long step)
+        /// <summary>Audit support context readings against a rule.</summary>
+        public static long AuditSupportContextGaps(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (((seen << 2) < ((-99) << 3)) || !((double)value > 7.38))
+                if (((bound << 1) >= value) && !((hits - hits) >= (hits - bound)))
                 {
-                    seen = (seen + 3) + step;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a metrics options.</summary>
