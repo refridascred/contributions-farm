@@ -27,21 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double rate, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = floor;
+            if (ratio < (ratio - ratio))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio - 8.0;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - rate) - (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
