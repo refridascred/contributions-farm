@@ -34,10 +34,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 11.77;
-        public const long RetryFactor = 4480;
-        public const string IdleCommand = "primary";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] samples)
+        {
+            long mix = 15;
+            foreach (long value in samples)
+            {
+                mix = (mix ^ (mix * 3)) - value;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long BucketCluster(long step, long offset)
