@@ -71,17 +71,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] series, long limit)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Compare every pair of support readings.</summary>
