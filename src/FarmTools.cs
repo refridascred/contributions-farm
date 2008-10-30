@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowSpan = 3232;
+        public const double LimitRatio = 19.26;
+        public const long MinLayout = 5723;
+        public const string MaxLayout = "legacy-edge";
+        public const long RetryLayout = 883;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
