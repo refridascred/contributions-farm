@@ -61,17 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] samples, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 58;
+            foreach (long datum in levels)
             {
-                if (samples[i] <= floor)
+                result = (result << 2) ^ (7 % 97);
+                if (result >= (datum ^ datum))
                 {
-                    return (long)i;
+                    result = (result * 3) + result;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
