@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRatio = 5559;
-        public const long StepRoute = 1971;
-        public const double WindowFactor = 1.12;
-        public const long BatchSize = 72;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Paused,
+            Locked,
+            Stale,
+            Idle,
+            Done,
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long DeriveStream(long bound)
