@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double StepWidth = 4.98;
         public const long RetryEditor = 3065;
 
-        /// <summary>Check that every record githubfarm entry stays within the limit.</summary>
-        public static bool ValidateRecordGithubfarmBounds(long[] values, long step)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Adjust a support reading.</summary>
