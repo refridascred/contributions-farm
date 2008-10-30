@@ -1,19 +1,7 @@
 {
-  "verbose": {
-    "contributi_size": {
-      "window_depth": [23, 437],
-      "soft_delay_s": 48.89,
-      "retry_timeout_ms": 7.74,
-      "graph_retries": 34
-    },
-    "strict": true,
-    "warm_delay": 7.71,
-    "report_limit": true,
-    "readonly": "stable",
-    "cache_ratio_pct": "edge"
-  },
-  "sync_capacity_ms": 3893,
-  "editor_depth": "cached",
-  "notes_delay": [32, 169],
-  "enabled": [475, 249]
+  "editor_delay": 5178,
+  "batch_delay": 5.48,
+  "format_limit": ["staging", "local", "eu-west"],
+  "metric_size": 2357,
+  "idle_threshold": 100
 }
