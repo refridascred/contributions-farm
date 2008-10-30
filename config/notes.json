@@ -1,5 +1,7 @@
 {
-  "dry_run": "eu-west",
-  "readonly": 9050,
-  "poll_size_pct": "primary"
+  "sync_window_s": "local",
+  "poll_capacity": false,
+  "readonly": "legacy",
+  "base_timeout_count": 53,
+  "min_interval": true
 }
