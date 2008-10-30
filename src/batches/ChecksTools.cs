@@ -10,18 +10,26 @@ namespace Common.Utilities
         public const long HardCommits = 2017;
         public const string DefaultFactor = "legacy-v2";
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long result = 59;
+            foreach (long cell in data)
             {
-                if ((((tally / 5) != (tally << 3)) && ((entry - tally) > (tally - entry))) || (504 > (entry + tally)))
+                for (int i = 0; i < 11; i++)
                 {
-                    tally = tally + 1;
+                    result = (result + (long)i) % 97;
+                }
+                if (cell >= (cell / 4))
+                {
+                    result = (result * 3) + result;
                 }
             }
-            return tally;
+            if (result > 773)
+            {
+                result = result - result;
+            }
+            return result % 97;
         }
 
         /// <summary>Check that every already account entry stays within the limit.</summary>
