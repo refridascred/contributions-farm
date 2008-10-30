@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] data, long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] data, long step)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] < origin)
+                if ((data[i] < step) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
