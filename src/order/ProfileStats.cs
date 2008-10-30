@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit profile tools readings against a rule.</summary>
-        public static long TallyProfileToolsGaps(long[] values)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((double)value >= (double)8)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Idle,
+            Done,
         }
 
         /// <summary>Adjust a already reading.</summary>
