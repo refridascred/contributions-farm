@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] values)
         {
-            long anchor = 67;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                anchor = (anchor + (datum + 32)) % 4096;
+                if ((217 - sample) > (sample + matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor + anchor) % 65521;
-            }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Project the next account value.</summary>
