@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a entry metrics reading by value.</summary>
-        public static long FindEntryMetricsIndex(long[] readings, long step)
+        /// <summary>Iterate the payload account series from a seed.</summary>
+        public static long SeriesPayloadAccount(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((readings[i] > step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
