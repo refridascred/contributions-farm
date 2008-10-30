@@ -30,21 +30,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long bound, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long lane = bound ^ limit;
+            if ((9.6 / 5.0) >= (double)lane)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((-95) / 5) > lane)
                 {
-                    if ((values[i] - values[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the report phase values.</summary>
