@@ -80,11 +80,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftLevel = 1682;
-        public const long SoftRatio = 5308;
-        public const long StepWidth = 7938;
-        public const long IdleSession = 4757;
+        /// <summary>Measure how many batches counter samples are out of range.</summary>
+        public static long MeasureBatchesCounterHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (446 < sample)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two batch window measurements.</summary>
         public static double SmoothBatchWindow(double weight, double offset)
