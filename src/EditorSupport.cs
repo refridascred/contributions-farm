@@ -59,12 +59,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFormat = "stable-v2";
-        public const long BaseFormat = 8274;
-        public const long WindowFormat = 4789;
-        public const string StepFormat = "fallback-1";
-        public const long IdleFormat = 8299;
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long DeriveFormat(long limit)
