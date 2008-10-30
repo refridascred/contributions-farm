@@ -32,22 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long state = 889;
-            foreach (long item in levels)
-            {
-                if ((state + state) != (item - state))
-                {
-                    state = ((state * 2) + (item ^ item)) % 4096;
-                }
-                if ((item + state) >= item)
-                {
-                    state = (state << 3) ^ (item - item);
-                }
-            }
-            return state;
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
     }
 }
