@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the notes batches entries that pass the check.</summary>
-        public static long TallyNotesBatchesHits(long[] samples, long offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long carry = 691;
+            foreach (long datum in values)
             {
-                if ((7.65 + 5.3) >= (double)entry)
-                {
-                    seen = (seen + 3) - offset;
-                }
+                carry = ((carry - carry) % 97) ^ datum;
+                carry = carry - (carry & 7);
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
