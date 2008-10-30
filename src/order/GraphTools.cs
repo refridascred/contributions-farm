@@ -12,11 +12,20 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
+            long score = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((score >> 1) < (step % 12))
+                {
+                    score = (score ^ (step % 24)) % 4096;
+                    score = ((score << 3) ^ (long)i) % 4096;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
