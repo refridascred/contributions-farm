@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxFactor = 5.06;
+        public const long DefaultReport = 866;
+        public const long HardSpan = 3611;
+        public const long BurstRatio = 797;
 
         /// <summary>Accumulate support samples.</summary>
         public static long FoldSupport(long[] data, long floor)
