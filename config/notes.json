@@ -1,8 +1,8 @@
 {
-  "retry_timeout_count": true,
-  "warm_ratio_count": false,
-  "batch_threshold_pct": "staging",
-  "sync_delay": 25.43,
-  "base_interval": 4778,
-  "soft_delay": false
+  "notes_retries": 36,
+  "cluster_depth": false,
+  "burst_limit_pct": [157, 150, 82, 260],
+  "burst_timeout": false,
+  "burst_size_ms": false,
+  "persist": [414, 170, 170]
 }
