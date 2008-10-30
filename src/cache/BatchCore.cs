@@ -13,32 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a batch batches value against two limits.</summary>
-        public static long BucketBatchBatches(long step, long bound)
+        /// <summary>Validate graph command readings against a bound.</summary>
+        public static bool VerifyGraphCommandRange(long[] series, long offset)
         {
-            long prev = step + bound;
-            if (((prev + bound) < bound) && (95 >= step))
+            bool found = true;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound / 2) != (step ^ prev))
+                if (entry != offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound ^ (-95)) >= prev) || ((prev & 127) <= prev))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
