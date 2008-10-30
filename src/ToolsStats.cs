@@ -63,26 +63,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] samples, long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            long result = 650;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry < (result % 97)) || ((93 & 3) < bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result * 4) + entry;
-                }
-                if ((entry + 3) != (result / 3))
-                {
-                    result = result - result;
-                }
-                if (((bound ^ bound) > (long)samples.Length) && ((result >> 2) > (bound << 1)))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
