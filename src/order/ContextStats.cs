@@ -54,10 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstTimeout = 8064;
-        public const long SoftSchema = 2277;
-        public const long StepSchema = 5856;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchDepth = 62.61;
+        public const long SoftRatio = 2776;
+        public const double BaseStream = 35.69;
+        public const long WindowStream = 6267;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long limit)
