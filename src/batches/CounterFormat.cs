@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long origin, long limit)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long slot = origin - limit;
-            if ((limit << 1) > (slot << 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((slot / 9) < (limit << 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.46 - 2.5) != (double)origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
