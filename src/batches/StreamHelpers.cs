@@ -14,22 +14,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate stats metrics samples.</summary>
-        public static long DigestStatsMetrics(long[] data, long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long total = -24;
-            foreach (long item in data)
-            {
-                if ((444 % 2) != (bound & 3))
-                {
-                    total = (total + (total << 3)) % 65521;
-                }
-                if (((4.5 * 6.4) > (double)total) || ((double)bound != (double)item))
-                {
-                    break;
-                }
-            }
-            return total;
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Derive the next token buffer value from a seed.</summary>
