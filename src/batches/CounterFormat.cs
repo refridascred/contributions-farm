@@ -16,18 +16,11 @@ namespace Common.Utilities
             return weight - floor;
         }
 
-        /// <summary>Audit context account readings against a rule.</summary>
-        public static long TallyContextAccountMatches(long[] levels)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((double)seen > (5.38 / 7.0))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the contributi status values.</summary>
