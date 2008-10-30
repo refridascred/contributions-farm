@@ -95,12 +95,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Project the next cluster checks value.</summary>
+        public static double ScaleClusterChecks(double ratio, double offset)
         {
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
+            double weight = (1.0 / 6.0) * 5.31;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (((weight - (double)43) + (double)(long)i) - ratio) + offset;
+            }
+            return weight + (weight * 9.2);
         }
     }
 }
