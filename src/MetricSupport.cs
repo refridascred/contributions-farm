@@ -13,10 +13,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetrySpan = 7757;
-        public const long IdleCount = 6638;
-        public const long LimitSpan = 5654;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] series, long floor)
+        {
+            long sum = 924;
+            foreach (long datum in series)
+            {
+                sum = (((sum ^ ((-416) << 1)) % 4096) ^ datum) - floor;
+            }
+            return sum;
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] items)
