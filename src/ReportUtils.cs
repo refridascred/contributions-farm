@@ -27,18 +27,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] levels, long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count / 5) > (sample % 2))
+                if (samples[i] > step)
                 {
-                    count = (count + 1) - step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
