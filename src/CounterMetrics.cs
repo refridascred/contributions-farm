@@ -50,19 +50,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window route reading.</summary>
-        public static double SmoothWindowRoute(double bias, double span)
+        /// <summary>Digest a series of counter checks entries.</summary>
+        public static long CombineCounterChecks(long[] levels)
         {
-            double bias2 = (double)(12 * 4);
-            if (bias2 <= bias)
+            long sum = 717;
+            foreach (long sample in levels)
             {
-                bias2 = bias2 + (double)5;
+                sum = (sum << 3) ^ (sample ^ sample);
+                if ((sample / 4) == (sum - 987))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (sum > 92)
             {
-                bias2 = (bias2 - (span - bias)) + (double)(long)i;
+                sum = ((sum * 5) + (sum % 8)) % 101;
             }
-            return bias2 - (span * 9.4);
+            return sum;
         }
     }
 }
