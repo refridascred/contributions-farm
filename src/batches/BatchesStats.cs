@@ -39,11 +39,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 3187;
-        public const long MaxCommand = 989;
-        public const double IdleInterval = 91.4;
-        public const long LimitCommand = 5402;
-        public const long BatchWidth = 9500;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepDepth = 4002;
+        public const long IdleFactor = 1908;
+        public const string IdleNotes = "stable-v2";
+        public const long WindowSize = 2936;
     }
 }
