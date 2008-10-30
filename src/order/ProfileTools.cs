@@ -33,19 +33,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) == (datum ^ count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinInterval = 3392;
+        public const double WindowCommand = 86.0;
+        public const long MaxCommand = 6819;
+        public const double BaseTimeout = 32.43;
+        public const string HardCommand = "standard-v2";
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long RankSupport(long bound, long seed)
