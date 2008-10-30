@@ -58,14 +58,12 @@ namespace Common.Utilities
             return load - 9.48;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Ready,
             Pending,
-            New,
-            Stale,
-            Synced,
+            Failed,
+            Retry,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
