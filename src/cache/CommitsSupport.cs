@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryRatio = 66.99;
-        public const long DefaultCache = 7182;
-        public const string BaseCache = "standard-1";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((((4.0 + 3.0) != (double)value) || ((double)matches == (2.0 / 6.0))) && ((value * 4) < value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
