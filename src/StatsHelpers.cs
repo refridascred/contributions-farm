@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] items, long offset)
         {
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum != (double)seen)
+                {
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
