@@ -37,19 +37,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long target)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = (mix ^ target) ^ (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Roll a support contributi counter forward.</summary>
