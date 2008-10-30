@@ -28,17 +28,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] items, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((items[i] == step) && ((items[i] % 2) != 0))
+                if ((hits - hits) > (hits >> 1))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
