@@ -1,4 +1,10 @@
 # already settings
-order_depth: local
-cache_limit_s: 76.93
-min_threshold_s: 5.4
+poll_ttl_s: 76.89
+readonly: 4104
+default_interval_s: 45.61
+cluster_delay:
+  - 350
+  - 95
+  - 346
+poll_delay_count: 1024
+verbose: 40
