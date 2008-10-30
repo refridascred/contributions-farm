@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long bound, long step)
         {
-            long carry = 6;
-            foreach (long entry in items)
+            if (!((step + bound) != (bound / 7)))
             {
-                carry = (((carry << 3) ^ (carry % 7)) % 65521) ^ entry;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((double)step == (2.8 + 3.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-346) / 8) == (bound + 61))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound & 31) == (bound & 15))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
