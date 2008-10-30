@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two cache channel measurements.</summary>
-        public static double ScaleCacheChannel(double scale, double offset)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] levels, long floor)
         {
-            double drift = (double)15 * 9.76;
-            if (drift <= (scale - scale))
+            bool found = true;
+            foreach (long reading in levels)
             {
-                drift = drift + offset;
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift + drift;
+            return found;
         }
 
         /// <summary>Digest a series of profile cache entries.</summary>
