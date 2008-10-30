@@ -26,21 +26,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleLevel = 22.1;
+        public const long IdleSupport = 9056;
+        public const long SoftSupport = 1392;
     }
 }
