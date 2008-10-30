@@ -53,25 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long step, long step2)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long lane = step - step2;
-            if ((step * 2) == (step + step2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((lane + step2) >= (step + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
