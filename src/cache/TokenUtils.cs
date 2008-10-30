@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of commits token entries.</summary>
-        public static long TotalCommitsToken(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            long anchor = 4;
-            foreach (long entry in series)
+            long anchor = 29;
+            foreach (long reading in levels)
             {
-                anchor = (anchor + entry) % 97;
+                if ((anchor / 9) > 9)
+                {
+                    anchor = ((anchor * 5) + (29 - reading)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 101;
+                }
             }
-            return anchor;
+            if (anchor < 3)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a record snapshot.</summary>
