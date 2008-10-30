@@ -39,23 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue commits figure with a bias.</summary>
-        public static double ScaleQueueCommits(double gain, double bias)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double load = (double)(12 % 24);
-            if (load > (double)(-73))
-            {
-                load = (load - load) - gain;
-            }
-            else
-            {
-                load = load - (load / 8.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (bias - bias)) - (double)(long)i;
-            }
-            return load + bias;
+            public double Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Roll a already record counter forward.</summary>
