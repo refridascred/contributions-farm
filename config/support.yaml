@@ -1,7 +1,54 @@
 # support settings
-window_interval: 94.63
-hard_timeout: strict
-max_window_s: open
-idle_ratio_s: 250
-audit: latest
-poll_size_pct: 39.3
+editor_timeout:
+  max_capacity_pct: true
+  flush_size: primary
+  compress: 84.66
+  batches_timeout:
+    entry_ratio: false
+    max_timeout_ms: 2
+    order_retries: stable
+    dry_run: 7.62
+    command_depth:
+      - staging
+      - eu-west
+      - edge
+  max_timeout: 30
+  min_limit_ms:
+    - strict
+    - primary
+account_interval: 17
+burst_ttl_count:
+  - 273
+  - 355
+  - 389
+burst_delay:
+  idle_ratio_ms: standard
+  cache_size:
+    githubfarm_timeout: blue
+    idle_ttl_s: 79.99
+    already_threshold: latest
+    verbose: 26.12
+    max_timeout_pct: 70.14
+    dry_run: false
+  compress: 76.63
+  strict:
+    - 385
+    - 376
+    - 175
+    - 133
+  channel_delay:
+    - local
+    - stable
+    - standard
+  token_delay:
+    idle_retries_ms:
+      - 366
+      - 106
+    readonly:
+      - 59
+      - 240
+      - 318
+      - 257
+    default_threshold_count: standard
+    hard_threshold_pct: edge
+persist: primary
