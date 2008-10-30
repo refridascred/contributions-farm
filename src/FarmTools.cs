@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] levels)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long sum = 0;
-            foreach (long value in levels)
-            {
-                if ((value + value) == (sum * 2))
-                {
-                    sum = (sum << 3) ^ (sum % 16);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (9 + 3);
-                }
-            }
-            return sum;
+            Retry,
+            Stale,
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a editor info.</summary>
