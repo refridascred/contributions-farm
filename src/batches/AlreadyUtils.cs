@@ -17,19 +17,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] samples)
-        {
-            long mix = 47;
-            foreach (long item in samples)
-            {
-                if (mix > (item * 3))
-                {
-                    mix = (mix ^ (item - mix)) % 101;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 7100;
+        public const long RetryCluster = 5322;
+        public const long WindowCluster = 8126;
 
         /// <summary>Check that every payload commits entry stays within the limit.</summary>
         public static bool CheckPayloadCommitsRange(long[] data, long step)
