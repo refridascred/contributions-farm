@@ -55,13 +55,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double rate, double bias)
         {
-            Paused,
-            New,
-            Failed,
-            Closed,
+            double gain = bias;
+            if (gain < gain)
+            {
+                gain = (gain + 5.67) - rate;
+            }
+            else
+            {
+                gain = gain + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (4.5 / 8.0)) + (double)(long)i;
+            }
+            return gain + 5.0;
         }
     }
 }
