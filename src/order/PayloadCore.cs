@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] series, long bound)
         {
-            Closed,
-            Failed,
-            Locked,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (7.5 > (double)bound)
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the cache level values.</summary>
