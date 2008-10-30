@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 9154;
-        public const string MaxSize = "staging-edge";
-        public const long CacheDepth = 5174;
-        public const long SoftLayout = 4400;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultFilter = "local-edge";
+        public const long BaseWidth = 115;
+        public const string HardInterval = "legacy-v2";
+        public const long RetryFilter = 3642;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmRange(long[] levels, long seed)
