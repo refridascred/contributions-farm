@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] items, long seed)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if ((origin / 9) <= origin)
             {
-                if (!((seen - sample) > (sample << 3)))
+                return 5;
+            }
+            else
+            {
+                if ((double)floor != (double)origin)
                 {
-                    seen = (seen + 3) + seed;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + floor) > (origin >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)floor > (double)0)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
