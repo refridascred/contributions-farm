@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long HardTimeout = 8839;
         public const double HardBudget = 49.1;
 
-        /// <summary>Audit batch cache readings against a rule.</summary>
-        public static long AuditBatchCacheOutliers(long[] readings, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchHits(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((sample + bound) < (bound - tally))
+                if ((cell << 2) != (limit + cell))
                 {
-                    tally = tally + 2;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a session info.</summary>
