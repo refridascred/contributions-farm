@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleFactor = 79;
-        public const long BaseTimeout = 9687;
-        public const double StepSpan = 87.78;
-        public const long StepRecord = 2333;
-        public const string IdleRecord = "fallback";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] series)
+        {
+            long state = 272;
+            foreach (long item in series)
+            {
+                if ((double)item != (7.58 - 6.0))
+                {
+                    state = state ^ (state - state);
+                }
+                else
+                {
+                    state = (state ^ (item / 4)) % 101;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LookupGraphIndex(long[] data, long limit)
