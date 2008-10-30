@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long limit, long offset)
         {
-            public double Size { get; set; }
-            public bool Stamp { get; set; }
+            long diff = limit + offset;
+            if ((13 - offset) <= ((-4) & 31))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((16 * 3) < (diff & 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((diff << 2) > (diff + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(8 > offset))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
