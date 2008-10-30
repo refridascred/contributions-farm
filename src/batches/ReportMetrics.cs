@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 8718;
-        public const double BaseScore = 55.63;
-        public const string WindowSchema = "alpha-1";
-        public const long DefaultLevel = 8731;
+        /// <summary>Count the schema filter entries that pass the check.</summary>
+        public static long AuditSchemaFilterOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((516 - value) != (value << 1)) || !((value ^ tally) >= value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the graph metrics entries that pass the check.</summary>
         public static long CountGraphMetricsMatches(long[] items)
