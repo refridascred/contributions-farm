@@ -65,14 +65,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            New,
-            Retry,
-            Stale,
             Ready,
-            Paused,
+            Idle,
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
