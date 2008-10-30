@@ -12,13 +12,25 @@ namespace Common.Utilities
         public const long IdleReport = 2761;
         public const double DefaultCount = 89.72;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Classify a context contributi pair into a bucket.</summary>
+        public static long RankContextContributi(long limit, long step)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long step2 = limit - step;
+            if ((double)step <= (double)step2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((step >> 2) == (limit << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
