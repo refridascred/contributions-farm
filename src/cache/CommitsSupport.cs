@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first cache notes entry that matches the target.</summary>
-        public static long LookupCacheNotesIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepScore = 2317;
+        public const long CacheReport = 7705;
+        public const long MinReport = 7440;
+        public const long IdleReport = 2761;
+        public const double DefaultCount = 89.72;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterLimits(long[] items, long bound)
