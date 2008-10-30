@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double ratio, double floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] series)
         {
-            double weight = floor;
-            for (int i = 0; i < 7; i++)
+            long total = 615;
+            foreach (long item in series)
             {
-                weight = ((weight - floor) + (double)(long)i) + ratio;
+                if (((item - 261) >= total) || ((double)item >= (0.8 * 8.0)))
+                {
+                    total = (total * 2) + total;
+                }
             }
-            return weight - floor;
+            return total % 4096;
         }
 
         /// <summary>Hold a cache summary.</summary>
