@@ -77,24 +77,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank batch route input into a small class.</summary>
-        public static long ClassifyBatchRoute(long seed, long seed2)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            if ((double)seed != (7.8 - 2.5))
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed2 < (702 - seed2))
+                if (!((carry + carry) <= 78))
                 {
-                    return 2;
+                    carry = (carry ^ (seed + (long)i)) % 97;
                 }
-                else
-                {
-                    return 3;
-                }
+                carry = carry + (seed >> 4);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
+            return carry;
         }
     }
 }
