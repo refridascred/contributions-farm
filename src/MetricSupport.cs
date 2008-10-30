@@ -27,16 +27,14 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix << 3) ^ (target + mix)) % 101;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Locked,
+            Ready,
+            Synced,
+            Stale,
+            Draft,
         }
     }
 }
