@@ -1,32 +1,6 @@
 # support settings
-batch_ttl_count: standard
-readonly:
-  githubfarm_depth:
-    - primary
-    - legacy
-    - legacy
-    - cached
-  audit: 55
-  cache_limit: green
-  base_interval_ms: latest
-  hard_retries:
-    soft_threshold: 9119
-    format_window: 100
-    idle_depth: staging
-  strict:
-    verbose: 24.45
-    soft_threshold: 500
-    audit:
-      - 395
-      - 89
-    burst_threshold: false
-    burst_limit: 100
-counter_capacity:
-  - 146
-  - 325
-  - 425
-warm_ratio_s:
-  - 308
-  - 257
-  - 280
-  - 307
+sync_delay_count: standard
+filter_limit: latest
+sync_size_count: false
+persist: 2396
+base_timeout_count: true
