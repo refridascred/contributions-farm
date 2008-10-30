@@ -20,23 +20,21 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double bias, double offset)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            double gain = offset;
-            if (gain < (double)9)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + 14.0;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain + (bias - bias);
+            return count;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
