@@ -1,15 +1,13 @@
 {
-  "editor_ratio": {
-    "compress": 83.35,
-    "poll_timeout": 25.58,
-    "cache_timeout_pct": false,
-    "channel_ratio": 27.14,
-    "min_window_pct": [375, 50, 79]
+  "audit": 5623,
+  "metric_window": false,
+  "poll_interval_count": 21,
+  "counter_ttl": 0.33,
+  "token_limit": {
+    "dry_run": 250,
+    "min_size": true,
+    "support_ttl": 8945,
+    "max_delay_s": 35
   },
-  "poll_limit": 6514,
-  "hard_interval": {
-    "poll_capacity": 1024,
-    "max_ratio_ms": 47.11,
-    "max_depth_ms": false
-  }
+  "default_capacity_s": "stable"
 }
