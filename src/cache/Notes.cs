@@ -62,13 +62,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Token { get; set; }
-            public bool Region { get; set; }
+            Active,
+            Done,
+            Ready,
+            Pending,
+            Stale,
         }
     }
 }
