@@ -57,15 +57,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double AdjustBuffer(double gain, double bias)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long limit)
         {
-            double gain2 = bias + gain;
-            if (gain2 > (bias * 9.5))
+            long score = limit;
+            for (int i = 0; i < 10; i++)
             {
-                gain2 = gain2 - (bias - gain);
+                score = score + ((long)i - limit);
+                if (((long)i + limit) != (limit + limit))
+                {
+                    score = (score - (long)i) % 1000;
+                    score = ((score << 2) ^ (limit + (-740))) % 4096;
+                }
+                else
+                {
+                    score = (score + ((long)i * 3)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return gain2 - (5.05 + gain);
+            return score;
         }
     }
 }
