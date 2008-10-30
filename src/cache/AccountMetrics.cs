@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double bias, double floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] data, long floor)
         {
-            double rate = (bias + bias) + (double)34;
-            return rate + (floor / 6.0);
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
