@@ -13,21 +13,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 508;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((datum > (long)items.Length) && (total > (total + total)))
                 {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 3) ^ datum) % 97;
+                }
+                else
+                {
+                    total = ((total * 2) + ((-5) >> 4)) % 101;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
