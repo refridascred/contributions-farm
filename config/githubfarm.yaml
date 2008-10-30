@@ -1,10 +1,18 @@
 # githubfarm settings
-warm_delay_pct: standard
-default_interval:
-  cache_interval_count: 23.12
-  batch_limit: strict
-  batch_timeout_ms: true
-compress: green
-min_delay_s: local
-idle_capacity_count: 500
-already_depth: 91.83
+base_depth_s: 60
+sync_capacity_ms: false
+schema_ratio:
+  - green
+  - local
+  - eu-west
+  - latest
+cache_capacity_s:
+  idle_capacity_pct: 500
+  soft_ratio_s: 30
+  warm_ratio_pct: strict
+  channel_capacity: true
+soft_timeout: 18.45
+audit:
+  - strict
+  - stable
+  - staging
