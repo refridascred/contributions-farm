@@ -5,22 +5,36 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a entry counter value against two limits.</summary>
-        public static long BucketEntryCounter(long step, long offset)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long floor, long floor2)
         {
-            if ((offset + offset) >= (offset ^ step))
+            if ((double)floor >= 2.25)
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((offset * 2) >= (-8))
+                if ((floor2 ^ 59) >= ((-74) * 3))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 0;
+                    if ((19 ^ floor) > (floor / 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((floor ^ floor2) > (floor + 57)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
