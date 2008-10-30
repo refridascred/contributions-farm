@@ -53,18 +53,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the token notes entries that pass the check.</summary>
-        public static long CountTokenNotesOutliers(long[] values)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((15.0 - 8.1) != (double)tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 3) ^ sample;
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
