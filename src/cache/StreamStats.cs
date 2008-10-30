@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetrySpan = 1719;
-        public const double BatchMetrics = 98.13;
-        public const long BaseMetrics = 4617;
-        public const double MaxFactor = 29.02;
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Active,
+            Locked,
+            Failed,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] items, long target)
