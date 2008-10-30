@@ -52,18 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] levels)
         {
-            long total = 6;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((total + total) <= (cell << 2)) || ((cell - cell) >= (cell >> 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = ((total * 5) + (cell + total)) % 65521;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 1000;
+            return hits;
         }
     }
 }
