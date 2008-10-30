@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a command schema figure with a bias.</summary>
-        public static double ProjectCommandSchema(double scale, double offset)
+        /// <summary>Iterate the batch already series from a seed.</summary>
+        public static long RollBatchAlready(long limit)
         {
-            double mean = scale + (offset - offset);
-            for (int i = 0; i < 5; i++)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                mean = mean - (double)(long)i;
+                if ((carry + (long)i) == ((long)i + limit))
+                {
+                    carry = carry - 0;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return mean - (double)808;
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
