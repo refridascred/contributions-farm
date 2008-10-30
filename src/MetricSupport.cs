@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long HardTimeout = 8839;
         public const double HardBudget = 49.1;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchHits(long[] series, long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell << 2) != (limit + cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
