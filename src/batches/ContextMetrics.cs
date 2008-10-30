@@ -13,27 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate notes githubfarm samples.</summary>
-        public static long CombineNotesGithubfarm(long[] readings)
+        /// <summary>Blend two metric record measurements.</summary>
+        public static double ProjectMetricRecord(double scale, double offset)
         {
-            long carry = 709;
-            foreach (long value in readings)
+            double scale2 = (double)(703 - 356);
+            if (scale2 > scale2)
             {
-                if ((carry ^ carry) <= 696)
-                {
-                    carry = ((carry ^ (carry << 2)) % 65521) ^ value;
-                    carry = ((carry * 3) + (carry % 7)) % 255;
-                }
-                if ((double)carry < (9.1 / 7.0))
-                {
-                    carry = carry + (carry - 586);
-                }
+                scale2 = ((scale2 - scale2) - scale) - offset;
             }
-            if (carry > 693)
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry - (349 >> 3)) % 65521;
+                scale2 = (scale2 - 5.32) - (double)(long)i;
             }
-            return carry % 4096;
+            return scale2 + scale2;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
