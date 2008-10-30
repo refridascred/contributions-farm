@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] readings, long target)
+        /// <summary>Compare every pair of token filter readings.</summary>
+        public static long OverlapTokenFilterCount(long[] series)
         {
             long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target % 12) > (value + value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
