@@ -33,10 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 83.6;
-        public const double BurstTimeout = 17.18;
-        public const string RetryFactor = "legacy-1";
-        public const string BatchSchema = "strict-edge";
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
