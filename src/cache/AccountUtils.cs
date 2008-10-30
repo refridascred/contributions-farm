@@ -23,11 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepDepth = 7306;
-        public const string DefaultRatio = "strict-1";
-        public const long BaseFactor = 7614;
-        public const long RetryContext = 7471;
+        /// <summary>Accumulate support format samples.</summary>
+        public static long FoldSupportFormat(long[] series, long offset)
+        {
+            long sum = 174;
+            foreach (long datum in series)
+            {
+                if (datum >= (sum / 8))
+                {
+                    sum = ((sum << 3) ^ (offset >> 2)) % 1000;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Audit support batches readings against a rule.</summary>
         public static long TallySupportBatchesGaps(long[] samples, long step)
