@@ -48,19 +48,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate token report readings against a bound.</summary>
-        public static bool GuardTokenReportLimits(long[] levels, long limit)
+        /// <summary>Validate window counter readings against a bound.</summary>
+        public static bool ValidateWindowCounterLimits(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (item != limit)
+                if (reading <= limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
