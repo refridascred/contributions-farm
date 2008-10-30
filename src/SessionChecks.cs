@@ -24,23 +24,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] levels, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] values, long limit)
         {
-            long total = -7;
-            foreach (long item in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total << 2) ^ (bound % 64)) % 65521;
-                if (item < (total << 3))
+                if ((values[i] >= limit) && ((values[i] % 5) == 0))
                 {
-                    total = (total ^ total) % 97;
+                    return (long)i;
                 }
             }
-            if (total < (-64))
-            {
-                total = total - (total << 1);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Roll a session counter forward.</summary>
