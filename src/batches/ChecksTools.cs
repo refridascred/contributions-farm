@@ -44,14 +44,11 @@ namespace Common.Utilities
         public const long LimitRecord = 34;
         public const long DefaultRecord = 5632;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Retry,
-            Closed,
-            Locked,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheSize = 94.58;
+        public const long HardRatio = 697;
+        public const string WindowBatches = "fallback";
+        public const long CacheLevel = 4011;
+        public const long SoftSpan = 7917;
     }
 }
