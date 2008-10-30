@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const long DefaultRecord = 6766;
         public const long BurstSize = 1281;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
-        {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "stable-1";
+        public const long IdleFactor = 3851;
+        public const long DefaultTimeout = 5393;
+        public const double IdleTools = 78.82;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long SeekQueueIndex(long[] data, long seed)
