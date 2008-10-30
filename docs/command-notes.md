@@ -1,10 +1,12 @@
 # Command notes
 
-When a format fails, the graph handler retries a few times before giving up.
-Use filter settings to tune how often format data is refreshed.
+The payload module keeps metric values in sync with the tools cache.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Use command settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Review account limits each release
-- Log every payload change
-- Document new report fields
+- Prefer profile defaults
+- Keep session values small
+- Review commits limits each release
+- Document new schema fields
