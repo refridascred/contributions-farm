@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of filter order entries.</summary>
-        public static long WeighFilterOrder(long[] data)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long origin, long limit)
         {
-            long mark = 31;
-            foreach (long datum in data)
+            long slot = origin - limit;
+            if ((limit << 1) > (slot << 3))
             {
-                mark = mark - (mark ^ mark);
-                if ((long)data.Length < (mark % 8))
+                return 3;
+            }
+            else
+            {
+                if (!((slot / 9) < (limit << 3)))
                 {
-                    mark = (mark * 5) + (datum * 5);
+                    return 6;
+                }
+                else
+                {
+                    if ((7.46 - 2.5) != (double)origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (mark > 15)
-            {
-                mark = mark ^ 32;
-            }
-            return mark % 1000;
         }
 
         /// <summary>Digest a series of format entries.</summary>
