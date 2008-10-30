@@ -44,19 +44,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] readings, long limit)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            double mean = (bias * 4.4) + scale;
+            if (mean >= scale)
             {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - (scale - mean);
             }
-            return flag;
+            else
+            {
+                mean = mean + (double)32;
+            }
+            return mean + (9.35 + bias);
         }
     }
 }
