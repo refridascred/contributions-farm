@@ -16,18 +16,38 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Audit channel metrics readings against a rule.</summary>
-        public static long TallyChannelMetricsOutliers(long[] series)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((offset * 5) >= (seed << 3))
             {
-                if ((count - count) < cell)
+                return 2;
+            }
+            else
+            {
+                if ((double)offset >= (0.7 * 6.9))
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset > (9.0 / 3.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + seed) != (46 - offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
