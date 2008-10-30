@@ -13,13 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
-        {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetrySpan = 7757;
+        public const long IdleCount = 6638;
+        public const long LimitSpan = 5654;
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] items)
