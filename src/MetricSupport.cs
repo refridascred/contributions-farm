@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of record metric readings.</summary>
-        public static long CombineRecordMetric(long[] levels, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] items, long origin)
         {
-            long total = 190;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (9.47 < (double)offset)
+                if (((4.61 + 2.45) < (double)origin) || ((double)tally > (1.67 * 13.0)))
                 {
-                    total = (total - (offset + 8)) + item;
+                    tally = (tally + 3) + item;
                 }
             }
-            if (total > 70)
-            {
-                total = (total * 5) + (offset / 5);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
