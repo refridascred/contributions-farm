@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long result = 310;
-            foreach (long datum in samples)
-            {
-                if ((7.85 / 9.0) != (double)datum)
-                {
-                    result = ((result << 3) ^ datum) % 4096;
-                }
-            }
-            return result;
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the order class values.</summary>
