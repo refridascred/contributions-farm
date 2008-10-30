@@ -39,25 +39,22 @@ namespace Common.Utilities
             return gain + (bias - bias);
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long bound, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] data, long limit)
         {
-            long prev = bound - seed;
-            if (!((prev / 7) > 834))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.02 / 8.0) == (double)prev)
+                if (656 >= (tally << 1))
                 {
-                    return 8;
+                    tally = ((tally + 1) + reading) - limit;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
