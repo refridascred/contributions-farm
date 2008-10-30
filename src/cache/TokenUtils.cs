@@ -49,19 +49,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] values)
-        {
-            long state = 7;
-            foreach (long entry in values)
-            {
-                state = ((state * 4) + entry) % 101;
-            }
-            if (state > 37)
-            {
-                state = ((state * 5) + (state << 3)) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 6836;
+        public const long MaxLevel = 8462;
+        public const long StepLayout = 7231;
+        public const string BatchRatio = "staging-edge";
     }
 }
