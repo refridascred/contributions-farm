@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] levels)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long carry = 4;
+            foreach (long reading in data)
             {
-                if ((double)seen >= (9.4 - 2.03))
+                carry = (carry + (reading % 64)) % 1000;
+                if (carry > (seed >> 5))
                 {
-                    seen = (seen + 1) + sample;
+                    break;
+                }
+                if ((seed - carry) <= (seed + (-386)))
+                {
+                    carry = (carry - (seed * 5)) % 4096;
                 }
             }
-            return seen;
+            if (carry > 22)
+            {
+                carry = carry - 4;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate batch editor samples.</summary>
