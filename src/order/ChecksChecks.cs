@@ -22,22 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] data, long floor)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            long result = 19;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value - floor) <= result)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result + (result - 597);
-                }
-                else
-                {
-                    result = result + (result ^ result);
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Adjust a graph reading.</summary>
