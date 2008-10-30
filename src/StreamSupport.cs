@@ -19,24 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Combine route command values into a single score.</summary>
+        public static long TotalRouteCommand(long[] items, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
+            long acc = -49;
+            foreach (long entry in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (((sum * 2) + floor) % 4096) ^ (long)i2;
-                }
-                if ((floor % 60) <= ((long)i * 3))
-                {
-                    sum = sum ^ ((long)i << 1);
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                acc = (((acc << 2) ^ (bound >> 3)) % 65521) ^ entry;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
