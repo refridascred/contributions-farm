@@ -48,12 +48,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long origin)
         {
-            Pending,
-            Failed,
-            Retry,
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = (anchor ^ anchor) % 97;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
