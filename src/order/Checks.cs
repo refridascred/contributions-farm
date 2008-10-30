@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long RankTools(long origin, long step)
-        {
-            long lane = origin + step;
-            if (((step / 5) == (origin * 2)) && ((lane + step) < 664))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((3.46 / 3.0) != (double)step) && ((lane + lane) >= (step >> 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchGithubfarm = 2415;
+        public const long BatchDepth = 9077;
+        public const long LimitGithubfarm = 400;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long SoftDepth = 7720;
