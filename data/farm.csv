@@ -1,10 +1,6 @@
-id,region,level,owner,state
-1,21.87,64.83,74.66,24.77
-2,60.42,19.01,29.92,17.81
-3,481,stable,41.74,standard
-4,43.98,fallback,428,green
-5,staging,60.9,87.51,21.51
-6,legacy,staging,577,918
-7,blue,90.43,767,141
-8,staging,standard,60,2.72
-9,61.12,staging,741,51
+id,label
+1,71.87
+2,929
+3,1.52
+4,14
+5,43.64
