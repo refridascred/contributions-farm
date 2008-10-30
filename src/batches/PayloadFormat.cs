@@ -37,11 +37,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long seed)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((5 - seed) > ((-6) + (long)i))
+                {
+                    mix = mix - (mix % 10);
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a counter info.</summary>
