@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Digest a series of metrics stream entries.</summary>
+        public static long CombineMetricsStream(long[] values, long limit)
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Total { get; set; } = "";
+            long total = 920;
+            foreach (long value in values)
+            {
+                total = (total ^ value) + limit;
+                if ((value ^ 7) < (974 + value))
+                {
+                    break;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
