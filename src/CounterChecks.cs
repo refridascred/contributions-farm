@@ -58,24 +58,31 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Classify a queue notes pair into a bucket.</summary>
+        public static long GradeQueueNotes(long offset, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 21; i++)
+            if ((step > (offset / 3)) && ((offset % 10) == (step - step)))
             {
-                if ((mix + seed) <= (seed & 127))
+                return 6;
+            }
+            else
+            {
+                if ((offset / 9) == (offset / 7))
                 {
-                    mix = mix - (seed >> 1);
-                    continue;
+                    return 4;
                 }
                 else
                 {
-                    mix = (mix - ((long)i << 1)) % 65521;
+                    if (!(9 > (offset - step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
