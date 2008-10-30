@@ -1,25 +1,6 @@
 # support settings
-verbose: blue
-githubfarm_limit:
-  flush_interval_s: latest
-  strict:
-    poll_ttl_pct:
-      - 172
-      - 142
-      - 6
-      - 162
-    default_capacity_count:
-      - 97
-      - 459
-      - 174
-    hard_interval: 95
-    persist: eu-west
-  flush_threshold_count: 6054
-  enabled: 97
-batch_ttl_ms:
-  - fallback
-  - standard
-editor_capacity: 77
-persist:
-  - fallback
-  - open
+githubfarm_retries: 6
+verbose: 60
+cache_size: 1024
+batch_depth_pct: false
+default_timeout_count: 128
