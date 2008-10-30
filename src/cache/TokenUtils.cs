@@ -29,11 +29,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public bool Limit { get; set; }
-            public double Region { get; set; }
+            Done,
+            Draft,
+            Locked,
+            Closed,
+            Queued,
         }
     }
 }
