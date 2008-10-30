@@ -1,5 +1,6 @@
 {
-  "retry_depth_ms": false,
-  "enabled": 55,
-  "hard_depth_s": 18
+  "hard_threshold_ms": "edge",
+  "min_depth_s": ["staging", "blue"],
+  "idle_ttl": [115, 483],
+  "warm_interval": "staging"
 }
