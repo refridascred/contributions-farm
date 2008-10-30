@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftScore = 9390;
-        public const double CacheScore = 30.06;
-        public const double MaxChecks = 37.42;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 5597;
+        public const long DefaultPayload = 2445;
+        public const string MinWidth = "standard-v2";
+        public const long MaxInterval = 9321;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long seed, long step)
