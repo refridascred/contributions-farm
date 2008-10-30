@@ -22,17 +22,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a notes schema reading by value.</summary>
-        public static long LocateNotesSchemaIndex(long[] values, long bound)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Retry,
         }
     }
 }
