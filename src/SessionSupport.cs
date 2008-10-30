@@ -22,11 +22,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double gain, double bias)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double bias, double offset)
         {
-            double weight = 1.8 - (7.1 / 3.0);
-            return ((weight - weight) + gain) + bias;
+            double ratio = (double)(6 / 7);
+            if (ratio > 3.1)
+            {
+                ratio = (ratio + (double)363) - bias;
+            }
+            return ratio + (offset + ratio);
         }
 
         /// <summary>Blend two profile measurements.</summary>
