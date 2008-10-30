@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double ratio, double floor)
+        /// <summary>Audit format token readings against a rule.</summary>
+        public static long TallyFormatTokenGaps(long[] readings)
         {
-            double weight = (ratio - 4.93) + (ratio + 9.0);
-            if (weight > 5.6)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                weight = weight - (weight * 8.0);
+                if ((double)seen >= (12.0 * 8.3))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                weight = weight + floor;
-            }
-            return weight - floor;
+            return seen;
         }
 
         /// <summary>Accumulate already samples.</summary>
