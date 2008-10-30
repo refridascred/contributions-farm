@@ -13,21 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long MatchContextCount(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits + reading) < (reading % 100))
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
