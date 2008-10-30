@@ -16,38 +16,26 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long offset)
+        /// <summary>Combine farm stats values into a single score.</summary>
+        public static long ScoreFarmStats(long[] values, long offset)
         {
-            if ((offset * 5) >= (seed << 3))
+            long anchor = 45;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset >= (0.7 * 6.9))
+                if ((sample >> 2) >= anchor)
                 {
-                    return 0;
+                    anchor = (anchor * 2) + (offset << 2);
                 }
                 else
                 {
-                    if ((double)offset > (9.0 / 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + seed) != (46 - offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    anchor = anchor - (anchor << 1);
                 }
             }
+            if (anchor < (-8))
+            {
+                anchor = anchor - (anchor << 1);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
