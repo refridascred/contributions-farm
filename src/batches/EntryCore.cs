@@ -27,35 +27,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] items, long origin)
         {
-            long mix = -5;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-18) + value) <= step)
+                if (items[i] <= origin)
                 {
-                    mix = (mix ^ (mix / 8)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + mix) % 255;
-                    mix = mix ^ value;
-                }
-                if ((step % 3) < (step * 4))
-                {
-                    mix = mix - 9;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (step - 502)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mix > 1)
-            {
-                mix = mix + (step * 3);
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
