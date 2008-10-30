@@ -10,31 +10,18 @@ namespace Common.Utilities
         public const long LimitScore = 1385;
         public const double SoftReport = 66.58;
 
-        /// <summary>Classify a layout command pair into a bucket.</summary>
-        public static long RankLayoutCommand(long offset, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] readings)
         {
-            if (offset >= (offset - 6))
+            long tally = 0;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((7.0 - 5.16) == (double)offset) || ((double)offset < (12.0 - 5.0)))
+                if ((value >> 3) == ((long)readings.Length ^ value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed - offset) < (offset + 6)) || ((double)offset != (2.0 + 19.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
