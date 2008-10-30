@@ -20,18 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit buffer checks readings against a rule.</summary>
-        public static long AuditBufferChecksOutliers(long[] values, long step)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double gain = offset;
+            if (gain < (double)9)
             {
-                if ((step + seen) != (seen ^ 1))
-                {
-                    seen = (seen + 1) ^ item;
-                }
+                gain = gain + 14.0;
             }
-            return seen;
+            else
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + (bias - bias);
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
