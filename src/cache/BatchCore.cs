@@ -36,15 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] readings)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            long mark = 90;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark * 2) + (reading - reading);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the payload phase values.</summary>
