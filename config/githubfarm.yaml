@@ -1,7 +1,11 @@
 # githubfarm settings
-persist: primary
-base_depth_pct: 69.0
-batch_retries: green
-dry_run: 2623
-githubfarm_timeout: open
-burst_capacity_s: 9407
+enabled: 9.43
+cluster_capacity: true
+audit: cached
+token_capacity: 46.46
+report_size:
+  warm_retries_s: true
+  filter_delay: staging
+  strict: fallback
+  cache_limit_count: staging
+  min_threshold: 92.9
