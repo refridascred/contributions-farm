@@ -56,39 +56,18 @@ namespace Common.Utilities
             return drift + (double)17;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long limit, long step)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] samples, long target)
         {
-            long lane = limit ^ step;
-            if (((limit / 6) >= (limit - 66)) && (step < (lane & 127)))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (((lane + step) <= (limit % 3)) || ((double)lane >= (10.0 / 7.0)))
+                if ((item - seen) > target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)lane == (18.0 + 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (limit <= (limit >> 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
