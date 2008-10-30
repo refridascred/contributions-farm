@@ -45,13 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long target)
         {
-            Draft,
-            Locked,
-            Queued,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
