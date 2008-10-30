@@ -36,10 +36,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 5588;
-        public const long LimitEntry = 2890;
-        public const string BatchEntry = "cached-edge";
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long bound, long limit)
+        {
+            long lane = bound - limit;
+            if ((bound + lane) >= (lane >> 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((lane / 5) == (limit ^ bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((lane / 2) >= (5 << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((5.6 - 0.07) > (double)lane)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
