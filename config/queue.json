@@ -1,5 +1,5 @@
 {
-  "warm_retries_s": [388, 288],
-  "min_delay": 28,
-  "min_ttl_ms": ["cached", "primary", "green"]
+  "strict": true,
+  "batch_ttl_ms": false,
+  "default_threshold": 41
 }
