@@ -29,9 +29,18 @@ namespace Common.Utilities
             return load - bias2;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BurstEditor = 73.46;
-        public const double StepWidth = 80.86;
-        public const long HardEditor = 7037;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((26 % 16) > ((long)items.Length >> 1))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
     }
 }
