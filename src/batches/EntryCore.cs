@@ -53,22 +53,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] levels)
+        /// <summary>Combine batches order values into a single score.</summary>
+        public static long ScoreBatchesOrder(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mix = 205;
+            foreach (long entry in readings)
             {
-                if ((hits - hits) > (hits >> 1))
+                if ((mix ^ entry) <= mix)
                 {
-                    hits = (hits + 3) - cell;
+                    mix = ((mix << 2) ^ (entry % 60)) % 1000;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = ((mix * 3) + (entry * 4)) % 1000;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
