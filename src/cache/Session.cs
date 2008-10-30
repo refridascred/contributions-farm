@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 6702;
-        public const long RetryWidth = 5809;
-        public const string StepSize = "legacy-v2";
-        public const long BurstRecord = 2393;
-        public const string MinFactor = "latest-edge";
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
+        {
+            Failed,
+            Ready,
+            Done,
+        }
 
         /// <summary>Hold a profile snapshot.</summary>
         public sealed class ProfileSnapshot
