@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mix = 2;
+            foreach (long reading in samples)
             {
-                if (count >= sample)
-                {
-                    count = count + 3;
-                }
+                mix = (mix ^ (reading ^ 142)) % 255;
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
