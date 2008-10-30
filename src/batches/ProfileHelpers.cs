@@ -20,13 +20,11 @@ namespace Common.Utilities
             return rate + (scale + rate);
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the context level values.</summary>
