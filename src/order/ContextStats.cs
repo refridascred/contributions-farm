@@ -50,11 +50,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 9603;
-        public const long BaseCluster = 5121;
-        public const long StepLevel = 985;
-        public const long DefaultCluster = 6226;
-        public const long SoftCount = 4526;
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double ratio, double span)
+        {
+            double gain = (span / 8.0) + ratio;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain + 19.0;
+        }
     }
 }
