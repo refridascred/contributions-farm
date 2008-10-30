@@ -52,19 +52,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] readings, long target)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long seed)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long sum = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
