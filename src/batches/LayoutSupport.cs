@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Measure how many notes stats samples are out of range.</summary>
+        public static long MeasureNotesStatsHits(long[] levels)
         {
-            long carry = 691;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                carry = ((carry - carry) % 97) ^ datum;
-                carry = carry - (carry & 7);
+                if ((double)cell > (double)matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Describe the command kind values.</summary>
