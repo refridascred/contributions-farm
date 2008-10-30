@@ -26,11 +26,25 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Grade a cluster payload value against two limits.</summary>
+        public static long GradeClusterPayload(long bound, long step)
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long cur = bound - step;
+            if (91 >= (cur + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((6 >> 1) <= cur)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
