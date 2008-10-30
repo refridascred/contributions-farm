@@ -1,21 +1,10 @@
 {
-  "warm_interval_count": {
-    "soft_window": {
-      "flush_depth_pct": "open",
-      "base_size_ms": [479, 172, 295],
-      "default_interval": 62,
-      "sync_retries_count": 9.48
-    },
-    "compress": 5105,
-    "tools_ttl": {
-      "stream_ttl": 250,
-      "graph_capacity": 77.87,
-      "batches_timeout": [447, 252, 307, 391],
-      "compress": "latest",
-      "metric_limit": "stable",
-      "context_limit": 3041
-    }
+  "compress": {
+    "retry_retries": 83.49,
+    "hard_timeout_pct": "fallback",
+    "burst_depth_s": "standard"
   },
-  "cache_timeout_s": 1920,
-  "flush_limit_s": true
+  "metrics_capacity": 72.2,
+  "graph_window": 500,
+  "retry_window": 7455
 }
