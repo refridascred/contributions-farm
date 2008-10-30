@@ -23,10 +23,19 @@ namespace Common.Utilities
             return gain - (double)542;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 6574;
-        public const long RetryBudget = 9112;
-        public const long HardChecks = 1140;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((8.2 >= (double)matches) && ((cell - cell) == (matches >> 4)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long IterateSupport(long seed)
