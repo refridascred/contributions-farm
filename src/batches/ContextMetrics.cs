@@ -13,18 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] readings)
+        /// <summary>Scale a window stream figure with a bias.</summary>
+        public static double ProjectWindowStream(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double weight2 = floor;
+            if (weight2 >= weight)
             {
-                if ((value >> 3) == ((long)readings.Length ^ value))
-                {
-                    tally = tally + 3;
-                }
+                weight2 = weight2 + (double)445;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - weight2) - (double)(long)i;
+            }
+            return weight2 + (weight2 + floor);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
