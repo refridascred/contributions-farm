@@ -19,19 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample / 7) >= 20) && ((double)sample != (1.8 * 11.0)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepTimeout = "stable-v2";
+        public const long HardToken = 5162;
+        public const long CacheToken = 8476;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandLimits(long[] values, long origin)
