@@ -1,31 +1,5 @@
 # support settings
-max_window_s: 48.78
-readonly:
-  - cached
-  - standard
-  - legacy
-batches_delay:
-  notes_timeout:
-    verbose: 60
-    idle_interval_ms: local
-    stats_delay: 250
-    poll_limit_count: 500
-  poll_retries_count:
-    - primary
-    - primary
-  readonly: 7035
-  poll_interval: 8032
-notes_timeout: local
-burst_interval_s: false
-batch_depth_s:
-  dry_run: false
-  channel_capacity:
-    command_window: 60
-    sync_depth: 41
-    audit: cached
-    burst_ratio: 81
-    schema_threshold: 9829
-  payload_delay:
-    - 178
-    - 212
-  verbose: 9991
+compress: 83.56
+dry_run: 6130
+strict: 6578
+idle_interval: false
