@@ -42,38 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long step, long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] levels, long seed)
         {
-            if (offset <= (offset / 9))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.84 - 5.58) != (double)step)
+                if ((double)412 == (double)tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >> 2) > (offset - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (offset > step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = ((tally + 3) + datum) - seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
