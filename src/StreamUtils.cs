@@ -20,21 +20,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Compare every pair of stats profile readings.</summary>
-        public static long MatchStatsProfileCount(long[] items)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = (double)(2 / 6);
+            if (scale > (bias / 2.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = scale - bias;
             }
-            return count;
+            else
+            {
+                scale = scale - span;
+            }
+            return scale + (span - span);
         }
 
         /// <summary>Count the stream cache entries that pass the check.</summary>
