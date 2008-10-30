@@ -22,22 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of account command entries.</summary>
-        public static long TallyAccountCommand(long[] values)
+        /// <summary>Audit layout account readings against a rule.</summary>
+        public static long CountLayoutAccountMatches(long[] values, long limit)
         {
-            long sum = 421;
+            long count = 0;
             foreach (long entry in values)
             {
-                if ((entry % 24) >= (5 + sum))
+                if (((44 + 1) != ((-8) - limit)) && ((entry & 63) == (entry - 18)))
                 {
-                    sum = (sum * 5) + (sum / 4);
+                    count = count + 1;
                 }
             }
-            if (sum < 91)
-            {
-                sum = (sum ^ (906 ^ sum)) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Adjust a graph reading.</summary>
