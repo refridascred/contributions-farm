@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long result = 19;
+            foreach (long value in data)
             {
-                if ((4.3 / 5.0) == (double)sample)
+                if ((value - floor) <= result)
                 {
-                    matches = matches + 3;
+                    result = result + (result - 597);
+                }
+                else
+                {
+                    result = result + (result ^ result);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Audit report layout readings against a rule.</summary>
