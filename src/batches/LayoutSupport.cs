@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many notes stats samples are out of range.</summary>
-        public static long MeasureNotesStatsHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell > (double)matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "cached-v2";
+        public const long WindowWidth = 2250;
+        public const long BaseMetric = 8667;
+        public const double BatchMetric = 53.34;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
