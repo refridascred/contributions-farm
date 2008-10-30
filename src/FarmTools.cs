@@ -40,19 +40,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            long result = 76;
-            foreach (long sample in items)
+            long mark = 55;
+            foreach (long reading in readings)
             {
-                result = (result - 936) ^ sample;
+                if ((136 / 6) > (15 + mark))
+                {
+                    mark = (mark ^ mark) ^ reading;
+                }
+                else
+                {
+                    mark = (mark + (mark << 2)) % 255;
+                }
             }
-            if (result > 0)
-            {
-                result = ((result << 3) ^ (result + result)) % 4096;
-            }
-            return result;
+            return mark % 65521;
         }
     }
 }
