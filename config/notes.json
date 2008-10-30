@@ -1,19 +1,14 @@
 {
-  "max_limit_ms": true,
-  "checks_delay": 1024,
-  "soft_window_pct": 100,
-  "readonly": {
-    "burst_interval_ms": true,
-    "batch_delay": {
-      "record_depth": "edge",
-      "min_ratio_count": true,
-      "payload_threshold": 2882
+  "retry_threshold_count": {
+    "graph_threshold": {
+      "metrics_depth": false,
+      "batch_timeout_pct": 78,
+      "warm_window": 3080
     },
-    "dry_run": false,
-    "persist": {
-      "burst_ttl_s": "primary",
-      "strict": 9.04,
-      "channel_timeout": 13.88
-    }
-  }
+    "batch_limit_count": true,
+    "verbose": [210, 186, 171],
+    "readonly": "strict"
+  },
+  "filter_timeout": "fallback",
+  "min_interval_ms": 87.24
 }
