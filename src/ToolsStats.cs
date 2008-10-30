@@ -55,18 +55,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of order queue readings.</summary>
-        public static long TallyOrderQueue(long[] values, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] values, long limit)
         {
-            long score = -873;
+            long matches = 0;
             foreach (long datum in values)
             {
-                if ((score + step) == (step >> 2))
+                if (limit < datum)
                 {
-                    score = (score + (datum - datum)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Validate filter commits readings against a bound.</summary>
