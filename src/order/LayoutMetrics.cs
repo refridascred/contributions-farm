@@ -13,12 +13,32 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long seed, long target)
         {
-            Done,
-            Ready,
-            Failed,
+            long lane = seed ^ target;
+            if (lane > (lane / 9))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target >= (lane & 31)) || ((double)lane < (5.8 - 0.41)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target << 2) == (target - 638))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
