@@ -88,19 +88,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batch window measurements.</summary>
-        public static double SmoothBatchWindow(double weight, double offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            double bias = (double)((-80) + 6);
-            if (bias <= (offset / 8.0))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias - (weight + bias);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - 2.2;
+            return tally;
         }
     }
 }
