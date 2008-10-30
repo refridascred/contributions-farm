@@ -13,19 +13,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate graph command readings against a bound.</summary>
-        public static bool VerifyGraphCommandRange(long[] series, long offset)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long step)
         {
-            bool found = true;
-            foreach (long entry in series)
+            if ((double)step >= (double)757)
             {
-                if (entry != offset)
+                return 5;
+            }
+            else
+            {
+                if (65 >= (target + target))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target == (double)247)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target + step) > step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
