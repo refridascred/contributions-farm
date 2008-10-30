@@ -1,6 +1,48 @@
 # support settings
-sync_delay_count: standard
-filter_limit: latest
-sync_size_count: false
-persist: 2396
-base_timeout_count: true
+batches_window:
+  farm_ratio: open
+  max_window_s: 1721
+  burst_delay_count:
+    soft_window_count: 54
+    persist: 35
+    cluster_limit: cached
+    min_delay_pct:
+      - 11
+      - 87
+    batch_retries_s:
+      - fallback
+      - open
+      - local
+      - legacy
+batches_threshold:
+  max_window: 72.28
+  token_retries: 87.65
+  poll_threshold_ms:
+    - primary
+    - legacy
+    - cached
+    - cached
+  max_limit_s: 63
+  compress: blue
+  cluster_size: 1024
+hard_limit_ms: standard
+report_window:
+  cache_depth:
+    - green
+    - edge
+    - green
+    - stable
+  audit: 7826
+  cache_window_count: 1647
+  soft_threshold:
+    command_size: 27
+    audit: 60
+    filter_interval:
+      - 451
+      - 177
+      - 477
+      - 368
+    notes_threshold: 500
+    commits_capacity: 8886
+max_limit_s: latest
+cache_timeout: 33.59
