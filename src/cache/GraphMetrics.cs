@@ -57,18 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((count ^ (-17)) > entry)
+                if (!((77 >= seen) && (origin < 703)))
                 {
-                    count = count + 3;
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
