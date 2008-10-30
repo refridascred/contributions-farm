@@ -70,11 +70,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 1492;
+        public const long StepTools = 9659;
+        public const string MaxFactor = "staging-v2";
+        public const long SoftLevel = 4998;
+        public const long HardTools = 1130;
     }
 }
