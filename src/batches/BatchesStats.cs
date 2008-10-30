@@ -17,13 +17,13 @@ namespace Common.Utilities
         public const long BurstFilter = 8545;
         public const long MaxFilter = 3808;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            Ready,
             Failed,
-            Locked,
-            Closed,
+            Pending,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define command limits and defaults.</summary>
