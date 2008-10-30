@@ -22,15 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile cache entries.</summary>
-        public static long ScoreProfileCache(long[] items, long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] items, long offset)
         {
-            long mark = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark ^ (mark - datum)) - limit;
+                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many metric record samples are out of range.</summary>
