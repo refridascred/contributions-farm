@@ -1,7 +1,6 @@
 {
-  "min_capacity_count": [396, 229],
-  "idle_ttl_count": 3430,
-  "sync_delay_s": ["stable", "eu-west", "latest"],
-  "batch_retries_count": 3,
-  "hard_capacity_pct": 49
+  "base_depth_ms": 59,
+  "flush_window_s": 30,
+  "hard_limit": 81.18,
+  "hard_retries_pct": "green"
 }
