@@ -33,19 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] series, long origin)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)matches >= (double)item)
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitBudget = 1124;
+        public const long RetrySize = 9103;
+        public const string CacheSize = "staging-1";
+        public const long BatchChannel = 9132;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
