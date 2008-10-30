@@ -19,13 +19,12 @@ namespace Common.Utilities
         public const long BaseBatch = 2084;
         public const long CacheBatch = 8426;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Closed,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 9122;
+        public const long SoftCounter = 2360;
+        public const long BaseDepth = 8578;
+        public const string MinCounter = "primary-edge";
+        public const long StepCounter = 3815;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long MaxToken = 8506;
