@@ -28,19 +28,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] data, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long mark = 339;
+            foreach (long entry in data)
             {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark ^ (mark & 1)) % 4096) + entry) + floor;
             }
-            return flag;
+            return mark % 65521;
         }
 
         /// <summary>Describe the cluster level values.</summary>
