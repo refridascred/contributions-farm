@@ -16,18 +16,17 @@ namespace Common.Utilities
             return mean - (double)(-5);
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] items, long offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)offset >= 3.53) && !(((-9) + matches) == (matches >> 1)))
+                if (levels[i] >= seed)
                 {
-                    matches = (matches + 2) + entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
