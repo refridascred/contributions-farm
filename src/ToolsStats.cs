@@ -34,12 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] series, long bound)
         {
-            Active,
-            Done,
-            Retry,
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
