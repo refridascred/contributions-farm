@@ -52,15 +52,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of editor layout readings.</summary>
-        public static long DigestEditorLayout(long[] levels, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] readings, long origin)
         {
-            long state = -302;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                state = (((state << 2) ^ (40 << 3)) + reading) - step;
+                if ((double)hits < (6.0 - 9.17))
+                {
+                    hits = ((hits + 1) ^ datum) + origin;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
