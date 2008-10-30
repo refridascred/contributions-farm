@@ -14,10 +14,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryWidth = 8416;
-        public const double HardCounter = 66.83;
-        public const long MaxSpan = 2795;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Stale,
+            Locked,
+            Active,
+            Synced,
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long TallyAccountHits(long[] values)
