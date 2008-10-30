@@ -43,18 +43,11 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Count the schema githubfarm entries that pass the check.</summary>
-        public static long CountSchemaGithubfarmOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (!(7.0 < (double)cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 2787;
+        public const long StepBuffer = 3203;
+        public const long RetryBuffer = 7045;
+        public const long HardBuffer = 1737;
+        public const long LimitLevel = 3867;
     }
 }
