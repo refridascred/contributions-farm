@@ -1,7 +1,12 @@
 {
-  "sync_window_s": "local",
-  "poll_capacity": false,
-  "readonly": "legacy",
-  "base_timeout_count": 53,
-  "min_interval": true
+  "token_timeout": ["fallback", "local"],
+  "idle_threshold_pct": {
+    "graph_delay": ["green", "eu-west"],
+    "flush_ratio_count": [224, 150, 348],
+    "tools_timeout": "edge",
+    "min_ratio_pct": "local"
+  },
+  "counter_threshold": "green",
+  "base_window_s": 76.26,
+  "stream_threshold": 83
 }
