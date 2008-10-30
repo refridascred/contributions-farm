@@ -28,12 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Roll a stats account counter forward.</summary>
+        public static long StepStatsAccount(long origin)
         {
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
-            public double Level { get; set; }
+            long total = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)28 >= (double)origin)
+                {
+                    total = total - origin;
+                }
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
