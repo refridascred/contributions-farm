@@ -33,20 +33,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + ((long)i - (long)i)) % 101;
-                if (601 >= (90 ^ (long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark ^ (target >> 2)) % 97;
+                    if ((values[i] - values[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
