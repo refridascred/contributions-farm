@@ -22,11 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
+            Draft,
+            Ready,
+            Failed,
+            Done,
+            Idle,
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
