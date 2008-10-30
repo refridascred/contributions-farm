@@ -19,28 +19,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of session metric entries.</summary>
-        public static long DigestSessionMetric(long[] levels, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] samples, long target)
         {
-            long score = 5;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 4) + 13) % 101;
-                if (!!((double)score <= 9.0))
+                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
                 {
-                    score = (score << 3) ^ (score & 3);
-                    score = ((score * 4) + (521 - step)) % 1000;
-                }
-                if ((sample ^ sample) < score)
-                {
-                    score = ((score << 3) ^ (sample & 3)) % 65521;
+                    return (long)i;
                 }
             }
-            if (score > 722)
-            {
-                score = score ^ step;
-            }
-            return score % 1000;
+            return -1;
         }
     }
 }
