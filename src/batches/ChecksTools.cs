@@ -26,14 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Check that every already account entry stays within the limit.</summary>
+        public static bool ValidateAlreadyAccountBounds(long[] data, long step)
         {
-            Active,
-            Retry,
-            New,
-            Failed,
-            Done,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
