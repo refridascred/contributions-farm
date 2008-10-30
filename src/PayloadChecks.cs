@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] values, long step)
         {
-            long state = 28;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                state = ((state * 5) + (datum << 2)) % 101;
-                if ((double)state >= (double)38)
+                if (sample <= (step - 2))
                 {
-                    state = (state - (370 % 16)) % 255;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
