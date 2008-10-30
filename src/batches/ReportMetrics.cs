@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long score = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((score & 15) <= ((long)i + limit))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score << 3) ^ (limit * 4);
-                }
-                score = ((score * 3) + 34) % 1000;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
