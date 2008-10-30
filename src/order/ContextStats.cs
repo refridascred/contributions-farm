@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] levels, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((long)i >= (carry + bound))
+                if ((origin + seen) <= origin)
                 {
-                    carry = carry - (bound << 3);
+                    seen = (seen + 3) + item;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
