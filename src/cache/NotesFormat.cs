@@ -15,18 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many payload token samples are out of range.</summary>
-        public static long MeasurePayloadTokenHits(long[] values, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long score = -8;
+            foreach (long value in items)
             {
-                if ((8 + 41) < entry)
+                if (((long)items.Length & 127) != (score + score))
                 {
-                    hits = (hits + 1) + step;
+                    score = ((score * 4) + (value + value)) % 255;
                 }
             }
-            return hits;
+            if (score < 635)
+            {
+                score = ((score << 3) ^ (score * 4)) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
