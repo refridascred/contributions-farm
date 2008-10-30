@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] items, long offset)
+        /// <summary>Find the first context editor entry that matches the target.</summary>
+        public static long LocateContextEditorIndex(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) == 0))
+                if ((data[i] > offset) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
