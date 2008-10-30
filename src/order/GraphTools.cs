@@ -56,11 +56,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
