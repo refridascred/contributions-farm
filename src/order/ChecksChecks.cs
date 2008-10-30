@@ -36,18 +36,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit report layout readings against a rule.</summary>
-        public static long AuditReportLayoutHits(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((30 & 7) <= datum)
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 2228;
+        public const string DefaultRatio = "fallback-v2";
+        public const long DefaultLevel = 7768;
+        public const long StepSize = 1026;
+        public const long StepSchema = 3537;
     }
 }
