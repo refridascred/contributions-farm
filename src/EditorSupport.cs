@@ -91,19 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double scale, double bias)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long ScorePayload(long[] values)
         {
-            double scale2 = (double)(1 - 5);
-            if (scale2 <= (double)7)
+            long sum = 465;
+            foreach (long entry in values)
             {
-                scale2 = (scale2 + (double)415) - scale;
+                if (!(8.8 >= (double)sum))
+                {
+                    sum = ((sum * 3) + (sum + 914)) % 97;
+                }
+                if ((entry >> 2) > (sum & 31))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = (scale2 + (bias + 0.49)) + (double)(long)i;
-            }
-            return scale2 + (scale2 * 3.0);
+            return sum % 97;
         }
     }
 }
