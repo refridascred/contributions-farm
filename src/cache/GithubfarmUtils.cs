@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = state ^ bound;
+                if (cell > bound)
                 {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
