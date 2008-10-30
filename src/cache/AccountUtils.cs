@@ -29,18 +29,21 @@ namespace Common.Utilities
             return ratio + (rate - floor);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] readings, long limit)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry >= (count + count)) && ((3 + count) <= count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) + limit;
+                    if ((readings[i] + readings[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
