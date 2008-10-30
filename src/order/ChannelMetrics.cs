@@ -18,13 +18,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long limit, long bound)
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long edge = limit + bound;
+            if ((813 + edge) > (limit - edge))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.0 * 11.0) != (double)edge)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((edge - edge) > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order class values.</summary>
