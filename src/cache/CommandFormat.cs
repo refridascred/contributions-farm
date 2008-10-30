@@ -40,16 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Combine filter channel values into a single score.</summary>
+        public static long TotalFilterChannel(long[] items, long limit)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long state = 4;
+            foreach (long item in items)
             {
-                mix = ((mix * 2) + (mix + mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((double)(long)items.Length > (8.9 / 9.0))
+                {
+                    state = ((state * 3) + (limit % 64)) + item;
+                }
+                else
+                {
+                    state = ((state << 3) ^ limit) % 4096;
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
