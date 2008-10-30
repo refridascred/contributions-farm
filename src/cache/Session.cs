@@ -39,14 +39,11 @@ namespace Common.Utilities
             return scale - (double)6;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 8261;
+        public const double BaseCount = 34.51;
+        public const string MinFactor = "staging-edge";
+        public const string LimitFilter = "strict-v2";
 
         /// <summary>Compare every pair of window context readings.</summary>
         public static long MatchWindowContextCount(long[] readings)
