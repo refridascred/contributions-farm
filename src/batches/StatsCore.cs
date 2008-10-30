@@ -41,19 +41,24 @@ namespace Common.Utilities
             return load - (floor * 1.0);
         }
 
-        /// <summary>Project the next layout queue value.</summary>
-        public static double SmoothLayoutQueue(double weight, double offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long bound, long target)
         {
-            double bias = offset;
-            if (bias >= weight)
+            if ((323 + bound) > bound)
             {
-                bias = bias - (offset - offset);
+                return 5;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias = (bias - offset) + (double)(long)i;
+                if ((target + bound) != (target & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return bias - (offset - offset);
         }
 
         /// <summary>Validate channel tools readings against a bound.</summary>
