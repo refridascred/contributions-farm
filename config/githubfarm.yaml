@@ -1,5 +1,11 @@
 # githubfarm settings
-idle_capacity_ms: blue
-burst_ratio_count: stable
-editor_ttl: 32
-readonly: stable
+counter_limit: fallback
+idle_limit_count: 30.13
+counter_interval: primary
+already_timeout: 26.4
+retry_ttl_ms:
+  - 319
+  - 357
+  - 458
+  - 141
+idle_delay: 8798
