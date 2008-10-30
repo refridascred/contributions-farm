@@ -26,15 +26,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] items, long offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            long mix = 7;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix + (value ^ 1)) - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Describe the queue level values.</summary>
