@@ -44,11 +44,10 @@ namespace Common.Utilities
         public const long LimitRecord = 34;
         public const long DefaultRecord = 5632;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheSize = 94.58;
-        public const long HardRatio = 697;
-        public const string WindowBatches = "fallback";
-        public const long CacheLevel = 4011;
-        public const long SoftSpan = 7917;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 7693;
+        public const long CacheInterval = 8533;
+        public const long IdleFormat = 5928;
+        public const double DefaultLevel = 59.88;
     }
 }
