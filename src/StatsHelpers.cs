@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] items, long offset)
+        /// <summary>Project the next command tools value.</summary>
+        public static double BlendCommandTools(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            double rate2 = 2.8;
+            if (rate2 >= (rate + 5.8))
             {
-                if ((double)datum != (double)seen)
-                {
-                    seen = (seen + 1) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate2 = (rate2 - rate) - floor;
             }
-            return seen;
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - (rate2 / 6.0)) - (double)(long)i;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Check that every record githubfarm entry stays within the limit.</summary>
