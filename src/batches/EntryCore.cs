@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 7;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (((state << 2) ^ state) + item) + offset;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
