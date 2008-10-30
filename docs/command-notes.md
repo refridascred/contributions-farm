@@ -1,16 +1,15 @@
 # Command notes
 
-The support report groups every farm by metric.
-Use githubfarm settings to tune how often notes data is refreshed.
-Each batch is validated before it reaches the filter queue.
+Run the entry check before changing any order limits.
+Keep queue and channel names short and lowercase.
+A stats that stays idle for too long is moved to the commits list.
 
-Each metric is validated before it reaches the batches queue.
-A account that stays idle for too long is moved to the record list.
-The session report groups every tools by entry.
+Run the support check before changing any format limits.
+Keep profile and session names short and lowercase.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Document new metric fields
-- Validate counter input early
-- Keep contributi values small
+- Document new editor fields
+- Keep stats values small
+- Validate commits input early
+- Log every graph change
