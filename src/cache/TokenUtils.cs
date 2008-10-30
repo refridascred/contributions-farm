@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long limit)
+        /// <summary>Find the first editor metric entry that matches the target.</summary>
+        public static long FindEditorMetricIndex(long[] readings, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a record snapshot.</summary>
