@@ -72,21 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of window context readings.</summary>
-        public static long MatchWindowContextCount(long[] readings)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Flag { get; set; }
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
