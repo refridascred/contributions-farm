@@ -24,14 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
+            Dropped,
+            Queued,
+            Idle,
             Failed,
-            Ready,
-            Done,
-            Closed,
-            Locked,
         }
     }
 }
