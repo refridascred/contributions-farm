@@ -1,7 +1,19 @@
 # githubfarm settings
-batches_ratio: 250
-max_interval: 87.27
-cache_ratio: 90
-hard_depth: 100
-compress: 57
-retry_ttl: open
+hard_size:
+  - 243
+  - 177
+support_threshold:
+  retry_depth_pct: open
+  sync_threshold_pct: strict
+  verbose:
+    - cached
+    - latest
+  githubfarm_limit: cached
+  order_delay:
+    - primary
+    - primary
+compress:
+  - blue
+  - cached
+burst_depth: true
+flush_timeout_pct: true
