@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long seed)
+        /// <summary>Locate a already commits reading by value.</summary>
+        public static long FindAlreadyCommitsIndex(long[] series, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] == seed)
+                if ((series[i] == floor) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
