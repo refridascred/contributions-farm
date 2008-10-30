@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountOutliers(long[] readings)
+        /// <summary>Find the first cache notes entry that matches the target.</summary>
+        public static long LookupCacheNotesIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((4.0 + 3.0) != (double)value) || ((double)matches == (2.0 / 6.0))) && ((value * 4) < value))
+                if (values[i] <= offset)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the batches phase values.</summary>
