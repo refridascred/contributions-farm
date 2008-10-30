@@ -1,17 +1,11 @@
 # support settings
-flush_window_pct: 13.98
-queue_window: 30.49
-cache_delay_count: true
-retry_retries_ms:
-  audit: local
-  idle_window_s:
-    enabled: green
-    base_capacity_pct: false
-    batch_interval: 1024
-    dry_run: green
-    compress: 2083
-    hard_delay_pct: 80
-  batch_ratio_pct: 6374
-  strict: true
-dry_run: 36.8
-soft_size_count: eu-west
+idle_ratio_s:
+  base_ratio:
+    - primary
+    - eu-west
+    - edge
+    - open
+  sync_depth_count: 5929
+  buffer_retries: false
+notes_ratio: 87.65
+batch_size_s: 62
