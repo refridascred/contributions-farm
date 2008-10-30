@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] samples, long origin)
         {
-            Synced,
-            Done,
-            Idle,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
