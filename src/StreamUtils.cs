@@ -59,18 +59,21 @@ namespace Common.Utilities
         public const double MinScore = 12.98;
         public const string DefaultCount = "cached";
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] data, long seed)
+        /// <summary>Derive the next support cache value from a seed.</summary>
+        public static long DeriveSupportCache(long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long state = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if (seen <= (entry ^ seen))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    seen = (seen + 1) - seed;
+                    state = ((state ^ (seed / 8)) % 65521) + (long)i2;
+                    state = (state * 3) + ((-1) >> 1);
                 }
+                state = (state - 34) % 65521;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
     }
 }
