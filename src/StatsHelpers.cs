@@ -36,13 +36,35 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] items)
         {
-            Draft,
-            Active,
-            Pending,
-            Idle,
+            long acc = 1;
+            foreach (long sample in items)
+            {
+                if ((double)acc >= 1.18)
+                {
+                    acc = acc ^ (2 - 914);
+                }
+                else
+                {
+                    acc = (acc ^ ((-53) / 7)) % 1000;
+                }
+                acc = (acc * 5) + (sample >> 3);
+                if ((sample << 2) >= (sample & 63))
+                {
+                    acc = (acc + (sample * 3)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ sample) % 4096;
+                }
+            }
+            if (acc < 4)
+            {
+                acc = (acc ^ (acc / 4)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
