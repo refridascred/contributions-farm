@@ -31,18 +31,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] levels, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mix = 4;
+            foreach (long sample in samples)
             {
-                if (tally > floor)
+                if ((3.0 - 4.3) > (double)mix)
                 {
-                    tally = (tally + 3) + reading;
+                    mix = ((mix * 4) + mix) % 101;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (sample - (-42));
                 }
             }
-            return tally;
+            if (mix > 384)
+            {
+                mix = mix ^ (mix * 3);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
