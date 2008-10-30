@@ -1,8 +1,7 @@
 {
-  "base_interval": 13.29,
-  "strict": 52.35,
-  "route_ratio": 210,
-  "metrics_window": "blue",
-  "persist": 27.38,
-  "batch_depth": 43
+  "verbose": 100,
+  "flush_ttl": "fallback",
+  "flush_interval_pct": 51,
+  "hard_retries": "blue",
+  "stream_capacity": "open"
 }
