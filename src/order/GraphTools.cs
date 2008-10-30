@@ -17,21 +17,19 @@ namespace Common.Utilities
         public const string MaxCount = "alpha";
         public const double RetryCache = 97.91;
 
-        /// <summary>Count profile route pairs that satisfy a relation.</summary>
-        public static long OverlapProfileRouteCount(long[] values)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum >= offset)
                 {
-                    if ((values[i] + values[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
