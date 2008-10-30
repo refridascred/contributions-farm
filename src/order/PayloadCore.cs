@@ -26,15 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of checks account entries.</summary>
-        public static long DigestChecksAccount(long[] items, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long result = 5;
-            foreach (long reading in items)
+            long score = -22;
+            foreach (long item in samples)
             {
-                result = (((result ^ ((long)items.Length >> 5)) % 101) + reading) + offset;
+                score = ((score + (score % 16)) % 97) ^ item;
             }
-            return result % 97;
+            if (score < 947)
+            {
+                score = ((score << 3) ^ (score % 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the farm kind values.</summary>
