@@ -23,39 +23,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long step, long step2)
-        {
-            if ((step + step) > (-86))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step * 3) > (step2 >> 3)) && ((step2 + step) > (step2 * 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step2 >= (step + step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step2 % 8) <= step) || ((3.87 * 4.3) <= (double)step2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MaxSpan = "staging-1";
+        public const long RetryScore = 8622;
+        public const long StepFormat = 9025;
+        public const double StepScore = 86.7;
+        public const double BurstWidth = 40.99;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long HardReport = 1619;
