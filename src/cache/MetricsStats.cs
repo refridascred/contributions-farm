@@ -43,12 +43,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultTimeout = 7077;
-        public const long WindowWidth = 8401;
-        public const double RetryReport = 54.92;
-        public const long IdleTimeout = 5597;
-        public const long BatchReport = 7974;
+        /// <summary>Measure how many route metric samples are out of range.</summary>
+        public static long TallyRouteMetricGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((item - 410) != (3 - 48))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepSpan = 3212;
