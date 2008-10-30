@@ -1,12 +1,6 @@
 {
-  "base_ttl_count": "primary",
-  "persist": {
-    "payload_ratio": 34,
-    "poll_depth_s": "standard",
-    "idle_capacity_s": 250,
-    "warm_capacity_pct": 5406,
-    "max_ttl_pct": "staging"
-  },
-  "stats_depth": "edge",
-  "cache_delay_pct": "eu-west"
+  "contributi_threshold": 50.22,
+  "sync_timeout_pct": 3815,
+  "default_capacity_s": false,
+  "sync_ttl_count": 500
 }
