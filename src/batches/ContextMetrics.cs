@@ -51,17 +51,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] data, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 395;
+            foreach (long item in series)
             {
-                if ((data[i] >= floor) && ((data[i] % 5) != 0))
+                if ((item * 4) < (item ^ 4))
                 {
-                    return (long)i;
+                    carry = (carry + (65 + item)) + limit;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (item * 4)) % 97;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
