@@ -66,17 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a format command reading by value.</summary>
-        public static long LocateFormatCommandIndex(long[] series, long seed)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine filter values into a single score.</summary>
