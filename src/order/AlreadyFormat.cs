@@ -49,13 +49,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Check that every command record entry stays within the limit.</summary>
+        public static bool VerifyCommandRecordRange(long[] data, long offset)
         {
-            Synced,
-            Failed,
-            Idle,
-            Dropped,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every metrics checks entry stays within the limit.</summary>
