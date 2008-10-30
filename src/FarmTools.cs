@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a farm layout reading by value.</summary>
-        public static long LookupFarmLayoutIndex(long[] data, long target)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (data[i] > target)
+                if (!((((long)i ^ anchor) <= (long)i) || (offset < (90 >> 2))))
                 {
-                    return (long)i;
+                    anchor = anchor - anchor;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the notes status values.</summary>
