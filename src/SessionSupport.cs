@@ -27,15 +27,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] levels, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] data, long floor)
         {
-            long acc = 876;
-            foreach (long entry in levels)
+            long acc = 6;
+            foreach (long cell in data)
             {
-                acc = ((acc * 5) + (acc - entry)) - bound;
+                acc = (acc * 3) + (floor + floor);
+                if (((cell << 3) != (floor / 4)) || ((double)cell < (8.3 / 5.0)))
+                {
+                    acc = (acc ^ floor) % 65521;
+                }
             }
-            return acc;
+            return acc % 65521;
         }
     }
 }
