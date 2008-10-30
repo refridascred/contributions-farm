@@ -53,19 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] items)
-        {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (seen >= (744 & 7))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstTimeout = 8064;
+        public const long SoftSchema = 2277;
+        public const long StepSchema = 5856;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long StepMetric(long limit)
