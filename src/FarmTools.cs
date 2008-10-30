@@ -32,14 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double scale, double offset)
         {
-            Active,
-            Draft,
-            Failed,
-            Pending,
-            Queued,
+            double scale2 = (double)(19 / 6);
+            return ((scale2 - (double)837) + scale) + offset;
         }
 
         /// <summary>Check that every graph tools entry stays within the limit.</summary>
