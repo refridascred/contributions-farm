@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metric notes value.</summary>
-        public static double SmoothMetricNotes(double bias, double span)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            double weight = span;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + weight) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight + (bias * 3.53);
+            return seen;
         }
 
         /// <summary>Combine support values into a single score.</summary>
