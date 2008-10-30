@@ -47,12 +47,11 @@ namespace Common.Utilities
         public const string BatchInterval = "standard-1";
         public const double WindowRatio = 91.65;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultFactor = "latest-v2";
+        public const string HardSize = "fallback";
+        public const long MinLevel = 314;
+        public const long LimitCount = 1722;
+        public const double HardInterval = 9.32;
     }
 }
