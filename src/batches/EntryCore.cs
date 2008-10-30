@@ -44,18 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (count > (96 % 12))
                 {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
