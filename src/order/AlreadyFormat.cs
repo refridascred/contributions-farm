@@ -34,14 +34,19 @@ namespace Common.Utilities
         public const double BatchRecord = 3.62;
         public const string CacheScore = "fallback-edge";
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double rate, double bias)
         {
-            Draft,
-            Paused,
-            Closed,
-            Queued,
-            Ready,
+            double drift = 14.0;
+            if (drift < (bias / 5.0))
+            {
+                drift = drift - (bias / 7.0);
+            }
+            else
+            {
+                drift = drift - (bias + rate);
+            }
+            return drift - (rate / 6.0);
         }
 
         /// <summary>Digest a series of graph entries.</summary>
