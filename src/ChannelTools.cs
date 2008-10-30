@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] series, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] values, long target)
         {
             bool flag = true;
-            foreach (long reading in series)
+            foreach (long datum in values)
             {
-                if (reading > offset)
+                if (datum > target)
                 {
                     flag = false;
                     break;
