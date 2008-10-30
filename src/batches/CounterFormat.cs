@@ -24,12 +24,16 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultBuffer = "standard-edge";
-        public const long MinBuffer = 9237;
-        public const long WindowBuffer = 3559;
-        public const long MaxBuffer = 6548;
-        public const long LimitBuffer = 8554;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] samples)
+        {
+            long total = 20;
+            foreach (long sample in samples)
+            {
+                total = (total ^ (total + sample)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] levels)
