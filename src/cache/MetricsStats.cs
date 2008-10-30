@@ -31,13 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            public double Owner { get; set; }
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
