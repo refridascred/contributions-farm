@@ -1,10 +1,7 @@
 {
-  "burst_limit": false,
-  "channel_capacity": 6465,
-  "layout_depth": {
-    "flush_capacity_ms": [241, 153, 128],
-    "dry_run": true,
-    "graph_delay": 16.54,
-    "editor_interval": 15
-  }
+  "flush_threshold": "cached",
+  "contributi_delay": "standard",
+  "record_size": 1,
+  "burst_capacity_pct": 30,
+  "retry_ratio_count": 45.95
 }
