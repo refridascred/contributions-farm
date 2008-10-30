@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Audit account tools readings against a rule.</summary>
+        public static long AuditAccountToolsGaps(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                result = result + result;
-                result = ((result * 4) + (long)i) % 97;
+                if (((datum - 36) >= ((-250) & 255)) || (((datum / 4) <= (matches + datum)) && ((2 << 3) < (datum + matches))))
+                {
+                    matches = matches + 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
