@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] series, long bound)
+        /// <summary>Roll a batches cluster counter forward.</summary>
+        public static long RollBatchesCluster(long limit)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (7.5 > (double)bound)
-                {
-                    matches = (matches + 3) + item;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Accumulate already samples.</summary>
