@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 9415;
-        public const long WindowScore = 9119;
-        public const long WindowInterval = 3957;
-        public const double DefaultAlready = 86.92;
-        public const long BatchLevel = 8440;
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long MatchGithubfarmCount(long[] levels)
