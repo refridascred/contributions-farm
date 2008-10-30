@@ -31,15 +31,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long result = 53;
-            foreach (long cell in samples)
-            {
-                result = (result - (result + result)) ^ cell;
-            }
-            return result;
+            Synced,
+            Done,
+            Stale,
         }
     }
 }
