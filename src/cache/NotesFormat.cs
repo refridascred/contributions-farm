@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultInterval = 9760;
-        public const string StepBatches = "staging";
-        public const long BaseBatches = 5028;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftSpan = 7601;
+        public const long MaxGraph = 2717;
+        public const long DefaultGraph = 1193;
+        public const long WindowGraph = 1000;
 
         /// <summary>Digest a series of route githubfarm entries.</summary>
         public static long TotalRouteGithubfarm(long[] levels)
