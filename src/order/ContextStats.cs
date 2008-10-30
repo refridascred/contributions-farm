@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordBounds(long[] readings, long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a queue account sample.</summary>
