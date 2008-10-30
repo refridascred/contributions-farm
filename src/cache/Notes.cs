@@ -69,15 +69,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate record order samples.</summary>
-        public static long WeighRecordOrder(long[] items)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] samples, long target)
         {
-            long anchor = 3;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                anchor = (anchor * 2) + (cell & 7);
+                if (reading <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
     }
 }
