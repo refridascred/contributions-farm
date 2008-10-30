@@ -67,19 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] items, long target)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            double rate = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = ((rate + offset) + (double)(long)i) - scale;
             }
-            return stale;
+            return rate - (18.0 * 6.0);
         }
 
         /// <summary>Audit metrics buffer readings against a rule.</summary>
