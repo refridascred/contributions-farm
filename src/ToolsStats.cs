@@ -61,19 +61,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate filter commits readings against a bound.</summary>
-        public static bool ValidateFilterCommitsLimits(long[] items, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (sample >= floor)
+                if ((datum + datum) == (tally * 5))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
