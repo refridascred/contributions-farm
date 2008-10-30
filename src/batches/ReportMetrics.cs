@@ -29,12 +29,13 @@ namespace Common.Utilities
         public const double StepOrder = 45.97;
         public const long DefaultSize = 5693;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
