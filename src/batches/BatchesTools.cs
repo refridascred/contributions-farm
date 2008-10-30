@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardInterval = 3721;
-        public const long BaseAccount = 5839;
-        public const string MaxInterval = "local";
-        public const long SoftRatio = 6119;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 9154;
+        public const string MaxSize = "staging-edge";
+        public const long CacheDepth = 5174;
+        public const long SoftLayout = 4400;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long ScoreBuffer(long[] series, long offset)
