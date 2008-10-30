@@ -15,21 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Adjust a support reading.</summary>
