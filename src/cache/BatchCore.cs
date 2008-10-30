@@ -45,22 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] values, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((entry - entry) >= entry)
+                if (((long)levels.Length + hits) <= (step << 2))
                 {
-                    tally = (tally + 3) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) + item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the payload phase values.</summary>
