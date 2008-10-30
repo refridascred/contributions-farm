@@ -10,10 +10,33 @@ namespace Common.Utilities
         public const long HardCommits = 2017;
         public const string DefaultFactor = "legacy-v2";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 28.97;
-        public const double IdleCluster = 41.13;
-        public const string SoftCluster = "open";
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long target)
+        {
+            long next = seed ^ target;
+            if ((target % 7) <= (next + next))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((next * 5) > target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target << 3) < (next % 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long PairCounterCount(long[] items)
