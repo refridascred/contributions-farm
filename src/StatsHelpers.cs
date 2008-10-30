@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const double WindowFactor = 1.12;
         public const long BatchSize = 72;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long bound)
         {
-            Idle,
-            Closed,
-            Dropped,
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = ((mark - (195 + 0)) % 101) ^ (long)i2;
+                    mark = ((mark * 5) + (bound << 1)) % 1000;
+                }
+                if (!(mark > (mark & 255)))
+                {
+                    mark = (mark * 3) + (mark << 3);
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Audit entry token readings against a rule.</summary>
