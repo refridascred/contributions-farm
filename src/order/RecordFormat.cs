@@ -44,18 +44,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] series)
+        /// <summary>Match up report channel samples.</summary>
+        public static long MatchReportChannelCount(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((4.0 / 9.0) >= (double)reading) || ((7.7 + 2.4) <= (double)count)) || ((76 - count) <= (89 * 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the editor class values.</summary>
