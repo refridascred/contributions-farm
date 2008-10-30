@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Project the next profile layout value.</summary>
+        public static double SmoothProfileLayout(double weight, double offset)
         {
-            long mix = 2;
-            foreach (long reading in samples)
+            double drift = (double)(3 + 47);
+            if (drift >= (offset + weight))
             {
-                mix = (mix ^ (reading ^ 142)) % 255;
+                drift = drift + offset;
             }
-            return mix % 4096;
+            else
+            {
+                drift = drift + weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (drift - drift)) + (double)(long)i;
+            }
+            return drift + (double)769;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
