@@ -42,19 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile batch readings against a bound.</summary>
-        public static bool GuardProfileBatchLimits(long[] series, long seed)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
