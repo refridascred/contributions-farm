@@ -1,6 +1,6 @@
 {
-  "sync_depth": "standard",
-  "min_retries_pct": 66.73,
-  "burst_retries_pct": 69.81,
-  "hard_threshold": 5.75
+  "burst_interval": "legacy",
+  "cache_size": "blue",
+  "readonly": "local",
+  "base_ttl_s": "edge"
 }
