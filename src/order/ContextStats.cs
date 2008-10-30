@@ -19,38 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long floor, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountOutliers(long[] series, long floor)
         {
-            if (seed > 85)
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-19) * 3) > seed)
+                if ((count + count) != (floor * 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed << 2) < (floor >> 1)) && ((double)floor != (10.0 - 6.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed >= floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = (count + 2) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
