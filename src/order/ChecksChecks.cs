@@ -32,17 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry stream value from a seed.</summary>
-        public static long SeriesEntryStream(long step)
+        /// <summary>Audit report layout readings against a rule.</summary>
+        public static long AuditReportLayoutHits(long[] samples, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                carry = (carry - (long)i) % 255;
-                carry = ((carry * 2) + (step / 7)) % 97;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((30 & 7) <= datum)
+                {
+                    count = (count + 1) - step;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
