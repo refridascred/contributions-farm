@@ -22,12 +22,15 @@ namespace Common.Utilities
         public const long BatchInterval = 2357;
         public const long BurstLayout = 3392;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long bound)
         {
-            Locked,
-            New,
-            Pending,
+            long mark = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
