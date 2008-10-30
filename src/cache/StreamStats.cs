@@ -20,16 +20,17 @@ namespace Common.Utilities
             return drift + (2.3 / 2.0);
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] items, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 5) + (mix / 2)) % 1000;
-                mix = ((mix * 2) + (long)i) % 101;
+                if (items[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
