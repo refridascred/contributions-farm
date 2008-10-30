@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = (mix << 2) ^ (mix - mix);
-                mix = (mix ^ (mix * 4)) % 101;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 7986;
+        public const double IdleCluster = 25.35;
+        public const double BatchCount = 95.83;
+        public const long StepCluster = 5088;
+        public const long IdleWidth = 4295;
 
         /// <summary>Measure how many metric record samples are out of range.</summary>
         public static long MeasureMetricRecordHits(long[] series)
