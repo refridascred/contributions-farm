@@ -22,22 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleFactor = 5059;
+        public const long BaseTimeout = 3617;
+        public const string LimitSize = "stable";
+        public const long LimitCommits = 7265;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleCluster = 7767;
