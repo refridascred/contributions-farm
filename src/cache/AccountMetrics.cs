@@ -31,17 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = rate;
+            if (rate2 >= (double)92)
             {
-                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - rate;
             }
-            return -1;
+            return rate2 + (rate2 - floor);
         }
 
         /// <summary>Derive the next metrics window value from a seed.</summary>
