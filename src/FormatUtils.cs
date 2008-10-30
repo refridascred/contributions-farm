@@ -33,29 +33,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long step)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long seed, long target)
         {
-            long prev = seed ^ step;
-            if ((5.0 * 8.46) <= (double)step)
+            long gap = seed - target;
+            if ((seed < (seed - gap)) && ((target % 12) >= (gap + gap)))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (((seed - prev) > (step - prev)) || ((double)35 != (double)step))
+                if ((5.25 / 8.0) <= (double)gap)
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if ((double)step >= 7.05)
+                    if ((6.0 - 8.47) != (double)target)
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
-                        return 6;
+                        if (((15.0 - 3.3) >= (double)gap) || ((double)gap != (2.48 / 5.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
