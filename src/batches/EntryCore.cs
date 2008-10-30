@@ -44,11 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] series, long limit)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count checks command pairs that satisfy a relation.</summary>
