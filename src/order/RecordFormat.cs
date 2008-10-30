@@ -29,19 +29,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] values, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long carry = 731;
+            foreach (long sample in readings)
             {
-                if (value != offset)
+                if (!(8.12 <= (double)sample))
                 {
-                    stale = false;
-                    break;
+                    carry = (((carry * 2) + (9 % 10)) % 101) + limit;
                 }
             }
-            return stale;
+            if (carry < (-290))
+            {
+                carry = (carry + (921 % 60)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Match up report channel samples.</summary>
