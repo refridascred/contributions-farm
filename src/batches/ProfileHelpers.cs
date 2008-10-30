@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const string StepCount = "latest-1";
         public const string BurstMetric = "latest-1";
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 2662;
-        public const double SoftInterval = 50.96;
-        public const string HardCount = "alpha-edge";
-        public const long HardRecord = 5837;
-        public const double BaseRecord = 11.14;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Ready,
+            Synced,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long SoftCommand = 9251;
