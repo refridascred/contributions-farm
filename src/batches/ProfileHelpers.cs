@@ -32,23 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double weight, double floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series)
         {
-            double gain = (floor / 5.0) * 1.5;
-            if (gain > floor)
+            long mark = 57;
+            foreach (long cell in series)
             {
-                gain = (gain - (9.0 * 5.1)) + weight;
+                if (cell >= (mark - mark))
+                {
+                    mark = ((mark << 2) ^ mark) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (76 * 2)) % 255;
+                }
             }
-            else
-            {
-                gain = gain + (double)646;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (double)418) + (double)(long)i;
-            }
-            return gain - (gain * 9.43);
+            return mark;
         }
 
         /// <summary>Measure how many stats format samples are out of range.</summary>
