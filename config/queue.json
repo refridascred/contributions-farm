@@ -1,16 +1,6 @@
 {
-  "audit": false,
-  "retry_ratio_s": {
-    "default_delay_ms": 250,
-    "hard_capacity_ms": "blue",
-    "min_interval_pct": 49.31
-  },
-  "batch_size_s": {
-    "commits_ratio": "local",
-    "base_ttl": "staging",
-    "hard_interval_pct": 4224,
-    "channel_window": [28, 241, 201, 7],
-    "flush_capacity_s": [10, 418],
-    "retry_threshold_pct": 8220
-  }
+  "readonly": "staging",
+  "max_ratio_pct": true,
+  "queue_size": true,
+  "verbose": 8.44
 }
