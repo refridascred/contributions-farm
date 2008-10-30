@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
-        public static long MeasureGithubfarmStatsHits(long[] series)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long seed)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)value >= (2.1 / 4.0)) || (((tally + tally) > (value % 60)) && ((tally << 1) <= value)))
-                {
-                    tally = tally + 1;
-                }
+                mix = (mix << 2) ^ (mix - mix);
+                mix = (mix ^ (mix * 4)) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Measure how many metric record samples are out of range.</summary>
