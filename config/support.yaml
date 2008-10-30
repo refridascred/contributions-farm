@@ -1,20 +1,9 @@
 # support settings
-warm_limit_s: legacy
-farm_interval: 6567
-verbose:
-  buffer_threshold: false
-  strict: true
-  cache_threshold:
-    - strict
-    - local
-    - cached
-  soft_ttl_ms:
-    base_depth_count: eu-west
-    soft_retries: local
-    strict: true
-    persist: edge
-  batch_interval_pct:
-    - fallback
-    - blue
-min_limit: 100
-idle_ratio_count: 26.89
+hard_capacity_ms: local
+base_delay_s:
+  - open
+  - primary
+  - primary
+  - eu-west
+hard_window_s: blue
+tools_ratio: staging
