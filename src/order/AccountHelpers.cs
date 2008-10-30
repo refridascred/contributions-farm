@@ -18,21 +18,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of schema tools readings.</summary>
-        public static long MatchSchemaToolsCount(long[] items)
+        /// <summary>Grade a order batch value against two limits.</summary>
+        public static long ClassifyOrderBatch(long offset, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((offset - offset) >= (limit - offset)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (limit < offset)
                 {
-                    if ((items[i] ^ items[j]) > 9)
+                    return 6;
+                }
+                else
+                {
+                    if (((limit >> 3) >= (offset % 97)) || ((offset - limit) == (limit + limit)))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit << 3) < offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
