@@ -18,21 +18,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 153;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((anchor / 3) != (cell + cell))
                 {
-                    if ((samples[i] + samples[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - cell) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (cell % 8)) % 4096;
+                }
+                if ((anchor + anchor) == (anchor + cell))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 65521;
+                }
+                if (cell <= (anchor + 4))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
