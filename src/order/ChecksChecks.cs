@@ -39,17 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Compare every pair of format record readings.</summary>
+        public static long CompareFormatRecordCount(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long offset2 = ((long)i ^ (long)i) >> 2;
-                carry = carry ^ (offset2 & 255);
-                carry = ((carry * 5) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Roll a already record counter forward.</summary>
