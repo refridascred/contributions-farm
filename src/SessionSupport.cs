@@ -39,22 +39,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] series)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen * 2) == (value ^ seen))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] + series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
