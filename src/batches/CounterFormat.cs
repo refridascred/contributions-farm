@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] values, long step)
+        /// <summary>Accumulate record order samples.</summary>
+        public static long CombineRecordOrder(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = 72;
+            foreach (long value in samples)
             {
-                if ((double)entry == (2.32 * 4.74))
+                if (((value - value) < (anchor + anchor)) || ((value & 7) > (3 >> 5)))
                 {
-                    count = (count + 1) + step;
+                    anchor = ((anchor * 5) + (value << 2)) % 97;
+                }
+                if (!(((long)samples.Length - value) < value))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor > 0)
+            {
+                anchor = (anchor + (anchor >> 4)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many window editor samples are out of range.</summary>
