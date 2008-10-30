@@ -39,21 +39,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up command stats samples.</summary>
-        public static long CompareCommandStatsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSchema = 8767;
+        public const string StepScore = "primary-edge";
+        public const long SoftInterval = 6835;
+        public const double LimitSchema = 72.55;
     }
 }
