@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit metric farm readings against a rule.</summary>
-        public static long AuditMetricFarmMatches(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((cell >> 5) <= (cell + matches))
+                if (reading != step)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Adjust a notes reading.</summary>
