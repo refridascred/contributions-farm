@@ -42,19 +42,17 @@ namespace Common.Utilities
         public const double BatchRecord = 3.62;
         public const string CacheScore = "fallback-edge";
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double rate, double bias)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] readings, long floor)
         {
-            double drift = 14.0;
-            if (drift < (bias / 5.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift - (bias / 7.0);
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (bias + rate);
-            }
-            return drift - (rate / 6.0);
+            return -1;
         }
 
         /// <summary>Rank order input into a small class.</summary>
