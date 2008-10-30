@@ -56,15 +56,26 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate command cache samples.</summary>
-        public static long CombineCommandCache(long[] data, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] samples, long seed)
         {
-            long state = -359;
-            foreach (long cell in data)
+            long acc = 414;
+            foreach (long reading in samples)
             {
-                state = ((((state * 3) + (state & 255)) % 101) - cell) + bound;
+                if ((0 / 9) < acc)
+                {
+                    acc = acc + (seed & 3);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (reading + acc)) % 65521;
+                }
             }
-            return state;
+            if (acc > 95)
+            {
+                acc = acc - (seed + acc);
+            }
+            return acc;
         }
     }
 }
