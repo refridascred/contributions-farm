@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double rate, double span)
-        {
-            double drift = (rate / 5.0) + (double)190;
-            if (drift <= (double)4)
-            {
-                drift = (drift + rate) - span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (20.0 * 0.9)) + (double)(long)i;
-            }
-            return drift + (2.3 / 2.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetrySpan = 1719;
+        public const double BatchMetrics = 98.13;
+        public const long BaseMetrics = 4617;
+        public const double MaxFactor = 29.02;
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long FindFormatIndex(long[] items, long target)
