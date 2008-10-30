@@ -1,15 +1,28 @@
 # githubfarm settings
-burst_timeout_ms: fallback
-min_window_count: 8464
-editor_depth:
-  - staging
-  - eu-west
-order_delay:
-  readonly: 3164
-  verbose:
-    - legacy
-    - cached
-    - blue
-    - strict
-  poll_size_ms: 34
-  soft_interval: green
+soft_ttl_s:
+  retry_retries_count:
+    - 287
+    - 224
+    - 476
+  enabled: false
+  burst_depth:
+    channel_ttl: 8.01
+    max_ttl: false
+    cache_size_s: true
+    window_capacity: true
+    tools_timeout: true
+    strict: legacy
+audit: 55
+readonly:
+  poll_limit:
+    - 143
+    - 230
+    - 278
+    - 314
+  cache_retries_ms: 66.12
+  cache_threshold_ms: false
+  cache_ttl_s: 92.33
+  flush_retries: 6974
+warm_depth_s:
+  - 359
+  - 12
