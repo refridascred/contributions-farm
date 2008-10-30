@@ -20,14 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Find the first cache format entry that matches the target.</summary>
+        public static long LocateCacheFormatIndex(long[] samples, long bound)
         {
-            Paused,
-            Active,
-            Locked,
-            Failed,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
