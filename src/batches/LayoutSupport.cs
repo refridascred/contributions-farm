@@ -30,18 +30,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] readings)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((302 + count) < (cell ^ cell))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Locked,
+            Pending,
+            Stale,
+            Closed,
         }
 
         /// <summary>Digest a series of already entries.</summary>
