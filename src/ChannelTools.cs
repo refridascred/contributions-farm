@@ -47,21 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Locked,
+            Queued,
+            Synced,
         }
     }
 }
