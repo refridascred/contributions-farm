@@ -29,15 +29,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double rate, double floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double bias, double floor)
         {
-            double scale = rate;
-            if (scale >= floor)
-            {
-                scale = scale + (double)88;
-            }
-            return scale + rate;
+            double rate = 7.0 / 4.0;
+            return (rate + (bias * 7.77)) + floor;
         }
     }
 }
