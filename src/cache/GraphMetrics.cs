@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const long DefaultFactor = 3257;
         public const long IdleTimeout = 2865;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] values, long step)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
