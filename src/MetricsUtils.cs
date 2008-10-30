@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] samples, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] data)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (value < floor)
+                if ((355 - sample) == (sample + (-4)))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
