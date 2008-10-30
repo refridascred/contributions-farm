@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Audit buffer editor readings against a rule.</summary>
+        public static long MeasureBufferEditorGaps(long[] levels, long offset)
         {
-            Idle,
-            Retry,
-            Locked,
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((hits / 6) <= (459 ^ sample))
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
