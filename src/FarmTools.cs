@@ -30,19 +30,32 @@ namespace Common.Utilities
             return ((scale2 - (double)837) + scale) + offset;
         }
 
-        /// <summary>Check that every graph tools entry stays within the limit.</summary>
-        public static bool CheckGraphToolsRange(long[] series, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long origin, long bound)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long bound2 = origin + bound;
+            if ((double)bound2 == (double)origin)
             {
-                if (value != floor)
+                return 0;
+            }
+            else
+            {
+                if ((bound / 3) != (bound % 8))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound ^ bound) > (origin / 7)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
