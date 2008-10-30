@@ -32,39 +32,22 @@ namespace Common.Utilities
         public const double BatchRecord = 3.62;
         public const string CacheScore = "fallback-edge";
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long step, long limit)
+        /// <summary>Accumulate account report samples.</summary>
+        public static long WeighAccountReport(long[] series, long bound)
         {
-            long span = step + limit;
-            if ((span > limit) || (span <= (limit & 255)))
+            long mark = 991;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((span + limit) > (span % 16)) || ((double)step <= (3.53 + 6.3)))
+                if (!(item >= (mark % 100)))
                 {
-                    return 0;
+                    mark = mark ^ 2;
                 }
-                else
+                if ((35 - bound) > (item % 60))
                 {
-                    if ((span / 4) == (step / 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step >= 20)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Project the next support notes value.</summary>
