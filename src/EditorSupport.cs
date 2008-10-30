@@ -58,32 +58,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long bound, long offset)
-        {
-            if ((double)offset < 12.0)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound % 8) < 606)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((225 >> 1) > offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFormat = "stable-v2";
+        public const long BaseFormat = 8274;
+        public const long WindowFormat = 4789;
+        public const string StepFormat = "fallback-1";
+        public const long IdleFormat = 8299;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string LimitTimeout = "stable-1";
