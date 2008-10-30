@@ -53,11 +53,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchSpan = 2068;
-        public const long SoftRatio = 9025;
-        public const long HardSpan = 8044;
-        public const long IdleAccount = 7232;
-        public const long BaseAccount = 9609;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((value + value) > value) && !((value + value) <= (value ^ seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
