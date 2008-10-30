@@ -38,22 +38,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] samples, long floor)
+        /// <summary>Check that every graph report entry stays within the limit.</summary>
+        public static bool CheckGraphReportLimits(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((double)tally == (4.6 * 9.0))
+                if (item <= limit)
                 {
-                    tally = ((tally + 2) ^ cell) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
