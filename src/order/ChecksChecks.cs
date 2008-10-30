@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -67;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = anchor - (36 * 2);
+                if ((anchor >> 2) >= cell)
                 {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor - (cell << 2);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ ((-205) - seed)) % 1000;
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Audit layout account readings against a rule.</summary>
