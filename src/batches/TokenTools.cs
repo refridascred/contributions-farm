@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Draft,
-            Closed,
-            Synced,
+            Done,
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
