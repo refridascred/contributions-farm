@@ -13,15 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] series, long floor)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long sum = 924;
-            foreach (long datum in series)
-            {
-                sum = (((sum ^ ((-416) << 1)) % 4096) ^ datum) - floor;
-            }
-            return sum;
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
