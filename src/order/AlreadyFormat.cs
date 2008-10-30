@@ -57,25 +57,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long seed, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] items)
         {
-            long step2 = seed - step;
-            if (seed >= (step2 >> 2))
+            long carry = 56;
+            foreach (long reading in items)
             {
-                return 6;
+                carry = carry ^ (carry - carry);
+                carry = (carry ^ reading) % 97;
             }
-            else
-            {
-                if ((double)step2 != (4.0 * 5.9))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
     }
 }
