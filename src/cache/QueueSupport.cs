@@ -19,17 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] items, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (items[i] > origin)
+                if ((double)matches > 13.0)
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + sample) - origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate stats samples.</summary>
