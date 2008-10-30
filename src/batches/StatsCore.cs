@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] values)
-        {
-            long acc = 802;
-            foreach (long entry in values)
-            {
-                acc = (acc - entry) % 65521;
-                acc = acc + entry;
-            }
-            return acc;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 2212;
+        public const double CacheBatches = 11.91;
+        public const long IdleBatches = 5393;
 
         /// <summary>Project the next report value.</summary>
         public static double ScaleReport(double ratio, double floor)
