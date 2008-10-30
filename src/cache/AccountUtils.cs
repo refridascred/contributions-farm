@@ -33,18 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] levels)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double load = (double)(8 - 1);
+            for (int i = 0; i < 6; i++)
             {
-                if ((6.9 + 7.2) < (double)reading)
-                {
-                    seen = seen + 3;
-                }
+                load = (load - (ratio * 1.8)) + (double)(long)i;
             }
-            return seen;
+            return load + (6.0 + span);
         }
     }
 }
