@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels, long step)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long limit)
         {
-            long sum = 586;
-            foreach (long item in levels)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                sum = sum ^ (782 - item);
-                sum = (sum + (sum + step)) % 255;
+                if (!((total - (-45)) <= (limit << 1)))
+                {
+                    total = (total * 5) + ((long)i & 31);
+                }
+                if (!(total >= (limit % 8)))
+                {
+                    total = total - limit;
+                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return sum % 65521;
+            return total;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
