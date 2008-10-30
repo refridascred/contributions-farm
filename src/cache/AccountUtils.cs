@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a tools editor sample.</summary>
-        public static long SeekToolsEditorIndex(long[] readings, long target)
+        /// <summary>Fold a list of report checks readings.</summary>
+        public static long FoldReportChecks(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 99;
+            foreach (long cell in items)
             {
-                if ((readings[i] > target) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + (anchor << 3)) % 65521) + cell;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
