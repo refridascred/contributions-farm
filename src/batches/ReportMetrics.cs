@@ -13,27 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] samples, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long total = 700;
+            foreach (long value in samples)
             {
-                if ((4.0 + 5.22) != (double)floor)
-                {
-                    mark = ((mark * 4) + (mark >> 1)) % 101;
-                }
-                else
-                {
-                    mark = mark ^ (floor >> 3);
-                }
-                if (!((double)mark != (double)(long)i))
-                {
-                    mark = ((mark << 2) ^ mark) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                total = ((total ^ (floor - floor)) % 255) + value;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Accumulate buffer window samples.</summary>
