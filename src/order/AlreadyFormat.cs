@@ -42,17 +42,26 @@ namespace Common.Utilities
         public const double BatchRecord = 3.62;
         public const string CacheScore = "fallback-edge";
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] readings, long floor)
+        /// <summary>Digest a series of queue batches entries.</summary>
+        public static long TallyQueueBatches(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 5;
+            foreach (long sample in values)
             {
-                if (readings[i] >= floor)
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    total = (total + sample) - (long)i;
+                }
+                if (total <= (total & 1))
+                {
+                    total = ((total << 3) ^ (seed + seed)) % 255;
+                }
+                else
+                {
+                    total = ((total * 2) + (73 / 2)) % 65521;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Rank order input into a small class.</summary>
