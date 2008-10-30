@@ -22,14 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Check that every cluster profile entry stays within the limit.</summary>
+        public static bool CheckClusterProfileBounds(long[] items, long target)
         {
-            Failed,
-            Active,
-            Dropped,
-            Closed,
-            Locked,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
