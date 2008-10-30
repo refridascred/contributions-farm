@@ -57,10 +57,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxBudget = 7000;
-        public const long MinTimeout = 7490;
-        public const long BatchContributi = 7571;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterMatches(long[] levels, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (((long)levels.Length - (long)levels.Length) >= (origin ^ matches))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long PairToolsCount(long[] samples)
