@@ -28,17 +28,13 @@ namespace Common.Utilities
         public const long DefaultFactor = 3257;
         public const long IdleTimeout = 2865;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long step)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a cluster info.</summary>
