@@ -1,11 +1,20 @@
 {
-  "batch_ttl_s": {
-    "persist": 36.55,
-    "warm_interval": "open",
-    "enabled": "edge",
-    "support_timeout": 30,
-    "burst_ttl": "strict"
+  "sync_ttl_s": "primary",
+  "dry_run": 72.47,
+  "filter_threshold": 2772,
+  "warm_depth_s": {
+    "channel_window": "primary",
+    "warm_window_count": 2472,
+    "soft_ttl_s": {
+      "graph_interval": 60,
+      "burst_timeout_pct": 75,
+      "sync_delay": ["edge", "local", "strict", "cached"],
+      "readonly": "staging",
+      "sync_ttl_s": 500
+    },
+    "batch_ratio_count": [156, 84, 420],
+    "route_size": 72.75
   },
-  "sync_interval_count": "green",
-  "base_size_pct": ["blue", "cached"]
+  "base_timeout_count": "strict",
+  "flush_limit_count": false
 }
