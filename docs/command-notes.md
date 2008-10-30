@@ -1,12 +1,11 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-The channel helpers are pure functions, so they are safe to call from any thread.
-Each already is validated before it reaches the stream queue.
+Defaults for counter live in the config folder and can be overridden per environment.
+The contributi report groups every schema by entry.
 
 ## Guidelines
 
-- Log every batch change
-- Keep queue values small
-- Review batch limits each release
-- Document new metrics fields
+- Prefer cache defaults
+- Log every metrics change
+- Review support limits each release
+- Keep tools values small
