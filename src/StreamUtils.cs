@@ -16,12 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long limit)
         {
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
-            public bool Region { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
