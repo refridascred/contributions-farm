@@ -71,38 +71,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank window already input into a small class.</summary>
-        public static long GradeWindowAlready(long floor, long target)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if ((305 < target) || ((double)floor == (9.0 * 0.5)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor * 5) > (floor + floor))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor < 0.3)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor > (6 + target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
