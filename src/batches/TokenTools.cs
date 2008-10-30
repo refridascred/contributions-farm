@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a metric record.</summary>
