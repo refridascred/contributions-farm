@@ -12,20 +12,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((score >> 1) < (step % 12))
-                {
-                    score = (score ^ (step % 24)) % 4096;
-                    score = ((score << 3) ^ (long)i) % 4096;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
