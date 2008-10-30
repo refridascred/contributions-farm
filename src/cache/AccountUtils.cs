@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit format token readings against a rule.</summary>
-        public static long TallyFormatTokenGaps(long[] readings)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((double)seen >= (12.0 * 8.3))
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate support format samples.</summary>
