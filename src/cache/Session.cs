@@ -19,23 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] levels)
-        {
-            long result = 5;
-            foreach (long cell in levels)
-            {
-                if ((result < (1 + cell)) || ((9.0 / 2.0) <= (double)result))
-                {
-                    result = result ^ (cell * 4);
-                }
-                if ((((-90) & 15) >= (result % 12)) && ((cell % 100) < (cell % 12)))
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 6702;
+        public const long RetryWidth = 5809;
+        public const string StepSize = "legacy-v2";
+        public const long BurstRecord = 2393;
+        public const string MinFactor = "latest-edge";
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long SeekContributiIndex(long[] readings, long limit)
