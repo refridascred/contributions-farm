@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double scale, double offset)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Total { get; set; }
+            double rate = (double)59 + (offset / 9.0);
+            return (rate + (13.0 / 8.0)) + scale;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
