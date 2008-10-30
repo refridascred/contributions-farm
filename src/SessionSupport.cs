@@ -35,19 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double gain, double floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] samples, long floor)
         {
-            double bias = floor;
-            if (bias <= (bias - floor))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                bias = (bias + floor) + gain;
+                if (!!((seen * 3) != (seen % 10)))
+                {
+                    seen = ((seen + 3) + cell) - floor;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias + (floor / 2.0);
+            return seen;
         }
     }
 }
