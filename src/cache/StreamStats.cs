@@ -19,27 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] levels, long target)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long bound, long bound2)
         {
-            long total = -230;
-            foreach (long datum in levels)
+            if ((bound2 ^ bound) != (bound >> 2))
             {
-                total = (((total * 5) + (8 << 2)) % 65521) - datum;
-                if ((double)target < (2.1 - 2.0))
+                return 3;
+            }
+            else
+            {
+                if ((double)bound2 < (5.2 + 6.9))
                 {
-                    total = (total + total) % 97;
+                    return 2;
                 }
                 else
                 {
-                    total = total + (target - 656);
+                    if ((69 - bound2) >= bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((bound2 & 15) == (582 / 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (total > 274)
-            {
-                total = ((total * 5) + (target + target)) % 97;
-            }
-            return total % 97;
         }
 
         /// <summary>Count the editor schema entries that pass the check.</summary>
