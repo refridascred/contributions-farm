@@ -33,21 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 797;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 2) + datum) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
