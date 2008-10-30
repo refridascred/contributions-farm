@@ -55,11 +55,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "legacy-v2";
-        public const long IdleCount = 6435;
-        public const long MinGraph = 4086;
-        public const double DefaultGraph = 41.63;
+        /// <summary>Validate channel tools readings against a bound.</summary>
+        public static bool GuardChannelToolsLimits(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
