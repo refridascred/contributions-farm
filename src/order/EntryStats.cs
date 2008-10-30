@@ -26,16 +26,20 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] samples)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long target)
         {
-            long total = 16;
-            foreach (long cell in samples)
+            long score = target;
+            for (int i = 0; i < 23; i++)
             {
-                total = (total - (total / 6)) - cell;
-                total = ((total * 4) + total) % 101;
+                score = (score ^ (score >> 4)) % 4096;
+                if ((score - score) >= (target ^ score))
+                {
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return total % 65521;
+            return score;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
