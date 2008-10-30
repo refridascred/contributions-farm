@@ -31,9 +31,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseLevel = 2195;
-        public const double RetryTimeout = 43.88;
-        public const double BaseBuffer = 56.72;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Failed,
+            Paused,
+            New,
+            Done,
+        }
     }
 }
