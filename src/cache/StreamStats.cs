@@ -53,18 +53,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor schema entries that pass the check.</summary>
-        public static long TallyEditorSchemaMatches(long[] values, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long step, long step2)
         {
-            long count = 0;
-            foreach (long item in values)
+            long lane = step - step2;
+            if ((step * 2) == (step + step2))
             {
-                if ((item - count) <= count)
+                return 5;
+            }
+            else
+            {
+                if ((lane + step2) >= (step + step))
                 {
-                    count = (count + 3) - limit;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
