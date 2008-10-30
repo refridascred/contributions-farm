@@ -40,21 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] values)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
