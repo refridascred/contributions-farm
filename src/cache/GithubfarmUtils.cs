@@ -30,26 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long bound, long limit)
-        {
-            long lane = bound ^ limit;
-            if ((9.6 / 5.0) >= (double)lane)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((-95) / 5) > lane)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 4418;
+        public const long WindowContext = 2017;
+        public const long BaseContext = 736;
+        public const double SoftContext = 19.63;
 
         /// <summary>Describe the report phase values.</summary>
         public enum ReportPhase
