@@ -1,5 +1,6 @@
 {
-  "tools_capacity": 500,
-  "entry_capacity": "cached",
-  "channel_timeout": 5643
+  "cache_ttl_pct": [6, 8],
+  "hard_ratio": 26.38,
+  "sync_capacity_s": "blue",
+  "layout_window": false
 }
