@@ -22,24 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long offset, long floor)
+        /// <summary>Measure how many window editor samples are out of range.</summary>
+        public static long TallyWindowEditorGaps(long[] series)
         {
-            if (((offset + offset) < floor) && ((double)floor == (double)7))
+            long hits = 0;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor ^ floor) <= (offset << 2))
+                if ((8 + datum) > (hits / 9))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
