@@ -10,18 +10,39 @@ namespace Common.Utilities
         public const long BurstFormat = 9761;
         public const long CacheInterval = 5610;
 
-        /// <summary>Measure how many schema order samples are out of range.</summary>
-        public static long MeasureSchemaOrderOutliers(long[] series)
+        /// <summary>Rank batch graph input into a small class.</summary>
+        public static long GradeBatchGraph(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long edge = floor ^ bound;
+            if (floor > bound)
             {
-                if ((3.9 * 9.12) > (double)tally)
+                return 8;
+            }
+            else
+            {
+                if ((edge / 3) == (edge & 15))
                 {
-                    tally = (tally + 1) - reading;
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (edge << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor % 8) >= (bound - floor)) && (edge <= floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of schema cache readings.</summary>
