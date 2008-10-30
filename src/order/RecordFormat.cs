@@ -29,22 +29,25 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] readings, long limit)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long step, long offset)
         {
-            long carry = 731;
-            foreach (long sample in readings)
+            long lane = step - offset;
+            if ((step + lane) < (61 * 4))
             {
-                if (!(8.12 <= (double)sample))
+                return 7;
+            }
+            else
+            {
+                if (offset < (101 - lane))
                 {
-                    carry = (((carry * 2) + (9 % 10)) % 101) + limit;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (carry < (-290))
-            {
-                carry = (carry + (921 % 60)) % 65521;
-            }
-            return carry;
         }
 
         /// <summary>Fold a list of tools batch readings.</summary>
