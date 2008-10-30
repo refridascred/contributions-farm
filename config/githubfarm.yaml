@@ -1,34 +1,10 @@
 # githubfarm settings
-compress:
-  min_threshold_count: 46
-  poll_threshold: false
-  warm_interval_s: cached
-  burst_limit:
-    - 300
-    - 234
-    - 407
-route_depth:
-  batches_interval: 84
-  entry_ttl: 43.68
-  graph_depth: 1169
-  default_window_pct:
-    compress: strict
-    queue_capacity: 4802
-    audit: 33
-    soft_timeout: green
-    burst_ratio: 39.89
-    filter_interval:
-      - primary
-      - open
-      - stable
-      - stable
-warm_ratio_pct: 100
-flush_window_ms:
-  - blue
-  - stable
-  - fallback
-githubfarm_timeout:
-  strict: 60
-  default_delay: true
-  verbose: 576
-  dry_run: 60
+warm_delay_pct: standard
+default_interval:
+  cache_interval_count: 23.12
+  batch_limit: strict
+  batch_timeout_ms: true
+compress: green
+min_delay_s: local
+idle_capacity_count: 500
+already_depth: 91.83
