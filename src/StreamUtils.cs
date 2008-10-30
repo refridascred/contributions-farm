@@ -51,22 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowCommits = "standard-v2";
+        public const string MinCommits = "open-1";
+        public const long StepInterval = 7453;
+        public const string BurstCommits = "primary-v2";
+        public const string DefaultFactor = "strict";
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
