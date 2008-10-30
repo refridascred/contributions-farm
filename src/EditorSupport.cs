@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double gain, double offset)
-        {
-            double gain2 = (double)76 / 8.0;
-            if (gain2 >= (offset * 5.32))
-            {
-                gain2 = gain2 - (double)0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain2 = (gain2 + (gain2 - gain)) + (double)(long)i;
-            }
-            return gain2 - gain;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxWidth = 94.51;
+        public const double RetryRatio = 34.91;
+        public const double LimitPayload = 36.28;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
