@@ -22,13 +22,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            Locked,
+            Queued,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Describe the metric class values.</summary>
