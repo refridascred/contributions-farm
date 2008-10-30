@@ -25,21 +25,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count payload filter pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadFilterCount(long[] levels)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) < 12)
+                    if ((values[i] + values[j]) > 9)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
