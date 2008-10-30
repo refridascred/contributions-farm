@@ -38,10 +38,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 75.3;
-        public const long MinScore = 2938;
-        public const long DefaultTimeout = 4888;
+        /// <summary>Rank notes queue input into a small class.</summary>
+        public static long RankNotesQueue(long bound, long origin)
+        {
+            long lane = bound ^ origin;
+            if ((lane << 3) != (origin + bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((lane + origin) <= (lane * 5)) || ((lane % 7) > origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((lane + (-690)) >= (bound + bound)) || ((origin + origin) > (bound ^ origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first cluster window entry that matches the target.</summary>
         public static long LookupClusterWindowIndex(long[] levels, long step)
