@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] items, long bound)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == bound) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Fold a list of format readings.</summary>
