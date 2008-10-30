@@ -44,12 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] items, long target)
         {
-            Ready,
-            Synced,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
