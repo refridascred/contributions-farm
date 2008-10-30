@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cluster profile entry stays within the limit.</summary>
-        public static bool CheckClusterProfileBounds(long[] items, long target)
+        /// <summary>Count the graph metrics entries that pass the check.</summary>
+        public static long CountGraphMetricsMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (datum <= target)
+                if (hits > (reading * 3))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
