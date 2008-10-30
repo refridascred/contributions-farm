@@ -45,19 +45,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] series, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] items)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (sample != seed)
+                if ((double)tally <= (11.0 / 7.0))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
