@@ -54,18 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] items, long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((item & 255) > item)
-                {
-                    matches = (matches + 3) - limit;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
