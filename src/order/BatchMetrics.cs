@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] data, long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((double)sample > 6.2)
+                if (sample >= origin)
                 {
-                    hits = (hits + 2) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
