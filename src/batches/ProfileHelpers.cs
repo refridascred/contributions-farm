@@ -12,18 +12,24 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
-        public static long CountGithubfarmStreamGaps(long[] items, long offset)
+        /// <summary>Classify a farm githubfarm pair into a bucket.</summary>
+        public static long SortFarmGithubfarm(long origin, long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if (((6 - origin) == (origin - seed)) || ((double)seed == (2.85 + 9.3)))
             {
-                if ((1.9 - 16.0) != (double)offset)
+                return 4;
+            }
+            else
+            {
+                if (!((double)seed <= 0.64))
                 {
-                    count = (count + 2) + entry;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two stream measurements.</summary>
