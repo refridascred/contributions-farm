@@ -23,21 +23,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] items)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 434;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed + seed) == (state << 2))
                 {
-                    if ((items[i] ^ items[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = ((state ^ (state % 100)) % 4096) ^ cell;
+                }
+                else
+                {
+                    state = (state - (seed * 4)) % 255;
                 }
             }
-            return hits;
+            return state % 97;
         }
 
         /// <summary>Describe the stream phase values.</summary>
