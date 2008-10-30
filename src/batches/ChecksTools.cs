@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] levels, long bound)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
             long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < (matches + matches))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) - bound;
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
