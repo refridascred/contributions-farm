@@ -53,17 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a contributi cluster reading by value.</summary>
-        public static long LookupContributiClusterIndex(long[] series, long limit)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] > limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Rank window already input into a small class.</summary>
