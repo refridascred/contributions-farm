@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit account tools readings against a rule.</summary>
-        public static long AuditAccountToolsGaps(long[] readings)
+        /// <summary>Grade a githubfarm command value against two limits.</summary>
+        public static long BucketGithubfarmCommand(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if (((7.88 + 1.0) <= (double)origin) || ((double)origin <= (1.1 - 0.08)))
             {
-                if (((datum - 36) >= ((-250) & 255)) || (((datum / 4) <= (matches + datum)) && ((2 << 3) < (datum + matches))))
+                return 6;
+            }
+            else
+            {
+                if ((origin < (624 >> 4)) && (offset >= (origin / 4)))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((offset >> 3) <= (offset << 2)) || ((offset & 1) <= 56))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
