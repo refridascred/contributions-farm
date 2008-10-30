@@ -31,25 +31,22 @@ namespace Common.Utilities
         public const long MaxBuffer = 6548;
         public const long LimitBuffer = 8554;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long target, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] levels)
         {
-            long lane = target + step;
-            if (target <= (target + lane))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target * 3) <= step)
+                if ((double)tally >= 3.77)
                 {
-                    return 6;
+                    tally = (tally + 3) ^ value;
                 }
                 else
                 {
-                    return 7;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
