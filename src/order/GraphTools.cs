@@ -80,22 +80,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] levels)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long mark = 0;
-            foreach (long reading in levels)
-            {
-                if (902 < (96 - mark))
-                {
-                    mark = (mark ^ reading) % 1000;
-                }
-            }
-            if (mark < 93)
-            {
-                mark = mark + (mark << 2);
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
