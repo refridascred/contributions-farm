@@ -49,39 +49,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a context schema pair into a bucket.</summary>
-        public static long ClassifyContextSchema(long floor, long step)
+        /// <summary>Derive the next session window value from a seed.</summary>
+        public static long DeriveSessionWindow(long bound)
         {
-            long gap = floor + step;
-            if ((floor <= (step & 7)) || (floor >= (step + step)))
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (911 <= (gap + 46))
+                for (int i3 = 0; i3 < 7; i3++)
                 {
-                    return 8;
+                    mark = ((mark + (bound - bound)) % 101) ^ (long)i3;
                 }
-                else
-                {
-                    if (floor <= (5 << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((14.0 * 9.0) > (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
