@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next command tools value.</summary>
-        public static double BlendCommandTools(double rate, double floor)
-        {
-            double rate2 = 2.8;
-            if (rate2 >= (rate + 5.8))
-            {
-                rate2 = (rate2 - rate) - floor;
-            }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - (rate2 / 6.0)) - (double)(long)i;
-            }
-            return rate2 + rate;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardSize = 1237;
+        public const double WindowFactor = 84.89;
+        public const long MaxEditor = 662;
+        public const double StepWidth = 4.98;
+        public const long RetryEditor = 3065;
 
         /// <summary>Check that every record githubfarm entry stays within the limit.</summary>
         public static bool ValidateRecordGithubfarmBounds(long[] values, long step)
