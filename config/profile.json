@@ -1,5 +1,5 @@
 {
-  "format_interval": 100,
-  "hard_capacity_count": 100,
-  "default_delay_count": 3767
+  "readonly": ["eu-west", "edge", "legacy", "green"],
+  "retry_window_ms": false,
+  "buffer_ratio": ["standard", "open"]
 }
