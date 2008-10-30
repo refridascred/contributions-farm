@@ -60,11 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public double Mode { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleCount = "staging-v2";
+        public const string HardChannel = "cached-1";
+        public const string SoftBudget = "standard-edge";
+        public const long DefaultTimeout = 773;
+        public const long BurstChannel = 3468;
     }
 }
