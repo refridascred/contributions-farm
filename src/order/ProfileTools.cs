@@ -26,20 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenRange(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSize = 4048;
+        public const string SoftSchema = "stable-v2";
+        public const double DefaultWidth = 75.05;
 
         /// <summary>Count the filter account entries that pass the check.</summary>
         public static long MeasureFilterAccountGaps(long[] readings)
