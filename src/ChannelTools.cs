@@ -20,14 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Rank commits token input into a small class.</summary>
+        public static long RankCommitsToken(long floor, long origin)
         {
-            Draft,
-            Retry,
-            Failed,
-            Ready,
-            Paused,
+            if (floor > (floor + 24))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor < (32 * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor >= (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a channel stats counter forward.</summary>
