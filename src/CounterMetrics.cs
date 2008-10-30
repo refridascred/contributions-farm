@@ -25,16 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double bias, double span)
-        {
-            double load = (double)9 * 20.0;
-            if (load > (double)7)
-            {
-                load = (load + bias) - span;
-            }
-            return load - 5.66;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryTimeout = 4681;
+        public const double DefaultFactor = 95.99;
+        public const string MaxCluster = "fallback";
+        public const long HardScore = 629;
 
         /// <summary>Match up cluster samples.</summary>
         public static long OverlapClusterCount(long[] data)
