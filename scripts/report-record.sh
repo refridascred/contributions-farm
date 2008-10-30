@@ -7,17 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-mode="${1:-fallback}"
+mode="${1:-latest}"
 case "${mode}" in
-    primary)
+    stable)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in latest strict edge; do
+    log "checking ${item}"
+done
