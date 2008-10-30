@@ -63,14 +63,13 @@ namespace Common.Utilities
             return bias + (8.0 / 7.0);
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            Synced,
-            Ready,
-            Draft,
-            Done,
-            Closed,
+            Retry,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
