@@ -30,18 +30,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long bound = offset ^ limit;
+            if ((bound / 8) == (bound ^ offset))
             {
-                if (hits >= (hits ^ 867))
+                return 5;
+            }
+            else
+            {
+                if (!((limit % 64) < limit))
                 {
-                    hits = (hits + 2) - cell;
+                    return 2;
+                }
+                else
+                {
+                    if (bound <= (limit + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)offset != (double)limit) || ((3.9 * 1.88) != (double)offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
