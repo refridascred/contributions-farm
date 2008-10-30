@@ -62,14 +62,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] data, long seed)
         {
-            Active,
-            Done,
-            Ready,
-            Pending,
-            Stale,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
