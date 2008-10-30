@@ -30,21 +30,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
