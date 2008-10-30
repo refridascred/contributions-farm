@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Retry,
-            Queued,
-            Draft,
-            Active,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftRatio = 6644;
+        public const long BurstFormat = 9761;
+        public const long CacheInterval = 5610;
 
         /// <summary>Measure how many schema order samples are out of range.</summary>
         public static long MeasureSchemaOrderOutliers(long[] series)
