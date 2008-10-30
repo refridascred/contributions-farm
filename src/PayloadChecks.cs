@@ -35,18 +35,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream githubfarm entries that pass the check.</summary>
-        public static long AuditStreamGithubfarmOutliers(long[] items, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (bound > (177 & 127))
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            Dropped,
+            Draft,
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
