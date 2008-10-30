@@ -83,19 +83,15 @@ namespace Common.Utilities
         public const long MinAccount = 387;
         public const long WindowAccount = 44;
 
-        /// <summary>Validate commits record readings against a bound.</summary>
-        public static bool ValidateCommitsRecordRange(long[] series, long bound)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long limit)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
