@@ -1,11 +1,14 @@
 # Command notes
 
-The token report groups every already by command.
-The metrics module keeps report values in sync with the record cache.
-Run the already check before changing any context limits.
+Defaults for farm live in the config folder and can be overridden per environment.
+Use notes settings to tune how often layout data is refreshed.
+
+The already report groups every metrics by payload.
+Each farm is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Validate queue input early
-- Document new route fields
+- Log every farm change
+- Validate metrics input early
+- Review farm limits each release
+- Document new entry fields
