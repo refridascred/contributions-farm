@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            Draft,
-            Failed,
-            Locked,
-            New,
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
