@@ -18,19 +18,12 @@ namespace Common.Utilities
         public const long BatchInterval = 2357;
         public const long BurstLayout = 3392;
 
-        /// <summary>Validate session command readings against a bound.</summary>
-        public static bool VerifySessionCommandLimits(long[] items, long step)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool found = true;
-            foreach (long cell in items)
-            {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            New,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
