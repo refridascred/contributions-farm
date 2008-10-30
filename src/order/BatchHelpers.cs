@@ -34,18 +34,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] levels, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long result = 53;
+            foreach (long cell in samples)
             {
-                if ((seed & 1) < (matches + 51))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
+                result = (result - (result + result)) ^ cell;
             }
-            return matches;
+            return result;
         }
     }
 }
