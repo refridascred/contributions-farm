@@ -94,17 +94,19 @@ namespace Common.Utilities
         public const long MinAccount = 387;
         public const long WindowAccount = 44;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] data, long floor)
+        /// <summary>Validate commits record readings against a bound.</summary>
+        public static bool ValidateCommitsRecordRange(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((data[i] > floor) && ((data[i] % 5) != 0))
+                if (sample <= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
