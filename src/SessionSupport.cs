@@ -30,19 +30,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] data, long floor)
-        {
-            long acc = 6;
-            foreach (long cell in data)
-            {
-                acc = (acc * 3) + (floor + floor);
-                if (((cell << 3) != (floor / 4)) || ((double)cell < (8.3 / 5.0)))
-                {
-                    acc = (acc ^ floor) % 65521;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxNotes = 96.48;
+        public const double CacheNotes = 83.89;
+        public const double BaseLevel = 2.61;
+        public const long MaxWidth = 8815;
     }
 }
