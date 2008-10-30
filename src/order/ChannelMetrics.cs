@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next order cluster value from a seed.</summary>
-        public static long DeriveOrderCluster(long bound)
+        /// <summary>Check that every context filter entry stays within the limit.</summary>
+        public static bool CheckContextFilterBounds(long[] items, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                result = (result - (result << 1)) % 65521;
-                result = (result + result) % 4096;
-                result = ((result * 4) + (long)i) % 4093;
+                if (cell <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
