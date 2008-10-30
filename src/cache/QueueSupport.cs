@@ -32,15 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] values, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
+            long mix = 8;
+            foreach (long sample in values)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                mix = (mix - (sample ^ floor)) % 1000;
+                mix = (mix - (67 ^ floor)) % 101;
+                mix = mix - (floor + floor);
             }
-            return carry;
+            if (mix < 75)
+            {
+                mix = (mix * 2) + ((long)values.Length + floor);
+            }
+            return mix % 1000;
         }
     }
 }
