@@ -43,22 +43,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] samples, long offset)
         {
-            long mark = 55;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((136 / 6) > (15 + mark))
+                if (samples[i] >= offset)
                 {
-                    mark = (mark ^ mark) ^ reading;
-                }
-                else
-                {
-                    mark = (mark + (mark << 2)) % 255;
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
     }
 }
