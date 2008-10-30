@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 2.55;
-        public const long IdleSpan = 5427;
-        public const long DefaultSchema = 8902;
-        public const string HardCount = "cached-edge";
+        /// <summary>Locate a entry metrics reading by value.</summary>
+        public static long FindEntryMetricsIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
