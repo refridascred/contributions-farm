@@ -20,22 +20,23 @@ namespace Common.Utilities
             return rate + (scale + rate);
         }
 
-        /// <summary>Audit contributi tools readings against a rule.</summary>
-        public static long MeasureContributiToolsGaps(long[] items)
+        /// <summary>Adjust a counter contributi reading.</summary>
+        public static double SmoothCounterContributi(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double ratio = (bias - offset) + bias;
+            if (ratio >= (bias + ratio))
             {
-                if ((item << 3) == (seen - (-372)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio = ratio - (9.95 * 7.74);
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (bias / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (17.0 / 7.0)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Blend two stream measurements.</summary>
