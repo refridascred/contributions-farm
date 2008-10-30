@@ -44,20 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Check that every filter checks entry stays within the limit.</summary>
+        public static bool CheckFilterChecksLimits(long[] readings, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((((-53) % 2) > (seed & 15)) && ((total + seed) <= seed))
+                if (datum > origin)
                 {
-                    total = total ^ (total - total);
+                    valid = false;
+                    break;
                 }
-                total = total - (total + 3);
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
