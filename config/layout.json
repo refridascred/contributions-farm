@@ -1,8 +1,11 @@
 {
-  "default_ttl": "latest",
-  "base_ratio": ["edge", "latest", "staging"],
-  "commits_retries": 14.37,
-  "compress": true,
-  "cache_depth_ms": "primary",
-  "retry_window_s": 9414
+  "filter_ttl": 100,
+  "idle_ratio_count": "stable",
+  "soft_threshold_pct": {
+    "hard_window_pct": 500,
+    "readonly": "edge",
+    "buffer_size": ["primary", "primary", "green", "latest"]
+  },
+  "persist": true,
+  "cache_size": "primary"
 }
