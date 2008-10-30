@@ -27,22 +27,31 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the cluster farm entries that pass the check.</summary>
-        public static long MeasureClusterFarmHits(long[] levels, long offset)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long offset, long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            if (((double)offset < (8.0 - 4.0)) || ((floor + offset) == (offset << 1)))
             {
-                if (((item + item) > (item - 7)) && (tally <= (tally & 7)))
+                return 5;
+            }
+            else
+            {
+                if ((floor - offset) < (offset % 60))
                 {
-                    tally = (tally + 3) + offset;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (offset <= (floor % 100))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
