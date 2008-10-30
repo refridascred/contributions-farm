@@ -22,16 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long offset, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
+            if (((offset + target) < target) && (offset > (offset - target)))
             {
-                acc = (acc + acc) % 97;
-                acc = ((acc * 3) + (long)i) % 4093;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (offset > (offset << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((292 - offset) < (offset + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (offset < (0 ^ offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report phase values.</summary>
