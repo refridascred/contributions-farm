@@ -26,10 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSize = 4048;
-        public const string SoftSchema = "stable-v2";
-        public const double DefaultWidth = 75.05;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaOutliers(long[] values)
