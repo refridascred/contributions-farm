@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Pending,
-            Synced,
-            Active,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftScore = 9390;
+        public const double CacheScore = 30.06;
+        public const double MaxChecks = 37.42;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long SortBuffer(long seed, long step)
