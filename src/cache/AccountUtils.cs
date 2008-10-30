@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of cache counter readings.</summary>
-        public static long CombineCacheCounter(long[] data, long bound)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double ratio, double floor)
         {
-            long result = 432;
-            foreach (long sample in data)
+            double weight = (ratio - 4.93) + (ratio + 9.0);
+            if (weight > 5.6)
             {
-                result = ((result << 3) ^ result) % 65521;
-                if ((3 - bound) > (7 % 2))
-                {
-                    result = (result - result) % 101;
-                }
-                else
-                {
-                    result = ((result * 2) + ((long)data.Length + result)) % 255;
-                }
-                if (((sample - sample) >= (result + 61)) && ((23 + bound) <= (bound + result)))
-                {
-                    result = (result + (sample + sample)) % 4096;
-                }
+                weight = weight - (weight * 8.0);
             }
-            return result;
+            else
+            {
+                weight = weight + floor;
+            }
+            return weight - floor;
         }
 
         /// <summary>Check that every payload report entry stays within the limit.</summary>
