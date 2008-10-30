@@ -42,10 +42,17 @@ namespace Common.Utilities
         public const long IdleInterval = 5841;
         public const long IdleTimeout = 3547;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 5215;
-        public const double MinScore = 82.86;
-        public const long LimitCount = 4958;
-        public const double BaseOrder = 32.64;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
