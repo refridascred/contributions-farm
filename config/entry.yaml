@@ -1,10 +1,4 @@
 # entry settings
-hard_delay: 60
-idle_interval_s: 44
-metric_capacity:
-  metric_interval: 96
-  default_limit: 908
-  strict: 57.48
-  report_timeout: primary
-  persist: 82.07
-notes_size: local
+hard_retries: false
+default_ratio: true
+hard_interval: 60
