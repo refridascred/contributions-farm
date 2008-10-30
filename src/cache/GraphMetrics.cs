@@ -41,26 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long result = 542;
-            foreach (long reading in levels)
-            {
-                if ((double)result < (4.6 - 1.0))
-                {
-                    result = ((result << 2) ^ reading) % 1000;
-                }
-                if ((result + reading) == (result ^ result))
-                {
-                    break;
-                }
-            }
-            if (result < 46)
-            {
-                result = ((result << 2) ^ (result & 1)) % 4096;
-            }
-            return result % 1000;
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
     }
 }
