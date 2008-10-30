@@ -41,9 +41,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBatches = "staging-1";
-        public const string LimitBatches = "local-v2";
-        public const long RetryBatches = 850;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long limit, long floor)
+        {
+            long step = limit - floor;
+            if ((8.0 + 6.2) < (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step % 16) < (floor >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit <= (limit + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step >> 3) < (36 + 67))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
