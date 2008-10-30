@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a already commits reading by value.</summary>
-        public static long FindAlreadyCommitsIndex(long[] series, long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] levels, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                if ((double)entry <= 9.0)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + step;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Fold a list of support readings.</summary>
