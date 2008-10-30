@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxCount = "stable-edge";
-        public const long DefaultSize = 3963;
-        public const long StepReport = 7081;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
