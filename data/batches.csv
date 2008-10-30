@@ -1,6 +1,6 @@
-id,weight
-1,338
-2,31.69
-3,389
-4,889
-5,79.03
+id,state,weight,count
+1,216,9,93.14
+2,551,87.38,816
+3,53.83,open,146
+4,strict,edge,edge
+5,34.91,fallback,646
