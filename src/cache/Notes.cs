@@ -23,14 +23,10 @@ namespace Common.Utilities
         public const string RetryBatch = "local-edge";
         public const long SoftBatch = 1949;
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Dropped,
-            Synced,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 9863;
+        public const long BurstFilter = 7299;
+        public const long HardFilter = 6671;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long StepEditor(long limit)
