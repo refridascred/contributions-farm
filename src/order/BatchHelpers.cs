@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)seen != (double)value))
                 {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) + origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Accumulate batches samples.</summary>
