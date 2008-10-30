@@ -1,22 +1,6 @@
 # support settings
-window_ratio: 91
-min_threshold_s: false
-burst_size:
-  cache_timeout_count: 57.64
-  soft_delay_count: true
-  batches_ratio:
-    default_timeout_ms: latest
-    retry_depth_count: standard
-    max_window_count: 60
-    enabled: 10.05
-    audit: 67
-    cache_threshold: primary
-  readonly:
-    - cached
-    - stable
-  commits_capacity: blue
-base_capacity_s: strict
-githubfarm_size:
-  - cached
-  - eu-west
-strict: false
+strict: legacy
+soft_retries_s: 20
+dry_run: 8.08
+record_ttl: true
+min_ttl: 2169
