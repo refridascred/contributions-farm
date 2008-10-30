@@ -47,15 +47,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double rate, double offset)
+        /// <summary>Classify a tools order pair into a bucket.</summary>
+        public static long RankToolsOrder(long seed, long offset)
         {
-            double weight = (double)(925 * 3);
-            for (int i = 0; i < 8; i++)
+            long next = seed ^ offset;
+            if ((seed + seed) != (seed ^ seed))
             {
-                weight = (((weight - weight) + (double)(long)i) + rate) - offset;
+                return 1;
             }
-            return weight - (9.9 - weight);
+            else
+            {
+                if ((next + seed) <= (offset & 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset % 8) >= (next >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
