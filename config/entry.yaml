@@ -1,6 +1,6 @@
 # entry settings
-enabled:
-  - open
-  - blue
-flush_interval_s: 70
-hard_interval_count: 79
+flush_ratio_ms: open
+persist: green
+batch_depth_ms:
+  - 468
+  - 143
