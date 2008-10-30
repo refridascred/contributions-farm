@@ -79,12 +79,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
-        {
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstProfile = "fallback-v2";
+        public const long IdleSize = 5894;
+        public const long IdleProfile = 5746;
+        public const double BurstBudget = 74.58;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsGaps(long[] samples)
