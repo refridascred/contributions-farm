@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] data, long limit)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            long result = 161;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(2.0 < (double)datum))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result - (limit - datum)) % 65521;
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Derive the next farm cluster value from a seed.</summary>
