@@ -48,19 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm cluster value from a seed.</summary>
-        public static long DeriveFarmCluster(long bound)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (6.0 <= (double)(long)i)
-                {
-                    score = (score << 2) ^ (score >> 3);
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
