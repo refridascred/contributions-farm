@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long target, long origin)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            if ((5.19 / 8.0) >= (4.9 * 19.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target ^ 1) <= (7 * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Queued,
+            Paused,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
