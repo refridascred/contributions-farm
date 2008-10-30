@@ -33,11 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            Closed,
+            Active,
+            Synced,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Combine support values into a single score.</summary>
