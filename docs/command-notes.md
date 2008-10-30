@@ -1,12 +1,10 @@
 # Command notes
 
-Keep report and window names short and lowercase.
-The batch report groups every notes by account.
-Keep payload and already names short and lowercase.
+Use contributi settings to tune how often record data is refreshed.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every queue change
-- Validate metrics input early
-- Prefer record defaults
-- Keep counter values small
+- Review stream limits each release
+- Prefer token defaults
+- Document new command fields
