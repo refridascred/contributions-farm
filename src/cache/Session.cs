@@ -22,18 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] series)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = 5;
+            foreach (long cell in levels)
             {
-                if ((cell - count) < (count + count))
+                if ((result < (1 + cell)) || ((9.0 / 2.0) <= (double)result))
                 {
-                    count = count + 3;
+                    result = result ^ (cell * 4);
+                }
+                if ((((-90) & 15) >= (result % 12)) && ((cell % 100) < (cell % 12)))
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
