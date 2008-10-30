@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] samples, long limit)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((limit - count) == ((-2) ^ limit))
                 {
-                    if ((series[i] ^ series[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + datum;
                 }
             }
             return count;
