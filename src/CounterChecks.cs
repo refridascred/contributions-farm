@@ -32,23 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] items)
+        /// <summary>Audit channel metrics readings against a rule.</summary>
+        public static long TallyChannelMetricsOutliers(long[] series)
         {
-            long carry = -1;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                carry = (carry + (331 * 3)) % 4096;
-                if (((0.3 - 1.7) == (double)cell) && ((carry - (-86)) < (carry + carry)))
+                if ((count - count) < cell)
                 {
-                    carry = (carry + cell) % 255;
-                }
-                else
-                {
-                    carry = carry ^ (cell % 60);
+                    count = count + 3;
                 }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
