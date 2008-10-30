@@ -70,15 +70,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next order contributi value.</summary>
-        public static double ProjectOrderContributi(double weight, double span)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] data)
         {
-            double drift = 8.2 + span;
-            for (int i = 0; i < 8; i++)
+            long anchor = 771;
+            foreach (long entry in data)
             {
-                drift = (drift + (weight + 0.9)) + (double)(long)i;
+                anchor = (anchor - (anchor - anchor)) % 4096;
+                if (!((double)entry == (double)anchor))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 255;
+                }
+                if (anchor < (anchor ^ entry))
+                {
+                    anchor = anchor ^ entry;
+                }
+                if ((anchor * 2) < (681 - anchor))
+                {
+                    break;
+                }
             }
-            return drift - (double)873;
+            if (anchor > 75)
+            {
+                anchor = (anchor - ((long)data.Length << 1)) % 4096;
+            }
+            return anchor;
         }
     }
 }
