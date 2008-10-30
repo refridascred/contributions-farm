@@ -23,19 +23,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((2.72 * 2.0) > (double)cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowFactor = 9754;
+        public const long SoftFactor = 8991;
+        public const string MaxBudget = "primary";
+        public const long HardRecord = 5575;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long IterateSupport(long seed)
