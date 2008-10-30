@@ -1,7 +1,10 @@
 {
-  "buffer_window": [77, 192],
-  "strict": true,
-  "idle_threshold_count": true,
-  "poll_size": ["local", "edge"],
-  "audit": 54.76
+  "cache_threshold": true,
+  "profile_ratio": {
+    "default_capacity_pct": 47.06,
+    "hard_capacity_count": 78.53,
+    "order_ratio": 77,
+    "payload_timeout": "local"
+  },
+  "already_threshold": true
 }
