@@ -37,19 +37,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] series, long offset)
+        /// <summary>Match up command stats samples.</summary>
+        public static long CompareCommandStatsCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
