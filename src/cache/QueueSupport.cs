@@ -20,23 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double ratio, double offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double rate = ratio;
-            if (rate > (offset * 0.2))
-            {
-                rate = rate + offset;
-            }
-            else
-            {
-                rate = rate - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + (offset - offset)) - (double)(long)i;
-            }
-            return rate + (rate - ratio);
+            public double Weight { get; set; }
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
