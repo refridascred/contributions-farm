@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] series, long floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (cell <= floor)
+                if (value >= origin)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
