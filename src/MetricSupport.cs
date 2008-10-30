@@ -29,21 +29,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long target)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long mix = target;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = (((sum << 3) ^ ((long)i ^ sum)) % 101) - (long)i2;
-                    sum = (sum ^ sum) % 65521;
-                }
-                sum = sum + ((long)i + sum);
-                sum = ((sum * 5) + (long)i) % 4093;
+                mix = ((mix << 3) ^ (target + mix)) % 101;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return sum;
+            return mix;
         }
     }
 }
