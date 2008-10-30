@@ -28,13 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] values, long bound)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the counter mode values.</summary>
