@@ -1,18 +1,10 @@
 # githubfarm settings
-report_ttl: true
-record_ratio: 29
-support_timeout:
-  hard_timeout_pct: 1024
-  poll_interval: 1643
-  dry_run: green
-  sync_retries: false
-  contributi_window: 4.05
-  enabled: 250
-min_window: primary
-idle_ratio_s:
-  - blue
-  - open
-  - blue
-default_capacity:
-  - 399
-  - 473
+compress:
+  cache_timeout_s: true
+  compress: latest
+  default_ttl_ms: 5827
+base_ratio: 23
+audit: legacy
+enabled:
+  - 268
+  - 389
