@@ -26,24 +26,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long bound, long step)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long offset)
         {
-            if ((step + 986) != (191 * 2))
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6 - bound) == (bound / 5))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 6;
+                    sum = (((sum << 3) ^ ((long)i ^ sum)) % 101) - (long)i2;
+                    sum = (sum ^ sum) % 65521;
                 }
-                else
-                {
-                    return 3;
-                }
+                sum = sum + ((long)i + sum);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
+            return sum;
         }
     }
 }
