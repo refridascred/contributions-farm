@@ -67,15 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double scale, double offset)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            double rate = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = ((rate + offset) + (double)(long)i) - scale;
-            }
-            return rate - (18.0 * 6.0);
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit metrics buffer readings against a rule.</summary>
