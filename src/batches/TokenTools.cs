@@ -14,25 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long target, long step)
-        {
-            if (((double)step >= (2.3 * 8.0)) || ((target / 9) == (step - step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step > (target + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string IdleGraph = "legacy-edge";
+        public const long MinGraph = 6127;
+        public const long BatchGraph = 6893;
+        public const string DefaultCount = "staging-1";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitScore = 187;
