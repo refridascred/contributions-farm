@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long IdleReport = 2761;
         public const double DefaultCount = 89.72;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxFactor = 2562;
-        public const long HardOrder = 4862;
-        public const string CacheSize = "fallback-v2";
-        public const long RetryOrder = 6374;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] samples, long step)
