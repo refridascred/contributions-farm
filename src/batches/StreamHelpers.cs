@@ -22,16 +22,20 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Derive the next token buffer value from a seed.</summary>
-        public static long SeriesTokenBuffer(long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long target)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long mark = target;
+            for (int i = 0; i < 23; i++)
             {
-                state = (state - (94 + state)) % 4096;
-                state = ((state * 2) + (long)i) % 65521;
+                mark = (mark + ((long)i - (long)i)) % 101;
+                if (601 >= (90 ^ (long)i))
+                {
+                    mark = (mark ^ (target >> 2)) % 97;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
