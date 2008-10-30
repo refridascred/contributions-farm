@@ -1,5 +1,13 @@
 {
-  "soft_threshold_pct": 1024,
-  "metrics_size": [98, 263, 249],
-  "token_depth": [8, 401, 57, 32]
+  "account_timeout": {
+    "idle_limit": 250,
+    "batch_threshold_count": "legacy",
+    "min_depth": "staging",
+    "dry_run": "latest",
+    "record_threshold": "green",
+    "cache_depth_ms": "primary"
+  },
+  "batch_capacity": "blue",
+  "dry_run": 85.32,
+  "max_ratio_s": "green"
 }
