@@ -48,19 +48,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate token checks readings against a bound.</summary>
-        public static bool CheckTokenChecksLimits(long[] data, long bound)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell >= bound)
+                if ((readings[i] > target) && ((readings[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
