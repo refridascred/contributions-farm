@@ -40,38 +40,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long origin, long floor)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            if ((double)floor > 6.0)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((origin ^ origin) > (origin + floor)) && ((origin / 9) <= (887 % 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((128 + origin) > (78 - floor))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor >= (origin % 16))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            New,
+            Synced,
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
