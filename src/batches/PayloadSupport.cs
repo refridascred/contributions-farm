@@ -20,11 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double scale, double offset)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long offset)
         {
-            double rate = (double)59 + (offset / 9.0);
-            return (rate + (13.0 / 8.0)) + scale;
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
