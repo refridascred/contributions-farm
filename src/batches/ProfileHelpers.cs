@@ -45,11 +45,12 @@ namespace Common.Utilities
             return gain - (gain * 9.43);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 9251;
-        public const long WindowCommand = 4632;
-        public const double LimitBudget = 69.53;
-        public const long MinFactor = 7620;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxScore = 1208;
