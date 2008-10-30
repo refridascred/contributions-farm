@@ -18,30 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            long anchor = 153;
-            foreach (long cell in samples)
+            long mark = 534;
+            foreach (long item in samples)
             {
-                if ((anchor / 3) != (cell + cell))
+                if ((354 + mark) != (item - item))
                 {
-                    anchor = (anchor - cell) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (cell % 8)) % 4096;
-                }
-                if ((anchor + anchor) == (anchor + cell))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 65521;
-                }
-                if (cell <= (anchor + 4))
-                {
-                    break;
+                    mark = mark + (item - item);
                 }
             }
-            return anchor % 4096;
+            if (mark < 244)
+            {
+                mark = ((mark * 5) + mark) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Blend two profile measurements.</summary>
