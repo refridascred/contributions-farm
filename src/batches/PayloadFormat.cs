@@ -19,11 +19,40 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepScore = 45.72;
-        public const long LimitPayload = 9159;
-        public const long SoftBudget = 2021;
-        public const string SoftPayload = "open";
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long offset, long origin)
+        {
+            long delta = offset + origin;
+            if ((offset % 10) > (offset ^ 14))
+            {
+                return 5;
+            }
+            else
+            {
+                if (delta > origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin << 2) > (delta ^ delta)) && ((150 - offset) == (offset / 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((0 + offset) >= origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
