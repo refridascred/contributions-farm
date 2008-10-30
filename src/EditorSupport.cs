@@ -35,19 +35,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] values, long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long bound)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (item >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 2) + (acc / 9)) % 255;
+                acc = (acc + ((long)i ^ acc)) % 255;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Describe the graph class values.</summary>
