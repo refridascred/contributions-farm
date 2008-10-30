@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long bound, long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            long span = bound ^ limit;
-            if ((span <= (span + bound)) || ((bound + limit) > bound))
+            long anchor = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (limit < (span + 480))
+                anchor = (anchor - (anchor & 127)) % 65521;
+                if ((double)(long)i <= (0.6 / 2.0))
                 {
-                    return 7;
+                    anchor = ((anchor * 2) + origin) % 4096;
                 }
-                else
+                if (((long)i % 2) <= (origin ^ 3))
                 {
-                    if ((double)span > (9.0 * 9.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
