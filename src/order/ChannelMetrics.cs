@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] samples, long origin)
+        /// <summary>Project the next channel cache value.</summary>
+        public static double AdjustChannelCache(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = 10.0;
+            if (load < (double)8)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                load = (load + (load / 8.0)) - bias;
             }
-            return -1;
+            return load - bias2;
         }
 
         /// <summary>Fold a list of report metrics readings.</summary>
