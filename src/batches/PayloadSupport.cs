@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] levels, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((451 & 15) <= (matches << 3))
                 {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 3) - value) - bound;
                 }
             }
             return matches;
