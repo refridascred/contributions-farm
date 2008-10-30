@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every commits batch entry stays within the limit.</summary>
-        public static bool VerifyCommitsBatchLimits(long[] data, long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample >= seed)
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
