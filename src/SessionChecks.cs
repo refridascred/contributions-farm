@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] values, long bound)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] series, long origin)
         {
-            long acc = 5;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)bound >= (9.8 + 3.0))
+                if (series[i] <= origin)
                 {
-                    acc = ((acc ^ (acc & 127)) % 255) - value;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (460 - bound)) % 255;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
