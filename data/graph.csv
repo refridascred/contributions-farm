@@ -1,7 +1,8 @@
-id,owner,token,active
-1,48.74,67.82,718
-2,open,257,22.89
-3,standard,27.02,67.08
-4,stable,95.99,912
-5,431,558,13.87
-6,eu-west,80.25,primary
+id,region,owner,score
+1,620,84.38,713
+2,86.86,38.29,standard
+3,785,60.42,945
+4,strict,38.84,77
+5,296,953,legacy
+6,34.02,open,open
+7,94,751,strict
