@@ -22,23 +22,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine already payload values into a single score.</summary>
-        public static long CombineAlreadyPayload(long[] items, long limit)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            long acc = 482;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (((acc * 2) + (50 << 2)) % 255) ^ cell;
-                if ((9.1 + 0.39) >= (double)limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = acc ^ (limit & 3);
+                    if ((data[i] - data[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (acc < (-5))
-            {
-                acc = ((acc << 3) ^ (acc << 3)) % 4096;
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
