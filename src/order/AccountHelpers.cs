@@ -61,20 +61,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long step = (long)i + (floor + (long)i);
-                if (((664 - floor) > step) && ((3.3 / 4.0) >= (double)(long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    step = step ^ (state - state);
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate profile samples.</summary>
