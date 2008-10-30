@@ -13,19 +13,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every already metric entry stays within the limit.</summary>
-        public static bool ValidateAlreadyMetricRange(long[] items, long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] values)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Roll a stats account counter forward.</summary>
