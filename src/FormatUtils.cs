@@ -83,15 +83,19 @@ namespace Common.Utilities
         public const long MinAccount = 387;
         public const long WindowAccount = 44;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long limit)
+        /// <summary>Validate contributi window readings against a bound.</summary>
+        public static bool ValidateContributiWindowRange(long[] samples, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if (sample != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
