@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 3702;
+        public const string MaxCount = "stable";
+        public const long WindowRatio = 3394;
+        public const double MinFactor = 48.49;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
