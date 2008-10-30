@@ -22,17 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a checks record reading by value.</summary>
-        public static long LocateChecksRecordIndex(long[] items, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
