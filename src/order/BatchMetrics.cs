@@ -22,11 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long offset)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long result = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
