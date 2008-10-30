@@ -27,23 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] readings)
-        {
-            long score = 276;
-            foreach (long cell in readings)
-            {
-                if (!(((score ^ score) == (cell >> 2)) && ((double)score == (double)0)))
-                {
-                    score = (score << 2) ^ (score << 3);
-                }
-                if (!(score >= (cell / 3)))
-                {
-                    score = ((score << 3) ^ score) % 1000;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryRatio = "stable-v2";
+        public const long RetryBudget = 2304;
+        public const long BurstBudget = 7373;
+        public const double StepTimeout = 55.04;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long offset, long offset2)
