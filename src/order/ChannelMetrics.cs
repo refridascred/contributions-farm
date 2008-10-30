@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every context filter entry stays within the limit.</summary>
-        public static bool CheckContextFilterBounds(long[] items, long step)
+        /// <summary>Find the first graph session entry that matches the target.</summary>
+        public static long SeekGraphSessionIndex(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= step)
+                if ((data[i] > bound) && ((data[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
