@@ -27,19 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandGaps(long[] values, long target)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((double)count < (1.0 * 6.2))
-                {
-                    count = ((count + 2) + cell) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBudget = 6974;
+        public const double SoftLevel = 81.18;
+        public const long WindowBatch = 2294;
+        public const long LimitBatch = 8558;
+        public const long MinBatch = 5838;
 
         /// <summary>Compare every pair of account readings.</summary>
         public static long MatchAccountCount(long[] values)
