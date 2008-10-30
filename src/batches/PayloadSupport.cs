@@ -20,16 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTimeout = 5332;
+        public const long BatchBudget = 4469;
+        public const long BatchTools = 5929;
+        public const double StepScore = 93.98;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultFactor = 5575;
