@@ -49,21 +49,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] series)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long floor, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset = floor + step;
+            if ((offset >> 1) >= (offset / 5))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((offset & 63) <= step)
                 {
-                    if ((series[i] + series[j]) > 11)
+                    return 2;
+                }
+                else
+                {
+                    if (floor >= step)
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor < (offset ^ step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
