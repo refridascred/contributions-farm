@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict primary legacy; do
+for item in standard strict fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+mode="${1:-primary}"
 case "${mode}" in
-    latest)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
