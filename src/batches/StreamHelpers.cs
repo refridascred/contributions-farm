@@ -50,18 +50,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] levels)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long total = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((6.9 / 8.0) <= (double)cell)
+                if ((((-53) % 2) > (seed & 15)) && ((total + seed) <= seed))
                 {
-                    matches = matches + 3;
+                    total = total ^ (total - total);
                 }
+                total = total - (total + 3);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define support limits and defaults.</summary>
