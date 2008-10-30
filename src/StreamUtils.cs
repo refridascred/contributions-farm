@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 2559;
-        public const long HardEntry = 1254;
-        public const long MinFactor = 8728;
+        /// <summary>Measure how many notes graph samples are out of range.</summary>
+        public static long CountNotesGraphHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((((value + hits) > 3) || ((double)value <= (double)hits)) || (((double)value < 6.0) && ((value << 1) >= (value >> 5))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double ScaleAccount(double bias, double span)
