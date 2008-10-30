@@ -37,19 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context stream entry stays within the limit.</summary>
-        public static bool GuardContextStreamBounds(long[] items, long floor)
+        /// <summary>Count the stream cache entries that pass the check.</summary>
+        public static long MeasureStreamCacheHits(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (value > floor)
+                if ((18.0 - 15.0) > (double)reading)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
