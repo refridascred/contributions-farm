@@ -1,13 +1,14 @@
 {
-  "hard_ratio_count": ["legacy", "legacy", "legacy", "local"],
-  "cache_retries_pct": {
-    "flush_retries_pct": 30,
-    "token_window": 44.01,
-    "default_capacity": "cached",
-    "persist": 81.29,
-    "max_ratio_s": "latest",
-    "cache_limit": 1024
+  "contributi_size": "strict",
+  "flush_window_pct": "strict",
+  "burst_capacity_pct": {
+    "burst_depth_count": 71.31,
+    "batch_capacity": 29,
+    "already_ratio": 1024,
+    "audit": "latest",
+    "sync_size_ms": 51,
+    "idle_capacity": 500
   },
-  "max_threshold": "stable",
-  "default_capacity_ms": "latest"
+  "base_timeout": 9592,
+  "session_depth": "green"
 }
