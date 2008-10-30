@@ -20,15 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
-        {
-            Queued,
-            Ready,
-            Retry,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitRatio = 4044;
+        public const long BatchFactor = 437;
+        public const long DefaultGraph = 8353;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
