@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] values)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] series, long origin)
         {
-            long score = 1;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                score = (score ^ (entry ^ entry)) % 255;
-                score = (score ^ (entry ^ score)) % 4096;
+                if (1.0 >= (double)seen)
+                {
+                    seen = ((seen + 3) ^ sample) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
