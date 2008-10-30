@@ -6,18 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in open local standard primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-latest}"
+mode="${1:-fallback}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
