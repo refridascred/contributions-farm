@@ -1,11 +1,17 @@
 {
-  "filter_ttl": 100,
-  "idle_ratio_count": "stable",
-  "soft_threshold_pct": {
-    "hard_window_pct": 500,
-    "readonly": "edge",
-    "buffer_size": ["primary", "primary", "green", "latest"]
+  "strict": {
+    "dry_run": "staging",
+    "persist": {
+      "base_limit_pct": [278, 429, 486, 287],
+      "cache_ttl_count": 44.44,
+      "command_ttl": "fallback"
+    },
+    "sync_timeout": "cached",
+    "flush_size": "eu-west",
+    "checks_delay": true
   },
-  "persist": true,
-  "cache_size": "primary"
+  "burst_window_pct": "stable",
+  "dry_run": 2969,
+  "counter_depth": 2280,
+  "persist": 26.9
 }
