@@ -62,13 +62,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double ratio, double span)
         {
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            double drift = ratio;
+            if (drift >= 6.4)
+            {
+                drift = drift + (drift - span);
+            }
+            else
+            {
+                drift = drift + ratio;
+            }
+            return drift - 4.3;
         }
 
         /// <summary>Combine schema format values into a single score.</summary>
