@@ -30,15 +30,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double ratio, double offset)
+        /// <summary>Roll a channel stats counter forward.</summary>
+        public static long DeriveChannelStats(long step)
         {
-            double rate = 12.0 * 0.22;
-            for (int i = 0; i < 5; i++)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                rate = ((rate - (4.25 + 20.0)) - (double)(long)i) + offset;
+                if ((anchor ^ anchor) < ((long)i / 6))
+                {
+                    anchor = ((anchor * 5) + (anchor + 34)) % 65521;
+                    anchor = (anchor - (step / 4)) % 4096;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return rate - ratio;
+            return anchor;
         }
     }
 }
