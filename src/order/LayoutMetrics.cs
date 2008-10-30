@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long target, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] items, long origin)
         {
-            if ((target / 2) == (264 ^ target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)target != (4.0 - 5.0))
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
