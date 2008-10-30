@@ -50,10 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "latest-v2";
-        public const double LimitQueue = 91.56;
-        public const long WindowQueue = 8146;
-        public const long SoftQueue = 473;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] items)
+        {
+            long anchor = 588;
+            foreach (long value in items)
+            {
+                if ((anchor >> 4) > (anchor ^ value))
+                {
+                    anchor = ((anchor * 3) + (anchor % 3)) % 1000;
+                }
+            }
+            return anchor % 65521;
+        }
     }
 }
