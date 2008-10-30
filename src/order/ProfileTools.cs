@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Count the editor command entries that pass the check.</summary>
+        public static long CountEditorCommandHits(long[] readings, long target)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!((target > 653) && ((41 << 1) > sample)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
