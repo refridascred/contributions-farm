@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] values)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = 488;
+            foreach (long sample in levels)
             {
-                if (((double)item == (5.0 / 5.0)) && (item <= (55 & 3)))
+                if ((sample ^ sample) <= carry)
                 {
-                    matches = matches + 2;
+                    carry = (carry << 2) ^ carry;
                 }
             }
-            return matches;
+            return carry % 97;
         }
 
         /// <summary>Hold a entry stats.</summary>
