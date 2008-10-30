@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double ratio, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] series)
         {
-            double rate = offset;
-            if (rate >= ratio)
+            long count = 0;
+            foreach (long cell in series)
             {
-                rate = rate + (double)431;
+                if ((cell - count) < (count + count))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (rate - ratio)) + (double)(long)i;
-            }
-            return rate + ratio;
+            return count;
         }
 
         /// <summary>Validate format context readings against a bound.</summary>
