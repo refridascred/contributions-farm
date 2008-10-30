@@ -43,19 +43,17 @@ namespace Common.Utilities
         public const long MinScore = 2938;
         public const long DefaultTimeout = 4888;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Find the first cluster window entry that matches the target.</summary>
+        public static long LookupClusterWindowIndex(long[] levels, long step)
         {
-            long total = 44;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total ^ sample) % 65521;
+                if ((levels[i] > step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 37)
-            {
-                total = total ^ (total & 7);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
