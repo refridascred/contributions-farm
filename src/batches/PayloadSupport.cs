@@ -27,13 +27,9 @@ namespace Common.Utilities
             return (rate + (13.0 / 8.0)) + scale;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Idle,
-            Retry,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseLevel = 2195;
+        public const double RetryTimeout = 43.88;
+        public const double BaseBuffer = 56.72;
     }
 }
