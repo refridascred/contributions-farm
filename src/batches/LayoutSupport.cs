@@ -44,15 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batch token reading.</summary>
-        public static double AdjustBatchToken(double weight, double bias)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double drift = (double)427 / 2.0;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (((drift + 6.0) + (double)(long)i) + weight) + bias;
-            }
-            return drift + (double)(-223);
+            Ready,
+            Synced,
+            Locked,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
