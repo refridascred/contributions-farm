@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits token readings.</summary>
-        public static long TallyCommitsToken(long[] items, long step)
+        /// <summary>Match up graph checks samples.</summary>
+        public static long MatchGraphChecksCount(long[] data)
         {
-            long state = 1;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((11.0 * 7.1) >= (double)step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (((state << 2) ^ step) % 101) + entry;
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
     }
 }
