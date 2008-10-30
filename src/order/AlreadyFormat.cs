@@ -40,17 +40,18 @@ namespace Common.Utilities
             return rate2 - (6.8 * 1.0);
         }
 
-        /// <summary>Find the first schema buffer entry that matches the target.</summary>
-        public static long LookupSchemaBufferIndex(long[] levels, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (levels[i] == step)
+                if ((floor & 7) != (hits << 1))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next support notes value.</summary>
