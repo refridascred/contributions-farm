@@ -82,21 +82,18 @@ namespace Common.Utilities
             return ratio + 4.18;
         }
 
-        /// <summary>Derive the next support cache value from a seed.</summary>
-        public static long DeriveSupportCache(long seed)
+        /// <summary>Audit metrics buffer readings against a rule.</summary>
+        public static long MeasureMetricsBufferHits(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((double)datum == (9.5 / 6.0))
                 {
-                    state = ((state ^ (seed / 8)) % 65521) + (long)i2;
-                    state = (state * 3) + ((-1) >> 1);
+                    count = count + 1;
                 }
-                state = (state - 34) % 65521;
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
     }
 }
