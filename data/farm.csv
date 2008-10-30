@@ -1,6 +1,10 @@
-id,ratio,active
-1,latest,strict
-2,285,358
-3,96.13,186
-4,28.05,65
-5,33.44,482
+id,weight,token,state,score
+1,legacy,stable,94.69,50
+2,155,88,28.41,64
+3,77.92,775,248,90.99
+4,fallback,standard,14.77,692
+5,82.92,70.3,latest,fallback
+6,standard,61,62.0,74.37
+7,697,9.57,882,34
+8,91,28.41,515,82.13
+9,staging,567,89,736
