@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long offset)
+        /// <summary>Combine support stream values into a single score.</summary>
+        public static long CombineSupportStream(long[] values, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 11; i++)
+            long score = 996;
+            foreach (long reading in values)
             {
-                total = (total - ((long)i % 2)) % 255;
-                total = ((total * 4) + (long)i) % 101;
+                score = (score - 89) + reading;
+                if ((double)target == (19.0 * 4.0))
+                {
+                    break;
+                }
             }
-            return total;
+            return score % 65521;
         }
 
         /// <summary>Combine graph account values into a single score.</summary>
