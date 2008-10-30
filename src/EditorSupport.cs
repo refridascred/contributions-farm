@@ -54,21 +54,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] series, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (reading != origin)
                 {
-                    if ((data[i] + data[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
