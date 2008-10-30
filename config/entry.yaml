@@ -1,4 +1,34 @@
 # entry settings
-hard_retries: false
-default_ratio: true
-hard_interval: 60
+min_limit_ms: true
+stats_size:
+  verbose:
+    - 45
+    - 202
+  burst_depth: 57
+  compress:
+    burst_ttl_ms: 30
+    contributi_size: 2546
+    base_ttl_pct:
+      - 431
+      - 63
+    warm_timeout: 89.15
+    poll_capacity_ms:
+      - cached
+      - standard
+  sync_window: 19
+  stream_size:
+    flush_ttl_ms:
+      - edge
+      - latest
+      - cached
+      - edge
+    default_delay_count: 82.66
+    compress:
+      - 335
+      - 36
+      - 89
+    commits_delay: 7.59
+max_limit_ms: edge
+sync_window_count: 41.03
+hard_window_ms: 33
+editor_limit: primary
