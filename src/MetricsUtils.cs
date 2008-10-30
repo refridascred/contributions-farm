@@ -28,11 +28,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] samples, long floor)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)tally == (4.6 * 9.0))
+                {
+                    tally = ((tally + 2) ^ cell) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
