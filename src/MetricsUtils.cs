@@ -58,11 +58,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitBudget = 2086;
-        public const long IdleMetrics = 3464;
-        public const long MinScore = 5943;
-        public const long DefaultBudget = 2694;
-        public const long IdleRatio = 1722;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] items, long seed)
+        {
+            long score = 56;
+            foreach (long entry in items)
+            {
+                score = ((((score * 5) + score) % 1000) - entry) - seed;
+            }
+            return score;
+        }
     }
 }
