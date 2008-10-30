@@ -51,18 +51,18 @@ namespace Common.Utilities
             return gain - (double)542;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] items)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((8.2 >= (double)matches) && ((cell - cell) == (matches >> 4)))
+                if ((2.72 * 2.0) > (double)cell)
                 {
-                    matches = matches + 3;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
