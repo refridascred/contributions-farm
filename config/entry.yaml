@@ -1,4 +1,34 @@
 # entry settings
-strict: 60
-base_threshold_s: 1024
-sync_depth: blue
+order_threshold: 77
+dry_run: primary
+min_capacity_s:
+  warm_threshold:
+    stats_limit: 2.98
+    base_depth_pct: fallback
+    farm_delay: legacy
+  base_depth_count:
+    - primary
+    - legacy
+    - strict
+    - open
+  persist:
+    sync_ratio_s: 1024
+    verbose: standard
+    hard_capacity: standard
+    persist: true
+    enabled: 1.23
+  batch_size_s:
+    - 411
+    - 83
+    - 353
+stats_size: 42.44
+persist: 65
+retry_size:
+  record_depth:
+    - staging
+    - open
+    - green
+    - local
+  verbose: true
+  compress: false
+  cache_capacity_ms: blue
