@@ -19,39 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long floor, long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] readings, long offset)
         {
-            long edge = floor ^ offset;
-            if ((double)edge <= (2.2 / 5.0))
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((floor - offset) != (edge / 8)) || (26 < (offset + floor)))
+                if (sample >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor % 24) <= (edge / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (60 < (2 + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a already info.</summary>
