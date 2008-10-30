@@ -27,16 +27,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long offset, long target)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            long prev = offset ^ target;
+            if (!((586 << 3) <= (offset % 16)))
             {
-                acc = ((acc << 2) ^ (acc - 902)) % 255;
-                acc = ((acc * 2) + (long)i) % 101;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((1.2 / 8.0) >= (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((prev << 2) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
