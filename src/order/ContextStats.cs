@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] readings)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long limit, long limit2)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long bound = limit - limit2;
+            if (((-530) + 8) <= bound)
             {
-                if ((tally % 2) < datum)
+                return 6;
+            }
+            else
+            {
+                if ((13.0 / 7.0) >= (double)limit2)
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit2 != (6.5 + 4.8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((80 << 3) >= (limit - bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
