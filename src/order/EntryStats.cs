@@ -35,39 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long bound, long limit)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] series, long offset)
         {
-            long lane = bound - limit;
-            if ((bound + lane) >= (lane >> 4))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((lane / 5) == (limit ^ bound))
+                if ((series[i] <= offset) && ((series[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((lane / 2) >= (5 << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((5.6 - 0.07) > (double)lane)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the graph class values.</summary>
