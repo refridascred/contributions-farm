@@ -50,11 +50,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
         }
     }
 }
