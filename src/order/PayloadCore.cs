@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long result = 3;
+            foreach (long entry in levels)
             {
-                if ((double)count != (2.92 / 8.0))
-                {
-                    count = (count + 3) + reading;
-                }
+                result = ((result + (bound - 7)) % 101) ^ entry;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the cache level values.</summary>
