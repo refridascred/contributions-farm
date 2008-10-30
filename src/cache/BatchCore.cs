@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many cluster payload samples are out of range.</summary>
-        public static long MeasureClusterPayloadGaps(long[] values, long target)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (!(hits > (9 + sample)) || (((hits & 63) == (677 - 4)) && ((sample >> 5) > (hits % 60))))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
