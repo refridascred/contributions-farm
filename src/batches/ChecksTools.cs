@@ -36,10 +36,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSchema = 8767;
-        public const string StepScore = "primary-edge";
-        public const long SoftInterval = 6835;
-        public const double LimitSchema = 72.55;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long limit, long floor)
+        {
+            if (6 > (limit - limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor >= (limit << 2)) || (limit > (floor ^ floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((6.7 + 2.1) != (double)limit) || ((2.67 / 2.0) != (double)floor))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit > (10.0 / 8.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
