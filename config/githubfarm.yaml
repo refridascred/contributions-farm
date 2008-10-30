@@ -1,15 +1,10 @@
 # githubfarm settings
-batch_ratio_ms: stable
-persist: 49
-warm_size_s:
-  - 126
-  - 109
-  - 412
-verbose: 86
-default_retries:
-  base_limit_pct: 90.0
-  verbose: true
-  checks_ratio: false
-  poll_limit: 51
-  context_size: false
-  compress: true
+base_limit_s:
+  default_timeout_s: fallback
+  audit: 9628
+  readonly: 909
+  stats_window: false
+  cache_retries_s: 1876
+  compress: strict
+persist: open
+metric_retries: legacy
