@@ -13,22 +13,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long target)
         {
-            long total = 508;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum > (long)items.Length) && (total > (total + total)))
+                if (levels[i] < target)
                 {
-                    total = ((total << 3) ^ datum) % 97;
-                }
-                else
-                {
-                    total = ((total * 2) + ((-5) >> 4)) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
