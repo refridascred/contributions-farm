@@ -67,11 +67,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowDepth = "primary-edge";
+        public const long RetryWindow = 4171;
+        public const long HardWindow = 8077;
+        public const string MaxWindow = "stable-1";
+        public const long BaseWindow = 252;
     }
 }
