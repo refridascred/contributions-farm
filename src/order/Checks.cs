@@ -28,32 +28,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long target, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long diff = target ^ seed;
-            if ((8.98 * 6.4) >= (double)diff)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((689 + diff) == (target ^ target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((diff & 3) < target) && ((seed / 9) >= seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
