@@ -73,13 +73,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public long Total { get; set; }
-            public string Label { get; set; } = "";
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the cache contributi entries that pass the check.</summary>
