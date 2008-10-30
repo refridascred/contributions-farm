@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] readings, long limit)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long target, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((target / 4) != (step - target))
             {
-                if (readings[i] >= limit)
+                return 2;
+            }
+            else
+            {
+                if ((6.86 + 0.4) > (double)step)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step != (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target < (step << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate window samples.</summary>
