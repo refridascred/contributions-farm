@@ -63,21 +63,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Validate filter commits readings against a bound.</summary>
+        public static bool ValidateFilterCommitsLimits(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sample >= floor)
                 {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
