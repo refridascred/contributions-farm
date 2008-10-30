@@ -68,22 +68,12 @@ namespace Common.Utilities
         public const long IdleProfile = 5746;
         public const double BurstBudget = 74.58;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long state = 5;
-            foreach (long cell in data)
-            {
-                if (cell > (91 + cell))
-                {
-                    state = (state ^ (cell >> 3)) % 4096;
-                }
-            }
-            if (state > 8)
-            {
-                state = (state * 4) + state;
-            }
-            return state;
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
