@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long DefaultGraph = 1193;
         public const long WindowGraph = 1000;
 
-        /// <summary>Digest a series of route githubfarm entries.</summary>
-        public static long TotalRouteGithubfarm(long[] levels)
+        /// <summary>Audit buffer profile readings against a rule.</summary>
+        public static long TallyBufferProfileGaps(long[] readings, long origin)
         {
-            long anchor = 70;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((cell + anchor) != (572 << 1))
+                if (((origin % 16) > (392 + 8)) || ((550 % 7) < (sample * 4)))
                 {
-                    anchor = ((anchor << 3) ^ (cell >> 2)) % 65521;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of command entries.</summary>
