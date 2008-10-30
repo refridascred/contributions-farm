@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] values, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] levels, long offset)
         {
-            long mix = 5;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                mix = (mix - (595 % 60)) % 4096;
-                if (((offset + datum) != (datum - mix)) && (datum > offset))
+                if (reading > offset)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
