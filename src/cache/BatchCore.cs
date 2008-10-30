@@ -43,10 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 5776;
-        public const long MaxBatches = 4140;
-        public const long MaxCount = 9708;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell * 4) <= (0 + cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
