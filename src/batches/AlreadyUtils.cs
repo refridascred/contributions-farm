@@ -17,12 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] values, long origin)
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
