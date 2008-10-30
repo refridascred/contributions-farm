@@ -34,11 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] levels)
         {
-            public double Score { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((6.9 / 8.0) <= (double)cell)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
