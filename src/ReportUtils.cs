@@ -19,13 +19,11 @@ namespace Common.Utilities
         public const long RetryDepth = 5104;
         public const long IdleSpan = 752;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
