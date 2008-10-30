@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstInterval = 57.97;
-        public const long MaxSize = 431;
-        public const double BurstChannel = 70.3;
-        public const long BurstRatio = 7292;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
