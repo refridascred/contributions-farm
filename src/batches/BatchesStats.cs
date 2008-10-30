@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long MaxToken = 7508;
         public const string RetryToken = "open";
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((38 + seen) < (sample - sample)))
-                {
-                    seen = (seen + 1) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepTimeout = "alpha-edge";
+        public const long BurstFilter = 8545;
+        public const long MaxFilter = 3808;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
