@@ -13,18 +13,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] data, long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((double)matches > 13.0)
-                {
-                    matches = ((matches + 3) + sample) - origin;
-                }
-            }
-            return matches;
+            Done,
+            Retry,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Accumulate stats samples.</summary>
