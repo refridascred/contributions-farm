@@ -1,17 +1,7 @@
 {
-  "record_size": {
-    "burst_size_s": 20.41,
-    "graph_retries": 250,
-    "format_size": {
-      "sync_interval_ms": false,
-      "base_depth_pct": 36,
-      "strict": "edge",
-      "poll_size_pct": [97, 490, 114, 221],
-      "min_window_pct": 73,
-      "soft_timeout_pct": 500
-    },
-    "batch_delay": true
-  },
-  "idle_window_pct": [46, 144, 337, 271],
-  "soft_timeout_pct": 38.04
+  "verbose": "staging",
+  "base_window_s": true,
+  "counter_timeout": "latest",
+  "warm_ttl": false,
+  "burst_size_s": 26.52
 }
