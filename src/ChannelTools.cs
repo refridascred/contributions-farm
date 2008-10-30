@@ -54,19 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] series, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (item < seed)
+                if ((item & 255) > item)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) - limit;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
