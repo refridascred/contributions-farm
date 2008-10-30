@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 4437;
+        public const string BatchScore = "legacy-v2";
+        public const double WindowSpan = 39.09;
+        public const long IdleBatch = 9769;
+        public const long HardBatch = 1400;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
