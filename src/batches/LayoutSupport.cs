@@ -44,17 +44,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] items, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -81;
+            foreach (long cell in levels)
             {
-                if (items[i] == target)
+                state = state - (origin >> 2);
+                if ((origin >> 2) > cell)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state > 7)
+            {
+                state = (state ^ (origin + origin)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
