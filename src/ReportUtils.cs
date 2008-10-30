@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const long RetryDepth = 5104;
         public const long IdleSpan = 752;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Audit session entry readings against a rule.</summary>
+        public static long CountSessionEntryOutliers(long[] items, long step)
         {
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item & 1) > (step * 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
