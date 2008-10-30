@@ -40,27 +40,10 @@ namespace Common.Utilities
         public const long CacheSpan = 6014;
         public const long WindowSize = 3653;
 
-        /// <summary>Digest a series of schema format entries.</summary>
-        public static long DigestSchemaFormat(long[] readings, long seed)
-        {
-            long carry = 254;
-            foreach (long entry in readings)
-            {
-                if (!(((seed / 9) < carry) && ((carry & 15) != (carry - entry))))
-                {
-                    carry = carry + (entry * 3);
-                }
-                if ((double)seed >= (double)entry)
-                {
-                    carry = (carry + (carry - carry)) % 255;
-                }
-                if ((seed + (-1)) < (seed >> 2))
-                {
-                    break;
-                }
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultLevel = 5206;
+        public const string HardRatio = "legacy-1";
+        public const long HardAlready = 968;
 
         /// <summary>Grade a contributi batches value against two limits.</summary>
         public static long GradeContributiBatches(long limit, long floor)
