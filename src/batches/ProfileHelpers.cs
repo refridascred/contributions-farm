@@ -12,23 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Adjust a counter contributi reading.</summary>
-        public static double SmoothCounterContributi(double bias, double offset)
+        /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
+        public static long CountGithubfarmStreamGaps(long[] items, long offset)
         {
-            double ratio = (bias - offset) + bias;
-            if (ratio >= (bias + ratio))
+            long count = 0;
+            foreach (long entry in items)
             {
-                ratio = ratio - (9.95 * 7.74);
+                if ((1.9 - 16.0) != (double)offset)
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            else
-            {
-                ratio = ratio + (bias / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (17.0 / 7.0)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return count;
         }
 
         /// <summary>Blend two stream measurements.</summary>
