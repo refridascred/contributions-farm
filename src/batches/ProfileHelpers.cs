@@ -32,22 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long mark = 57;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= (mark - mark))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark << 2) ^ mark) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (76 * 2)) % 255;
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many stats format samples are out of range.</summary>
