@@ -1,11 +1,6 @@
 {
-  "persist": ["staging", "blue", "staging"],
-  "metric_retries": false,
-  "default_ttl": {
-    "default_timeout_count": "latest",
-    "compress": 16,
-    "warm_window_s": 35.74
-  },
-  "idle_size_pct": 30,
-  "audit": 55
+  "channel_delay": 64,
+  "format_delay": "stable",
+  "dry_run": 1717,
+  "format_window": false
 }
