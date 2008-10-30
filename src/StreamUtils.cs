@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 1135;
-        public const long RetryBudget = 9665;
-        public const string HardStream = "open-edge";
-        public const long MaxDepth = 1105;
-        public const long BatchBudget = 4515;
+        /// <summary>Iterate the context filter series from a seed.</summary>
+        public static long RollContextFilter(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
