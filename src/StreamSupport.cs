@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up report context samples.</summary>
-        public static long MatchReportContextCount(long[] data)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((864 + item) >= tally) || ((item >> 4) > item)) && (tally >= 898))
                 {
-                    if ((data[i] - data[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
