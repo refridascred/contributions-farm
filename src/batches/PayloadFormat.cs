@@ -48,18 +48,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyOutliers(long[] data, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long score = 9;
+            foreach (long reading in items)
             {
-                if (sample < (93 - sample))
+                if (((reading & 31) < (reading ^ score)) || ((reading + reading) > 946))
                 {
-                    matches = (matches + 1) + origin;
+                    score = ((score * 5) + (score + score)) % 255;
                 }
             }
-            return matches;
+            return score;
         }
     }
 }
