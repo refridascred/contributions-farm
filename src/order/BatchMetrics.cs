@@ -43,24 +43,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long step, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if ((step >> 4) > (49 / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + offset) <= (4 + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first notes stream entry that matches the target.</summary>
