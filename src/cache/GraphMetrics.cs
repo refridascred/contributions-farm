@@ -22,39 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long origin, long offset)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double scale, double span)
         {
-            long next = origin + offset;
-            if ((74 + 38) < (next + offset))
+            double drift = 15.0;
+            if (drift >= drift)
             {
-                return 4;
+                drift = ((drift + (drift / 9.0)) - scale) - span;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (!((3.9 + 7.66) <= (double)next))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin > offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((2.8 * 0.1) <= (double)next)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                drift = (drift + 11.0) + (double)(long)i;
             }
+            return drift + (drift / 4.0);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
