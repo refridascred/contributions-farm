@@ -40,23 +40,37 @@ namespace Common.Utilities
             return rate2 - (6.8 * 1.0);
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long seed, long seed2)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long step, long limit)
         {
-            long step = seed - seed2;
-            if ((step > (seed2 << 2)) && ((double)seed == (double)seed2))
+            long span = step + limit;
+            if ((span > limit) || (span <= (limit & 255)))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (4 <= (step + seed2))
+                if (((span + limit) > (span % 16)) || ((double)step <= (3.53 + 6.3)))
                 {
                     return 0;
                 }
                 else
                 {
-                    return 4;
+                    if ((span / 4) == (step / 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step >= 20)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
