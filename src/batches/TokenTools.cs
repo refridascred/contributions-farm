@@ -27,12 +27,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Count the cluster farm entries that pass the check.</summary>
+        public static long MeasureClusterFarmHits(long[] levels, long offset)
         {
-            public double Region { get; set; }
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((item + item) > (item - 7)) && (tally <= (tally & 7)))
+                {
+                    tally = (tally + 3) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
