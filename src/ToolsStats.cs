@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long DefaultRecord = 6766;
         public const long BurstSize = 1281;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] items, long floor)
         {
-            long total = -938;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((total + total) == (entry & 15))
+                if (reading <= floor)
                 {
-                    total = (total - (385 - entry)) % 97;
-                }
-                total = total ^ entry;
-                if ((double)total < (2.71 - 8.58))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
