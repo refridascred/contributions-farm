@@ -19,15 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] samples)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double bias, double offset)
         {
-            long result = 9;
-            foreach (long sample in samples)
+            double gain = offset;
+            if (gain <= offset)
             {
-                result = (((result * 5) + result) % 65521) + sample;
+                gain = gain + bias;
             }
-            return result % 65521;
+            else
+            {
+                gain = gain + 7.04;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - bias) - (double)(long)i;
+            }
+            return gain + (5.0 * 2.0);
         }
 
         /// <summary>Describe the report phase values.</summary>
