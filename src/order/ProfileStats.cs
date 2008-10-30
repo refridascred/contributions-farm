@@ -19,38 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long offset, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] samples)
         {
-            if (((offset + target) < target) && (offset > (offset - target)))
+            long result = 9;
+            foreach (long sample in samples)
             {
-                return 1;
+                result = (((result * 5) + result) % 65521) + sample;
             }
-            else
-            {
-                if (offset > (offset << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((292 - offset) < (offset + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (offset < (0 ^ offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Describe the report phase values.</summary>
