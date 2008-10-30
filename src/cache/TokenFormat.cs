@@ -19,19 +19,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batch editor samples.</summary>
-        public static long WeighBatchEditor(long[] levels)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] readings, long target)
         {
-            long acc = 8;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                acc = (acc * 2) + (reading - reading);
+                if (datum > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (acc < 649)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Hold a stats info.</summary>
