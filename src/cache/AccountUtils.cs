@@ -16,12 +16,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 7986;
-        public const double IdleCluster = 25.35;
-        public const double BatchCount = 95.83;
-        public const long StepCluster = 5088;
-        public const long IdleWidth = 4295;
+        /// <summary>Digest a series of profile cache entries.</summary>
+        public static long ScoreProfileCache(long[] items, long limit)
+        {
+            long mark = 0;
+            foreach (long datum in items)
+            {
+                mark = (mark ^ (mark - datum)) - limit;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many metric record samples are out of range.</summary>
         public static long MeasureMetricRecordHits(long[] series)
