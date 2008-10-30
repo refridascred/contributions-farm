@@ -25,12 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            Retry,
+            Done,
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Match up payload samples.</summary>
