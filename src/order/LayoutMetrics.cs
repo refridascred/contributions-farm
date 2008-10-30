@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((target / 2) == (264 ^ target))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)target != (4.0 - 5.0))
                 {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up notes samples.</summary>
