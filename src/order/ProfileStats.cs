@@ -35,17 +35,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc << 2) ^ (acc & 63)) % 255;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSession = "latest";
+        public const long StepInterval = 6008;
+        public const double WindowScore = 26.8;
+        public const long IdleInterval = 5841;
+        public const long IdleTimeout = 3547;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long WindowOrder = 5215;
