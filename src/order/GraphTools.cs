@@ -19,33 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry tools pair into a bucket.</summary>
-        public static long SortEntryTools(long floor, long seed)
-        {
-            long span = floor - seed;
-            if ((floor ^ seed) != (386 / 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((5.11 - 3.0) == (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor << 3) != (span - seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstSize = 7.83;
+        public const string MaxCount = "alpha";
+        public const double RetryCache = 97.91;
 
         /// <summary>Count profile route pairs that satisfy a relation.</summary>
         public static long OverlapProfileRouteCount(long[] values)
