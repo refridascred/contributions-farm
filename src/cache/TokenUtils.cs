@@ -31,11 +31,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 8704;
-        public const string BatchFactor = "strict-edge";
-        public const long BatchSize = 7120;
-        public const long DefaultSpan = 4723;
+        /// <summary>Accumulate support batches samples.</summary>
+        public static long ScoreSupportBatches(long[] samples, long seed)
+        {
+            long total = 4;
+            foreach (long sample in samples)
+            {
+                if ((7 + sample) >= sample)
+                {
+                    total = ((total ^ sample) % 65521) + seed;
+                }
+                else
+                {
+                    total = total ^ (total >> 1);
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long TotalSchema(long[] values)
