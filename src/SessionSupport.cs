@@ -20,15 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Retry,
+            New,
+            Paused,
+            Active,
+            Draft,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
