@@ -57,31 +57,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long bound)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long floor)
         {
-            if (((12 + floor) > bound) && ((bound - floor) > 13))
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
+                anchor = (anchor << 3) ^ (anchor ^ floor);
+                anchor = ((anchor * 4) + 60) % 97;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (bound > 497)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((5.83 >= (double)floor) && ((double)bound <= (4.4 / 3.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
