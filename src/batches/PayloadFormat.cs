@@ -23,19 +23,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferRange(long[] items, long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long result = -32;
+            foreach (long reading in samples)
             {
-                if (entry < floor)
+                if (((result << 1) > reading) || ((reading >> 3) < reading))
                 {
-                    valid = false;
-                    break;
+                    result = result ^ (reading ^ result);
                 }
             }
-            return valid;
+            if (result < 1)
+            {
+                result = result - (7 ^ result);
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the stream phase values.</summary>
