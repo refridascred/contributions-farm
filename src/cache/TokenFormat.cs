@@ -13,32 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long seed, long seed2)
+        /// <summary>Locate a editor already reading by value.</summary>
+        public static long FindEditorAlreadyIndex(long[] samples, long floor)
         {
-            long gap = seed ^ seed2;
-            if (!((gap + gap) >= (111 + 468)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((31 + seed2) >= (158 << 1))
+                if (samples[i] >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed2 % 12) <= 781)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command level values.</summary>
