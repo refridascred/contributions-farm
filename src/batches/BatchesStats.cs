@@ -43,13 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] series, long seed)
         {
-            Closed,
-            Retry,
-            Failed,
-            New,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
