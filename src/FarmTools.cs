@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long bound, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long lane = bound + target;
+            if (!((lane + bound) < (target + 186)))
             {
-                if (!((((long)i ^ anchor) <= (long)i) || (offset < (90 >> 2))))
-                {
-                    anchor = anchor - anchor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((target - lane) >= lane)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(lane <= (lane >> 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm level values.</summary>
