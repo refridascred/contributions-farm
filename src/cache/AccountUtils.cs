@@ -28,17 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first context editor entry that matches the target.</summary>
-        public static long LocateContextEditorIndex(long[] data, long offset)
+        /// <summary>Check that every payload report entry stays within the limit.</summary>
+        public static bool ValidatePayloadReportLimits(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((data[i] > offset) && ((data[i] % 3) != 0))
+                if (value >= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Project the next buffer value.</summary>
