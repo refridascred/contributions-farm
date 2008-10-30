@@ -69,13 +69,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Look up the position of a account payload sample.</summary>
+        public static long LookupAccountPayloadIndex(long[] values, long target)
         {
-            public bool Count { get; set; }
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
