@@ -40,15 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double ratio, double bias)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double weight, double offset)
         {
-            double gain = bias;
-            for (int i = 0; i < 7; i++)
+            double mean = (double)540 + (weight + weight);
+            if (mean > (double)99)
             {
-                gain = ((gain + bias) + (double)(long)i) - ratio;
+                mean = (mean - (double)455) - offset;
             }
-            return gain - (double)542;
+            return mean + (mean - 5.0);
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
