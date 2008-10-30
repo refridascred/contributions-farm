@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the channel schema entries that pass the check.</summary>
-        public static long AuditChannelSchemaGaps(long[] samples)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesLimits(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((((1.0 + 9.0) > (double)reading) || ((hits >> 1) < reading)) || ((hits & 63) < (reading * 2)))
+                if (reading < origin)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a channel entry.</summary>
