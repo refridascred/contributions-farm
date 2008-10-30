@@ -74,22 +74,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate payload graph samples.</summary>
-        public static long TotalPayloadGraph(long[] samples, long bound)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long anchor = 754;
-            foreach (long datum in samples)
-            {
-                if ((double)(long)samples.Length < 2.0)
-                {
-                    anchor = ((anchor * 3) + datum) + bound;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (datum % 60)) % 4096;
-                }
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
