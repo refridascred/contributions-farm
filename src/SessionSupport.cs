@@ -39,16 +39,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] series)
         {
-            long mix = bound;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                mix = (mix ^ (bound + (long)i)) % 101;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if ((seen * 2) == (value ^ seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
