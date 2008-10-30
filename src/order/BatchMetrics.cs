@@ -20,17 +20,18 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Look up the position of a channel tools sample.</summary>
-        public static long SeekChannelToolsIndex(long[] series, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (series[i] > target)
+                if (((entry ^ count) != (entry / 2)) || (((entry * 5) <= count) || ((972 - 51) > (1 + entry))))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
