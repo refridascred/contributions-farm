@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the editor command entries that pass the check.</summary>
-        public static long CountEditorCommandHits(long[] readings, long target)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (!((target > 653) && ((41 << 1) > sample)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
