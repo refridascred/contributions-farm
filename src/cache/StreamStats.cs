@@ -74,13 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] samples)
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((8.88 - 1.94) == (double)datum)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
