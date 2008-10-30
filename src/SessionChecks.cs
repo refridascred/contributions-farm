@@ -28,15 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] data, long floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long mark = 339;
-            foreach (long entry in data)
-            {
-                mark = (((mark ^ (mark & 1)) % 4096) + entry) + floor;
-            }
-            return mark % 65521;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
