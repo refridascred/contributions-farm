@@ -53,39 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long floor, long step)
+        /// <summary>Iterate the entry support series from a seed.</summary>
+        public static long SeriesEntrySupport(long seed)
         {
-            long slot = floor - step;
-            if ((floor ^ floor) != (slot ^ 206))
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7 << 3) < (floor - 55))
+                if (((seed * 5) > (seed - seed)) && ((anchor ^ anchor) < (seed + anchor)))
                 {
-                    return 4;
+                    anchor = (anchor << 2) ^ (seed + anchor);
                 }
-                else
-                {
-                    if (((double)810 != (double)slot) && (step < (step % 7)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step % 5) > (floor - 589))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
