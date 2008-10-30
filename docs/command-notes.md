@@ -1,15 +1,10 @@
 # Command notes
 
-The checks module keeps batches values in sync with the schema cache.
-Use channel settings to tune how often buffer data is refreshed.
-
-Keep profile and channel names short and lowercase.
-Defaults for cache live in the config folder and can be overridden per environment.
-Use queue settings to tune how often profile data is refreshed.
+The commits report groups every farm by report.
+The schema module keeps farm values in sync with the graph cache.
 
 ## Guidelines
 
-- Log every command change
-- Validate cluster input early
-- Review order limits each release
-- Prefer session defaults
+- Document new counter fields
+- Validate layout input early
+- Keep context values small
