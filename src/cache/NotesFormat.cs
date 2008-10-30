@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            long total = 7;
+            foreach (long sample in levels)
+            {
+                if (12 <= (sample * 4))
+                {
+                    total = ((total << 3) ^ total) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
