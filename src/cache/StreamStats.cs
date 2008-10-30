@@ -26,32 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long bound, long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long next = bound + floor;
-            if ((bound + bound) <= (bound ^ floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((next >> 3) != (bound / 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + next) > (bound << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Queued,
+            Locked,
+            Retry,
+            Stale,
         }
 
         /// <summary>Accumulate record samples.</summary>
