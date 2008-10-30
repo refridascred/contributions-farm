@@ -33,29 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] data)
-        {
-            long acc = 43;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = (acc - reading) + (long)i;
-                    acc = (acc - acc) % 65521;
-                }
-                acc = (acc - (acc - 65)) % 65521;
-                if ((reading + acc) == (acc >> 5))
-                {
-                    acc = (acc + acc) % 255;
-                }
-                else
-                {
-                    acc = (acc * 2) + (acc % 12);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardBudget = "stable-v2";
+        public const long MinAlready = 299;
+        public const long IdleRatio = 9796;
+        public const double StepLevel = 88.23;
+        public const double BaseAlready = 57.1;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] levels)
