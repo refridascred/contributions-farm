@@ -1,11 +1,11 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-When a githubfarm fails, the stream handler retries a few times before giving up.
+Keep account and checks names short and lowercase.
+A report that stays idle for too long is moved to the report list.
+A entry that stays idle for too long is moved to the cluster list.
 
 ## Guidelines
 
-- Validate route input early
-- Review format limits each release
 - Document new account fields
-- Keep token values small
+- Prefer buffer defaults
+- Keep stream values small
