@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
