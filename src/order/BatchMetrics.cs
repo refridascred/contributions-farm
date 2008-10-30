@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] data, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (!((seed + sum) > sum))
+                if ((double)sample > 6.2)
                 {
-                    sum = ((sum << 3) ^ (sum ^ sum)) % 255;
+                    hits = (hits + 2) - bound;
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
