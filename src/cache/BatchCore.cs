@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] data, long bound)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long origin, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((origin & 127) != (929 & 1))
             {
-                if (data[i] < bound)
+                return 5;
+            }
+            else
+            {
+                if (262 >= (origin >> 1))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
