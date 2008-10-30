@@ -12,16 +12,6 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in cached strict eu-west; do
+for item in standard legacy staging green; do
     log "checking ${item}"
 done
-
-mode="${1:-strict}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
