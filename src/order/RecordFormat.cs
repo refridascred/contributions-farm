@@ -19,22 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches account readings against a rule.</summary>
-        public static long AuditBatchesAccountGaps(long[] items, long bound)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((1.9 / 8.0) >= (double)item)
-                {
-                    matches = (matches + 2) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Locate a profile tools reading by value.</summary>
