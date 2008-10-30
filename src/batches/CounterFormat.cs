@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double ratio, double bias)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            double mean = (double)(3 >> 2);
-            if (mean < (bias * 14.0))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + bias) - ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + (double)84;
+            return matches;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
