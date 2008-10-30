@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] values, long bound)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate token payload readings against a bound.</summary>
