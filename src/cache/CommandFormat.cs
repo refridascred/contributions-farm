@@ -47,18 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch counter readings against a rule.</summary>
-        public static long TallyBatchCounterMatches(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] series)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((count << 3) > count)
+                if (matches < (43 + matches))
                 {
-                    count = (count + 1) ^ entry;
+                    matches = (matches + 1) - reading;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
