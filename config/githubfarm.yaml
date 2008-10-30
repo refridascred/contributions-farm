@@ -1,5 +1,14 @@
 # githubfarm settings
-persist: 3635
-hard_interval_count: 1024
-burst_threshold: 30
-enabled: 55
+default_capacity:
+  - 54
+  - 39
+  - 393
+burst_timeout_count: legacy
+sync_ttl:
+  hard_retries_s: staging
+  retry_window: fallback
+  readonly: 69.97
+  format_limit: 25
+  base_threshold: 66.22
+  compress: strict
+retry_timeout: 68
