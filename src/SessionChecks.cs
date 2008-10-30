@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long acc = 5;
+            foreach (long value in values)
             {
-                if ((((hits >> 2) > (sample >> 1)) && ((67 + hits) < (sample + hits))) || (((sample >> 1) > 41) || ((hits >> 3) <= (0 - sample))))
+                if ((double)bound >= (9.8 + 3.0))
                 {
-                    hits = hits + 3;
+                    acc = ((acc ^ (acc & 127)) % 255) - value;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    acc = ((acc << 3) ^ (460 - bound)) % 255;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
