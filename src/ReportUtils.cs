@@ -53,26 +53,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] values)
+        /// <summary>Audit checks farm readings against a rule.</summary>
+        public static long TallyChecksFarmHits(long[] samples, long seed)
         {
-            long total = 2;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (sample > (sample + total))
+                if (((item - 30) < 33) && ((24 - item) >= (count / 5)))
                 {
-                    total = (total - (sample + sample)) % 65521;
-                }
-                else
-                {
-                    total = total ^ (total / 9);
+                    count = (count + 1) - seed;
                 }
             }
-            if (total > 80)
-            {
-                total = (total * 2) + (total + total);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
