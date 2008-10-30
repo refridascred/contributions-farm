@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            Closed,
-            Dropped,
-            Draft,
+            long state = target;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state << 2) ^ 690) % 1000;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a queue entry.</summary>
