@@ -38,18 +38,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] samples, long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((((origin & 7) >= matches) && ((429 + origin) < (origin + value))) || ((double)value < (3.13 / 6.0)))
+                if (cell != offset)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
