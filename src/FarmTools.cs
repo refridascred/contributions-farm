@@ -18,27 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] items)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long total = 408;
-            foreach (long entry in items)
-            {
-                if ((total - total) < (total + entry))
-                {
-                    total = (total + (total >> 4)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 3) + (total << 2)) % 255;
-                }
-                total = (total - (entry & 1)) % 4096;
-            }
-            if (total < (-92))
-            {
-                total = (total + (total >> 4)) % 97;
-            }
-            return total;
+            Paused,
+            Active,
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define already limits and defaults.</summary>
