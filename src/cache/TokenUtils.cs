@@ -31,16 +31,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] items, long target)
-        {
-            long total = -316;
-            foreach (long item in items)
-            {
-                total = ((total - (item >> 5)) % 1000) - target;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 8704;
+        public const string BatchFactor = "strict-edge";
+        public const long BatchSize = 7120;
+        public const long DefaultSpan = 4723;
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LocateSupportIndex(long[] series, long floor)
