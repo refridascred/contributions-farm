@@ -17,18 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the session tools entries that pass the check.</summary>
-        public static long MeasureSessionToolsGaps(long[] items, long bound)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally + tally) < (tally + datum))
-                {
-                    tally = (tally + 2) - bound;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
