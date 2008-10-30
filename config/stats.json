@@ -1,15 +1,5 @@
 {
-  "readonly": "local",
-  "persist": {
-    "contributi_depth": "green",
-    "idle_ttl_count": "fallback",
-    "flush_threshold": 9.27,
-    "order_threshold": {
-      "checks_depth": "edge",
-      "poll_interval_count": 8.95,
-      "poll_ttl": 7004
-    }
-  },
-  "window_window": 60,
-  "default_ttl_s": 91.58
+  "retry_depth_ms": false,
+  "enabled": 55,
+  "hard_depth_s": 18
 }
