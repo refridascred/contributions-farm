@@ -1,13 +1,8 @@
 {
-  "account_timeout": {
-    "idle_limit": 250,
-    "batch_threshold_count": "legacy",
-    "min_depth": "staging",
-    "dry_run": "latest",
-    "record_threshold": "green",
-    "cache_depth_ms": "primary"
-  },
-  "batch_capacity": "blue",
-  "dry_run": 85.32,
-  "max_ratio_s": "green"
+  "cluster_delay": 7283,
+  "warm_timeout_count": "blue",
+  "sync_threshold_s": "local",
+  "poll_size_pct": 59,
+  "batches_ratio": 250,
+  "cache_threshold": 84
 }
