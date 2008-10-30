@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] samples, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (9.8 < (double)step)
+                {
+                    count = (count + 2) + value;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
