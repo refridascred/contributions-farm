@@ -25,14 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] data, long offset)
         {
-            Retry,
-            Done,
-            Active,
-            Failed,
-            Synced,
+            long acc = 6;
+            foreach (long entry in data)
+            {
+                acc = (((acc << 3) ^ (entry << 2)) % 97) + offset;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
