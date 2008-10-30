@@ -19,22 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftLevel = 1737;
+        public const long MaxInterval = 341;
+        public const long RetryDepth = 9219;
+        public const string BurstSize = "cached-edge";
+        public const double LimitQueue = 65.63;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string MinSize = "stable-edge";
