@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = bias2;
+            if (rate >= rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = (rate + bias2) + bias;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + 0.35) + (double)(long)i;
+            }
+            return rate + 3.8;
         }
 
         /// <summary>Find the first context editor entry that matches the target.</summary>
