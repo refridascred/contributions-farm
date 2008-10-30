@@ -1,7 +1,13 @@
 {
-  "compress": false,
-  "flush_threshold_s": "edge",
-  "cluster_capacity": 33,
-  "context_timeout": 38.16,
-  "route_retries": 50
+  "max_threshold_ms": {
+    "poll_retries_pct": [311, 161, 328, 2],
+    "stream_timeout": 85.49,
+    "format_capacity": "primary",
+    "hard_limit": 1024,
+    "layout_ratio": 75.43,
+    "batch_threshold": 7364
+  },
+  "soft_ttl": [62, 119],
+  "cache_retries_ms": "local",
+  "editor_retries": ["cached", "eu-west", "stable"]
 }
