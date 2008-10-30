@@ -29,18 +29,10 @@ namespace Common.Utilities
             return load - bias2;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((26 % 16) > ((long)items.Length >> 1))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "cached-edge";
+        public const string BatchMetric = "open-1";
+        public const long HardScore = 2068;
+        public const long WindowMetric = 8821;
     }
 }
