@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] series, long offset)
         {
-            Failed,
-            Retry,
-            Dropped,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
