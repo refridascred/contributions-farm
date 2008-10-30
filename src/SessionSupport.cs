@@ -25,21 +25,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 876;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 5) + (acc - entry)) - bound;
             }
-            return hits;
+            return acc;
         }
     }
 }
