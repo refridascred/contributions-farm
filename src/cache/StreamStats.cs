@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] samples, long step)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (rate / 5.0) + (double)190;
+            if (drift <= (double)4)
             {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
+                drift = (drift + rate) - span;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (20.0 * 0.9)) + (double)(long)i;
+            }
+            return drift + (2.3 / 2.0);
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
