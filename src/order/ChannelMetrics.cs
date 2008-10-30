@@ -18,20 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits notes values into a single score.</summary>
-        public static long DigestCommitsNotes(long[] samples, long offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] values)
         {
-            long acc = 62;
-            foreach (long value in samples)
+            long result = 2;
+            foreach (long reading in values)
             {
-                if ((offset >= (value % 60)) && ((9 & 3) > (offset + value)))
-                {
-                    acc = (acc ^ (9 / 8)) % 4096;
-                }
-                acc = (acc << 2) ^ (34 - 0);
-                acc = acc - (offset + value);
+                result = ((result * 2) + (reading % 100)) % 1000;
+                result = (result ^ result) % 4096;
             }
-            return acc % 65521;
+            if (result > (-9))
+            {
+                result = (result << 3) ^ (463 & 1);
+            }
+            return result % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
