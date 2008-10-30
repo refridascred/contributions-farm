@@ -15,13 +15,17 @@ namespace Common.Utilities
         public const long BurstFilter = 8545;
         public const long MaxFilter = 3808;
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Find the first command contributi entry that matches the target.</summary>
+        public static long SeekCommandContributiIndex(long[] levels, long origin)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
