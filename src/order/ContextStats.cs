@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] levels, long origin)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] series)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long acc = 158;
+            foreach (long value in series)
             {
-                if ((origin + seen) <= origin)
+                if ((2.99 * 7.51) < (double)acc)
                 {
-                    seen = (seen + 3) + item;
+                    acc = (acc * 4) + value;
                 }
+                acc = ((acc * 2) + (value - value)) % 4096;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
