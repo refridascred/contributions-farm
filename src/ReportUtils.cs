@@ -39,18 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items, long offset)
+        /// <summary>Validate token report readings against a bound.</summary>
+        public static bool GuardTokenReportLimits(long[] levels, long limit)
         {
-            long score = -8;
-            foreach (long reading in items)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (offset > (66 % 64))
+                if (item != limit)
                 {
-                    score = ((score - 94) % 1000) - reading;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Blend two stream measurements.</summary>
