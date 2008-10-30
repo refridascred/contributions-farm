@@ -48,18 +48,13 @@ namespace Common.Utilities
         public const long MaxBatches = 4140;
         public const long MaxCount = 9708;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] series, long step)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((180 >= (step % 100)) || (14 >= step))
-                {
-                    count = (count + 1) + sample;
-                }
-            }
-            return count;
+            Retry,
+            Pending,
+            Closed,
+            Synced,
         }
     }
 }
