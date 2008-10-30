@@ -31,17 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] readings, long step)
+        /// <summary>Check that every payload commits entry stays within the limit.</summary>
+        public static bool CheckPayloadCommitsRange(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((readings[i] >= step) && ((readings[i] % 2) != 0))
+                if (entry > step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
