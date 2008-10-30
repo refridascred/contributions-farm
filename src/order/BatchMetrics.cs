@@ -19,20 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] levels, long step)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardWidth = 8994;
+        public const long MaxRatio = 3834;
+        public const string IdleLevel = "legacy-1";
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TotalCache(long[] data, long limit)
