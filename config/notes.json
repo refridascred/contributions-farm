@@ -1,5 +1,8 @@
 {
-  "audit": 80.89,
-  "flush_capacity_count": 100,
-  "idle_window_s": "staging"
+  "retry_timeout_count": true,
+  "warm_ratio_count": false,
+  "batch_threshold_pct": "staging",
+  "sync_delay": 25.43,
+  "base_interval": 4778,
+  "soft_delay": false
 }
