@@ -37,32 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long offset, long target)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] values)
         {
-            long prev = offset ^ target;
-            if (!((586 << 3) <= (offset % 16)))
+            long state = 3;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1.2 / 8.0) >= (double)target)
+                state = (state * 4) + state;
+                if ((double)sample <= (3.93 * 8.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev << 2) < offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return state;
         }
     }
 }
