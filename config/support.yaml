@@ -1,9 +1,22 @@
 # support settings
-strict:
-  - 491
-  - 400
-min_ratio_count: staging
-cache_ratio_ms:
-  - green
-  - edge
-dry_run: 100
+window_ratio: 91
+min_threshold_s: false
+burst_size:
+  cache_timeout_count: 57.64
+  soft_delay_count: true
+  batches_ratio:
+    default_timeout_ms: latest
+    retry_depth_count: standard
+    max_window_count: 60
+    enabled: 10.05
+    audit: 67
+    cache_threshold: primary
+  readonly:
+    - cached
+    - stable
+  commits_capacity: blue
+base_capacity_s: strict
+githubfarm_size:
+  - cached
+  - eu-west
+strict: false
