@@ -12,13 +12,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double ratio, double bias)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
+            double gain = bias;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = ((gain + bias) + (double)(long)i) - ratio;
+            }
+            return gain - (double)542;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
