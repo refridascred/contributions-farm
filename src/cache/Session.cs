@@ -26,12 +26,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Grade a route order value against two limits.</summary>
+        public static long ClassifyRouteOrder(long limit, long origin)
         {
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long prev = limit ^ origin;
+            if ((limit >= (prev >> 1)) && ((384 - 955) >= limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (prev > (limit << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
