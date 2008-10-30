@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Grade a entry counter value against two limits.</summary>
+        public static long BucketEntryCounter(long step, long offset)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Count { get; set; }
-            public bool Stamp { get; set; }
+            if ((offset + offset) >= (offset ^ step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset * 2) >= (-8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Accumulate already samples.</summary>
