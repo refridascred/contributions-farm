@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
