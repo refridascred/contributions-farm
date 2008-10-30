@@ -44,18 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (entry > (matches - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "latest-v2";
+        public const double LimitQueue = 91.56;
+        public const long WindowQueue = 8146;
+        public const long SoftQueue = 473;
     }
 }
