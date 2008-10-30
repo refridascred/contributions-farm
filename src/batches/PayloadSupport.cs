@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] samples, long target)
         {
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long mark = -44;
+            foreach (long item in samples)
+            {
+                mark = ((mark << 3) ^ (642 & 31)) % 101;
+                mark = ((mark << 2) ^ (3 ^ target)) % 97;
+                if (((target + target) == ((long)samples.Length & 1)) && (target <= item))
+                {
+                    mark = ((mark << 3) ^ (mark + 56)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a tools stats.</summary>
