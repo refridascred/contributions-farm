@@ -30,19 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long score = 423;
-            foreach (long entry in data)
-            {
-                if ((score + 769) != (entry >> 1))
-                {
-                    score = ((score * 3) + score) % 65521;
-                }
-                score = score + score;
-            }
-            return score % 4096;
+            Stale,
+            Active,
+            New,
         }
     }
 }
