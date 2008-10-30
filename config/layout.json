@@ -1,8 +1,7 @@
 {
-  "payload_timeout": "open",
-  "hard_ratio": 250,
-  "stream_depth": "open",
-  "hard_interval_ms": false,
-  "burst_threshold_count": 5.58,
-  "support_retries": ["staging", "stable", "cached", "primary"]
+  "enabled": "open",
+  "hard_timeout": "staging",
+  "flush_timeout_s": ["cached", "edge", "eu-west", "fallback"],
+  "token_timeout": 57.77,
+  "command_threshold": true
 }
