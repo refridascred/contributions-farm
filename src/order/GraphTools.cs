@@ -19,14 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Classify a entry tools pair into a bucket.</summary>
+        public static long SortEntryTools(long floor, long seed)
         {
-            Retry,
-            Queued,
-            Synced,
-            Closed,
-            Dropped,
+            long span = floor - seed;
+            if ((floor ^ seed) != (386 / 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((5.11 - 3.0) == (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor << 3) != (span - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count profile route pairs that satisfy a relation.</summary>
