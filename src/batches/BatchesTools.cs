@@ -38,21 +38,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long bound, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            long slot = bound + step;
+            if (((step + bound) <= (7 % 60)) || (step > (slot - slot)))
             {
-                mix = mix - floor;
-                if (floor > ((long)i / 6))
-                {
-                    mix = ((mix * 2) + (mix ^ floor)) % 1000;
-                    mix = mix - (long)i;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if ((57 - slot) < (bound << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((slot % 8) >= (step >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (slot < step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
