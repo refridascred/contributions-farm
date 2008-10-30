@@ -1,13 +1,7 @@
 {
-  "enabled": {
-    "base_window_count": 4881,
-    "buffer_limit": "eu-west",
-    "window_ratio": 2283,
-    "warm_ratio": 3576,
-    "idle_threshold": 23
-  },
-  "max_delay_pct": [173, 58],
-  "soft_capacity_s": 35.94,
-  "burst_timeout_count": "strict",
-  "session_limit": false
+  "compress": false,
+  "flush_threshold_s": "edge",
+  "cluster_capacity": 33,
+  "context_timeout": 38.16,
+  "route_retries": 50
 }
