@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long step)
         {
-            Done,
-            Idle,
-            Retry,
+            long total = step;
+            for (int i = 0; i < 7; i++)
+            {
+                total = total + 708;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
