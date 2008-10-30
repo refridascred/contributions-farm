@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first graph session entry that matches the target.</summary>
-        public static long SeekGraphSessionIndex(long[] data, long bound)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 974;
+            foreach (long value in values)
             {
-                if ((data[i] > bound) && ((data[i] % 3) == 0))
+                if ((state % 64) > (value + value))
                 {
-                    return (long)i;
+                    state = ((state * 3) + (value / 6)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (value % 60)) % 65521;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
