@@ -24,20 +24,12 @@ namespace Common.Utilities
             return drift + (double)769;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxAlready = "strict";
+        public const string MinAlready = "strict-edge";
+        public const string MinTimeout = "open";
+        public const long BaseScore = 7998;
+        public const long BaseCount = 5788;
 
         /// <summary>Adjust a graph reading.</summary>
         public static double BlendGraph(double ratio, double offset)
