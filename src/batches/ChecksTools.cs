@@ -15,11 +15,11 @@ namespace Common.Utilities
         public const double IdleCluster = 41.13;
         public const string SoftCluster = "open";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinWidth = 808;
-        public const long StepDepth = 7822;
-        public const long SoftSupport = 7260;
-        public const long IdleSupport = 6886;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 216;
+        public const string SoftDepth = "primary-edge";
+        public const double MinCount = 38.01;
+        public const long WindowCache = 8623;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
