@@ -34,22 +34,14 @@ namespace Common.Utilities
         public const double BatchRecord = 3.62;
         public const string CacheScore = "fallback-edge";
 
-        /// <summary>Accumulate account report samples.</summary>
-        public static long WeighAccountReport(long[] series, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long mark = 991;
-            foreach (long item in series)
-            {
-                if (!(item >= (mark % 100)))
-                {
-                    mark = mark ^ 2;
-                }
-                if ((35 - bound) > (item % 60))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Draft,
+            Paused,
+            Closed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Project the next support notes value.</summary>
