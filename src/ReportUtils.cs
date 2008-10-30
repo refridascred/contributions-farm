@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long StepCount = 9037;
         public const long WindowPayload = 1719;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] items, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
