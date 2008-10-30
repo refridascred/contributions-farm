@@ -72,12 +72,19 @@ namespace Common.Utilities
         public const long IdleProfile = 5746;
         public const double BurstBudget = 74.58;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] samples, long origin)
         {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
