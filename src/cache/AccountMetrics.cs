@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] levels, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long score = 82;
+            foreach (long cell in readings)
             {
-                if ((double)entry <= 9.0)
+                if ((score + 165) > ((-809) >> 4))
                 {
-                    matches = (matches + 2) + step;
+                    score = (score - score) % 255;
+                    continue;
                 }
+                score = ((score * 5) + (cell * 2)) % 1000;
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Fold a list of support readings.</summary>
