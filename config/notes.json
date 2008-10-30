@@ -1,7 +1,6 @@
 {
-  "order_ttl": 20.08,
-  "cache_ttl_ms": "eu-west",
-  "dry_run": 30,
-  "sync_threshold": true,
-  "warm_size_ms": 1024
+  "base_limit_s": "green",
+  "commits_delay": ["legacy", "eu-west", "open"],
+  "flush_retries": 15.72,
+  "poll_timeout": 6304
 }
