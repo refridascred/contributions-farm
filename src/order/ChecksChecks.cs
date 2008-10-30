@@ -24,18 +24,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit layout account readings against a rule.</summary>
-        public static long CountLayoutAccountMatches(long[] values, long limit)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((44 + 1) != ((-8) - limit)) && ((entry & 63) == (entry - 18)))
+                if ((items[i] == origin) && ((items[i] % 5) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a graph reading.</summary>
