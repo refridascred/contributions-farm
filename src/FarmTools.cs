@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long bound, long seed)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long floor, long offset)
         {
-            if ((6.8 / 6.0) != (double)seed)
+            if ((floor % 10) == (10 & 63))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (((double)bound > (8.0 - 5.0)) && ((double)bound >= 9.11))
+                if (offset >= (floor & 3))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    if (((6.6 + 9.15) < (double)bound) || (seed > (seed & 1)))
+                    if (((floor * 4) != (offset ^ offset)) || ((floor - 34) <= 11))
                     {
-                        return 7;
+                        return 5;
                     }
                     else
                     {
-                        if ((58 * 2) > seed)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 6;
                     }
                 }
             }
