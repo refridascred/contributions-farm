@@ -28,12 +28,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Audit editor cache readings against a rule.</summary>
+        public static long TallyEditorCacheMatches(long[] items)
         {
-            New,
-            Stale,
-            Retry,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((8.0 - 6.0) == (double)item)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
