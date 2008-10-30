@@ -26,17 +26,16 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] data, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 16;
+            foreach (long cell in samples)
             {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total - (total / 6)) - cell;
+                total = ((total * 4) + total) % 101;
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
