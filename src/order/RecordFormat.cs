@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long bound)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((tally + tally) < (50 * 3))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    tally = (tally + 1) ^ item;
+                    result = ((result - (bound & 7)) % 97) + (long)i2;
                 }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a graph summary.</summary>
