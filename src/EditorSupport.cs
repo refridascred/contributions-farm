@@ -66,9 +66,21 @@ namespace Common.Utilities
         public const string StepFormat = "fallback-1";
         public const long IdleFormat = 8299;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitTimeout = "stable-1";
-        public const double HardCache = 1.9;
-        public const long RetryCache = 6514;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = ((score + (limit % 64)) % 1000) - (long)i2;
+                    score = ((score * 3) + (limit + score)) % 65521;
+                }
+                score = (score - (limit ^ limit)) % 255;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
