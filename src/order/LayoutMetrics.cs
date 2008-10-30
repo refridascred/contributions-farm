@@ -13,18 +13,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] data, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (seen < ((-79) & 63))
+                if (2.14 >= (double)reading)
                 {
-                    seen = ((seen + 3) - entry) - origin;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
