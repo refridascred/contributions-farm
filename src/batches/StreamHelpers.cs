@@ -33,13 +33,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitRoute = 2515;
+        public const long BatchScore = 662;
+        public const double BaseFactor = 46.0;
 
         /// <summary>Count the queue commits entries that pass the check.</summary>
         public static long TallyQueueCommitsMatches(long[] series, long target)
