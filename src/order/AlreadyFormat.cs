@@ -16,13 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] data)
         {
             long hits = 0;
-            foreach (long cell in series)
+            foreach (long value in data)
             {
-                if ((cell <= (cell & 255)) || ((5.0 / 5.0) == (double)cell))
+                if (value < (value ^ hits))
                 {
                     hits = hits + 3;
                 }
