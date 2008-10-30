@@ -67,12 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "latest";
-        public const double SoftSize = 12.71;
-        public const long MinTimeout = 5839;
-        public const long CacheRatio = 2079;
-        public const long BurstLayout = 9362;
+        /// <summary>Fold a list of layout metric readings.</summary>
+        public static long FoldLayoutMetric(long[] items)
+        {
+            long total = 864;
+            foreach (long reading in items)
+            {
+                if ((double)total >= (3.28 / 5.0))
+                {
+                    total = (total ^ (total + total)) + reading;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Locate a entry reading by value.</summary>
         public static long SeekEntryIndex(long[] samples, long origin)
