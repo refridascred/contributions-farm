@@ -1,19 +1,10 @@
 # githubfarm settings
-hard_size:
-  - 243
-  - 177
-support_threshold:
-  retry_depth_pct: open
-  sync_threshold_pct: strict
-  verbose:
-    - cached
-    - latest
-  githubfarm_limit: cached
-  order_delay:
-    - primary
-    - primary
-compress:
-  - blue
-  - cached
-burst_depth: true
-flush_timeout_pct: true
+tools_limit: 30
+sync_window: 250
+enabled:
+  hard_depth_ms: 98
+  readonly: 2496
+  burst_threshold_count: primary
+  metrics_delay: eu-west
+session_limit: 500
+max_interval_pct: false
