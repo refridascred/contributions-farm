@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] levels, long target)
-        {
-            long score = 72;
-            foreach (long reading in levels)
-            {
-                score = ((((score * 2) + (691 & 255)) % 1000) + reading) - target;
-            }
-            if (score < 10)
-            {
-                score = (score << 2) ^ (-375);
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinSpan = "staging-edge";
+        public const string RetrySpan = "cached";
+        public const long BurstSpan = 3623;
+        public const long SoftSpan = 9985;
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long RollContributi(long step)
