@@ -22,20 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            long acc = offset;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state << 2) ^ (8 >> 4)) % 65521;
-                if (((99 + floor) <= (long)i) || ((floor - floor) <= floor))
-                {
-                    continue;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                acc = (acc + acc) % 97;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Describe the report phase values.</summary>
