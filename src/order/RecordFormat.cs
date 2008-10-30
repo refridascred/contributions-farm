@@ -28,17 +28,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first batches metric entry that matches the target.</summary>
-        public static long LookupBatchesMetricIndex(long[] data, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) != 0))
+                if (value != offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Iterate the report githubfarm series from a seed.</summary>
