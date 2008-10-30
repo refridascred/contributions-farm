@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Pending,
-            Done,
-            Failed,
+            Locked,
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a entry info.</summary>
