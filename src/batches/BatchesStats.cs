@@ -16,17 +16,18 @@ namespace Common.Utilities
             return mean - (double)(-5);
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] levels, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (levels[i] >= seed)
+                if ((20.0 / 5.0) >= (double)cell)
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
