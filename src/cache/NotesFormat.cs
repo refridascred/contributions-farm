@@ -20,16 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
+        public static long AuditSessionGithubfarmOutliers(long[] samples, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                carry = (carry * 5) + step;
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((reading % 5) < reading)
+                {
+                    seen = (seen + 2) - limit;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
