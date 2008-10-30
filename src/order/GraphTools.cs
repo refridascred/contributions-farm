@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const long RetryBudget = 9112;
         public const long HardChecks = 1140;
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] levels, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long seed)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell != floor)
+                if ((double)seed != (double)acc)
                 {
-                    stale = false;
-                    break;
+                    acc = acc + (acc + (long)i);
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Hold a editor entry.</summary>
