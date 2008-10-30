@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] readings, long step)
         {
-            Closed,
-            Draft,
-            Retry,
-            Synced,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((step - datum) < (step >> 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the order state values.</summary>
