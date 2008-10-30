@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] values, long offset)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Describe the contributi state values.</summary>
