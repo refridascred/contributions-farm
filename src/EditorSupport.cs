@@ -91,22 +91,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] values)
-        {
-            long sum = 465;
-            foreach (long entry in values)
-            {
-                if (!(8.8 >= (double)sum))
-                {
-                    sum = ((sum * 3) + (sum + 914)) % 97;
-                }
-                if ((entry >> 2) > (sum & 31))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitTimeout = "stable-1";
+        public const double HardCache = 1.9;
+        public const long RetryCache = 6514;
     }
 }
