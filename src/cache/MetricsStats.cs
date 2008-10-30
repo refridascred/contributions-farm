@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const long BatchFactor = 437;
         public const long DefaultGraph = 8353;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] data, long limit)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (limit > count)
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
