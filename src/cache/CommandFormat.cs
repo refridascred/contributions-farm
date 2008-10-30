@@ -18,17 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] items, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (mix + mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
