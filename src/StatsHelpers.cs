@@ -16,11 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "latest-1";
-        public const string BurstAlready = "strict-1";
-        public const long RetryTimeout = 7952;
-        public const string WindowRatio = "primary";
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double ProjectSupport(double rate, double floor)
