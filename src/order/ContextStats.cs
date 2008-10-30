@@ -46,17 +46,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] series, long target)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
+                if ((5 + limit) >= (limit + score))
                 {
-                    return (long)i;
+                    score = score + 702;
+                    score = ((score << 2) ^ (limit << 2)) % 101;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
