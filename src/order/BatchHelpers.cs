@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] series)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] values)
         {
-            long state = 272;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((double)item != (7.58 - 6.0))
+                if ((cell + 45) >= matches)
                 {
-                    state = state ^ (state - state);
-                }
-                else
-                {
-                    state = (state ^ (item / 4)) % 101;
+                    matches = matches + 3;
                 }
             }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
