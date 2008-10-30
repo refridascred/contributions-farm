@@ -57,19 +57,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] levels, long target)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
