@@ -37,11 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheFactor = 30.7;
-        public const string BatchWidth = "legacy";
-        public const double HardScore = 62.94;
-        public const long BaseStats = 1941;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Stale,
+            Failed,
+            Synced,
+            Active,
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long LookupOrderIndex(long[] series, long target)
