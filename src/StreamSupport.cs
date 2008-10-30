@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Derive the next batches metrics value from a seed.</summary>
+        public static long IterateBatchesMetrics(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                long diff = origin;
+                diff = diff ^ diff;
+                if ((((long)i % 10) <= diff) && ((double)origin == (7.0 * 10.0)))
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor - (long)i) % 101;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
