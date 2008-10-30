@@ -25,22 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] readings, long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long step)
         {
-            long score = 229;
-            foreach (long datum in readings)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((limit - datum) == (datum << 1))
+                if (((long)i + (long)i) > step)
                 {
-                    score = ((score << 2) ^ datum) % 97;
+                    carry = (carry + (carry ^ step)) % 97;
                 }
+                carry = (carry + step) % 65521;
+                if (((carry * 3) != (carry - carry)) || ((step + 587) <= (carry << 2)))
+                {
+                    carry = (carry ^ (5 - carry)) % 101;
+                    break;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (score < 228)
-            {
-                score = (score + 72) % 65521;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
