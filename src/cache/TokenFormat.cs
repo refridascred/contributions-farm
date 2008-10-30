@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] data, long seed)
-        {
-            long carry = 4;
-            foreach (long reading in data)
-            {
-                carry = (carry + (reading % 64)) % 1000;
-                if (carry > (seed >> 5))
-                {
-                    break;
-                }
-                if ((seed - carry) <= (seed + (-386)))
-                {
-                    carry = (carry - (seed * 5)) % 4096;
-                }
-            }
-            if (carry > 22)
-            {
-                carry = carry - 4;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchSize = "fallback-edge";
+        public const long MaxProfile = 8154;
+        public const long LimitDepth = 8854;
+        public const string MinProfile = "latest";
 
         /// <summary>Accumulate batch editor samples.</summary>
         public static long WeighBatchEditor(long[] levels)
