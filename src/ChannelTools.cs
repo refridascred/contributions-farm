@@ -47,20 +47,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel stats counter forward.</summary>
-        public static long DeriveChannelStats(long step)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long acc = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((anchor ^ anchor) < ((long)i / 6))
+                if (3 < (target ^ (long)i))
                 {
-                    anchor = ((anchor * 5) + (anchor + 34)) % 65521;
-                    anchor = (anchor - (step / 4)) % 4096;
+                    acc = (acc - (target << 2)) % 65521;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return anchor;
+            return acc;
         }
     }
 }
