@@ -51,22 +51,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] series, long limit)
+        /// <summary>Count the commits profile entries that pass the check.</summary>
+        public static long TallyCommitsProfileMatches(long[] readings)
         {
-            long carry = 395;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((item * 4) < (item ^ 4))
+                if ((57 >> 5) <= (tally % 60))
                 {
-                    carry = (carry + (65 + item)) + limit;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (item * 4)) % 97;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
