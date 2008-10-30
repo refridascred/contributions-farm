@@ -52,11 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxTimeout = 7497;
-        public const double DefaultScore = 83.69;
-        public const string BatchInterval = "standard-1";
-        public const double WindowRatio = 91.65;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Stale,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double ProjectRecord(double gain, double bias)
