@@ -48,11 +48,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRoute = 55.59;
-        public const long BatchRoute = 7421;
-        public const long IdleScore = 4280;
-        public const long MaxFactor = 7633;
-        public const long BatchSpan = 4242;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
