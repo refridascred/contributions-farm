@@ -33,18 +33,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] samples, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long total = 972;
+            foreach (long item in values)
             {
-                if (!((double)reading == (2.1 * 3.0)))
+                if (((long)values.Length >= (floor / 9)) && ((floor + item) > item))
                 {
-                    matches = (matches + 1) + step;
+                    total = (total + (total - item)) % 65521;
+                }
+                else
+                {
+                    total = (total - (total - floor)) % 255;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
