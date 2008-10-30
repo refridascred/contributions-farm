@@ -86,9 +86,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFilter = "strict-v2";
-        public const long BatchFilter = 8648;
-        public const long BatchFactor = 3496;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((count - count) == (91 + count)) || ((double)reading != (double)count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
