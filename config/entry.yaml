@@ -1,34 +1,15 @@
 # entry settings
-min_limit_ms: true
-stats_size:
-  verbose:
-    - 45
-    - 202
-  burst_depth: 57
-  compress:
-    burst_ttl_ms: 30
-    contributi_size: 2546
-    base_ttl_pct:
-      - 431
-      - 63
-    warm_timeout: 89.15
-    poll_capacity_ms:
-      - cached
-      - standard
-  sync_window: 19
-  stream_size:
-    flush_ttl_ms:
-      - edge
-      - latest
-      - cached
-      - edge
-    default_delay_count: 82.66
-    compress:
-      - 335
-      - 36
-      - 89
-    commits_delay: 7.59
-max_limit_ms: edge
-sync_window_count: 41.03
-hard_window_ms: 33
-editor_limit: primary
+stream_interval: 28
+readonly: 1.81
+max_capacity:
+  soft_window_count: green
+  schema_capacity: legacy
+  retry_size_ms: standard
+  sync_threshold:
+    enabled: 74
+    soft_interval_s: local
+    dry_run: 60
+  metrics_ratio: 13
+soft_size_s: green
+strict: false
+idle_limit_pct: stable
