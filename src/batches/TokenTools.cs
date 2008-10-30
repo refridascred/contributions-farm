@@ -20,32 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long floor, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] readings, long origin)
         {
-            long gap = floor - offset;
-            if ((double)floor == (2.0 + 18.0))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap ^ gap) >= gap)
+                if ((reading << 1) >= hits)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor << 3) > gap)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 3) + origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
