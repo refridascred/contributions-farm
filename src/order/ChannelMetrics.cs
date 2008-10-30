@@ -48,12 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Paused,
-            Ready,
-            Stale,
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
