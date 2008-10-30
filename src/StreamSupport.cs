@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Match up report context samples.</summary>
+        public static long MatchReportContextCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 12)
+                    if ((data[i] - data[j]) != 1)
                     {
-                        seen = seen + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
