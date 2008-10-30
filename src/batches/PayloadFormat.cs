@@ -28,16 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = mix ^ target;
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Digest a series of batches tools entries.</summary>
