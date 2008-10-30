@@ -20,12 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            Stale,
+            Paused,
+            New,
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
