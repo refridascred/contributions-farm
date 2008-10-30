@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long MaxWidth = 7156;
         public const long SoftDepth = 7562;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] items)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (seen < (seen / 7))
-                {
-                    seen = (seen + 1) - entry;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
     }
 }
