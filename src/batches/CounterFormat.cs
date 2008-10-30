@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long total = 615;
-            foreach (long item in series)
-            {
-                if (((item - 261) >= total) || ((double)item >= (0.8 * 8.0)))
-                {
-                    total = (total * 2) + total;
-                }
-            }
-            return total % 4096;
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Hold a cache summary.</summary>
