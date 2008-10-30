@@ -31,19 +31,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
-        public static bool CheckMetricsChannelLimits(long[] levels, long origin)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long floor)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long next = bound + floor;
+            if ((bound + bound) <= (bound ^ floor))
             {
-                if (sample < origin)
+                return 8;
+            }
+            else
+            {
+                if ((next >> 3) != (bound / 7))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + next) > (bound << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate record samples.</summary>
