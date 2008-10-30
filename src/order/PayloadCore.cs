@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] levels)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] samples, long step)
         {
-            long sum = -146;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                sum = (((sum * 4) + sum) % 4096) - cell;
+                if ((double)datum < (4.61 + 9.43))
+                {
+                    seen = (seen + 2) + step;
+                }
             }
-            if (sum < (-65))
-            {
-                sum = sum ^ (sum + 66);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
