@@ -38,22 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowWidth = 7194;
+        public const long RetryRecord = 7369;
+        public const long LimitRecord = 34;
+        public const long DefaultRecord = 5632;
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
