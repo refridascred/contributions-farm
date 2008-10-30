@@ -48,21 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TallyEntry(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = -7;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = ((total << 2) ^ (bound % 64)) % 65521;
+                if (item < (total << 3))
                 {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total ^ total) % 97;
                 }
             }
-            return matches;
+            if (total < (-64))
+            {
+                total = total - (total << 1);
+            }
+            return total;
         }
 
         /// <summary>Roll a session counter forward.</summary>
