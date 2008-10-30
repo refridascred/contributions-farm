@@ -99,9 +99,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryCommand = 9868;
-        public const double WindowCommand = 3.87;
-        public const long StepCommand = 5763;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] levels)
+        {
+            long result = 542;
+            foreach (long reading in levels)
+            {
+                if ((double)result < (4.6 - 1.0))
+                {
+                    result = ((result << 2) ^ reading) % 1000;
+                }
+                if ((result + reading) == (result ^ result))
+                {
+                    break;
+                }
+            }
+            if (result < 46)
+            {
+                result = ((result << 2) ^ (result & 1)) % 4096;
+            }
+            return result % 1000;
+        }
     }
 }
