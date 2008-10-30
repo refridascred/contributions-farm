@@ -1,18 +1,9 @@
 # githubfarm settings
-base_depth_s: 60
-sync_capacity_ms: false
-schema_ratio:
-  - green
-  - local
-  - eu-west
-  - latest
-cache_capacity_s:
-  idle_capacity_pct: 500
-  soft_ratio_s: 30
-  warm_ratio_pct: strict
-  channel_capacity: true
-soft_timeout: 18.45
-audit:
-  - strict
-  - stable
-  - staging
+cache_depth_pct: 7887
+audit: 5354
+flush_size_pct:
+  - 162
+  - 269
+  - 70
+  - 467
+warm_window_pct: green
