@@ -19,12 +19,22 @@ namespace Common.Utilities
         public const long BaseBatch = 2084;
         public const long CacheBatch = 8426;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 9122;
-        public const long SoftCounter = 2360;
-        public const long BaseDepth = 8578;
-        public const string MinCounter = "primary-edge";
-        public const long StepCounter = 3815;
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string HardBudget = "open";
