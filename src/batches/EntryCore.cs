@@ -16,13 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] samples, long step)
         {
-            public double Flag { get; set; }
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
