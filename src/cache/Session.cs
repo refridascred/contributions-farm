@@ -33,18 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stream support samples are out of range.</summary>
-        public static long MeasureStreamSupportOutliers(long[] readings, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (0 < (hits % 7))
+                if ((double)count < (1.0 * 6.2))
                 {
-                    hits = ((hits + 2) - datum) + seed;
+                    count = ((count + 2) + cell) + target;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Classify a tools order pair into a bucket.</summary>
