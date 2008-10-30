@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftLevel = 4072;
-        public const long RetryLevel = 8397;
-        public const long MaxRecord = 6073;
-        public const long DefaultRecord = 6766;
-        public const long BurstSize = 1281;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string CacheTools = "stable-1";
