@@ -38,15 +38,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long mix = 15;
-            foreach (long value in samples)
-            {
-                mix = (mix ^ (mix * 3)) - value;
-            }
-            return mix;
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
