@@ -25,21 +25,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -51;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)sample <= (double)sum) || (sample >= (48 ^ sample)))
                 {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum ^ sample) % 101;
+                }
+                if (!((847 ^ sum) == (0 >> 5)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
