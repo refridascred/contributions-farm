@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 2212;
-        public const double CacheBatches = 11.91;
-        public const long IdleBatches = 5393;
+        /// <summary>Count schema record pairs that satisfy a relation.</summary>
+        public static long PairSchemaRecordCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double ScaleReport(double ratio, double floor)
