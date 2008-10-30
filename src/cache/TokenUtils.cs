@@ -42,20 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] values, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] samples, long seed)
         {
-            long result = 742;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                result = ((result << 3) ^ limit) % 1000;
-                result = (result - (result - value)) % 101;
+                if (reading != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result > 40)
-            {
-                result = (result + limit) % 4096;
-            }
-            return result;
+            return ok;
         }
     }
 }
