@@ -49,22 +49,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long CompareChannelCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetrySize = 3970;
+        public const long MinScore = 4638;
+        public const long RetryWindow = 9782;
+        public const long SoftWindow = 7234;
+        public const long MaxWindow = 7471;
 
         /// <summary>Check that every metrics checks entry stays within the limit.</summary>
         public static bool CheckMetricsChecksBounds(long[] levels, long step)
