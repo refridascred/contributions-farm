@@ -42,15 +42,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double ratio, double span)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] series, long floor)
         {
-            double weight = span;
-            if (weight > (ratio / 2.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + (span + weight);
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (weight / 9.0);
+            return -1;
         }
     }
 }
