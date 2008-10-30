@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] levels, long floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long bound, long origin)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            if ((bound * 4) < 6)
             {
-                if (reading > floor)
+                return 2;
+            }
+            else
+            {
+                if ((origin <= (bound + origin)) || (bound >= 679))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return found;
         }
 
         /// <summary>Digest a series of profile cache entries.</summary>
