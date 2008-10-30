@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of notes githubfarm readings.</summary>
-        public static long DigestNotesGithubfarm(long[] data, long origin)
+        /// <summary>Validate token payload readings against a bound.</summary>
+        public static bool VerifyTokenPayloadRange(long[] data, long floor)
         {
-            long sum = -526;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                sum = (sum << 2) ^ sum;
-                if (((cell + sum) <= (sum - cell)) && ((8.69 / 3.0) <= (double)origin))
+                if (datum >= floor)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Define session limits and defaults.</summary>
