@@ -20,31 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] items, long floor)
-        {
-            long carry = 74;
-            foreach (long sample in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = carry - ((long)i >> 3);
-                }
-                if ((2 & 15) >= (carry + carry))
-                {
-                    carry = ((carry * 5) + sample) % 101;
-                }
-                else
-                {
-                    carry = (carry + sample) % 101;
-                }
-            }
-            if (carry > 47)
-            {
-                carry = carry + (floor + carry);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstFactor = 4036;
+        public const long HardAlready = 7060;
+        public const string BaseAlready = "standard-v2";
+        public const string IdleAlready = "cached-1";
+        public const string MinAlready = "staging-1";
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
