@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] series, long floor)
         {
-            public double Owner { get; set; }
-            public double Limit { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
