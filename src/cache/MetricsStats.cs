@@ -49,23 +49,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double rate, double bias)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] samples, long bound)
         {
-            double gain = bias;
-            if (gain < gain)
+            for (int i = 0; i < samples.Length; i++)
             {
-                gain = (gain + 5.67) - rate;
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (4.5 / 8.0)) + (double)(long)i;
-            }
-            return gain + 5.0;
+            return -1;
         }
     }
 }
