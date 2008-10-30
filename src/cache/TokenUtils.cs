@@ -10,39 +10,12 @@ namespace Common.Utilities
         public const long DefaultSize = 3963;
         public const long StepReport = 7081;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long step, long step2)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long prev = step + step2;
-            if (!(step <= (prev + prev)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)94 > (double)step2)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step2 >> 3) < 2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (step <= (prev / 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Fold a list of report readings.</summary>
