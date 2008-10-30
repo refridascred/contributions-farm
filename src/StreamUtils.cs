@@ -37,17 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long offset)
+        /// <summary>Check that every context stream entry stays within the limit.</summary>
+        public static bool GuardContextStreamBounds(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (items[i] >= offset)
+                if (value > floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
