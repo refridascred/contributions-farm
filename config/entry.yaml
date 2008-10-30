@@ -1,6 +1,9 @@
 # entry settings
-persist: blue
-buffer_capacity: 36
-poll_interval_count: latest
-default_limit_ms: 9837
-metric_timeout: staging
+flush_delay_count: 44.31
+base_ttl_ms:
+  warm_capacity: edge
+  readonly: 95
+  default_threshold_s: 500
+idle_interval_ms: local
+base_window_pct: fallback
+max_depth: legacy
