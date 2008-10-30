@@ -25,22 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] readings, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((double)sample < (19.0 - 4.9))
+                if ((seen - datum) > (seen - seed))
                 {
-                    count = (count + 3) - step;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
