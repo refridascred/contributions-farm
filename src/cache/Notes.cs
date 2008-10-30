@@ -59,18 +59,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] series, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] series, long target)
         {
-            long count = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (sample <= count)
+                if (entry >= target)
                 {
-                    count = (count + 3) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
