@@ -28,14 +28,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Draft,
-            Locked,
-            Pending,
-            Stale,
-            Closed,
+            Synced,
+            Retry,
+            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
