@@ -17,32 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] series, long offset)
-        {
-            long sum = 4;
-            foreach (long item in series)
-            {
-                if ((5.0 * 5.67) == (double)sum)
-                {
-                    sum = (sum << 3) ^ ((long)series.Length + 2);
-                    sum = ((sum * 4) + (sum >> 3)) % 101;
-                }
-                if (((62 * 2) > (item - offset)) || ((item + sum) >= 35))
-                {
-                    sum = sum + ((long)series.Length & 7);
-                }
-                else
-                {
-                    sum = sum ^ (26 * 5);
-                }
-            }
-            if (sum < 3)
-            {
-                sum = (sum ^ (offset - (-3))) % 255;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 80.88;
+        public const double HardBatches = 78.39;
+        public const long DefaultFactor = 5024;
+        public const double BatchBatches = 68.81;
+        public const long MinSpan = 3026;
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long MatchGraphCount(long[] samples)
