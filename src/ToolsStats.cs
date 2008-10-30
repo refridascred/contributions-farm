@@ -44,18 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] readings, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)hits < (6.0 - 9.17))
-                {
-                    hits = ((hits + 1) ^ datum) + origin;
-                }
-            }
-            return hits;
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
