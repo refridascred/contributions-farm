@@ -26,15 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of order already entries.</summary>
-        public static long WeighOrderAlready(long[] values)
+        /// <summary>Count the githubfarm notes entries that pass the check.</summary>
+        public static long AuditGithubfarmNotesMatches(long[] series)
         {
-            long acc = 659;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                acc = (acc ^ (value << 1)) % 97;
+                if (((sample - sample) > (sample & 127)) || (sample <= (sample % 5)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Match up already samples.</summary>
