@@ -35,32 +35,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long limit, long offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long origin)
         {
-            long step = limit - offset;
-            if (offset <= (offset & 31))
+            long score = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step - limit) > ((-917) << 3))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 8;
+                    score = (score * 3) + (long)i2;
                 }
-                else
-                {
-                    if ((-303) >= (limit - 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
     }
 }
