@@ -76,39 +76,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long origin, long limit)
+        /// <summary>Count the cache contributi entries that pass the check.</summary>
+        public static long TallyCacheContributiHits(long[] samples)
         {
-            long prev = origin + limit;
-            if ((limit % 5) >= (prev << 2))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin % 97) <= limit)
+                if ((item + item) != (item / 2))
                 {
-                    return 0;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (6.7 <= (double)prev)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((prev & 15) > limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
