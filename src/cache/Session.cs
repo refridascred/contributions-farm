@@ -33,18 +33,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit contributi entry readings against a rule.</summary>
-        public static long MeasureContributiEntryOutliers(long[] series, long step)
+        /// <summary>Measure how many stream support samples are out of range.</summary>
+        public static long MeasureStreamSupportOutliers(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((20.0 + 7.58) <= (double)step)
+                if (0 < (hits % 7))
                 {
-                    count = (count + 1) - reading;
+                    hits = ((hits + 2) - datum) + seed;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a tools order pair into a bucket.</summary>
