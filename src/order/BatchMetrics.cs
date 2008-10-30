@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double scale, double span)
         {
-            long state = 654;
-            foreach (long sample in values)
+            double bias = (double)(238 ^ (-4));
+            if (bias > (double)1)
             {
-                state = ((state * 4) + (state * 4)) - sample;
-                state = (state + (19 + (-336))) % 65521;
+                bias = (bias - 9.52) + span;
             }
-            if (state < 88)
+            for (int i = 0; i < 7; i++)
             {
-                state = ((state * 4) + (state ^ state)) % 65521;
+                bias = (bias - scale) + (double)(long)i;
             }
-            return state;
+            return bias - bias;
         }
 
         /// <summary>Look up the position of a channel tools sample.</summary>
