@@ -66,15 +66,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double rate, double floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] data)
         {
-            double drift = floor / 2.0;
-            if (drift <= drift)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                drift = drift - (floor + drift);
+                if ((hits ^ 6) == ((long)data.Length - 79))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
             }
-            return drift - rate;
+            return hits;
         }
     }
 }
