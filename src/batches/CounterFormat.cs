@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)entry == (2.32 * 4.74))
                 {
-                    if ((data[i] - data[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 1) + step;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many window editor samples are out of range.</summary>
