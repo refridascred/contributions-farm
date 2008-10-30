@@ -30,15 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double gain, double bias)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double ratio = (bias * 0.8) * 14.0;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio + (double)97) + (double)(long)i) - gain;
-            }
-            return ratio - (bias - bias);
+            Queued,
+            Dropped,
+            Idle,
+            Ready,
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
