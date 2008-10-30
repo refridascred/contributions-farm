@@ -63,13 +63,11 @@ namespace Common.Utilities
             return bias + (8.0 / 7.0);
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Retry,
-            Stale,
-            Active,
-            Locked,
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
