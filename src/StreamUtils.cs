@@ -35,12 +35,14 @@ namespace Common.Utilities
             return scale + (span - span);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 6069;
-        public const long BurstCounter = 6763;
-        public const long WindowFactor = 968;
-        public const string RetryScore = "local-v2";
-        public const long HardFactor = 8818;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long StepAlready(long seed)
