@@ -33,14 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            Closed,
-            Active,
-            Synced,
-            Dropped,
             Idle,
+            Dropped,
+            Draft,
+            Paused,
+            Ready,
         }
 
         /// <summary>Locate a support reading by value.</summary>
