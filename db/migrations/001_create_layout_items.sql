@@ -2,8 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    level INTEGER,
-    region TEXT
+    count INTEGER NOT NULL DEFAULT 0,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
+CREATE INDEX IF NOT EXISTS idx_layout_items_token ON layout_items (token);
+
+INSERT INTO layout_items (token, count, owner) VALUES ('cached', 40, 'eu-west');
