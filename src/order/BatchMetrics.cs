@@ -53,39 +53,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank session cluster input into a small class.</summary>
-        public static long RankSessionCluster(long bound, long floor)
+        /// <summary>Locate a contributi cluster reading by value.</summary>
+        public static long LookupContributiClusterIndex(long[] series, long limit)
         {
-            long diff = bound + floor;
-            if ((double)bound != (10.0 + 19.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)diff != (6.6 / 6.0))
+                if (series[i] > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)62 == (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (5 > (floor + 559))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank window already input into a small class.</summary>
