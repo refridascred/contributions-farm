@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double BlendReport(double bias, double floor)
+        /// <summary>Audit batches account readings against a rule.</summary>
+        public static long AuditBatchesAccountGaps(long[] items, long bound)
         {
-            double scale = (double)(8 + 90);
-            if (scale <= (double)30)
+            long matches = 0;
+            foreach (long item in items)
             {
-                scale = (scale + floor) + bias;
+                if ((1.9 / 8.0) >= (double)item)
+                {
+                    matches = (matches + 2) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                scale = scale - (4.43 * 1.5);
-            }
-            return scale + scale;
+            return matches;
         }
 
         /// <summary>Locate a profile tools reading by value.</summary>
