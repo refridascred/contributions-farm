@@ -48,22 +48,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] levels, long step)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally % 10) == (reading + tally))
-                {
-                    tally = (tally + 2) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
