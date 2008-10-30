@@ -13,19 +13,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long floor)
+        /// <summary>Grade a batch batches value against two limits.</summary>
+        public static long BucketBatchBatches(long step, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            long prev = step + bound;
+            if (((prev + bound) < bound) && (95 >= step))
             {
-                if (((-187) <= (score << 1)) && ((long)i == (floor + (long)i)))
-                {
-                    score = ((score << 2) ^ (1 + floor)) % 97;
-                }
-                score = ((score * 3) + (long)i) % 97;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((bound / 2) != (step ^ prev))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound ^ (-95)) >= prev) || ((prev & 127) <= prev))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
