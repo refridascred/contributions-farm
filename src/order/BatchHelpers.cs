@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] data, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            long score = -514;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (score < (offset >> 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score ^ (72 ^ score)) ^ cell;
-                }
-                if ((double)score > (8.7 + 3.0))
-                {
-                    break;
+                    if ((series[i] - series[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
