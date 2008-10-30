@@ -44,18 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] levels, long floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long mark = 57;
-            foreach (long datum in levels)
-            {
-                if ((mark - datum) <= (datum * 2))
-                {
-                    mark = ((mark << 3) ^ (mark ^ datum)) + floor;
-                }
-            }
-            return mark % 4096;
+            public double Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
