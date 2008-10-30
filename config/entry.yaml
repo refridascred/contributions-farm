@@ -1,16 +1,25 @@
 # entry settings
-min_delay_count:
-  - cached
-  - eu-west
-min_threshold_count:
-  format_timeout: 1024
-  editor_limit: 13.9
-  default_capacity_pct:
-    - strict
-    - fallback
-  audit: 100
-  verbose: cached
-  batch_ratio:
-    - latest
-    - primary
-buffer_threshold: 6350
+cache_ttl_s: 47
+editor_limit: eu-west
+base_window_s:
+  warm_depth: local
+  soft_threshold:
+    - 19
+    - 134
+    - 236
+  readonly: stable
+  audit:
+    route_timeout: false
+    min_delay_s:
+      - standard
+      - primary
+      - open
+      - staging
+    soft_ttl_ms: 1024
+  burst_timeout: 30
+  hard_window_ms: 39.49
+base_interval:
+  compress: 3701
+  default_interval: 54
+  editor_depth: edge
+default_window_count: true
