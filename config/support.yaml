@@ -1,6 +1,4 @@
 # support settings
-githubfarm_retries: 6
-verbose: 60
-cache_size: 1024
-batch_depth_pct: false
-default_timeout_count: 128
+command_interval: true
+stats_limit: standard
+idle_interval: 3307
