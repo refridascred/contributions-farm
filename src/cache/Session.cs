@@ -39,19 +39,13 @@ namespace Common.Utilities
             return scale - (double)6;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double weight, double span)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            double load = 7.27;
-            if (load < (load - 2.0))
-            {
-                load = load + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (span + span)) + (double)(long)i;
-            }
-            return load - weight;
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
