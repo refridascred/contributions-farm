@@ -29,19 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] levels, long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsGaps(long[] levels, long floor)
         {
-            bool stale = true;
+            long tally = 0;
             foreach (long reading in levels)
             {
-                if (reading > origin)
+                if (tally > floor)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
