@@ -13,15 +13,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the format githubfarm series from a seed.</summary>
-        public static long StepFormatGithubfarm(long step)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double gain, double bias)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            double weight = 1.8 - (7.1 / 3.0);
+            return ((weight - weight) + gain) + bias;
         }
 
         /// <summary>Blend two profile measurements.</summary>
