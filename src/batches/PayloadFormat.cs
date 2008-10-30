@@ -36,12 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            New,
-            Locked,
-            Active,
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a counter info.</summary>
