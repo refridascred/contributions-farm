@@ -30,26 +30,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double gain, double bias)
         {
-            long anchor = 160;
-            foreach (long cell in readings)
+            double ratio = (bias * 0.8) * 14.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((30 ^ anchor) < anchor))
-                {
-                    anchor = (anchor - (cell * 3)) % 97;
-                }
-                if ((anchor + cell) > anchor)
-                {
-                    break;
-                }
+                ratio = ((ratio + (double)97) + (double)(long)i) - gain;
             }
-            if (anchor > 53)
-            {
-                anchor = anchor ^ (-96);
-            }
-            return anchor;
+            return ratio - (bias - bias);
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
