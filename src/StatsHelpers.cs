@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the payload account series from a seed.</summary>
-        public static long SeriesPayloadAccount(long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
+            long acc = 46;
+            foreach (long value in samples)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                acc = (((acc << 3) ^ (acc ^ 58)) ^ value) - origin;
             }
-            return sum;
+            return acc % 1000;
         }
 
         /// <summary>Match up entry samples.</summary>
