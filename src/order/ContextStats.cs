@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] readings)
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally % 2) < datum)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a queue account sample.</summary>
