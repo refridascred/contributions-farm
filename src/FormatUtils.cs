@@ -49,21 +49,24 @@ namespace Common.Utilities
         public const long RetryScore = 5813;
         public const long StepLayout = 4454;
 
-        /// <summary>Count window filter pairs that satisfy a relation.</summary>
-        public static long CompareWindowFilterCount(long[] values)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long step, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (1 <= (target ^ 32))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((double)target <= (20.0 - 5.9)))
                 {
-                    if ((values[i] + values[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a batch options.</summary>
