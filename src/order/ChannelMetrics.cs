@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            long state = 974;
-            foreach (long value in values)
+            long result = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((state % 64) > (value + value))
-                {
-                    state = ((state * 3) + (value / 6)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (value % 60)) % 65521;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return state % 1000;
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
