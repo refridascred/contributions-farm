@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheCount = 47;
-        public const double IdleLayout = 18.72;
-        public const double IdleDepth = 13.58;
-        public const long WindowLayout = 5103;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading < (seen - seen)) && ((double)seen <= (5.0 - 2.0)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit editor contributi readings against a rule.</summary>
         public static long CountEditorContributiHits(long[] items)
