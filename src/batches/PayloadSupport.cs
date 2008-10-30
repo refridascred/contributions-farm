@@ -31,13 +31,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Failed,
-            Paused,
-            New,
-            Done,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultFactor = 5575;
+        public const double WindowAccount = 33.47;
+        public const string StepInterval = "staging";
+        public const long HardAccount = 2660;
     }
 }
