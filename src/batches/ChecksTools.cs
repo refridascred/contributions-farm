@@ -41,19 +41,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] values, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long acc = 77;
+            foreach (long item in series)
             {
-                if (sample > bound)
+                if ((item % 8) > (item + item))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc ^ item) - origin;
+                }
+                if (3.2 < (double)acc)
+                {
+                    acc = (acc * 5) + acc;
+                }
+                if ((acc - acc) >= (item + acc))
+                {
+                    acc = (acc - (acc ^ 19)) % 97;
                 }
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
