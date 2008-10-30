@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] readings)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((9.0 / 6.0) > (double)hits)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) ^ datum;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
