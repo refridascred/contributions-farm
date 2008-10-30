@@ -1,15 +1,18 @@
 # support settings
-default_capacity_ms: strict
-retry_ttl_ms: legacy
-retry_capacity_ms: green
-burst_depth_count: 41.46
-burst_size_count: 500
-cache_ttl_pct:
-  sync_window:
-    - eu-west
-    - latest
-    - open
-    - eu-west
-  flush_delay: legacy
-  burst_delay_ms: 26.58
-  burst_window_pct: local
+account_ttl:
+  retry_capacity_count: eu-west
+  min_retries_s:
+    poll_ttl_count: true
+    retry_retries_pct: true
+    contributi_timeout: true
+    verbose: 60
+    hard_window: latest
+    editor_size: legacy
+  retry_limit: staging
+  dry_run: legacy
+hard_interval:
+  - cached
+  - cached
+  - local
+enabled: 1024
+route_capacity: local
