@@ -42,17 +42,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] series, long origin)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = span;
+            if (weight > (ratio / 2.0))
             {
-                if ((series[i] >= origin) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + (span + weight);
             }
-            return -1;
+            return weight - (weight / 9.0);
         }
     }
 }
