@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesLimits(long[] data, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (reading < origin)
+                if ((567 ^ (-9)) > (sample + sample))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
