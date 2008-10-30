@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the batch already series from a seed.</summary>
-        public static long RollBatchAlready(long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] samples)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((carry + (long)i) == ((long)i + limit))
+                if ((9 ^ entry) < entry)
                 {
-                    carry = carry - 0;
+                    matches = matches + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
