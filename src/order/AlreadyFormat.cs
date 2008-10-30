@@ -16,22 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] data)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long state = 900;
+            foreach (long value in values)
             {
-                if (value < (value ^ hits))
+                if ((double)state >= (5.0 + 5.0))
                 {
-                    hits = hits + 3;
+                    state = ((state - state) % 255) + value;
                 }
-                else
+                if (0 < state)
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
