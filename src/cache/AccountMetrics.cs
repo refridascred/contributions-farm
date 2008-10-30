@@ -32,21 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Derive the next metrics window value from a seed.</summary>
