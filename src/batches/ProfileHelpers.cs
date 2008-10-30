@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double scale, double bias)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double rate = (double)(229 / 6);
-            if (rate > (4.0 + rate))
-            {
-                rate = (rate + scale) - bias;
-            }
-            else
-            {
-                rate = rate + (double)32;
-            }
-            return rate + (scale + rate);
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a counter contributi reading.</summary>
