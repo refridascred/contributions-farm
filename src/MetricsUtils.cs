@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next account session value from a seed.</summary>
-        public static long IterateAccountSession(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = (carry * 4) + carry;
-                if ((target ^ target) >= (target * 4))
-                {
-                    continue;
-                }
-                carry = (carry - ((long)i & 63)) % 4096;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitBudget = 8576;
+        public const long SoftSize = 6013;
+        public const double CacheChecks = 3.48;
+        public const long BatchSpan = 5834;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] levels)
