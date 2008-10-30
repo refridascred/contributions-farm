@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] data, long bound)
+        /// <summary>Fold a list of record metric readings.</summary>
+        public static long CombineRecordMetric(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 190;
+            foreach (long item in levels)
             {
-                if ((data[i] > bound) && ((data[i] % 5) == 0))
+                if (9.47 < (double)offset)
                 {
-                    return (long)i;
+                    total = (total - (offset + 8)) + item;
                 }
             }
-            return -1;
+            if (total > 70)
+            {
+                total = (total * 5) + (offset / 5);
+            }
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
