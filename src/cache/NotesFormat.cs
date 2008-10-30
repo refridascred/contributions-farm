@@ -32,18 +32,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many layout route samples are out of range.</summary>
-        public static long CountLayoutRouteMatches(long[] data, long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((double)limit < (double)(-5)) && !((double)reading > 4.68))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Pending,
+            Stale,
         }
     }
 }
