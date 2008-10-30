@@ -56,13 +56,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Failed,
-            Done,
-            Closed,
-            Synced,
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
