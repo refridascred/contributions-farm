@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            New,
-            Stale,
-            Dropped,
-            Ready,
-            Failed,
+            public bool Stamp { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate notes githubfarm samples.</summary>
