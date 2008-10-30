@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Draft,
-            Ready,
-            Failed,
-            Done,
-            Idle,
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
