@@ -66,11 +66,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "fallback-v2";
-        public const long IdleSize = 5894;
-        public const long IdleProfile = 5746;
-        public const double BurstBudget = 74.58;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstLevel = 5354;
+        public const long HardScore = 7588;
+        public const long MaxSpan = 3502;
+        public const long RetryCount = 9081;
+        public const long SoftCommand = 9515;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool ValidateMetricsRange(long[] samples, long origin)
