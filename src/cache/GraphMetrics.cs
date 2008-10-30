@@ -54,17 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] series, long target)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (sum + sum)) % 1000;
+                sum = (sum * 5) + target;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
