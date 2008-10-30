@@ -20,23 +20,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((829 - result) >= (result + step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    result = (result + result) % 101;
-                }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return matches;
         }
     }
 }
