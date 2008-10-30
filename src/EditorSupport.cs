@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxWidth = 94.51;
-        public const double RetryRatio = 34.91;
-        public const double LimitPayload = 36.28;
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long limit, long floor)
+        {
+            if ((1.91 + 4.0) <= (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit > floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
