@@ -43,13 +43,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] samples)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (1.17 <= (double)matches)
+                {
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
