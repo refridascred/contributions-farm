@@ -6,18 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=186
+RECORD_LIMIT=8
 log "limit is ${RECORD_LIMIT}"
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in fallback local latest eu-west; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-green}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    stable)
+    open)
         log "fast path"
         ;;
     *)
