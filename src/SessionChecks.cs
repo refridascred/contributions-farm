@@ -41,22 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi route readings.</summary>
-        public static long CombineContributiRoute(long[] samples, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] data)
         {
-            long result = 416;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((2.0 - 7.3) <= (double)result)
+                if (6.6 < (double)hits)
                 {
-                    result = (result + 3) - entry;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            if (result > 999)
-            {
-                result = result ^ (limit + limit);
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the cluster level values.</summary>
