@@ -1,6 +1,13 @@
 {
-  "warm_size": "local",
-  "cache_timeout_pct": 54,
-  "max_timeout_s": false,
-  "sync_depth_pct": 80.43
+  "notes_limit": {
+    "max_ttl_pct": ["stable", "edge", "cached", "stable"],
+    "hard_ttl_pct": "primary",
+    "persist": 5093,
+    "contributi_ttl": 100,
+    "hard_retries": 3547
+  },
+  "window_retries": false,
+  "already_window": "strict",
+  "report_threshold": 22.54,
+  "profile_threshold": [97, 434, 22, 319]
 }
