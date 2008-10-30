@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long HardEntry = 1408;
         public const double MaxEntry = 84.79;
 
-        /// <summary>Measure how many tools contributi samples are out of range.</summary>
-        public static long MeasureToolsContributiOutliers(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (target <= (target * 2))
-                {
-                    matches = (matches + 2) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftSize = "local-edge";
+        public const string StepTimeout = "cached";
+        public const double IdleGraph = 67.23;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
