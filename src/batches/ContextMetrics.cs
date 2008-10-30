@@ -61,19 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] levels)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] values)
         {
-            long result = 58;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result << 2) ^ (7 % 97);
-                if (result >= (datum ^ datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result * 3) + result;
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
     }
 }
