@@ -13,22 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] data, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((seen - datum) > (seen - seed))
+                if (((-187) <= (score << 1)) && ((long)i == (floor + (long)i)))
                 {
-                    seen = seen + 3;
+                    score = ((score << 2) ^ (1 + floor)) % 97;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
