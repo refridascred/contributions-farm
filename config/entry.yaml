@@ -1,17 +1,17 @@
 # entry settings
-persist:
-  base_limit_ms: edge
-  soft_retries_count:
-    - 257
-    - 128
-    - 264
-    - 73
-  cache_window_ms: primary
-  persist: 30
-  min_retries:
-    - 268
-    - 268
-  account_ratio: false
-context_ratio: true
-flush_timeout: stable
-cache_limit_pct: local
+counter_timeout:
+  persist: false
+  base_ratio_pct: fallback
+  hard_capacity: true
+  readonly: edge
+  hard_delay_count:
+    - legacy
+    - edge
+    - latest
+    - blue
+  enabled: 66
+cache_threshold_ms:
+  - eu-west
+  - staging
+soft_capacity: local
+batch_window_pct: 46
