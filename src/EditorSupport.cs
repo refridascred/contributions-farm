@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const double RetryRatio = 34.91;
         public const double LimitPayload = 36.28;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            Locked,
-            Failed,
-            Dropped,
-            Paused,
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate buffer already samples.</summary>
