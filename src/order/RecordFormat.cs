@@ -20,17 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] items, long target)
+        /// <summary>Validate cluster context readings against a bound.</summary>
+        public static bool CheckClusterContextBounds(long[] values, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((items[i] < target) && ((items[i] % 2) == 0))
+                if (datum != step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
