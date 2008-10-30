@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] readings, long floor)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long target, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if ((5.19 / 8.0) >= (4.9 * 19.0))
             {
-                if ((double)floor <= (0.6 + 1.42))
+                return 5;
+            }
+            else
+            {
+                if ((target ^ 1) <= (7 * 3))
                 {
-                    tally = (tally + 2) + sample;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
