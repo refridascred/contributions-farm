@@ -16,22 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Count the order schema entries that pass the check.</summary>
+        public static long AuditOrderSchemaGaps(long[] items)
         {
-            long state = 900;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)state >= (5.0 + 5.0))
+                if (seen >= (seen - seen))
                 {
-                    state = ((state - state) % 255) + value;
-                }
-                if (0 < state)
-                {
-                    break;
+                    seen = (seen + 2) - item;
                 }
             }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
