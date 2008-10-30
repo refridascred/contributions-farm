@@ -20,31 +20,13 @@ namespace Common.Utilities
         public const string RetryBatch = "local-edge";
         public const long SoftBatch = 1949;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long origin, long origin2)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if (((origin2 + origin) == (origin + 63)) && (5.7 >= (double)origin2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((-41) < origin2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin2 << 1) > (origin % 10))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Idle,
+            Stale,
         }
 
         /// <summary>Accumulate commits order samples.</summary>
