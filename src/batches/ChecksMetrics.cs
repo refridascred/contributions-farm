@@ -30,13 +30,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Check that every support commits entry stays within the limit.</summary>
+        public static bool ValidateSupportCommitsLimits(long[] series, long limit)
         {
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public bool Ratio { get; set; }
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
