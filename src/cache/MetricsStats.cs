@@ -36,19 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats farm samples.</summary>
-        public static long ScoreStatsFarm(long[] items, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long acc = -463;
-            foreach (long value in items)
-            {
-                acc = ((acc + (bound - acc)) % 1000) ^ value;
-                if ((bound << 1) >= (63 * 2))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Rank { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
