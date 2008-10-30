@@ -34,11 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string StepLevel = "local-1";
-        public const long BurstBudget = 3874;
-        public const long MaxRatio = 8447;
-        public const string DefaultChecks = "legacy";
-        public const string RetryChecks = "local-1";
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public double Label { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
