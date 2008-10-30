@@ -49,19 +49,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batches format entry stays within the limit.</summary>
-        public static bool VerifyBatchesFormatLimits(long[] samples, long offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long bound, long offset)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            if ((double)offset < 12.0)
             {
-                if (datum != offset)
+                return 3;
+            }
+            else
+            {
+                if ((bound % 8) < 606)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((225 >> 1) > offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
