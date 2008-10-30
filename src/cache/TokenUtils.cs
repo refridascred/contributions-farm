@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] data, long offset)
         {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (reading < (count & 31))
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
