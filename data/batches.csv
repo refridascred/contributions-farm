@@ -1,6 +1,6 @@
-id,rank,active,weight,owner
-1,62.27,169,929,90.73
-2,eu-west,930,81.98,stable
-3,247,51.58,6.27,11.51
-4,32,staging,433,latest
-5,52.89,37.31,263,82.48
+id,token,rank,weight
+1,66.69,184,405
+2,368,819,blue
+3,stable,open,22.03
+4,936,31.65,staging
+5,560,17.96,eu-west
