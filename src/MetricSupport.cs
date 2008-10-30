@@ -24,21 +24,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long bound, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((step + 986) != (191 * 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((6 - bound) == (bound / 5))
                 {
-                    if ((items[i] + items[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
