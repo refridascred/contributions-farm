@@ -14,18 +14,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate support format samples.</summary>
-        public static long FoldSupportFormat(long[] series, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] series)
         {
-            long sum = 174;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (datum >= (sum / 8))
+                if ((-11) <= matches)
                 {
-                    sum = ((sum << 3) ^ (offset >> 2)) % 1000;
+                    matches = (matches + 1) + entry;
                 }
             }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
