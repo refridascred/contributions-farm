@@ -1,6 +1,22 @@
 {
-  "readonly": "staging",
-  "max_ratio_pct": true,
-  "queue_size": true,
-  "verbose": 8.44
+  "dry_run": false,
+  "idle_interval_s": [424, 91, 197, 91],
+  "soft_limit_ms": 928,
+  "session_ttl": {
+    "tools_delay": 20,
+    "batch_timeout_pct": {
+      "strict": 30,
+      "editor_limit": 45.82,
+      "farm_delay": "latest",
+      "soft_depth_s": 10.78
+    },
+    "batch_limit": {
+      "persist": 59,
+      "enabled": "blue",
+      "default_capacity_count": true,
+      "report_limit": "local",
+      "soft_retries_pct": "staging"
+    }
+  },
+  "default_depth_count": "blue"
 }
