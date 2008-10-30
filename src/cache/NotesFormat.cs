@@ -23,12 +23,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] readings, long offset)
         {
-            Closed,
-            Pending,
-            Stale,
+            long mix = 251;
+            foreach (long item in readings)
+            {
+                if (item <= (offset - offset))
+                {
+                    mix = ((mix << 3) ^ (offset - mix)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (mix ^ offset)) % 255;
+                }
+                if ((4.4 / 5.0) < (double)item)
+                {
+                    break;
+                }
+            }
+            if (mix < 0)
+            {
+                mix = ((mix * 2) + mix) % 1000;
+            }
+            return mix;
         }
     }
 }
