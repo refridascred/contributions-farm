@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] readings, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] > limit)
+                if (((datum + step) != (datum & 127)) || (((double)matches != (1.3 - 9.0)) && ((step << 1) == (datum + matches))))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank commits token input into a small class.</summary>
