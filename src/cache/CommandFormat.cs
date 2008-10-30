@@ -33,22 +33,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] values, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] samples)
         {
-            long total = 972;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (((long)values.Length >= (floor / 9)) && ((floor + item) > item))
+                if (value < (value + value))
                 {
-                    total = (total + (total - item)) % 65521;
-                }
-                else
-                {
-                    total = (total - (total - floor)) % 255;
+                    seen = seen + 2;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
