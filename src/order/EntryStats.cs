@@ -63,14 +63,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Paused,
-            Synced,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 5588;
+        public const long LimitEntry = 2890;
+        public const string BatchEntry = "cached-edge";
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
