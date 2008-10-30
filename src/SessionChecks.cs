@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] series, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (series[i] <= origin)
+                if ((1.5 / 3.0) <= (double)carry)
                 {
-                    return (long)i;
+                    carry = carry + (target + (long)i);
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
