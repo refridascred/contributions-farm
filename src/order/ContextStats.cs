@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] readings, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long seed)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
