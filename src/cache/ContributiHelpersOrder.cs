@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] series, long limit)
+        /// <summary>Count the counter context entries that pass the check.</summary>
+        public static long TallyCounterContextHits(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (series[i] <= limit)
+                if (((seen << 2) < ((-99) << 3)) || !((double)value > 7.38))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
