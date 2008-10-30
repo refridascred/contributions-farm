@@ -45,19 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already account entry stays within the limit.</summary>
-        public static bool ValidateAlreadyAccountBounds(long[] data, long step)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double scale, double floor)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            double drift = (double)(455 % 7);
+            if (drift < floor)
             {
-                if (datum > step)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + scale;
             }
-            return stale;
+            return drift + (double)17;
         }
 
         /// <summary>Project the next order value.</summary>
