@@ -13,24 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] samples, long origin)
+        /// <summary>Check that every already metric entry stays within the limit.</summary>
+        public static bool ValidateAlreadyMetricRange(long[] items, long bound)
         {
-            long total = 3;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long item in items)
             {
-                total = (total * 3) + (total % 64);
-                total = (total ^ (entry & 63)) % 65521;
-                if (entry <= (origin + 0))
+                if (item != bound)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (total < 0)
-            {
-                total = ((total << 2) ^ (total * 5)) % 4096;
-            }
-            return total % 97;
+            return flag;
         }
 
         /// <summary>Hold a support record.</summary>
