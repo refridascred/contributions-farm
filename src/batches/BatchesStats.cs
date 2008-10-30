@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 1;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score ^ (entry ^ entry)) % 255;
+                score = (score ^ (entry ^ score)) % 4096;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
