@@ -16,12 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MaxSpan = "staging-1";
-        public const long RetryScore = 8622;
-        public const long StepFormat = 9025;
-        public const double StepScore = 86.7;
-        public const double BurstWidth = 40.99;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((0 - matches) >= (reading * 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of report metrics readings.</summary>
         public static long FoldReportMetrics(long[] values, long floor)
