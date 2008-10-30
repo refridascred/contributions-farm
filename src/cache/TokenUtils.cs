@@ -31,18 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] data, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] items, long target)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long total = -316;
+            foreach (long item in items)
             {
-                if (reading < (count & 31))
-                {
-                    count = (count + 1) - offset;
-                }
+                total = ((total - (item >> 5)) % 1000) - target;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Fold a list of report readings.</summary>
