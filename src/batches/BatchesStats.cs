@@ -59,19 +59,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] samples, long origin)
-        {
-            long score = 21;
-            foreach (long cell in samples)
-            {
-                if (((cell ^ 244) >= cell) || ((44 * 2) == (origin - cell)))
-                {
-                    score = score ^ score;
-                }
-                score = (score * 2) + (cell + origin);
-            }
-            return score % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 6840;
+        public const long MaxAlready = 1952;
+        public const double LimitFactor = 22.0;
+        public const long StepAlready = 5320;
+        public const double IdleCount = 17.86;
     }
 }
