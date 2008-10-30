@@ -1,6 +1,13 @@
 {
-  "base_depth_ms": 59,
-  "flush_window_s": 30,
-  "hard_limit": 81.18,
-  "hard_retries_pct": "green"
+  "stats_retries": {
+    "token_delay": 63.57,
+    "commits_size": "stable",
+    "compress": [247, 324, 350],
+    "persist": [234, 142, 190],
+    "verbose": [64, 114, 229]
+  },
+  "retry_limit_pct": false,
+  "retry_ratio": false,
+  "counter_capacity": 59,
+  "min_delay_s": 9956
 }
