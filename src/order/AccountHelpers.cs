@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] series, long step)
+        /// <summary>Count cluster record pairs that satisfy a relation.</summary>
+        public static long CompareClusterRecordCount(long[] readings)
         {
-            long state = 9;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((((state << 2) ^ (338 ^ 556)) % 4096) - datum) - step;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state > 976)
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the queue mode values.</summary>
