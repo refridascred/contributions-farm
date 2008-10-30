@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowDepth = 3596;
-        public const long BurstFactor = 8738;
-        public const long DefaultTimeout = 7788;
-        public const long DefaultFormat = 9087;
-        public const long MinTimeout = 2357;
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long FindAccountIndex(long[] samples, long origin)
