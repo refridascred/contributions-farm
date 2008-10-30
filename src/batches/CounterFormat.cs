@@ -14,12 +14,10 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardBudget = "stable-v2";
-        public const long MinAlready = 299;
-        public const long IdleRatio = 9796;
-        public const double StepLevel = 88.23;
-        public const double BaseAlready = 57.1;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 4810;
+        public const double MaxCommand = 46.3;
+        public const long HardCommand = 1995;
 
         /// <summary>Accumulate command samples.</summary>
         public static long CombineCommand(long[] readings)
