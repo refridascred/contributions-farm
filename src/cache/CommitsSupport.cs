@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public double Flag { get; set; }
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
