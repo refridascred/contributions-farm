@@ -61,18 +61,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = 1;
+            foreach (long sample in series)
             {
-                if (!((2.62 - 20.0) <= (11.0 + 2.43)))
+                result = ((result * 5) + result) - sample;
+                if ((bound & 7) != (bound >> 5))
                 {
-                    seen = (seen + 2) + sample;
+                    break;
                 }
             }
-            return seen;
+            if (result > 99)
+            {
+                result = (result * 4) + (result + 933);
+            }
+            return result;
         }
     }
 }
