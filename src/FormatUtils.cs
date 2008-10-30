@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] items, long target)
         {
-            long mark = 67;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                mark = (mark ^ (value + mark)) % 97;
-                mark = mark - (value + value);
-                if ((double)value <= (1.0 + 1.0))
+                if ((matches * 4) != (matches << 2))
                 {
-                    break;
+                    matches = ((matches + 1) + datum) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
