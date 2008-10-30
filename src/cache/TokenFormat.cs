@@ -26,17 +26,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] items, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (items[i] == offset)
+                if (entry > seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
