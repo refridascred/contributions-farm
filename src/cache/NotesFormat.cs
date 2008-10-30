@@ -29,24 +29,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long seed, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            if (((bound >> 1) != (seed - bound)) || ((bound ^ bound) > 9))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound != (9.5 - 0.9))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            Synced,
+            Retry,
         }
     }
 }
