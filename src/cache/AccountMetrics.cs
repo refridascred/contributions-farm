@@ -57,17 +57,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                anchor = (anchor << 3) ^ (anchor ^ floor);
-                anchor = ((anchor * 4) + 60) % 97;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (((double)tally < (12.0 / 8.0)) || ((tally - tally) > tally))
+                {
+                    tally = (tally + 1) ^ reading;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
