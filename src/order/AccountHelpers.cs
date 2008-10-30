@@ -14,25 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank already notes input into a small class.</summary>
-        public static long SortAlreadyNotes(long floor, long floor2)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] items)
         {
-            long step = floor - floor2;
-            if (((double)981 < (double)floor) && ((double)floor2 <= (2.95 - 8.2)))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor2 > (step & 31))
+                if (((67 <= (sample << 1)) && (((long)items.Length % 3) >= (sample / 8))) && ((sample + tally) <= tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
