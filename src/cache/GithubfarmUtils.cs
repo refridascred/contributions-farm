@@ -37,23 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (656 >= (tally << 1))
-                {
-                    tally = ((tally + 1) + reading) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "standard";
+        public const double LimitFactor = 19.93;
+        public const long BatchCommand = 9521;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TallyReport(long[] data)
