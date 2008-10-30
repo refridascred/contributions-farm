@@ -22,20 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double bias, double bias2)
-        {
-            double ratio = 7.19;
-            if (ratio >= (double)60)
-            {
-                ratio = ((ratio - (double)8) - bias) - bias2;
-            }
-            else
-            {
-                ratio = ratio - (double)31;
-            }
-            return ratio + (double)(-25);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinRatio = "strict-v2";
+        public const string StepSize = "primary";
+        public const long MaxAccount = 9744;
+        public const long BurstInterval = 2397;
+        public const double BatchAccount = 4.1;
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long ClassifyMetrics(long seed, long limit)
