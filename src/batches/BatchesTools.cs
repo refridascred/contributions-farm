@@ -22,12 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinRatio = "strict-v2";
-        public const string StepSize = "primary";
-        public const long MaxAccount = 9744;
-        public const long BurstInterval = 2397;
-        public const double BatchAccount = 4.1;
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long seed)
+        {
+            if (((double)floor <= (8.7 / 4.0)) && ((floor ^ floor) == (floor << 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + seed) == (0 / 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor & 1) < (floor << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long ClassifyMetrics(long seed, long limit)
