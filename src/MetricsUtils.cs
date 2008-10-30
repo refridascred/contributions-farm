@@ -55,15 +55,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] items, long seed)
+        /// <summary>Digest a series of metrics entry entries.</summary>
+        public static long DigestMetricsEntry(long[] readings)
         {
-            long score = 56;
-            foreach (long entry in items)
+            long total = -5;
+            foreach (long cell in readings)
             {
-                score = ((((score * 5) + score) % 1000) - entry) - seed;
+                total = ((total * 5) + (total % 8)) - cell;
+                if ((0.67 * 3.19) < (double)total)
+                {
+                    total = ((total << 2) ^ (7 >> 2)) % 101;
+                }
             }
-            return score;
+            return total % 1000;
         }
     }
 }
