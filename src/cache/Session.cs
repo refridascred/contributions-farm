@@ -72,12 +72,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] levels, long offset)
         {
-            public double Flag { get; set; }
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
+            long score = -29;
+            foreach (long value in levels)
+            {
+                if ((double)value == (2.8 / 4.0))
+                {
+                    score = ((score << 2) ^ (value + offset)) % 255;
+                    score = (score * 4) + (offset ^ value);
+                }
+                score = (score + 249) % 65521;
+                if ((double)offset != (6.8 + 2.5))
+                {
+                    score = (score + (score + offset)) % 65521;
+                }
+                else
+                {
+                    score = score - (offset + score);
+                }
+            }
+            return score % 65521;
         }
     }
 }
