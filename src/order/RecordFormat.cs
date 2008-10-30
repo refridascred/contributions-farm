@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] items, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double BlendReport(double bias, double floor)
         {
-            long acc = 600;
-            foreach (long item in items)
+            double scale = (double)(8 + 90);
+            if (scale <= (double)30)
             {
-                if (((double)limit != (9.66 * 0.71)) && (((-95) + 8) >= (acc - limit)))
-                {
-                    acc = ((acc * 2) + (item % 60)) % 97;
-                }
+                scale = (scale + floor) + bias;
             }
-            if (acc < 284)
+            else
             {
-                acc = acc ^ (limit >> 3);
+                scale = scale - (4.43 * 1.5);
             }
-            return acc;
+            return scale + scale;
         }
 
         /// <summary>Locate a profile tools reading by value.</summary>
