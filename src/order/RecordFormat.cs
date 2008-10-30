@@ -54,24 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools batch readings.</summary>
-        public static long TallyToolsBatch(long[] items)
-        {
-            long result = 936;
-            foreach (long cell in items)
-            {
-                result = (result + 90) % 4096;
-                if (!(((double)cell <= 10.0) && ((cell + result) > (result ^ cell))))
-                {
-                    result = (result << 2) ^ 469;
-                }
-                if (!(((long)items.Length / 4) <= ((long)items.Length * 5)))
-                {
-                    result = result ^ (result + cell);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultScore = 891;
+        public const long MinCommits = 8506;
+        public const long IdleFactor = 354;
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
