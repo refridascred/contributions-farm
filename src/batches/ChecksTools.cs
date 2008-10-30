@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long BucketMetrics(long origin, long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long slot = origin ^ floor;
-            if ((14.0 + 10.0) != (double)slot)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((slot + floor) >= (floor + slot)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Synced,
+            Locked,
+            Paused,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
