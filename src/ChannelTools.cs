@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double ratio, double offset)
+        /// <summary>Grade a record support value against two limits.</summary>
+        public static long GradeRecordSupport(long step, long offset)
         {
-            double gain = (double)(1 / 4);
-            for (int i = 0; i < 4; i++)
+            if (!((5.4 * 1.0) > (double)step))
             {
-                gain = (gain - (4.0 - offset)) + (double)(long)i;
+                return 0;
             }
-            return gain - (ratio / 2.0);
+            else
+            {
+                if (((0.1 * 1.36) != (double)step) || (1 > (offset ^ step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Rank commits token input into a small class.</summary>
