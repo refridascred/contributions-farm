@@ -16,18 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] data)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long sum = 657;
+            foreach (long sample in values)
             {
-                if ((matches > cell) && ((cell * 4) > (cell / 4)))
+                if (((sample - sum) > (sample & 7)) && (sum <= (sample - sample)))
                 {
-                    matches = matches + 1;
+                    sum = (sum << 3) ^ (sum + origin);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
