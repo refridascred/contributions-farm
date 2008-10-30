@@ -44,15 +44,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a graph channel reading.</summary>
-        public static double SmoothGraphChannel(double scale, double offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] items)
         {
-            double bias = offset;
-            if (bias < (scale * 5.0))
+            long acc = 311;
+            foreach (long cell in items)
             {
-                bias = bias + scale;
+                acc = acc + acc;
+                acc = (acc ^ (cell + acc)) % 1000;
             }
-            return bias + (8.0 / 7.0);
+            return acc;
         }
 
         /// <summary>Hold a token stats.</summary>
