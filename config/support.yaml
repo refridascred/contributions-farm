@@ -1,7 +1,19 @@
 # support settings
-verbose: 15
-cache_size: 2
-context_ratio: true
-stream_interval: 30
-min_window_ms: 10
-idle_ratio_ms: 89.72
+queue_window:
+  - 236
+  - 216
+warm_retries_pct:
+  - standard
+  - eu-west
+window_window:
+  hard_ttl_count: staging
+  strict: true
+  max_depth: false
+  burst_capacity_s: fallback
+  dry_run: 91.06
+  verbose: 250
+readonly: 29
+soft_ttl:
+  - 99
+  - 236
+  - 389
