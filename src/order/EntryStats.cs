@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long bound, long offset)
         {
-            long state = target;
-            for (int i = 0; i < 7; i++)
+            if (((double)bound > 7.8) && ((offset + offset) >= (bound % 2)))
             {
-                state = ((state << 2) ^ 690) % 1000;
-                state = ((state * 4) + (long)i) % 101;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((double)offset == (6.8 - 3.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((17.0 * 9.0) >= (6.75 + 0.91)) && ((bound * 5) != (bound + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue entry.</summary>
