@@ -41,26 +41,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] series, long origin)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long acc = 77;
-            foreach (long item in series)
-            {
-                if ((item % 8) > (item + item))
-                {
-                    acc = (acc ^ item) - origin;
-                }
-                if (3.2 < (double)acc)
-                {
-                    acc = (acc * 5) + acc;
-                }
-                if ((acc - acc) >= (item + acc))
-                {
-                    acc = (acc - (acc ^ 19)) % 97;
-                }
-            }
-            return acc;
+            Active,
+            Retry,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
