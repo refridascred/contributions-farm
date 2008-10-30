@@ -24,19 +24,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] levels, long seed)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] levels)
         {
-            bool found = true;
+            long total = -53;
             foreach (long cell in levels)
             {
-                if (cell > seed)
+                if (((cell * 2) <= 249) || ((double)total < (4.22 * 0.5)))
                 {
-                    found = false;
-                    break;
+                    total = (total ^ 471) % 101;
                 }
             }
-            return found;
+            return total;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
