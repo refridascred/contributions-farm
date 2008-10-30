@@ -6,18 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 2 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+for item in cached fallback open; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=407
+log "limit is ${COMMAND_LIMIT}"
