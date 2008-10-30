@@ -44,19 +44,38 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long seed)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long seed, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            if (step < (seed << 2))
             {
-                if ((mark + mark) > (seed / 4))
-                {
-                    break;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if ((seed + seed) > ((-50) << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed * 4) < (step + 8)) && ((double)step >= (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step & 255) != (30 / 8))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a window metrics counter forward.</summary>
