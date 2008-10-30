@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long IdleReport = 2761;
         public const double DefaultCount = 89.72;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxFactor = 2562;
+        public const long HardOrder = 4862;
+        public const string CacheSize = "fallback-v2";
+        public const long RetryOrder = 6374;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] samples, long step)
