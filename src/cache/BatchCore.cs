@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 8180;
-        public const long BatchNotes = 51;
-        public const long IdleNotes = 5096;
-        public const long RetryWidth = 3422;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((((entry + 670) > (step * 4)) && ((step + seen) == (entry - step))) && (((15.0 * 5.1) >= (double)entry) && ((double)93 == (double)seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long PairEditorCount(long[] samples)
