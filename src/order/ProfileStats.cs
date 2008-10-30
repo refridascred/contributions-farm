@@ -42,17 +42,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] readings, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] levels, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = -959;
+            foreach (long cell in levels)
             {
-                if ((readings[i] < step) && ((readings[i] % 2) == 0))
+                if ((state - step) == (296 + 564))
                 {
-                    return (long)i;
+                    state = ((state + (69 >> 5)) % 1000) + cell;
                 }
             }
-            return -1;
+            if (state < 810)
+            {
+                state = (state + ((long)levels.Length * 4)) % 101;
+            }
+            return state % 65521;
         }
     }
 }
