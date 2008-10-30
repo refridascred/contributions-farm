@@ -24,15 +24,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate buffer window samples.</summary>
-        public static long FoldBufferWindow(long[] readings, long seed)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long mix = 5;
-            foreach (long sample in readings)
-            {
-                mix = (mix - (seed - mix)) - sample;
-            }
-            return mix;
+            Failed,
+            Ready,
+            Done,
+            Closed,
+            Locked,
         }
     }
 }
