@@ -22,17 +22,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] data, long limit)
+        /// <summary>Check that every report notes entry stays within the limit.</summary>
+        public static bool ValidateReportNotesLimits(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (data[i] > limit)
+                if (entry >= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Digest a series of token batch entries.</summary>
