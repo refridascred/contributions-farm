@@ -15,19 +15,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a window stream figure with a bias.</summary>
-        public static double ProjectWindowStream(double weight, double floor)
+        /// <summary>Accumulate notes githubfarm samples.</summary>
+        public static long CombineNotesGithubfarm(long[] readings)
         {
-            double weight2 = floor;
-            if (weight2 >= weight)
+            long carry = 709;
+            foreach (long value in readings)
             {
-                weight2 = weight2 + (double)445;
+                if ((carry ^ carry) <= 696)
+                {
+                    carry = ((carry ^ (carry << 2)) % 65521) ^ value;
+                    carry = ((carry * 3) + (carry % 7)) % 255;
+                }
+                if ((double)carry < (9.1 / 7.0))
+                {
+                    carry = carry + (carry - 586);
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (carry > 693)
             {
-                weight2 = (weight2 - weight2) - (double)(long)i;
+                carry = (carry - (349 >> 3)) % 65521;
             }
-            return weight2 + (weight2 + floor);
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
