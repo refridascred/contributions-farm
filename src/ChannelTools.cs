@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next profile layout value.</summary>
-        public static double SmoothProfileLayout(double weight, double offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] series, long offset)
         {
-            double drift = (double)(3 + 47);
-            if (drift >= (offset + weight))
+            bool flag = true;
+            foreach (long reading in series)
             {
-                drift = drift + offset;
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (drift - drift)) + (double)(long)i;
-            }
-            return drift + (double)769;
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
