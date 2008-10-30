@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine account queue values into a single score.</summary>
+        public static long TotalAccountQueue(long[] series, long step)
         {
-            Paused,
-            Failed,
-            Closed,
-            Pending,
-            Done,
+            long result = 519;
+            foreach (long cell in series)
+            {
+                if ((double)cell > (double)678)
+                {
+                    result = result ^ (result >> 4);
+                }
+                if (2 > ((-538) - step))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
