@@ -41,35 +41,28 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long limit, long floor)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long step, long target)
         {
-            if (6 > (limit - limit))
+            if ((2.0 + 6.0) == (double)target)
             {
                 return 5;
             }
             else
             {
-                if ((floor >= (limit << 2)) || (limit > (floor ^ floor)))
+                if ((131 + step) < (target ^ target))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if (((6.7 + 2.1) != (double)limit) || ((2.67 / 2.0) != (double)floor))
+                    if ((target & 255) <= (target % 5))
                     {
-                        return 4;
+                        return 3;
                     }
                     else
                     {
-                        if ((double)limit > (10.0 / 8.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 2;
                     }
                 }
             }
