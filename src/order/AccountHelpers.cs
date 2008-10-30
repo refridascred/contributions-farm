@@ -56,22 +56,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterMatches(long[] levels, long origin)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)levels.Length - (long)levels.Length) >= (origin ^ matches))
+                long step = (long)i + (floor + (long)i);
+                if (((664 - floor) > step) && ((3.3 / 4.0) >= (double)(long)i))
                 {
-                    matches = (matches + 3) + datum;
+                    step = step ^ (state - state);
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Accumulate profile samples.</summary>
