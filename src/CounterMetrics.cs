@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Count the buffer queue entries that pass the check.</summary>
+        public static long AuditBufferQueueOutliers(long[] levels, long floor)
         {
-            New,
-            Pending,
-            Idle,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item - (long)levels.Length) < (matches / 5))
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
