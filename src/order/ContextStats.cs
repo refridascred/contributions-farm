@@ -35,19 +35,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesBounds(long[] data, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (sample >= step)
+                if ((cell + cell) > 95)
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
