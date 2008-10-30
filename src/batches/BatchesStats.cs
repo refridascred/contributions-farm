@@ -63,22 +63,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] samples, long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long score = 21;
+            foreach (long cell in samples)
             {
-                if ((double)tally <= (11.0 / 7.0))
+                if (((cell ^ 244) >= cell) || ((44 * 2) == (origin - cell)))
                 {
-                    tally = (tally + 2) + datum;
+                    score = score ^ score;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score * 2) + (cell + origin);
             }
-            return tally;
+            return score % 1000;
         }
     }
 }
