@@ -58,12 +58,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxScore = 1208;
-        public const double StepSpan = 72.55;
-        public const long IdleNotes = 3719;
-        public const long BaseNotes = 4784;
-        public const long LimitCount = 8662;
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowCount = 3117;
