@@ -10,40 +10,10 @@ namespace Common.Utilities
         public const long HardCommits = 2017;
         public const string DefaultFactor = "legacy-v2";
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long origin, long offset)
-        {
-            long diff = origin + offset;
-            if (((8.98 * 3.4) > (double)offset) && ((offset % 3) == (offset * 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((0.7 - 19.0) > (double)origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.0 + 3.4) > (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)diff > (0.14 - 8.2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 28.97;
+        public const double IdleCluster = 41.13;
+        public const string SoftCluster = "open";
 
         /// <summary>Project the next context value.</summary>
         public static double ProjectContext(double scale, double floor)
