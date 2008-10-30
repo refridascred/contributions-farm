@@ -1,4 +1,22 @@
 # entry settings
-min_interval: 500
-warm_capacity_count: primary
-burst_threshold: 11
+hard_interval_count: 426
+graph_delay: 1024
+min_interval_ms:
+  strict: stable
+  cache_window: open
+  retry_ttl_pct:
+    dry_run: false
+    retry_ttl_ms: green
+    record_interval: open
+  min_capacity_count: true
+record_threshold: 4090
+batch_threshold_ms: 39
+flush_timeout_s:
+  verbose:
+    max_delay: 30
+    persist: 48.43
+    context_capacity: 500
+    warm_size_ms: green
+  tools_ratio: true
+  githubfarm_ratio: true
+  default_size_s: false
