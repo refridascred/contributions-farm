@@ -28,18 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] levels, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = 90;
+            foreach (long reading in readings)
             {
-                if (((long)levels.Length + hits) <= (step << 2))
-                {
-                    hits = (hits + 2) + item;
-                }
+                mark = (mark * 2) + (reading - reading);
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the payload phase values.</summary>
