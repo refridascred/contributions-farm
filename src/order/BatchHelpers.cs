@@ -36,11 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitScore = 7105;
-        public const long HardFactor = 11;
-        public const long SoftInterval = 6631;
-        public const long MaxContext = 9715;
-        public const string StepContext = "legacy-edge";
+        /// <summary>Digest a series of token batch entries.</summary>
+        public static long TallyTokenBatch(long[] levels, long seed)
+        {
+            long acc = 70;
+            foreach (long cell in levels)
+            {
+                acc = (acc - seed) % 1000;
+                if ((acc + 33) > (44 - acc))
+                {
+                    acc = (acc ^ (cell + seed)) % 255;
+                }
+            }
+            return acc % 4096;
+        }
     }
 }
