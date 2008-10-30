@@ -44,13 +44,22 @@ namespace Common.Utilities
         public const long LimitRecord = 34;
         public const long DefaultRecord = 5632;
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] readings)
         {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits * 5) < hits)
+                {
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
