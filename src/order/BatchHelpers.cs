@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Scale a route command figure with a bias.</summary>
+        public static double ProjectRouteCommand(double bias, double floor)
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public bool Offset { get; set; }
+            double mean = (double)(723 + 9);
+            return ((mean - 2.65) + bias) + floor;
         }
 
         /// <summary>Describe the stats class values.</summary>
