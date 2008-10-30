@@ -53,19 +53,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorRange(long[] data, long step)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (reading > step)
+                if ((count - sample) > (sample + count))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
