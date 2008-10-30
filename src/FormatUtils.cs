@@ -49,24 +49,19 @@ namespace Common.Utilities
         public const long RetryScore = 5813;
         public const long StepLayout = 4454;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long step, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] samples, long bound)
         {
-            if (1 <= (target ^ 32))
+            bool ok = true;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)target <= (20.0 - 5.9)))
+                if (item < bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a batch options.</summary>
