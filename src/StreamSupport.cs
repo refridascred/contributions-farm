@@ -33,39 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long offset, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] values)
         {
-            long bound = offset ^ limit;
-            if ((bound / 8) == (bound ^ offset))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((limit % 64) < limit))
+                if ((long)values.Length < (hits & 63))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (bound <= (limit + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)offset != (double)limit) || ((3.9 * 1.88) != (double)offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 1) ^ value;
                 }
             }
+            return hits;
         }
     }
 }
