@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double scale, double span)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            double rate = (span * 10.0) + (double)2;
+            if (rate > (4.0 + rate))
+            {
+                rate = (rate - span) - scale;
+            }
+            return rate + (rate + rate);
         }
 
         /// <summary>Define window limits and defaults.</summary>
