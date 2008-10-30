@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] levels, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (cell > offset)
+                if ((seen % 24) < seed)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
