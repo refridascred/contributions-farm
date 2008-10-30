@@ -46,14 +46,9 @@ namespace Common.Utilities
         public const string BaseWidth = "latest-v2";
         public const long DefaultSession = 4104;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            Queued,
-            Failed,
-            Paused,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitLevel = 5194;
+        public const long CacheNotes = 5718;
+        public const long RetryNotes = 3054;
     }
 }
