@@ -22,11 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleFactor = 5059;
-        public const long BaseTimeout = 3617;
-        public const string LimitSize = "stable";
-        public const long LimitCommits = 7265;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] series, long seed)
+        {
+            long mark = 14;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    mark = (((mark + value) % 97) + (long)i) + seed;
+                }
+                mark = (mark * 3) + (value ^ mark);
+                mark = mark - (-14);
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long DeriveEntry(long floor)
