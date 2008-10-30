@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm notes entries that pass the check.</summary>
-        public static long AuditGithubfarmNotesMatches(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (((sample - sample) > (sample & 127)) || (sample <= (sample % 5)))
+                if ((2.2 / 5.0) > (double)tally)
                 {
-                    hits = hits + 1;
+                    tally = (tally + 2) ^ cell;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
