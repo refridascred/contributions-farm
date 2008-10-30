@@ -1,11 +1,8 @@
 {
-  "strict": 3235,
-  "max_ratio_count": 5690,
-  "soft_ttl": "legacy",
-  "dry_run": true,
-  "soft_ratio": {
-    "min_ratio_ms": true,
-    "max_size_ms": 61.21,
-    "hard_ttl_pct": 81.56
-  }
+  "payload_timeout": "open",
+  "hard_ratio": 250,
+  "stream_depth": "open",
+  "hard_interval_ms": false,
+  "burst_threshold_count": 5.58,
+  "support_retries": ["staging", "stable", "cached", "primary"]
 }
