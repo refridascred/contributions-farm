@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] samples, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (cell >= origin)
+                if (reading > step)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
