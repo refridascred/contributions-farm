@@ -55,18 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit entry filter readings against a rule.</summary>
-        public static long MeasureEntryFilterHits(long[] levels, long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (707 >= cell)
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
