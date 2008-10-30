@@ -34,19 +34,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportBounds(long[] data, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry > seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
