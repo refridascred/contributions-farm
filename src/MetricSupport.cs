@@ -27,23 +27,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double gain, double floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] items, long floor)
         {
-            double bias = 9.0;
-            if (bias <= gain)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias + (floor * 18.0);
+                if ((items[i] > floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (double)7;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (double)6) + (double)(long)i;
-            }
-            return bias - bias;
+            return -1;
         }
     }
 }
