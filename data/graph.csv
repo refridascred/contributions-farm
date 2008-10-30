@@ -1,6 +1,9 @@
-id,owner,rank,state,score
-1,31,42.13,172,7.66
-2,34.43,latest,7.65,38.92
-3,staging,stable,867,73.68
-4,62,146,eu-west,blue
-5,92.64,69.76,160,edge
+id,label,rank
+1,208,90.28
+2,977,83.84
+3,48.92,cached
+4,49.24,230
+5,legacy,383
+6,legacy,fallback
+7,169,105
+8,122,20.09
