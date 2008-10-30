@@ -40,19 +40,23 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] values, long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long offset)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long state = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (item < limit)
+                if ((7.0 * 12.0) < (double)offset)
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 2) + (offset - state)) % 101;
                 }
+                else
+                {
+                    state = (state + state) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
