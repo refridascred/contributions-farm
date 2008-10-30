@@ -38,23 +38,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] series, long bound)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long result = 1;
-            foreach (long sample in series)
-            {
-                result = ((result * 5) + result) - sample;
-                if ((bound & 7) != (bound >> 5))
-                {
-                    break;
-                }
-            }
-            if (result > 99)
-            {
-                result = (result * 4) + (result + 933);
-            }
-            return result;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
