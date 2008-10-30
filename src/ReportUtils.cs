@@ -32,16 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long result = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                result = result ^ (8 / 5);
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            New,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit checks farm readings against a rule.</summary>
