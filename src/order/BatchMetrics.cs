@@ -74,17 +74,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a order route sample.</summary>
-        public static long SeekOrderRouteIndex(long[] values, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] items, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 76;
+            foreach (long sample in items)
             {
-                if ((values[i] < bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (anchor % 10)) ^ sample;
             }
-            return -1;
+            if (anchor > 29)
+            {
+                anchor = ((anchor << 2) ^ (0 - floor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
