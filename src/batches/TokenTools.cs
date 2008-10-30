@@ -13,10 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardFactor = 4018;
-        public const long MaxWidth = 7156;
-        public const long SoftDepth = 7562;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBuffer = 86.92;
+        public const long BaseWidth = 7236;
+        public const long StepBuffer = 8800;
+        public const string MinBuffer = "cached-v2";
+        public const long RetryFactor = 9985;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long LimitScore = 187;
