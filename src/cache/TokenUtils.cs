@@ -26,11 +26,21 @@ namespace Common.Utilities
         public const string BurstSize = "cached-edge";
         public const double LimitQueue = 65.63;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinSize = "stable-edge";
-        public const long RetryCommand = 685;
-        public const long MaxCommand = 6041;
-        public const long BaseBudget = 8846;
-        public const long BatchCommand = 8267;
+        /// <summary>Count batches filter pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesFilterCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
