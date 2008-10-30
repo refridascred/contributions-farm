@@ -26,11 +26,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            public bool Region { get; set; }
-            public bool Mode { get; set; }
+            long result = step;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((829 - result) >= (result + step))
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result + result) % 101;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
