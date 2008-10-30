@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] data, long bound)
+        /// <summary>Project the next metric notes value.</summary>
+        public static double SmoothMetricNotes(double bias, double span)
         {
-            long result = 261;
-            foreach (long cell in data)
+            double weight = span;
+            for (int i = 0; i < 8; i++)
             {
-                result = (((result << 3) ^ bound) % 101) - cell;
+                weight = (weight + weight) + (double)(long)i;
             }
-            if (result < 77)
-            {
-                result = result ^ (result >> 4);
-            }
-            return result % 1000;
+            return weight + (bias * 3.53);
         }
 
         /// <summary>Combine support values into a single score.</summary>
