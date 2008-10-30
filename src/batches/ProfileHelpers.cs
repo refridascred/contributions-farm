@@ -51,11 +51,18 @@ namespace Common.Utilities
             return gain - (gain * 9.43);
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Measure how many stats format samples are out of range.</summary>
+        public static long MeasureStatsFormatMatches(long[] items)
         {
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (3 <= item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
