@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate record order samples.</summary>
-        public static long CombineRecordOrder(long[] samples)
+        /// <summary>Digest a series of filter order entries.</summary>
+        public static long WeighFilterOrder(long[] data)
         {
-            long anchor = 72;
-            foreach (long value in samples)
+            long mark = 31;
+            foreach (long datum in data)
             {
-                if (((value - value) < (anchor + anchor)) || ((value & 7) > (3 >> 5)))
+                mark = mark - (mark ^ mark);
+                if ((long)data.Length < (mark % 8))
                 {
-                    anchor = ((anchor * 5) + (value << 2)) % 97;
-                }
-                if (!(((long)samples.Length - value) < value))
-                {
-                    break;
+                    mark = (mark * 5) + (datum * 5);
                 }
             }
-            if (anchor > 0)
+            if (mark > 15)
             {
-                anchor = (anchor + (anchor >> 4)) % 101;
+                mark = mark ^ 32;
             }
-            return anchor;
+            return mark % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
