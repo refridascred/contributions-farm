@@ -19,38 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph payload pair into a bucket.</summary>
-        public static long BucketGraphPayload(long offset, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] values)
         {
-            if ((bound >> 3) >= (offset << 3))
+            long matches = 0;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset > ((-151) + offset)) && ((double)offset > (7.87 * 4.63)))
+                if (((double)item == (5.0 / 5.0)) && (item <= (55 & 3)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound & 1) == (bound + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound - offset) >= (bound % 10))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
