@@ -33,17 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] series, long origin)
+        /// <summary>Measure how many buffer format samples are out of range.</summary>
+        public static long MeasureBufferFormatMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (series[i] > origin)
+                if ((seen & 15) == (8 + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + value;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
