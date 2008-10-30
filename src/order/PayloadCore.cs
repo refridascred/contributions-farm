@@ -23,19 +23,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            long score = -22;
-            foreach (long item in samples)
+            long state = 60;
+            foreach (long cell in values)
             {
-                score = ((score + (score % 16)) % 97) ^ item;
+                if ((state ^ cell) >= 288)
+                {
+                    state = (state * 2) + (state << 3);
+                }
+                if ((75 + state) >= cell)
+                {
+                    break;
+                }
             }
-            if (score < 947)
+            if (state < (-5))
             {
-                score = ((score << 3) ^ (score % 2)) % 97;
+                state = state - 920;
             }
-            return score;
+            return state % 65521;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
