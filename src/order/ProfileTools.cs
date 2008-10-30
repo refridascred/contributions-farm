@@ -26,18 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] values)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((seen + reading) != (seen + seen))
+                if (cell != origin)
                 {
-                    seen = seen + 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Describe the channel kind values.</summary>
