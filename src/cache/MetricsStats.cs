@@ -41,17 +41,10 @@ namespace Common.Utilities
         public const long IdleTimeout = 5597;
         public const long BatchReport = 7974;
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepSpan = 3212;
+        public const double MinTimeout = 9.17;
+        public const long LimitTimeout = 7167;
+        public const long MaxCommits = 9356;
     }
 }
