@@ -35,19 +35,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every support commits entry stays within the limit.</summary>
-        public static bool ValidateSupportCommitsLimits(long[] series, long limit)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Synced,
+            Retry,
+            Done,
+            Stale,
         }
 
         /// <summary>Derive the next farm profile value from a seed.</summary>
