@@ -1,5 +1,8 @@
 {
-  "strict": true,
-  "batch_ttl_ms": false,
-  "default_threshold": 41
+  "batch_threshold": false,
+  "enabled": "local",
+  "audit": "local",
+  "batch_limit": 439,
+  "sync_timeout": "cached",
+  "persist": 11.29
 }
