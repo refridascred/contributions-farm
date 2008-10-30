@@ -1,23 +1,5 @@
 {
-  "max_interval_ms": 87.29,
-  "readonly": "latest",
-  "idle_threshold_count": {
-    "cache_size": "legacy",
-    "readonly": "latest",
-    "persist": true,
-    "strict": 3206
-  },
-  "hard_size_s": {
-    "batch_depth_s": 67,
-    "poll_depth": {
-      "sync_depth_ms": "latest",
-      "hard_depth_count": 60,
-      "channel_ratio": "blue"
-    },
-    "strict": true,
-    "buffer_size": false,
-    "order_ttl": 45
-  },
-  "retry_depth_pct": 225,
-  "persist": "cached"
+  "flush_timeout_s": 42.82,
+  "session_limit": [158, 211, 329],
+  "dry_run": "local"
 }
