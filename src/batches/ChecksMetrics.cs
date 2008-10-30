@@ -20,14 +20,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] levels)
         {
-            Done,
-            Ready,
-            Failed,
-            New,
-            Active,
+            long carry = 2;
+            foreach (long reading in levels)
+            {
+                if (!(629 > (reading * 5)))
+                {
+                    continue;
+                }
+                if (((double)carry <= (3.9 * 1.0)) && ((reading - 304) < (8 << 2)))
+                {
+                    carry = (carry - reading) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every support commits entry stays within the limit.</summary>
