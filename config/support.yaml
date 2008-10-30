@@ -1,9 +1,7 @@
 # support settings
-soft_window_count: false
-order_timeout:
-  - 13
-  - 43
-window_interval: stable
-min_threshold_s: 30
-window_limit: legacy
-token_ratio: 686
+verbose: 15
+cache_size: 2
+context_ratio: true
+stream_interval: 30
+min_window_ms: 10
+idle_ratio_ms: 89.72
