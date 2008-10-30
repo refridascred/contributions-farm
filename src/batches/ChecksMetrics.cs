@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const double BaseInterval = 50.43;
         public const long MaxGithubfarm = 69;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesBounds(long[] values, long limit)
         {
-            Retry,
-            Synced,
-            Closed,
-            Locked,
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up batch samples.</summary>
