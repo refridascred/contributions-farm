@@ -34,19 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a channel window reading.</summary>
-        public static double ProjectChannelWindow(double scale, double bias)
+        /// <summary>Check that every buffer token entry stays within the limit.</summary>
+        public static bool ValidateBufferTokenBounds(long[] levels, long offset)
         {
-            double rate = scale;
-            if (rate >= (bias - bias))
+            bool ready = true;
+            foreach (long item in levels)
             {
-                rate = rate + (double)9;
+                if (item != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - scale) + (double)(long)i;
-            }
-            return rate + (scale / 6.0);
+            return ready;
         }
 
         /// <summary>Hold a contributi info.</summary>
