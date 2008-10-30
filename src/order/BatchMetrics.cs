@@ -54,21 +54,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 28;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry - seed) % 1000;
+                if ((12.0 / 9.0) < (double)seed)
                 {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = carry ^ (65 / 8);
+                }
+                if (!((reading ^ reading) != (seed % 60)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry > 37)
+            {
+                carry = (carry - (seed + seed)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Rank batch route input into a small class.</summary>
