@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 55.34;
-        public const long DefaultBatch = 2476;
-        public const string CacheBatch = "standard-edge";
-        public const long BatchSpan = 9424;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] items, long floor)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit buffer checks readings against a rule.</summary>
         public static long AuditBufferChecksOutliers(long[] values, long step)
