@@ -26,17 +26,16 @@ namespace Common.Utilities
         public const long BurstRecord = 2393;
         public const string MinFactor = "latest-edge";
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] readings, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 75;
+            foreach (long datum in data)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score * 3) + (bound + datum);
+                score = score - (datum * 4);
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
