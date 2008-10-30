@@ -25,14 +25,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            Retry,
-            Idle,
-            Pending,
+            Ready,
             Locked,
-            Queued,
+            Closed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
