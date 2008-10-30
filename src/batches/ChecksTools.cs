@@ -10,10 +10,40 @@ namespace Common.Utilities
         public const long HardCommits = 2017;
         public const string DefaultFactor = "legacy-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowFilter = "latest";
-        public const long RetryFilter = 8024;
-        public const double MinInterval = 73.08;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long offset)
+        {
+            long diff = origin + offset;
+            if (((8.98 * 3.4) > (double)offset) && ((offset % 3) == (offset * 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((0.7 - 19.0) > (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5.0 + 3.4) > (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)diff > (0.14 - 8.2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every already account entry stays within the limit.</summary>
         public static bool ValidateAlreadyAccountBounds(long[] data, long step)
