@@ -1,4 +1,6 @@
 # entry settings
-report_retries: true
-soft_depth_pct: stable
-readonly: 30
+enabled:
+  - open
+  - blue
+flush_interval_s: 70
+hard_interval_count: 79
