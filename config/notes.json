@@ -1,5 +1,7 @@
 {
-  "metric_delay": 500,
-  "poll_size_pct": 6.63,
-  "persist": 53.13
+  "dry_run": "cached",
+  "buffer_limit": "primary",
+  "soft_timeout_ms": "strict",
+  "verbose": 81.31,
+  "idle_timeout_count": "staging"
 }
