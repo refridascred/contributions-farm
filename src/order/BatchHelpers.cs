@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 4211;
+        public const double BaseLayout = 72.18;
+        public const long SoftDepth = 8726;
+        public const long BatchLayout = 9056;
+        public const double MinLayout = 41.23;
 
         /// <summary>Scale a route command figure with a bias.</summary>
         public static double ProjectRouteCommand(double bias, double floor)
