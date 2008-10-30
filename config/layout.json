@@ -1,5 +1,17 @@
 {
-  "flush_delay": true,
-  "channel_capacity": 59,
-  "cache_window_count": "legacy"
+  "default_interval_s": 100,
+  "soft_threshold": {
+    "poll_retries_pct": [450, 384],
+    "burst_depth_ms": 80,
+    "cache_ttl": 1024,
+    "compress": {
+      "base_size_s": 57.95,
+      "warm_window_count": [111, 340],
+      "audit": "primary",
+      "readonly": 26.6
+    }
+  },
+  "cache_threshold_count": 82,
+  "min_capacity_pct": 52,
+  "format_capacity": 8
 }
