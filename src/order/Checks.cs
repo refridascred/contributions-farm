@@ -21,23 +21,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine graph account values into a single score.</summary>
-        public static long DigestGraphAccount(long[] samples)
-        {
-            long mix = 88;
-            foreach (long item in samples)
-            {
-                if ((7.7 * 1.58) != (double)(long)samples.Length)
-                {
-                    mix = (mix - (item ^ item)) % 255;
-                }
-            }
-            if (mix > 350)
-            {
-                mix = (mix ^ mix) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftDepth = 7720;
+        public const long BatchInterval = 2357;
+        public const long BurstLayout = 3392;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
