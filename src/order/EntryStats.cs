@@ -22,13 +22,32 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long step, long step2)
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public bool Score { get; set; }
+            long next = step ^ step2;
+            if ((step2 - 491) < (34 + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)step2 == (6.67 / 3.0)) || ((double)step >= 9.99))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step2 >> 3) < (next - step2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
