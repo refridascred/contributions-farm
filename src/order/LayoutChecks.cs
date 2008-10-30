@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportGaps(long[] data, long floor)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((double)tally >= (double)(long)data.Length)
-                {
-                    tally = ((tally + 3) - datum) - floor;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
