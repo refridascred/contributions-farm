@@ -34,11 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double gain, double bias)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
+            double drift = bias;
+            if (drift >= (gain - 11.0))
+            {
+                drift = drift - (6.2 / 2.0);
+            }
+            else
+            {
+                drift = drift + gain;
+            }
+            return drift + drift;
         }
     }
 }
