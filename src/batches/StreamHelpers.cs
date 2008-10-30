@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 68.47;
-        public const double BatchProfile = 35.15;
-        public const double MinFactor = 12.78;
-        public const long DefaultProfile = 268;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteOutliers(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - reading) < (step ^ step))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
