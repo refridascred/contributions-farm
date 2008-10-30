@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] levels, long bound)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long result = 3;
-            foreach (long entry in levels)
-            {
-                result = ((result + (bound - 7)) % 101) ^ entry;
-            }
-            return result;
+            Closed,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the cache level values.</summary>
