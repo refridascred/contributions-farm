@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] series, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (reading != floor)
+                if ((4.3 / 5.0) == (double)sample)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
