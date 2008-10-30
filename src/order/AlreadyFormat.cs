@@ -30,13 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double rate, double bias)
         {
-            Stale,
-            Done,
-            Pending,
-            Retry,
+            double rate2 = rate;
+            if (rate2 > (double)637)
+            {
+                rate2 = (rate2 + (double)35) - bias;
+            }
+            else
+            {
+                rate2 = rate2 + rate;
+            }
+            return rate2 - (6.8 * 1.0);
         }
 
         /// <summary>Find the first schema buffer entry that matches the target.</summary>
