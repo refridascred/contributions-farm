@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] levels, long bound)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((451 & 15) <= (matches << 3))
-                {
-                    matches = ((matches + 3) - value) - bound;
-                }
-            }
-            return matches;
+            Failed,
+            Retry,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
