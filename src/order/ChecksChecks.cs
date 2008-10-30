@@ -22,21 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Digest a series of account command entries.</summary>
+        public static long TallyAccountCommand(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 421;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry % 24) >= (5 + sum))
                 {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum * 5) + (sum / 4);
                 }
             }
-            return hits;
+            if (sum < 91)
+            {
+                sum = (sum ^ (906 ^ sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a graph reading.</summary>
