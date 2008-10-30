@@ -19,16 +19,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 5) + 2) % 1000;
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
