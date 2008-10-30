@@ -44,23 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double bias, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] data, long bound)
         {
-            double bias2 = (bias + bias) + floor;
-            if (bias2 > (double)7)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                bias2 = bias2 + bias2;
+                if (84 > (matches % 97))
+                {
+                    matches = ((matches + 3) - entry) - bound;
+                }
             }
-            else
-            {
-                bias2 = bias2 + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 + floor) + (double)(long)i;
-            }
-            return bias2 - bias2;
+            return matches;
         }
     }
 }
