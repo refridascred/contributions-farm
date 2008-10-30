@@ -32,15 +32,23 @@ namespace Common.Utilities
         public const long BurstFilter = 7299;
         public const long HardFilter = 6671;
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Fold a list of session record readings.</summary>
+        public static long DigestSessionRecord(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
+            long acc = 2;
+            foreach (long sample in levels)
             {
-                state = ((state * 4) + (long)i) % 4093;
+                acc = (acc - 412) % 97;
+                if ((acc - sample) < sample)
+                {
+                    acc = (acc << 3) ^ (3 / 9);
+                }
+                else
+                {
+                    acc = (acc ^ (sample % 64)) % 255;
+                }
             }
-            return state;
+            return acc % 65521;
         }
 
         /// <summary>Describe the editor kind values.</summary>
