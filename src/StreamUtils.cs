@@ -59,13 +59,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Roll a window metrics counter forward.</summary>
+        public static long StepWindowMetrics(long step)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
+            long sum = step;
+            for (int i = 0; i < 11; i++)
+            {
+                long edge = (step + sum) + 9;
+                if (sum < (edge + edge))
+                {
+                    sum = (sum + (3 + 41)) % 65521;
+                    sum = ((sum << 3) ^ (1 + sum)) % 101;
+                }
+                else
+                {
+                    sum = sum - (sum & 1);
+                }
+                if ((edge >= 2) || ((edge + (long)i) >= (sum - step)))
+                {
+                    sum = (sum + sum) % 65521;
+                    edge = ((edge << 2) ^ (sum ^ (-34))) % 65521;
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
