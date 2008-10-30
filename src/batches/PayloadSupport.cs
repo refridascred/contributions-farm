@@ -30,17 +30,39 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] values, long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long floor, long floor2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = floor - floor2;
+            if (!((10.0 + 8.0) >= (double)prev))
             {
-                if (values[i] > step)
+                return 4;
+            }
+            else
+            {
+                if (!((1.0 / 3.0) <= (double)prev))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (floor2 > 597)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((prev % 24) == (floor2 << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
