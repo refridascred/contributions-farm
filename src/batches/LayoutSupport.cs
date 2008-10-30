@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "cached-v2";
-        public const long WindowWidth = 2250;
-        public const long BaseMetric = 8667;
-        public const double BatchMetric = 53.34;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long CompareCounterCount(long[] items)
