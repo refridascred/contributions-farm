@@ -33,26 +33,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] samples, long step)
         {
-            long state = 2;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (((cell << 3) >= (cell - cell)) || ((6 * 5) >= (cell << 2)))
+                if (!((double)reading == (2.1 * 3.0)))
                 {
-                    state = (state + (cell ^ 4)) % 1000;
-                }
-                else
-                {
-                    state = (state + 9) % 1000;
-                }
-                if ((state < cell) && ((state - state) > state))
-                {
-                    break;
+                    matches = (matches + 1) + step;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
