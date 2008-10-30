@@ -24,12 +24,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
+        public static bool CheckMetricsChannelLimits(long[] levels, long origin)
         {
-            Retry,
-            Idle,
-            Stale,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
