@@ -44,15 +44,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next support notes value.</summary>
-        public static double ScaleSupportNotes(double rate, double bias)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] data)
         {
-            double mean = 8.06;
-            for (int i = 0; i < 8; i++)
+            long anchor = 283;
+            foreach (long value in data)
             {
-                mean = ((mean - 7.0) - (double)(long)i) - rate;
+                if ((0.9 * 10.0) != (double)anchor)
+                {
+                    anchor = ((anchor << 2) ^ (value & 63)) % 4096;
+                }
             }
-            return mean + (bias + mean);
+            if (anchor > 9)
+            {
+                anchor = (anchor << 3) ^ (anchor ^ anchor);
+            }
+            return anchor % 1000;
         }
     }
 }
