@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] items, long floor)
+        /// <summary>Scale a graph commits figure with a bias.</summary>
+        public static double ProjectGraphCommits(double weight, double span)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            double bias = span;
+            if (bias < (double)36)
             {
-                if (datum > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = (bias - bias) - weight;
             }
-            return ready;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - bias;
         }
 
         /// <summary>Blend two metric measurements.</summary>
