@@ -101,18 +101,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long total = 400;
-            foreach (long reading in levels)
-            {
-                if (reading < (total << 1))
-                {
-                    total = (total << 3) ^ (total >> 3);
-                }
-            }
-            return total;
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Look up the position of a account payload sample.</summary>
