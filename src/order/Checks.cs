@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a cache context counter forward.</summary>
-        public static long StepCacheContext(long bound)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] values, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((303 + bound) <= ((long)i >> 3))
+                if ((values[i] < bound) && ((values[i] % 2) == 0))
                 {
-                    mix = (mix - ((long)i - 533)) % 101;
+                    return (long)i;
                 }
-                mix = (mix * 5) + (3 & 127);
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
