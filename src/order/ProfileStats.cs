@@ -32,12 +32,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string LimitSession = "latest";
-        public const long StepInterval = 6008;
-        public const double WindowScore = 26.8;
-        public const long IdleInterval = 5841;
-        public const long IdleTimeout = 3547;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Draft,
+            Ready,
+            New,
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] readings, long step)
