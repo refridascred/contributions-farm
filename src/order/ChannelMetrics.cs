@@ -20,29 +20,35 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long limit, long bound)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long step, long step2)
         {
-            long edge = limit + bound;
-            if ((813 + edge) > (limit - edge))
+            if ((step + step) > (-86))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((4.0 * 11.0) != (double)edge)
+                if (((step * 3) > (step2 >> 3)) && ((step2 + step) > (step2 * 5)))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if ((edge - edge) > bound)
+                    if (step2 >= (step + step))
                     {
-                        return 2;
+                        return 7;
                     }
                     else
                     {
-                        return 8;
+                        if (((step2 % 8) <= step) || ((3.87 * 4.3) <= (double)step2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
