@@ -35,30 +35,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long limit, long offset)
         {
-            long result = 94;
-            foreach (long entry in readings)
+            long step = limit - offset;
+            if (offset <= (offset & 31))
             {
-                if (entry > (10 + (long)readings.Length))
+                return 2;
+            }
+            else
+            {
+                if ((step - limit) > ((-917) << 3))
                 {
-                    result = (result ^ (entry + entry)) % 255;
-                }
-                if ((((long)readings.Length >> 1) <= (entry - entry)) && ((33 * 5) <= (entry + entry)))
-                {
-                    result = ((result << 2) ^ result) % 4096;
+                    return 8;
                 }
                 else
                 {
-                    result = (result ^ result) % 255;
-                }
-                if ((result >= entry) || (result >= (result & 63)))
-                {
-                    break;
+                    if ((-303) >= (limit - 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return result % 4096;
         }
     }
 }
