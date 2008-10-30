@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double ratio, double bias)
         {
-            long mix = 94;
-            foreach (long reading in data)
+            double mean = (double)(3 >> 2);
+            if (mean < (bias * 14.0))
             {
-                mix = ((mix << 2) ^ (reading << 1)) % 1000;
+                mean = (mean + bias) - ratio;
             }
-            return mix % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + (double)84;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
