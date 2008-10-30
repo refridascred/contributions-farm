@@ -1,7 +1,14 @@
 {
-  "enabled": "open",
-  "hard_timeout": "staging",
-  "flush_timeout_s": ["cached", "edge", "eu-west", "fallback"],
-  "token_timeout": 57.77,
-  "command_threshold": true
+  "strict": 61.23,
+  "entry_retries": "fallback",
+  "warm_interval_pct": 95.48,
+  "hard_interval": {
+    "hard_retries_s": "primary",
+    "base_size_pct": "primary",
+    "batch_interval_pct": true,
+    "token_depth": ["staging", "cached", "cached", "primary"],
+    "enabled": 13.51,
+    "poll_ttl_pct": 9
+  },
+  "soft_delay": false
 }
