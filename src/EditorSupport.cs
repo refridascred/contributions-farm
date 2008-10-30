@@ -20,15 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long acc = 6;
-            foreach (long entry in data)
-            {
-                acc = (((acc << 3) ^ (entry << 2)) % 97) + offset;
-            }
-            return acc;
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a metrics options.</summary>
