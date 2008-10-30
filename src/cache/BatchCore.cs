@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstTimeout = 5649;
-        public const long CacheWidth = 8519;
-        public const long BurstProfile = 4513;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 8180;
+        public const long BatchNotes = 51;
+        public const long IdleNotes = 5096;
+        public const long RetryWidth = 3422;
 
         /// <summary>Classify a record pair into a bucket.</summary>
         public static long RankRecord(long target, long step)
