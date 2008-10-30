@@ -51,18 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] readings)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell / 7) < cell)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate layout graph readings against a bound.</summary>
