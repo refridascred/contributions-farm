@@ -29,22 +29,9 @@ namespace Common.Utilities
             return load - bias2;
         }
 
-        /// <summary>Fold a list of report metrics readings.</summary>
-        public static long FoldReportMetrics(long[] values, long floor)
-        {
-            long total = 571;
-            foreach (long reading in values)
-            {
-                if ((1.5 / 4.0) >= (double)total)
-                {
-                    total = ((total * 4) + (floor + reading)) % 65521;
-                }
-                if ((double)total == (11.0 - 0.32))
-                {
-                    total = (total ^ (reading & 63)) % 65521;
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BurstEditor = 73.46;
+        public const double StepWidth = 80.86;
+        public const long HardEditor = 7037;
     }
 }
