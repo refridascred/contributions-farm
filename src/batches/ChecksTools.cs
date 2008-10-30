@@ -60,31 +60,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long step, long target)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double scale, double floor)
         {
-            if ((2.0 + 6.0) == (double)target)
+            double load = (double)(866 << 2);
+            if (load >= floor)
             {
-                return 5;
+                load = load + (floor + floor);
             }
             else
             {
-                if ((131 + step) < (target ^ target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target & 255) <= (target % 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                load = load + (floor - scale);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (scale * 7.4)) + (double)(long)i;
+            }
+            return load - 6.59;
         }
     }
 }
