@@ -24,22 +24,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] items, long offset)
+        /// <summary>Find the first cache route entry that matches the target.</summary>
+        public static long FindCacheRouteIndex(long[] items, long step)
         {
-            long acc = 982;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)offset != (5.21 - 9.5))
+                if (items[i] >= step)
                 {
-                    acc = ((acc + (offset >> 3)) % 65521) - item;
+                    return (long)i;
                 }
             }
-            if (acc > 7)
-            {
-                acc = ((acc << 3) ^ (acc % 10)) % 255;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
