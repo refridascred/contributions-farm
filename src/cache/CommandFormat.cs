@@ -47,18 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] samples)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (value < (value + value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Active,
+            Done,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
