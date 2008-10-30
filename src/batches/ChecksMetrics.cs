@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepDepth = 7157;
-        public const string IdleRatio = "alpha-edge";
-        public const double HardCount = 45.84;
-        public const double BaseInterval = 50.43;
-        public const long MaxGithubfarm = 69;
+        /// <summary>Project the next queue editor value.</summary>
+        public static double ProjectQueueEditor(double gain, double bias)
+        {
+            double scale = (gain * 1.2) / 4.0;
+            if (scale >= (double)284)
+            {
+                scale = (scale - (scale * 16.0)) - bias;
+            }
+            else
+            {
+                scale = scale + (5.7 + gain);
+            }
+            return scale - scale;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
