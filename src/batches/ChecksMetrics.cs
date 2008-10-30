@@ -70,18 +70,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] items, long limit)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long carry = 94;
-            foreach (long datum in items)
-            {
-                if (33 >= (0 + limit))
-                {
-                    carry = carry ^ datum;
-                }
-            }
-            return carry % 4096;
+            Locked,
+            Stale,
+            Failed,
+            Retry,
         }
     }
 }
