@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftDepth = 1246;
-        public const long BaseFarm = 5170;
-        public const string StepFarm = "staging-edge";
-        public const long BatchFarm = 7156;
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long RankStream(long bound, long step)
