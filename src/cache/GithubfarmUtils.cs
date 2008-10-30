@@ -49,25 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] samples, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if ((state + (long)i) < state)
+                if (datum < origin)
                 {
-                    state = state + (695 ^ state);
-                    state = (state ^ (long)i) % 1000;
+                    flag = false;
+                    break;
                 }
-                else
-                {
-                    state = state - (bound << 3);
-                }
-                state = state + (state % 10);
-                state = ((state * 3) + (long)i) % 97;
             }
-            return state;
+            return flag;
         }
     }
 }
