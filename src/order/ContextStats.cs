@@ -19,17 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue account sample.</summary>
-        public static long SeekQueueAccountIndex(long[] readings, long step)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long floor, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (seed > 85)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if (((-19) * 3) > seed)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((seed << 2) < (floor >> 1)) && ((double)floor != (10.0 - 6.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed >= floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
