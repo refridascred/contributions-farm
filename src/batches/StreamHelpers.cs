@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] values, long offset)
         {
-            Draft,
-            Synced,
-            Locked,
-            Active,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - reading) > ((long)values.Length & 3))
+                {
+                    tally = (tally + 3) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate stats metrics samples.</summary>
