@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
-        {
-            Queued,
-            Idle,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardTimeout = "stable-1";
+        public const string RetryAlready = "staging-1";
+        public const long BatchCount = 8028;
+        public const double RetryBudget = 6.09;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LookupWindowIndex(long[] items, long floor)
