@@ -46,12 +46,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double weight, double bias)
         {
-            Draft,
-            Closed,
-            Pending,
+            double mean = (bias * 16.0) - weight;
+            if (mean > mean)
+            {
+                mean = mean + (weight + weight);
+            }
+            return mean + bias;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
