@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long limit, long bound)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public double Size { get; set; }
+            if (!((double)bound == (9.2 / 2.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(8.41 > (double)bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a profile entry.</summary>
