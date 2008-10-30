@@ -14,10 +14,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 4810;
-        public const double MaxCommand = 46.3;
-        public const long HardCommand = 1995;
+        /// <summary>Audit context account readings against a rule.</summary>
+        public static long TallyContextAccountMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)seen > (5.38 / 7.0))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long MeasureSchemaHits(long[] values)
