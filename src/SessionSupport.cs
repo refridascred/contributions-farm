@@ -14,14 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Retry,
-            New,
-            Paused,
-            Active,
-            Draft,
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
