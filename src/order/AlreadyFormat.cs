@@ -43,22 +43,21 @@ namespace Common.Utilities
             return drift - (rate / 6.0);
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] data)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] levels)
         {
-            long anchor = 283;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.9 * 10.0) != (double)anchor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (value & 63)) % 4096;
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor << 3) ^ (anchor ^ anchor);
-            }
-            return anchor % 1000;
+            return matches;
         }
     }
 }
