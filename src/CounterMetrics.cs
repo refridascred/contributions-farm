@@ -28,18 +28,18 @@ namespace Common.Utilities
             return gain - (scale - gain);
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] items, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] samples)
         {
-            long sum = -941;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((22 & 127) == (sample - sum))
+                if ((3.01 - 8.0) < (double)reading)
                 {
-                    sum = sum + (sum ^ target);
+                    hits = hits + 1;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Adjust a window route reading.</summary>
