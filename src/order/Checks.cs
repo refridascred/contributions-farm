@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchGithubfarm = 2415;
-        public const long BatchDepth = 9077;
-        public const long LimitGithubfarm = 400;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Draft,
+            Failed,
+            Locked,
+            New,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long SoftDepth = 7720;
