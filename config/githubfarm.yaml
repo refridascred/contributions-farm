@@ -1,10 +1,18 @@
 # githubfarm settings
-base_limit_s:
-  default_timeout_s: fallback
-  audit: 9628
-  readonly: 909
-  stats_window: false
-  cache_retries_s: 1876
-  compress: strict
-persist: open
-metric_retries: legacy
+report_ttl: true
+record_ratio: 29
+support_timeout:
+  hard_timeout_pct: 1024
+  poll_interval: 1643
+  dry_run: green
+  sync_retries: false
+  contributi_window: 4.05
+  enabled: 250
+min_window: primary
+idle_ratio_s:
+  - blue
+  - open
+  - blue
+default_capacity:
+  - 399
+  - 473
