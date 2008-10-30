@@ -23,26 +23,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data, long bound)
         {
-            long state = 60;
-            foreach (long cell in values)
+            long acc = 2;
+            foreach (long sample in data)
             {
-                if ((state ^ cell) >= 288)
-                {
-                    state = (state * 2) + (state << 3);
-                }
-                if ((75 + state) >= cell)
-                {
-                    break;
-                }
+                acc = ((acc + (bound ^ bound)) % 1000) ^ sample;
             }
-            if (state < (-5))
+            if (acc > 34)
             {
-                state = state - 920;
+                acc = (acc << 2) ^ (acc & 127);
             }
-            return state % 65521;
+            return acc % 65521;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
