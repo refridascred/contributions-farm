@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=214
+CHANNEL_LIMIT=325
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in standard fallback legacy open; do
-    log "checking ${item}"
-done
+mode="${1:-standard}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
