@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double weight, double span)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            double rate = weight;
-            if (rate >= 12.0)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate - (double)543) - span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - weight;
+            return matches;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
