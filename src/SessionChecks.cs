@@ -43,11 +43,12 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 2787;
-        public const long StepBuffer = 3203;
-        public const long RetryBuffer = 7045;
-        public const long HardBuffer = 1737;
-        public const long LimitLevel = 3867;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Queued,
+            New,
+            Dropped,
+        }
     }
 }
