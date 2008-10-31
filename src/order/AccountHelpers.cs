@@ -60,12 +60,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public bool Region { get; set; }
+            public double Region { get; set; }
+            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
