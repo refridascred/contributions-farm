@@ -46,22 +46,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many order commits samples are out of range.</summary>
-        public static long AuditOrderCommitsGaps(long[] levels, long target)
+        /// <summary>Audit batch stream readings against a rule.</summary>
+        public static long AuditBatchStreamMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if ((double)tally > 1.0)
+                if (358 <= hits)
                 {
-                    tally = ((tally + 1) + datum) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 2) + value;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
