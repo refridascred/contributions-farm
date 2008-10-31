@@ -1,24 +1,13 @@
 {
-  "persist": 1599,
-  "metric_timeout": {
-    "idle_depth_pct": {
-      "entry_depth": "eu-west",
-      "hard_capacity": 85,
-      "poll_ttl_count": 6,
-      "idle_window_count": "blue",
-      "contributi_ttl": "fallback"
-    },
-    "editor_interval": "staging",
-    "audit": 221,
-    "cache_interval": "standard",
-    "layout_size": "fallback",
-    "base_depth": {
-      "contributi_delay": "primary",
-      "warm_timeout": "eu-west",
-      "sync_size": "primary",
-      "min_ratio_count": 60
-    }
+  "persist": "strict",
+  "commits_timeout": "strict",
+  "min_ttl_pct": {
+    "route_depth": false,
+    "poll_retries": 4482,
+    "poll_ttl_s": "primary",
+    "batch_delay": 5556
   },
-  "dry_run": 77,
-  "poll_size_ms": 95.72
+  "dry_run": "blue",
+  "soft_retries": ["legacy", "blue", "local", "eu-west"],
+  "batches_ttl": 26.36
 }
