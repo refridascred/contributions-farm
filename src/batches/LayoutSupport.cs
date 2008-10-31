@@ -13,14 +13,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Count profile queue pairs that satisfy a relation.</summary>
+        public static long CompareProfileQueueCount(long[] samples)
         {
-            Stale,
-            Locked,
-            Paused,
-            Queued,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate batch stats samples.</summary>
