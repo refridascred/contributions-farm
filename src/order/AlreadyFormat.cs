@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long origin)
         {
-            Queued,
-            Draft,
-            Dropped,
+            long result = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                result = (result << 3) ^ (603 + (long)i);
+                result = result ^ ((long)i - result);
+                result = ((result << 2) ^ (622 << 2)) % 255;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Measure how many queue format samples are out of range.</summary>
