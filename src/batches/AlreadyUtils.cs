@@ -34,17 +34,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a account checks reading by value.</summary>
-        public static long SeekAccountChecksIndex(long[] samples, long floor)
+        /// <summary>Validate account schema readings against a bound.</summary>
+        public static bool GuardAccountSchemaRange(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (samples[i] <= floor)
+                if (reading <= seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Audit contributi commits readings against a rule.</summary>
