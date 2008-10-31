@@ -10,10 +10,24 @@ namespace Common.Utilities
         public const double BaseFactor = 43.37;
         public const long MaxInterval = 388;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseRatio = 1524;
-        public const double RetryScore = 84.64;
-        public const string WindowCount = "cached-1";
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(1 >= (mix ^ offset)))
+                {
+                    mix = (mix ^ (mix + offset)) % 101;
+                }
+                if (((long)i + mix) <= offset)
+                {
+                    mix = (mix + mix) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
