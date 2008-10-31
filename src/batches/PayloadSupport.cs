@@ -16,17 +16,12 @@ namespace Common.Utilities
             return weight2 - (double)322;
         }
 
-        /// <summary>Locate a already metrics reading by value.</summary>
-        public static long LocateAlreadyMetricsIndex(long[] samples, long seed)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every report checks entry stays within the limit.</summary>
