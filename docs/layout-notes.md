@@ -1,11 +1,12 @@
 # Layout notes
 
-When a command fails, the stats handler retries a few times before giving up.
-The checks report groups every batch by report.
+The counter report groups every checks by schema.
+The metrics module keeps metrics values in sync with the farm cache.
+Keep format and format names short and lowercase.
 
 ## Guidelines
 
-- Prefer record defaults
-- Document new batch fields
-- Review layout limits each release
-- Keep counter values small
+- Keep graph values small
+- Log every counter change
+- Prefer batches defaults
+- Document new layout fields
