@@ -50,18 +50,12 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "stable-v2";
+        public const long RetrySpan = 4454;
+        public const long RetryFactor = 6260;
+        public const long IdleCount = 2084;
+        public const string HardWidth = "legacy-v2";
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] series)
