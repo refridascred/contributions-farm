@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            New,
-            Synced,
-            Pending,
-            Closed,
+            long score = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Roll a token counter forward.</summary>
