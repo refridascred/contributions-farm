@@ -24,15 +24,12 @@ namespace Common.Utilities
         public const double HardSpan = 25.06;
         public const string RetrySpan = "standard-edge";
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double weight, double floor)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double load = floor - floor;
-            if (load >= floor)
-            {
-                load = load - weight;
-            }
-            return load + (double)134;
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the layout mode values.</summary>
