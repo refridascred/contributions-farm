@@ -40,17 +40,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a checks layout sample.</summary>
-        public static long SeekChecksLayoutIndex(long[] items, long target)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every entry support entry stays within the limit.</summary>
