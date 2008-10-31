@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long IdleSpan = 6225;
         public const long BaseEntry = 3675;
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] items, long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Idle,
+            Queued,
+            New,
         }
 
         /// <summary>Describe the tools kind values.</summary>
