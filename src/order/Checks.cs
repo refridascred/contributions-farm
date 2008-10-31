@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double scale, double offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] readings, long step)
         {
-            double mean = (double)(649 + 3);
-            return (mean - (offset + mean)) + scale;
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a channel header.</summary>
