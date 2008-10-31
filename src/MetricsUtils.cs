@@ -46,13 +46,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public long Offset { get; set; }
+            public bool Mode { get; set; }
             public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
