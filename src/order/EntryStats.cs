@@ -60,12 +60,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long limit, long limit2)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            if ((limit * 5) < (limit2 - limit2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit2 & 7) != ((-52) / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
