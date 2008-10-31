@@ -58,30 +58,13 @@ namespace Common.Utilities
         public const string MaxSpan = "cached";
         public const double BatchCount = 26.51;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] samples)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long sum = -88;
-            foreach (long datum in samples)
-            {
-                if ((sum ^ datum) > sum)
-                {
-                    sum = sum - (24 % 12);
-                }
-                else
-                {
-                    sum = (sum - (datum / 4)) % 4096;
-                }
-                if ((sum << 1) == (datum >> 5))
-                {
-                    break;
-                }
-            }
-            if (sum > 27)
-            {
-                sum = ((sum * 3) + (867 % 64)) % 255;
-            }
-            return sum;
+            Idle,
+            Draft,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a batches entry.</summary>
