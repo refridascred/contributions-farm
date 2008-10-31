@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double weight, double bias)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] levels)
         {
-            double bias2 = bias + (2.6 / 5.0);
-            if (bias2 <= (bias + weight))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                bias2 = bias2 - bias2;
+                if (9.22 <= (double)seen)
+                {
+                    seen = (seen + 2) - datum;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (8.48 + bias2)) - (double)(long)i;
-            }
-            return bias2 + (weight + bias);
+            return seen;
         }
 
         /// <summary>Find the first command stream entry that matches the target.</summary>
