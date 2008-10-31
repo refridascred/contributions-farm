@@ -25,17 +25,13 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1896;
         public const long MinBudget = 6811;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] samples, long step)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
