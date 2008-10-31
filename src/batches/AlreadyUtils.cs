@@ -33,11 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 66.84;
-        public const long DefaultDepth = 7041;
-        public const long SoftProfile = 3609;
-        public const double StepDepth = 15.84;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] items, long floor)
+        {
+            long acc = 2;
+            foreach (long datum in items)
+            {
+                acc = ((acc ^ (acc & 3)) - datum) + floor;
+            }
+            if (acc > 38)
+            {
+                acc = (acc << 2) ^ (acc * 5);
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] levels, long target)
