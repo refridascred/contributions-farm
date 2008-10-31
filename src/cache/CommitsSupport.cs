@@ -69,18 +69,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Audit context githubfarm readings against a rule.</summary>
+        public static long MeasureContextGithubfarmMatches(long[] samples, long limit)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((cell / 5) == (limit << 3))
                 {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
             return seen;
