@@ -1,6 +1,19 @@
 {
-  "max_delay_s": true,
-  "sync_retries": false,
-  "idle_limit": 100,
-  "cache_interval": 6611
+  "soft_window": {
+    "soft_ratio": 8.5,
+    "max_limit_count": false,
+    "warm_depth_pct": 75.38,
+    "verbose": {
+      "batch_timeout": 370,
+      "buffer_delay": "legacy",
+      "cache_limit_pct": false,
+      "warm_interval": false,
+      "enabled": 19
+    },
+    "poll_capacity_pct": false
+  },
+  "max_interval_count": [354, 288, 75],
+  "sync_size_ms": "fallback",
+  "warm_window": 89.84,
+  "batch_retries": 74.15
 }
