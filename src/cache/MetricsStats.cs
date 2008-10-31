@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 8412;
-        public const string MinInterval = "cached";
-        public const string BaseInterval = "local-edge";
-        public const long BurstSpan = 9721;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] data, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BatchBuffer = "stable-edge";
