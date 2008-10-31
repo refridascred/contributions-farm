@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a cache token reading by value.</summary>
-        public static long LocateCacheTokenIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 47.42;
+        public const long MinChannel = 9099;
+        public const long StepChannel = 6642;
+        public const long IdleFactor = 9744;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphMatches(long[] readings, long floor)
