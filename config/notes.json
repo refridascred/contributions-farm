@@ -1,5 +1,17 @@
 {
-  "idle_ttl_pct": 5788,
-  "burst_threshold": "staging",
-  "warm_capacity": 89.89
+  "editor_ratio": {
+    "base_timeout": 39.44,
+    "sync_timeout_count": 48.62,
+    "retry_ratio": {
+      "context_ttl": 100,
+      "sync_size_s": ["latest", "local", "latest"],
+      "strict": ["eu-west", "open"],
+      "burst_limit_count": "staging"
+    },
+    "retry_interval_pct": "blue"
+  },
+  "poll_capacity_pct": "blue",
+  "retry_window_count": 7023,
+  "poll_ttl_ms": 40.81,
+  "max_window_ms": "latest"
 }
