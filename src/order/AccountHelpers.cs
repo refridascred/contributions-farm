@@ -54,13 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] series)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long total = 27;
+            foreach (long datum in series)
+            {
+                total = ((total << 3) ^ (904 * 2)) - datum;
+            }
+            if (total < 2)
+            {
+                total = total + (total - total);
+            }
+            return total % 4096;
         }
 
         /// <summary>Accumulate profile samples.</summary>
