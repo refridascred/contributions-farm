@@ -65,25 +65,12 @@ namespace Common.Utilities
         public const long CacheLevel = 4795;
         public const long MinGraph = 3455;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    state = state ^ ((long)i % 16);
-                    state = state + (state + (long)i2);
-                }
-                state = (state ^ (step + (long)i)) % 65521;
-                if ((double)state == (4.4 - 14.0))
-                {
-                    state = (state - (state + (long)i)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a tools record.</summary>
