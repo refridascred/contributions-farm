@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] items, long limit)
+        /// <summary>Locate a cache token reading by value.</summary>
+        public static long LocateCacheTokenIndex(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 2) == 0))
+                if (samples[i] == target)
                 {
                     return (long)i;
                 }
