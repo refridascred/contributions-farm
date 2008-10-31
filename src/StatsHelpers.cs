@@ -33,19 +33,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] data, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long anchor = 9;
+            foreach (long datum in series)
             {
-                if (reading >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor ^ 623) % 101;
+                anchor = (anchor - (datum + anchor)) % 1000;
             }
-            return ok;
+            return anchor % 97;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
