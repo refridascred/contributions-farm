@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinLevel = 5722;
-        public const long SoftRoute = 4498;
-        public const double BurstInterval = 9.7;
-        public const long BatchWidth = 4957;
+        /// <summary>Validate report already readings against a bound.</summary>
+        public static bool ValidateReportAlreadyRange(long[] samples, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long ScoreBuffer(long[] items)
