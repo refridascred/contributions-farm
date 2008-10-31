@@ -28,15 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] data)
-        {
-            long anchor = 601;
-            foreach (long reading in data)
-            {
-                anchor = (anchor - (anchor & 63)) - reading;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 5888;
+        public const double MinSize = 27.18;
+        public const string BurstTimeout = "cached-1";
+        public const string BaseWindow = "latest-v2";
+        public const double LimitSpan = 57.29;
     }
 }
