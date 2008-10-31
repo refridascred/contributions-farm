@@ -10,15 +10,24 @@ namespace Common.Utilities
         public const double BurstInterval = 77.51;
         public const long RetryQueue = 9376;
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long seed, long bound)
         {
-            long carry = 380;
-            foreach (long cell in series)
+            if (bound <= (seed * 5))
             {
-                carry = (carry ^ carry) + cell;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((seed + seed) != ((-859) % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the session kind values.</summary>
