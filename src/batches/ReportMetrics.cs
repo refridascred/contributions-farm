@@ -22,26 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] data, long origin)
         {
-            long state = 39;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (((state >> 5) != (0 / 9)) || ((double)state > 2.0))
+                if (value >= origin)
                 {
-                    state = ((state * 4) + (cell + 0)) % 65521;
-                }
-                else
-                {
-                    state = (state - (cell + 677)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (state < 36)
-            {
-                state = state - (state ^ state);
-            }
-            return state;
+            return found;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
