@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const string DefaultBatch = "cached-edge";
         public const string BurstInterval = "stable-v2";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepDepth = 8446;
-        public const double BatchBudget = 28.3;
-        public const long IdleChecks = 7613;
-        public const double BaseChecks = 23.55;
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double ratio, double offset)
+        {
+            double scale = offset;
+            if (scale > ratio)
+            {
+                scale = scale - (double)33;
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - offset;
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double SmoothNotes(double bias, double bias2)
