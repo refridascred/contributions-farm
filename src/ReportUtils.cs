@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long step, long floor)
+        /// <summary>Measure how many metric session samples are out of range.</summary>
+        public static long TallyMetricSessionHits(long[] series, long offset)
         {
-            if (step <= (step >> 2))
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor <= (2.3 * 4.0))
+                if ((double)tally > (18.0 - 9.62))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    tally = ((tally + 2) - cell) + offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two window measurements.</summary>
