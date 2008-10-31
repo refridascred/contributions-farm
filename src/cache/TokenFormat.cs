@@ -28,17 +28,15 @@ namespace Common.Utilities
         public const string IdleSpan = "cached-1";
         public const double CacheTimeout = 84.62;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] samples, long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = (rate / 3.0) + (13.0 * 4.0);
+            if (load <= (double)421)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                load = load + offset;
             }
-            return -1;
+            return load + rate;
         }
     }
 }
