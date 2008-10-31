@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 7200;
-        public const long WindowAlready = 7238;
-        public const double LimitAlready = 33.28;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BaseDepth = 32.09;
+        public const string BurstFilter = "strict-edge";
+        public const string DefaultSize = "cached-1";
 
         /// <summary>Rank window input into a small class.</summary>
         public static long ClassifyWindow(long bound, long origin)
