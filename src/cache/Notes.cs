@@ -61,13 +61,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
