@@ -1,4 +1,10 @@
 # githubfarm settings
-commits_ratio: false
-flush_capacity_s: 1024
-flush_depth: cached
+min_window_count: 16.26
+flush_retries: 23.14
+batch_retries_count: cached
+queue_window: 1024
+default_threshold_count: false
+persist:
+  verbose: 24
+  retry_depth_pct: 145
+  sync_ttl_ms: cached
