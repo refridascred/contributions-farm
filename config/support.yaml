@@ -1,11 +1,7 @@
 # support settings
-min_capacity_count: 59.66
-batch_interval:
-  - 234
-  - 184
-enabled: 53
-notes_capacity: standard
-dry_run:
-  - 126
-  - 209
-  - 273
+min_capacity: 4479
+sync_ratio_pct: false
+poll_ratio_pct: legacy
+min_depth:
+  - primary
+  - standard
