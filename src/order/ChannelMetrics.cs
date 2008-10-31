@@ -61,19 +61,9 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseCount = 4766;
+        public const double IdleAlready = 52.21;
+        public const long WindowSpan = 7506;
     }
 }
