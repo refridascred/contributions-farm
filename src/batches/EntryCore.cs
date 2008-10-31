@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long SoftCommits = 7901;
         public const long MaxCommits = 6631;
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double ratio, double offset)
         {
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
+            double bias = offset * 11.0;
+            if (bias >= offset)
+            {
+                bias = bias + (ratio * 3.03);
+            }
+            else
+            {
+                bias = bias + offset;
+            }
+            return bias - offset;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
