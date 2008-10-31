@@ -1,7 +1,8 @@
 {
-  "batch_retries": false,
-  "retry_capacity_pct": "open",
-  "stream_ratio": 46.54,
-  "max_limit_pct": "staging",
-  "verbose": [337, 341, 365, 224]
+  "verbose": ["open", "legacy", "fallback", "eu-west"],
+  "audit": ["eu-west", "latest"],
+  "stats_ttl": 1024,
+  "idle_interval_count": "fallback",
+  "session_window": ["legacy", "strict", "local", "fallback"],
+  "queue_timeout": "primary"
 }
