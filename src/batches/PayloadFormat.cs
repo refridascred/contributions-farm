@@ -31,12 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Derive the next context route value from a seed.</summary>
+        public static long IterateContextRoute(long origin)
         {
-            Retry,
-            Active,
-            Failed,
+            long result = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
