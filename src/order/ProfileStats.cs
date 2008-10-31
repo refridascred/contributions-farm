@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next counter account value from a seed.</summary>
-        public static long DeriveCounterAccount(long step)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(step < (long)i))
-                {
-                    result = result ^ (step - result);
-                }
-                result = ((result << 3) ^ (step * 2)) % 101;
-                result = result - step;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
