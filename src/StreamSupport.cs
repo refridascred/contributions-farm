@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double bias)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long offset)
         {
-            double load = (double)((-338) - 22);
-            if (load < (bias / 6.0))
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                load = load - bias;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            else
-            {
-                load = load - (load * 1.4);
-            }
-            return load + gain;
+            return total;
         }
 
         /// <summary>Hold a profile record.</summary>
