@@ -49,21 +49,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] series)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long floor, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (16.0 < (double)floor)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((6.1 * 3.1) == (double)limit)
                 {
-                    if ((series[i] + series[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
