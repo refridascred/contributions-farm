@@ -15,12 +15,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Scale a graph report figure with a bias.</summary>
+        public static double ScaleGraphReport(double ratio, double offset)
         {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
+            double rate = (double)0 / 3.0;
+            if (rate < (rate * 1.8))
+            {
+                rate = rate - (offset / 5.0);
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (ratio * 6.7)) + (double)(long)i;
+            }
+            return rate + (offset / 7.0);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
