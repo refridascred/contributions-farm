@@ -28,22 +28,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleSize = 8248;
+        public const string LimitCounter = "stable-edge";
+        public const string BaseSize = "alpha-1";
+        public const long DefaultCounter = 1147;
+        public const long CacheCounter = 780;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandBounds(long[] items, long floor)
