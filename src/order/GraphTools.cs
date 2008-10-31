@@ -48,12 +48,9 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public bool Offset { get; set; }
-            public double Token { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinRatio = 9409;
+        public const long SoftBudget = 7084;
+        public const string MinInterval = "stable";
     }
 }
