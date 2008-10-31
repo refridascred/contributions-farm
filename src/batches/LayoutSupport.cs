@@ -13,19 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] levels, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (datum != offset)
+                if (cell >= floor)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
