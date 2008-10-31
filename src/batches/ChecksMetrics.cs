@@ -81,17 +81,22 @@ namespace Common.Utilities
             return load - (double)(-17);
         }
 
-        /// <summary>Locate a already cluster reading by value.</summary>
-        public static long LookupAlreadyClusterIndex(long[] data, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowOutliers(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (data[i] <= step)
+                if ((19.0 * 6.1) != (double)(long)samples.Length)
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
