@@ -22,18 +22,13 @@ namespace Common.Utilities
         public const string BatchCounter = "staging";
         public const long SoftCount = 3002;
 
-        /// <summary>Audit queue already readings against a rule.</summary>
-        public static long MeasureQueueAlreadyMatches(long[] levels, long floor)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (904 <= entry)
-                {
-                    matches = (matches + 1) - floor;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate farm order samples.</summary>
