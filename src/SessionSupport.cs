@@ -37,10 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 3710;
-        public const long BatchEntry = 6971;
-        public const long WindowRatio = 5634;
-        public const double SoftEntry = 21.01;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
