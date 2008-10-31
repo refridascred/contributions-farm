@@ -20,40 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long limit, long step)
-        {
-            long cur = limit ^ step;
-            if ((double)step <= (8.94 * 1.3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)31 >= (double)cur)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((99 % 97) != (step >> 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((cur << 2) >= (cur ^ step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "legacy-edge";
+        public const string MinFactor = "alpha-1";
+        public const long HardSize = 5713;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] levels, long bound)
