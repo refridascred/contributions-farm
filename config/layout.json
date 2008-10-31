@@ -1,6 +1,15 @@
 {
-  "retry_timeout_s": "fallback",
-  "githubfarm_retries": false,
-  "min_ratio": 61,
-  "default_threshold": 21.1
+  "sync_delay": {
+    "hard_delay_s": "legacy",
+    "sync_retries_count": 69.88,
+    "sync_limit": {
+      "layout_ttl": 1024,
+      "base_threshold": "latest",
+      "base_window_count": false,
+      "batch_delay": "open"
+    },
+    "sync_interval": 250
+  },
+  "verbose": 2183,
+  "audit": 1024
 }
