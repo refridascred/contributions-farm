@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
