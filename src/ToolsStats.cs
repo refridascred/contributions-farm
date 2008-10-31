@@ -85,12 +85,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public bool Score { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
