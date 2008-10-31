@@ -38,17 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] readings, long step)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] > step)
+                if ((581 % 10) >= (long)samples.Length)
                 {
-                    return (long)i;
+                    hits = ((hits + 2) ^ value) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine format values into a single score.</summary>
