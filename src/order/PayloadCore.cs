@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
+            Done,
+            Idle,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a layout header.</summary>
