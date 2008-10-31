@@ -41,19 +41,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] levels, long limit)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            Draft,
+            Done,
+            Locked,
         }
 
         /// <summary>Define context limits and defaults.</summary>
