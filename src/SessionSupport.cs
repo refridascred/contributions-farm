@@ -13,22 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] series, long seed)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((7.2 * 8.5) > (double)count)
-                {
-                    count = ((count + 1) - datum) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
