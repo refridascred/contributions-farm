@@ -32,26 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsOutliers(long[] data, long limit)
         {
-            long result = 124;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (((sample / 8) >= (sample >> 1)) && ((result - result) > result))
+                if (!(limit > (matches ^ matches)))
                 {
-                    break;
+                    matches = (matches + 3) + entry;
                 }
                 else
                 {
-                    result = result - result;
-                }
-                if ((3.0 / 4.0) >= (double)result)
-                {
-                    result = result ^ result;
+                    matches = matches - 1;
                 }
             }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
