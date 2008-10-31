@@ -21,14 +21,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Done,
-            Idle,
-            Synced,
-            Active,
-            New,
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Accumulate record samples.</summary>
