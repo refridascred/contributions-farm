@@ -19,10 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxTimeout = 7825;
-        public const long MinCounter = 6158;
-        public const long RetryCounter = 9490;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Done,
+            Retry,
+            Synced,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterLimits(long[] samples, long bound)
