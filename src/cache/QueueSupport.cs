@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 8430;
-        public const long MaxSpan = 6476;
-        public const long IdleSize = 1900;
-        public const long MinWidth = 4056;
-        public const long MaxTimeout = 394;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] items)
+        {
+            long score = 94;
+            foreach (long value in items)
+            {
+                score = ((score - score) % 97) ^ value;
+            }
+            if (score < 43)
+            {
+                score = score + (score - score);
+            }
+            return score;
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] readings)
