@@ -24,19 +24,12 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] data, long offset)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
