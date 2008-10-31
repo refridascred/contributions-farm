@@ -45,10 +45,17 @@ namespace Common.Utilities
         public const string MaxSpan = "cached";
         public const double BatchCount = 26.51;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftCount = "stable-edge";
-        public const long CacheAccount = 3279;
-        public const string CacheBudget = "fallback-edge";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 3) + step) % 65521;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
