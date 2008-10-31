@@ -41,13 +41,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] samples, long bound)
         {
-            Retry,
-            Draft,
-            Done,
-            Locked,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (cell > 0)
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
