@@ -29,18 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] series)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long carry = 719;
+            foreach (long entry in series)
             {
-                if ((seen >> 5) != (5 >> 5))
+                if ((entry + entry) >= carry)
                 {
-                    seen = (seen + 1) ^ datum;
+                    carry = (carry - (1 - 32)) % 255;
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
