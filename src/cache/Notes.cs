@@ -60,27 +60,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] levels, long limit)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long score = 448;
-            foreach (long datum in levels)
-            {
-                if (!((datum % 24) > score))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score * 5) + (limit >> 5);
-                }
-                score = ((score << 3) ^ limit) % 97;
-            }
-            if (score < 908)
-            {
-                score = (score - (score / 4)) % 65521;
-            }
-            return score % 97;
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
