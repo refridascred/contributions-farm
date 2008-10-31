@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] levels, long origin)
+        /// <summary>Digest a series of layout schema entries.</summary>
+        public static long FoldLayoutSchema(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -68;
+            foreach (long datum in data)
             {
-                if (levels[i] < origin)
+                if (((double)mark > (double)datum) || ((datum - mark) >= (mark * 5)))
                 {
-                    return (long)i;
+                    mark = mark - 191;
+                }
+                if (((datum / 9) > datum) && ((mark - (-6)) <= datum))
+                {
+                    mark = (mark + (datum - datum)) % 1000;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
