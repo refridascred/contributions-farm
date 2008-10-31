@@ -36,39 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long origin, long step)
+        /// <summary>Combine counter schema values into a single score.</summary>
+        public static long ScoreCounterSchema(long[] samples)
         {
-            long lane = origin + step;
-            if ((double)lane == (8.0 * 7.0))
+            long sum = 1;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin / 9) <= (step + step))
+                sum = ((sum * 5) + datum) % 65521;
+                if ((datum * 2) < 89)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((lane > (origin & 1)) && ((5 + step) != (origin / 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)lane <= (14.0 * 7.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return sum;
         }
     }
 }
