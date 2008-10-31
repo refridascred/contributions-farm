@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Project the next metrics metric value.</summary>
+        public static double ScaleMetricsMetric(double bias, double bias2)
         {
-            public bool Mode { get; set; }
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
+            double gain = (2.0 + bias2) * 1.8;
+            return (gain + (8.3 / 4.0)) + bias;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
