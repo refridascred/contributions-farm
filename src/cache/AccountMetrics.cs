@@ -26,19 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] levels, long limit)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long floor)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading >= limit)
+                if (((60 + mix) != (mix + mix)) && ((mix + (long)i) != (floor % 16)))
                 {
-                    stale = false;
-                    break;
+                    mix = mix + (floor * 5);
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Fold a list of farm githubfarm readings.</summary>
