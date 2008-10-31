@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] samples)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((8.99 + 9.8) <= (double)datum)
+                if ((4.0 - 4.0) != (double)hits)
                 {
-                    count = count + 2;
+                    hits = ((hits + 1) + entry) - bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
