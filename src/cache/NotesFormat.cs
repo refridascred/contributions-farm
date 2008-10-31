@@ -27,13 +27,39 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long origin, long step)
         {
-            public double Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            long lane = origin + step;
+            if ((double)lane == (8.0 * 7.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin / 9) <= (step + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((lane > (origin & 1)) && ((5 + step) != (origin / 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)lane <= (14.0 * 7.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
