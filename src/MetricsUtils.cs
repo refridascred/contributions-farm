@@ -64,20 +64,17 @@ namespace Common.Utilities
             return rate + (rate - floor);
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long target)
+        /// <summary>Roll a batch layout counter forward.</summary>
+        public static long DeriveBatchLayout(long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (mark - (mark + (long)i)) % 65521;
-                if ((double)target <= 2.65)
-                {
-                    mark = (mark - 231) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                result = ((result << 2) ^ (floor ^ result)) % 255;
+                result = result ^ (result + (long)i);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return mark;
+            return result;
         }
     }
 }
