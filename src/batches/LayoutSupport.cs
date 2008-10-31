@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long target)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 2) + (target - score)) % 1000;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first record tools entry that matches the target.</summary>
