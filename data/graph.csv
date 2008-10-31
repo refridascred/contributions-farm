@@ -1,6 +1,6 @@
-id,ratio,level
-1,80.64,88.65
-2,870,777
-3,primary,775
-4,strict,39.75
-5,536,588
+id,rank,region,token
+1,356,83.68,81.25
+2,18.97,open,314
+3,primary,strict,75.46
+4,292,472,25.09
+5,675,local,legacy
