@@ -18,16 +18,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] values, long bound)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long anchor = 6;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor + anchor) % 101) + bound;
-                anchor = (anchor - (entry * 4)) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Fold a list of support readings.</summary>
