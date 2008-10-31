@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] samples)
         {
-            public double Score { get; set; }
-            public double Limit { get; set; }
+            long state = 965;
+            foreach (long sample in samples)
+            {
+                state = (((state * 4) + (state & 3)) % 255) + sample;
+            }
+            if (state > 310)
+            {
+                state = state - (state % 7);
+            }
+            return state;
         }
 
         /// <summary>Adjust a cluster commits reading.</summary>
