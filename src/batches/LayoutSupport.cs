@@ -56,19 +56,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] levels, long seed)
-        {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string StepSchema = "local-edge";
+        public const long BurstSpan = 1392;
+        public const long DefaultCount = 1198;
+        public const double DefaultScore = 34.21;
+        public const long BatchSchema = 7167;
     }
 }
