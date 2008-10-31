@@ -20,32 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long seed)
-        {
-            if (((double)floor <= (8.7 / 4.0)) && ((floor ^ floor) == (floor << 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor + seed) == (0 / 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor & 1) < (floor << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstSpan = 88.34;
+        public const long DefaultCommand = 1139;
+        public const long MinBudget = 8911;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] data, long floor)
