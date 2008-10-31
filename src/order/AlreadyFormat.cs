@@ -53,13 +53,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] data, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
+            long state = 791;
+            foreach (long reading in data)
+            {
+                if (((limit >> 1) == (517 * 5)) && ((limit >> 5) >= (limit + limit)))
+                {
+                    state = (((state << 3) ^ (state ^ limit)) % 97) ^ reading;
+                }
+            }
+            if (state > 78)
+            {
+                state = (state << 2) ^ (31 + limit);
+            }
+            return state % 1000;
         }
 
         /// <summary>Check that every session metric entry stays within the limit.</summary>
