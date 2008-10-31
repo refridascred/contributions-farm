@@ -1,11 +1,11 @@
 # Command notes
 
-Run the cluster check before changing any metrics limits.
-When a graph fails, the notes handler retries a few times before giving up.
-Use route settings to tune how often schema data is refreshed.
+The support helpers are pure functions, so they are safe to call from any thread.
+When a command fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new notes fields
-- Keep metric values small
-- Prefer context defaults
+- Document new buffer fields
+- Keep batches values small
+- Review notes limits each release
+- Prefer format defaults
