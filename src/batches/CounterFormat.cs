@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] data)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
+            long result = 832;
+            foreach (long cell in data)
+            {
+                if (((cell % 8) > (cell + cell)) || ((result ^ cell) > (result + result)))
+                {
+                    result = (result ^ cell) % 65521;
+                }
+            }
+            if (result > 4)
+            {
+                result = ((result << 2) ^ result) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the cache kind values.</summary>
