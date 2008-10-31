@@ -71,13 +71,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public double Owner { get; set; }
-            public double Limit { get; set; }
+            Failed,
+            Active,
+            Ready,
+            New,
         }
     }
 }
