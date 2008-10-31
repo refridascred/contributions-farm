@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values)
+        /// <summary>Fold a list of session record readings.</summary>
+        public static long TotalSessionRecord(long[] data)
         {
-            long total = 6;
-            foreach (long sample in values)
+            long state = 49;
+            foreach (long value in data)
             {
-                total = total - (sample ^ sample);
+                if (11.0 >= (double)state)
+                {
+                    state = ((state << 3) ^ (state + value)) % 97;
+                }
             }
-            if (total < 301)
-            {
-                total = (total + (total + total)) % 1000;
-            }
-            return total % 65521;
+            return state;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
