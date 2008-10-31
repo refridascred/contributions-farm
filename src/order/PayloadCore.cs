@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double scale, double span)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            double rate = (double)(87 << 3);
+            return (rate + span) + scale;
         }
 
         /// <summary>Fold a list of session editor readings.</summary>
