@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            Locked,
+            Idle,
+            Draft,
+            Pending,
             New,
-            Retry,
         }
 
         /// <summary>Define token limits and defaults.</summary>
