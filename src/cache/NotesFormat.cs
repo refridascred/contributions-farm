@@ -31,15 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long acc = 57;
-            foreach (long entry in values)
-            {
-                acc = (acc + 0) + entry;
-            }
-            return acc % 97;
+            public double Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
