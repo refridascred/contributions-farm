@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 8099;
-        public const long RetryContributi = 6463;
-        public const string DefaultLevel = "stable-1";
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] levels)
