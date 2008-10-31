@@ -75,10 +75,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 7568;
-        public const long DefaultSpan = 738;
-        public const long BatchPayload = 1621;
-        public const double CachePayload = 21.7;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] series, long seed)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
