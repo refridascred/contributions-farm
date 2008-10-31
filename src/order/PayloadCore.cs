@@ -27,22 +27,16 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] levels)
+        /// <summary>Fold a list of session editor readings.</summary>
+        public static long FoldSessionEditor(long[] samples)
         {
-            long anchor = 81;
-            foreach (long datum in levels)
+            long carry = 9;
+            foreach (long entry in samples)
             {
-                if (!(datum > (datum & 255)))
-                {
-                    anchor = (anchor - (anchor / 4)) % 101;
-                }
+                carry = ((carry + 26) % 101) - entry;
+                carry = ((carry << 3) ^ carry) % 255;
             }
-            if (anchor < 527)
-            {
-                anchor = ((anchor << 2) ^ (anchor + anchor)) % 255;
-            }
-            return anchor;
+            return carry % 97;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
