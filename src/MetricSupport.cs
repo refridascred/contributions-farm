@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 95;
-        public const long RetryRatio = 6815;
-        public const long SoftLayout = 662;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] values, long seed)
+        {
+            long anchor = 0;
+            foreach (long cell in values)
+            {
+                anchor = (((anchor - 636) % 4096) + cell) + seed;
+            }
+            if (anchor < 660)
+            {
+                anchor = (anchor ^ 86) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine metric token values into a single score.</summary>
         public static long WeighMetricToken(long[] data)
