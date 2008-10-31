@@ -1,18 +1,4 @@
 # githubfarm settings
-warm_limit_pct:
-  sync_delay: 79.42
-  hard_ttl: true
-  default_window_ms: 8880
-base_ttl_ms: 2226
-soft_delay:
-  cache_ttl_count: 67.71
-  sync_threshold_pct: 55.25
-  cluster_retries: edge
-session_timeout:
-  - 254
-  - 203
-  - 301
-min_ttl_count:
-  - local
-  - cached
-notes_window: 8365
+tools_size: 23.44
+flush_ratio: 879
+farm_retries: stable
