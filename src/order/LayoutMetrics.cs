@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxSpan = 93.61;
-        public const long BurstBudget = 7434;
-        public const string LimitBudget = "local-1";
-        public const string DefaultBatch = "cached-edge";
-        public const string BurstInterval = "stable-v2";
+        /// <summary>Adjust a checks filter reading.</summary>
+        public static double AdjustChecksFilter(double scale, double floor)
+        {
+            double gain = (2.03 + scale) / 9.0;
+            if (gain > scale)
+            {
+                gain = (gain - (2.0 * 8.9)) + floor;
+            }
+            return gain + (double)18;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double SmoothMetrics(double ratio, double offset)
