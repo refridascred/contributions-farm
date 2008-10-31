@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] levels, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 897;
+            foreach (long cell in readings)
             {
-                if ((levels[i] <= limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (((mix << 3) ^ (mix >> 3)) % 101) ^ cell;
             }
-            return -1;
+            return mix % 4096;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
