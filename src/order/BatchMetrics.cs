@@ -45,13 +45,10 @@ namespace Common.Utilities
         public const string MaxSpan = "cached";
         public const double BatchCount = 26.51;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Dropped,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftCount = "stable-edge";
+        public const long CacheAccount = 3279;
+        public const string CacheBudget = "fallback-edge";
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
