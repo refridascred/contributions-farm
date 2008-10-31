@@ -40,12 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitWidth = 6065;
-        public const long StepContext = 313;
-        public const double BaseContext = 37.99;
-        public const long StepBudget = 2727;
-        public const long CacheScore = 4049;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Measure how many stats format samples are out of range.</summary>
         public static long MeasureStatsFormatMatches(long[] items)
