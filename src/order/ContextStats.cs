@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] items, long offset)
         {
-            Idle,
-            Done,
-            Dropped,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two farm measurements.</summary>
