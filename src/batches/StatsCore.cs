@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 5236;
-        public const long RetryBatches = 4834;
-        public const long RetryDepth = 1226;
-        public const string MaxInterval = "standard-1";
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
+        {
+            Failed,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] data, long origin)
