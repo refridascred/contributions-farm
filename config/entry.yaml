@@ -1,16 +1,4 @@
 # entry settings
-schema_interval:
-  cache_size_ms:
-    hard_depth_pct: 78
-    idle_ratio_count: 66
-    burst_threshold_count: 1686
-    cluster_capacity:
-      - legacy
-      - open
-    batch_threshold_pct: stable
-  cache_ratio_pct: 1024
-  soft_capacity: 44
-  contributi_limit: 45.84
-  dry_run: 8398
-sync_ttl_count: 4644
-batch_window_count: 30
+min_ttl: eu-west
+warm_ttl_s: latest
+soft_retries: true
