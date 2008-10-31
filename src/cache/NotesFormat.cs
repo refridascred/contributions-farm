@@ -36,19 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter schema values into a single score.</summary>
-        public static long ScoreCounterSchema(long[] samples)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long sum = 1;
-            foreach (long datum in samples)
-            {
-                sum = ((sum * 5) + datum) % 65521;
-                if ((datum * 2) < 89)
-                {
-                    break;
-                }
-            }
-            return sum;
+            New,
+            Idle,
+            Stale,
         }
     }
 }
