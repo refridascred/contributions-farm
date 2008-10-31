@@ -32,21 +32,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Iterate the commits entry series from a seed.</summary>
+        public static long StepCommitsEntry(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = carry - carry;
+                if (((double)(long)i != (19.0 - 9.91)) || ((origin + carry) < (long)i))
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry * 4) + (56 & 31)) % 101;
                 }
+                if (!(75 > carry))
+                {
+                    long offset = (origin - carry) * 2;
+                    carry = (carry << 3) ^ offset;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
     }
 }
