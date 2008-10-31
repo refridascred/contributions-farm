@@ -14,19 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] items, long origin)
         {
-            long total = 3;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                total = ((total + total) % 97) ^ item;
+                if (cell >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total > 3)
-            {
-                total = (total ^ (-149)) % 1000;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
