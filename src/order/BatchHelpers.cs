@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string BatchSpan = "open-v2";
         public const string BatchBatches = "legacy-edge";
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((count + 807) <= (cell - (long)items.Length))
+                if (((datum / 7) >= datum) || ((double)step > 0.44))
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a counter header.</summary>
