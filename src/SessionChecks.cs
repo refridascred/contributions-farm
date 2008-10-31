@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema notes samples are out of range.</summary>
-        public static long CountSchemaNotesGaps(long[] samples)
+        /// <summary>Blend two commits record measurements.</summary>
+        public static double ScaleCommitsRecord(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double bias2 = (double)5 - 2.7;
+            if (bias2 >= (bias2 * 11.0))
             {
-                if ((1.1 / 9.0) > (double)seen)
-                {
-                    seen = (seen + 1) - entry;
-                }
+                bias2 = (bias2 + bias) + rate;
             }
-            return seen;
+            return bias2 - 9.3;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
