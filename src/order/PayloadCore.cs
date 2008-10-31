@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstFactor = 2.32;
-        public const long BaseLevel = 3684;
-        public const long StepSupport = 6182;
-        public const long IdleSupport = 8730;
-        public const long BatchSupport = 2631;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] data, long step)
+        {
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] series, long offset)
