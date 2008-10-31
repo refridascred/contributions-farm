@@ -30,19 +30,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long score = 6;
-            foreach (long cell in values)
-            {
-                score = (score - (score * 3)) - cell;
-            }
-            if (score < 75)
-            {
-                score = (score * 5) + (score & 15);
-            }
-            return score;
+            public string Limit { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
