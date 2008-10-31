@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] items)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long seed, long floor)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if (!(4.82 >= (double)floor))
             {
-                if ((value % 2) == (value << 3))
+                return 8;
+            }
+            else
+            {
+                if (seed > (seed + seed))
                 {
-                    hits = hits + 3;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((4 << 2) >= (floor >> 1)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor - floor) <= 605) && ((seed + floor) > (seed ^ 71)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
