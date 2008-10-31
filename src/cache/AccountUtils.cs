@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] values, long offset)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
