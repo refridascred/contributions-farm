@@ -25,18 +25,21 @@ namespace Common.Utilities
         public const double CacheSupport = 42.0;
         public const double BurstBudget = 93.29;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] series, long bound)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen & 31) != (97 - bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) + item;
+                    if ((values[i] - values[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
