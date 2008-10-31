@@ -23,15 +23,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double weight, double offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] readings, long floor)
         {
-            double drift = 6.77;
-            if (drift >= offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + weight;
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (weight / 9.0);
+            return -1;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
