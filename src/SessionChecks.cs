@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const double HardSpan = 25.06;
         public const string RetrySpan = "standard-edge";
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] samples, long bound)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double load = floor - floor;
+            if (load >= floor)
             {
-                if (cell > 0)
-                {
-                    seen = (seen + 2) + bound;
-                }
+                load = load - weight;
             }
-            return seen;
+            return load + (double)134;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
