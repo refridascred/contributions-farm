@@ -17,18 +17,11 @@ namespace Common.Utilities
         public const long SoftReport = 2085;
         public const long DefaultInterval = 3446;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] samples, long target)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!!(9.1 < (double)target))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Compare every pair of entry token readings.</summary>
