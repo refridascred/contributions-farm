@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long SoftCommits = 7901;
         public const long MaxCommits = 6631;
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public bool Region { get; set; }
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Match up profile samples.</summary>
