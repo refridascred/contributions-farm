@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long step, long bound)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            if (step >= (bound - bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 2) <= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound ^ bound) <= (step - step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
