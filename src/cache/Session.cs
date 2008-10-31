@@ -42,31 +42,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long origin, long bound)
-        {
-            if ((double)origin != (7.3 * 19.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ 85) < origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound << 1) > (10 + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "staging";
+        public const long RetryLevel = 2821;
+        public const long BurstAccount = 9606;
+        public const long MinWidth = 1538;
     }
 }
