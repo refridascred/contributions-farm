@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const long LimitCommits = 225;
         public const long BurstFactor = 6102;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 5213;
-        public const long MinBudget = 9430;
-        public const long RetrySupport = 415;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long WeighPayload(long[] samples)
