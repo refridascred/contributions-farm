@@ -15,18 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] series)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] data)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long state = 28;
+            foreach (long datum in data)
             {
-                if (((cell / 6) > count) || ((count << 1) == (count >> 1)))
-                {
-                    count = count + 2;
-                }
+                state = (state << 2) ^ (state ^ state);
+                state = (state ^ datum) % 65521;
             }
-            return count;
+            return state % 97;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
