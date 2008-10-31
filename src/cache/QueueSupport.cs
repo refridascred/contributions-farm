@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of session record readings.</summary>
-        public static long TotalSessionRecord(long[] data)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] data)
         {
-            long state = 49;
-            foreach (long value in data)
+            long acc = 3;
+            foreach (long sample in data)
             {
-                if (11.0 >= (double)state)
-                {
-                    state = ((state << 3) ^ (state + value)) % 97;
-                }
+                acc = acc + sample;
             }
-            return state;
+            if (acc > 511)
+            {
+                acc = ((acc << 3) ^ 686) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
