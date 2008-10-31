@@ -31,12 +31,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] samples, long limit)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (((limit << 2) > (298 % 2)) || ((919 << 2) != (datum & 15)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
