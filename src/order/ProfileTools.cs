@@ -34,11 +34,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 4573;
-        public const long BatchFactor = 5151;
-        public const long MinBatch = 4188;
-        public const double HardLevel = 66.02;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (9 < (matches - matches))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long SortNotes(long floor, long offset)
