@@ -22,22 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextGaps(long[] values, long target)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (count >= (count % 12))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = ((count + 3) + value) + target;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
