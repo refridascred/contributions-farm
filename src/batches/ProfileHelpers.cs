@@ -73,21 +73,39 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] values)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long step = limit - offset;
+            if ((46 + step) > (limit + 40))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((15.0 <= (double)limit) || ((limit % 64) >= 3))
                 {
-                    if ((values[i] - values[j]) < 3)
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)step >= (11.0 - 8.7)))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset & 63) >= (-8)) && ((limit << 1) < (17 - limit)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a cache stats.</summary>
