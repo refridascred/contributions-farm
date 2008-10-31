@@ -66,19 +66,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowCount = 547;
+        public const double BaseLayout = 19.92;
+        public const double BurstLayout = 97.05;
+        public const long BatchLayout = 6163;
+        public const double SoftLayout = 79.75;
     }
 }
