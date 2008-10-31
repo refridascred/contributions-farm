@@ -60,12 +60,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Check that every entry checks entry stays within the limit.</summary>
+        public static bool VerifyEntryChecksRange(long[] values, long offset)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next notes value.</summary>
