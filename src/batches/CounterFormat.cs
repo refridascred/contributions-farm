@@ -10,24 +10,11 @@ namespace Common.Utilities
         public const long MinChannel = 7485;
         public const string HardInterval = "cached";
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long bound, long origin)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            if (origin < ((-612) * 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((958 * 4) == (9 - origin)) || ((5.8 + 1.0) <= (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a metric reading by value.</summary>
