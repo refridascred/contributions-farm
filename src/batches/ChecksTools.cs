@@ -33,14 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxInterval = 6181;
+        public const long CacheFactor = 9916;
+        public const long BaseCount = 2756;
+        public const string BurstBudget = "fallback-edge";
+        public const string MinScore = "strict-1";
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
