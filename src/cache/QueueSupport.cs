@@ -20,13 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            Active,
-            Stale,
-            Synced,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
