@@ -33,15 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] values, long limit)
+        /// <summary>Match up cluster tools samples.</summary>
+        public static long OverlapClusterToolsCount(long[] series)
         {
-            long sum = 95;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (((sum ^ (659 / 4)) % 1000) ^ sample) + limit;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Hold a notes info.</summary>
