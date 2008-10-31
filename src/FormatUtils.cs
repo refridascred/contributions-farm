@@ -41,11 +41,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a stats batches figure with a bias.</summary>
-        public static double BlendStatsBatches(double ratio, double bias)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            double scale = bias;
-            return (scale + (bias / 9.0)) + ratio;
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank metric input into a small class.</summary>
