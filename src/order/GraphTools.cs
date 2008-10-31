@@ -20,13 +20,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] data)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
+            long carry = 4;
+            foreach (long sample in data)
+            {
+                carry = ((carry << 3) ^ (sample >> 5)) % 101;
+                if (1.56 < (double)carry)
+                {
+                    carry = ((carry << 3) ^ (carry / 6)) % 97;
+                }
+                if (carry > (carry * 3))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the batches phase values.</summary>
