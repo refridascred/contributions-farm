@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            Failed,
+            New,
+            Done,
             Ready,
-            Pending,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Combine command values into a single score.</summary>
