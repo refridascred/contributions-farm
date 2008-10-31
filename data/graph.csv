@@ -1,7 +1,10 @@
-id,region,active
-1,staging,195
-2,59.12,460
-3,57.65,620
-4,608,42.15
-5,917,24.72
-6,staging,38.16
+id,token,weight,region
+1,cached,44.13,781
+2,298,95.6,77.3
+3,blue,legacy,latest
+4,46,505,61.51
+5,670,719,blue
+6,918,601,staging
+7,13.46,52.2,276
+8,399,458,latest
+9,771,25.35,cached
