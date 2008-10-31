@@ -31,10 +31,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "standard";
-        public const long DefaultScore = 8486;
-        public const long MaxFactor = 3290;
-        public const long CacheCount = 1996;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values)
+        {
+            long acc = 57;
+            foreach (long entry in values)
+            {
+                acc = (acc + 0) + entry;
+            }
+            return acc % 97;
+        }
     }
 }
