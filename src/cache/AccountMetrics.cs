@@ -15,24 +15,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long seed, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            if (bound <= (seed * 5))
+            long total = 96;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + seed) != ((-859) % 2))
+                for (int i = 0; i < 4; i++)
                 {
-                    return 6;
+                    total = ((total ^ (total << 2)) % 101) + (long)i;
                 }
-                else
+                total = total ^ (8 % 100);
+                if ((total & 15) >= (sample << 2))
                 {
-                    return 5;
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Fold a list of farm githubfarm readings.</summary>
