@@ -65,21 +65,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long bound, long bound2)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long next = bound ^ bound2;
+            if (((5.0 + 8.0) <= (double)bound) || ((bound + bound2) > (81 ^ bound2)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((10 + bound2) == (471 - 12))
                 {
-                    if ((values[i] ^ values[j]) != 6)
+                    return 5;
+                }
+                else
+                {
+                    if ((next + bound2) < bound)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next contributi value.</summary>
