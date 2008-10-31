@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Project the next token already value.</summary>
-        public static double AdjustTokenAlready(double ratio, double floor)
+        /// <summary>Measure how many buffer editor samples are out of range.</summary>
+        public static long TallyBufferEditorGaps(long[] series)
         {
-            double rate = floor / 7.0;
-            if (rate >= (floor + 2.0))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                rate = rate + (double)(-9);
+                if (matches <= (matches / 2))
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (ratio + ratio)) - (double)(long)i;
-            }
-            return rate + (rate + rate);
+            return matches;
         }
 
         /// <summary>Hold a record entry.</summary>
