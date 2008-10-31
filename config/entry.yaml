@@ -1,10 +1,4 @@
 # entry settings
-idle_window_s:
-  poll_delay_count: staging
-  batch_interval: open
-  retry_depth_s: true
-  enabled: 91.45
-  record_delay: true
-  route_timeout: 3470
-metric_limit: true
-compress: 500
+metrics_size: 44
+base_timeout_ms: eu-west
+hard_ttl: true
