@@ -33,21 +33,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 677;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc + entry) % 65521;
             }
-            return seen;
+            if (acc < 910)
+            {
+                acc = acc - ((-51) & 31);
+            }
+            return acc;
         }
     }
 }
