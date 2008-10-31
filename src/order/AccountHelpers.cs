@@ -34,15 +34,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double BlendSupport(double ratio, double floor)
+        /// <summary>Validate graph filter readings against a bound.</summary>
+        public static bool ValidateGraphFilterBounds(long[] levels, long step)
         {
-            double load = ratio;
-            if (load < (double)842)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                load = load + (load - load);
+                if (sample <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load - floor;
+            return found;
         }
 
         /// <summary>Combine profile batch values into a single score.</summary>
