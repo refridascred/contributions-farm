@@ -1,35 +1,29 @@
 # support settings
-soft_retries: 96.2
-already_capacity: stable
-burst_timeout:
-  - 259
-  - 10
-  - 205
-persist: 30
-base_ratio:
-  base_size_s: true
-  audit: 1921
-  hard_ttl_pct:
-    warm_retries_ms: local
-    cluster_timeout: 14.72
-    buffer_capacity:
-      - fallback
-      - blue
-      - blue
-      - open
-    min_delay_pct:
-      - 334
-      - 237
-      - 30
-    default_capacity: 60
-    strict: 95.59
-  soft_threshold_count:
-    hard_ratio_ms:
-      - 499
-      - 455
-    hard_ttl_ms: true
-    batch_delay_s: 8157
-    queue_ratio: true
-  persist: staging
-  support_threshold: 75
-dry_run: 3191
+idle_window_count: true
+order_delay:
+  graph_threshold: 72.77
+  batch_limit_count: 63
+  hard_interval_count: 375
+  retry_size: cached
+  record_window: false
+  retry_depth:
+    - 70
+    - 293
+    - 172
+poll_delay_count: 81.21
+filter_timeout:
+  commits_limit: eu-west
+  sync_capacity_count: local
+  entry_window:
+    - 396
+    - 48
+  persist:
+    idle_limit: 60.29
+    cluster_capacity: true
+    burst_timeout_ms: 100
+    hard_delay: cached
+    report_ttl: strict
+  report_retries: 40
+  batch_size_s: 1024
+burst_capacity_count: 13.07
+audit: 13.8
