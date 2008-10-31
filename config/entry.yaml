@@ -1,5 +1,16 @@
 # entry settings
-max_ttl: strict
-buffer_interval: 79.43
-route_ratio: false
-batch_capacity_s: 60
+channel_timeout: primary
+counter_capacity:
+  support_limit:
+    - 297
+    - 443
+    - 80
+    - 480
+  cache_window_pct: strict
+  idle_timeout_pct: 1649
+  default_threshold_count: standard
+  dry_run: 250
+  contributi_depth: legacy
+persist: edge
+compress: latest
+min_threshold_count: true
