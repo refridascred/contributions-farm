@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] series, long seed)
+        /// <summary>Validate batch notes readings against a bound.</summary>
+        public static bool ValidateBatchNotesLimits(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (series[i] > seed)
+                if (value != limit)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
