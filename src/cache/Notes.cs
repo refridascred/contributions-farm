@@ -22,13 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            Active,
+            Closed,
+            Stale,
         }
 
         /// <summary>Measure how many account counter samples are out of range.</summary>
