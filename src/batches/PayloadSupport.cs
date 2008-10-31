@@ -19,15 +19,39 @@ namespace Common.Utilities
         public const long MaxLevel = 5282;
         public const double SoftCount = 63.17;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long floor, long target)
         {
-            long state = 47;
-            foreach (long cell in items)
+            long bound = floor ^ target;
+            if ((1 ^ 779) > (target + target))
             {
-                state = (((state << 3) ^ (state ^ state)) % 1000) ^ cell;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((double)bound < (1.7 / 4.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (96 < target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((bound - target) > (floor % 8)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
