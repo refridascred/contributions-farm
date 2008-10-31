@@ -28,12 +28,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] values, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
+            long sum = 95;
+            foreach (long sample in values)
+            {
+                sum = (((sum ^ (659 / 4)) % 1000) ^ sample) + limit;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
