@@ -23,18 +23,21 @@ namespace Common.Utilities
             return bias2 - 9.3;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] items, long offset)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches + datum) > (datum - matches))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 2) + offset;
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a graph info.</summary>
