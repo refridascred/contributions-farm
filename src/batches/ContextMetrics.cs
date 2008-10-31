@@ -39,19 +39,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the commits profile entries that pass the check.</summary>
-        public static long TallyCommitsProfileMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((57 >> 5) <= (tally % 60))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "legacy-v2";
+        public const double MinCount = 97.27;
+        public const long StepContext = 3155;
+        public const double RetryContext = 12.88;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] samples)
