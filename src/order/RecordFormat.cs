@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 6184;
-        public const long BurstDepth = 3063;
-        public const string BurstLevel = "legacy-1";
-        public const string BurstNotes = "standard";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 4970;
+        public const string MaxFactor = "legacy-1";
+        public const double SoftCache = 16.3;
+        public const long WindowCache = 2727;
+        public const long MinCache = 2540;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LookupEntryIndex(long[] readings, long seed)
