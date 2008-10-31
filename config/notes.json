@@ -1,24 +1,7 @@
 {
-  "cache_depth": "latest",
-  "graph_retries": {
-    "readonly": "fallback",
-    "min_limit": 97.58,
-    "warm_ratio_s": "latest",
-    "idle_capacity_pct": {
-      "token_ttl": 76.99,
-      "sync_size_pct": 100,
-      "verbose": 4415
-    },
-    "strict": {
-      "token_interval": "eu-west",
-      "warm_capacity_ms": 93,
-      "persist": ["staging", "staging"],
-      "max_size_ms": 89,
-      "idle_limit_count": 990
-    },
-    "min_timeout": "primary"
-  },
-  "record_limit": true,
-  "context_window": 9432,
-  "batch_window_s": "strict"
+  "batch_ttl": 4936,
+  "graph_size": 30,
+  "max_window_count": 60,
+  "strict": "eu-west",
+  "default_depth": false
 }
