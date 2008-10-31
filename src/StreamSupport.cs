@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] levels)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if ((double)item < (5.5 / 2.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a profile record.</summary>
