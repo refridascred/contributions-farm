@@ -36,12 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] items, long limit)
         {
-            New,
-            Idle,
-            Stale,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item >> 5) < (item + limit))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
