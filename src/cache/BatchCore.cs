@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const long HardWindow = 343;
         public const long StepSize = 5945;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] readings, long origin)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long score = 8;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((((score << 3) ^ (-950)) % 97) ^ value) + origin;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score < 226)
-            {
-                score = score ^ (score - score);
-            }
-            return score % 65521;
+            return count;
         }
 
         /// <summary>Describe the format phase values.</summary>
