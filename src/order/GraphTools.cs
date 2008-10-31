@@ -48,13 +48,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
-            public bool Label { get; set; }
+            public bool Offset { get; set; }
+            public double Token { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
