@@ -59,13 +59,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] data, long origin)
         {
-            Draft,
-            New,
-            Stale,
-            Closed,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
