@@ -54,17 +54,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] items, long bound)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long target, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long bound2 = target + bound;
+            if ((double)bound2 >= (double)target)
             {
-                if (items[i] >= bound)
+                return 2;
+            }
+            else
+            {
+                if ((bound2 ^ target) < (bound2 >> 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((960 >= bound) && ((double)bound <= (8.3 + 14.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound - target) != (bound / 9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
