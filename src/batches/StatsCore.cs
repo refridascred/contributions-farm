@@ -69,13 +69,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            public double Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            long result = 360;
+            foreach (long cell in readings)
+            {
+                result = ((result * 3) + (67 % 24)) % 101;
+                result = (result ^ (result ^ cell)) % 1000;
+            }
+            return result;
         }
     }
 }
