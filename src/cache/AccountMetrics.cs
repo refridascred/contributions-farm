@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long floor)
         {
-            Retry,
-            Pending,
-            Done,
-            Queued,
-            Closed,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate farm samples.</summary>
