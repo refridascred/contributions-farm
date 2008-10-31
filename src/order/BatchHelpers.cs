@@ -16,19 +16,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Match up notes route samples.</summary>
+        public static long CompareNotesRouteCount(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((acc - step) == (long)i)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    continue;
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Digest a series of token batch entries.</summary>
