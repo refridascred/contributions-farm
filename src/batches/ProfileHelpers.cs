@@ -79,17 +79,32 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] samples, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long limit, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = limit + seed;
+            if ((double)gap <= (4.8 + 2.72))
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((limit & 31) == (limit + limit))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (((seed & 63) <= limit) && ((56 * 2) < (limit - (-164))))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
