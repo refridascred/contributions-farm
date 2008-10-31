@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long floor, long bound)
+        /// <summary>Rank checks stream input into a small class.</summary>
+        public static long ClassifyChecksStream(long floor, long offset)
         {
-            if ((double)bound >= 6.0)
+            if ((offset - 97) <= offset)
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((14.0 * 15.0) == (double)floor)
+                if ((offset * 5) == (77 & 3))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    return 1;
+                    return 2;
                 }
             }
         }
