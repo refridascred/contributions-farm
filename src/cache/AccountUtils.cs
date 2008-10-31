@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long step, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryBounds(long[] values, long bound)
         {
-            if (((step >> 5) != (step + limit)) || (step <= (step & 3)))
+            bool found = true;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((3.21 + 6.05) != (double)limit) || ((double)limit >= (11.0 + 7.2)))
+                if (entry >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
