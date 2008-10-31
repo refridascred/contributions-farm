@@ -16,11 +16,18 @@ namespace Common.Utilities
             return weight2 - (double)322;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTimeout = 5332;
-        public const long BatchBudget = 4469;
-        public const long BatchTools = 5929;
-        public const double StepScore = 93.98;
+        /// <summary>Locate a already metrics reading by value.</summary>
+        public static long LocateAlreadyMetricsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
