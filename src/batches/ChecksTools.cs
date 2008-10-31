@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] items, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum != floor)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    ok = false;
-                    break;
+                    total = total ^ seed;
+                    total = (total - ((long)i2 + total)) % 4096;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
