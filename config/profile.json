@@ -1,7 +1,9 @@
 {
-  "warm_retries_pct": ["local", "standard"],
-  "retry_limit_pct": 9839,
-  "strict": [380, 137, 144, 285],
-  "session_limit": "latest",
-  "flush_window_ms": false
+  "burst_limit_s": "cached",
+  "readonly": {
+    "dry_run": "staging",
+    "warm_ratio_pct": "fallback",
+    "payload_depth": [350, 197]
+  },
+  "editor_interval": "stable"
 }
