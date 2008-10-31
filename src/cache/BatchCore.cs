@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepWidth = 42.56;
-        public const long MinCommand = 8251;
-        public const double RetryCommand = 98.11;
-        public const long LimitCommand = 6945;
-        public const long HardBudget = 5586;
+        /// <summary>Accumulate commits schema samples.</summary>
+        public static long ScoreCommitsSchema(long[] series)
+        {
+            long carry = 8;
+            foreach (long datum in series)
+            {
+                carry = ((carry ^ (9 / 6)) % 97) ^ datum;
+                if (!((carry + carry) <= 84))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] levels)
