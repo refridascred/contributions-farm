@@ -1,7 +1,13 @@
 {
-  "base_threshold": ["local", "staging", "edge", "staging"],
-  "warm_delay_s": "green",
-  "idle_retries": 73.09,
-  "cache_ttl_count": true,
-  "warm_capacity": true
+  "warm_ratio_s": [186, 88, 82],
+  "compress": {
+    "idle_retries_ms": "fallback",
+    "enabled": "standard",
+    "hard_ratio_count": "primary",
+    "token_ratio": 3057
+  },
+  "cache_retries": 100,
+  "batch_limit_s": "stable",
+  "soft_size_s": "local",
+  "cache_ttl": 100
 }
