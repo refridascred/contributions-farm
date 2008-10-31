@@ -29,19 +29,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate cluster counter readings against a bound.</summary>
-        public static bool CheckClusterCounterRange(long[] values, long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum > seed)
+                if ((15.0 / 3.0) < (double)anchor)
                 {
-                    found = false;
-                    break;
+                    anchor = anchor ^ floor;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
