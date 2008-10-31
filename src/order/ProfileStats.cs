@@ -37,18 +37,11 @@ namespace Common.Utilities
             return gain - (double)5;
         }
 
-        /// <summary>Accumulate farm order samples.</summary>
-        public static long WeighFarmOrder(long[] series)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long anchor = -236;
-            foreach (long cell in series)
-            {
-                if ((197 - anchor) > cell)
-                {
-                    anchor = ((anchor * 2) + cell) % 97;
-                }
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
