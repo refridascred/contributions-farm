@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] samples, long limit)
-        {
-            long acc = 9;
-            foreach (long cell in samples)
-            {
-                acc = (acc ^ (limit * 5)) + cell;
-                if ((limit % 64) <= limit)
-                {
-                    acc = (acc << 3) ^ (acc + 89);
-                }
-                acc = acc ^ (acc - acc);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchCount = 521;
+        public const long IdleFilter = 347;
+        public const long RetryFilter = 3781;
+        public const long BaseFilter = 4133;
+        public const long MinCount = 8984;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long CacheSupport = 8366;
