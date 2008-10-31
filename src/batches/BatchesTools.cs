@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 1;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((cell << 2) < (cell * 3))
                 {
-                    if ((samples[i] + samples[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - (cell >> 4)) % 255;
                 }
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Digest a series of command entries.</summary>
