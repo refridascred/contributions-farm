@@ -42,17 +42,18 @@ namespace Common.Utilities
         public const long RetryLayout = 1180;
         public const double MinLayout = 13.36;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] series, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (series[i] <= origin)
+                if ((double)tally != (20.0 - 8.13))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
