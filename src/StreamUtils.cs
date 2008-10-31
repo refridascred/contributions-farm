@@ -53,12 +53,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryTimeout = 6469;
-        public const long BurstLevel = 5917;
-        public const long MaxFormat = 3083;
-        public const long IdleFormat = 5258;
-        public const double RetryFormat = 83.87;
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items, long offset)
+        {
+            long anchor = 75;
+            foreach (long sample in items)
+            {
+                if ((sample & 15) != (sample + anchor))
+                {
+                    anchor = (anchor ^ (anchor & 15)) % 101;
+                }
+                if ((offset ^ offset) >= ((long)items.Length + sample))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool ValidateSessionBounds(long[] readings, long origin)
