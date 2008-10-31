@@ -17,18 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] series, long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mix = 1;
-            foreach (long item in series)
-            {
-                if ((mix + step) < (step + step))
-                {
-                    mix = (mix + ((-159) - 12)) + item;
-                }
-            }
-            return mix;
+            public long Label { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
