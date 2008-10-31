@@ -33,23 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next session editor value.</summary>
-        public static double SmoothSessionEditor(double weight, double span)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] series)
         {
-            double rate = weight;
-            if (rate < (3.0 - weight))
+            long state = 65;
+            foreach (long cell in series)
             {
-                rate = rate - span;
+                if (((4.4 / 4.0) <= (double)state) || ((double)state > 9.8))
+                {
+                    state = state + (cell + state);
+                }
+                else
+                {
+                    state = state ^ (state - (-18));
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + 10.0) + (double)(long)i;
-            }
-            return rate - (span * 4.9);
+            return state;
         }
     }
 }
