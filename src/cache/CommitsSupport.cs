@@ -62,22 +62,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] readings, long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long seed, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long delta = seed + floor;
+            if ((floor - floor) != (floor - 61))
             {
-                if ((sample * 5) < (hits / 2))
+                return 7;
+            }
+            else
+            {
+                if ((floor ^ delta) != (96 - delta))
                 {
-                    hits = (hits + 3) + limit;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((71 - seed) <= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((delta + 0) == (floor >> 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
