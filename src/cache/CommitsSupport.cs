@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
+            Stale,
+            Pending,
+            Queued,
         }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
