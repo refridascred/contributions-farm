@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] samples)
         {
-            long mix = 897;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                mix = (((mix << 3) ^ (mix >> 3)) % 101) ^ cell;
+                if ((8.99 + 9.8) <= (double)datum)
+                {
+                    count = count + 2;
+                }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
