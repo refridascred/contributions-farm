@@ -11,12 +11,27 @@ namespace Common.Utilities
         public const double MinBatch = 7.03;
         public const double BaseBatch = 66.35;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstTimeout = 1262;
-        public const long WindowLayout = 3258;
-        public const string MaxWidth = "strict-v2";
-        public const string DefaultLayout = "stable-1";
-        public const string MinLayout = "open-edge";
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] levels, long seed)
+        {
+            long result = 839;
+            foreach (long datum in levels)
+            {
+                if ((result < 664) && ((seed / 7) > (long)levels.Length))
+                {
+                    result = result + result;
+                }
+                else
+                {
+                    result = ((result * 4) + ((-4) / 2)) % 101;
+                }
+                if (datum > (result + seed))
+                {
+                    result = result + (datum ^ datum);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long DeriveFormat(long target)
