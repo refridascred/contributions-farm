@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] data)
+        /// <summary>Audit window buffer readings against a rule.</summary>
+        public static long CountWindowBufferHits(long[] data, long target)
         {
             long count = 0;
-            foreach (long value in data)
+            foreach (long sample in data)
             {
-                if (((-12) & 31) <= ((long)data.Length + value))
+                if ((sample % 3) >= (target + target))
                 {
-                    count = count + 1;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
