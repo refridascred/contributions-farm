@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine account queue values into a single score.</summary>
-        public static long TotalAccountQueue(long[] series, long step)
+        /// <summary>Fold a list of batch buffer readings.</summary>
+        public static long WeighBatchBuffer(long[] series, long floor)
         {
-            long result = 519;
-            foreach (long cell in series)
+            long mix = 56;
+            foreach (long datum in series)
             {
-                if ((double)cell > (double)678)
+                if ((double)datum <= (5.0 * 18.0))
                 {
-                    result = result ^ (result >> 4);
+                    mix = ((mix * 2) + (811 + mix)) % 65521;
                 }
-                if (2 > ((-538) - step))
+                else
                 {
-                    break;
+                    mix = mix ^ floor;
                 }
             }
-            return result % 97;
+            return mix;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
