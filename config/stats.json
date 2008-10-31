@@ -1,7 +1,16 @@
 {
-  "token_retries": "edge",
-  "idle_depth_pct": 43.82,
-  "hard_capacity": "staging",
-  "min_ratio": "latest",
-  "batch_retries": [218, 132, 445, 331]
+  "stream_delay": 1024,
+  "warm_ratio_s": 22.91,
+  "verbose": "staging",
+  "max_size": ["stable", "fallback", "edge"],
+  "dry_run": {
+    "dry_run": 16,
+    "persist": {
+      "min_depth_ms": 7218,
+      "batch_limit_ms": ["fallback", "open"],
+      "poll_ratio_ms": "edge"
+    },
+    "buffer_depth": 1024
+  },
+  "editor_interval": 5868
 }
