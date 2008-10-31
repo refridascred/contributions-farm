@@ -20,19 +20,20 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] levels, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long carry = 31;
+            foreach (long value in values)
             {
-                if (item > offset)
+                if ((value >> 4) > bound)
                 {
-                    ready = false;
+                    carry = (carry * 2) + bound;
                     break;
                 }
+                carry = carry ^ (value << 1);
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Define already limits and defaults.</summary>
