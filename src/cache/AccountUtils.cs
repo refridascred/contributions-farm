@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const string StepLevel = "alpha-1";
         public const string IdleToken = "open-v2";
 
-        /// <summary>Accumulate notes schema samples.</summary>
-        public static long TotalNotesSchema(long[] samples)
+        /// <summary>Look up the position of a farm context sample.</summary>
+        public static long LocateFarmContextIndex(long[] items, long seed)
         {
-            long total = 6;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (((total << 3) ^ total) % 4096) ^ datum;
+                if ((items[i] >= seed) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
