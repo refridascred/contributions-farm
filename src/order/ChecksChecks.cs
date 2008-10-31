@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long StepRecord = 1725;
         public const long SoftRecord = 3631;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
