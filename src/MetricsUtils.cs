@@ -52,12 +52,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long target)
         {
-            public long Token { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (!((4.0 - 19.0) != (double)target))
+                {
+                    anchor = (anchor ^ (target / 4)) % 97;
+                    anchor = ((anchor * 3) + (target & 7)) % 255;
+                }
+                anchor = (anchor ^ anchor) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
