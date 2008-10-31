@@ -13,17 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Find the first record tools entry that matches the target.</summary>
-        public static long LocateRecordToolsIndex(long[] data, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterRange(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if (data[i] >= origin)
+                if (datum != offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
