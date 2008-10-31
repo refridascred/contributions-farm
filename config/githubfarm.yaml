@@ -1,31 +1,5 @@
 # githubfarm settings
-already_ttl: 1024
-metrics_ratio:
-  cache_threshold: 14.8
-  contributi_capacity: cached
-  idle_timeout_s:
-    - 60
-    - 86
-    - 112
-  idle_ttl_ms: false
-  enabled: 30
-sync_size_pct:
-  - legacy
-  - local
-min_retries_count:
-  dry_run:
-    sync_threshold_pct: false
-    min_capacity_pct: 500
-    dry_run:
-      - 439
-      - 3
-      - 226
-      - 248
-    batches_ratio:
-      - 226
-      - 140
-      - 424
-      - 74
-    soft_delay: false
-  strict: stable
-  idle_size_pct: false
+soft_limit: 34.65
+poll_limit_count: standard
+dry_run: 60
+compress: 97
