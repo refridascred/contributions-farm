@@ -46,21 +46,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] levels)
+        /// <summary>Roll a buffer account counter forward.</summary>
+        public static long IterateBufferAccount(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((total % 97) > total)
                 {
-                    if ((levels[i] + levels[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 3) ^ (limit % 12)) % 4096;
                 }
+                total = total ^ ((long)i + total);
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
     }
 }
