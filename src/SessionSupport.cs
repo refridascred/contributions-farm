@@ -33,11 +33,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long seed)
         {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
+            long score = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                score = (score << 2) ^ (score << 1);
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
