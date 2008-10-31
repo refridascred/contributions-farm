@@ -17,21 +17,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 59;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample * 2) < mix)
                 {
-                    if ((samples[i] - samples[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix + (seed - mix)) % 101;
+                    mix = mix - (sample % 7);
+                }
+                if ((6.63 * 1.6) == (double)mix)
+                {
+                    mix = (mix ^ (mix - seed)) % 101;
+                }
+                if (((double)sample > (double)mix) || ((0.3 - 16.0) == (double)sample))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix < 92)
+            {
+                mix = ((mix << 2) ^ (seed & 127)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count payload entry pairs that satisfy a relation.</summary>
