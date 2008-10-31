@@ -46,38 +46,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long limit, long limit2)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if ((limit2 + limit2) > limit2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((limit2 + limit2) > (limit << 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((491 ^ limit) < (limit2 >> 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit >> 4) < (limit + limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
