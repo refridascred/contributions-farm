@@ -22,9 +22,11 @@ namespace Common.Utilities
         public const long BatchTools = 5929;
         public const double StepScore = 93.98;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetrySpan = 8965;
-        public const long BaseOrder = 3856;
-        public const string BaseTimeout = "latest-1";
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
