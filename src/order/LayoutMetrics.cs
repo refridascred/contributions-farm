@@ -29,26 +29,19 @@ namespace Common.Utilities
         public const long IdleChecks = 7613;
         public const double BaseChecks = 23.55;
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] readings, long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double bias2)
         {
-            long anchor = 94;
-            foreach (long sample in readings)
+            double bias3 = bias2;
+            if (bias3 <= (bias3 / 8.0))
             {
-                if ((sample % 10) >= (target >> 3))
-                {
-                    anchor = (anchor + (anchor - sample)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ (sample & 127);
-                }
-                if ((target << 1) >= (anchor - (-42)))
-                {
-                    break;
-                }
+                bias3 = (bias3 + bias3) + bias;
             }
-            return anchor % 1000;
+            for (int i = 0; i < 4; i++)
+            {
+                bias3 = (bias3 - 1.0) + (double)(long)i;
+            }
+            return bias3 - (bias2 / 2.0);
         }
     }
 }
