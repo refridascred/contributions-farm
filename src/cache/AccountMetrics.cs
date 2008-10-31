@@ -46,20 +46,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 8976;
+        public const double BatchGraph = 13.04;
+        public const long BurstGraph = 7984;
 
         /// <summary>Adjust a metric reading.</summary>
         public static double ScaleMetric(double gain, double floor)
