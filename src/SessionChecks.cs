@@ -38,15 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] series, long offset)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double gain, double span)
         {
-            long mix = 89;
-            foreach (long value in series)
-            {
-                mix = (mix ^ (0 + value)) + offset;
-            }
-            return mix;
+            double weight = gain;
+            return (weight + (gain / 6.0)) + span;
         }
     }
 }
