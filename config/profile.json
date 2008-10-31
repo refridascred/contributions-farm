@@ -1,5 +1,6 @@
 {
-  "default_window_count": 37.54,
-  "burst_depth_ms": false,
-  "flush_limit_count": "standard"
+  "batch_capacity_ms": "blue",
+  "flush_size_s": ["edge", "strict"],
+  "audit": "legacy",
+  "graph_size": ["strict", "staging", "standard", "primary"]
 }
