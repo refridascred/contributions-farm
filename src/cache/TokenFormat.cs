@@ -24,39 +24,17 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long floor, long floor2)
+        /// <summary>Locate a batch metric reading by value.</summary>
+        public static long LocateBatchMetricIndex(long[] values, long step)
         {
-            long bound = floor + floor2;
-            if ((floor / 8) < (bound * 5))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor >> 2) != (bound ^ bound))
+                if ((values[i] <= step) && ((values[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor2 & 31) <= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound / 3) >= (6 + floor2)) || ((double)floor > 1.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
