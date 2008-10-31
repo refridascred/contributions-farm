@@ -62,15 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double weight, double floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] readings, long limit)
         {
-            double weight2 = (1.41 - floor) * 5.56;
-            if (weight2 < weight2)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                weight2 = (weight2 + (floor - floor)) - weight;
+                if ((sample * 5) < (hits / 2))
+                {
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return weight2 - 1.0;
+            return hits;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
