@@ -14,19 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] items, long origin)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Score { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
