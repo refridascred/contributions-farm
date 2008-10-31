@@ -20,18 +20,12 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleFactor = 2884;
+        public const double HardSize = 88.19;
+        public const long RetryBuffer = 6170;
+        public const long IdleBudget = 9312;
+        public const double LimitBuffer = 15.4;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long origin)
