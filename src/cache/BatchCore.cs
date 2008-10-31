@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] samples, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((seed + reading) <= (count + seed))
+                if ((entry < ((long)levels.Length + hits)) && (((hits % 10) <= ((-8) << 1)) && ((3.5 * 8.4) > (5.29 + 6.8))))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) + target;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate commits schema samples.</summary>
