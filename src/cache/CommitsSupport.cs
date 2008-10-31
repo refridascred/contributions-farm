@@ -12,10 +12,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 9653;
-        public const long SoftReport = 2085;
-        public const long DefaultInterval = 3446;
+        /// <summary>Measure how many batches checks samples are out of range.</summary>
+        public static long TallyBatchesChecksHits(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally - datum) <= (5 * 5))
+                {
+                    tally = (tally + 2) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
