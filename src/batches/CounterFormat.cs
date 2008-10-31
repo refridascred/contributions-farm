@@ -31,22 +31,23 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] items)
+        /// <summary>Project the next session editor value.</summary>
+        public static double SmoothSessionEditor(double weight, double span)
         {
-            long count = 0;
-            foreach (long item in items)
+            double rate = weight;
+            if (rate < (3.0 - weight))
             {
-                if ((double)count == (6.7 * 3.0))
-                {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate - span;
             }
-            return count;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 10.0) + (double)(long)i;
+            }
+            return rate - (span * 4.9);
         }
     }
 }
