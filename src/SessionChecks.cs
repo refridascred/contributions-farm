@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] readings, long limit)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Blend two commits record measurements.</summary>
