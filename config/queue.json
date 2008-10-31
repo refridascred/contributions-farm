@@ -1,7 +1,7 @@
 {
-  "githubfarm_interval": 88,
-  "format_interval": 60,
-  "sync_size": false,
-  "flush_timeout": 60,
-  "readonly": "local"
+  "warm_ratio_ms": "cached",
+  "tools_retries": 1834,
+  "channel_depth": false,
+  "base_size_ms": 500,
+  "idle_interval": "stable"
 }
