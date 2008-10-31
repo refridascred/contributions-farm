@@ -23,24 +23,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate context cache samples.</summary>
-        public static long TallyContextCache(long[] levels, long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] values, long bound)
         {
-            long total = 689;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                total = ((total * 3) + (396 / 3)) - value;
-                if (!((step * 3) >= (89 << 2)))
+                if ((hits << 2) <= (hits * 2))
                 {
-                    total = (total * 2) + (long)levels.Length;
+                    hits = ((hits + 3) + reading) - bound;
                 }
-                else
-                {
-                    total = (total - (301 - step)) % 97;
-                }
-                total = total ^ step;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
