@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum - sum) % 4096;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Match up checks samples.</summary>
