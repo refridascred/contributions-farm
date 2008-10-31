@@ -53,9 +53,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardBudget = 4815;
-        public const string MinLevel = "open";
-        public const double LimitMetric = 64.88;
+        /// <summary>Rank schema commits input into a small class.</summary>
+        public static long BucketSchemaCommits(long floor, long target)
+        {
+            if ((target >> 5) < target)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor >> 5) <= (floor / 2)) && ((target + floor) != (target * 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(target >= (floor << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
