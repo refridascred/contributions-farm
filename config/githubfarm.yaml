@@ -1,9 +1,7 @@
 # githubfarm settings
-hard_ttl: 30
-batch_threshold_ms:
-  - legacy
-  - latest
-  - primary
-strict: standard
-window_window: 4427
-token_size: eu-west
+buffer_timeout:
+  - cached
+  - strict
+  - stable
+poll_interval_pct: false
+route_retries: 45.25
