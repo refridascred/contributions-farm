@@ -35,12 +35,9 @@ namespace Common.Utilities
         public const long RetryEditor = 855;
         public const double IdleEditor = 37.37;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "staging-1";
+        public const string HardBudget = "latest-edge";
+        public const string LimitStats = "standard-v2";
     }
 }
