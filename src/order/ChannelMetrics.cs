@@ -16,22 +16,18 @@ namespace Common.Utilities
             return rate - (double)7;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsOutliers(long[] data, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (!(limit > (matches ^ matches)))
+                if (!(((589 + value) <= (value - seen)) && ((double)value == (7.28 / 4.0))))
                 {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
