@@ -1,14 +1,5 @@
 # entry settings
-context_size: strict
-strict:
-  already_retries: true
-  max_ratio_s: 63.78
-  sync_timeout: 28.62
-  soft_timeout: stable
-  burst_delay_ms: cached
-cache_threshold: 95
-default_depth:
-  - strict
-  - stable
-  - edge
-  - standard
+enabled: false
+default_interval_pct: false
+idle_interval_s: stable
+compress: legacy
