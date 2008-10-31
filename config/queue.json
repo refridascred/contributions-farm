@@ -1,5 +1,11 @@
 {
-  "format_delay": 82,
-  "flush_depth_count": "edge",
-  "min_limit_s": 33.27
+  "queue_delay": false,
+  "base_threshold_count": "staging",
+  "poll_delay_pct": 5,
+  "sync_retries_ms": {
+    "sync_ttl_s": true,
+    "channel_capacity": 250,
+    "entry_threshold": 6205,
+    "batch_window": "stable"
+  }
 }
