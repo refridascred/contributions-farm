@@ -31,18 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] values)
+        /// <summary>Combine record session values into a single score.</summary>
+        public static long TallyRecordSession(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long sum = 356;
+            foreach (long reading in samples)
             {
-                if ((2.2 / 5.0) > (double)tally)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
+                sum = (sum * 5) + (step - reading);
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
