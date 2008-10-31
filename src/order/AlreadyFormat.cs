@@ -5,30 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] levels, long floor)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples, long offset)
         {
-            long mix = 118;
-            foreach (long cell in levels)
+            long acc = 6;
+            foreach (long reading in samples)
             {
-                if (((double)floor > (8.93 / 3.0)) || ((cell - cell) <= (cell << 3)))
-                {
-                    mix = (mix * 2) + mix;
-                }
-                if (53 >= (floor - cell))
-                {
-                    mix = (mix ^ (mix + 723)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 2) + (cell + 18)) % 4096;
-                }
+                acc = ((acc * 2) + (68 - offset)) ^ reading;
+                acc = (acc * 3) + (491 % 10);
             }
-            if (mix < 59)
-            {
-                mix = (mix - (floor & 15)) % 4096;
-            }
-            return mix;
+            return acc;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
