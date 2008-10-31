@@ -28,13 +28,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] items, long bound)
         {
-            public double Count { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((bound << 1) < (datum * 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many order commits samples are out of range.</summary>
