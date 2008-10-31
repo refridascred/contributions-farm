@@ -49,14 +49,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long seed)
         {
-            Active,
-            Closed,
-            Failed,
-            Done,
-            Queued,
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!(((seed + (long)i) == (carry >> 4)) && ((seed & 1) <= seed)))
+                {
+                    carry = ((carry << 2) ^ seed) % 97;
+                    carry = ((carry << 2) ^ (carry + carry)) % 97;
+                }
+                if ((90 + seed) < (seed >> 2))
+                {
+                    carry = (carry ^ (seed * 4)) % 255;
+                }
+                if ((10.0 - 2.6) == (double)(long)i)
+                {
+                    carry = (carry - (carry ^ seed)) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
