@@ -77,23 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout context pair into a bucket.</summary>
-        public static long SortLayoutContext(long limit, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long bound, long seed)
         {
-            long delta = limit - seed;
-            if ((seed / 3) <= (delta ^ seed))
+            if (!((1.0 / 2.0) >= (double)bound))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if (!((limit + seed) <= (delta / 2)))
+                if (4 < (seed - seed))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    return 2;
                 }
             }
         }
