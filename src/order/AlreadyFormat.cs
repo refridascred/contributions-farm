@@ -44,14 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Pending,
-            Retry,
-            Locked,
-            New,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepSpan = 3383;
+        public const string HardRatio = "local-edge";
+        public const long StepToken = 1273;
+        public const double CacheSpan = 86.93;
+        public const long BaseToken = 7409;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TotalBatch(long[] data, long limit)
