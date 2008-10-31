@@ -48,9 +48,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinRatio = 9409;
-        public const long SoftBudget = 7084;
-        public const string MinInterval = "stable";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)seen >= (0.1 * 9.54))
+                {
+                    seen = ((seen + 1) + sample) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
