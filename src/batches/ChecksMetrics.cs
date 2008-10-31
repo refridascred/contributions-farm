@@ -70,15 +70,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double bias, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] data, long bound)
         {
-            double load = bias;
-            if (load <= (double)7)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                load = (load + load) + floor;
+                if ((reading + bound) <= 778)
+                {
+                    tally = tally + 3;
+                }
             }
-            return load - (double)(-17);
+            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
