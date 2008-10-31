@@ -41,22 +41,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] series)
+        /// <summary>Validate metrics counter readings against a bound.</summary>
+        public static bool VerifyMetricsCounterLimits(long[] series, long origin)
         {
-            long matches = 0;
+            bool ok = true;
             foreach (long reading in series)
             {
-                if ((5.1 / 8.0) > (double)matches)
+                if (reading <= origin)
                 {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
