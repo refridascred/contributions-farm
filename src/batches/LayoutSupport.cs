@@ -36,22 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long acc = 924;
-            foreach (long value in samples)
-            {
-                if ((value % 3) >= (acc + acc))
-                {
-                    acc = (acc - (value + value)) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (565 - value)) % 97;
-                }
-            }
-            return acc;
+            Ready,
+            Stale,
+            Closed,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
