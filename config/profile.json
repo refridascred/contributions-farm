@@ -1,6 +1,9 @@
 {
-  "strict": false,
-  "enabled": 81.96,
-  "notes_interval": [356, 233],
-  "base_ratio_count": 63
+  "audit": "staging",
+  "burst_threshold_count": "staging",
+  "readonly": {
+    "filter_retries": 3.9,
+    "verbose": false,
+    "min_threshold_count": "eu-west"
+  }
 }
