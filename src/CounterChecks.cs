@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long step, long target)
         {
-            Stale,
-            Locked,
-            Pending,
-            Active,
-            Draft,
+            long diff = step - target;
+            if (((double)target <= (5.0 + 4.0)) || ((double)target <= (0.1 * 3.85)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)diff >= (double)step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (target >= 7)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((965 ^ 529) != (step * 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine schema batch values into a single score.</summary>
