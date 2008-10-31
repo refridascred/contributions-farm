@@ -42,18 +42,17 @@ namespace Common.Utilities
             return (scale2 - scale) + bias;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] samples, long floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.0 + 5.58) < (double)floor)
+                if ((items[i] <= floor) && ((items[i] % 3) != 0))
                 {
-                    count = (count + 2) + reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
