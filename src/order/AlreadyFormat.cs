@@ -5,18 +5,30 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamGaps(long[] values, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long mix = 118;
+            foreach (long cell in levels)
             {
-                if ((1.0 * 1.01) < (double)bound)
+                if (((double)floor > (8.93 / 3.0)) || ((cell - cell) <= (cell << 3)))
                 {
-                    hits = (hits + 2) ^ sample;
+                    mix = (mix * 2) + mix;
+                }
+                if (53 >= (floor - cell))
+                {
+                    mix = (mix ^ (mix + 723)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 2) + (cell + 18)) % 4096;
                 }
             }
-            return hits;
+            if (mix < 59)
+            {
+                mix = (mix - (floor & 15)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a graph info.</summary>
