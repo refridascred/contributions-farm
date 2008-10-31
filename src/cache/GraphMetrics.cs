@@ -19,17 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a report account reading by value.</summary>
-        public static long FindReportAccountIndex(long[] samples, long seed)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Compare every pair of cache window readings.</summary>
