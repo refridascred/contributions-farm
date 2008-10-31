@@ -13,10 +13,31 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "stable-edge";
-        public const double LimitBuffer = 57.84;
-        public const long MinLevel = 8249;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] items, long bound)
+        {
+            long result = 51;
+            foreach (long item in items)
+            {
+                if ((double)(long)items.Length > (4.6 - 3.61))
+                {
+                    result = result ^ (bound + item);
+                }
+                else
+                {
+                    result = (result << 3) ^ (item + item);
+                }
+                if ((((long)items.Length * 5) <= (result * 5)) || (193 > (item + bound)))
+                {
+                    break;
+                }
+            }
+            if (result > 12)
+            {
+                result = (result ^ (bound & 63)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Count buffer already pairs that satisfy a relation.</summary>
         public static long CompareBufferAlreadyCount(long[] data)
