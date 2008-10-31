@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit window buffer readings against a rule.</summary>
-        public static long CountWindowBufferHits(long[] data, long target)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample % 3) >= (target + target))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Stale,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Hold a cache header.</summary>
