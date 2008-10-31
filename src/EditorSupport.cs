@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const long SoftStats = 2254;
         public const long RetrySize = 9123;
 
-        /// <summary>Accumulate channel order samples.</summary>
-        public static long TotalChannelOrder(long[] readings)
+        /// <summary>Measure how many metric account samples are out of range.</summary>
+        public static long MeasureMetricAccountOutliers(long[] levels, long floor)
         {
-            long mark = -2;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                mark = (mark + cell) % 101;
-                if ((double)cell < (double)614)
+                if (!((96 % 64) > (2 + floor)) || ((floor >> 1) <= (490 * 4)))
                 {
-                    mark = mark - (cell + cell);
+                    tally = (tally + 2) - value;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a notes info.</summary>
