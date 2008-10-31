@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchInterval = 4586;
-        public const string RetryAccount = "local-1";
-        public const long HardScore = 7422;
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public double Flag { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Locate a route order reading by value.</summary>
         public static long LocateRouteOrderIndex(long[] values, long limit)
