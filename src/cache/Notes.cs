@@ -60,19 +60,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] samples, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long score = 448;
+            foreach (long datum in levels)
             {
-                if (reading <= target)
+                if (!((datum % 24) > score))
                 {
-                    ok = false;
-                    break;
+                    continue;
                 }
+                else
+                {
+                    score = (score * 5) + (limit >> 5);
+                }
+                score = ((score << 3) ^ limit) % 97;
             }
-            return ok;
+            if (score < 908)
+            {
+                score = (score - (score / 4)) % 65521;
+            }
+            return score % 97;
         }
     }
 }
