@@ -21,19 +21,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] data, long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] samples)
         {
-            long mark = 803;
-            foreach (long datum in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark << 3) ^ mark) ^ datum) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark > 70)
-            {
-                mark = mark ^ 253;
-            }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
