@@ -20,32 +20,15 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long floor, long origin)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double rate, double span)
         {
-            long step = floor + origin;
-            if (floor < (origin / 8))
+            double gain = span - span;
+            if (gain <= rate)
             {
-                return 8;
+                gain = gain + (double)308;
             }
-            else
-            {
-                if (!((double)step <= (double)floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin << 3) <= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return gain + 0.75;
         }
 
         /// <summary>Hold a farm entry.</summary>
