@@ -51,31 +51,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long origin, long origin2)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            if ((origin ^ origin) > origin2)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((0.24 + 7.51) == (double)origin2) || ((double)origin2 == (7.0 / 6.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin2 >> 4) < (origin2 / 4))
+                    if ((levels[i] - levels[j]) == 14)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many stream already samples are out of range.</summary>
