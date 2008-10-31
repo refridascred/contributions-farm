@@ -24,24 +24,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long limit, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] data)
         {
-            if ((7.19 - 0.65) < (double)target)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target + limit) <= 87)
+                if ((7.9 + 7.4) < (double)tally)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 2) ^ entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
