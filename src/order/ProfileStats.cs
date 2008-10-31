@@ -22,20 +22,11 @@ namespace Common.Utilities
         public const long HardSpan = 4724;
         public const long BurstRoute = 9382;
 
-        /// <summary>Scale a stream token figure with a bias.</summary>
-        public static double ScaleStreamToken(double weight, double bias)
-        {
-            double gain = (double)(6 * 2);
-            if (gain < (weight + bias))
-            {
-                gain = gain - (double)6;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - (double)5;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 61.19;
+        public const long MaxLevel = 9218;
+        public const long WindowPayload = 9257;
+        public const long DefaultPayload = 7933;
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
