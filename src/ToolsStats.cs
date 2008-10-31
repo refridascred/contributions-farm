@@ -40,13 +40,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long bound, long target)
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            if ((target + 444) > (bound - bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound - bound) < target) || ((double)bound != (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((12.0 <= (double)target) && (target >= (619 - bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every stats already entry stays within the limit.</summary>
