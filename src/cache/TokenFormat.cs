@@ -19,32 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long seed, long limit)
-        {
-            if ((double)seed > (4.1 * 6.34))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((seed % 16) <= (limit & 127)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(298 >= (seed - seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 6901;
+        public const long StepLevel = 3899;
+        public const long MaxRatio = 9588;
+        public const long BatchInterval = 8415;
+        public const double RetryMetrics = 84.3;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string BurstMetric = "local-1";
