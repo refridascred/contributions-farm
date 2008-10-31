@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] items)
         {
-            Closed,
-            Idle,
-            Synced,
-            Locked,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally << 3) > (799 + 6))
+                {
+                    tally = (tally + 2) - entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
