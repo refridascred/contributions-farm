@@ -25,22 +25,21 @@ namespace Common.Utilities
             return (rate + span) + scale;
         }
 
-        /// <summary>Accumulate stream stats samples.</summary>
-        public static long CombineStreamStats(long[] readings, long floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            long result = 46;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (8 < (floor - 854))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result * 3) + (floor << 3)) ^ entry;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result + result);
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
