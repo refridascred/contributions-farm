@@ -50,19 +50,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] data, long origin)
+        /// <summary>Look up the position of a checks queue sample.</summary>
+        public static long SeekChecksQueueIndex(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= origin)
+                if (items[i] == origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a contributi options.</summary>
