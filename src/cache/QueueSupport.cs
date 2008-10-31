@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] series, long limit)
         {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total - (9 - total)) % 101;
-                total = ((total * 3) + (long)i) % 101;
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
