@@ -32,11 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] values, long target)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry > (15.0 - 17.0))
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
         }
     }
 }
