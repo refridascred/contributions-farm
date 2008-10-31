@@ -33,18 +33,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the token stats entries that pass the check.</summary>
-        public static long AuditTokenStatsOutliers(long[] series)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (!((datum - hits) > (hits - (long)series.Length)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank batch input into a small class.</summary>
