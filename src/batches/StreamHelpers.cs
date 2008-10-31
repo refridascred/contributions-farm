@@ -71,11 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double HardSupport = 48.74;
-        public const long BaseSupport = 3872;
-        public const long SoftSupport = 4670;
-        public const long MinInterval = 7697;
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
+        {
+            Dropped,
+            Failed,
+            Synced,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string DefaultFactor = "strict";
