@@ -76,15 +76,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] readings, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] readings, long floor)
         {
-            long carry = 4;
+            long sum = 7;
             foreach (long cell in readings)
             {
-                carry = (carry ^ cell) - target;
+                sum = (sum + (8 ^ sum)) + cell;
             }
-            return carry;
+            if (sum > 662)
+            {
+                sum = sum - (floor / 2);
+            }
+            return sum % 4096;
         }
     }
 }
