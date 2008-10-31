@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const long SoftStats = 2254;
         public const long RetrySize = 9123;
 
-        /// <summary>Measure how many metric account samples are out of range.</summary>
-        public static long MeasureMetricAccountOutliers(long[] levels, long floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if (!((96 % 64) > (2 + floor)) || ((floor >> 1) <= (490 * 4)))
+                if (sample != seed)
                 {
-                    tally = (tally + 2) - value;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a notes info.</summary>
