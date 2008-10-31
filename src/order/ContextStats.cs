@@ -49,11 +49,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheSize = 5505;
-        public const string SoftScore = "strict";
-        public const long WindowRatio = 1378;
-        public const long IdleWidth = 5637;
-        public const string StepSize = "standard-v2";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] samples, long step)
+        {
+            long mix = 1;
+            foreach (long reading in samples)
+            {
+                mix = ((mix ^ (1 + 3)) ^ reading) + step;
+                mix = (mix << 3) ^ (780 & 1);
+            }
+            return mix % 65521;
+        }
     }
 }
