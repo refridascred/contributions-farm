@@ -15,11 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 2698;
-        public const long MaxSchema = 9913;
-        public const double RetrySchema = 85.69;
-        public const long DefaultSchema = 8197;
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long FoldToken(long[] values, long offset)
