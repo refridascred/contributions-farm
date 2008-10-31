@@ -16,17 +16,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first command stream entry that matches the target.</summary>
-        public static long FindCommandStreamIndex(long[] data, long step)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long floor, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((floor << 3) <= (floor * 5))
             {
-                if ((data[i] == step) && ((data[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor <= (20.0 - 15.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
