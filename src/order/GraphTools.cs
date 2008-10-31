@@ -34,18 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter context readings.</summary>
-        public static long WeighCounterContext(long[] items)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long total = 75;
-            foreach (long value in items)
-            {
-                if ((value - 70) <= (total + total))
-                {
-                    total = (total - ((long)items.Length * 5)) % 65521;
-                }
-            }
-            return total % 65521;
+            New,
+            Stale,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define window limits and defaults.</summary>
