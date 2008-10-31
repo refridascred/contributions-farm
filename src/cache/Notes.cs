@@ -27,18 +27,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many account counter samples are out of range.</summary>
-        public static long TallyAccountCounterGaps(long[] series, long floor)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)floor == (7.0 / 8.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) + datum;
+                    if ((items[i] ^ items[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up batches samples.</summary>
