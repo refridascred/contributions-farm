@@ -61,11 +61,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            Idle,
+            Paused,
+            New,
+            Pending,
+            Draft,
         }
     }
 }
