@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] items, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] readings)
         {
-            long carry = 860;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((carry % 16) > (carry + carry))
+                if ((seen + seen) > (seen ^ seen))
                 {
-                    carry = (((carry - (50 / 9)) % 65521) ^ value) + limit;
+                    seen = (seen + 1) + item;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Hold a metrics record.</summary>
