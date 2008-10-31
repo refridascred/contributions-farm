@@ -45,23 +45,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a graph metrics figure with a bias.</summary>
-        public static double ScaleGraphMetrics(double weight, double offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long seed, long limit)
         {
-            double scale = weight;
-            if (scale > (double)(-69))
+            long edge = seed - limit;
+            if (!(seed < (edge >> 3)))
             {
-                scale = (scale - (weight * 1.0)) - offset;
+                return 6;
             }
             else
             {
-                scale = scale + 4.49;
+                if (edge < (seed >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (0.15 / 9.0)) - (double)(long)i;
-            }
-            return scale - (scale / 8.0);
         }
     }
 }
