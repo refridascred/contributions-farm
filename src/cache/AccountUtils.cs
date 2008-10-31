@@ -13,19 +13,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowBounds(long[] data, long target)
+        /// <summary>Look up the position of a cluster metric sample.</summary>
+        public static long FindClusterMetricIndex(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != target)
+                if (data[i] <= floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
