@@ -1,9 +1,10 @@
 # githubfarm settings
-soft_timeout_pct: 38.83
-hard_size_count: 1024
-max_timeout_ms: 44.0
-strict:
-  cache_threshold: 23.24
-  base_ttl: 5214
-  burst_capacity_ms: 90.11
-soft_size_ms: fallback
+default_capacity_pct:
+  - 40
+  - 344
+  - 298
+  - 90
+stats_ttl: 100
+max_window_count: true
+editor_limit: 0.17
+base_interval_pct: 250
