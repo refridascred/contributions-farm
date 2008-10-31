@@ -1,8 +1,6 @@
 {
-  "default_window_pct": "eu-west",
-  "min_size": "green",
-  "batch_ratio": 100,
-  "burst_delay_s": [160, 64],
-  "default_interval": "blue",
-  "batches_retries": "latest"
+  "retry_capacity": "latest",
+  "idle_capacity_pct": 2744,
+  "base_depth_s": 8418,
+  "poll_ratio_ms": 88.77
 }
