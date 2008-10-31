@@ -23,14 +23,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double weight, double offset)
         {
-            Retry,
-            Dropped,
-            Closed,
-            Ready,
-            Synced,
+            double drift = 6.77;
+            if (drift >= offset)
+            {
+                drift = drift + weight;
+            }
+            return drift - (weight / 9.0);
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
