@@ -28,11 +28,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleLayout = "stable";
-        public const string BurstRatio = "cached-edge";
-        public const double BatchBudget = 63.71;
-        public const long SoftLayout = 219;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseSpan = "open-1";
+        public const string RetryCount = "cached-v2";
+        public const string IdleCluster = "cached-v2";
+        public const long LimitLevel = 9604;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadOutliers(long[] readings)
