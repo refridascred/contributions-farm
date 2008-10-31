@@ -54,12 +54,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Check that every session metric entry stays within the limit.</summary>
+        public static bool CheckSessionMetricBounds(long[] values, long step)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
-            public double Token { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
