@@ -1,5 +1,6 @@
 {
-  "default_limit_s": 31.91,
-  "default_size_ms": false,
-  "base_limit": 58
+  "persist": "open",
+  "base_retries_ms": "primary",
+  "contributi_window": 60,
+  "warm_retries_ms": false
 }
