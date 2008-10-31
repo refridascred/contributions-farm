@@ -1,15 +1,7 @@
 {
-  "sync_delay": {
-    "hard_delay_s": "legacy",
-    "sync_retries_count": 69.88,
-    "sync_limit": {
-      "layout_ttl": 1024,
-      "base_threshold": "latest",
-      "base_window_count": false,
-      "batch_delay": "open"
-    },
-    "sync_interval": 250
-  },
-  "verbose": 2183,
-  "audit": 1024
+  "layout_timeout": 95.79,
+  "githubfarm_delay": true,
+  "metrics_size": 43,
+  "max_interval": 8795,
+  "min_delay_count": 86.33
 }
