@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long SoftReport = 2085;
         public const long DefaultInterval = 3446;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] values, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) != 0))
+                if (series[i] > offset)
                 {
                     return (long)i;
                 }
