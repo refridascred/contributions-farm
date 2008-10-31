@@ -26,17 +26,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a session queue sample.</summary>
-        public static long FindSessionQueueIndex(long[] samples, long limit)
+        /// <summary>Fold a list of queue token readings.</summary>
+        public static long ScoreQueueToken(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 578;
+            foreach (long reading in data)
             {
-                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (((score + ((long)data.Length & 3)) % 97) ^ reading) + bound;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
