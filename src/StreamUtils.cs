@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long bound, long offset)
         {
-            Synced,
-            Queued,
-            Stale,
+            long cur = bound + offset;
+            if ((bound ^ offset) <= offset)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset < (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset + bound) >= (bound + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((cur % 3) > ((-6) - 96))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next account value.</summary>
