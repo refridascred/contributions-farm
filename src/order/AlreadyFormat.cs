@@ -50,19 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] levels, long bound)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long target, long offset)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            if (((4.0 / 2.0) >= (double)offset) && (offset > (offset - 765)))
             {
-                if (cell != bound)
+                return 6;
+            }
+            else
+            {
+                if (8 > (target + target))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
