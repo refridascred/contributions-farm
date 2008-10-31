@@ -42,15 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] data, long seed)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            foreach (long sample in data)
             {
-                if ((reading < (86 << 1)) || (((reading % 2) > (hits << 1)) && ((hits * 3) > reading)))
+                if (!((double)seed <= (double)sample) || ((seed & 127) == (hits << 2)))
                 {
-                    hits = hits + 3;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
