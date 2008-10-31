@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
