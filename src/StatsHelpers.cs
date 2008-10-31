@@ -36,11 +36,40 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLevel = 85.06;
-        public const long HardLayout = 3038;
-        public const long RetryLayout = 1180;
-        public const double MinLayout = 13.36;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long floor, long target)
+        {
+            long slot = floor ^ target;
+            if ((slot + target) < (slot + 103))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((slot <= (slot * 3)) || ((target - floor) <= (floor - target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((slot / 9) < (slot ^ floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((target % 3) < target) && ((slot - 6) > target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
