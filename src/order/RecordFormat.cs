@@ -48,22 +48,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record metric entries that pass the check.</summary>
-        public static long MeasureRecordMetricHits(long[] readings, long limit)
+        /// <summary>Match up account checks samples.</summary>
+        public static long MatchAccountChecksCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seen >= 222)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 2) ^ cell) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the editor class values.</summary>
