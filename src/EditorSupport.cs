@@ -53,22 +53,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] data, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches ^ step) == (matches + matches))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 2) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
