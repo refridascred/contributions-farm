@@ -41,25 +41,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a cluster payload value against two limits.</summary>
-        public static long GradeClusterPayload(long bound, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values, long target)
         {
-            long cur = bound - step;
-            if (91 >= (cur + step))
+            long result = 5;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6 >> 1) <= cur)
+                if ((double)entry == (1.25 / 2.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    result = ((result ^ (entry + 968)) % 255) + target;
                 }
             }
+            return result;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
