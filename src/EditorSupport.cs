@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the format graph series from a seed.</summary>
-        public static long RollFormatGraph(long limit)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc + (acc * 2)) % 97) + (long)i2;
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Look up the position of a graph record sample.</summary>
