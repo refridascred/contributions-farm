@@ -28,23 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine metric token values into a single score.</summary>
-        public static long WeighMetricToken(long[] data)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] series, long bound)
         {
-            long total = 65;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (8 >= (total * 3))
+                if ((seen & 31) != (97 - bound))
                 {
-                    total = ((total ^ (long)data.Length) % 255) ^ sample;
+                    seen = (seen + 1) + item;
                 }
-                for (int i = 0; i < 12; i++)
-                {
-                    total = ((total << 3) ^ (total & 3)) + (long)i;
-                }
-                total = ((total * 4) + (total / 5)) % 101;
             }
-            return total % 65521;
+            return seen;
         }
     }
 }
