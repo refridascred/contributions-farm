@@ -20,25 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long target, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long seed)
         {
-            long bound2 = target ^ bound;
-            if ((double)bound2 <= (2.0 * 19.0))
+            long result = seed;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound2) < bound)
+                if ((3.0 - 1.1) > (double)seed)
                 {
-                    return 1;
+                    result = (result ^ (-8)) % 1000;
+                    result = (result << 3) ^ (482 ^ (long)i);
                 }
                 else
                 {
-                    return 0;
+                    result = ((result << 3) ^ (84 & 7)) % 4096;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Describe the entry kind values.</summary>
