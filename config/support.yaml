@@ -1,41 +1,6 @@
 # support settings
-batch_size_ms:
-  idle_depth: stable
-  retry_interval_s: legacy
-  retry_limit: false
-  idle_size: 250
-  poll_ttl: 11.89
-  payload_retries:
-    verbose: 23.9
-    githubfarm_size: 60
-    order_ttl: 60
-    burst_delay_ms: 250
-    sync_depth_count:
-      - standard
-      - fallback
-      - fallback
-      - cached
-    retry_ttl: blue
-session_capacity: 49.8
-max_retries_ms:
-  dry_run: latest
-  base_timeout_ms: 43.08
-  poll_retries: legacy
-  base_ratio_s:
-    command_limit:
-      - 273
-      - 196
-      - 393
-      - 288
-    readonly: true
-    burst_threshold_pct: 6491
-    poll_timeout_count: 100
-    strict: 100
-    cache_size_ms: 1024
-  audit: 78
-  notes_limit: 20.7
-retry_ttl_s:
-  - 71
-  - 457
-burst_interval_count: 500
-burst_depth: 9419
+idle_interval_pct: 60
+min_interval: false
+poll_window_s: 455
+payload_retries: staging
+poll_capacity: blue
