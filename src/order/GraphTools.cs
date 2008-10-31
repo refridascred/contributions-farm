@@ -34,13 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Fold a list of counter context readings.</summary>
+        public static long WeighCounterContext(long[] items)
         {
-            Stale,
-            Dropped,
-            New,
-            Queued,
+            long total = 75;
+            foreach (long value in items)
+            {
+                if ((value - 70) <= (total + total))
+                {
+                    total = (total - ((long)items.Length * 5)) % 65521;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a context options.</summary>
