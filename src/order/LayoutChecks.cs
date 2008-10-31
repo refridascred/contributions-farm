@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] series)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (((double)hits >= (15.0 / 7.0)) && ((9.08 * 6.9) == (double)value))
+                if (item >= seed)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
