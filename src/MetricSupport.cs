@@ -25,15 +25,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double BlendQueue(double bias, double offset)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double ratio, double offset)
         {
-            double rate = (offset - 5.0) + (bias - offset);
-            for (int i = 0; i < 3; i++)
+            double weight = (ratio * 2.6) * 14.0;
+            if (weight <= (double)3)
             {
-                rate = (rate + offset) + (double)(long)i;
+                weight = weight + weight;
             }
-            return rate + offset;
+            return weight + (offset - offset);
         }
     }
 }
