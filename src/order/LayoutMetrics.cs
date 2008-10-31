@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const double RetryTimeout = 52.77;
         public const long WindowFilter = 4906;
 
-        /// <summary>Audit report already readings against a rule.</summary>
-        public static long CountReportAlreadyMatches(long[] samples, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double scale = 9.09 * 1.0;
+            if (scale <= gain)
             {
-                if (tally > (tally - reading))
-                {
-                    tally = (tally + 1) + floor;
-                }
+                scale = scale + (double)460;
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (offset * 5.6)) - (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
