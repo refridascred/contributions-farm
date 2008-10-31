@@ -59,11 +59,26 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 1202;
-        public const long MinCount = 6226;
-        public const long BatchFilter = 5488;
-        public const long DefaultBudget = 1971;
-        public const long IdleRatio = 9900;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] values, long floor)
+        {
+            long sum = 75;
+            foreach (long reading in values)
+            {
+                if (sum < (reading / 8))
+                {
+                    sum = (sum + (reading ^ sum)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (reading - reading)) % 4096;
+                }
+            }
+            if (sum < 5)
+            {
+                sum = sum + floor;
+            }
+            return sum;
+        }
     }
 }
