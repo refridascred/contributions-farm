@@ -53,10 +53,39 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitScore = 9.56;
-        public const long StepFilter = 9409;
-        public const string BaseCount = "latest";
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long limit, long limit2)
+        {
+            if ((limit2 + limit2) > limit2)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((limit2 + limit2) > (limit << 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((491 ^ limit) < (limit2 >> 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit >> 4) < (limit + limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
