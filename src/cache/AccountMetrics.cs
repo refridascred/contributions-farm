@@ -30,16 +30,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Fold a list of farm githubfarm readings.</summary>
+        public static long TotalFarmGithubfarm(long[] data, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 23; i++)
+            long score = 877;
+            foreach (long entry in data)
             {
-                state = (state - offset) % 255;
-                state = ((state * 2) + (long)i) % 1000;
+                if (!((step + score) < step))
+                {
+                    score = score - (69 >> 3);
+                }
+                if ((213 ^ score) != (entry + score))
+                {
+                    score = (score - 946) % 4096;
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Rank buffer payload input into a small class.</summary>
