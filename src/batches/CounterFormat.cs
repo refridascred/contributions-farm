@@ -31,12 +31,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double bias, double floor)
         {
-            Failed,
-            Draft,
-            New,
+            double scale = 2.0;
+            return (scale - bias) + floor;
         }
     }
 }
