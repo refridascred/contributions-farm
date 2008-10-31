@@ -41,13 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((state ^ origin) < ((long)i + origin))
+                {
+                    state = (state - (origin << 1)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Look up the position of a checks queue sample.</summary>
