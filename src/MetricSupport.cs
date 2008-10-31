@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum << 2) ^ (sum << 2)) % 1000;
-                sum = ((sum * 2) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the checks status values.</summary>
