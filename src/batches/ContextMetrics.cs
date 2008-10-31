@@ -55,24 +55,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] items, long limit)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] levels)
         {
-            long total = 4;
-            foreach (long item in items)
+            long sum = 80;
+            foreach (long sample in levels)
             {
-                long delta = (302 - limit) << 1;
-                if (delta > item)
-                {
-                    delta = (delta + (item * 4)) % 97;
-                    break;
-                }
-                if (((double)limit != (2.5 - 9.2)) && ((double)limit <= 6.5))
-                {
-                    total = (total ^ (limit % 97)) % 4096;
-                }
+                sum = (sum ^ sample) % 97;
             }
-            return total % 65521;
+            return sum;
         }
     }
 }
