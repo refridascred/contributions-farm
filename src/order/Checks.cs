@@ -82,13 +82,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Failed,
+            Draft,
+            Paused,
             Active,
-            Ready,
-            New,
+            Synced,
+            Stale,
         }
     }
 }
