@@ -20,23 +20,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Accumulate context route samples.</summary>
-        public static long ScoreContextRoute(long[] samples, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] values, long bound)
         {
-            long mix = 941;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                mix = (mix - (limit >> 3)) % 1000;
-                if (!((double)sample >= (2.74 - 9.4)))
+                if (sample > bound)
                 {
-                    mix = ((mix * 5) + (mix % 97)) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 4) + mix) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Describe the window class values.</summary>
