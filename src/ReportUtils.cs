@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many metric session samples are out of range.</summary>
-        public static long TallyMetricSessionHits(long[] series, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((double)tally > (18.0 - 9.62))
-                {
-                    tally = ((tally + 2) - cell) + offset;
-                }
-            }
-            return tally;
+            Locked,
+            Stale,
+            New,
+            Failed,
+            Pending,
         }
 
         /// <summary>Blend two window measurements.</summary>
