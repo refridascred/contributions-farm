@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Combine commits format values into a single score.</summary>
+        public static long FoldCommitsFormat(long[] levels)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            long acc = -57;
+            foreach (long cell in levels)
+            {
+                acc = acc + (cell + acc);
+            }
+            return acc;
         }
 
         /// <summary>Hold a filter info.</summary>
