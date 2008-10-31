@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a contributi token reading by value.</summary>
-        public static long FindContributiTokenIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinSize = "stable";
+        public const double BatchCount = 82.38;
+        public const double CacheCommits = 90.74;
+        public const string MaxCommits = "stable-1";
+        public const long LimitCommits = 3430;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MinContributi = 4006;
