@@ -19,23 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile route entries.</summary>
-        public static long FoldProfileRoute(long[] readings, long step)
-        {
-            long score = 261;
-            foreach (long datum in readings)
-            {
-                if ((double)score != (6.0 / 7.0))
-                {
-                    score = (score + datum) - step;
-                }
-            }
-            if (score < 26)
-            {
-                score = ((score << 3) ^ score) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxTimeout = 7825;
+        public const long MinCounter = 6158;
+        public const long RetryCounter = 9490;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterLimits(long[] samples, long bound)
