@@ -43,11 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 60.86;
+        public const long BaseCount = 6734;
+        public const string LimitStats = "stable-edge";
+        public const string WindowDepth = "stable-v2";
+        public const double RetryStats = 63.25;
     }
 }
