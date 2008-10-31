@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every support filter entry stays within the limit.</summary>
-        public static bool VerifySupportFilterRange(long[] samples, long target)
-        {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 8412;
+        public const string MinInterval = "cached";
+        public const string BaseInterval = "local-edge";
+        public const long BurstSpan = 9721;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long FindBufferIndex(long[] series, long origin)
