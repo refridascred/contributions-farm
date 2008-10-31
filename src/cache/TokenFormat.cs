@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine metric filter values into a single score.</summary>
-        public static long DigestMetricFilter(long[] items)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double ratio, double bias)
         {
-            long mix = 628;
-            foreach (long cell in items)
+            double load = (double)(98 & 63);
+            if (load < bias)
             {
-                mix = (mix * 4) + cell;
-                if (mix < (mix + mix))
-                {
-                    mix = (mix << 2) ^ (62 ^ 221);
-                }
-                else
-                {
-                    mix = mix - (cell + mix);
-                }
+                load = (load - (6.8 * 7.49)) - ratio;
             }
-            if (mix < 6)
+            else
             {
-                mix = (mix ^ (mix % 10)) % 65521;
+                load = load - (load + 17.0);
             }
-            return mix % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
