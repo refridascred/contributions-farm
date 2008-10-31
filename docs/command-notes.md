@@ -1,14 +1,15 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-A session that stays idle for too long is moved to the record list.
-When a entry fails, the notes handler retries a few times before giving up.
+The entry helpers are pure functions, so they are safe to call from any thread.
+The cluster report groups every format by channel.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
-Use payload settings to tune how often tools data is refreshed.
-Keep buffer and record names short and lowercase.
+Run the record check before changing any entry limits.
+A farm that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Log every support change
-- Document new cache fields
-- Review context limits each release
+- Log every contributi change
+- Keep support values small
+- Document new channel fields
+- Review counter limits each release
