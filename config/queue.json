@@ -1,6 +1,5 @@
 {
-  "cache_size_pct": "latest",
-  "sync_limit": 60,
-  "idle_ttl_s": "cached",
-  "commits_interval": 5957
+  "hard_limit": [253, 265, 112, 150],
+  "burst_ttl_count": 100,
+  "window_retries": 500
 }
