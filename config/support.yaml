@@ -1,11 +1,13 @@
 # support settings
-sync_ttl_s: 94.63
-route_interval: 9368
-strict: blue
-sync_delay_count:
-  - 207
-  - 217
-  - 216
-  - 293
-hard_retries_s: strict
-queue_limit: primary
+checks_depth: 59.07
+base_ratio_ms:
+  - 282
+  - 99
+  - 336
+idle_size_s: stable
+tools_timeout: true
+support_depth:
+  default_size: stable
+  batch_ttl_count: 76.15
+  schema_size: false
+  base_ratio_ms: false
