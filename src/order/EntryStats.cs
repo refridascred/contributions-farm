@@ -45,18 +45,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values, long target)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] series)
         {
-            long result = 5;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)entry == (1.25 / 2.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = ((result ^ (entry + 968)) % 255) + target;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
