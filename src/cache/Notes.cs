@@ -50,23 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session record readings.</summary>
-        public static long DigestSessionRecord(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] levels, long limit)
         {
-            long acc = 2;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                acc = (acc - 412) % 97;
-                if ((acc - sample) < sample)
+                if ((double)limit <= (8.8 - 10.0))
                 {
-                    acc = (acc << 3) ^ (3 / 9);
-                }
-                else
-                {
-                    acc = (acc ^ (sample % 64)) % 255;
+                    hits = (hits + 2) + item;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
