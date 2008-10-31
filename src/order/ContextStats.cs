@@ -19,21 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double rate, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (double)(42 * 4);
+            if (bias > floor)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias + floor;
             }
-            return hits;
+            else
+            {
+                bias = bias + (rate + rate);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (double)98) + (double)(long)i;
+            }
+            return bias + rate;
         }
 
         /// <summary>Match up channel samples.</summary>
