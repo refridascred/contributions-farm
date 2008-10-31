@@ -22,32 +22,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long step, long target)
+        /// <summary>Check that every checks command entry stays within the limit.</summary>
+        public static bool CheckChecksCommandLimits(long[] values, long floor)
         {
-            long prev = step ^ target;
-            if ((target << 3) <= (target * 2))
+            bool ready = true;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (7.0 < (double)prev)
+                if (datum <= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((prev + 837) >= prev)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
