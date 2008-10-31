@@ -58,12 +58,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "stable-v2";
-        public const long RetrySpan = 4454;
-        public const long RetryFactor = 6260;
-        public const long IdleCount = 2084;
-        public const string HardWidth = "legacy-v2";
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Paused,
+            New,
+            Ready,
+            Synced,
+            Done,
+        }
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] series)
