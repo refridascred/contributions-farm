@@ -32,23 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double weight, double offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double ratio = (double)(6 * 3);
-            if (ratio > (weight * 9.3))
-            {
-                ratio = (ratio - weight) + offset;
-            }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - 4.01) + (double)(long)i;
-            }
-            return ratio - ratio;
+            public double Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a batch schema sample.</summary>
