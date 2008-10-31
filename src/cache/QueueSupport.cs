@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the buffer token entries that pass the check.</summary>
-        public static long MeasureBufferTokenMatches(long[] items, long step)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] values)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long total = 6;
+            foreach (long sample in values)
             {
-                if ((double)(long)items.Length == (double)value)
-                {
-                    hits = (hits + 1) + step;
-                }
+                total = total - (sample ^ sample);
             }
-            return hits;
+            if (total < 301)
+            {
+                total = (total + (total + total)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
