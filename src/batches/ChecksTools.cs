@@ -54,14 +54,18 @@ namespace Common.Utilities
         public const long LimitRecord = 34;
         public const long DefaultRecord = 5632;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Measure how many stream already samples are out of range.</summary>
+        public static long MeasureStreamAlreadyMatches(long[] levels, long limit)
         {
-            Done,
-            Pending,
-            Ready,
-            Draft,
-            Synced,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (item < (136 / 8))
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
         }
     }
 }
