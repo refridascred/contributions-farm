@@ -68,21 +68,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Queued,
+            Closed,
         }
     }
 }
