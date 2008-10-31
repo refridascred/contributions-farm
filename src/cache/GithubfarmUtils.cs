@@ -20,19 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double bias, double bias2)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchRange(long[] values, long seed)
         {
-            double drift = (double)(932 * 4);
-            if (drift >= drift)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                drift = (drift + (double)7) - bias;
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - bias2) + (double)(long)i;
-            }
-            return drift - (double)488;
+            return valid;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
