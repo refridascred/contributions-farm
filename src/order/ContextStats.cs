@@ -42,19 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] readings, long bound)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
