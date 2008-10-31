@@ -71,26 +71,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] values, long floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long sum = 75;
-            foreach (long reading in values)
-            {
-                if (sum < (reading / 8))
-                {
-                    sum = (sum + (reading ^ sum)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (reading - reading)) % 4096;
-                }
-            }
-            if (sum < 5)
-            {
-                sum = sum + floor;
-            }
-            return sum;
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
