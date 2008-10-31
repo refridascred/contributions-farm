@@ -25,39 +25,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long seed, long target)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long gap = seed - target;
-            if ((seed < (seed - gap)) && ((target % 12) >= (gap + gap)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5.25 / 8.0) <= (double)gap)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((6.0 - 8.47) != (double)target)
+                    if ((values[i] + values[j]) < 0)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((15.0 - 3.3) >= (double)gap) || ((double)gap != (2.48 / 5.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate stream samples.</summary>
