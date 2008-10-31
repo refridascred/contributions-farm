@@ -51,27 +51,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] samples, long seed)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double ratio, double floor)
         {
-            long carry = 28;
-            foreach (long reading in samples)
-            {
-                carry = (carry - seed) % 1000;
-                if ((12.0 / 9.0) < (double)seed)
-                {
-                    carry = carry ^ (65 / 8);
-                }
-                if (!((reading ^ reading) != (seed % 60)))
-                {
-                    break;
-                }
-            }
-            if (carry > 37)
-            {
-                carry = (carry - (seed + seed)) % 97;
-            }
-            return carry;
+            double weight = (double)(32 + 8);
+            return ((weight - (double)12) + ratio) + floor;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
