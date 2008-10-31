@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Ratio { get; set; }
-            public double Level { get; set; }
-            public double Token { get; set; }
-            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
