@@ -1,14 +1,11 @@
 # Command notes
 
-Keep metric and editor names short and lowercase.
-Keep profile and context names short and lowercase.
-The batches report groups every order by metric.
-
-Each record is validated before it reaches the stats queue.
-The format helpers are pure functions, so they are safe to call from any thread.
+When a token fails, the support handler retries a few times before giving up.
+Keep tools and format names short and lowercase.
 
 ## Guidelines
 
-- Log every format change
-- Validate order input early
-- Document new filter fields
+- Keep counter values small
+- Document new cluster fields
+- Prefer window defaults
+- Validate already input early
