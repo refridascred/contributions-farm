@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] readings, long step)
         {
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-            public string Score { get; set; } = "";
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((6.4 / 6.0) >= (double)step)
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
