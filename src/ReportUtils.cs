@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstSize = 6067;
-        public const string BaseScore = "local-1";
-        public const string MaxFactor = "strict-v2";
+        /// <summary>Rank cluster graph input into a small class.</summary>
+        public static long GradeClusterGraph(long step, long floor)
+        {
+            long prev = step - floor;
+            if ((prev - floor) >= (floor % 100))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step <= 2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
