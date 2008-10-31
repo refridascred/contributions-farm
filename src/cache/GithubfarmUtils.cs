@@ -20,19 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long target)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long value in values)
+            double drift = (double)(932 * 4);
+            if (drift >= drift)
             {
-                if (value >= target)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift + (double)7) - bias;
             }
-            return found;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - bias2) + (double)(long)i;
+            }
+            return drift - (double)488;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
