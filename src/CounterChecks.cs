@@ -12,19 +12,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine schema batch values into a single score.</summary>
-        public static long ScoreSchemaBatch(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long limit, long bound)
         {
-            long anchor = 5;
-            foreach (long datum in levels)
+            if ((7.5 + 4.9) != (double)limit)
             {
-                anchor = anchor + (datum - datum);
-                if ((anchor + datum) <= (anchor >> 2))
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ limit) > bound)
                 {
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Describe the metric mode values.</summary>
