@@ -13,18 +13,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long seed, long origin)
         {
-            long total = 1;
-            foreach (long cell in series)
+            long delta = seed ^ origin;
+            if (((double)seed > (17.0 + 13.0)) || (delta < (delta + delta)))
             {
-                if ((cell << 2) < (cell * 3))
+                return 3;
+            }
+            else
+            {
+                if ((18.0 < (double)seed) || (50 <= seed))
                 {
-                    total = (total - (cell >> 4)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin << 2) < (origin * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)delta > (double)694)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return total % 4096;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
