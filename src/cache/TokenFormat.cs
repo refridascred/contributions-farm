@@ -22,19 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] levels, long seed)
-        {
-            long result = 9;
-            foreach (long entry in levels)
-            {
-                if ((double)74 >= (double)seed)
-                {
-                    result = ((result << 2) ^ (577 - seed)) + entry;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 9128;
+        public const string BaseChannel = "legacy-edge";
+        public const long DefaultChannel = 4673;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double ProjectStats(double rate, double offset)
