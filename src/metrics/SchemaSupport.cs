@@ -34,25 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long limit, long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double weight, double floor)
         {
-            long cur = limit - target;
-            if ((limit ^ target) <= (cur * 5))
+            double weight2 = (double)(914 << 3);
+            if (weight2 < floor)
             {
-                return 4;
+                weight2 = weight2 - (weight * 0.9);
             }
-            else
-            {
-                if ((cur >> 5) != (8 + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return weight2 + (weight2 / 6.0);
         }
 
         /// <summary>Derive the next tools order value from a seed.</summary>
