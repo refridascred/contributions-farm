@@ -59,22 +59,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of filter metrics entries.</summary>
-        public static long TallyFilterMetrics(long[] series, long seed)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] items, long bound)
         {
-            long carry = 50;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(14.0 <= (double)item))
+                if (items[i] >= bound)
                 {
-                    carry = (carry - (seed / 5)) % 1000;
+                    return (long)i;
                 }
             }
-            if (carry < (-41))
-            {
-                carry = carry ^ (seed + 79);
-            }
-            return carry;
+            return -1;
         }
     }
 }
