@@ -1,18 +1,19 @@
 # route settings
-flush_interval: staging
-metric_limit:
-  window_retries: true
-  dry_run: 71.27
-  base_threshold: staging
-  base_ratio: 2152
-  soft_depth_pct: 70
-compress: 77
-default_threshold_pct:
-  - 395
-  - 330
-  - 213
-  - 266
-cache_interval:
-  - 202
-  - 415
-hard_depth_s: 39
+filter_ttl: 64.32
+readonly:
+  - 451
+  - 339
+support_timeout:
+  hard_threshold: cached
+  min_delay_ms:
+    - 279
+    - 28
+    - 61
+    - 85
+  cache_capacity_ms: 77
+  default_retries_count: blue
+  hard_window: 42.35
+  editor_depth:
+    - 409
+    - 152
+window_ttl: blue
