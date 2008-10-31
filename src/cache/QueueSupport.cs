@@ -20,22 +20,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many checks record samples are out of range.</summary>
-        public static long AuditChecksRecordGaps(long[] items, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((double)786 < (double)matches)
+                if (item > offset)
                 {
-                    matches = ((matches + 2) + entry) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
