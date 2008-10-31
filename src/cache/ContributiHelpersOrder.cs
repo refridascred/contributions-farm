@@ -55,15 +55,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Compare every pair of checks profile readings.</summary>
+        public static long CompareChecksProfileCount(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) == 12)
+                    if ((values[i] + values[j]) != 5)
                     {
                         matches = matches + 1;
                     }
