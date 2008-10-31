@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long step, long limit)
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            if (((step >> 5) != (step + limit)) || (step <= (step & 3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((3.21 + 6.05) != (double)limit) || ((double)limit >= (11.0 + 7.2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
