@@ -29,18 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state ^ ((-3) + state)) % 65521;
-                state = state - (state % 7);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepWidth = 3793;
+        public const string HardBudget = "fallback-v2";
+        public const long IdleDepth = 8322;
+        public const long BaseLevel = 7443;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long floor, long limit)
