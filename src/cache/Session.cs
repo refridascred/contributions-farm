@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 764;
-        public const double WindowSize = 56.49;
-        public const double MinCache = 27.9;
+        /// <summary>Count stats profile pairs that satisfy a relation.</summary>
+        public static long PairStatsProfileCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] levels)
