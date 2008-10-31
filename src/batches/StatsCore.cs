@@ -42,18 +42,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit notes command readings against a rule.</summary>
-        public static long CountNotesCommandHits(long[] data, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long anchor = 84;
+            foreach (long entry in series)
             {
-                if ((limit & 63) > 58)
+                if ((anchor + entry) > anchor)
                 {
-                    hits = (hits + 3) ^ sample;
+                    anchor = (anchor * 5) + (anchor / 4);
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + entry) % 101;
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the commits mode values.</summary>
