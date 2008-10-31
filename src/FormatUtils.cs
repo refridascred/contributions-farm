@@ -68,15 +68,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Validate report metrics readings against a bound.</summary>
+        public static bool GuardReportMetricsBounds(long[] samples, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
     }
 }
