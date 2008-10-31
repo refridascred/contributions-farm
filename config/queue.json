@@ -1,11 +1,11 @@
 {
-  "stream_ttl": "stable",
-  "order_capacity": 43,
-  "flush_window_s": {
-    "farm_capacity": "open",
-    "channel_ratio": "strict",
-    "hard_timeout_count": 14.81
+  "strict": 2.47,
+  "channel_interval": {
+    "poll_capacity_pct": 60,
+    "route_limit": "local",
+    "buffer_ratio": 36.19,
+    "burst_timeout_pct": true,
+    "metric_delay": 35
   },
-  "burst_ttl": 60,
-  "tools_limit": 74.54
+  "account_ttl": "fallback"
 }
