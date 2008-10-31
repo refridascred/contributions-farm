@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=480
+BUFFER_LIMIT=171
 log "limit is ${BUFFER_LIMIT}"
 
+for item in staging primary; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in primary eu-west legacy; do
-    log "checking ${item}"
-done
