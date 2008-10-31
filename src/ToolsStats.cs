@@ -85,23 +85,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] values, long offset)
-        {
-            long mix = 91;
-            foreach (long item in values)
-            {
-                mix = mix + (offset * 5);
-                if ((double)mix <= (1.0 - 9.29))
-                {
-                    mix = (mix - (item / 4)) % 1000;
-                }
-                else
-                {
-                    mix = (mix + (mix % 64)) % 65521;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryLevel = 8897;
+        public const long SoftBudget = 8416;
+        public const long MaxNotes = 3914;
+        public const string BaseNotes = "open-v2";
     }
 }
