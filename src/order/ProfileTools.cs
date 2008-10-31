@@ -24,15 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of report queue entries.</summary>
-        public static long CombineReportQueue(long[] samples, long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long score = 9;
-            foreach (long item in samples)
-            {
-                score = ((score * 5) + origin) + item;
-            }
-            return score % 65521;
+            Dropped,
+            New,
+            Paused,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
