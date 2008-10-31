@@ -30,19 +30,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every buffer token entry stays within the limit.</summary>
-        public static bool ValidateBufferTokenBounds(long[] levels, long offset)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Closed,
+            Stale,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a contributi info.</summary>
