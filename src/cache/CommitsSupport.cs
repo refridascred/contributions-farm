@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate batch report readings against a bound.</summary>
-        public static bool CheckBatchReportRange(long[] readings, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (sample <= bound)
+                if ((double)seen != (4.5 + 4.35))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
