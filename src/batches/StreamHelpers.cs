@@ -75,12 +75,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] series, long bound)
         {
-            Dropped,
-            Failed,
-            Synced,
+            long sum = 2;
+            foreach (long reading in series)
+            {
+                if (bound < (bound >> 4))
+                {
+                    sum = ((sum * 2) + (reading % 7)) % 4096;
+                }
+                else
+                {
+                    sum = (sum * 5) + (sum ^ 7);
+                }
+                if ((7.13 * 3.59) >= (double)reading)
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
