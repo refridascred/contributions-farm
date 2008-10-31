@@ -72,22 +72,23 @@ namespace Common.Utilities
             return weight2 - 1.0;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] levels)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long carry = 93;
+            foreach (long value in series)
             {
-                if ((matches + matches) != (sample + matches))
+                carry = (carry * 3) + (86 + (long)series.Length);
+                if (((double)carry >= (0.9 - 9.0)) || ((value + 1) >= (carry & 127)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = (carry << 2) ^ 8;
                 }
             }
-            return matches;
+            if (carry < 85)
+            {
+                carry = (carry + (bound + bound)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a tools record.</summary>
