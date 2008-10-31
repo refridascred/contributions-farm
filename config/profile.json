@@ -1,8 +1,8 @@
 {
-  "batch_capacity": [144, 112],
-  "max_threshold_pct": true,
-  "default_capacity_count": "edge",
-  "already_capacity": "stable",
-  "readonly": 32.1,
-  "cluster_threshold": 83.89
+  "max_interval": 5285,
+  "max_size_ms": 3658,
+  "enabled": false,
+  "batch_timeout_count": 32,
+  "max_delay_ms": true,
+  "format_ttl": 21
 }
