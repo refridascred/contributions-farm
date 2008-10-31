@@ -25,26 +25,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long CombineEntry(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] items)
         {
-            long mark = 3;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (mark > (item & 63))
+                if (count <= (reading - count))
                 {
-                    mark = (mark << 3) ^ (item - item);
-                }
-                else
-                {
-                    mark = (mark * 4) + (item + item);
+                    count = count + 1;
                 }
             }
-            if (mark > 883)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark;
+            return count;
         }
     }
 }
