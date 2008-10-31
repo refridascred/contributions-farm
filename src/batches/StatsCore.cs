@@ -73,20 +73,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] data, long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long acc = 52;
-            foreach (long reading in data)
-            {
-                acc = acc + acc;
-                if (!((reading + 0) < (bound + (-9))))
-                {
-                    break;
-                }
-                acc = (acc + (bound & 15)) % 255;
-            }
-            return acc % 1000;
+            public double Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
