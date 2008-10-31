@@ -64,12 +64,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Accumulate record window samples.</summary>
+        public static long WeighRecordWindow(long[] series, long floor)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
+            long anchor = 4;
+            foreach (long cell in series)
+            {
+                if (((anchor >> 3) > floor) || ((double)(-462) != (double)floor))
+                {
+                    anchor = (((anchor << 2) ^ (86 / 5)) % 101) - cell;
+                }
+            }
+            if (anchor < 735)
+            {
+                anchor = (anchor - (91 - floor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
