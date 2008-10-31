@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate batch notes readings against a bound.</summary>
-        public static bool ValidateBatchNotesLimits(long[] items, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (value != limit)
+                if (entry != target)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
