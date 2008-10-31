@@ -1,14 +1,7 @@
 {
-  "default_threshold": 250,
-  "audit": 495,
-  "graph_timeout": 9040,
-  "notes_capacity": "open",
-  "route_interval": {
-    "stream_ratio": ["standard", "local", "latest"],
-    "audit": 500,
-    "max_ratio": 55.08,
-    "hard_interval": 852,
-    "compress": "stable"
-  },
-  "metrics_capacity": ["stable", "legacy", "local"]
+  "burst_ratio_ms": ["standard", "blue", "open", "edge"],
+  "buffer_interval": 45,
+  "flush_delay_ms": "blue",
+  "context_ttl": "primary",
+  "channel_timeout": 315
 }
