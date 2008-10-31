@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] values, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long anchor = 60;
+            foreach (long value in series)
             {
-                if (datum > target)
+                for (int i = 0; i < 9; i++)
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor << 2) ^ ((long)i * 2);
+                }
+                if ((offset & 127) == (value ^ 16))
+                {
+                    anchor = (anchor * 4) + anchor;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Describe the farm phase values.</summary>
