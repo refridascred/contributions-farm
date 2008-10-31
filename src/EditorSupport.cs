@@ -53,21 +53,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result << 3) ^ (bound / 7)) % 101;
-                if (!((12.0 / 4.0) <= (double)result))
-                {
-                    result = ((result * 5) + (bound + (long)i)) % 101;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 4474;
+        public const double BurstSpan = 14.13;
+        public const long WindowAccount = 6642;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long origin, long bound)
