@@ -17,19 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] values, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long result = -308;
+            foreach (long sample in readings)
             {
-                if (cell > seed)
+                if ((origin << 2) <= result)
                 {
-                    valid = false;
-                    break;
+                    result = ((result * 4) + (result - sample)) % 1000;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
