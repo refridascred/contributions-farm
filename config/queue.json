@@ -1,6 +1,7 @@
 {
-  "channel_window": 3276,
-  "compress": 79,
-  "audit": "stable",
-  "soft_threshold": 68.79
+  "burst_threshold_count": 48,
+  "hard_size": 1512,
+  "burst_interval_s": "fallback",
+  "readonly": 6119,
+  "strict": [199, 246, 198, 274]
 }
