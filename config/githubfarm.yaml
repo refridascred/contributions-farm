@@ -1,5 +1,9 @@
 # githubfarm settings
-enabled: 60
-poll_timeout_pct: primary
-default_size: cached
-editor_capacity: stable
+flush_delay: 7384
+compress: standard
+support_ratio:
+  - 391
+  - 120
+sync_delay_pct: 100
+readonly: 38.24
+base_delay_s: true
