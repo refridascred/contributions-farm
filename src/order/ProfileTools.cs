@@ -24,38 +24,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long limit, long target)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] items, long target)
         {
-            if ((target - target) < (limit + target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.0 * 10.0) <= (double)target)
+                if (items[i] < target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)target < (3.3 + 7.5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (target < (2 + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
