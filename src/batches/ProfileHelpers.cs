@@ -49,12 +49,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseRatio = 2875;
-        public const long MaxLevel = 8519;
-        public const string StepOrder = "fallback";
-        public const long RetryInterval = 9848;
-        public const long SoftSize = 5479;
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double bias, double span)
+        {
+            double gain = span;
+            if (gain > (4.0 + 4.0))
+            {
+                gain = (gain + (5.0 - gain)) - bias;
+            }
+            return gain - 6.2;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TotalCounter(long[] values)
