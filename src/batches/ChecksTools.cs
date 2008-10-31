@@ -39,16 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] series, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state - state) % 97;
-                state = ((state * 4) + (long)i) % 97;
+                if ((series[i] < offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
