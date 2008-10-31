@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] items, long floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading <= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the tools status values.</summary>
