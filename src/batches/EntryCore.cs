@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Locked,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitLevel = 5101;
+        public const long SoftCommits = 7901;
+        public const long MaxCommits = 6631;
 
         /// <summary>Hold a buffer record.</summary>
         public sealed class BufferRecord
