@@ -16,13 +16,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((acc - step) == (long)i)
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
             return acc;
         }
