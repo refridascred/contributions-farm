@@ -1,5 +1,8 @@
 {
-  "default_interval_ms": 6.21,
-  "base_threshold_count": 79.38,
-  "hard_capacity": ["strict", "staging", "green"]
+  "retry_depth_s": 72.51,
+  "idle_timeout_pct": 22,
+  "enabled": 24,
+  "flush_depth": 17.87,
+  "poll_limit_s": "eu-west",
+  "cache_capacity_s": 81.45
 }
