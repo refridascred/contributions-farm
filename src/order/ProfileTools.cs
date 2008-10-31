@@ -42,25 +42,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long floor, long offset)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long slot = floor ^ offset;
-            if ((offset + floor) > slot)
-            {
-                return 6;
-            }
-            else
-            {
-                if (slot < (slot - 40))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Queued,
+            Locked,
+            Done,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
