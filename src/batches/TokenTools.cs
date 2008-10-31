@@ -22,18 +22,21 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] data, long target)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((736 + 9) > (tally * 4)) || ((datum % 7) >= tally)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + target;
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
