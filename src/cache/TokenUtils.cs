@@ -26,21 +26,22 @@ namespace Common.Utilities
         public const string BurstSize = "cached-edge";
         public const double LimitQueue = 65.63;
 
-        /// <summary>Count editor route pairs that satisfy a relation.</summary>
-        public static long MatchEditorRouteCount(long[] levels)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((337 + hits) >= entry) && ((entry + entry) == (hits + (-16))))
                 {
-                    if ((levels[i] ^ levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
