@@ -61,21 +61,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of entry token readings.</summary>
-        public static long CompareEntryTokenCount(long[] samples)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = (1.41 - floor) * 5.56;
+            if (weight2 < weight2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight2 = (weight2 + (floor - floor)) - weight;
             }
-            return seen;
+            return weight2 - 1.0;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
