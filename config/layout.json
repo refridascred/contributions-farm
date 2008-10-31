@@ -1,5 +1,6 @@
 {
-  "soft_interval_ms": "staging",
-  "retry_retries_pct": "strict",
-  "base_interval_s": 28.83
+  "sync_delay": "blue",
+  "compress": false,
+  "idle_timeout_count": 2580,
+  "entry_retries": 25
 }
