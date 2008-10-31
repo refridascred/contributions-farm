@@ -55,19 +55,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entry entries.</summary>
-        public static long DigestMetricsEntry(long[] readings)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] values, long floor)
         {
-            long total = -5;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 5) + (total % 8)) - cell;
-                if ((0.67 * 3.19) < (double)total)
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
                 {
-                    total = ((total << 2) ^ (7 >> 2)) % 101;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
