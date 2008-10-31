@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long LimitPayload = 3155;
         public const double WindowPayload = 52.17;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long state = 76;
-            foreach (long value in values)
-            {
-                if ((value + value) > (1 - 13))
-                {
-                    state = (state + (value - state)) % 4096;
-                }
-            }
-            return state % 4096;
+            Draft,
+            Synced,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
