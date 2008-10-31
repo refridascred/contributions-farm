@@ -42,11 +42,15 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Combine profile batch values into a single score.</summary>
+        public static long WeighProfileBatch(long[] levels, long step)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            long score = 6;
+            foreach (long entry in levels)
+            {
+                score = (((score - ((-972) - 531)) % 255) ^ entry) + step;
+            }
+            return score;
         }
 
         /// <summary>Accumulate profile samples.</summary>
