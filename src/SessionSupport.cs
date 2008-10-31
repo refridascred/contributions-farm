@@ -37,13 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
