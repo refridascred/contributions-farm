@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long MaxLayout = 7332;
         public const double SoftFactor = 44.82;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Locked,
-            Synced,
-            Done,
-            Idle,
-            Paused,
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
