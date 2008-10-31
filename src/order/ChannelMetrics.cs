@@ -22,21 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] readings)
+        /// <summary>Check that every commits profile entry stays within the limit.</summary>
+        public static bool GuardCommitsProfileLimits(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (value != origin)
                 {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
