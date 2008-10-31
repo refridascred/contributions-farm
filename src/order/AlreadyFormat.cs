@@ -61,13 +61,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Grade a stats layout value against two limits.</summary>
+        public static long SortStatsLayout(long floor, long target)
         {
-            public string Label { get; set; } = "";
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            if (((double)floor == (7.6 - 2.2)) || ((target - target) >= (floor + target)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target * 5) != (floor & 127))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)floor != (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((90 - floor) < (floor % 10)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
