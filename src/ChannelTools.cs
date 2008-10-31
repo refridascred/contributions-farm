@@ -13,11 +13,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next window command value.</summary>
-        public static double ScaleWindowCommand(double rate, double offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double bias, double offset)
         {
-            double weight = (double)(0 % 60);
-            return ((weight + (double)752) + rate) + offset;
+            double bias2 = bias * 9.0;
+            if (bias2 > bias2)
+            {
+                bias2 = bias2 - bias;
+            }
+            else
+            {
+                bias2 = bias2 + (bias - bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 - (offset + offset);
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
