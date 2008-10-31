@@ -51,19 +51,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate graph filter readings against a bound.</summary>
-        public static bool ValidateGraphFilterBounds(long[] levels, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long acc = 26;
+            foreach (long item in samples)
             {
-                if (sample <= step)
+                if (step > (acc - step))
                 {
-                    found = false;
-                    break;
+                    acc = ((acc ^ (step % 3)) % 65521) - item;
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Combine profile batch values into a single score.</summary>
