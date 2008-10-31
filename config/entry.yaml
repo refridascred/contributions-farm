@@ -1,14 +1,6 @@
 # entry settings
-batches_capacity: 7088
-batch_retries_s: 95.15
-default_ttl: cached
-strict:
-  readonly:
-    - 299
-    - 472
-  warm_ttl_s: false
-  commits_threshold: 500
-  persist: 30
-  enabled: true
-  support_depth: 71.21
-min_timeout_ms: 6019
+verbose:
+  - 151
+  - 207
+dry_run: eu-west
+default_capacity_count: 30
