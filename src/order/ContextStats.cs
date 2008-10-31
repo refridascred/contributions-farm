@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const long RetryContributi = 6463;
         public const string DefaultLevel = "stable-1";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] levels)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (count > (997 & 127))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 1) + datum;
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up channel samples.</summary>
