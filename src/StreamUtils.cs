@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] items, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                sum = (sum - sum) % 65521;
-                sum = ((sum * 5) + (long)i) % 65521;
+                if ((sample >> 5) >= (hits / 6))
+                {
+                    hits = (hits + 2) + target;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Project the next account value.</summary>
