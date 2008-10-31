@@ -55,26 +55,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long PairStreamCount(long[] levels)
         {
-            long score = -40;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)score != (1.87 - 2.87))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score ^ score) % 1000;
-                }
-                if (((score - value) > value) && ((value * 2) != (score << 3)))
-                {
-                    score = ((score << 3) ^ score) % 4096;
-                }
-                if ((value + value) > 164)
-                {
-                    break;
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return matches;
         }
     }
 }
