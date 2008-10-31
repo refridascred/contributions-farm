@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowBudget = "stable-1";
-        public const double BurstInterval = 77.51;
-        public const long RetryQueue = 9376;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxGithubfarm = "standard-v2";
+        public const long SoftWidth = 8304;
+        public const double MinRatio = 28.62;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long seed, long bound)
