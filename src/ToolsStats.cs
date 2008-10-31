@@ -59,11 +59,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
