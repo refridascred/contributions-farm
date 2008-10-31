@@ -14,19 +14,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double bias, double span)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] samples)
         {
-            double ratio = span;
-            if (ratio < bias)
+            long carry = 54;
+            foreach (long value in samples)
             {
-                ratio = ratio + (double)53;
+                carry = ((carry * 4) + (carry % 7)) - value;
             }
-            else
-            {
-                ratio = ratio - (bias / 7.0);
-            }
-            return ratio - (ratio / 2.0);
+            return carry;
         }
 
         /// <summary>Define window limits and defaults.</summary>
