@@ -18,21 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 41;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((anchor & 63) > (8 - anchor))
                 {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor << 3) ^ ((long)readings.Length - sample);
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (sample & 127)) % 4096;
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Adjust a report reading.</summary>
