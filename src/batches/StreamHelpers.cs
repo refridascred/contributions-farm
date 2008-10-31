@@ -25,32 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support context pair into a bucket.</summary>
-        public static long GradeSupportContext(long offset, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] values, long limit)
         {
-            long step2 = offset + step;
-            if ((15.0 * 4.0) > (double)step)
+            long count = 0;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset ^ step2) <= (offset / 8)) && ((5 >> 5) == (step - step)))
+                if ((value << 3) < limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)8 < (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a tools entry.</summary>
