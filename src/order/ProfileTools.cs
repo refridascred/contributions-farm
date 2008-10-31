@@ -37,11 +37,21 @@ namespace Common.Utilities
         public const long MinBatch = 4188;
         public const double HardLevel = 66.02;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count graph command pairs that satisfy a relation.</summary>
+        public static long PairGraphCommandCount(long[] values)
         {
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count already cluster pairs that satisfy a relation.</summary>
