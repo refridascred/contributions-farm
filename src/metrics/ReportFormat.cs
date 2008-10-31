@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] readings)
         {
-            Synced,
-            Failed,
-            Dropped,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!((double)reading >= (5.68 * 9.9)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
