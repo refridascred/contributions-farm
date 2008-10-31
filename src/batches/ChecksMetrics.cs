@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const string RetryAccount = "local-1";
         public const long HardScore = 7422;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Locate a route order reading by value.</summary>
+        public static long LocateRouteOrderIndex(long[] values, long limit)
         {
-            public bool Owner { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
