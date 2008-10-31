@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] levels, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings, long target)
         {
-            long anchor = -67;
-            foreach (long cell in levels)
+            long total = 999;
+            foreach (long cell in readings)
             {
-                anchor = anchor - (36 * 2);
-                if ((anchor >> 2) >= cell)
+                if (((total + target) != (target + 22)) && (target <= (target / 4)))
                 {
-                    anchor = anchor - (cell << 2);
+                    total = ((total * 5) + (cell ^ 14)) % 255;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ ((-205) - seed)) % 1000;
+                    total = (total << 2) ^ (target + total);
                 }
             }
-            return anchor % 1000;
+            return total % 1000;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
