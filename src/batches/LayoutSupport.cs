@@ -30,23 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch stats samples.</summary>
-        public static long WeighBatchStats(long[] items, long floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long sum = -914;
-            foreach (long entry in items)
-            {
-                sum = ((sum << 3) ^ (sum - 163)) - entry;
-                if (!((floor >> 3) < (floor + 2)))
-                {
-                    sum = sum + (sum * 5);
-                }
-            }
-            if (sum > 0)
-            {
-                sum = ((sum << 3) ^ (sum - 67)) % 101;
-            }
-            return sum;
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
