@@ -24,12 +24,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 2915;
+        public const long BaseContext = 1937;
+        public const long StepContext = 6496;
+        public const long LimitSize = 2792;
     }
 }
