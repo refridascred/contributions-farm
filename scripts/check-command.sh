@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict stable latest local; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-latest}"
+mode="${1:-blue}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
@@ -21,7 +23,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
