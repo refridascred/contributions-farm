@@ -51,18 +51,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] values)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((reading / 7) >= (42 ^ hits))
+                if ((5.82 * 4.63) > (double)floor)
                 {
-                    hits = hits + 2;
+                    carry = carry ^ (carry % 60);
                 }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
