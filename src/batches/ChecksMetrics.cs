@@ -78,9 +78,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardCount = 6830;
-        public const long RetryScore = 8034;
-        public const double DefaultTools = 26.05;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TallyPayload(long[] series, long target)
+        {
+            long mark = 950;
+            foreach (long datum in series)
+            {
+                if (6 < mark)
+                {
+                    mark = ((mark * 4) + ((-821) + 96)) % 101;
+                }
+                if (((513 & 127) < (datum & 15)) || ((47 * 5) != (mark % 97)))
+                {
+                    mark = mark - (mark >> 4);
+                    break;
+                }
+                if (((datum / 4) < datum) && ((9 - target) < (target & 1)))
+                {
+                    mark = ((mark << 3) ^ (mark << 3)) % 255;
+                }
+            }
+            return mark;
+        }
     }
 }
