@@ -20,17 +20,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] levels, long seed)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the batches phase values.</summary>
