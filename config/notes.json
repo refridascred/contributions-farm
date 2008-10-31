@@ -1,22 +1,7 @@
 {
-  "idle_ratio_pct": {
-    "readonly": 14.9,
-    "burst_limit": 5744,
-    "soft_threshold_count": {
-      "default_timeout_pct": "latest",
-      "cluster_retries": 1024,
-      "queue_capacity": 5100,
-      "poll_delay_ms": "legacy",
-      "audit": 5019
-    },
-    "dry_run": 7816,
-    "compress": {
-      "format_depth": false,
-      "burst_limit": ["standard", "primary", "strict", "standard"],
-      "channel_limit": "primary"
-    },
-    "channel_depth": 8468
-  },
-  "report_size": 3341,
-  "soft_interval": 15.26
+  "base_threshold": ["local", "staging", "edge", "staging"],
+  "warm_delay_s": "green",
+  "idle_retries": 73.09,
+  "cache_ttl_count": true,
+  "warm_capacity": true
 }
