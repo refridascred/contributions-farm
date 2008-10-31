@@ -38,13 +38,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleLevel = 45.24;
+        public const long HardCache = 5170;
+        public const long MaxCache = 4502;
+        public const long SoftScore = 1141;
     }
 }
