@@ -1,10 +1,12 @@
 # Command notes
 
-The editor module keeps order values in sync with the githubfarm cache.
-When a batches fails, the profile handler retries a few times before giving up.
+Each stream is validated before it reaches the layout queue.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Keep buffer and contributi names short and lowercase.
 
 ## Guidelines
 
-- Log every window change
-- Review payload limits each release
-- Keep editor values small
+- Document new session fields
+- Prefer channel defaults
+- Review support limits each release
+- Log every session change
