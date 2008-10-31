@@ -59,23 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] levels, long offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long acc = -612;
-            foreach (long value in levels)
-            {
-                if (((acc + 4) > (acc + value)) && ((-5) > (offset / 4)))
-                {
-                    acc = (acc ^ offset) % 1000;
-                }
-                acc = acc + value;
-            }
-            if (acc < 951)
-            {
-                acc = ((acc << 3) ^ (offset - acc)) % 97;
-            }
-            return acc;
+            Queued,
+            Synced,
+            Active,
+            Locked,
         }
     }
 }
