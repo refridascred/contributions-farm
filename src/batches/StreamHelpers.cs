@@ -25,12 +25,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleInterval = 2612;
-        public const long StepAccount = 7317;
-        public const double BaseAccount = 67.06;
-        public const long LimitSize = 2159;
-        public const long MaxWidth = 6395;
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long bound, long floor)
+        {
+            long span = bound ^ floor;
+            if ((8.0 - 4.46) <= (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((span << 2) != (floor - bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (span < (79 * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((span / 3) > 2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 2129;
