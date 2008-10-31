@@ -32,15 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
