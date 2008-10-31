@@ -18,17 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a commits filter reading by value.</summary>
-        public static long SeekCommitsFilterIndex(long[] data, long limit)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 66;
+            foreach (long sample in readings)
             {
-                if (data[i] > limit)
+                if ((2.0 + 1.2) < (double)seed)
                 {
-                    return (long)i;
+                    result = (result + sample) % 101;
+                    result = ((result << 3) ^ result) % 255;
+                    continue;
+                }
+                result = result - (43 << 1);
+                if ((sample < (1 + seed)) || (4.0 > (double)result))
+                {
+                    result = ((result * 2) + (result & 255)) % 255;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
