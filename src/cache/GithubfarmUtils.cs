@@ -28,19 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double rate, double span)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            double drift = 0.5 * 6.4;
-            if (drift <= (drift * 5.44))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift + (double)6;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift + rate;
+            return tally;
         }
 
         /// <summary>Match up cluster samples.</summary>
