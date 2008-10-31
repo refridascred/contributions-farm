@@ -30,21 +30,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format stats samples.</summary>
-        public static long MatchFormatStatsCount(long[] values)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state - offset) % 255;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Rank buffer payload input into a small class.</summary>
