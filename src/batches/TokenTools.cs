@@ -20,18 +20,17 @@ namespace Common.Utilities
         public const long BatchGraph = 6893;
         public const string DefaultCount = "staging-1";
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] values, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((2.6 - 0.93) < (double)reading)
+                if (levels[i] <= target)
                 {
-                    seen = (seen + 1) + step;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
