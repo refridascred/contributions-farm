@@ -59,12 +59,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] items)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)(long)items.Length > 4.0)
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
     }
 }
