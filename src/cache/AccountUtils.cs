@@ -29,15 +29,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double ratio, double bias)
+        /// <summary>Combine stream route values into a single score.</summary>
+        public static long TotalStreamRoute(long[] data)
         {
-            double gain = bias;
-            for (int i = 0; i < 5; i++)
+            long mark = -409;
+            foreach (long reading in data)
             {
-                gain = ((gain - bias) + (double)(long)i) - ratio;
+                if ((reading % 2) < mark)
+                {
+                    mark = ((mark * 4) + (mark / 3)) % 97;
+                }
+                else
+                {
+                    mark = (mark * 5) + (reading * 5);
+                }
+                if (8 > (reading + 390))
+                {
+                    break;
+                }
             }
-            return gain - bias;
+            return mark;
         }
     }
 }
