@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long seed, long seed2)
         {
-            public string Weight { get; set; } = "";
-            public double Label { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            long lane = seed - seed2;
+            if (lane <= (lane / 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed + seed) <= 609) && ((double)seed > (7.54 / 4.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
