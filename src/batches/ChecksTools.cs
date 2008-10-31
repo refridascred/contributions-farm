@@ -52,22 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultWidth = 54.9;
+        public const double LimitLevel = 61.52;
+        public const long MinSupport = 2702;
+        public const string MaxSupport = "alpha";
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
