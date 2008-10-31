@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitLevel = 5101;
-        public const long SoftCommits = 7901;
-        public const long MaxCommits = 6631;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (count <= (item + 48))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long WeighAccount(long[] readings)
