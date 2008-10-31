@@ -24,12 +24,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] values, long floor)
         {
-            Draft,
-            Dropped,
-            Ready,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen + cell) == (floor + cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
