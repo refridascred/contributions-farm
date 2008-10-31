@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "local-edge";
-        public const string StepCount = "local-1";
-        public const long BaseChannel = 8234;
-        public const long HardTimeout = 6288;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            New,
+            Queued,
+            Stale,
+            Active,
+        }
 
         /// <summary>Validate cluster context readings against a bound.</summary>
         public static bool CheckClusterContextBounds(long[] values, long step)
