@@ -40,15 +40,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double rate, double bias)
+        /// <summary>Classify a token session pair into a bucket.</summary>
+        public static long GradeTokenSession(long bound, long offset)
         {
-            double load = 5.3;
-            for (int i = 0; i < 9; i++)
+            if ((bound - offset) > 2)
             {
-                load = (load - bias) + (double)(long)i;
+                return 6;
             }
-            return load - rate;
+            else
+            {
+                if (((double)3 >= (double)offset) || (((-314) - offset) == (6 ^ bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((497 + offset) != (offset % 100)) || ((offset - offset) > (offset + bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
