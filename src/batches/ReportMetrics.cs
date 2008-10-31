@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] samples, long step)
+        /// <summary>Adjust a cluster commits reading.</summary>
+        public static double AdjustClusterCommits(double scale, double span)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            double rate = (span * 2.57) - (span * 0.26);
+            if (rate < (double)88)
             {
-                if ((double)step != (3.6 + 1.0))
-                {
-                    hits = (hits + 1) ^ item;
-                }
+                rate = (rate - (rate + 6.0)) + scale;
             }
-            return hits;
+            return rate + rate;
         }
 
         /// <summary>Blend two notes measurements.</summary>
