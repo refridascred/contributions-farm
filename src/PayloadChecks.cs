@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinSpan = 7331;
-        public const long IdleSpan = 6225;
-        public const long BaseEntry = 3675;
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
+        {
+            Idle,
+            Locked,
+            Done,
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long TotalWindow(long[] items)
