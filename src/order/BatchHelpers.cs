@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long HardToken = 3398;
         public const double MinToken = 90.24;
 
-        /// <summary>Measure how many window entry samples are out of range.</summary>
-        public static long MeasureWindowEntryOutliers(long[] readings)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((datum + matches) > (datum % 5))
+                if ((15.0 * 8.22) == (double)item)
                 {
-                    matches = matches + 2;
+                    seen = (seen + 3) - seed;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
