@@ -35,11 +35,12 @@ namespace Common.Utilities
             return load + (double)134;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double gain, double span)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            double weight = gain;
-            return (weight + (gain / 6.0)) + span;
+            Pending,
+            Idle,
+            Paused,
         }
     }
 }
