@@ -31,11 +31,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double scale, double bias)
+        /// <summary>Audit queue already readings against a rule.</summary>
+        public static long MeasureQueueAlreadyMatches(long[] levels, long floor)
         {
-            double scale2 = (double)(655 ^ 11);
-            return (scale2 - scale) + bias;
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (904 <= entry)
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate farm order samples.</summary>
