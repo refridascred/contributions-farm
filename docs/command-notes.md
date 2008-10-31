@@ -1,10 +1,14 @@
 # Command notes
 
-A session that stays idle for too long is moved to the order list.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Use channel settings to tune how often contributi data is refreshed.
+Run the filter check before changing any editor limits.
+
+When a support fails, the counter handler retries a few times before giving up.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new metrics fields
-- Log every report change
-- Review metrics limits each release
+- Validate schema input early
+- Log every cache change
+- Document new filter fields
+- Prefer checks defaults
