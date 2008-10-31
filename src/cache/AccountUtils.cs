@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] series)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)count >= (double)offset) && ((double)offset > 18.0))
                 {
-                    if ((series[i] ^ series[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) ^ entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
