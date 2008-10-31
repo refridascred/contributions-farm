@@ -13,13 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] items)
         {
-            public double Size { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((count + 807) <= (cell - (long)items.Length))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up tools samples.</summary>
