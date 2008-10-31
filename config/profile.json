@@ -1,5 +1,6 @@
 {
-  "sync_interval": 88,
-  "enabled": 17.38,
-  "burst_retries_pct": 5297
+  "strict": false,
+  "enabled": 81.96,
+  "notes_interval": [356, 233],
+  "base_ratio_count": 63
 }
