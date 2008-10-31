@@ -1,6 +1,8 @@
 {
-  "idle_capacity": false,
-  "retry_window_s": 51.24,
-  "filter_interval": 52.2,
-  "hard_ratio": false
+  "min_depth_pct": ["legacy", "strict", "open"],
+  "batch_capacity_count": "green",
+  "audit": false,
+  "readonly": 90.45,
+  "poll_retries_ms": 57.62,
+  "base_limit_s": 79.4
 }
