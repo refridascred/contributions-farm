@@ -33,15 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
