@@ -1,7 +1,5 @@
 {
-  "default_interval_count": true,
-  "retry_capacity": 96,
-  "enabled": "open",
-  "persist": 24,
-  "account_interval": 1513
+  "verbose": 9,
+  "hard_timeout_s": true,
+  "session_ratio": 308
 }
