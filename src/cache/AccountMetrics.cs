@@ -95,38 +95,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long origin, long target)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            if (!((6 + origin) <= target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin <= (8.55 + 8.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target ^ origin) <= (origin ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((target - (-766)) > (origin >> 4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
