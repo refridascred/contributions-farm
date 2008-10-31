@@ -28,15 +28,19 @@ namespace Common.Utilities
             return weight - (7.2 / 6.0);
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] items, long bound)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long sample in items)
             {
-                if ((count % 100) == (sample ^ sample))
+                if (((bound - sample) > (bound / 4)) || ((bound - sample) != (bound << 1)))
                 {
                     count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
