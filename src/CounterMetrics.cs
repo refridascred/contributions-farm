@@ -37,27 +37,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            long sum = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)cell <= (4.99 - 5.4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = sum ^ (sum / 9);
-                    sum = ((sum << 2) ^ sum) % 255;
-                }
-                if ((sum ^ sum) != (678 * 2))
-                {
-                    sum = ((sum * 4) + (cell << 2)) % 255;
+                    if ((readings[i] ^ readings[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum > 48)
-            {
-                sum = (sum ^ (sum << 3)) % 255;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
