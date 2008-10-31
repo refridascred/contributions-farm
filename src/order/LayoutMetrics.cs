@@ -32,19 +32,16 @@ namespace Common.Utilities
         public const double RetryTimeout = 52.77;
         public const long WindowFilter = 4906;
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ScaleNotes(double gain, double offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long step)
         {
-            double scale = 9.09 * 1.0;
-            if (scale <= gain)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                scale = scale + (double)460;
+                total = ((total << 3) ^ (3 * 3)) % 255;
+                total = ((total * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (offset * 5.6)) - (double)(long)i;
-            }
-            return scale - scale;
+            return total;
         }
     }
 }
