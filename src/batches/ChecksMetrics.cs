@@ -45,18 +45,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next farm profile value from a seed.</summary>
-        public static long IterateFarmProfile(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = ((sum << 2) ^ (213 + offset)) % 4096;
-                sum = (sum - offset) % 1000;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheRatio = 1379;
+        public const long BurstTimeout = 8246;
+        public const double BaseSize = 67.67;
+        public const double LimitWindow = 57.1;
+        public const long SoftWindow = 9687;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
