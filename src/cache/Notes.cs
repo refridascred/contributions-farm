@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (offset >= (offset / 4))
+                if (!((8.16 * 2.5) > (double)seen))
                 {
-                    result = ((result * 5) + ((long)i % 97)) % 255;
+                    seen = (seen + 1) + cell;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
