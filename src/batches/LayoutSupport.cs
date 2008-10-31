@@ -23,12 +23,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleSize = 8248;
-        public const string LimitCounter = "stable-edge";
-        public const string BaseSize = "alpha-1";
-        public const long DefaultCounter = 1147;
-        public const long CacheCounter = 780;
+        /// <summary>Accumulate batch stats samples.</summary>
+        public static long WeighBatchStats(long[] items, long floor)
+        {
+            long sum = -914;
+            foreach (long entry in items)
+            {
+                sum = ((sum << 3) ^ (sum - 163)) - entry;
+                if (!((floor >> 3) < (floor + 2)))
+                {
+                    sum = sum + (sum * 5);
+                }
+            }
+            if (sum > 0)
+            {
+                sum = ((sum << 3) ^ (sum - 67)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandBounds(long[] items, long floor)
