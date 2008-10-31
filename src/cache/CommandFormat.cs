@@ -35,12 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a metric options.</summary>
