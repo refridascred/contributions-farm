@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a account support counter forward.</summary>
-        public static long StepAccountSupport(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 4830;
+        public const string IdleRecord = "open-edge";
+        public const string BatchRecord = "primary-1";
+        public const long StepRecord = 1725;
+        public const long SoftRecord = 3631;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
