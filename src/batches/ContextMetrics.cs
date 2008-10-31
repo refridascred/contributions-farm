@@ -75,22 +75,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamMatches(long[] samples)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long total = 4;
+            foreach (long item in items)
             {
-                if (sample <= (844 + 0))
+                long delta = (302 - limit) << 1;
+                if (delta > item)
                 {
-                    matches = matches + 1;
+                    delta = (delta + (item * 4)) % 97;
+                    break;
                 }
-                else
+                if (((double)limit != (2.5 - 9.2)) && ((double)limit <= 6.5))
                 {
-                    matches = matches - 1;
+                    total = (total ^ (limit % 97)) % 4096;
                 }
             }
-            return matches;
+            return total % 65521;
         }
     }
 }
