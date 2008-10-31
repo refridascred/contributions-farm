@@ -1,18 +1,6 @@
 {
-  "cache_depth_count": {
-    "entry_interval": "open",
-    "persist": {
-      "cache_delay_count": true,
-      "window_interval": 17,
-      "strict": [205, 191, 157],
-      "idle_timeout_s": 19.36,
-      "max_ratio_pct": false
-    },
-    "idle_ttl_pct": "standard",
-    "burst_interval_s": 500,
-    "cache_timeout_ms": 19.9
-  },
-  "soft_ratio_s": [298, 160],
-  "profile_timeout": true,
-  "editor_size": "fallback"
+  "compress": "blue",
+  "max_interval_count": false,
+  "dry_run": 87.7,
+  "enabled": true
 }
