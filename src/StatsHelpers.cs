@@ -47,13 +47,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double ratio, double offset)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            double weight = ratio - offset;
+            if (weight >= weight)
+            {
+                weight = weight - ratio;
+            }
+            else
+            {
+                weight = weight + (double)17;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight - (double)4;
         }
     }
 }
