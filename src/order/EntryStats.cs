@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] values)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long total = -59;
-            foreach (long value in values)
-            {
-                total = (total << 3) ^ (value + total);
-                if (!((total - value) < total))
-                {
-                    total = (total ^ 7) % 97;
-                }
-                else
-                {
-                    total = ((total * 2) + (value + value)) % 4096;
-                }
-            }
-            if (total > 6)
-            {
-                total = ((total << 3) ^ total) % 255;
-            }
-            return total % 1000;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
