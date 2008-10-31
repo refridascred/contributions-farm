@@ -53,39 +53,17 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Classify a commits stats pair into a bucket.</summary>
-        public static long RankCommitsStats(long offset, long step)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] data, long step)
         {
-            long prev = offset ^ step;
-            if (!(step <= (offset / 5)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((17.0 - 3.9) >= (double)step)
+                if ((data[i] < step) && ((data[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (prev >= (offset * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset << 2) > (step - step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first token route entry that matches the target.</summary>
