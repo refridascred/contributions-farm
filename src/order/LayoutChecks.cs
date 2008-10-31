@@ -23,39 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long seed)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long offset = step ^ seed;
-            if (seed > (75 >> 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset - step) >= (8 / 9))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.63 / 8.0) <= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((step >> 5) >= (seed / 8)) || ((seed >> 3) <= (603 - 204)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
