@@ -56,11 +56,17 @@ namespace Common.Utilities
         public const double LimitWindow = 57.1;
         public const long SoftWindow = 9687;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Locate a already cluster reading by value.</summary>
+        public static long LookupAlreadyClusterIndex(long[] data, long step)
         {
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
