@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a token order pair into a bucket.</summary>
-        public static long RankTokenOrder(long offset, long bound)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long origin, long offset)
         {
-            if ((offset ^ offset) < (bound % 10))
+            if ((double)offset >= (8.08 - 5.23))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((double)offset < (2.11 - 13.0))
+                if ((offset + origin) > (origin * 4))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if ((double)bound > (8.8 + 1.47))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound <= offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
