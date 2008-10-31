@@ -14,21 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample + 928) == (sample + origin))
                 {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Check that every channel buffer entry stays within the limit.</summary>
