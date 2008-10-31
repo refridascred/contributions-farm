@@ -40,13 +40,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Failed,
-            Pending,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxSpan = 5594;
+        public const long LimitLevel = 9826;
+        public const string HardStream = "standard-v2";
+        public const double WindowStream = 40.73;
+        public const long LimitScore = 129;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
