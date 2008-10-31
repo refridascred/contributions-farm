@@ -49,22 +49,17 @@ namespace Common.Utilities
         public const long LimitContext = 5917;
         public const string RetryInterval = "strict-edge";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] samples)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum + datum) == (tally * 5))
+                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
