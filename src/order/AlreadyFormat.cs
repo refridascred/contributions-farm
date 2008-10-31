@@ -19,15 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long result = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Idle,
+            Retry,
+            Pending,
+            New,
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
