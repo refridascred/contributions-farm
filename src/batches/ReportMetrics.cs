@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] levels, long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] samples, long step)
         {
-            long mark = -684;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                mark = (mark + origin) + entry;
+                if ((double)step != (3.6 + 1.0))
+                {
+                    hits = (hits + 1) ^ item;
+                }
             }
-            if (mark > 9)
-            {
-                mark = (mark + mark) % 1000;
-            }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Blend two notes measurements.</summary>
