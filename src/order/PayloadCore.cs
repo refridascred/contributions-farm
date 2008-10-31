@@ -25,16 +25,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] levels)
         {
-            long carry = 91;
-            foreach (long value in data)
+            long anchor = 81;
+            foreach (long datum in levels)
             {
-                carry = (carry + (carry * 4)) % 97;
-                carry = (carry - (value / 4)) % 65521;
+                if (!(datum > (datum & 255)))
+                {
+                    anchor = (anchor - (anchor / 4)) % 101;
+                }
             }
-            return carry;
+            if (anchor < 527)
+            {
+                anchor = ((anchor << 2) ^ (anchor + anchor)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
