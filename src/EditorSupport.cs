@@ -65,32 +65,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long origin, long bound)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            long step = origin - bound;
-            if ((double)step > (4.4 - 18.0))
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((542 + 422) != (origin * 2))
+                acc = (acc + (origin + (long)i)) % 255;
+                if ((2.0 + 1.7) < (double)(long)i)
                 {
-                    return 5;
+                    acc = ((acc * 2) + (acc % 16)) % 97;
+                    acc = ((acc << 3) ^ origin) % 1000;
+                    continue;
                 }
-                else
-                {
-                    if ((origin - step) <= origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
