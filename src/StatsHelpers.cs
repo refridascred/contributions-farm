@@ -36,18 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] levels)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long total = 0;
-            foreach (long reading in levels)
-            {
-                if (((total - total) != (reading % 24)) && ((total + reading) > (715 + 69)))
-                {
-                    total = (total - (reading >> 3)) % 4096;
-                }
-            }
-            return total;
+            Ready,
+            Queued,
+            Synced,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
