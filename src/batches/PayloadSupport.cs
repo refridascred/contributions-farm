@@ -29,11 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Check that every report checks entry stays within the limit.</summary>
+        public static bool GuardReportChecksBounds(long[] values, long target)
         {
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
