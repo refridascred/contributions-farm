@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Draft,
-            Paused,
-            Queued,
-            Failed,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowBudget = "stable-1";
+        public const double BurstInterval = 77.51;
+        public const long RetryQueue = 9376;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TotalSupport(long[] series)
