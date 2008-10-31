@@ -1,6 +1,7 @@
 {
-  "batch_capacity_ms": "blue",
-  "flush_size_s": ["edge", "strict"],
-  "audit": "legacy",
-  "graph_size": ["strict", "staging", "standard", "primary"]
+  "batch_retries": false,
+  "retry_capacity_pct": "open",
+  "stream_ratio": 46.54,
+  "max_limit_pct": "staging",
+  "verbose": [337, 341, 365, 224]
 }
