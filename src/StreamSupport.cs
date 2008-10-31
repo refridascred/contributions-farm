@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((3.0 / 2.0) <= (double)tally)
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 9709;
+        public const long IdleEntry = 7842;
+        public const string RetryRatio = "primary-1";
+        public const long SoftLevel = 3114;
+        public const string LimitEntry = "open-1";
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
