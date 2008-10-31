@@ -25,11 +25,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 5888;
-        public const double MinSize = 27.18;
-        public const string BurstTimeout = "cached-1";
-        public const string BaseWindow = "latest-v2";
-        public const double LimitSpan = 57.29;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Active,
+            Stale,
+            Failed,
+            Locked,
+            Idle,
+        }
     }
 }
