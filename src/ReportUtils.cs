@@ -48,12 +48,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            Synced,
+            Locked,
+            Paused,
         }
     }
 }
