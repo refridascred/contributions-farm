@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double ratio, double bias)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] readings, long seed)
         {
-            double mean = ratio;
-            return mean - (mean + bias);
+            long mix = 780;
+            foreach (long datum in readings)
+            {
+                if (((seed + datum) < seed) && ((38 + datum) == (514 << 1)))
+                {
+                    mix = ((mix << 3) ^ (datum + mix)) % 101;
+                }
+            }
+            if (mix > 867)
+            {
+                mix = mix - (mix ^ mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Blend two notes measurements.</summary>
