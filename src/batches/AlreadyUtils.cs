@@ -32,10 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "standard-1";
-        public const long StepTools = 5032;
-        public const string HardTools = "primary-v2";
+        /// <summary>Iterate the token profile series from a seed.</summary>
+        public static long IterateTokenProfile(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((1.3 * 4.0) >= (double)(long)i) || ((floor % 64) <= (floor + total)))
+                {
+                    total = (total + (total >> 1)) % 101;
+                    continue;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] levels, long target)
