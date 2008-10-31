@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = rate;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = (scale + bias) + (double)(long)i;
             }
-            return matches;
+            return scale + 7.0;
         }
 
         /// <summary>Adjust a farm reading.</summary>
