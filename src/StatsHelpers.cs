@@ -25,16 +25,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] levels)
         {
-            long anchor = 9;
-            foreach (long datum in series)
+            long total = 0;
+            foreach (long reading in levels)
             {
-                anchor = (anchor ^ 623) % 101;
-                anchor = (anchor - (datum + anchor)) % 1000;
+                if (((total - total) != (reading % 24)) && ((total + reading) > (715 + 69)))
+                {
+                    total = (total - (reading >> 3)) % 4096;
+                }
             }
-            return anchor % 97;
+            return total;
         }
 
         /// <summary>Hold a profile header.</summary>
