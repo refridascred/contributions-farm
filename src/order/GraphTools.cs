@@ -34,22 +34,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch cluster values into a single score.</summary>
-        public static long TotalBatchCluster(long[] readings)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long mark = 234;
-            foreach (long item in readings)
-            {
-                if (!(item <= (item & 127)))
-                {
-                    mark = (mark - 33) % 1000;
-                }
-                else
-                {
-                    mark = (mark * 4) + (item & 255);
-                }
-            }
-            return mark % 4096;
+            Stale,
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Hold a context options.</summary>
