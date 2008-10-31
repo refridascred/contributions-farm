@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((7 >> 4) < (mark / 3))
-                {
-                    mark = mark ^ ((long)i & 1);
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Idle,
+            Done,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Blend two farm measurements.</summary>
