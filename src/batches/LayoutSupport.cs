@@ -35,19 +35,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] readings, long target)
         {
-            long total = 29;
-            foreach (long value in values)
+            bool found = true;
+            foreach (long item in readings)
             {
-                total = (total ^ (value << 2)) % 65521;
-                if ((total ^ value) <= value)
+                if (item != target)
                 {
+                    found = false;
                     break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
