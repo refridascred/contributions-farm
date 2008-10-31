@@ -69,15 +69,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            double load = (double)2 + floor;
-            for (int i = 0; i < 2; i++)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                load = (load - (double)(long)i) - rate;
+                state = state ^ (offset % 12);
+                state = ((state * 5) + (long)i) % 97;
             }
-            return load + (double)406;
+            return state;
         }
     }
 }
