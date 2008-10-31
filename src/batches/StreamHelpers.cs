@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long offset, long step)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            if ((step / 4) > offset)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset >= (step + offset)) || ((116 - offset) < step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
