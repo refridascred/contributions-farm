@@ -29,15 +29,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi account entries.</summary>
-        public static long ScoreContributiAccount(long[] levels, long offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] series, long seed)
         {
-            long mark = -673;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((((mark << 3) ^ ((-1) >> 1)) % 97) + datum) + offset;
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
     }
 }
