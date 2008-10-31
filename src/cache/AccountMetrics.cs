@@ -29,16 +29,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next metrics window value from a seed.</summary>
-        public static long IterateMetricsWindow(long seed)
+        /// <summary>Rank buffer payload input into a small class.</summary>
+        public static long BucketBufferPayload(long step, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            if ((step % 100) == (origin * 3))
             {
-                carry = (carry - ((long)i + carry)) % 97;
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (((9.0 * 0.5) == (double)origin) && ((origin - step) < step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
