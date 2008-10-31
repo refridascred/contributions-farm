@@ -11,18 +11,10 @@ namespace Common.Utilities
         public const string BaseInterval = "local-edge";
         public const long BurstSpan = 9721;
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "stable-edge";
+        public const double LimitBuffer = 57.84;
+        public const long MinLevel = 8249;
 
         /// <summary>Count buffer already pairs that satisfy a relation.</summary>
         public static long CompareBufferAlreadyCount(long[] data)
