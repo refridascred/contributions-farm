@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series, long step)
-        {
-            long state = 15;
-            foreach (long cell in series)
-            {
-                state = ((state + (state + state)) + cell) + step;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 4830;
+        public const long SoftChecks = 5921;
+        public const string BurstChecks = "latest-1";
+        public const double RetryChecks = 72.39;
+        public const long DefaultSpan = 8716;
 
         /// <summary>Compare every pair of channel tools readings.</summary>
         public static long MatchChannelToolsCount(long[] readings)
