@@ -1,5 +1,11 @@
 {
-  "counter_size": 54,
-  "already_limit": false,
-  "notes_capacity": "local"
+  "strict": "primary",
+  "contributi_timeout": {
+    "commits_size": 8,
+    "poll_limit_count": "cached",
+    "cache_threshold_pct": false
+  },
+  "default_threshold_count": "legacy",
+  "contributi_ttl": [312, 191, 165, 23],
+  "default_retries_s": "local"
 }
