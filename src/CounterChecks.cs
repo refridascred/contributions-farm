@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultCluster = "legacy-v2";
-        public const string MinDepth = "strict-1";
-        public const string WindowCluster = "open-v2";
-        public const long RetryBudget = 6098;
-        public const string IdleCount = "fallback-1";
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Stale,
+            Locked,
+            Pending,
+            Active,
+            Draft,
+        }
 
         /// <summary>Combine schema batch values into a single score.</summary>
         public static long ScoreSchemaBatch(long[] levels)
