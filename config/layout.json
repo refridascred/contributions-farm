@@ -1,5 +1,8 @@
 {
-  "flush_delay_ms": "blue",
-  "compress": "open",
-  "persist": 44.1
+  "min_retries_ms": 2259,
+  "min_delay": 25,
+  "base_threshold": 2.96,
+  "order_limit": "stable",
+  "burst_ttl_ms": 29.14,
+  "warm_timeout_pct": 1024
 }
