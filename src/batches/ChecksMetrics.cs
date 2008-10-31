@@ -58,25 +58,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long origin)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long origin, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long cur = origin + offset;
+            if (((double)cur > (4.0 + 8.94)) && ((origin + offset) < (cur * 5)))
             {
-                if ((origin ^ (long)i) <= (score % 10))
-                {
-                    score = (score - score) % 255;
-                }
-                double drift = (9.59 - 4.05) * 9.0;
-                if ((drift / 6.0) >= drift)
-                {
-                    drift = drift + (double)score;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 4093;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((cur - cur) < ((-70) ^ cur))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of payload entries.</summary>
