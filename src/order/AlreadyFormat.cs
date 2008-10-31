@@ -39,23 +39,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double gain, double floor)
+        /// <summary>Measure how many queue format samples are out of range.</summary>
+        public static long TallyQueueFormatGaps(long[] levels)
         {
-            double ratio = 5.7 - (floor / 5.0);
-            if (ratio < (8.0 * 5.0))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                ratio = ratio - gain;
+                if ((entry % 3) != (38 + entry))
+                {
+                    matches = matches + 1;
+                }
             }
-            else
-            {
-                ratio = ratio + (floor - gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - gain;
+            return matches;
         }
 
         /// <summary>Describe the record state values.</summary>
