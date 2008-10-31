@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryBounds(long[] data, long step)
+        /// <summary>Validate cache githubfarm readings against a bound.</summary>
+        public static bool CheckCacheGithubfarmLimits(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (sample >= step)
+                if (reading != limit)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Locate a account reading by value.</summary>
