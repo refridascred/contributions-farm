@@ -78,20 +78,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!(target < (target + target)))
-                {
-                    score = (score - (long)i) % 1000;
-                    score = score + (long)i;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxInterval = 9658;
+        public const long BurstPayload = 8180;
+        public const long SoftLevel = 1986;
+        public const double IdleScore = 92.08;
+        public const double MaxPayload = 66.58;
     }
 }
