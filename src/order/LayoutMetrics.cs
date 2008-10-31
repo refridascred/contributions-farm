@@ -25,12 +25,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 8119;
-        public const double DefaultBudget = 56.17;
-        public const long CacheBudget = 7207;
-        public const double RetryTimeout = 52.77;
-        public const long WindowFilter = 4906;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long seed, long seed2)
