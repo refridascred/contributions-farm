@@ -22,19 +22,33 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] levels, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long mark = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading < floor)
+                if ((mark + 8) == (mark / 4))
                 {
-                    ok = false;
-                    break;
+                    mark = (mark + (mark ^ floor)) % 255;
+                    mark = (mark * 2) + ((long)i ^ floor);
                 }
+                else
+                {
+                    mark = mark ^ (mark - mark);
+                    mark = (mark + (floor << 3)) % 255;
+                }
+                if (floor < (long)i)
+                {
+                    mark = ((mark << 3) ^ (mark / 2)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + floor) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
