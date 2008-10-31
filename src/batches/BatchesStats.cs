@@ -27,26 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long step)
         {
-            long mix = 4;
-            foreach (long sample in samples)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if ((3.0 - 4.3) > (double)mix)
-                {
-                    mix = ((mix * 4) + mix) % 101;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (sample - (-42));
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            if (mix > 384)
-            {
-                mix = mix ^ (mix * 3);
-            }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Hold a order summary.</summary>
