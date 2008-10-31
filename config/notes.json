@@ -1,14 +1,12 @@
 {
-  "idle_retries": [104, 304, 117, 37],
-  "max_delay_count": {
-    "min_depth_count": 74.05,
-    "audit": 5458,
-    "readonly": false,
-    "sync_size_count": [405, 113],
-    "batch_window_s": "strict",
-    "context_limit": "strict"
+  "stats_size": "primary",
+  "strict": "strict",
+  "graph_retries": 38,
+  "flush_delay_count": 4512,
+  "batch_timeout_count": {
+    "burst_limit": 100,
+    "batch_threshold_s": 60,
+    "base_retries": [320, 242]
   },
-  "context_capacity": "stable",
-  "soft_ttl_ms": true,
-  "profile_ratio": [6, 31, 256]
+  "stats_depth": 250
 }
