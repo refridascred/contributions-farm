@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardScore = 43.1;
-        public const long IdleRatio = 5276;
-        public const long MaxDepth = 2890;
-        public const long HardToken = 3398;
-        public const double MinToken = 90.24;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Stale,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportOutliers(long[] levels, long seed)
