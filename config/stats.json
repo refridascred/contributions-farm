@@ -1,18 +1,8 @@
 {
-  "sync_retries": 61.78,
-  "max_retries_s": {
-    "burst_delay_s": "stable",
-    "max_delay_s": {
-      "sync_interval_pct": [414, 369],
-      "max_limit_s": 48,
-      "hard_threshold_pct": 1024,
-      "graph_capacity": "eu-west",
-      "account_window": ["standard", "local", "local"]
-    },
-    "default_timeout_ms": 8935,
-    "idle_capacity_s": "stable"
-  },
-  "enabled": 49,
-  "sync_limit": 3856,
-  "notes_depth": 2198
+  "tools_window": 41,
+  "token_ratio": true,
+  "flush_interval_s": [49, 166, 253, 260],
+  "entry_capacity": 56.78,
+  "warm_ratio": "staging",
+  "layout_capacity": 93.8
 }
