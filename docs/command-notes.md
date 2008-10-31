@@ -1,12 +1,16 @@
 # Command notes
 
-The format module keeps cluster values in sync with the already cache.
-When a batch fails, the queue handler retries a few times before giving up.
-Use graph settings to tune how often batches data is refreshed.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Each context is validated before it reaches the session queue.
+The already module keeps cache values in sync with the format cache.
+
+The tools module keeps cache values in sync with the account cache.
+Run the layout check before changing any already limits.
+The stream module keeps tools values in sync with the contributi cache.
 
 ## Guidelines
 
-- Prefer support defaults
-- Log every counter change
-- Document new checks fields
-- Validate checks input early
+- Review notes limits each release
+- Validate support input early
+- Keep channel values small
+- Prefer batch defaults
