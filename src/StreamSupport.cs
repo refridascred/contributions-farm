@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] items, long origin)
+        /// <summary>Scale a commits filter figure with a bias.</summary>
+        public static double ScaleCommitsFilter(double weight, double span)
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((4.0 - 5.0) == (double)value) && ((origin * 5) <= (seen * 3)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            double scale = (double)92 + (span * 6.1);
+            return (scale + (double)0) + weight;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
