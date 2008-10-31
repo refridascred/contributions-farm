@@ -23,13 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            Retry,
-            Done,
-            Active,
-            Ready,
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two notes measurements.</summary>
