@@ -47,10 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "fallback";
-        public const long MinAccount = 387;
-        public const long WindowAccount = 44;
+        /// <summary>Scale a stats batches figure with a bias.</summary>
+        public static double BlendStatsBatches(double ratio, double bias)
+        {
+            double scale = bias;
+            return (scale + (bias / 9.0)) + ratio;
+        }
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
