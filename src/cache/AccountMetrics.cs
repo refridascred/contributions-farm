@@ -54,25 +54,15 @@ namespace Common.Utilities
         public const double BatchGraph = 13.04;
         public const long BurstGraph = 7984;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long offset, long offset2)
+        /// <summary>Iterate the graph context series from a seed.</summary>
+        public static long SeriesGraphContext(long floor)
         {
-            long offset3 = offset + offset2;
-            if (offset2 <= offset3)
+            long total = floor;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)offset != (double)5)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
     }
 }
