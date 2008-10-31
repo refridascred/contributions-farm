@@ -1,9 +1,51 @@
 # githubfarm settings
-burst_size: 250
-audit: 500
-max_retries: 21.46
-burst_interval: false
-min_ratio_s:
-  - 76
-  - 80
-format_ratio: 6.62
+compress: 1382
+cache_window_s:
+  flush_limit_count:
+    audit: false
+    idle_depth_s: 315
+    sync_limit_ms: 20
+    persist: 500
+  soft_depth:
+    - green
+    - staging
+    - green
+    - fallback
+  dry_run: 100
+  poll_timeout:
+    - 292
+    - 273
+    - 221
+  base_size: 94
+  payload_depth:
+    - 321
+    - 64
+    - 245
+readonly:
+  flush_threshold: 9562
+  min_capacity_s: 53.7
+  hard_timeout_count:
+    min_size_s: standard
+    max_limit_s: blue
+    command_limit: 7374
+    filter_limit:
+      - green
+      - eu-west
+      - staging
+    warm_delay_pct: blue
+  idle_delay: 82.71
+  hard_ttl_s: staging
+  poll_capacity:
+    warm_threshold: false
+    channel_window: staging
+    burst_capacity: 450
+    persist: 1024
+audit: 44.95
+flush_window_ms:
+  dry_run:
+    - 479
+    - 343
+    - 206
+    - 310
+  tools_limit: standard
+  strict: 81
