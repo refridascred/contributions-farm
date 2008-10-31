@@ -28,12 +28,12 @@ namespace Common.Utilities
         public const long SoftReport = 2085;
         public const long DefaultInterval = 3446;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] samples, long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] < step) && ((samples[i] % 2) != 0))
+                if ((values[i] >= bound) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
