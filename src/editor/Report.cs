@@ -23,11 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepFarm = 97.54;
-        public const string RetryFactor = "staging";
-        public const long IdleInterval = 9458;
-        public const string BatchFarm = "legacy-v2";
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long PairSupportCount(long[] series)
