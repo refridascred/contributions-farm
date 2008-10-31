@@ -79,18 +79,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] values, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((value ^ 290) != (value >> 2))
+                if (reading <= offset)
                 {
-                    count = (count + 2) + floor;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
