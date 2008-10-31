@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double rate, double bias)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double scale = rate;
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + bias) + (double)(long)i;
-            }
-            return scale + 7.0;
+            Synced,
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Adjust a farm reading.</summary>
