@@ -41,18 +41,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] series, long floor)
+        /// <summary>Audit contributi commits readings against a rule.</summary>
+        public static long TallyContributiCommitsHits(long[] data, long bound)
         {
-            long anchor = 1;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (((-42) - 8) > anchor)
+                if (!((0.2 * 4.27) >= (double)matches))
                 {
-                    anchor = ((anchor - (value + value)) % 65521) - floor;
+                    matches = ((matches + 2) - value) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
