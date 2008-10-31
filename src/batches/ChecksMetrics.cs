@@ -47,13 +47,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] series, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long carry = 13;
+            foreach (long datum in series)
+            {
+                carry = ((carry ^ (offset - carry)) % 1000) + datum;
+                if (carry < (carry + carry))
+                {
+                    carry = (carry + carry) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
