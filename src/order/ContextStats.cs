@@ -18,11 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double gain, double offset)
+        /// <summary>Match up record graph samples.</summary>
+        public static long PairRecordGraphCount(long[] series)
         {
-            double ratio = (double)4 / 5.0;
-            return ((ratio + (double)204) + gain) + offset;
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up order samples.</summary>
