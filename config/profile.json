@@ -1,7 +1,6 @@
 {
-  "idle_interval_ms": false,
-  "flush_size_ms": 9200,
-  "default_ratio": 500,
-  "readonly": 2247,
-  "command_ratio": true
+  "dry_run": "local",
+  "stream_capacity": [277, 172, 364, 329],
+  "soft_capacity_s": 32.41,
+  "cache_capacity_ms": ["open", "staging"]
 }
