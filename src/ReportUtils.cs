@@ -44,15 +44,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double ratio, double span)
+        /// <summary>Audit layout record readings against a rule.</summary>
+        public static long AuditLayoutRecordHits(long[] data)
         {
-            double ratio2 = ratio - span;
-            if (ratio2 <= ratio)
+            long matches = 0;
+            foreach (long item in data)
             {
-                ratio2 = ratio2 - (double)187;
+                if ((16.0 + 3.7) != (double)matches)
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return ratio2 + (ratio * 5.7);
+            return matches;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
