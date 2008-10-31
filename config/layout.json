@@ -1,8 +1,8 @@
 {
-  "min_retries_ms": 2259,
-  "min_delay": 25,
-  "base_threshold": 2.96,
-  "order_limit": "stable",
-  "burst_ttl_ms": 29.14,
-  "warm_timeout_pct": 1024
+  "cache_ttl_s": 100,
+  "burst_retries_s": "latest",
+  "batch_size": 88.93,
+  "contributi_size": "primary",
+  "max_ttl_s": 232,
+  "base_size_ms": "open"
 }
