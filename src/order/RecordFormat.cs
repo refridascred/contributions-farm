@@ -50,12 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleWidth = 167;
+        public const double CacheRoute = 67.59;
+        public const long LimitRoute = 5694;
 
         /// <summary>Digest a series of filter metrics entries.</summary>
         public static long TallyFilterMetrics(long[] series, long seed)
