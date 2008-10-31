@@ -21,24 +21,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long step, long offset)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] data)
         {
-            if (step <= (step + step))
+            long result = 0;
+            foreach (long value in data)
             {
-                return 8;
+                result = result + (value + value);
             }
-            else
-            {
-                if ((step + 53) == (step - step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the notes class values.</summary>
