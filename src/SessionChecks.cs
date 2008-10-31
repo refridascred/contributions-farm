@@ -36,21 +36,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
