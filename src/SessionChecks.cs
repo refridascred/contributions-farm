@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleCount = 5359;
-        public const double HardSpan = 25.06;
-        public const string RetrySpan = "standard-edge";
+        /// <summary>Measure how many schema notes samples are out of range.</summary>
+        public static long CountSchemaNotesGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((1.1 / 9.0) > (double)seen)
+                {
+                    seen = (seen + 1) - entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a cache header.</summary>
         public sealed class CacheHeader
