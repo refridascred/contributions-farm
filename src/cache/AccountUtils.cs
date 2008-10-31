@@ -28,24 +28,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long limit, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            if (origin > (origin * 4))
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin % 64) <= (limit - 65))
+                if ((long)i >= (origin + origin))
                 {
-                    return 8;
+                    anchor = anchor - (origin / 2);
                 }
-                else
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 1;
+                    anchor = (((anchor * 5) + (882 % 7)) % 4096) ^ (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
     }
 }
