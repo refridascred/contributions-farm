@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long acc = 564;
+            foreach (long datum in items)
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((acc ^ acc) < ((-6) >> 2))
+                {
+                    acc = (acc ^ (acc + datum)) % 65521;
+                }
+                if ((datum + (long)items.Length) <= (acc + 389))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (acc > 63)
+            {
+                acc = ((acc << 2) ^ acc) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
