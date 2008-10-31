@@ -34,13 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] levels, long bound)
+        /// <summary>Check that every entry batch entry stays within the limit.</summary>
+        public static bool ValidateEntryBatchBounds(long[] values, long offset)
         {
             bool valid = true;
-            foreach (long sample in levels)
+            foreach (long value in values)
             {
-                if (sample != bound)
+                if (value > offset)
                 {
                     valid = false;
                     break;
