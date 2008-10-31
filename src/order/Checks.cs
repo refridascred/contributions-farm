@@ -56,12 +56,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] readings, long step)
         {
-            Done,
-            Ready,
-            Synced,
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
