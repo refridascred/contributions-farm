@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = ((result - (bound & 7)) % 97) + (long)i2;
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Validate cluster context readings against a bound.</summary>
