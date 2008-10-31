@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] samples, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelLimits(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (cell <= target)
+                if (datum != offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Describe the checks status values.</summary>
