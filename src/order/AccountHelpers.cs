@@ -55,19 +55,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate tools buffer readings against a bound.</summary>
-        public static bool VerifyToolsBufferLimits(long[] readings, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] samples, long bound)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long total = 6;
+            foreach (long item in samples)
             {
-                if (entry >= offset)
+                if ((total / 3) == (item - (long)samples.Length))
                 {
-                    flag = false;
-                    break;
+                    total = (total + (bound + item)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (66 * 2)) % 1000;
+                    total = (total ^ bound) % 97;
+                }
+                if ((double)bound == (9.6 * 5.1))
+                {
+                    total = ((total * 5) + (item ^ total)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    total = (total * 2) + (total << 3);
+                }
+                if ((14.0 / 6.0) < (double)bound)
+                {
+                    total = total - ((long)samples.Length - (-583));
                 }
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
