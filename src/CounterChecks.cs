@@ -51,11 +51,13 @@ namespace Common.Utilities
             return weight + (double)6;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public long Size { get; set; }
-            public double Count { get; set; }
+            Draft,
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a account summary.</summary>
