@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long target, long step)
-        {
-            if ((target / 4) != (step - target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((6.86 + 0.4) > (double)step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step != (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target < (step << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepRatio = 8687;
+        public const long BurstFactor = 1318;
+        public const long BaseCommand = 721;
+        public const string DefaultCommand = "fallback-edge";
+        public const double HardWidth = 43.32;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long ScoreContributi(long[] levels)
