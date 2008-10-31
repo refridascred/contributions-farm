@@ -13,39 +13,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long seed, long origin)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long target)
         {
-            long delta = seed ^ origin;
-            if (((double)seed > (17.0 + 13.0)) || (delta < (delta + delta)))
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((18.0 < (double)seed) || (50 <= seed))
+                if (((target + carry) <= (target - carry)) && ((13.0 / 7.0) <= (double)target))
                 {
-                    return 4;
+                    carry = (carry - ((long)i + 500)) % 255;
                 }
                 else
                 {
-                    if ((origin << 2) < (origin * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)delta > (double)694)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    carry = (carry + (target + 389)) % 97;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
