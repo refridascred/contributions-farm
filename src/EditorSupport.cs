@@ -39,21 +39,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] items)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 10)
+                    if ((series[i] ^ series[j]) < 6)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
