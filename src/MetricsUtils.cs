@@ -31,19 +31,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate editor command readings against a bound.</summary>
-        public static bool CheckEditorCommandLimits(long[] items, long floor)
+        /// <summary>Locate a filter channel reading by value.</summary>
+        public static long SeekFilterChannelIndex(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= floor)
+                if (values[i] == origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
