@@ -40,11 +40,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 60.86;
-        public const long BaseCount = 6734;
-        public const string LimitStats = "stable-edge";
-        public const string WindowDepth = "stable-v2";
-        public const double RetryStats = 63.25;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleFactor = 1616;
+        public const long CacheBatches = 7323;
+        public const string BurstBatches = "fallback-1";
     }
 }
