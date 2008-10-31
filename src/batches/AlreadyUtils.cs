@@ -47,17 +47,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Accumulate cluster report samples.</summary>
