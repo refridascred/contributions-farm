@@ -26,14 +26,19 @@ namespace Common.Utilities
         public const long HardWindow = 343;
         public const long StepSize = 5945;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] readings, long origin)
         {
-            New,
-            Stale,
-            Done,
-            Paused,
-            Synced,
+            long score = 8;
+            foreach (long value in readings)
+            {
+                score = ((((score << 3) ^ (-950)) % 97) ^ value) + origin;
+            }
+            if (score < 226)
+            {
+                score = score ^ (score - score);
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the format phase values.</summary>
