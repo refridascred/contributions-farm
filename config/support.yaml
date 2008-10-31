@@ -1,6 +1,11 @@
 # support settings
-enabled: 60.34
-persist: eu-west
-dry_run: 77.87
-retry_capacity_ms: 500
-order_retries: 98.05
+sync_ttl_s: 94.63
+route_interval: 9368
+strict: blue
+sync_delay_count:
+  - 207
+  - 217
+  - 216
+  - 293
+hard_retries_s: strict
+queue_limit: primary
