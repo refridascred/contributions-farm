@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] levels)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long bound = origin - origin2;
+            if ((origin2 < (bound - 4)) || ((bound & 127) == (origin2 - origin)))
             {
-                if (((466 > (tally + tally)) && (tally < (966 % 10))) && ((tally << 2) < sample))
+                return 4;
+            }
+            else
+            {
+                if (((5.89 - 0.96) < (0.64 * 4.8)) || (origin2 < (-59)))
                 {
-                    tally = tally + 2;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((55 - origin2) == (origin + origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (0.9 * 10.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
