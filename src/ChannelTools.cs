@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepSpan = 88.08;
-        public const long StepCount = 5208;
-        public const long LimitPayload = 3155;
-        public const double WindowPayload = 52.17;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstInterval = 4551;
+        public const string CacheBudget = "legacy";
+        public const long WindowDepth = 6408;
+        public const long LimitEditor = 7741;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
