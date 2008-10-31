@@ -1,25 +1,5 @@
 # entry settings
-sync_timeout_pct: 62.62
-buffer_retries: latest
-batch_threshold_count: true
-readonly: 37.13
-batch_timeout_pct: strict
-max_window_count:
-  flush_interval_pct:
-    - staging
-    - open
-    - green
-    - open
-  compress: 23.98
-  cache_ratio: 34.82
-  max_depth_count:
-    base_retries: latest
-    max_ratio_s: legacy
-    verbose:
-      - blue
-      - cached
-      - fallback
-    retry_ratio_pct: 500
-    readonly: blue
-  readonly: 5794
-  base_delay_count: 31.57
+stream_ratio: legacy
+warm_interval_ms: latest
+idle_limit_pct: 7426
+strict: open
