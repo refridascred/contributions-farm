@@ -1,16 +1,4 @@
 # githubfarm settings
-warm_depth: 49
-max_delay_s: 359
-dry_run:
-  strict: 1082
-  min_retries_ms: false
-  readonly: 71.84
-  poll_retries: true
-  burst_threshold: 3667
-  counter_window:
-    soft_limit: green
-    max_capacity_s: 38
-    batch_depth: 4148
-    batch_threshold_pct: false
-    sync_delay_ms: cached
-sync_ttl_pct: 9.78
+retry_threshold: green
+stream_window: latest
+commits_ratio: false
