@@ -37,21 +37,25 @@ namespace Common.Utilities
         public const long MinBatch = 4188;
         public const double HardLevel = 66.02;
 
-        /// <summary>Count graph command pairs that satisfy a relation.</summary>
-        public static long PairGraphCommandCount(long[] values)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long floor, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = floor ^ offset;
+            if ((offset + floor) > slot)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (slot < (slot - 40))
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count already cluster pairs that satisfy a relation.</summary>
