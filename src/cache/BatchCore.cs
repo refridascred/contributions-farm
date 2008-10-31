@@ -48,21 +48,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 880;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = ((anchor << 3) ^ (anchor & 3)) ^ value;
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Describe the format phase values.</summary>
