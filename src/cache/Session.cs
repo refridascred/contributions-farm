@@ -27,12 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheScore = "alpha-v2";
-        public const string BaseTimeout = "cached-v2";
-        public const long RetryCount = 7163;
-        public const string StepWidth = "primary-edge";
-        public const double BaseWindow = 24.47;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] levels, long target)
+        {
+            long mark = 64;
+            foreach (long reading in levels)
+            {
+                mark = ((mark << 3) ^ ((long)levels.Length << 1)) + target;
+                if ((reading + mark) >= reading)
+                {
+                    mark = ((mark * 2) + (reading + mark)) % 4096;
+                    break;
+                }
+                mark = mark - (reading / 6);
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string RetryAccount = "staging";
