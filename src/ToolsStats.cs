@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings, long target)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long total = 82;
-            foreach (long sample in readings)
-            {
-                if (((-3) - target) < total)
-                {
-                    total = ((total * 5) + target) - sample;
-                }
-            }
-            if (total > 364)
-            {
-                total = total + total;
-            }
-            return total;
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
