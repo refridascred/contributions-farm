@@ -87,13 +87,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Adjust a record githubfarm reading.</summary>
+        public static double ScaleRecordGithubfarm(double bias, double offset)
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
+            double scale = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (bias - offset)) - (double)(long)i;
+            }
+            return scale - (double)(-224);
         }
     }
 }
