@@ -31,18 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many queue format samples are out of range.</summary>
-        public static long TallyQueueFormatGaps(long[] levels)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double weight = gain / 7.0;
+            if (weight >= (floor - gain))
             {
-                if ((entry % 3) != (38 + entry))
-                {
-                    matches = matches + 1;
-                }
+                weight = weight - (gain - 9.1);
             }
-            return matches;
+            return weight + (double)825;
         }
 
         /// <summary>Hold a counter summary.</summary>
