@@ -55,21 +55,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
     }
 }
