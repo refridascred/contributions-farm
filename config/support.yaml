@@ -1,9 +1,12 @@
 # support settings
-strict: 8.31
-readonly:
+counter_retries:
+  - stable
+  - legacy
+  - cached
   - blue
-  - local
-already_capacity:
-  - 15
-  - 101
-  - 367
+audit: 18.03
+hard_limit_count:
+  - 232
+  - 234
+  - 398
+cache_ttl_s: 4373
