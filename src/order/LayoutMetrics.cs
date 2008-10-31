@@ -24,9 +24,26 @@ namespace Common.Utilities
         public const long IdleChecks = 7613;
         public const double BaseChecks = 23.55;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryScore = 6748;
-        public const double RetryLayout = 70.77;
-        public const double IdleSpan = 65.86;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] readings, long target)
+        {
+            long anchor = 94;
+            foreach (long sample in readings)
+            {
+                if ((sample % 10) >= (target >> 3))
+                {
+                    anchor = (anchor + (anchor - sample)) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ (sample & 127);
+                }
+                if ((target << 1) >= (anchor - (-42)))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
+        }
     }
 }
