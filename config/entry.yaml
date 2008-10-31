@@ -1,13 +1,10 @@
 # entry settings
-base_delay_count:
-  graph_ttl: strict
-  dry_run:
-    burst_depth_ms: green
-    strict: standard
-    soft_ratio_pct: green
-    batch_size_count: false
-  cache_interval: 74
-burst_ttl_s: 250
-graph_timeout: open
-default_delay_count: false
-warm_capacity: 24.33
+burst_ttl_s: 58
+max_ttl:
+  - green
+  - open
+  - blue
+  - legacy
+base_window_s: 1024
+hard_size: blue
+persist: true
