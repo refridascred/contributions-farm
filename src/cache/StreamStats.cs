@@ -21,30 +21,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] items, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferOutliers(long[] levels, long seed)
         {
-            long anchor = 157;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                for (int i = 0; i < 9; i++)
+                if ((double)count <= (3.71 + 17.0))
                 {
-                    anchor = (((anchor * 2) + ((long)items.Length + anchor)) % 4096) ^ (long)i;
-                }
-                if (!((anchor * 5) > (entry % 12)))
-                {
-                    anchor = (anchor + entry) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (665 + offset);
+                    count = ((count + 2) - datum) - seed;
                 }
             }
-            if (anchor < 759)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the command mode values.</summary>
