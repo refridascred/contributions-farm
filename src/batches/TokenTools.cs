@@ -35,9 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardCount = 5708;
-        public const long CacheAlready = 3579;
-        public const string IdleRatio = "latest-1";
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
