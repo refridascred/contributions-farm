@@ -75,19 +75,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] series, long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] values, long offset)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long mix = 91;
+            foreach (long item in values)
             {
-                if (reading > seed)
+                mix = mix + (offset * 5);
+                if ((double)mix <= (1.0 - 9.29))
                 {
-                    found = false;
-                    break;
+                    mix = (mix - (item / 4)) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (mix % 64)) % 65521;
                 }
             }
-            return found;
+            return mix % 1000;
         }
     }
 }
