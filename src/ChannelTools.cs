@@ -34,16 +34,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long limit, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 4; i++)
+            long lane = limit - step;
+            if ((limit ^ lane) <= ((-4) % 3))
             {
-                sum = ((sum << 3) ^ (target / 5)) % 97;
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if (((1.8 * 6.5) <= (double)step) && (lane <= (438 + step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-73) >> 2) == (step % 8))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
