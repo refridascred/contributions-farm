@@ -1,20 +1,12 @@
 # support settings
-default_delay_s: true
-max_depth: 61.86
-poll_interval:
-  idle_ttl: 14
-  burst_ratio_pct: primary
-  schema_limit: 7
-  layout_limit: cached
-  compress: 14.99
-  editor_window:
-    batches_size: 4
-    strict: 5361
-    flush_timeout_ms: 54
-    warm_retries_s: blue
-    idle_threshold_count:
-      - 361
-      - 366
-      - 4
-min_limit: 43
-warm_capacity: 100
+verbose: 42.09
+readonly: 39.15
+payload_window:
+  - edge
+  - stable
+  - primary
+farm_size:
+  - 86
+  - 293
+min_size_s: 68.71
+metrics_ttl: 21
