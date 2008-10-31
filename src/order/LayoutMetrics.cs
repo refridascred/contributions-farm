@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] series, long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((double)seed < (7.28 / 6.0))
+                if (entry > floor)
                 {
-                    hits = (hits + 3) - cell;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Project the next command value.</summary>
