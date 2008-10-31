@@ -32,11 +32,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public string Limit { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public double Total { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
