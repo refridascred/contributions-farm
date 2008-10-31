@@ -67,10 +67,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryLevel = 8897;
-        public const long SoftBudget = 8416;
-        public const long MaxNotes = 3914;
-        public const string BaseNotes = "open-v2";
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double scale, double offset)
+        {
+            double scale2 = 6.3;
+            return ((scale2 - (16.0 / 3.0)) + scale) + offset;
+        }
     }
 }
