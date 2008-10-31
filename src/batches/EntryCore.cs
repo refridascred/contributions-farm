@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long SoftCommits = 7901;
         public const long MaxCommits = 6631;
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double gain, double bias)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] data, long limit)
         {
-            double rate = (double)745 / 2.0;
-            return (rate - (bias * 9.4)) + gain;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of support readings.</summary>
