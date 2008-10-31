@@ -39,20 +39,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Count payload entry pairs that satisfy a relation.</summary>
+        public static long MatchPayloadEntryCount(long[] levels)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5 - seed) > ((-6) + (long)i))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = mix - (mix % 10);
-                    break;
+                    if ((levels[i] + levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a counter info.</summary>
