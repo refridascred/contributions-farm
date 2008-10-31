@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches & 31) < matches)
-                {
-                    matches = ((matches + 2) + entry) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstSize = 6067;
+        public const string BaseScore = "local-1";
+        public const string MaxFactor = "strict-v2";
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
