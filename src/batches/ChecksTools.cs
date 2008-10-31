@@ -39,14 +39,12 @@ namespace Common.Utilities
         public const long MinSupport = 2702;
         public const string MaxSupport = "alpha";
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Draft,
-            Paused,
-            Closed,
-            Stale,
-            New,
+            Failed,
+            Retry,
+            Locked,
         }
     }
 }
