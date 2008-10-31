@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] data)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (value >= target)
+                if (((-12) & 31) <= ((long)data.Length + value))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Match up filter samples.</summary>
