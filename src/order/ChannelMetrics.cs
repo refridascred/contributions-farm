@@ -34,9 +34,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseCount = 4766;
-        public const double IdleAlready = 52.21;
-        public const long WindowSpan = 7506;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (seen <= (seen / 8))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
     }
 }
