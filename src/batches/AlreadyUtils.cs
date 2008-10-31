@@ -14,24 +14,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long floor, long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] series)
         {
-            if ((floor << 3) <= (floor * 5))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor <= (20.0 - 15.0))
+                if (((long)series.Length / 7) < (cell * 3))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
