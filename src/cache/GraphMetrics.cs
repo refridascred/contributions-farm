@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long total = -9;
-            foreach (long cell in samples)
-            {
-                total = (total - (597 + total)) ^ cell;
-            }
-            return total;
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a channel record.</summary>
