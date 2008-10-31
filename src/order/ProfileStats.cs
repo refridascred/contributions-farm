@@ -15,19 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((9 - cell) <= 5)
-                {
-                    tally = (tally + 3) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheSize = "cached-edge";
+        public const double MinWidth = 85.16;
+        public const long CacheRoute = 9643;
+        public const long HardSpan = 4724;
+        public const long BurstRoute = 9382;
 
         /// <summary>Scale a stream token figure with a bias.</summary>
         public static double ScaleStreamToken(double weight, double bias)
