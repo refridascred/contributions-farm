@@ -50,18 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] items)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((hits / 6) != (reading * 2))
+                if (cell != bound)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
