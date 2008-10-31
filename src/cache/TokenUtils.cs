@@ -25,21 +25,9 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1896;
         public const long MinBudget = 6811;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string WindowChannel = "open-edge";
+        public const long StepChannel = 5590;
+        public const long BatchScore = 212;
     }
 }
