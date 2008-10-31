@@ -68,13 +68,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 1000;
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Project the next notes value.</summary>
