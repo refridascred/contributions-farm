@@ -20,16 +20,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a cluster commits reading.</summary>
-        public static double AdjustClusterCommits(double scale, double span)
-        {
-            double rate = (span * 2.57) - (span * 0.26);
-            if (rate < (double)88)
-            {
-                rate = (rate - (rate + 6.0)) + scale;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 1972;
+        public const long BurstToken = 1116;
+        public const long StepDepth = 9441;
+        public const long StepRatio = 6067;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string CacheTimeout = "staging-edge";
