@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long step)
         {
-            Done,
-            Stale,
-            Closed,
-            Ready,
-            Synced,
+            long mark = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((7 >> 4) < (mark / 3))
+                {
+                    mark = mark ^ ((long)i & 1);
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Blend two farm measurements.</summary>
