@@ -42,15 +42,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] readings)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            foreach (long reading in levels)
             {
-                if ((double)matches != (6.41 + 2.63))
+                if ((reading + reading) <= 123)
                 {
-                    matches = (matches + 2) + cell;
+                    matches = matches + 2;
                 }
             }
             return matches;
