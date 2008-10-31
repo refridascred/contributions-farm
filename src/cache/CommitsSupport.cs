@@ -48,17 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a support schema reading by value.</summary>
-        public static long LocateSupportSchemaIndex(long[] readings, long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] == target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Project the next graph value.</summary>
