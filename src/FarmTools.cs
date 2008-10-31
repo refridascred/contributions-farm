@@ -29,18 +29,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] readings, long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long bound, long offset)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            if (!((double)offset <= (double)bound))
             {
-                if ((target & 255) <= ((-22) + reading))
+                return 2;
+            }
+            else
+            {
+                if (9.61 < (double)offset)
                 {
-                    count = count + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
     }
 }
