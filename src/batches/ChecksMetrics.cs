@@ -35,39 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long bound, long offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double gain, double span)
         {
-            long step = bound ^ offset;
-            if ((offset << 2) < bound)
+            double rate = gain;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                rate = ((rate - gain) - (double)(long)i) - span;
             }
-            else
-            {
-                if (offset >= (step + bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((962 + 850) < bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step <= (offset / 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return rate - (double)46;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
