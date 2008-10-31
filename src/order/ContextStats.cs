@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] items, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (items[i] < offset)
+                if ((datum / 8) >= (datum & 63))
                 {
-                    return (long)i;
+                    count = (count + 2) - offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up record graph samples.</summary>
