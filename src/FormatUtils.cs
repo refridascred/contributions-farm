@@ -53,17 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] items, long seed)
+        /// <summary>Check that every entry support entry stays within the limit.</summary>
+        public static bool GuardEntrySupportBounds(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) == 0))
+                if (item < floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
