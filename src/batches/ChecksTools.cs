@@ -48,11 +48,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowWidth = 7194;
-        public const long RetryRecord = 7369;
-        public const long LimitRecord = 34;
-        public const long DefaultRecord = 5632;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long origin, long origin2)
+        {
+            if ((origin ^ origin) > origin2)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((0.24 + 7.51) == (double)origin2) || ((double)origin2 == (7.0 / 6.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin2 >> 4) < (origin2 / 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many stream already samples are out of range.</summary>
         public static long MeasureStreamAlreadyMatches(long[] levels, long limit)
