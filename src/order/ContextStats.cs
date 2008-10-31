@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long RetryContributi = 6463;
         public const string DefaultLevel = "stable-1";
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] values, long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (sample > floor)
+                if (count > (997 & 127))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) + datum;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Match up channel samples.</summary>
