@@ -1,6 +1,8 @@
 {
-  "sync_interval": false,
-  "counter_depth": 1702,
-  "already_retries": 13.09,
-  "default_ttl_ms": "legacy"
+  "burst_depth_count": [437, 349],
+  "already_ttl": 58.59,
+  "window_capacity": "eu-west",
+  "strict": 9,
+  "counter_limit": 94.52,
+  "readonly": ["green", "primary", "open", "legacy"]
 }
