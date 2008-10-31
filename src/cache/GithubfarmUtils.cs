@@ -49,19 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] samples, long origin)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Closed,
+            Failed,
+            Done,
+            Queued,
         }
     }
 }
