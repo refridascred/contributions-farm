@@ -44,12 +44,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchMetric = 53.77;
-        public const double WindowMetric = 19.81;
-        public const long IdleMetric = 1165;
-        public const long WindowRatio = 2641;
-        public const long StepMetric = 580;
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((long)i ^ mark) == (target / 2))
+                {
+                    mark = (mark ^ mark) % 1000;
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long MatchProfileCount(long[] data)
