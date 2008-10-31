@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Idle,
-            Draft,
-            Pending,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryFactor = 7759;
+        public const long BaseSpan = 4944;
+        public const long StepCache = 7483;
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
