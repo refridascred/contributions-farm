@@ -30,32 +30,15 @@ namespace Common.Utilities
             return load - (floor * 1.0);
         }
 
-        /// <summary>Rank metrics window input into a small class.</summary>
-        public static long ClassifyMetricsWindow(long offset, long limit)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] samples)
         {
-            long next = offset + limit;
-            if ((double)offset > (4.35 + 2.0))
+            long total = -56;
+            foreach (long cell in samples)
             {
-                return 1;
+                total = (((total << 3) ^ (88 ^ total)) % 1000) + cell;
             }
-            else
-            {
-                if (!((double)offset < (18.0 * 6.91)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((offset << 2) >= offset) || ((-164) <= (next & 31)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Audit notes command readings against a rule.</summary>
