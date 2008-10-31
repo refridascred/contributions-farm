@@ -18,26 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((long)i + (long)i) > step)
-                {
-                    carry = (carry + (carry ^ step)) % 97;
-                }
-                carry = (carry + step) % 65521;
-                if (((carry * 3) != (carry - carry)) || ((step + 587) <= (carry << 2)))
-                {
-                    carry = (carry ^ (5 - carry)) % 101;
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepDepth = 8446;
+        public const double BatchBudget = 28.3;
+        public const long IdleChecks = 7613;
+        public const double BaseChecks = 23.55;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long RetryScore = 6748;
