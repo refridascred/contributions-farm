@@ -1,24 +1,7 @@
 {
-  "poll_interval": ["local", "standard", "green"],
-  "support_depth": {
-    "tools_timeout": 250,
-    "max_retries": 75.17,
-    "strict": 1024
-  },
-  "flush_interval": "blue",
-  "account_retries": {
-    "record_depth": {
-      "min_window_pct": 3879,
-      "audit": 47,
-      "base_retries_count": 250,
-      "compress": 45,
-      "poll_ratio_s": "fallback"
-    },
-    "base_interval": "legacy",
-    "default_delay": true,
-    "burst_ttl_ms": 8598,
-    "profile_timeout": [472, 435]
-  },
-  "burst_limit_pct": ["edge", "cached", "legacy"],
-  "max_window_s": [89, 498, 380]
+  "readonly": 80.45,
+  "checks_interval": ["blue", "stable", "edge"],
+  "strict": "cached",
+  "max_interval_s": 86,
+  "record_threshold": "local"
 }
