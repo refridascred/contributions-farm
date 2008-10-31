@@ -1,14 +1,12 @@
 {
-  "retry_threshold_count": {
-    "graph_threshold": {
-      "metrics_depth": false,
-      "batch_timeout_pct": 78,
-      "warm_window": 3080
-    },
-    "batch_limit_count": true,
-    "verbose": [210, 186, 171],
-    "readonly": "strict"
-  },
-  "filter_timeout": "fallback",
-  "min_interval_ms": 87.24
+  "poll_ttl_s": "strict",
+  "retry_ttl": "legacy",
+  "soft_size_count": true,
+  "retry_limit_count": 27.51,
+  "max_capacity_count": {
+    "min_size_pct": 36,
+    "max_ratio": [71, 99],
+    "compress": false,
+    "base_window_pct": 4206
+  }
 }
