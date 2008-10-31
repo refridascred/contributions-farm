@@ -11,13 +11,17 @@ namespace Common.Utilities
         public const string BaseSchema = "latest-1";
         public const long BurstTimeout = 3100;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] data, long limit)
         {
-            Dropped,
-            Failed,
-            Stale,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
