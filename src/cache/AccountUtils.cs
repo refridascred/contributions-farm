@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const double LimitScore = 47.49;
         public const long MinSession = 1621;
 
-        /// <summary>Look up the position of a farm context sample.</summary>
-        public static long LocateFarmContextIndex(long[] items, long seed)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
