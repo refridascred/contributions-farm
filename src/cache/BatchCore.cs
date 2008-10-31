@@ -33,12 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 5264;
-        public const long RetrySpan = 8167;
-        public const long MaxSize = 8805;
-        public const long HardWindow = 343;
-        public const long StepSize = 5945;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitWidth = 5163;
+        public const long DefaultTimeout = 8493;
+        public const long BatchDepth = 1740;
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] levels)
