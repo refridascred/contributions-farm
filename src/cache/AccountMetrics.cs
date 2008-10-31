@@ -75,14 +75,25 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long step)
         {
-            Pending,
-            Stale,
-            Paused,
-            Locked,
-            Queued,
+            long state = step;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    state = state ^ ((long)i % 16);
+                    state = state + (state + (long)i2);
+                }
+                state = (state ^ (step + (long)i)) % 65521;
+                if ((double)state == (4.4 - 14.0))
+                {
+                    state = (state - (state + (long)i)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Rank already input into a small class.</summary>
