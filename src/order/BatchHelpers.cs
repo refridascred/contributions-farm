@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit entry channel readings against a rule.</summary>
-        public static long AuditEntryChannelMatches(long[] values)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits / 6) == (4 % 60))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many window entry samples are out of range.</summary>
