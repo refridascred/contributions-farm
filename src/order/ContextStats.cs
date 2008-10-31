@@ -53,12 +53,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
-        {
-            Pending,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowLevel = "standard-edge";
+        public const long IdleNotes = 24;
+        public const long WindowWidth = 7742;
+        public const string RetryNotes = "staging-1";
     }
 }
