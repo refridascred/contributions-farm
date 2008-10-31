@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=294
+COMMAND_LIMIT=250
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
+for item in latest staging fallback open; do
+    log "checking ${item}"
 done
-log "total ${total}"
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
