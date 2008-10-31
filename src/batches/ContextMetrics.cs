@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Roll a account context counter forward.</summary>
+        public static long RollAccountContext(long bound)
         {
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            long score = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 5) + score) % 1000;
+                if (!((score + (-63)) == (798 - score)))
+                {
+                    score = (score * 5) + bound;
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
