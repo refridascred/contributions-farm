@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public long Level { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
