@@ -50,11 +50,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "local-edge";
-        public const string HardContext = "standard-v2";
-        public const double MinContext = 31.99;
-        public const long RetryContext = 3299;
-        public const double BatchContext = 29.22;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] series, long offset)
+        {
+            long mix = 89;
+            foreach (long value in series)
+            {
+                mix = (mix ^ (0 + value)) + offset;
+            }
+            return mix;
+        }
     }
 }
