@@ -14,15 +14,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] readings)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] values)
         {
             long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((589 + value) <= (value - seen)) && ((double)value == (7.28 / 4.0))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
