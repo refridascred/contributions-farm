@@ -13,11 +13,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 7819;
-        public const long CacheFactor = 6304;
-        public const long BurstSpan = 2789;
-        public const long WindowCount = 5202;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 95;
+        public const long RetryRatio = 6815;
+        public const long SoftLayout = 662;
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] series)
