@@ -1,7 +1,5 @@
 {
-  "warm_ttl_pct": false,
-  "compress": 44.16,
-  "verbose": 7676,
-  "readonly": "legacy",
-  "idle_delay_ms": false
+  "warm_timeout_ms": 23.62,
+  "sync_interval_count": [371, 277, 436, 41],
+  "soft_delay": false
 }
