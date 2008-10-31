@@ -1,6 +1,7 @@
 {
-  "dry_run": "local",
-  "stream_capacity": [277, 172, 364, 329],
-  "soft_capacity_s": 32.41,
-  "cache_capacity_ms": ["open", "staging"]
+  "soft_limit": true,
+  "burst_interval_count": "primary",
+  "profile_limit": [92, 209],
+  "flush_threshold_ms": "primary",
+  "compress": 30
 }
