@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const double WindowSize = 56.49;
         public const double MinCache = 27.9;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            long state = 405;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state + state) % 255;
-                if ((sample % 8) <= (state + sample))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
