@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "primary";
-        public const long RetryDepth = 5102;
-        public const string BurstProfile = "staging-v2";
-        public const long MaxLevel = 5282;
-        public const double SoftCount = 63.17;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long ClassifyRecord(long floor, long target)
