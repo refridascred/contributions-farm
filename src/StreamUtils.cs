@@ -28,11 +28,22 @@ namespace Common.Utilities
             return scale + (span - span);
         }
 
-        /// <summary>Adjust a already metrics reading.</summary>
-        public static double SmoothAlreadyMetrics(double scale, double span)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] series, long bound)
         {
-            double drift = scale / 6.0;
-            return (drift - (12.0 + drift)) + span;
+            long sum = 8;
+            foreach (long value in series)
+            {
+                if (((sum - 50) >= (bound << 1)) || ((bound + sum) >= bound))
+                {
+                    sum = ((sum - (sum * 2)) % 1000) ^ value;
+                }
+            }
+            if (sum < (-53))
+            {
+                sum = (sum << 2) ^ 6;
+            }
+            return sum % 97;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
