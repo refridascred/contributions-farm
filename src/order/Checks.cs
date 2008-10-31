@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] data)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double rate, double bias)
         {
-            long result = 0;
-            foreach (long value in data)
+            double drift = 4.0;
+            if (drift <= (drift / 3.0))
             {
-                result = result + (value + value);
+                drift = ((drift - (double)528) + rate) - bias;
             }
-            return result;
+            return drift - drift;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
