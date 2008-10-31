@@ -1,11 +1,6 @@
 {
-  "hard_retries_count": 90,
-  "audit": ["strict", "open", "edge", "eu-west"],
-  "burst_limit_count": 42.56,
-  "burst_capacity": {
-    "flush_timeout_s": ["stable", "green"],
-    "strict": [477, 290],
-    "flush_threshold_pct": ["legacy", "primary", "stable", "primary"],
-    "sync_ttl_ms": "stable"
-  }
+  "idle_retries": true,
+  "flush_depth_pct": false,
+  "poll_threshold": false,
+  "idle_limit_count": 4578
 }
