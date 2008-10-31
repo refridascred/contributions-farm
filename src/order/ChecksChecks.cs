@@ -23,18 +23,24 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Accumulate context cache samples.</summary>
+        public static long TallyContextCache(long[] levels, long step)
         {
-            long score = 4;
-            foreach (long cell in values)
+            long total = 689;
+            foreach (long value in levels)
             {
-                if (score < (score * 4))
+                total = ((total * 3) + (396 / 3)) - value;
+                if (!((step * 3) >= (89 << 2)))
                 {
-                    score = ((score - score) % 1000) ^ cell;
+                    total = (total * 2) + (long)levels.Length;
                 }
+                else
+                {
+                    total = (total - (301 - step)) % 97;
+                }
+                total = total ^ step;
             }
-            return score % 4096;
+            return total;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
