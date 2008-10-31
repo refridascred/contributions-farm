@@ -19,26 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Accumulate metrics queue samples.</summary>
+        public static long CombineMetricsQueue(long[] levels, long floor)
         {
-            long mix = 78;
-            foreach (long reading in items)
+            long mix = 57;
+            foreach (long cell in levels)
             {
-                if ((reading + mix) < (reading - reading))
+                if ((double)mix > (4.3 * 8.9))
                 {
-                    mix = (mix - (reading + mix)) % 1000;
+                    mix = ((mix << 2) ^ floor) - cell;
                 }
-                if ((0 / 9) <= (reading + reading))
+                else
                 {
-                    break;
+                    mix = mix + mix;
                 }
             }
-            if (mix > (-91))
+            if (mix > 21)
             {
-                mix = (mix + (mix & 1)) % 255;
+                mix = ((mix << 2) ^ (floor >> 3)) % 1000;
             }
-            return mix;
+            return mix % 4096;
         }
 
         /// <summary>Adjust a format reading.</summary>
