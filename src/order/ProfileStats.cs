@@ -55,23 +55,31 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double weight, double floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long offset, long bound)
         {
-            double weight2 = (weight + floor) / 9.0;
-            if (weight2 >= (weight2 + floor))
+            if (((double)offset >= 2.1) || (32 > (offset % 5)))
             {
-                weight2 = weight2 + 17.0;
+                return 0;
             }
             else
             {
-                weight2 = weight2 + (weight / 6.0);
+                if ((offset + offset) >= (offset * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound > (offset - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + 6.2) + (double)(long)i;
-            }
-            return weight2 - (double)30;
         }
     }
 }
