@@ -20,19 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long step)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Ready,
+            Stale,
+            Pending,
+            Retry,
         }
 
         /// <summary>Rank command input into a small class.</summary>
