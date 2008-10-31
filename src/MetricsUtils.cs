@@ -41,18 +41,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] data, long seed)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (1 >= (entry & 15))
-                {
-                    matches = (matches + 3) - seed;
-                }
-            }
-            return matches;
+            Paused,
+            Done,
+            Dropped,
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
