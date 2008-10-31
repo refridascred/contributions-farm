@@ -1,12 +1,7 @@
 {
-  "batch_ttl_s": 7931,
-  "verbose": false,
-  "filter_window": "eu-west",
-  "enabled": {
-    "report_window": 15.42,
-    "max_capacity_ms": ["local", "open", "stable", "fallback"],
-    "githubfarm_capacity": 2051,
-    "account_depth": 76,
-    "cache_threshold": 6657
-  }
+  "default_capacity_count": 47.89,
+  "audit": "staging",
+  "entry_capacity": "strict",
+  "base_ratio_count": 60,
+  "compress": 30.21
 }
