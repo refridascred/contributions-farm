@@ -75,19 +75,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double ratio, double span)
-        {
-            double rate = span;
-            if (rate <= (2.4 - ratio))
-            {
-                rate = rate + (rate - rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 7094;
+        public const long SoftGraph = 2864;
+        public const long CacheGraph = 7658;
     }
 }
