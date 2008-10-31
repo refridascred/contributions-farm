@@ -13,24 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] samples)
         {
-            long mix = -4;
-            foreach (long item in items)
+            long score = 0;
+            foreach (long sample in samples)
             {
-                if ((mix + mix) >= mix)
-                {
-                    mix = mix + (item ^ 418);
-                    break;
-                }
-                mix = (mix + (mix + 62)) % 97;
-                if ((mix + mix) != (mix % 97))
-                {
-                    break;
-                }
+                score = ((score - score) % 65521) ^ sample;
             }
-            return mix % 1000;
+            return score % 4096;
         }
 
         /// <summary>Describe the tools kind values.</summary>
