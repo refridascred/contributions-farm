@@ -31,17 +31,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Locate a filter channel reading by value.</summary>
-        public static long SeekFilterChannelIndex(long[] values, long origin)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (values[i] == origin)
+                if (1 >= (entry & 15))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - seed;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
