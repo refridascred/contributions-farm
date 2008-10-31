@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Derive the next cluster filter value from a seed.</summary>
+        public static long IterateClusterFilter(long offset)
         {
-            Done,
-            New,
-            Queued,
-            Ready,
-            Closed,
+            long state = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((((long)i & 7) > (state & 31)) || ((double)(long)i < (7.4 + 7.3)))
+                {
+                    state = (state + (offset / 4)) % 4096;
+                }
+                else
+                {
+                    state = ((state << 2) ^ ((long)i + 1)) % 65521;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a contributi header.</summary>
