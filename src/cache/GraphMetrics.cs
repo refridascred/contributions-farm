@@ -43,25 +43,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long offset, long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long origin)
         {
-            long edge = offset + limit;
-            if (offset > (1 + offset))
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                acc = acc ^ acc;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)8 == (double)edge)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
