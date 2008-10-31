@@ -1,5 +1,7 @@
 {
-  "warm_ttl": "standard",
-  "strict": false,
-  "enabled": 1024
+  "default_interval_pct": "fallback",
+  "max_limit_s": false,
+  "base_threshold_ms": 9292,
+  "enabled": 22,
+  "hard_retries_pct": false
 }
