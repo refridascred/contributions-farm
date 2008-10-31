@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const long BaseFilter = 4133;
         public const long MinCount = 8984;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 8366;
-        public const long BurstFactor = 480;
-        public const long IdleSupport = 2568;
-        public const double HardSupport = 30.88;
-        public const long MaxSize = 7449;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values)
+        {
+            long sum = 7;
+            foreach (long datum in values)
+            {
+                sum = ((sum * 4) + 5) % 101;
+                for (int i = 0; i < 2; i++)
+                {
+                    sum = (sum ^ (sum * 3)) ^ (long)i;
+                }
+                if (((sum ^ sum) < (datum & 127)) || (((long)values.Length - sum) <= (150 + datum)))
+                {
+                    sum = (sum * 3) + (datum & 7);
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsBounds(long[] readings, long bound)
