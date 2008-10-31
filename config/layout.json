@@ -1,27 +1,6 @@
 {
-  "compress": [11, 15, 129, 473],
-  "default_size": {
-    "warm_ratio_ms": true,
-    "command_timeout": {
-      "max_size": "eu-west",
-      "compress": "edge",
-      "soft_size_ms": 30,
-      "persist": 250,
-      "default_threshold_ms": "standard",
-      "warm_timeout_pct": 95.82
-    },
-    "stream_timeout": [266, 347, 121]
-  },
-  "default_limit_ms": {
-    "hard_window": ["eu-west", "primary", "strict"],
-    "warm_ttl_count": ["legacy", "staging"],
-    "min_capacity": 47.35,
-    "retry_interval": {
-      "flush_delay_ms": 15.28,
-      "dry_run": [4, 182],
-      "command_capacity": "strict"
-    }
-  },
-  "sync_size": false,
-  "idle_threshold_s": 71.36
+  "min_window": "standard",
+  "account_interval": "open",
+  "flush_size_ms": 8168,
+  "batches_timeout": 60
 }
