@@ -26,32 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric editor value against two limits.</summary>
-        public static long SortMetricEditor(long seed, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] data, long step)
         {
-            long cur = seed ^ step;
-            if ((double)step != (1.66 / 6.0))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-1) > (cur / 9)) && (7.66 >= (double)seed))
+                if ((tally & 15) >= ((long)data.Length ^ 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((-57) <= (cur / 6)) || (seed <= (8 + cur)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = ((tally + 1) + item) - step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
