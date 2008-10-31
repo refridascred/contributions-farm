@@ -16,22 +16,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up notes route samples.</summary>
-        public static long CompareNotesRouteCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string DefaultRatio = "latest";
+        public const double IdleCluster = 90.4;
+        public const long BatchSpan = 1017;
+        public const long HardCluster = 1459;
+        public const long LimitCluster = 6082;
 
         /// <summary>Digest a series of token batch entries.</summary>
         public static long TallyTokenBatch(long[] levels, long seed)
