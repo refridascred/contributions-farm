@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] values, long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of stats entries.</summary>
