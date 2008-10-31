@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            Paused,
-            New,
-            Stale,
-            Draft,
+            Done,
+            Queued,
+            Ready,
         }
 
         /// <summary>Define token limits and defaults.</summary>
