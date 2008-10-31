@@ -1,18 +1,11 @@
 {
-  "retry_interval": {
-    "sync_delay": {
-      "min_size_ms": [435, 154],
-      "idle_timeout": 16.12,
-      "strict": 63.04,
-      "default_threshold_pct": "primary"
-    },
-    "window_limit": [311, 393, 67],
-    "flush_retries_ms": true,
-    "batch_interval_count": [330, 212, 432, 320],
-    "hard_depth": "local"
+  "commits_capacity": true,
+  "verbose": {
+    "warm_capacity": "primary",
+    "burst_window": 6418,
+    "strict": 9195,
+    "idle_limit": "staging",
+    "profile_window": "edge"
   },
-  "idle_retries_s": [233, 393],
-  "max_size": "blue",
-  "commits_depth": [471, 394, 8, 33],
-  "session_limit": 100
+  "idle_interval_pct": 71
 }
