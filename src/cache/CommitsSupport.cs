@@ -12,26 +12,11 @@ namespace Common.Utilities
         public const long IdleReport = 2761;
         public const double DefaultCount = 89.72;
 
-        /// <summary>Classify a context contributi pair into a bucket.</summary>
-        public static long RankContextContributi(long limit, long step)
-        {
-            long step2 = limit - step;
-            if ((double)step <= (double)step2)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 2) == (limit << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 9015;
+        public const long LimitMetric = 5055;
+        public const string BaseDepth = "strict";
+        public const string MinMetric = "strict-1";
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] samples, long step)
