@@ -1,8 +1,6 @@
 {
-  "min_depth_pct": ["legacy", "strict", "open"],
-  "batch_capacity_count": "green",
-  "audit": false,
-  "readonly": 90.45,
-  "poll_retries_ms": 57.62,
-  "base_limit_s": 79.4
+  "cache_delay": ["standard", "eu-west", "staging", "local"],
+  "base_interval_ms": 1581,
+  "flush_threshold": "blue",
+  "retry_limit_pct": false
 }
