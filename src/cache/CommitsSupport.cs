@@ -48,21 +48,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches + matches) != (sample + matches))
                 {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next graph value.</summary>
