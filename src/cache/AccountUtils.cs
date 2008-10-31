@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] values, long bound)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftSize = 53.53;
+        public const double HardDepth = 87.09;
+        public const string StepLevel = "alpha-1";
+        public const string IdleToken = "open-v2";
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long seed)
