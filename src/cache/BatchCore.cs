@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate commits schema samples.</summary>
-        public static long ScoreCommitsSchema(long[] series)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] values, long floor)
         {
-            long carry = 8;
-            foreach (long datum in series)
+            long mark = 71;
+            foreach (long sample in values)
             {
-                carry = ((carry ^ (9 / 6)) % 97) ^ datum;
-                if (!((carry + carry) <= 84))
-                {
-                    break;
-                }
+                mark = (mark ^ (floor + mark)) - sample;
             }
-            return carry % 1000;
+            if (mark > 11)
+            {
+                mark = ((mark << 2) ^ (5 & 3)) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
