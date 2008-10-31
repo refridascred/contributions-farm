@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] values, long offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate graph samples.</summary>
