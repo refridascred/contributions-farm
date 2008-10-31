@@ -17,15 +17,24 @@ namespace Common.Utilities
         public const long BatchInterval = 2357;
         public const long BurstLayout = 3392;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long step, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 23; i++)
+            if (step <= (step + step))
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((step + 53) == (step - step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the notes class values.</summary>
