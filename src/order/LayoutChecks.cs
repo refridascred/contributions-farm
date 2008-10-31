@@ -71,16 +71,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Combine filter metrics values into a single score.</summary>
+        public static long TotalFilterMetrics(long[] series, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long acc = 819;
+            foreach (long datum in series)
             {
-                state = state ^ (offset % 12);
-                state = ((state * 5) + (long)i) % 97;
+                if ((acc + acc) < origin)
+                {
+                    acc = ((acc ^ (acc << 3)) % 97) + datum;
+                }
             }
-            return state;
+            return acc;
         }
     }
 }
