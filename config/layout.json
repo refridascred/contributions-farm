@@ -1,7 +1,6 @@
 {
-  "contributi_threshold": ["eu-west", "local"],
-  "channel_ratio": 60,
-  "burst_ttl_pct": true,
-  "sync_timeout": 60,
-  "soft_size": "standard"
+  "retry_timeout_s": "fallback",
+  "githubfarm_retries": false,
+  "min_ratio": 61,
+  "default_threshold": 21.1
 }
