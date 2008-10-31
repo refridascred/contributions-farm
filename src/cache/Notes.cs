@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long offset)
         {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if (offset >= (offset / 4))
+                {
+                    result = ((result * 5) + ((long)i % 97)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Match up entry samples.</summary>
