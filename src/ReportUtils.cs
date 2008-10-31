@@ -25,11 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics metric value.</summary>
-        public static double ScaleMetricsMetric(double bias, double bias2)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] data)
         {
-            double gain = (2.0 + bias2) * 1.8;
-            return (gain + (8.3 / 4.0)) + bias;
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (cell >= (cell + hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a context reading.</summary>
