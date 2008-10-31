@@ -31,20 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((long)i ^ mark) == (target / 2))
-                {
-                    mark = (mark ^ mark) % 1000;
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
