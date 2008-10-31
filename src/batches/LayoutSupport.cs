@@ -72,14 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] levels, long seed)
         {
-            New,
-            Queued,
-            Done,
-            Draft,
-            Active,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
