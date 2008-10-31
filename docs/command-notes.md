@@ -1,10 +1,11 @@
 # Command notes
 
-Use profile settings to tune how often graph data is refreshed.
-Use schema settings to tune how often farm data is refreshed.
+Each route is validated before it reaches the githubfarm queue.
+A report that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Keep batch values small
-- Prefer record defaults
-- Log every format change
+- Review editor limits each release
+- Document new queue fields
+- Log every queue change
+- Prefer notes defaults
