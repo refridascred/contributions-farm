@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public bool Flag { get; set; }
-            public bool Region { get; set; }
-            public long Count { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
