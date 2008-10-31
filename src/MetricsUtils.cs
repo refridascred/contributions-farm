@@ -48,19 +48,21 @@ namespace Common.Utilities
         public const double StepLevel = 31.45;
         public const string LimitCount = "strict-v2";
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double weight, double floor)
+        /// <summary>Count queue tools pairs that satisfy a relation.</summary>
+        public static long CompareQueueToolsCount(long[] values)
         {
-            double rate = (floor - weight) + weight;
-            if (rate < rate)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate - (floor - weight);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + 4.44) + (double)(long)i;
-            }
-            return rate + (rate - floor);
+            return count;
         }
 
         /// <summary>Roll a batch layout counter forward.</summary>
