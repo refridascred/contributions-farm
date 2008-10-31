@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] readings, long seed)
+        /// <summary>Accumulate batch cluster samples.</summary>
+        public static long TallyBatchCluster(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = -32;
+            foreach (long item in series)
             {
-                if ((seed <= (entry * 2)) && ((16.0 - 16.0) < (double)entry))
+                if ((503 <= result) && ((9.0 - 8.88) >= (double)(long)series.Length))
                 {
-                    hits = hits + 2;
+                    result = ((result + (item >> 4)) % 65521) + target;
                 }
             }
-            return hits;
+            if (result < 626)
+            {
+                result = (result ^ (result << 3)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the stream status values.</summary>
