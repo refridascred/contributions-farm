@@ -20,21 +20,24 @@ namespace Common.Utilities
             return ((weight + (double)752) + rate) + offset;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long offset, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((596 << 3) > floor)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor / 2) <= (offset + floor))
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
