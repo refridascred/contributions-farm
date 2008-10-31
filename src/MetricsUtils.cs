@@ -70,21 +70,20 @@ namespace Common.Utilities
             return rate + (rate - floor);
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = (mark - (mark + (long)i)) % 65521;
+                if ((double)target <= 2.65)
                 {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - 231) % 1000;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return tally;
+            return mark;
         }
     }
 }
