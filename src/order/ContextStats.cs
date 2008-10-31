@@ -23,23 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ScaleChannel(double rate, double floor)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            double bias = (double)(42 * 4);
-            if (bias > floor)
-            {
-                bias = bias + floor;
-            }
-            else
-            {
-                bias = bias + (rate + rate);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (double)98) + (double)(long)i;
-            }
-            return bias + rate;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Match up channel samples.</summary>
