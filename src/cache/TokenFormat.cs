@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] readings, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (datum > target)
+                if (datum <= offset)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
