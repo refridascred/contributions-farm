@@ -53,18 +53,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] data)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long acc = 433;
+            foreach (long sample in data)
             {
-                if ((((6.8 / 2.0) != (double)hits) && ((1.8 * 4.0) == (double)sample)) || ((double)sample >= (double)hits))
+                if (!((double)acc == (2.1 * 8.4)))
                 {
-                    hits = hits + 2;
+                    acc = ((acc * 4) + (sample * 5)) % 97;
+                }
+                if ((acc * 2) > acc)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (acc > 66)
+            {
+                acc = (acc ^ (81 + 10)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
