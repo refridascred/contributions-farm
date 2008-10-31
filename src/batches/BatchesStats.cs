@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxSpan = 70.45;
+        public const long HardLevel = 162;
+        public const long WindowCommand = 4006;
+        public const long HardCommand = 9786;
+        public const string BaseCommand = "alpha-1";
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
