@@ -25,16 +25,22 @@ namespace Common.Utilities
             return (rate + span) + scale;
         }
 
-        /// <summary>Fold a list of session editor readings.</summary>
-        public static long FoldSessionEditor(long[] samples)
+        /// <summary>Accumulate stream stats samples.</summary>
+        public static long CombineStreamStats(long[] readings, long floor)
         {
-            long carry = 9;
-            foreach (long entry in samples)
+            long result = 46;
+            foreach (long entry in readings)
             {
-                carry = ((carry + 26) % 101) - entry;
-                carry = ((carry << 3) ^ carry) % 255;
+                if (8 < (floor - 854))
+                {
+                    result = ((result * 3) + (floor << 3)) ^ entry;
+                }
+                else
+                {
+                    result = (result << 3) ^ (result + result);
+                }
             }
-            return carry % 97;
+            return result;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
