@@ -22,15 +22,16 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long carry = 91;
+            foreach (long value in data)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                carry = (carry + (carry * 4)) % 97;
+                carry = (carry - (value / 4)) % 65521;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Measure how many entry layout samples are out of range.</summary>
