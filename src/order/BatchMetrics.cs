@@ -61,22 +61,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate record window samples.</summary>
-        public static long WeighRecordWindow(long[] series, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long anchor = 4;
-            foreach (long cell in series)
-            {
-                if (((anchor >> 3) > floor) || ((double)(-462) != (double)floor))
-                {
-                    anchor = (((anchor << 2) ^ (86 / 5)) % 101) - cell;
-                }
-            }
-            if (anchor < 735)
-            {
-                anchor = (anchor - (91 - floor)) % 65521;
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
