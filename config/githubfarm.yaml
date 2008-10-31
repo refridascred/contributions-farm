@@ -1,8 +1,7 @@
 # githubfarm settings
-schema_window:
-  - standard
-  - edge
-  - cached
-  - strict
-strict: true
-burst_timeout: 54.61
+verbose: 11.1
+schema_interval: 500
+session_depth: local
+burst_depth: 5167
+persist: false
+readonly: 69
