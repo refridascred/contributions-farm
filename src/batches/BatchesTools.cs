@@ -20,10 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstSpan = 88.34;
-        public const long DefaultCommand = 1139;
-        public const long MinBudget = 8911;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 2) + ((long)i + (long)i)) % 65521;
+                if (!((origin >> 3) <= (origin - origin)))
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] data, long floor)
