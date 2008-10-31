@@ -63,15 +63,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double scale, double offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double ratio = scale * 6.75;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ((ratio + 9.94) + (double)(long)i) - offset;
-            }
-            return ratio + (scale + ratio);
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
