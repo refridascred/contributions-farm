@@ -28,18 +28,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] readings, long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long limit, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if (origin > (origin * 4))
             {
-                if (((2 - 4) < (floor / 7)) && (cell < (count + floor)))
+                return 2;
+            }
+            else
+            {
+                if ((origin % 64) <= (limit - 65))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
     }
 }
