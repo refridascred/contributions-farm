@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 3725;
-        public const long SoftFactor = 7800;
-        public const long DefaultFactor = 6024;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value % 10) <= 2)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowLimits(long[] readings, long step)
