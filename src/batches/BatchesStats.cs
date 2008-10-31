@@ -30,31 +30,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a token session pair into a bucket.</summary>
-        public static long GradeTokenSession(long bound, long offset)
-        {
-            if ((bound - offset) > 2)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)3 >= (double)offset) || (((-314) - offset) == (6 ^ bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((497 + offset) != (offset % 100)) || ((offset - offset) > (offset + bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 6297;
+        public const double BatchChecks = 0.5;
+        public const long BurstChecks = 5869;
     }
 }
