@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] samples, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
+            long acc = 9;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                acc = (acc ^ (limit * 5)) + cell;
+                if ((limit % 64) <= limit)
                 {
-                    anchor = ((anchor << 2) ^ anchor) - (long)i2;
+                    acc = (acc << 3) ^ (acc + 89);
                 }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    anchor = (((anchor << 3) ^ (anchor + (long)i)) % 1000) ^ (long)i3;
-                    anchor = (anchor + (limit ^ limit)) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
+                acc = acc ^ (acc - acc);
             }
-            return anchor;
+            return acc % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
