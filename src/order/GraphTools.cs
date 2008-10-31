@@ -28,19 +28,16 @@ namespace Common.Utilities
         public const string MaxCount = "alpha";
         public const double RetryCache = 97.91;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] readings, long offset)
+        /// <summary>Iterate the entry batches series from a seed.</summary>
+        public static long RollEntryBatches(long limit)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor ^ ((long)i >> 3)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
