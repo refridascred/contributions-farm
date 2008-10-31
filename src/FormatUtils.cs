@@ -57,22 +57,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            long total = 1;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading & 127) < reading)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total - reading) % 4096;
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 1)
-            {
-                total = (total + (total / 3)) % 97;
-            }
-            return total;
+            return seen;
         }
     }
 }
