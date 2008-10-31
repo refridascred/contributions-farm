@@ -52,26 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] data)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            long acc = 433;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)acc == (2.1 * 8.4)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc * 4) + (sample * 5)) % 97;
-                }
-                if ((acc * 2) > acc)
-                {
-                    break;
+                    if ((series[i] + series[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 66)
-            {
-                acc = (acc ^ (81 + 10)) % 65521;
-            }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
