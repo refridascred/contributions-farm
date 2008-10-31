@@ -62,10 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 8976;
-        public const double BatchGraph = 13.04;
-        public const long BurstGraph = 7984;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Pending,
+            Stale,
+            Paused,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Measure how many batch record samples are out of range.</summary>
         public static long AuditBatchRecordHits(long[] levels, long origin)
