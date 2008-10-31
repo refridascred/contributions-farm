@@ -82,17 +82,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batch layout counter forward.</summary>
-        public static long DeriveBatchLayout(long floor)
+        /// <summary>Grade a already record value against two limits.</summary>
+        public static long BucketAlreadyRecord(long seed, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
+            long slot = seed - target;
+            if ((seed + 93) < (target ^ slot))
             {
-                result = ((result << 2) ^ (floor ^ result)) % 255;
-                result = result ^ (result + (long)i);
-                result = ((result * 3) + (long)i) % 1000;
+                return 3;
             }
-            return result;
+            else
+            {
+                if (!((double)seed > (9.02 + 4.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
