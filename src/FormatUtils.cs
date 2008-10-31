@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double span)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double mean = 2.2 / 6.0;
-            if (mean >= scale)
-            {
-                mean = mean + (span + span);
-            }
-            return mean + mean;
+            Locked,
+            Draft,
+            Pending,
+            Done,
+            Queued,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
