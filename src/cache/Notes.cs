@@ -67,13 +67,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            Idle,
+            Queued,
+            Closed,
+            Draft,
+            New,
         }
     }
 }
