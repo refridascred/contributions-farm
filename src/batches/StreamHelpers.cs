@@ -47,11 +47,40 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 3172;
-        public const double DefaultPayload = 33.14;
-        public const long MinPayload = 1260;
-        public const double CachePayload = 59.61;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long floor, long limit)
+        {
+            long cur = floor + limit;
+            if ((cur / 3) <= cur)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit < 3.3)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)cur <= (13.0 * 12.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((cur < (6 << 1)) && ((limit / 7) <= limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double HardSupport = 48.74;
