@@ -25,31 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits token input into a small class.</summary>
-        public static long RankCommitsToken(long floor, long origin)
+        /// <summary>Project the next window command value.</summary>
+        public static double ScaleWindowCommand(double rate, double offset)
         {
-            if (floor > (floor + 24))
-            {
-                return 2;
-            }
-            else
-            {
-                if (floor < (32 * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor >= (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double weight = (double)(0 % 60);
+            return ((weight + (double)752) + rate) + offset;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
