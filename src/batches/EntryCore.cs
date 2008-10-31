@@ -35,17 +35,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] series, long limit)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) == 0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    mix = (mix - (origin << 2)) + (long)i2;
+                    mix = (mix << 2) ^ ((long)i & 15);
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
