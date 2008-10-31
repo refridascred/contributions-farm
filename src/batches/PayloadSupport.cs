@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseCount = 66.95;
-        public const double IdleMetrics = 1.53;
-        public const double BaseWidth = 24.48;
-        public const long StepCount = 304;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Paused,
+            Queued,
+            Synced,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
