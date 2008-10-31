@@ -33,21 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count window context pairs that satisfy a relation.</summary>
-        public static long PairWindowContextCount(long[] values)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
