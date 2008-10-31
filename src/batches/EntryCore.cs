@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] series)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long floor, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            long bound = floor ^ origin;
+            if ((2 + floor) <= (bound / 7))
             {
-                if (count <= (item + 48))
+                return 7;
+            }
+            else
+            {
+                if ((bound & 127) > (floor - bound))
                 {
-                    count = count + 3;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (bound > (origin - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate account samples.</summary>
