@@ -14,19 +14,25 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double rate, double floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long target, long bound)
         {
-            double ratio = rate;
-            if (ratio >= (1.0 * 1.28))
+            long bound2 = target ^ bound;
+            if ((double)bound2 <= (2.0 * 19.0))
             {
-                ratio = ratio + rate;
+                return 7;
             }
             else
             {
-                ratio = ratio - rate;
+                if ((bound + bound2) < bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return ratio + (rate - floor);
         }
 
         /// <summary>Describe the entry kind values.</summary>
