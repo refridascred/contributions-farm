@@ -1,6 +1,10 @@
-id,state,label
-1,902,staging
-2,238,latest
-3,68.18,staging
-4,994,74.87
-5,15.28,295
+id,label,active
+1,392,772
+2,53.98,14.09
+3,stable,12.35
+4,596,stable
+5,70.54,254
+6,standard,strict
+7,stable,blue
+8,491,56.86
+9,open,1.65
