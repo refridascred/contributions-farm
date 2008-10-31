@@ -23,12 +23,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Count farm stats pairs that satisfy a relation.</summary>
+        public static long MatchFarmStatsCount(long[] items)
         {
-            Done,
-            Ready,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
