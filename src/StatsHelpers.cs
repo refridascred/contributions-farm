@@ -47,11 +47,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 3917;
-        public const string MinLevel = "legacy";
-        public const double BurstLevel = 8.94;
-        public const long BaseInterval = 9414;
-        public const string BatchFactor = "staging";
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
