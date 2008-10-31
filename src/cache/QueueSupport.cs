@@ -34,22 +34,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] levels, long floor)
+        /// <summary>Count window route pairs that satisfy a relation.</summary>
+        public static long MatchWindowRouteCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((floor + sample) >= (sample << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] ^ values[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
