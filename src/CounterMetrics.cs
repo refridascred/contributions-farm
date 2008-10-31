@@ -29,16 +29,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a commits support counter forward.</summary>
-        public static long RollCommitsSupport(long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                mix = ((mix * 2) + (floor >> 2)) % 255;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (count > (count & 1))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Grade a profile window value against two limits.</summary>
