@@ -39,21 +39,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
