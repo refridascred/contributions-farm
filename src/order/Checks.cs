@@ -68,11 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
