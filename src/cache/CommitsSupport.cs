@@ -26,11 +26,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Classify a batches cache pair into a bucket.</summary>
+        public static long ClassifyBatchesCache(long limit, long origin)
         {
-            public double Count { get; set; }
-            public long Size { get; set; }
+            long next = limit - origin;
+            if (origin > ((-2) + limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)next == (9.2 + 14.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (4 >= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin / 3) != (next ^ origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of entry token readings.</summary>
