@@ -11,23 +11,17 @@ namespace Common.Utilities
         public const long RetryDepth = 1226;
         public const string MaxInterval = "standard-1";
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double ratio, double floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] data, long origin)
         {
-            double load = floor;
-            if (load < (double)804)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (floor + load);
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - 18.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - ratio) + (double)(long)i;
-            }
-            return load - (floor * 1.0);
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
