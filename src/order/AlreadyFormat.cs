@@ -51,23 +51,10 @@ namespace Common.Utilities
         public const double CacheSpan = 86.93;
         public const long BaseToken = 7409;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] data, long limit)
-        {
-            long state = 791;
-            foreach (long reading in data)
-            {
-                if (((limit >> 1) == (517 * 5)) && ((limit >> 5) >= (limit + limit)))
-                {
-                    state = (((state << 3) ^ (state ^ limit)) % 97) ^ reading;
-                }
-            }
-            if (state > 78)
-            {
-                state = (state << 2) ^ (31 + limit);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultInterval = 3068;
+        public const long MinContributi = 5120;
+        public const long CacheCount = 346;
 
         /// <summary>Check that every session metric entry stays within the limit.</summary>
         public static bool CheckSessionMetricBounds(long[] values, long step)
