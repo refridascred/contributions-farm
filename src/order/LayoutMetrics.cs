@@ -32,13 +32,32 @@ namespace Common.Utilities
         public const double RetryTimeout = 52.77;
         public const long WindowFilter = 4906;
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long seed, long seed2)
         {
-            Locked,
-            Active,
-            Closed,
-            Dropped,
+            long delta = seed ^ seed2;
+            if ((seed - 94) == (seed - delta))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed2 * 4) > (64 ^ seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((473 + seed) > (5 % 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
