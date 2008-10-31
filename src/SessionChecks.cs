@@ -56,17 +56,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] values, long offset)
+        /// <summary>Count the context order entries that pass the check.</summary>
+        public static long TallyContextOrderGaps(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((values[i] > offset) && ((values[i] % 5) != 0))
+                if (!(((count + count) < (-72)) || ((13.0 * 2.2) < (double)count)))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ reading;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
