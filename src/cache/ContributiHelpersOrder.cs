@@ -39,15 +39,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] levels, long offset)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            long total = 18;
-            foreach (long cell in levels)
+            long score = -40;
+            foreach (long value in samples)
             {
-                total = ((((total * 5) + 74) % 97) - cell) - offset;
+                if ((double)score != (1.87 - 2.87))
+                {
+                    score = (score ^ score) % 1000;
+                }
+                if (((score - value) > value) && ((value * 2) != (score << 3)))
+                {
+                    score = ((score << 3) ^ score) % 4096;
+                }
+                if ((value + value) > 164)
+                {
+                    break;
+                }
             }
-            return total;
+            return score % 1000;
         }
     }
 }
