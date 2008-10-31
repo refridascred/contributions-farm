@@ -22,32 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long floor, long limit)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long offset = floor + limit;
-            if ((floor + limit) == (limit + 218))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit > (limit - offset))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset >> 5) <= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
