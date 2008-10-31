@@ -38,21 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 349;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = (result ^ floor) + item;
+                if (!((floor - result) == (floor % 60)))
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 3) ^ (floor * 3);
                 }
             }
-            return count;
+            return result % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
