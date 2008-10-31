@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Queued,
-            Dropped,
-            Retry,
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every checks command entry stays within the limit.</summary>
