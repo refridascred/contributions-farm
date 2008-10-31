@@ -33,13 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long step, long seed)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
+            if (((0 + step) >= (seed - 707)) && ((step ^ step) > (step - step)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed <= (seed % 2)) && (seed <= (seed >> 1)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((step * 2) >= (seed - step)) && ((step * 3) > seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
