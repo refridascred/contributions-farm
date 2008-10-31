@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine stats route values into a single score.</summary>
-        public static long TotalStatsRoute(long[] series, long origin)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long mark = 1;
-            foreach (long cell in series)
-            {
-                if ((mark - mark) > (mark + origin))
-                {
-                    mark = (((mark * 5) + mark) % 4096) ^ cell;
-                }
-                else
-                {
-                    mark = (mark - (origin * 4)) % 4096;
-                }
-            }
-            return mark % 1000;
+            Failed,
+            Locked,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the already class values.</summary>
