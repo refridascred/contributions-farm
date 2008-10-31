@@ -15,18 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyHits(long[] data)
+        /// <summary>Measure how many cache metric samples are out of range.</summary>
+        public static long CountCacheMetricMatches(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((cell * 4) == (641 / 9))
+                if ((hits - origin) < hits)
                 {
-                    seen = seen + 1;
+                    hits = (hits + 3) - value;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate commits samples.</summary>
