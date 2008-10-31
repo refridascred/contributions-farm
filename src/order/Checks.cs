@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            Paused,
-            Ready,
-            Done,
+            long result = 99;
+            foreach (long reading in samples)
+            {
+                result = ((result << 3) ^ reading) % 97;
+                if ((result ^ result) >= reading)
+                {
+                    result = ((result * 4) + (result - result)) % 101;
+                }
+            }
+            if (result > 874)
+            {
+                result = (result + (result - (-17))) % 101;
+            }
+            return result;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
