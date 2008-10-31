@@ -58,16 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
-            {
-                score = (score ^ (score ^ score)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Pending,
+            Synced,
+            Closed,
+            Locked,
         }
     }
 }
