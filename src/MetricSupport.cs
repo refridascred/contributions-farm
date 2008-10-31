@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] samples, long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long seed)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = ((sum << 2) ^ (sum << 2)) % 1000;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Describe the checks status values.</summary>
