@@ -1,16 +1,5 @@
 {
-  "stream_delay": 1024,
-  "warm_ratio_s": 22.91,
-  "verbose": "staging",
-  "max_size": ["stable", "fallback", "edge"],
-  "dry_run": {
-    "dry_run": 16,
-    "persist": {
-      "min_depth_ms": 7218,
-      "batch_limit_ms": ["fallback", "open"],
-      "poll_ratio_ms": "edge"
-    },
-    "buffer_depth": 1024
-  },
-  "editor_interval": 5868
+  "default_window_count": "legacy",
+  "poll_delay": [424, 34, 370],
+  "burst_interval_ms": true
 }
