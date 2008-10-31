@@ -61,11 +61,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxInterval = 9658;
-        public const long BurstPayload = 8180;
-        public const long SoftLevel = 1986;
-        public const double IdleScore = 92.08;
-        public const double MaxPayload = 66.58;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
