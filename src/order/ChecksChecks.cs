@@ -23,13 +23,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Adjust a graph reading.</summary>
