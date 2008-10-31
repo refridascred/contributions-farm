@@ -32,12 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Measure how many route channel samples are out of range.</summary>
+        public static long AuditRouteChannelHits(long[] data, long target)
         {
-            public double Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((2 - cell) > (matches + cell)) && ((matches ^ cell) > (cell + 7)))
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a batch schema sample.</summary>
