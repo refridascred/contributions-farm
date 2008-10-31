@@ -56,11 +56,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string StepSchema = "local-edge";
-        public const long BurstSpan = 1392;
-        public const long DefaultCount = 1198;
-        public const double DefaultScore = 34.21;
-        public const long BatchSchema = 7167;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 4584;
+        public const double WindowRatio = 51.48;
+        public const long CacheFormat = 8852;
+        public const long BatchFormat = 6721;
     }
 }
