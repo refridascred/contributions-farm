@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 7735;
-        public const string BatchSpan = "open-v2";
-        public const string BatchBatches = "legacy-edge";
+        /// <summary>Audit entry channel readings against a rule.</summary>
+        public static long AuditEntryChannelMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits / 6) == (4 % 60))
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandMatches(long[] readings, long step)
