@@ -34,12 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
             Queued,
             New,
-            Locked,
+            Pending,
         }
     }
 }
