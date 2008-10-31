@@ -20,18 +20,17 @@ namespace Common.Utilities
             return bias2 + (weight + bias);
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Find the first command stream entry that matches the target.</summary>
+        public static long FindCommandStreamIndex(long[] data, long step)
         {
-            long result = 5;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((7 - result) < 247)
+                if ((data[i] == step) && ((data[i] % 5) == 0))
                 {
-                    result = (result ^ (result % 16)) - item;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Validate account schema readings against a bound.</summary>
