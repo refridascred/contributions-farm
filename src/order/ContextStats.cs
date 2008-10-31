@@ -49,22 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((item * 3) >= (item << 2)) && ((count + item) <= item))
-                {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheSize = 5505;
+        public const string SoftScore = "strict";
+        public const long WindowRatio = 1378;
+        public const long IdleWidth = 5637;
+        public const string StepSize = "standard-v2";
     }
 }
