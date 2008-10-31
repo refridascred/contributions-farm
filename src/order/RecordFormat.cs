@@ -50,17 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] readings, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (readings[i] >= seed)
+                if (((double)tally > (6.0 * 1.0)) || ((double)item > (0.3 / 4.0)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
