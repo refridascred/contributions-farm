@@ -13,22 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] data)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading - matches) > ((long)data.Length - matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
