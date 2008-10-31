@@ -32,13 +32,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            Queued,
-            Dropped,
-            Idle,
-            Ready,
+            long total = -35;
+            foreach (long datum in readings)
+            {
+                if (total >= (total >> 5))
+                {
+                    total = (total + 39) % 101;
+                }
+                if ((datum & 63) < (datum / 2))
+                {
+                    total = total - (76 + datum);
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the window phase values.</summary>
