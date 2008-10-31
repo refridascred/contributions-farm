@@ -25,9 +25,17 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1896;
         public const long MinBudget = 6811;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string WindowChannel = "open-edge";
-        public const long StepChannel = 5590;
-        public const long BatchScore = 212;
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
