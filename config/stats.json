@@ -1,8 +1,18 @@
 {
-  "tools_window": 41,
-  "token_ratio": true,
-  "flush_interval_s": [49, 166, 253, 260],
-  "entry_capacity": 56.78,
-  "warm_ratio": "staging",
-  "layout_capacity": 93.8
+  "retry_interval": {
+    "sync_delay": {
+      "min_size_ms": [435, 154],
+      "idle_timeout": 16.12,
+      "strict": 63.04,
+      "default_threshold_pct": "primary"
+    },
+    "window_limit": [311, 393, 67],
+    "flush_retries_ms": true,
+    "batch_interval_count": [330, 212, 432, 320],
+    "hard_depth": "local"
+  },
+  "idle_retries_s": [233, 393],
+  "max_size": "blue",
+  "commits_depth": [471, 394, 8, 33],
+  "session_limit": 100
 }
