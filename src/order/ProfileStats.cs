@@ -56,13 +56,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            Synced,
+            Idle,
+            Failed,
+            Draft,
         }
     }
 }
