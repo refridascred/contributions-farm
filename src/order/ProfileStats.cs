@@ -29,27 +29,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] samples, long bound)
+        /// <summary>Validate window queue readings against a bound.</summary>
+        public static bool GuardWindowQueueRange(long[] series, long origin)
         {
-            long state = 42;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((6.0 - 8.8) < (double)state)
+                if (sample < origin)
                 {
-                    state = (state ^ ((-3) * 2)) - bound;
-                }
-                state = (state - datum) % 97;
-                if (datum >= (107 ^ datum))
-                {
-                    state = (state ^ 4) % 97;
-                }
-                else
-                {
-                    state = state + (state / 3);
+                    ready = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return ready;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
