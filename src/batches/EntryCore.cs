@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long SoftCommits = 7901;
         public const long MaxCommits = 6631;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] data, long limit)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= limit) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of support readings.</summary>
