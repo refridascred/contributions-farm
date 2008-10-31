@@ -27,20 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] readings, long offset)
-        {
-            long mix = 764;
-            foreach (long cell in readings)
-            {
-                mix = (((mix * 2) + mix) - cell) - offset;
-            }
-            if (mix > 20)
-            {
-                mix = ((mix * 3) + (75 ^ 891)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheScore = "alpha-v2";
+        public const string BaseTimeout = "cached-v2";
+        public const long RetryCount = 7163;
+        public const string StepWidth = "primary-edge";
+        public const double BaseWindow = 24.47;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string RetryAccount = "staging";
