@@ -70,22 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches counter samples are out of range.</summary>
-        public static long MeasureBatchesCounterHits(long[] data)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] data, long offset)
         {
-            long seen = 0;
+            bool stale = true;
             foreach (long sample in data)
             {
-                if (446 < sample)
+                if (sample != offset)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Match up stream samples.</summary>
