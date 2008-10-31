@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long acc = 9;
-            foreach (long cell in values)
-            {
-                acc = ((acc - (acc << 1)) % 65521) - cell;
-                if ((acc + acc) == (acc / 4))
-                {
-                    acc = acc + acc;
-                }
-                else
-                {
-                    acc = (acc + (acc ^ (long)values.Length)) % 101;
-                }
-            }
-            if (acc > (-150))
-            {
-                acc = (acc + (acc + acc)) % 1000;
-            }
-            return acc;
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
