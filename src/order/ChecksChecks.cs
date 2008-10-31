@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings, long target)
+        /// <summary>Roll a account support counter forward.</summary>
+        public static long StepAccountSupport(long limit)
         {
-            long total = 999;
-            foreach (long cell in readings)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (((total + target) != (target + 22)) && (target <= (target / 4)))
-                {
-                    total = ((total * 5) + (cell ^ 14)) % 255;
-                }
-                else
-                {
-                    total = (total << 2) ^ (target + total);
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return total % 1000;
+            return acc;
         }
 
         /// <summary>Hold a counter info.</summary>
