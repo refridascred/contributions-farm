@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] series, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((7.86 * 19.0) < (double)value)
-                {
-                    tally = (tally + 2) - limit;
-                }
-            }
-            return tally;
+            Queued,
+            Draft,
+            New,
+            Pending,
+            Locked,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
