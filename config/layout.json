@@ -1,6 +1,5 @@
 {
-  "sync_retries_pct": "green",
-  "audit": 52,
-  "batch_ratio_pct": false,
-  "min_retries": 3540
+  "flush_delay_ms": "blue",
+  "compress": "open",
+  "persist": 44.1
 }
