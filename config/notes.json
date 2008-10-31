@@ -1,12 +1,13 @@
 {
-  "poll_ttl_s": "strict",
-  "retry_ttl": "legacy",
-  "soft_size_count": true,
-  "retry_limit_count": 27.51,
-  "max_capacity_count": {
-    "min_size_pct": 36,
-    "max_ratio": [71, 99],
-    "compress": false,
-    "base_window_pct": 4206
-  }
+  "commits_interval": "primary",
+  "flush_depth": [186, 445, 480, 344],
+  "soft_threshold_pct": 70.05,
+  "min_interval_count": {
+    "sync_delay_pct": true,
+    "command_timeout": "standard",
+    "route_depth": 10.55,
+    "strict": "strict",
+    "compress": 12.19
+  },
+  "retry_size": false
 }
