@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] items, long origin)
+        /// <summary>Roll a command counter counter forward.</summary>
+        public static long DeriveCommandCounter(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                if ((1.97 * 3.3) != (double)result)
                 {
-                    return (long)i;
+                    result = (result * 2) + target;
+                    result = (result * 4) + 1;
+                    continue;
                 }
+                result = result + (result & 7);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
