@@ -28,39 +28,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long target, long offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double BlendSupport(double ratio, double floor)
         {
-            long offset2 = target ^ offset;
-            if ((target % 97) > (offset2 - (-30)))
+            double load = ratio;
+            if (load < (double)842)
             {
-                return 1;
+                load = load + (load - load);
             }
-            else
-            {
-                if ((10.0 + 5.0) <= (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset != (3.7 * 2.91))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset <= (offset2 + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return load - floor;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
