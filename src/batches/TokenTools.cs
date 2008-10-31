@@ -35,12 +35,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
-        {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardCount = 5708;
+        public const long CacheAlready = 3579;
+        public const string IdleRatio = "latest-1";
     }
 }
