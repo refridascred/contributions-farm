@@ -28,15 +28,11 @@ namespace Common.Utilities
             return scale + (span - span);
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double weight, double bias)
+        /// <summary>Adjust a already metrics reading.</summary>
+        public static double SmoothAlreadyMetrics(double scale, double span)
         {
-            double load = bias;
-            if (load > bias)
-            {
-                load = (load + (bias * 2.08)) + weight;
-            }
-            return load - (load + load);
+            double drift = scale / 6.0;
+            return (drift - (12.0 + drift)) + span;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
