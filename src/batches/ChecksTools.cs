@@ -54,10 +54,14 @@ namespace Common.Utilities
         public const long LimitRecord = 34;
         public const long DefaultRecord = 5632;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 7693;
-        public const long CacheInterval = 8533;
-        public const long IdleFormat = 5928;
-        public const double DefaultLevel = 59.88;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Done,
+            Pending,
+            Ready,
+            Draft,
+            Synced,
+        }
     }
 }
