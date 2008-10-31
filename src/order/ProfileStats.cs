@@ -43,31 +43,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long offset, long bound)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] samples, long floor)
         {
-            if (((double)offset >= 2.1) || (32 > (offset % 5)))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) >= (offset * 5))
+                if ((7.0 + 5.58) < (double)floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (bound > (offset - offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = (count + 2) + reading;
                 }
             }
+            return count;
         }
     }
 }
