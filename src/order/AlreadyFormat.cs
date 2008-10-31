@@ -39,17 +39,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] items, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = 5.7 - (floor / 5.0);
+            if (ratio < (8.0 * 5.0))
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - gain;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (floor - gain);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - gain;
         }
 
         /// <summary>Describe the record state values.</summary>
