@@ -20,15 +20,17 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double rate, double span)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] series, long step)
         {
-            double gain = span - span;
-            if (gain <= rate)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + (double)308;
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return gain + 0.75;
+            return -1;
         }
 
         /// <summary>Hold a farm entry.</summary>
