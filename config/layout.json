@@ -1,7 +1,17 @@
 {
-  "layout_timeout": 95.79,
-  "githubfarm_delay": true,
-  "metrics_size": 43,
-  "max_interval": 8795,
-  "min_delay_count": 86.33
+  "max_window_s": "legacy",
+  "already_threshold": 1960,
+  "max_retries_ms": {
+    "max_delay": false,
+    "min_limit_pct": 9.0,
+    "audit": {
+      "dry_run": "staging",
+      "audit": false,
+      "sync_retries_s": "cached",
+      "cache_window": [114, 313, 295],
+      "idle_delay": 42.73,
+      "readonly": 2732
+    },
+    "readonly": "blue"
+  }
 }
