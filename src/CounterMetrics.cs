@@ -42,24 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile window value against two limits.</summary>
-        public static long SortProfileWindow(long step, long origin)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            if ((origin / 2) <= (origin << 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + step) > (73 * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Idle,
+            Stale,
+            Retry,
+            Dropped,
         }
     }
 }
