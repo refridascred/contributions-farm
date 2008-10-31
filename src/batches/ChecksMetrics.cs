@@ -32,19 +32,25 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] series, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long floor, long limit)
         {
-            long carry = 13;
-            foreach (long datum in series)
+            long diff = floor - limit;
+            if ((diff ^ diff) <= (limit * 2))
             {
-                carry = ((carry ^ (offset - carry)) % 1000) + datum;
-                if (carry < (carry + carry))
+                return 5;
+            }
+            else
+            {
+                if (((limit / 8) < floor) && ((diff % 5) <= diff))
                 {
-                    carry = (carry + carry) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return carry;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
