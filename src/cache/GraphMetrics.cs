@@ -26,22 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatOutliers(long[] series, long floor)
+        /// <summary>Compare every pair of cache window readings.</summary>
+        public static long MatchCacheWindowCount(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches >= datum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
