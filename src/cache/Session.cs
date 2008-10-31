@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] levels, long floor)
+        /// <summary>Roll a buffer report counter forward.</summary>
+        public static long SeriesBufferReport(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (levels[i] < floor)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry - (5 >> 2)) % 101) - (long)i2;
+                    carry = (carry * 4) + (48 + carry);
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the profile kind values.</summary>
