@@ -39,11 +39,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "legacy-v2";
-        public const double MinCount = 97.27;
-        public const long StepContext = 3155;
-        public const double RetryContext = 12.88;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Dropped,
+            Paused,
+            Active,
+            Ready,
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamMatches(long[] samples)
