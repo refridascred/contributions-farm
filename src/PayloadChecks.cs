@@ -78,26 +78,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate stream payload samples.</summary>
-        public static long DigestStreamPayload(long[] items, long seed)
-        {
-            long mix = 648;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = (((mix * 2) + reading) % 1000) ^ (long)i;
-                }
-                if ((437 ^ mix) == (mix + 719))
-                {
-                    mix = (mix + (34 + seed)) % 1000;
-                }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 6336;
+        public const long RetryGithubfarm = 8906;
+        public const long HardCount = 5615;
     }
 }
