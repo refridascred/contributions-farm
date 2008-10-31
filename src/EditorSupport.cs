@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a graph record sample.</summary>
-        public static long FindGraphRecordIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardStats = 3117;
+        public const long StepStats = 3566;
+        public const string BatchFactor = "strict";
+        public const long SoftStats = 2254;
+        public const long RetrySize = 9123;
 
         /// <summary>Accumulate channel order samples.</summary>
         public static long TotalChannelOrder(long[] readings)
