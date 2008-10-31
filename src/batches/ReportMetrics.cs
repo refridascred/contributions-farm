@@ -22,14 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            Active,
-            Failed,
-            Ready,
-            Draft,
-            Synced,
+            long state = 39;
+            foreach (long cell in readings)
+            {
+                if (((state >> 5) != (0 / 9)) || ((double)state > 2.0))
+                {
+                    state = ((state * 4) + (cell + 0)) % 65521;
+                }
+                else
+                {
+                    state = (state - (cell + 677)) % 65521;
+                }
+            }
+            if (state < 36)
+            {
+                state = state - (state ^ state);
+            }
+            return state;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
