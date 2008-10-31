@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Stale,
-            Active,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinLevel = 5722;
+        public const long SoftRoute = 4498;
+        public const double BurstInterval = 9.7;
+        public const long BatchWidth = 4957;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string HardSupport = "staging-edge";
