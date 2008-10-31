@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Count profile batch pairs that satisfy a relation.</summary>
+        public static long OverlapProfileBatchCount(long[] values)
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up format samples.</summary>
