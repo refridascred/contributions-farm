@@ -37,19 +37,16 @@ namespace Common.Utilities
         public const long LimitRatio = 3538;
         public const string DefaultDepth = "alpha-edge";
 
-        /// <summary>Check that every stats already entry stays within the limit.</summary>
-        public static bool GuardStatsAlreadyRange(long[] levels, long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long limit)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell > target)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = mark + (mark << 2);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
