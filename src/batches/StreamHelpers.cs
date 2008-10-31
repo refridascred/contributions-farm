@@ -33,10 +33,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRoute = 2515;
-        public const long BatchScore = 662;
-        public const double BaseFactor = 46.0;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 2129;
+        public const string HardProfile = "alpha-edge";
+        public const long IdleBudget = 203;
 
         /// <summary>Count the queue commits entries that pass the check.</summary>
         public static long TallyQueueCommitsMatches(long[] series, long target)
