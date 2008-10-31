@@ -1,18 +1,5 @@
 # entry settings
-cluster_depth: 5311
-base_timeout: strict
-verbose:
-  batches_window: false
-  idle_ttl_count: stable
-  hard_window_count: false
-  order_limit: local
-  verbose:
-    - legacy
-    - legacy
-    - blue
-soft_threshold_ms: 1793
-max_threshold:
-  - 402
-  - 490
-  - 36
-  - 64
+min_delay_pct: 30
+soft_depth_count: latest
+poll_ttl_pct: 60
+audit: 9
