@@ -13,11 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 8204;
-        public const long RetryWidth = 2410;
-        public const long SoftTimeout = 4152;
-        public const double StepDepth = 37.55;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] levels)
