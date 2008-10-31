@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] readings)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] data)
         {
-            long score = 82;
-            foreach (long cell in readings)
+            long mark = 728;
+            foreach (long datum in data)
             {
-                if ((score + 165) > ((-809) >> 4))
+                if (15 >= (mark + mark))
                 {
-                    score = (score - score) % 255;
-                    continue;
+                    mark = (mark + datum) % 101;
                 }
-                score = ((score * 5) + (cell * 2)) % 1000;
             }
-            return score % 97;
+            if (mark > 5)
+            {
+                mark = ((mark * 2) + (mark ^ mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of support readings.</summary>
