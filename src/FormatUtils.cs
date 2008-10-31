@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 24.36;
-        public const long LimitTimeout = 5746;
-        public const long DefaultSupport = 8458;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long FindContextIndex(long[] levels, long limit)
