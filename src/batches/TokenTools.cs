@@ -22,19 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] data, long offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long sum = -215;
+            foreach (long datum in levels)
             {
-                if (sample != offset)
+                if ((sum - datum) > (sum + 426))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum - (sum ^ 65)) % 101;
+                    sum = (sum + (sum & 3)) % 255;
+                }
+                if ((datum - sum) > (datum / 5))
+                {
+                    sum = ((sum * 2) + (datum - datum)) % 255;
                 }
             }
-            return flag;
+            return sum % 97;
         }
 
         /// <summary>Fold a list of batches metrics readings.</summary>
