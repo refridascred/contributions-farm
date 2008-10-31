@@ -26,12 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long floor)
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
+            long state = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state ^ ((-3) + state)) % 65521;
+                state = state - (state % 7);
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
