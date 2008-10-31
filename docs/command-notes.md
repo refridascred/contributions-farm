@@ -1,11 +1,10 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the notes list.
-Run the editor check before changing any channel limits.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Each session is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Validate profile input early
-- Keep graph values small
-- Document new token fields
-- Prefer contributi defaults
+- Log every notes change
+- Keep notes values small
+- Review already limits each release
