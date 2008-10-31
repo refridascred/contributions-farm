@@ -84,19 +84,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] items, long floor)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long anchor = 76;
-            foreach (long sample in items)
-            {
-                anchor = (anchor - (anchor % 10)) ^ sample;
-            }
-            if (anchor > 29)
-            {
-                anchor = ((anchor << 2) ^ (0 - floor)) % 65521;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
