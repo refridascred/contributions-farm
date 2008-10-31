@@ -32,13 +32,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Measure how many notes batch samples are out of range.</summary>
+        public static long MeasureNotesBatchOutliers(long[] readings, long seed)
         {
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (value <= (value + seed))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
