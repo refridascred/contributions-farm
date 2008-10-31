@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (reading > floor)
+                if (!((score + score) == (41 + score)))
                 {
-                    stale = false;
+                    score = score - score;
                     break;
                 }
+                else
+                {
+                    score = (score ^ seed) % 97;
+                    score = score ^ ((long)i - 258);
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
