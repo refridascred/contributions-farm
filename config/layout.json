@@ -1,16 +1,5 @@
 {
-  "soft_timeout": {
-    "report_capacity": "open",
-    "strict": {
-      "farm_threshold": 72.55,
-      "burst_delay_pct": "primary",
-      "cache_retries": [26, 334, 350, 290],
-      "idle_timeout": [87, 453]
-    },
-    "idle_timeout_pct": ["stable", "fallback", "blue", "eu-west"],
-    "soft_delay": "local"
-  },
-  "audit": true,
-  "cache_ratio": [248, 108],
-  "hard_ttl_count": "latest"
+  "sync_retries_s": true,
+  "enabled": [47, 203, 20, 321],
+  "readonly": false
 }
