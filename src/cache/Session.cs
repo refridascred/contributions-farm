@@ -25,19 +25,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double ratio, double span)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] readings, long offset)
         {
-            double weight = span - (double)4;
-            if (weight < (ratio - ratio))
+            long mix = 764;
+            foreach (long cell in readings)
             {
-                weight = weight + weight;
+                mix = (((mix * 2) + mix) - cell) - offset;
             }
-            for (int i = 0; i < 2; i++)
+            if (mix > 20)
             {
-                weight = (weight - span) + (double)(long)i;
+                mix = ((mix * 3) + (75 ^ 891)) % 101;
             }
-            return weight - (span - weight);
+            return mix;
         }
 
         /// <summary>Project the next buffer value.</summary>
