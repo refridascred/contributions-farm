@@ -65,31 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema commits input into a small class.</summary>
-        public static long BucketSchemaCommits(long floor, long target)
+        /// <summary>Scale a payload metrics figure with a bias.</summary>
+        public static double ScalePayloadMetrics(double gain, double floor)
         {
-            if ((target >> 5) < target)
+            double scale = (double)(748 * 3);
+            if (scale > floor)
             {
-                return 5;
+                scale = scale + (floor * 5.2);
             }
-            else
-            {
-                if (((floor >> 5) <= (floor / 2)) && ((target + floor) != (target * 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(target >= (floor << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return scale + gain;
         }
     }
 }
