@@ -60,19 +60,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate report metrics readings against a bound.</summary>
-        public static bool GuardReportMetricsBounds(long[] samples, long floor)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long origin, long offset)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            if ((offset - offset) == (origin + origin))
             {
-                if (item < floor)
+                return 7;
+            }
+            else
+            {
+                if (!((953 ^ origin) == (207 % 60)))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
     }
 }
