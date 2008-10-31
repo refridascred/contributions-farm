@@ -39,22 +39,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] items)
         {
-            long total = 77;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((57 > (cell >> 4)) || ((total + cell) < cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total + (total + cell)) % 65521;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total > 178)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
