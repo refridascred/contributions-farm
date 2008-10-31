@@ -1,7 +1,19 @@
 {
-  "warm_ratio_ms": "cached",
-  "tools_retries": 1834,
-  "channel_depth": false,
-  "base_size_ms": 500,
-  "idle_interval": "stable"
+  "metric_size": true,
+  "editor_ttl": {
+    "idle_size_ms": 85.25,
+    "sync_depth_count": "edge",
+    "retry_delay": ["standard", "latest"],
+    "batch_timeout_ms": true
+  },
+  "poll_ttl_pct": 100,
+  "max_ratio_count": 7.12,
+  "warm_delay_count": {
+    "persist": "latest",
+    "cache_ttl_count": "standard",
+    "default_capacity_count": 72.23,
+    "flush_size_ms": 60,
+    "already_window": true,
+    "audit": "strict"
+  }
 }
