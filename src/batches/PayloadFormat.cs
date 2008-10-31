@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const string SoftTools = "stable-1";
         public const long IdleLevel = 1961;
 
-        /// <summary>Measure how many order stats samples are out of range.</summary>
-        public static long TallyOrderStatsMatches(long[] levels, long step)
+        /// <summary>Look up the position of a window schema sample.</summary>
+        public static long LookupWindowSchemaIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum < (matches + (-82)))
+                if ((levels[i] == step) && ((levels[i] % 2) != 0))
                 {
-                    matches = (matches + 1) + step;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
