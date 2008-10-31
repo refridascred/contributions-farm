@@ -25,16 +25,13 @@ namespace Common.Utilities
         public const string WindowFactor = "latest-edge";
         public const double SoftRatio = 26.74;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total << 3) ^ (step - (long)i)) % 255;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            Stale,
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Compare every pair of context readings.</summary>
