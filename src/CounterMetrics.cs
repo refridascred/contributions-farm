@@ -44,13 +44,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Idle,
-            Stale,
-            Retry,
-            Dropped,
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
