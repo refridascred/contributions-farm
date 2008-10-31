@@ -27,23 +27,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] readings, long offset)
         {
-            long carry = 4;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((carry << 3) ^ (sample >> 5)) % 101;
-                if (1.56 < (double)carry)
+                if (readings[i] > offset)
                 {
-                    carry = ((carry << 3) ^ (carry / 6)) % 97;
-                }
-                if (carry > (carry * 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
