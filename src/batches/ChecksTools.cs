@@ -21,39 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a queue route pair into a bucket.</summary>
-        public static long RankQueueRoute(long floor, long limit)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] readings)
         {
-            long gap = floor + limit;
-            if ((82 * 4) <= gap)
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit <= (17.0 * 7.19))
+                if ((double)value >= (8.3 / 3.0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((13.0 * 4.0) > (double)limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor < (gap - floor)) || ((1.6 / 2.0) < (double)gap))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
