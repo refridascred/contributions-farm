@@ -31,11 +31,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitBudget = 1124;
-        public const long RetrySize = 9103;
-        public const string CacheSize = "staging-1";
-        public const long BatchChannel = 9132;
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Failed,
+            Dropped,
+            New,
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
