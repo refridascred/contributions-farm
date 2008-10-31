@@ -19,11 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleWidth = 31.19;
-        public const string BatchDepth = "legacy-1";
-        public const double SoftFactor = 32.2;
-        public const long BatchCluster = 1469;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 6745;
+        public const string RetrySize = "local-edge";
+        public const long IdleBatch = 9360;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long SeriesWindow(long offset)
