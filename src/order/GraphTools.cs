@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] readings, long origin)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (origin > 190)
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
