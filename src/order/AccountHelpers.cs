@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const string MaxCommits = "stable-1";
         public const long LimitCommits = 3430;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 4006;
-        public const double MinRatio = 73.63;
-        public const string CacheContributi = "cached-v2";
-        public const string WindowFactor = "latest-edge";
-        public const double SoftRatio = 26.74;
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
+        {
+            Done,
+            Paused,
+            Closed,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
