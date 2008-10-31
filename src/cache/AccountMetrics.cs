@@ -46,19 +46,25 @@ namespace Common.Utilities
         public const double BatchGraph = 13.04;
         public const long BurstGraph = 7984;
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double gain, double floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long offset, long offset2)
         {
-            double weight = (double)(804 / 2);
-            if (weight <= (floor + 8.2))
+            long offset3 = offset + offset2;
+            if (offset2 <= offset3)
             {
-                weight = weight + (weight - gain);
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight - (gain + weight)) + (double)(long)i;
+                if ((double)offset != (double)5)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return weight - 14.0;
         }
     }
 }
