@@ -1,7 +1,16 @@
 {
-  "default_interval_pct": "fallback",
-  "max_limit_s": false,
-  "base_threshold_ms": 9292,
-  "enabled": 22,
-  "hard_retries_pct": false
+  "dry_run": "open",
+  "sync_retries_count": 1024,
+  "enabled": "strict",
+  "strict": 352,
+  "cache_timeout": {
+    "metrics_delay": 3054,
+    "soft_timeout_ms": 74.62,
+    "counter_ttl": {
+      "already_timeout": false,
+      "githubfarm_threshold": ["open", "local", "cached", "cached"],
+      "verbose": 16,
+      "min_ttl": false
+    }
+  }
 }
