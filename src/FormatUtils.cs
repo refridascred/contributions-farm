@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Locked,
-            Draft,
-            Pending,
-            Done,
-            Queued,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 24.36;
+        public const long LimitTimeout = 5746;
+        public const long DefaultSupport = 8458;
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long FindContextIndex(long[] levels, long limit)
