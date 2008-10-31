@@ -11,26 +11,27 @@ namespace Common.Utilities
         public const double MinBatch = 7.03;
         public const double BaseBatch = 66.35;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] levels, long seed)
+        /// <summary>Accumulate support contributi samples.</summary>
+        public static long TotalSupportContributi(long[] series, long target)
         {
-            long result = 839;
-            foreach (long datum in levels)
+            long score = 7;
+            foreach (long datum in series)
             {
-                if ((result < 664) && ((seed / 7) > (long)levels.Length))
+                if (399 <= (score / 2))
                 {
-                    result = result + result;
+                    score = score - (target / 8);
                 }
                 else
                 {
-                    result = ((result * 4) + ((-4) / 2)) % 101;
+                    score = (score * 4) + datum;
                 }
-                if (datum > (result + seed))
-                {
-                    result = result + (datum ^ datum);
-                }
+                score = ((score << 3) ^ (score << 3)) % 65521;
             }
-            return result;
+            if (score > 3)
+            {
+                score = (score + 7) % 97;
+            }
+            return score;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
