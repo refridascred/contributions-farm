@@ -30,13 +30,22 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] samples, long floor)
         {
-            Dropped,
-            Queued,
-            Idle,
-            Failed,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)floor <= (double)(-700))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
