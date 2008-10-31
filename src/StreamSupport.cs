@@ -27,18 +27,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] series, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long carry = 5;
+            foreach (long datum in samples)
             {
-                if (!((double)(long)series.Length >= (9.0 + 9.47)))
+                if ((8.62 + 6.0) == (double)carry)
                 {
-                    count = ((count + 3) + reading) - seed;
+                    carry = ((carry << 2) ^ carry) ^ datum;
                 }
             }
-            return count;
+            if (carry < 4)
+            {
+                carry = (carry ^ (offset % 2)) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
