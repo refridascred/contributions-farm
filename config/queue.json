@@ -1,8 +1,8 @@
 {
-  "window_threshold": 12,
-  "max_delay": false,
-  "min_ratio_s": 84,
-  "min_ttl_s": 96.39,
-  "metric_ttl": true,
-  "cache_window": "blue"
+  "dry_run": false,
+  "readonly": 6499,
+  "base_window": true,
+  "window_window": true,
+  "sync_ttl": 26.83,
+  "idle_timeout": 42.14
 }
