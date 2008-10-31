@@ -19,16 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a window schema counter forward.</summary>
-        public static long StepWindowSchema(long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] values)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                acc = (acc + (bound >> 5)) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((cell ^ cell) == (cell * 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
