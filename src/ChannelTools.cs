@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Ready,
-            Idle,
+            Pending,
+            Done,
+            Locked,
             Synced,
         }
 
