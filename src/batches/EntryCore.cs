@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate stream command readings against a bound.</summary>
-        public static bool GuardStreamCommandRange(long[] items, long seed)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Ready,
+            Retry,
         }
 
         /// <summary>Hold a buffer record.</summary>
