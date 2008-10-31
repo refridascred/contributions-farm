@@ -66,11 +66,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 2156;
-        public const long MinProfile = 9813;
-        public const long HardProfile = 9514;
-        public const long WindowScore = 4167;
-        public const long CacheProfile = 2742;
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
+        {
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
+        }
     }
 }
