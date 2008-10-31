@@ -15,13 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] data)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((cell * 4) == (641 / 9))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate commits samples.</summary>
