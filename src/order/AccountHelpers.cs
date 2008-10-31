@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinSize = "stable";
-        public const double BatchCount = 82.38;
-        public const double CacheCommits = 90.74;
-        public const string MaxCommits = "stable-1";
-        public const long LimitCommits = 3430;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of queue profile readings.</summary>
         public static long PairQueueProfileCount(long[] series)
