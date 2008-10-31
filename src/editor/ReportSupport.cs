@@ -45,13 +45,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a support contributi counter forward.</summary>
-        public static long IterateSupportContributi(long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
             long sum = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (!((bound + (-56)) > (long)i))
+                {
+                    sum = (sum + ((long)i ^ sum)) % 4096;
+                    sum = (sum + sum) % 97;
+                }
+                sum = (sum * 2) + (bound - (long)i);
+                if (((long)i * 2) >= bound)
+                {
+                    sum = (sum ^ (bound + bound)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
             return sum;
         }
