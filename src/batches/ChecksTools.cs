@@ -21,19 +21,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate record schema readings against a bound.</summary>
-        public static bool ValidateRecordSchemaBounds(long[] items, long floor)
+        /// <summary>Classify a queue route pair into a bucket.</summary>
+        public static long RankQueueRoute(long floor, long limit)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            long gap = floor + limit;
+            if ((82 * 4) <= gap)
             {
-                if (reading <= floor)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit <= (17.0 * 7.19))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((13.0 * 4.0) > (double)limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor < (gap - floor)) || ((1.6 / 2.0) < (double)gap))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
