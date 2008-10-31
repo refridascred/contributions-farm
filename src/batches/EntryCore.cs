@@ -62,21 +62,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] levels)
+        /// <summary>Audit githubfarm editor readings against a rule.</summary>
+        public static long MeasureGithubfarmEditorMatches(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)value < 8.48)
                 {
-                    if ((levels[i] + levels[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - origin;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
