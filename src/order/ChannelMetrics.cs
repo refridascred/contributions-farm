@@ -15,18 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] data)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits - hits) <= (hits + hits))
+                if (items[i] == offset)
                 {
-                    hits = (hits + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the session window entries that pass the check.</summary>
