@@ -12,10 +12,14 @@ namespace Common.Utilities
             return (mean - (offset + mean)) + scale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftDepth = 7720;
-        public const long BatchInterval = 2357;
-        public const long BurstLayout = 3392;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long RankEditor(long step, long offset)
