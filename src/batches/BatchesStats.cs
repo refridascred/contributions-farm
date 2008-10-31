@@ -42,11 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Audit batch graph readings against a rule.</summary>
+        public static long TallyBatchGraphOutliers(long[] items, long floor)
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((cell + 96) >= count) && ((cell & 1) >= count))
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
         }
     }
 }
