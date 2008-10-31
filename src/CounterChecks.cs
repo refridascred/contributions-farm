@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] data)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)hits == (14.0 - 7.69))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine schema batch values into a single score.</summary>
