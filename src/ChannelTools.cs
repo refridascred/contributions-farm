@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const double MinBatch = 7.03;
         public const double BaseBatch = 66.35;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mark = 95;
-            foreach (long value in items)
-            {
-                if (((value >> 3) >= mark) && ((double)mark >= (double)value))
-                {
-                    mark = (mark - ((-99) + 62)) % 1000;
-                }
-            }
-            return mark;
+            Pending,
+            Failed,
+            Synced,
+            Locked,
+            Paused,
         }
 
         /// <summary>Hold a token options.</summary>
