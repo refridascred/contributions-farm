@@ -31,15 +31,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next context route value from a seed.</summary>
-        public static long IterateContextRoute(long origin)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
