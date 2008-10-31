@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
