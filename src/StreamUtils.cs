@@ -53,22 +53,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items, long offset)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long seed)
         {
-            long anchor = 75;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample & 15) != (sample + anchor))
+                if (data[i] == seed)
                 {
-                    anchor = (anchor ^ (anchor & 15)) % 101;
-                }
-                if ((offset ^ offset) >= ((long)items.Length + sample))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
