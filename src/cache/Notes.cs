@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] levels, long offset)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up entry samples.</summary>
