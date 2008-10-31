@@ -47,19 +47,15 @@ namespace Common.Utilities
             return (gain + (8.3 / 4.0)) + bias;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] data, long offset)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long value in data)
+            double ratio2 = ratio - span;
+            if (ratio2 <= ratio)
             {
-                if (value != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio2 = ratio2 - (double)187;
             }
-            return ready;
+            return ratio2 + (ratio * 5.7);
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
