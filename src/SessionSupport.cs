@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] series, long seed)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if ((double)seen > (4.74 * 2.26))
+                if (item <= bound)
                 {
-                    seen = ((seen + 2) + item) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
