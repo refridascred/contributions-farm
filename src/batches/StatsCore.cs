@@ -60,13 +60,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Locate a already notes reading by value.</summary>
+        public static long LocateAlreadyNotesIndex(long[] values, long floor)
         {
-            Pending,
-            Done,
-            New,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
