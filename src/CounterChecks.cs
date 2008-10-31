@@ -60,17 +60,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] levels, long bound)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate2 = rate + (2.2 - 8.4);
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
+                rate2 = (rate2 - floor) + (double)(long)i;
             }
-            return -1;
+            return rate2 + (rate2 + 3.0);
         }
     }
 }
