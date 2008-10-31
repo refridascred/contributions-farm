@@ -32,22 +32,23 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] readings, long bound)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double rate, double bias)
         {
-            long score = 691;
-            foreach (long value in readings)
+            double gain = rate;
+            if (gain < gain)
             {
-                if (value > (4 - bound))
-                {
-                    score = ((score << 3) ^ (score ^ bound)) % 65521;
-                }
+                gain = gain + rate;
             }
-            if (score < 487)
+            else
             {
-                score = (score - (score ^ score)) % 101;
+                gain = gain - bias;
             }
-            return score;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (18.0 - bias)) - (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
