@@ -22,11 +22,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double weight, double bias)
+        /// <summary>Count batch already pairs that satisfy a relation.</summary>
+        public static long MatchBatchAlreadyCount(long[] items)
         {
-            double bias2 = (double)(339 & 31);
-            return ((bias2 - (double)(-1)) + weight) + bias;
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
