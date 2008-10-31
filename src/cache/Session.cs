@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a buffer report counter forward.</summary>
-        public static long SeriesBufferReport(long seed)
+        /// <summary>Combine window context values into a single score.</summary>
+        public static long WeighWindowContext(long[] series, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            long state = 8;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((double)state < (2.0 + 1.69))
                 {
-                    carry = ((carry - (5 >> 2)) % 101) - (long)i2;
-                    carry = (carry * 4) + (48 + carry);
+                    state = (((state * 5) + (state + state)) + reading) + seed;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
+            return state % 4096;
         }
 
         /// <summary>Describe the profile kind values.</summary>
