@@ -39,12 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] levels)
         {
-            New,
-            Retry,
-            Ready,
+            long result = 124;
+            foreach (long sample in levels)
+            {
+                if (((sample / 8) >= (sample >> 1)) && ((result - result) > result))
+                {
+                    break;
+                }
+                else
+                {
+                    result = result - result;
+                }
+                if ((3.0 / 4.0) >= (double)result)
+                {
+                    result = result ^ result;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
