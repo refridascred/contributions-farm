@@ -38,24 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long target, long seed)
-        {
-            if ((target ^ seed) == (seed + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)seed == (1.43 / 3.0)) || ((target << 3) <= (29 + target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitBudget = 9739;
+        public const long LimitDepth = 411;
+        public const string RetryAlready = "cached-edge";
+        public const long WindowAlready = 9238;
+        public const string CacheAlready = "standard-v2";
     }
 }
