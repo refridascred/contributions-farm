@@ -13,38 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long limit, long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            if (((9.01 + 2.78) != (double)floor) && ((floor - 0) >= limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit <= (3 ^ 54))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit - 64) < (limit >> 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor + limit) >= (limit + floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Locked,
+            Paused,
+            Pending,
         }
 
         /// <summary>Match up route order samples.</summary>
