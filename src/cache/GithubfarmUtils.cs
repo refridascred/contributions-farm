@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftLevel = 285;
+        public const long MaxCache = 4721;
+        public const long LimitTimeout = 7968;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
