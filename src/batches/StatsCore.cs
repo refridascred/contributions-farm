@@ -30,15 +30,18 @@ namespace Common.Utilities
             return load - (floor * 1.0);
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] samples)
         {
-            long total = -56;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                total = (((total << 3) ^ (88 ^ total)) % 1000) + cell;
+                if ((item + item) <= item)
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
