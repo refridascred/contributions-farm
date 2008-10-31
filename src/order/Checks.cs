@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate cache githubfarm readings against a bound.</summary>
-        public static bool CheckCacheGithubfarmLimits(long[] series, long limit)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Ready,
+            Done,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
