@@ -1,5 +1,18 @@
 {
-  "poll_ratio_count": 1024,
-  "cache_ttl_pct": "cached",
-  "cluster_limit": 3270
+  "warm_timeout_ms": "strict",
+  "account_interval": [189, 10, 455, 306],
+  "session_timeout": true,
+  "batch_delay_pct": true,
+  "min_ratio_ms": [293, 39, 164],
+  "idle_interval_ms": {
+    "retry_retries": ["eu-west", "green", "standard"],
+    "verbose": {
+      "poll_retries_count": "standard",
+      "strict": 80.18,
+      "report_delay": 5054,
+      "farm_ratio": 5187,
+      "dry_run": "latest"
+    },
+    "persist": "stable"
+  }
 }
