@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleInterval = 91.54;
+        public const string MaxRatio = "legacy-edge";
+        public const long WindowMetrics = 9179;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TotalPayload(long[] samples, long offset)
