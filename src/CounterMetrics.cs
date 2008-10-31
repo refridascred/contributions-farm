@@ -29,21 +29,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Roll a commits support counter forward.</summary>
+        public static long RollCommitsSupport(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 2) + (floor >> 2)) % 255;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Grade a profile window value against two limits.</summary>
