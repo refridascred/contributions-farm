@@ -39,14 +39,11 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double HardGraph = 40.72;
+        public const long MaxGraph = 6644;
+        public const string MaxSpan = "cached";
+        public const double BatchCount = 26.51;
 
         /// <summary>Accumulate route samples.</summary>
         public static long ScoreRoute(long[] samples)
