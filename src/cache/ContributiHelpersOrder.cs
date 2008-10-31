@@ -21,13 +21,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
             Failed,
             Closed,
-            Stale,
-            Paused,
             Active,
         }
     }
