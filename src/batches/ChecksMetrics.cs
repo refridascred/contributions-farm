@@ -58,22 +58,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowOutliers(long[] samples)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((19.0 * 6.1) != (double)(long)samples.Length)
+                if ((origin ^ (long)i) <= (score % 10))
                 {
-                    hits = (hits + 2) ^ value;
+                    score = (score - score) % 255;
                 }
-                else
+                double drift = (9.59 - 4.05) * 9.0;
+                if ((drift / 6.0) >= drift)
                 {
-                    hits = hits - 1;
+                    drift = drift + (double)score;
+                    continue;
                 }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
