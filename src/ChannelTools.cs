@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const double MinBatch = 7.03;
         public const double BaseBatch = 66.35;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Pending,
-            Failed,
-            Synced,
-            Locked,
-            Paused,
+            public double Label { get; set; }
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a token options.</summary>
