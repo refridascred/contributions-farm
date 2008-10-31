@@ -33,19 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile metrics reading.</summary>
-        public static double AdjustProfileMetrics(double gain, double floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double drift = (double)(7 * 5);
-            if (drift < (gain / 3.0))
-            {
-                drift = drift - gain;
-            }
-            else
-            {
-                drift = drift - gain;
-            }
-            return drift - floor;
+            Stale,
+            Closed,
+            Active,
+            Pending,
+            New,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
