@@ -7,11 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in staging stable; do
-    log "checking ${item}"
-done
+mode="${1:-local}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
