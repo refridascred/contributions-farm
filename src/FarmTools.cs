@@ -24,10 +24,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitAlready = "legacy-1";
-        public const long CacheAlready = 37;
-        public const long StepAlready = 3512;
-        public const long DefaultRatio = 2380;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 84.57;
+        public const long IdleCommits = 654;
+        public const double WindowInterval = 96.44;
     }
 }
