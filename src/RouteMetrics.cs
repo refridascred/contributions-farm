@@ -37,21 +37,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count context report pairs that satisfy a relation.</summary>
-        public static long PairContextReportCount(long[] items)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = weight;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias + (2.43 + bias)) + (double)(long)i;
             }
-            return matches;
+            return bias - (9.08 + offset);
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
