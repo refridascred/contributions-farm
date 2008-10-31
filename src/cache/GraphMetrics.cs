@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] items)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 83;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sum <= (datum * 2)) || ((datum & 1) <= 98))
                 {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum + sum) % 65521;
                 }
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Locate a report account reading by value.</summary>
