@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const double RetrySchema = 85.69;
         public const long DefaultSchema = 8197;
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -5;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc ^ (offset - offset)) % 255) + reading;
             }
-            return matches;
+            if (acc > 58)
+            {
+                acc = (acc ^ (acc + 65)) % 255;
+            }
+            return acc % 4096;
         }
     }
 }
