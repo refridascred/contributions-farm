@@ -19,31 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long offset, long step)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            if ((offset >> 3) <= (step - step))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((723 + offset) >= offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step >> 5) >= (step % 24))
+                    if ((levels[i] + levels[j]) != 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
