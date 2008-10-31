@@ -34,10 +34,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseWidth = "alpha-1";
-        public const long StepDepth = 7564;
-        public const long MaxTimeout = 259;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Offset { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Adjust a metric format reading.</summary>
         public static double AdjustMetricFormat(double gain, double bias)
