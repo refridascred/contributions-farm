@@ -43,19 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksLimits(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 9410;
+        public const long BurstWindow = 296;
+        public const double CacheWindow = 4.08;
+        public const string LimitTimeout = "primary-edge";
+        public const string BurstBudget = "latest-1";
     }
 }
