@@ -28,17 +28,18 @@ namespace Common.Utilities
         public const long SoftReport = 2085;
         public const long DefaultInterval = 3446;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] series, long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (series[i] > offset)
+                if (!!(9.1 < (double)target))
                 {
-                    return (long)i;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Compare every pair of entry token readings.</summary>
