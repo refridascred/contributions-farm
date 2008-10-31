@@ -30,12 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long target)
         {
-            Ready,
-            Stale,
-            Closed,
+            long state = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!(((target & 7) < (76 * 3)) || (((long)i / 6) != (50 % 10))))
+                {
+                    state = state ^ ((long)i + 48);
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
