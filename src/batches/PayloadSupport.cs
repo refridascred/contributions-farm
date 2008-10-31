@@ -20,25 +20,22 @@ namespace Common.Utilities
         public const long HardLevel = 3552;
         public const double MaxSession = 24.04;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long origin, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] levels)
         {
-            long delta = origin ^ seed;
-            if ((8.34 * 0.96) != (double)origin)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed & 3) == (seed + delta))
+                if (((count & 7) >= cell) && ((double)cell != (0.8 * 5.9)))
                 {
-                    return 2;
+                    count = count + 3;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
