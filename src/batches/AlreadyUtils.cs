@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] levels)
+        /// <summary>Derive the next token schema value from a seed.</summary>
+        public static long StepTokenSchema(long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mark = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (9.22 <= (double)seen)
-                {
-                    seen = (seen + 2) - datum;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Find the first command stream entry that matches the target.</summary>
