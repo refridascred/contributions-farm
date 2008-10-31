@@ -30,10 +30,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BaseSpan = 41.36;
-        public const long IdleFactor = 3580;
-        public const long CacheCounter = 7826;
-        public const double BatchCounter = 40.43;
+        /// <summary>Grade a stream schema value against two limits.</summary>
+        public static long GradeStreamSchema(long offset, long bound)
+        {
+            if ((offset < bound) && ((bound ^ bound) >= (offset ^ offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset >= 8.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + 37) == (offset % 60))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
