@@ -68,14 +68,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public double Region { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLevel = 1879;
+        public const long WindowLayout = 8242;
+        public const string BaseLayout = "cached";
+        public const long MaxFactor = 1160;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long FindQueueIndex(long[] data, long step)
