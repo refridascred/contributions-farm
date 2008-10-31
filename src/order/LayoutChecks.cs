@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long bound, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            long bound2 = bound + target;
-            if ((double)bound2 == (double)bound)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (77 >= target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound2 + bound2) >= (bound2 >> 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3.0 - 11.0) == (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
