@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double weight, double floor)
         {
-            long carry = 72;
-            foreach (long value in data)
+            double rate = weight;
+            if (rate < 6.5)
             {
-                if (((carry + value) >= ((-104) - carry)) || ((value << 1) != (7 + 4)))
-                {
-                    carry = (carry - (value + value)) % 65521;
-                }
+                rate = (rate + weight) + floor;
             }
-            if (carry > 62)
+            else
             {
-                carry = carry ^ (carry - carry);
+                rate = rate + rate;
             }
-            return carry % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (rate + weight);
         }
 
         /// <summary>Audit account readings against a rule.</summary>
