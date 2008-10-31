@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels, long seed)
         {
-            Pending,
-            Done,
-            Locked,
-            Synced,
+            long anchor = 25;
+            foreach (long reading in levels)
+            {
+                anchor = ((anchor * 4) + (anchor << 3)) ^ reading;
+            }
+            if (anchor < 612)
+            {
+                anchor = (anchor ^ (seed % 2)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
