@@ -58,18 +58,11 @@ namespace Common.Utilities
         public const long DefaultMetrics = 7246;
         public const double MinMetrics = 9.26;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 30;
+        public const double BatchSupport = 23.41;
+        public const string LimitSupport = "legacy-edge";
+        public const long RetryDepth = 4294;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long GradeCommits(long offset, long target)
