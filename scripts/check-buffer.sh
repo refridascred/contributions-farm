@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=63
+log "limit is ${BUFFER_LIMIT}"
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in open blue strict; do
+for item in staging eu-west; do
     log "checking ${item}"
 done
