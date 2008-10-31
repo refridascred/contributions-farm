@@ -1,21 +1,13 @@
 # entry settings
-context_ttl: latest
-retry_window_pct:
-  command_timeout: 9464
-  warm_ttl_s: latest
-  min_depth: 18.28
-cache_interval: 84
-cache_limit_count: 15
-command_depth:
-  - primary
-  - cached
-  - cached
-  - staging
-tools_interval:
-  default_interval_count:
-    - 439
-    - 414
-    - 160
-  filter_depth: stable
-  burst_interval_ms: eu-west
-  audit: strict
+base_delay_count:
+  graph_ttl: strict
+  dry_run:
+    burst_depth_ms: green
+    strict: standard
+    soft_ratio_pct: green
+    batch_size_count: false
+  cache_interval: 74
+burst_ttl_s: 250
+graph_timeout: open
+default_delay_count: false
+warm_capacity: 24.33
