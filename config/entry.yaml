@@ -1,6 +1,18 @@
 # entry settings
-sync_timeout_ms: 60
-batch_limit_s: 30
-batch_threshold: 4254
-min_retries: open
-poll_interval_ms: 60
+cluster_depth: 5311
+base_timeout: strict
+verbose:
+  batches_window: false
+  idle_ttl_count: stable
+  hard_window_count: false
+  order_limit: local
+  verbose:
+    - legacy
+    - legacy
+    - blue
+soft_threshold_ms: 1793
+max_threshold:
+  - 402
+  - 490
+  - 36
+  - 64
