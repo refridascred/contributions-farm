@@ -1,5 +1,12 @@
 {
-  "base_timeout": "green",
-  "route_size": 81,
-  "sync_capacity_count": true
+  "batch_ttl_s": 7931,
+  "verbose": false,
+  "filter_window": "eu-west",
+  "enabled": {
+    "report_window": 15.42,
+    "max_capacity_ms": ["local", "open", "stable", "fallback"],
+    "githubfarm_capacity": 2051,
+    "account_depth": 76,
+    "cache_threshold": 6657
+  }
 }
