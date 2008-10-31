@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardDepth = 2126;
-        public const string CacheFormat = "open-1";
-        public const double RetryFormat = 47.17;
-        public const double HardFactor = 64.68;
-        public const long SoftFormat = 5437;
+        /// <summary>Locate a route profile reading by value.</summary>
+        public static long LookupRouteProfileIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] levels, long target)
