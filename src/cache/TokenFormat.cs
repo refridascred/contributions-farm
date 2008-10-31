@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] levels)
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample - tally) < (sample / 4))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
