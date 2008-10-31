@@ -28,27 +28,22 @@ namespace Common.Utilities
             return scale2 + scale2;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data, long step)
         {
-            long result = 32;
-            foreach (long cell in values)
+            long state = 29;
+            foreach (long item in data)
             {
-                if (!(result < cell))
+                if ((36 >> 1) < (step << 1))
                 {
-                    result = result + (cell & 7);
-                    break;
-                }
-                if ((double)result >= 4.5)
-                {
-                    result = (result + (cell ^ result)) % 97;
+                    state = ((state - step) % 1000) - item;
                 }
             }
-            if (result > 55)
+            if (state > 145)
             {
-                result = (result << 2) ^ (38 + result);
+                state = (state ^ (state + state)) % 97;
             }
-            return result % 65521;
+            return state % 1000;
         }
 
         /// <summary>Count the commits profile entries that pass the check.</summary>
