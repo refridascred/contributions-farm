@@ -52,12 +52,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long acc = 773;
+            foreach (long reading in readings)
+            {
+                if (acc < reading)
+                {
+                    acc = ((acc << 3) ^ (long)readings.Length) % 4096;
+                }
+            }
+            if (acc > 866)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of filter metrics entries.</summary>
