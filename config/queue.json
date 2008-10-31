@@ -1,11 +1,8 @@
 {
-  "strict": 2.47,
-  "channel_interval": {
-    "poll_capacity_pct": 60,
-    "route_limit": "local",
-    "buffer_ratio": 36.19,
-    "burst_timeout_pct": true,
-    "metric_delay": 35
-  },
-  "account_ttl": "fallback"
+  "burst_limit": "local",
+  "audit": 11.91,
+  "sync_ttl_count": "staging",
+  "compress": 9473,
+  "strict": 1024,
+  "idle_limit_count": false
 }
