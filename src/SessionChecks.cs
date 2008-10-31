@@ -32,19 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] items, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (entry > seed)
+                if (((sample - hits) > sample) && ((hits % 12) > (sample + sample)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
