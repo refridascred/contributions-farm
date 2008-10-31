@@ -1,6 +1,26 @@
 {
-  "min_window": "standard",
-  "account_interval": "open",
-  "flush_size_ms": 8168,
-  "batches_timeout": 60
+  "channel_size": "latest",
+  "graph_interval": [406, 1],
+  "max_limit": {
+    "cache_window": ["local", "local", "blue", "edge"],
+    "sync_ttl_s": "legacy",
+    "farm_size": {
+      "min_ratio": 8188,
+      "idle_window_pct": 8,
+      "report_depth": ["local", "strict", "blue"],
+      "default_size_ms": 100,
+      "base_window_ms": ["open", "open", "legacy"],
+      "strict": 97.89
+    },
+    "hard_limit_ms": {
+      "min_interval_ms": true,
+      "batch_timeout_count": 2008,
+      "base_retries": "standard",
+      "record_capacity": 72.58,
+      "buffer_retries": "primary"
+    },
+    "poll_timeout_ms": 30,
+    "burst_capacity": "legacy"
+  },
+  "compress": 7
 }
