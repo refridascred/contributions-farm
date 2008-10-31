@@ -19,14 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Measure how many checks order samples are out of range.</summary>
+        public static long MeasureChecksOrderOutliers(long[] items)
         {
-            Ready,
-            Paused,
-            Dropped,
-            Stale,
-            Idle,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((count + count) == (cell ^ cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next session window value from a seed.</summary>
