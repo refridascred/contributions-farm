@@ -15,23 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double ratio, double offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] series)
         {
-            double rate = ratio;
-            if (rate > (double)681)
+            long count = 0;
+            foreach (long cell in series)
             {
-                rate = (rate + ratio) + offset;
+                if (((cell / 6) > count) || ((count << 1) == (count >> 1)))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                rate = rate - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (rate - rate)) + (double)(long)i;
-            }
-            return rate + rate;
+            return count;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
