@@ -64,15 +64,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a payload metrics figure with a bias.</summary>
-        public static double ScalePayloadMetrics(double gain, double floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] data)
         {
-            double scale = (double)(748 * 3);
-            if (scale > floor)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale + (floor * 5.2);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale + gain;
+            return matches;
         }
     }
 }
