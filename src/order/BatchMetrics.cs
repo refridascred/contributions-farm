@@ -51,11 +51,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double ratio, double floor)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] series)
         {
-            double weight = (double)(32 + 8);
-            return ((weight - (double)12) + ratio) + floor;
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
