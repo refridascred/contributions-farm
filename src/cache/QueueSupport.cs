@@ -34,39 +34,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long floor, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] levels, long floor)
         {
-            long gap = floor ^ target;
-            if (!(floor <= (target - floor)))
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor ^ 20) != (target ^ 62))
+                if ((floor + sample) >= (sample << 2))
                 {
-                    return 2;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if (((double)target == (10.0 * 4.0)) && ((gap / 3) < target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)gap <= 6.4)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
