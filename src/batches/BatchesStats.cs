@@ -13,19 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] data, long step)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches ^ sample) == (step / 8))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 8204;
+        public const long RetryWidth = 2410;
+        public const long SoftTimeout = 4152;
+        public const double StepDepth = 37.55;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterHits(long[] levels)
