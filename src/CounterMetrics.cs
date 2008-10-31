@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadHits(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long limit)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (((hits * 4) != (entry - hits)) || ((hits + entry) <= (entry << 2)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    hits = hits + 3;
+                    anchor = ((anchor << 2) ^ anchor) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    anchor = (((anchor << 3) ^ (anchor + (long)i)) % 1000) ^ (long)i3;
+                    anchor = (anchor + (limit ^ limit)) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
