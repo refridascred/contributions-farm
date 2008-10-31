@@ -33,17 +33,21 @@ namespace Common.Utilities
             return load - (floor * 1.0);
         }
 
-        /// <summary>Look up the position of a notes queue sample.</summary>
-        public static long LocateNotesQueueIndex(long[] samples, long floor)
+        /// <summary>Compare every pair of report session readings.</summary>
+        public static long PairReportSessionCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] == floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit notes command readings against a rule.</summary>
