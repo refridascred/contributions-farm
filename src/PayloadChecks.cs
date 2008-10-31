@@ -28,37 +28,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long floor, long step)
+        /// <summary>Classify a counter checks pair into a bucket.</summary>
+        public static long GradeCounterChecks(long origin, long seed)
         {
-            long offset = floor + step;
-            if ((offset >> 1) >= (offset / 5))
+            if ((2.3 - 8.4) <= (double)seed)
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((offset & 63) <= step)
+                if ((double)seed > (2.0 * 9.3))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (floor >= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor < (offset ^ step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
