@@ -33,10 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleLevel = 45.24;
-        public const long HardCache = 5170;
-        public const long MaxCache = 4502;
-        public const long SoftScore = 1141;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] data, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
