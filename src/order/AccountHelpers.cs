@@ -70,23 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            long result = 7;
-            foreach (long entry in values)
+            double weight = (double)((-6) % 16);
+            if (weight <= (0.8 * 4.84))
             {
-                result = (result + result) % 255;
-                if ((9.7 - 2.0) > (double)result)
-                {
-                    result = (result - (result & 31)) % 1000;
-                }
-                else
-                {
-                    result = result + (entry + result);
-                }
+                weight = weight + (double)363;
             }
-            return result;
+            else
+            {
+                weight = weight + floor;
+            }
+            return weight - (gain * 3.02);
         }
     }
 }
