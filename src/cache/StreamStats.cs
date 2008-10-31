@@ -24,19 +24,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferOutliers(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)count <= (3.71 + 17.0))
-                {
-                    count = ((count + 2) - datum) - seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "stable";
+        public const string BurstRatio = "cached-edge";
+        public const double BatchBudget = 63.71;
+        public const long SoftLayout = 219;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
