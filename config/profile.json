@@ -1,11 +1,9 @@
 {
-  "report_interval": {
-    "base_threshold_count": 250,
-    "idle_threshold_count": 96,
-    "burst_delay_s": 42.17,
-    "warm_limit_s": 29,
-    "soft_ttl_pct": [448, 399]
-  },
-  "flush_limit": 58,
-  "verbose": "fallback"
+  "warm_delay": true,
+  "support_capacity": 250,
+  "strict": {
+    "batch_timeout": "local",
+    "readonly": 43,
+    "warm_window": true
+  }
 }
