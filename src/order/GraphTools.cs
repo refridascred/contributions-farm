@@ -78,17 +78,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] readings, long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (readings[i] < offset)
+                if (!(target < (target + target)))
                 {
-                    return (long)i;
+                    score = (score - (long)i) % 1000;
+                    score = score + (long)i;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
