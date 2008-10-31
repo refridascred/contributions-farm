@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long seed, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryBounds(long[] data, long step)
         {
-            long bound = seed ^ origin;
-            if (!((origin >> 4) <= (1 / 7)))
+            bool ready = true;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((6 ^ origin) >= bound)
+                if (sample >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound * 2) > (origin << 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Locate a account reading by value.</summary>
