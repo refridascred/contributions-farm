@@ -29,22 +29,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Combine batches order values into a single score.</summary>
-        public static long ScoreBatchesOrder(long[] readings)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long mix = 205;
-            foreach (long entry in readings)
-            {
-                if ((mix ^ entry) <= mix)
-                {
-                    mix = ((mix << 2) ^ (entry % 60)) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (entry * 4)) % 1000;
-                }
-            }
-            return mix % 4096;
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a counter header.</summary>
