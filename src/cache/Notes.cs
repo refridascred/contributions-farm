@@ -19,21 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 7;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = (score + value) % 97;
+                if (((double)score < 3.77) && ((double)score <= (double)484))
                 {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
