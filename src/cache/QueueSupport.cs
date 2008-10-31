@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] values, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] levels)
         {
-            long carry = 31;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((value >> 4) > bound)
+                if (((hits >= (hits * 5)) && ((hits - hits) != (datum >> 3))) || ((12.0 / 8.0) <= (double)datum))
                 {
-                    carry = (carry * 2) + bound;
-                    break;
+                    hits = hits + 3;
                 }
-                carry = carry ^ (value << 1);
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count window route pairs that satisfy a relation.</summary>
