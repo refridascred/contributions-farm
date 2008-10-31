@@ -47,17 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] data, long step)
+        /// <summary>Match up route order samples.</summary>
+        public static long CompareRouteOrderCount(long[] data)
         {
+            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] > step) && ((data[i] % 2) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
