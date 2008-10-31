@@ -29,18 +29,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] readings)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (count > (count & 1))
+                if (values[i] >= offset)
                 {
-                    count = (count + 1) + datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Grade a profile window value against two limits.</summary>
