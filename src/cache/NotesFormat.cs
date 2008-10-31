@@ -30,22 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cache schema values into a single score.</summary>
-        public static long FoldCacheSchema(long[] values)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            long carry = 2;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry ^ ((long)i % 24);
-                }
-                if ((4.2 * 9.16) > (double)carry)
-                {
-                    carry = (carry * 4) + (cell % 16);
+                    if ((data[i] + data[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return hits;
         }
     }
 }
