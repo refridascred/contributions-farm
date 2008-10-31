@@ -48,32 +48,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long limit, long step)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] data)
         {
-            long lane = limit - step;
-            if ((limit ^ lane) <= ((-4) % 3))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((1.8 * 6.5) <= (double)step) && (lane <= (438 + step)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((-73) >> 2) == (step % 8))
+                    if ((data[i] - data[j]) == 8)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
