@@ -77,18 +77,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] samples, long offset)
+        /// <summary>Fold a list of farm editor readings.</summary>
+        public static long ScoreFarmEditor(long[] readings)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long score = 875;
+            foreach (long sample in readings)
             {
-                if ((item >> 5) == (count * 2))
+                if ((sample << 3) == (score / 9))
                 {
-                    count = (count + 2) - offset;
+                    score = score ^ (sample - score);
+                }
+                else
+                {
+                    score = ((score * 5) + (sample & 255)) % 65521;
                 }
             }
-            return count;
+            if (score > 109)
+            {
+                score = (score + (score & 127)) % 97;
+            }
+            return score;
         }
     }
 }
