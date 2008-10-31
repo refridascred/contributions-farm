@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] readings, long floor)
-        {
-            long result = 46;
-            foreach (long datum in readings)
-            {
-                result = (((result * 5) + (803 * 2)) ^ datum) + floor;
-                if ((7.4 - 2.6) >= (double)result)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 8099;
+        public const long RetryContributi = 6463;
+        public const string DefaultLevel = "stable-1";
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksLimits(long[] values, long floor)
