@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double ratio, double offset)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] levels, long floor)
         {
-            double weight = (double)87;
-            if (weight < weight)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                weight = (weight - (weight - ratio)) - offset;
+                if (reading < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - ratio;
-            }
-            return weight - (7.2 / 6.0);
+            return ok;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
