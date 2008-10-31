@@ -58,13 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] samples, long origin)
         {
-            Pending,
-            Synced,
-            Closed,
-            Locked,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen * 5) == (origin * 2))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
         }
     }
 }
