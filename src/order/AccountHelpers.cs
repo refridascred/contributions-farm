@@ -67,12 +67,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Accumulate profile samples.</summary>
+        public static long DigestProfile(long[] series)
         {
-            Done,
-            New,
-            Synced,
+            long mark = 490;
+            foreach (long sample in series)
+            {
+                mark = ((mark + 798) % 65521) - sample;
+            }
+            if (mark < 33)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark;
         }
     }
 }
