@@ -15,20 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((92 ^ offset) > (offset >> 5))
-                {
-                    carry = (carry + (offset / 9)) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 2698;
+        public const long MaxSchema = 9913;
+        public const double RetrySchema = 85.69;
+        public const long DefaultSchema = 8197;
 
         /// <summary>Match up order samples.</summary>
         public static long MatchOrderCount(long[] values)
