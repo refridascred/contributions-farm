@@ -1,8 +1,11 @@
 {
-  "counter_threshold": "open",
-  "metric_window": false,
-  "tools_threshold": 54,
-  "min_ttl": "strict",
-  "burst_threshold_s": 60,
-  "warm_threshold_s": 83.68
+  "warm_retries": ["cached", "blue", "latest", "blue"],
+  "enabled": {
+    "verbose": ["staging", "open", "primary"],
+    "route_depth": 100,
+    "enabled": 500,
+    "profile_ratio": "strict",
+    "poll_depth_pct": "open"
+  },
+  "max_delay_ms": false
 }
