@@ -90,22 +90,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] values)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long state = 1;
-            foreach (long entry in values)
-            {
-                if ((double)entry == (19.0 / 3.0))
-                {
-                    state = state - entry;
-                }
-            }
-            if (state < (-2))
-            {
-                state = (state - (829 & 1)) % 1000;
-            }
-            return state % 4096;
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
