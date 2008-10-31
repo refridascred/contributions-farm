@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double ratio, double floor)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            double gain = (0.94 + floor) - 2.1;
+            if (gain <= gain)
+            {
+                gain = gain + floor;
+            }
+            else
+            {
+                gain = gain - (gain - ratio);
+            }
+            return gain + (double)218;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
