@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const long StepDepth = 7564;
         public const long MaxTimeout = 259;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] series, long origin)
+        /// <summary>Adjust a metric format reading.</summary>
+        public static double AdjustMetricFormat(double gain, double bias)
         {
-            long result = 31;
-            foreach (long cell in series)
-            {
-                if (3.2 >= (double)result)
-                {
-                    result = (result ^ (origin ^ 454)) + cell;
-                }
-            }
-            return result;
+            double mean = bias;
+            return mean + gain;
         }
     }
 }
