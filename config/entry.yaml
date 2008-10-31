@@ -1,18 +1,6 @@
 # entry settings
-default_delay_s:
-  verbose:
-    command_delay: true
-    readonly: 65.99
-    soft_size: 36.44
-    metric_capacity: strict
-  checks_limit: 91
-  contributi_size: true
-  route_ratio: 17.38
-verbose: latest
-warm_limit: 9159
-retry_timeout_ms:
-  - 224
-  - 273
-  - 63
-compress: 24
-base_capacity_s: 36
+sync_timeout_ms: 60
+batch_limit_s: 30
+batch_threshold: 4254
+min_retries: open
+poll_interval_ms: 60
