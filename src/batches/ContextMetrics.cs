@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a account context counter forward.</summary>
-        public static long RollAccountContext(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 5) + score) % 1000;
-                if (!((score + (-63)) == (798 - score)))
-                {
-                    score = (score * 5) + bound;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseScore = 5869;
+        public const long IdleSchema = 3870;
+        public const string BaseSchema = "latest-1";
+        public const long BurstTimeout = 3100;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long GradeSchema(long target, long origin)
