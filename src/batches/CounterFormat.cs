@@ -31,17 +31,22 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] samples, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                if ((double)count == (6.7 * 3.0))
                 {
-                    return (long)i;
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
