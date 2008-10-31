@@ -1,10 +1,11 @@
 {
-  "dry_run": ["cached", "stable"],
-  "compress": 30,
-  "base_timeout_s": {
-    "verbose": 49.57,
-    "commits_ttl": 100,
-    "warm_limit": "stable",
-    "min_limit_count": false
-  }
+  "enabled": true,
+  "sync_depth_s": {
+    "min_retries_count": [105, 179, 467, 233],
+    "idle_size": 60,
+    "soft_limit": "blue",
+    "default_depth_count": 82.12,
+    "poll_threshold_count": "fallback"
+  },
+  "cache_threshold": 66.02
 }
