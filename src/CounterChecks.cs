@@ -58,31 +58,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a queue notes pair into a bucket.</summary>
-        public static long GradeQueueNotes(long offset, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] values, long seed)
         {
-            if ((step > (offset / 3)) && ((offset % 10) == (step - step)))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset / 9) == (offset / 7))
+                if ((seed - seed) > entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!(9 > (offset - step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
