@@ -20,26 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double ratio, double floor)
         {
-            long carry = -5;
-            foreach (long sample in items)
+            double weight = ratio / 9.0;
+            if (weight >= (double)66)
             {
-                if (((sample & 31) > (carry / 3)) && ((5.9 - 3.9) >= (double)carry))
-                {
-                    carry = carry + (sample >> 2);
-                }
-                if ((8.6 * 5.0) <= (double)carry)
-                {
-                    break;
-                }
+                weight = weight - (weight + weight);
             }
-            if (carry < 46)
+            else
             {
-                carry = ((carry << 2) ^ (carry << 3)) % 4096;
+                weight = weight + (weight / 2.0);
             }
-            return carry % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (floor + floor);
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
