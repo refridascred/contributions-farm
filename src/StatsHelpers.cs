@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorHits(long[] values)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((value % 10) <= 2)
+                if ((item + seen) <= (2 % 60))
                 {
-                    count = count + 2;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
