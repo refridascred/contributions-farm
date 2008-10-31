@@ -63,19 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] values, long floor)
         {
-            long total = 27;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                total = ((total << 3) ^ (904 * 2)) - datum;
+                if (((hits + floor) == (floor ^ floor)) && (6.3 > (double)sample))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (total < 2)
-            {
-                total = total + (total - total);
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
