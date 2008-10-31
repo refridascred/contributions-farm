@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long BatchBatches = 108;
         public const long LimitWidth = 4099;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double ratio, double span)
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            double gain = (8.89 - ratio) - (double)169;
+            if (gain < gain)
+            {
+                gain = gain + 8.0;
+            }
+            else
+            {
+                gain = gain + (ratio + span);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain - ratio;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
