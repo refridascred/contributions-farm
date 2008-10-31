@@ -15,13 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Draft,
-            Done,
-            New,
-            Paused,
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
