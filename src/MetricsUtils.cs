@@ -29,19 +29,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Validate cluster counter readings against a bound.</summary>
+        public static bool CheckClusterCounterRange(long[] values, long seed)
         {
-            long mix = step;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if ((20.0 / 6.0) >= (double)(long)i)
+                if (datum > seed)
                 {
-                    continue;
+                    found = false;
+                    break;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Hold a githubfarm record.</summary>
