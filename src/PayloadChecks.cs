@@ -77,9 +77,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 6336;
-        public const long RetryGithubfarm = 8906;
-        public const long HardCount = 5615;
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double gain, double span)
+        {
+            double bias = gain / 3.0;
+            if (bias >= (span * 9.2))
+            {
+                bias = bias + (double)127;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (2.2 * 14.0);
+        }
     }
 }
