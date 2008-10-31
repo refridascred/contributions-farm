@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long floor, long bound)
         {
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
+            if (((floor * 5) < bound) && ((bound << 2) <= bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor * 3) <= floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound < (bound >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
