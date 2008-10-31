@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Validate context batches readings against a bound.</summary>
+        public static bool ValidateContextBatchesBounds(long[] levels, long floor)
         {
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the contributi status values.</summary>
