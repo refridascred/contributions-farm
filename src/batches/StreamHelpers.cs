@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] values, long limit)
+        /// <summary>Check that every stream window entry stays within the limit.</summary>
+        public static bool ValidateStreamWindowRange(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((value << 3) < limit)
+                if (reading >= bound)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
