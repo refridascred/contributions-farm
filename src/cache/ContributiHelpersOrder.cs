@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a order context pair into a bucket.</summary>
-        public static long SortOrderContext(long bound, long target)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long IterateChecks(long step)
         {
-            long delta = bound ^ target;
-            if (!((double)delta <= (8.0 + 3.8)))
+            long mark = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((bound * 4) >= (delta << 2)))
+                mark = (mark << 3) ^ (16 + mark);
+                if ((mark + mark) <= step)
                 {
-                    return 3;
+                    continue;
                 }
-                else
-                {
-                    if (7.31 > (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((delta > (target ^ delta)) || ((double)target < (3.7 + 3.5)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
