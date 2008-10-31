@@ -76,13 +76,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] readings, long target)
         {
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long carry = 4;
+            foreach (long cell in readings)
+            {
+                carry = (carry ^ cell) - target;
+            }
+            return carry;
         }
     }
 }
