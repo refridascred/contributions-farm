@@ -22,22 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] series, long step)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((6.61 * 7.25) >= (double)seen)
-                {
-                    seen = ((seen + 1) - cell) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Synced,
+            Done,
+            Idle,
+            Paused,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
