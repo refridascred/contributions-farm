@@ -20,24 +20,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long bound, long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            if (!((double)offset <= (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (9.61 < (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Stale,
+            Pending,
+            Ready,
+            Idle,
+            Closed,
         }
     }
 }
