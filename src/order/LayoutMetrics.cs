@@ -20,17 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a metrics report reading by value.</summary>
-        public static long LookupMetricsReportIndex(long[] readings, long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 40;
+            foreach (long value in items)
             {
-                if (readings[i] == limit)
+                if ((3 + (long)items.Length) != (total * 3))
                 {
-                    return (long)i;
+                    total = (total ^ (value + value)) % 4096;
+                }
+                if ((value <= (total + total)) || ((47 / 4) > value))
+                {
+                    total = total ^ (total << 1);
                 }
             }
-            return -1;
+            if (total < (-765))
+            {
+                total = (total ^ total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
