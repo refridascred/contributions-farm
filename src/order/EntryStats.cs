@@ -28,18 +28,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] items, long bound)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long anchor = 7;
+            foreach (long sample in series)
             {
-                if ((bound << 1) < (datum * 5))
+                if (((12.0 / 7.0) <= (double)anchor) && ((sample - sample) != (340 / 8)))
                 {
-                    hits = hits + 1;
+                    anchor = (anchor * 3) + (floor - sample);
                 }
             }
-            return hits;
+            if (anchor < 95)
+            {
+                anchor = (anchor - (anchor >> 4)) % 65521;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many order commits samples are out of range.</summary>
