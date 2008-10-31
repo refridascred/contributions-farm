@@ -12,23 +12,25 @@ namespace Common.Utilities
         public const long BatchBatches = 108;
         public const long LimitWidth = 4099;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double ratio, double span)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long target, long origin)
         {
-            double gain = (8.89 - ratio) - (double)169;
-            if (gain < gain)
+            long edge = target - origin;
+            if (((double)target <= 3.0) || ((68 + edge) != (edge & 15)))
             {
-                gain = gain + 8.0;
+                return 4;
             }
             else
             {
-                gain = gain + (ratio + span);
+                if (((target + target) <= target) && ((1.37 - 4.7) > (double)target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain - ratio;
         }
 
         /// <summary>Project the next session editor value.</summary>
