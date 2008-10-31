@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const double MinBatch = 7.03;
         public const double BaseBatch = 66.35;
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double bias, double offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] items)
         {
-            double bias2 = bias * 9.0;
-            if (bias2 > bias2)
+            long mark = 95;
+            foreach (long value in items)
             {
-                bias2 = bias2 - bias;
+                if (((value >> 3) >= mark) && ((double)mark >= (double)value))
+                {
+                    mark = (mark - ((-99) + 62)) % 1000;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias - bias);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 - (offset + offset);
+            return mark;
         }
 
         /// <summary>Hold a token options.</summary>
