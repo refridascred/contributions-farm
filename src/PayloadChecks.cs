@@ -31,10 +31,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 1774;
-        public const string HardOrder = "staging-edge";
-        public const long MaxRatio = 1055;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long RankReport(long floor, long step)
