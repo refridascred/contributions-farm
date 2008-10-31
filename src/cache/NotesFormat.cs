@@ -11,10 +11,27 @@ namespace Common.Utilities
         public const double BurstInterval = 9.7;
         public const long BatchWidth = 4957;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "staging-edge";
-        public const double LimitSupport = 35.73;
-        public const long WindowWidth = 6843;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] items)
+        {
+            long carry = -5;
+            foreach (long sample in items)
+            {
+                if (((sample & 31) > (carry / 3)) && ((5.9 - 3.9) >= (double)carry))
+                {
+                    carry = carry + (sample >> 2);
+                }
+                if ((8.6 * 5.0) <= (double)carry)
+                {
+                    break;
+                }
+            }
+            if (carry < 46)
+            {
+                carry = ((carry << 2) ^ (carry << 3)) % 4096;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsGaps(long[] readings)
