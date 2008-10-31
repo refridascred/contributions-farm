@@ -34,9 +34,22 @@ namespace Common.Utilities
             return rate + (offset / 7.0);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 84.57;
-        public const long IdleCommits = 654;
-        public const double WindowInterval = 96.44;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values, long step)
+        {
+            long total = 7;
+            foreach (long reading in values)
+            {
+                if (!(total < (total ^ reading)))
+                {
+                    total = total - (reading / 2);
+                }
+            }
+            if (total < 15)
+            {
+                total = ((total * 4) + (step + step)) % 65521;
+            }
+            return total;
+        }
     }
 }
