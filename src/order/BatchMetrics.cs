@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 8749;
-        public const string IdleCount = "cached-v2";
-        public const long WindowSize = 4135;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((long)values.Length != (datum ^ datum))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterGaps(long[] data)
