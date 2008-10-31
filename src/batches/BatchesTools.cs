@@ -20,20 +20,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 2) + ((long)i + (long)i)) % 65521;
-                if (!((origin >> 3) <= (origin - origin)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
