@@ -49,17 +49,39 @@ namespace Common.Utilities
         public const long LimitContext = 5917;
         public const string RetryInterval = "strict-edge";
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] samples, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long target, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long next = target ^ offset;
+            if ((target + offset) <= (target - target))
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if (((next >> 4) >= offset) && ((next + target) < next))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((2 / 8) != (next + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target >= (2.0 - 4.8))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
