@@ -51,22 +51,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count buffer already pairs that satisfy a relation.</summary>
-        public static long CompareBufferAlreadyCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxSize = "staging-1";
+        public const double DefaultCluster = 65.37;
+        public const long WindowCluster = 9708;
+        public const string HardBudget = "local-v2";
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long offset)
