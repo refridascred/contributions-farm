@@ -1,7 +1,5 @@
 {
-  "batch_ttl": 4936,
-  "graph_size": 30,
-  "max_window_count": 60,
-  "strict": "eu-west",
-  "default_depth": false
+  "warm_ttl": "standard",
+  "strict": false,
+  "enabled": 1024
 }
