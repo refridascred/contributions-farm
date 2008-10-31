@@ -34,27 +34,21 @@ namespace Common.Utilities
             return scale + (span - span);
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] values, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            long score = 2;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(entry > (step - entry)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = score ^ (46 % 24);
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    score = (score << 3) ^ (step + score);
-                }
-                score = score - (step + entry);
             }
-            if (score > 741)
-            {
-                score = (score - (score / 4)) % 97;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
