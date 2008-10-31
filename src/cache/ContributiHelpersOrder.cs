@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 6745;
-        public const string RetrySize = "local-edge";
-        public const long IdleBatch = 9360;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] items, long target)
+        {
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long SeriesWindow(long offset)
