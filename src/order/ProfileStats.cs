@@ -13,20 +13,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] items, long bound)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long score = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ (bound - datum)) % 255;
-                score = score + (score >> 1);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score > 1)
-            {
-                score = (score * 3) + (bound + score);
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Grade a batch notes value against two limits.</summary>
