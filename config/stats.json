@@ -1,7 +1,7 @@
 {
-  "min_window_ms": 90,
-  "burst_delay_pct": 3,
-  "buffer_size": true,
-  "sync_timeout_pct": "stable",
-  "dry_run": 100
+  "poll_threshold_s": 30,
+  "enabled": 8685,
+  "batch_limit_pct": [485, 90],
+  "format_depth": 500,
+  "warm_threshold": "edge"
 }
