@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const double MinBudget = 45.65;
         public const string MinWidth = "fallback";
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] series, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((series[i] < offset) && ((series[i] % 3) == 0))
+                if (cell <= offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define support limits and defaults.</summary>
