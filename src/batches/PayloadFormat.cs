@@ -39,13 +39,18 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] values, long step)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
+            long mix = -534;
+            foreach (long entry in values)
+            {
+                if ((step + 4) >= mix)
+                {
+                    mix = ((mix + step) % 65521) + entry;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
