@@ -1,5 +1,10 @@
 # entry settings
-cache_capacity_s: 60
-warm_ratio_pct: true
-compress: stable
-order_capacity: 49
+idle_window_s:
+  poll_delay_count: staging
+  batch_interval: open
+  retry_depth_s: true
+  enabled: 91.45
+  record_delay: true
+  route_timeout: 3470
+metric_limit: true
+compress: 500
