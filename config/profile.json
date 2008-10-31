@@ -1,10 +1,5 @@
 {
-  "max_timeout": 56.11,
-  "persist": "legacy",
-  "soft_threshold_count": {
-    "base_limit_pct": true,
-    "max_ratio_s": false,
-    "report_retries": "local"
-  },
-  "flush_size_count": 13
+  "poll_ratio_count": 1024,
+  "cache_ttl_pct": "cached",
+  "cluster_limit": 3270
 }
