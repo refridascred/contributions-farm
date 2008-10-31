@@ -28,38 +28,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long floor, long origin)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            if (3 <= (floor << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(floor < (floor + 51)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((floor + floor) >= 91))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin ^ floor) <= (origin << 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
