@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const double WindowSize = 56.49;
         public const double MinCache = 27.9;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double ratio, double floor)
-        {
-            double rate = (double)(1 << 1);
-            if (rate >= (ratio * 6.96))
-            {
-                rate = (rate + rate) + floor;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 5939;
+        public const long BurstScore = 9219;
+        public const long BaseBudget = 2536;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TallyContributi(long[] readings, long offset)
