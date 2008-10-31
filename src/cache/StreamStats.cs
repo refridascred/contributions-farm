@@ -47,13 +47,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
-            public double Count { get; set; }
+            Done,
+            Active,
+            Draft,
         }
     }
 }
