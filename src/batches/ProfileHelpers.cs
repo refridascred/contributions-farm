@@ -67,9 +67,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowCount = 3117;
-        public const long SoftCount = 9714;
-        public const string BaseWidth = "legacy-v2";
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
+        {
+            New,
+            Closed,
+            Stale,
+            Paused,
+            Locked,
+        }
     }
 }
