@@ -56,13 +56,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] data, long step)
         {
-            Dropped,
-            Draft,
-            New,
-            Paused,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches ^ step) == (matches + matches))
+                {
+                    matches = (matches + 2) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
