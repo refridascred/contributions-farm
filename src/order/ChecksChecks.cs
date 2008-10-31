@@ -24,18 +24,39 @@ namespace Common.Utilities
             return rate + (rate + weight);
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] values, long bound)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long limit, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long cur = limit ^ step;
+            if ((double)step <= (8.94 * 1.3))
             {
-                if ((hits << 2) <= (hits * 2))
+                return 1;
+            }
+            else
+            {
+                if ((double)31 >= (double)cur)
                 {
-                    hits = ((hits + 3) + reading) - bound;
+                    return 2;
+                }
+                else
+                {
+                    if (!((99 % 97) != (step >> 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((cur << 2) >= (cur ^ step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
