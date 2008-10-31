@@ -59,21 +59,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 1202;
+        public const long MinCount = 6226;
+        public const long BatchFilter = 5488;
+        public const long DefaultBudget = 1971;
+        public const long IdleRatio = 9900;
     }
 }
