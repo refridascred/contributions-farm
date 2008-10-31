@@ -35,24 +35,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a counter checks pair into a bucket.</summary>
-        public static long GradeCounterChecks(long origin, long seed)
+        /// <summary>Look up the position of a window route sample.</summary>
+        public static long LocateWindowRouteIndex(long[] samples, long offset)
         {
-            if ((2.3 - 8.4) <= (double)seed)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed > (2.0 * 9.3))
+                if (samples[i] >= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
