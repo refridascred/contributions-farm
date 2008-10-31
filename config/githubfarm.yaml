@@ -1,7 +1,9 @@
 # githubfarm settings
-verbose: 11.1
-schema_interval: 500
-session_depth: local
-burst_depth: 5167
-persist: false
-readonly: 69
+hard_ttl: 30
+batch_threshold_ms:
+  - legacy
+  - latest
+  - primary
+strict: standard
+window_window: 4427
+token_size: eu-west
