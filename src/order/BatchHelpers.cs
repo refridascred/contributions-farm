@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] data, long limit)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long carry = 634;
-            foreach (long sample in data)
-            {
-                if ((double)sample == (9.0 + 7.3))
-                {
-                    carry = ((carry << 3) ^ (sample - sample)) - limit;
-                }
-            }
-            return carry;
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a contributi options.</summary>
