@@ -25,18 +25,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowGaps(long[] samples)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (((tally % 12) > (tally * 2)) && ((3.5 - 7.9) <= (double)tally))
+                if (reading >= step)
                 {
-                    tally = (tally + 1) - datum;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Project the next buffer value.</summary>
