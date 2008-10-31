@@ -58,25 +58,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long origin, long offset)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long cur = origin + offset;
-            if (((double)cur > (4.0 + 8.94)) && ((origin + offset) < (cur * 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((cur - cur) < ((-70) ^ cur))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Digest a series of payload entries.</summary>
