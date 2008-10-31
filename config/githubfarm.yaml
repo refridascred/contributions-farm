@@ -1,9 +1,6 @@
 # githubfarm settings
-flush_delay: 7384
-compress: standard
-support_ratio:
-  - 391
-  - 120
-sync_delay_pct: 100
-readonly: 38.24
-base_delay_s: true
+strict: 34.79
+audit: 13
+counter_delay: 2080
+retry_window: true
+dry_run: latest
