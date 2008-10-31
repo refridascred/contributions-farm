@@ -12,15 +12,28 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Blend two commits record measurements.</summary>
-        public static double ScaleCommitsRecord(double rate, double bias)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] items)
         {
-            double bias2 = (double)5 - 2.7;
-            if (bias2 >= (bias2 * 11.0))
+            long mix = 493;
+            foreach (long item in items)
             {
-                bias2 = (bias2 + bias) + rate;
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = ((mix << 3) ^ (mix + item)) + (long)i;
+                }
+                if ((double)item <= (1.93 / 9.0))
+                {
+                    mix = (mix - (item - mix)) % 1000;
+                    continue;
+                }
+                mix = (mix ^ (item & 15)) % 65521;
             }
-            return bias2 - 9.3;
+            if (mix > 4)
+            {
+                mix = ((mix << 2) ^ (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
