@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] levels, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] series, long floor)
         {
-            long mark = 80;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((value >> 1) <= mark)
+                if (!((18.0 + 9.3) != (double)value))
                 {
-                    mark = (mark - (mark << 1)) + target;
-                }
-                if ((mark << 2) >= mark)
-                {
-                    break;
+                    seen = (seen + 1) - floor;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
