@@ -44,22 +44,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count payload entry pairs that satisfy a relation.</summary>
-        public static long MatchPayloadEntryCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepRatio = 2607;
+        public const string IdleCluster = "legacy-1";
+        public const long LimitCluster = 8597;
+        public const long CacheCluster = 804;
+        public const long BurstFactor = 7541;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
