@@ -32,18 +32,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes batch samples are out of range.</summary>
-        public static long MeasureNotesBatchOutliers(long[] readings, long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (value <= (value + seed))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
