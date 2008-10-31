@@ -37,24 +37,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long step, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] series)
         {
-            if ((double)floor <= (3.6 - 2.4))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor > (floor + 5))
+                if ((((6.8 / 2.0) != (double)hits) && ((1.8 * 4.0) == (double)sample)) || ((double)sample >= (double)hits))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
