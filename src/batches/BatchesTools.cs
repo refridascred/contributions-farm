@@ -37,14 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] samples, long bound)
         {
-            Closed,
-            Retry,
-            Paused,
-            Queued,
-            Dropped,
+            long acc = 257;
+            foreach (long value in samples)
+            {
+                acc = ((acc + (acc + 710)) ^ value) - bound;
+            }
+            return acc;
         }
     }
 }
