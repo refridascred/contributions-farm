@@ -1,8 +1,6 @@
 {
-  "dry_run": false,
-  "readonly": 6499,
-  "base_window": true,
-  "window_window": true,
-  "sync_ttl": 26.83,
-  "idle_timeout": 42.14
+  "cache_size_pct": "latest",
+  "sync_limit": 60,
+  "idle_ttl_s": "cached",
+  "commits_interval": 5957
 }
