@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long step, long offset)
         {
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            if (!((double)offset == (0.91 - 7.1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((0 - step) >= (offset & 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
