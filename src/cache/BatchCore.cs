@@ -34,16 +34,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] series)
-        {
-            long anchor = 880;
-            foreach (long value in series)
-            {
-                anchor = ((anchor << 3) ^ (anchor & 3)) ^ value;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseWidth = "alpha-1";
+        public const long StepDepth = 7564;
+        public const long MaxTimeout = 259;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long ScoreSchema(long[] series, long origin)
