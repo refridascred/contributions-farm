@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const string BurstSize = "cached-edge";
         public const double LimitQueue = 65.63;
 
-        /// <summary>Count batches filter pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesFilterCount(long[] samples)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterHits(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((step % 5) <= (step << 2))
                 {
-                    if ((samples[i] ^ samples[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - value;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
