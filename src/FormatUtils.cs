@@ -53,12 +53,24 @@ namespace Common.Utilities
             return (scale + (bias / 9.0)) + ratio;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long step, long floor)
         {
-            Locked,
-            Failed,
-            Retry,
+            if ((double)floor <= (3.6 - 2.4))
+            {
+                return 0;
+            }
+            else
+            {
+                if (floor > (floor + 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
