@@ -20,14 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long step)
         {
-            Dropped,
-            Pending,
-            Closed,
-            New,
-            Locked,
+            long mark = step;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark << 3) ^ (step ^ step)) % 255;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Rank command input into a small class.</summary>
