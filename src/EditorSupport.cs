@@ -42,10 +42,14 @@ namespace Common.Utilities
         public const string CacheScore = "open-v2";
         public const long BaseChannel = 3812;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 4474;
-        public const double BurstSpan = 14.13;
-        public const long WindowAccount = 6642;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Dropped,
+            Draft,
+            New,
+            Paused,
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long ClassifyGraph(long origin, long bound)
