@@ -23,19 +23,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] values, long seed)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long seed)
         {
-            bool found = true;
-            foreach (long item in values)
+            long offset = step ^ seed;
+            if (seed > (75 >> 1))
             {
-                if (item >= seed)
+                return 4;
+            }
+            else
+            {
+                if ((offset - step) >= (8 / 9))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((7.63 / 8.0) <= (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((step >> 5) >= (seed / 8)) || ((seed >> 3) <= (603 - 204)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
