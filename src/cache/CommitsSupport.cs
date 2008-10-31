@@ -61,18 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context githubfarm readings against a rule.</summary>
-        public static long MeasureContextGithubfarmMatches(long[] samples, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double load = offset;
+            if (load >= (offset - offset))
             {
-                if ((cell / 5) == (limit << 3))
-                {
-                    seen = seen + 2;
-                }
+                load = load - (2.34 + offset);
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (double)6) + (double)(long)i;
+            }
+            return load + (bias * 3.2);
         }
     }
 }
