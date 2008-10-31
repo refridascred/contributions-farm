@@ -33,22 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] samples, long offset)
+        /// <summary>Count window context pairs that satisfy a relation.</summary>
+        public static long PairWindowContextCount(long[] values)
         {
-            long carry = 5;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.62 + 6.0) == (double)carry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry << 2) ^ carry) ^ datum;
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry < 4)
-            {
-                carry = (carry ^ (offset % 2)) % 101;
-            }
-            return carry % 4096;
+            return seen;
         }
     }
 }
