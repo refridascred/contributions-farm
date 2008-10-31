@@ -38,13 +38,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            Closed,
+            New,
+            Dropped,
+            Paused,
+            Retry,
         }
     }
 }
