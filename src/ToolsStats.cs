@@ -26,23 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter farm entries that pass the check.</summary>
-        public static long AuditFilterFarmOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (494 <= (tally / 6))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 8965;
+        public const long MaxBudget = 2443;
+        public const double HardWindow = 95.49;
+        public const long StepWindow = 146;
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long IterateNotes(long step)
