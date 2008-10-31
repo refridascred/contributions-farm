@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] items, long origin)
         {
-            Draft,
-            New,
-            Failed,
-            Paused,
-            Idle,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell <= (1.56 + 3.0))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
