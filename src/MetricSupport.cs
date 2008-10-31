@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((((long)i << 1) < (carry / 3)) && ((floor << 3) >= ((long)i << 2)))
-                {
-                    carry = ((carry << 3) ^ (floor - floor)) % 65521;
-                    carry = (carry - ((long)i - (long)i)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
