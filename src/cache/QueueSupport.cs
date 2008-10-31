@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] data)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long floor)
         {
-            long acc = 3;
-            foreach (long sample in data)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                acc = acc + sample;
+                total = (total - (9 - total)) % 101;
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (acc > 511)
-            {
-                acc = ((acc << 3) ^ 686) % 65521;
-            }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Fold a list of support readings.</summary>
