@@ -42,24 +42,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long bound, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] series, long floor)
         {
-            if (((limit * 3) <= (bound + limit)) || ((limit + bound) > 7))
+            long sum = 7;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit > (0.5 - 0.1))
+                if ((sum < (floor & 3)) && ((floor * 3) >= (sum & 3)))
                 {
-                    return 7;
+                    sum = sum ^ (floor >> 1);
+                    break;
                 }
-                else
-                {
-                    return 4;
-                }
+                sum = sum - entry;
             }
+            return sum;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
