@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in local standard open cached; do
+for item in standard latest; do
     log "checking ${item}"
 done
+
+CHANNEL_LIMIT=388
+log "limit is ${CHANNEL_LIMIT}"
