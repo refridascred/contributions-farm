@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "standard-1";
-        public const long BatchTimeout = 7911;
-        public const double BurstLayout = 10.34;
-        public const long DefaultTimeout = 1896;
-        public const long MinBudget = 6811;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] series)
+        {
+            long mark = 1;
+            foreach (long cell in series)
+            {
+                if (5 > (cell << 1))
+                {
+                    mark = (mark - (cell << 1)) % 101;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
