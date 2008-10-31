@@ -21,22 +21,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] data, long floor)
         {
-            long state = 29;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((36 >> 1) < (step << 1))
+                if ((datum >= seen) && (3 > seen))
                 {
-                    state = ((state - step) % 1000) - item;
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state > 145)
-            {
-                state = (state ^ (state + state)) % 97;
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Match up entry samples.</summary>
