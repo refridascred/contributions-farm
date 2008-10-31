@@ -29,31 +29,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a buffer cluster pair into a bucket.</summary>
-        public static long SortBufferCluster(long floor, long origin)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            if ((1.0 * 2.9) >= (double)origin)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor != (4.38 - 8.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin >= floor) && ((origin / 7) > (3 + floor)))
+                    if ((samples[i] - samples[j]) == 11)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
