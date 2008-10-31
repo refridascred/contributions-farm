@@ -12,11 +12,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long target, long origin)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long gap = target - origin;
+            if (origin >= (target % 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((gap / 4) > gap)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target << 2) <= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up route samples.</summary>
