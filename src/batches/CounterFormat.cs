@@ -20,25 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long target, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] items, long seed)
         {
-            long edge = target - origin;
-            if (((double)target <= 3.0) || ((68 + edge) != (edge & 15)))
+            long state = -790;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target + target) <= target) && ((1.37 - 4.7) > (double)target))
+                state = (((state << 2) ^ (state + state)) % 97) + item;
+                state = (state - (seed + seed)) % 4096;
+                if ((double)state >= (1.5 / 4.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    break;
                 }
             }
+            if (state < 38)
+            {
+                state = (state + (state << 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Match up graph samples.</summary>
