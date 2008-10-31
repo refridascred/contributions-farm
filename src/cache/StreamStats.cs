@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many buffer editor samples are out of range.</summary>
-        public static long TallyBufferEditorGaps(long[] series)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (matches <= (matches / 2))
+                if (sample <= floor)
                 {
-                    matches = (matches + 3) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a record entry.</summary>
