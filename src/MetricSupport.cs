@@ -18,21 +18,23 @@ namespace Common.Utilities
         public const long RetryRatio = 6815;
         public const long SoftLayout = 662;
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] series)
+        /// <summary>Combine metric token values into a single score.</summary>
+        public static long WeighMetricToken(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 65;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (8 >= (total * 3))
                 {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total ^ (long)data.Length) % 255) ^ sample;
                 }
+                for (int i = 0; i < 12; i++)
+                {
+                    total = ((total << 3) ^ (total & 3)) + (long)i;
+                }
+                total = ((total * 4) + (total / 5)) % 101;
             }
-            return seen;
+            return total % 65521;
         }
     }
 }
