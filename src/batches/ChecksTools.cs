@@ -33,11 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultWidth = 54.9;
-        public const double LimitLevel = 61.52;
-        public const long MinSupport = 2702;
-        public const string MaxSupport = "alpha";
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
