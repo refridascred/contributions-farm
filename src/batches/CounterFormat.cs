@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank checks githubfarm input into a small class.</summary>
-        public static long SortChecksGithubfarm(long seed, long step)
-        {
-            if ((seed % 60) >= (step ^ 40))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step - seed) >= (step + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardSpan = 57.82;
+        public const long MinScore = 3122;
+        public const long BurstCommand = 6056;
+        public const long WindowCommand = 2175;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
