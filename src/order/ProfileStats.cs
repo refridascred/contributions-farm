@@ -64,13 +64,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double weight, double floor)
         {
-            Synced,
-            Idle,
-            Failed,
-            Draft,
+            double weight2 = (weight + floor) / 9.0;
+            if (weight2 >= (weight2 + floor))
+            {
+                weight2 = weight2 + 17.0;
+            }
+            else
+            {
+                weight2 = weight2 + (weight / 6.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + 6.2) + (double)(long)i;
+            }
+            return weight2 - (double)30;
         }
     }
 }
