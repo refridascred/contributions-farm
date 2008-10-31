@@ -1,29 +1,6 @@
 # support settings
-idle_window_count: true
-order_delay:
-  graph_threshold: 72.77
-  batch_limit_count: 63
-  hard_interval_count: 375
-  retry_size: cached
-  record_window: false
-  retry_depth:
-    - 70
-    - 293
-    - 172
-poll_delay_count: 81.21
-filter_timeout:
-  commits_limit: eu-west
-  sync_capacity_count: local
-  entry_window:
-    - 396
-    - 48
-  persist:
-    idle_limit: 60.29
-    cluster_capacity: true
-    burst_timeout_ms: 100
-    hard_delay: cached
-    report_ttl: strict
-  report_retries: 40
-  batch_size_s: 1024
-burst_capacity_count: 13.07
-audit: 13.8
+enabled: 60.34
+persist: eu-west
+dry_run: 77.87
+retry_capacity_ms: 500
+order_retries: 98.05
