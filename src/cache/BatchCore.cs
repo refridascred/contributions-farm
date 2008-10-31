@@ -32,11 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 9410;
-        public const long BurstWindow = 296;
-        public const double CacheWindow = 4.08;
-        public const string LimitTimeout = "primary-edge";
-        public const string BurstBudget = "latest-1";
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Failed,
+            Closed,
+            Dropped,
+        }
     }
 }
