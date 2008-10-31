@@ -33,14 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] items, long target)
         {
-            Stale,
-            Closed,
-            Active,
-            Pending,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
