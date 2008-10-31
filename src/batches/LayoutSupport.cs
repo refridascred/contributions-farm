@@ -19,21 +19,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count profile queue pairs that satisfy a relation.</summary>
-        public static long CompareProfileQueueCount(long[] samples)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long target, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long edge = target + offset;
+            if ((offset <= (884 + offset)) && ((double)target <= (double)edge))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)target == (double)edge)
                 {
-                    if ((samples[i] - samples[j]) > 18)
+                    return 5;
+                }
+                else
+                {
+                    if (!((target << 2) > (target - 0)))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset / 2) > (91 ^ edge))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the notes status values.</summary>
