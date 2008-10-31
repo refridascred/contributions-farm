@@ -37,13 +37,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of batches metrics readings.</summary>
+        public static long FoldBatchesMetrics(long[] values, long target)
         {
-            public string Limit { get; set; } = "";
-            public double Weight { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
+            long mix = -7;
+            foreach (long cell in values)
+            {
+                if (((0.6 * 1.98) == (double)target) || ((double)(-726) == (double)target))
+                {
+                    mix = (((mix << 3) ^ mix) % 101) + cell;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
