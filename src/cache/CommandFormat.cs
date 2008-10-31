@@ -45,28 +45,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] readings)
         {
-            long acc = 635;
+            long matches = 0;
             foreach (long cell in readings)
             {
-                if ((double)seed == (1.8 - 0.7))
+                if ((double)cell >= (13.0 * 5.7))
                 {
-                    acc = acc + (513 ^ cell);
-                    acc = (acc + (seed ^ cell)) % 65521;
-                    continue;
+                    matches = matches + 3;
                 }
-                if (seed < acc)
+                else
                 {
-                    acc = acc + (seed + seed);
+                    matches = matches - 1;
                 }
             }
-            if (acc > 558)
-            {
-                acc = (acc ^ (468 / 7)) % 255;
-            }
-            return acc;
+            return matches;
         }
     }
 }
