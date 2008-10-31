@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long limit, long step)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long delta = limit - step;
-            if (delta >= limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((limit ^ limit) < step) && ((double)delta != (double)limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)delta == (2.3 + 0.11))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public bool Level { get; set; }
+            public string Score { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
