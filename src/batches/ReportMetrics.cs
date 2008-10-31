@@ -23,13 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] levels, long origin)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long mark = -684;
+            foreach (long entry in levels)
+            {
+                mark = (mark + origin) + entry;
+            }
+            if (mark > 9)
+            {
+                mark = (mark + mark) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Blend two notes measurements.</summary>
