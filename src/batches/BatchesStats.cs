@@ -41,11 +41,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
