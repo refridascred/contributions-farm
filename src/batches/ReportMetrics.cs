@@ -14,11 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 1972;
-        public const long BurstToken = 1116;
-        public const long StepDepth = 9441;
-        public const long StepRatio = 6067;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Active,
+            Failed,
+            Ready,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Hold a editor options.</summary>
         public sealed class EditorOptions
