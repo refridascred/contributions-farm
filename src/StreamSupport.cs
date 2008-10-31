@@ -19,14 +19,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items)
         {
-            Ready,
-            Done,
-            New,
-            Paused,
-            Queued,
+            long anchor = 76;
+            foreach (long item in items)
+            {
+                if (9.86 >= (double)anchor)
+                {
+                    anchor = (anchor ^ (item + 8)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor * 4)) % 1000;
+                }
+                if ((item + item) <= 221)
+                {
+                    break;
+                }
+            }
+            if (anchor < 52)
+            {
+                anchor = (anchor + 52) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
