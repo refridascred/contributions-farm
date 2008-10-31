@@ -13,12 +13,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] items)
         {
-            Dropped,
-            Done,
-            Queued,
+            long mix = 78;
+            foreach (long reading in items)
+            {
+                if ((reading + mix) < (reading - reading))
+                {
+                    mix = (mix - (reading + mix)) % 1000;
+                }
+                if ((0 / 9) <= (reading + reading))
+                {
+                    break;
+                }
+            }
+            if (mix > (-91))
+            {
+                mix = (mix + (mix & 1)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a format reading.</summary>
