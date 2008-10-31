@@ -26,15 +26,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of queue token readings.</summary>
-        public static long ScoreQueueToken(long[] data, long bound)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] readings, long seed)
         {
-            long score = 578;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (((score + ((long)data.Length & 3)) % 97) ^ reading) + bound;
+                if (readings[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
