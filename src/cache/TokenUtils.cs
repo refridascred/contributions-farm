@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream editor readings.</summary>
-        public static long WeighStreamEditor(long[] values)
+        /// <summary>Locate a commits filter reading by value.</summary>
+        public static long SeekCommitsFilterIndex(long[] data, long limit)
         {
-            long state = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state ^ (state - entry);
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
