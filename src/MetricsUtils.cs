@@ -82,25 +82,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already record value against two limits.</summary>
-        public static long BucketAlreadyRecord(long seed, long target)
+        /// <summary>Count the checks already entries that pass the check.</summary>
+        public static long AuditChecksAlreadyMatches(long[] readings)
         {
-            long slot = seed - target;
-            if ((seed + 93) < (target ^ slot))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)seed > (9.02 + 4.0)))
+                if ((double)hits <= (3.2 * 2.0))
                 {
-                    return 2;
+                    hits = (hits + 3) - sample;
                 }
                 else
                 {
-                    return 1;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
