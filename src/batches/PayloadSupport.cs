@@ -28,12 +28,32 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long step, long target)
         {
-            Pending,
-            Closed,
-            New,
+            long prev = step ^ target;
+            if ((target << 3) <= (target * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (7.0 < (double)prev)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((prev + 837) >= prev)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
