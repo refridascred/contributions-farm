@@ -58,24 +58,30 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long floor, long limit)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            if (16.0 < (double)floor)
+            long sum = -88;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6.1 * 3.1) == (double)limit)
+                if ((sum ^ datum) > sum)
                 {
-                    return 6;
+                    sum = sum - (24 % 12);
                 }
                 else
                 {
-                    return 5;
+                    sum = (sum - (datum / 4)) % 4096;
+                }
+                if ((sum << 1) == (datum >> 5))
+                {
+                    break;
                 }
             }
+            if (sum > 27)
+            {
+                sum = ((sum * 3) + (867 % 64)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
