@@ -15,13 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            Closed,
-            Locked,
+            New,
             Dropped,
-            Draft,
+            Closed,
         }
 
         /// <summary>Count the session window entries that pass the check.</summary>
