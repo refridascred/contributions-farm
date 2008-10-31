@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Done,
-            Closed,
+            Stale,
+            Paused,
+            Active,
             Ready,
         }
 
