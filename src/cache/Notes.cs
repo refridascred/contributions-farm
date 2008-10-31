@@ -41,19 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate tools token samples.</summary>
-        public static long TotalToolsToken(long[] samples, long bound)
+        /// <summary>Match up batches samples.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            long mark = 94;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 3) + (bound ^ bound)) % 1000;
-                if ((cell & 63) <= (81 + mark))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] + items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Hold a context stats.</summary>
