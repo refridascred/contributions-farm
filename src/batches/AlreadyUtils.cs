@@ -49,22 +49,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi commits readings against a rule.</summary>
-        public static long TallyContributiCommitsHits(long[] data, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((0.2 * 4.27) >= (double)matches))
+                if ((levels[i] <= target) && ((levels[i] % 5) != 0))
                 {
-                    matches = ((matches + 2) - value) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
