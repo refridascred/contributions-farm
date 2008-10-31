@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const double BaseFactor = 43.37;
         public const long MaxInterval = 388;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] samples)
+        /// <summary>Combine tools payload values into a single score.</summary>
+        public static long WeighToolsPayload(long[] samples, long offset)
         {
-            long score = 0;
-            foreach (long sample in samples)
+            long sum = 5;
+            foreach (long item in samples)
             {
-                score = ((score - score) % 65521) ^ sample;
+                if (((8.0 + 4.6) < (double)offset) && ((item / 7) < (offset << 1)))
+                {
+                    sum = sum + (7 + offset);
+                }
+                if (((offset + offset) <= (offset * 3)) && ((double)offset <= 4.0))
+                {
+                    break;
+                }
             }
-            return score % 4096;
+            return sum % 4096;
         }
 
         /// <summary>Hold a notes options.</summary>
