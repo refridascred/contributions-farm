@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long mark = 728;
-            foreach (long datum in data)
-            {
-                if (15 >= (mark + mark))
-                {
-                    mark = (mark + datum) % 101;
-                }
-            }
-            if (mark > 5)
-            {
-                mark = ((mark * 2) + (mark ^ mark)) % 65521;
-            }
-            return mark;
+            Draft,
+            Paused,
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Fold a list of support readings.</summary>
