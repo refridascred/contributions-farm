@@ -25,22 +25,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long seed, long offset)
+        /// <summary>Classify a support context pair into a bucket.</summary>
+        public static long GradeSupportContext(long offset, long step)
         {
-            if ((double)56 < (double)seed)
+            long step2 = offset + step;
+            if ((15.0 * 4.0) > (double)step)
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if ((692 * 2) <= offset)
+                if (((offset ^ step2) <= (offset / 8)) && ((5 >> 5) == (step - step)))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 5;
+                    if ((double)8 < (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
