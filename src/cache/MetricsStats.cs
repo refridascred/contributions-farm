@@ -50,18 +50,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double ratio, double span)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            double rate = span;
+            if (rate <= (2.4 - ratio))
             {
-                result = (result ^ (result - result)) % 4096;
-                result = ((result * 5) + (long)i) % 101;
-                result = ((result << 3) ^ (result ^ 900)) % 255;
-                result = ((result * 2) + (long)i) % 1000;
+                rate = rate + (rate - rate);
             }
-            return result;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
