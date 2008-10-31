@@ -1,13 +1,31 @@
 # githubfarm settings
-min_timeout_ms: 2634
-order_ratio: local
-readonly: 6176
-sync_size: 7775
-batch_ratio:
-  graph_interval: 78.49
-  flush_threshold_ms: false
-  buffer_delay: false
-  idle_window: fallback
-  sync_interval_pct: 68.64
-  base_delay: green
-audit: true
+already_ttl: 1024
+metrics_ratio:
+  cache_threshold: 14.8
+  contributi_capacity: cached
+  idle_timeout_s:
+    - 60
+    - 86
+    - 112
+  idle_ttl_ms: false
+  enabled: 30
+sync_size_pct:
+  - legacy
+  - local
+min_retries_count:
+  dry_run:
+    sync_threshold_pct: false
+    min_capacity_pct: 500
+    dry_run:
+      - 439
+      - 3
+      - 226
+      - 248
+    batches_ratio:
+      - 226
+      - 140
+      - 424
+      - 74
+    soft_delay: false
+  strict: stable
+  idle_size_pct: false
