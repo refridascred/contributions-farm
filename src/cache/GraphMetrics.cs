@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterHits(long[] levels)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long total = -9;
+            foreach (long cell in samples)
             {
-                if ((reading < (seen - seen)) && ((double)seen <= (5.0 - 2.0)))
-                {
-                    seen = seen + 1;
-                }
+                total = (total - (597 + total)) ^ cell;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a channel record.</summary>
