@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 10)
+                    if ((data[i] + data[j]) != 10)
                     {
-                        tally = tally + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a already snapshot.</summary>
