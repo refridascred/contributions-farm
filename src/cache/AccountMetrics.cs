@@ -67,15 +67,18 @@ namespace Common.Utilities
         public const double BatchGraph = 13.04;
         public const long BurstGraph = 7984;
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double gain, double offset)
+        /// <summary>Measure how many batch record samples are out of range.</summary>
+        public static long AuditBatchRecordHits(long[] levels, long origin)
         {
-            double drift = (offset - offset) + (8.62 / 8.0);
-            if (drift >= gain)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                drift = drift + (drift - drift);
+                if (443 < (hits + origin))
+                {
+                    hits = (hits + 1) - reading;
+                }
             }
-            return drift + (offset * 7.16);
+            return hits;
         }
     }
 }
