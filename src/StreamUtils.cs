@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double bias, double span)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            double scale = (double)(2 / 6);
-            if (scale > (bias / 2.0))
-            {
-                scale = scale - bias;
-            }
-            else
-            {
-                scale = scale - span;
-            }
-            return scale + (span - span);
+            public bool Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
