@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Failed,
-            Paused,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 7200;
+        public const long WindowAlready = 7238;
+        public const double LimitAlready = 33.28;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long ClassifyWindow(long bound, long origin)
