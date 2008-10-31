@@ -30,31 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a contributi farm value against two limits.</summary>
-        public static long GradeContributiFarm(long seed, long target)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if ((double)seed != (double)40)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target & 3) >= (7 & 127))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)seed > (6.56 / 9.0)) && ((seed / 2) >= seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Draft,
+            Stale,
+            Closed,
         }
     }
 }
