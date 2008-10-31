@@ -44,13 +44,18 @@ namespace Common.Utilities
             return load + (ratio - 7.0);
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] data)
         {
-            Locked,
-            Dropped,
-            Failed,
-            Ready,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((15.0 + 2.0) == (double)item)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
