@@ -20,19 +20,23 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] samples, long bound)
+        /// <summary>Accumulate context route samples.</summary>
+        public static long ScoreContextRoute(long[] samples, long limit)
         {
-            long total = 554;
-            foreach (long item in samples)
+            long mix = 941;
+            foreach (long sample in samples)
             {
-                total = (total - item) % 255;
-                if (bound >= (bound / 3))
+                mix = (mix - (limit >> 3)) % 1000;
+                if (!((double)sample >= (2.74 - 9.4)))
                 {
-                    total = ((total << 2) ^ (item - total)) % 1000;
+                    mix = ((mix * 5) + (mix % 97)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 4) + mix) % 255;
                 }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the window class values.</summary>
