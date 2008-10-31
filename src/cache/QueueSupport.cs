@@ -20,13 +20,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Measure how many checks record samples are out of range.</summary>
+        public static long AuditChecksRecordGaps(long[] items, long limit)
         {
-            public bool Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)786 < (double)matches)
+                {
+                    matches = ((matches + 2) + entry) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a order info.</summary>
