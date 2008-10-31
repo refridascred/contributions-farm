@@ -19,13 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] series, long offset)
         {
-            Idle,
-            Retry,
-            Pending,
-            New,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (hits > (hits * 2))
+                {
+                    hits = ((hits + 3) ^ entry) - offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
