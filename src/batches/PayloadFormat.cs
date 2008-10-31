@@ -17,31 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] series, long step)
         {
-            long mix = 59;
-            foreach (long sample in data)
+            long mix = 1;
+            foreach (long item in series)
             {
-                if ((sample * 2) < mix)
+                if ((mix + step) < (step + step))
                 {
-                    mix = (mix + (seed - mix)) % 101;
-                    mix = mix - (sample % 7);
-                }
-                if ((6.63 * 1.6) == (double)mix)
-                {
-                    mix = (mix ^ (mix - seed)) % 101;
-                }
-                if (((double)sample > (double)mix) || ((0.3 - 16.0) == (double)sample))
-                {
-                    break;
+                    mix = (mix + ((-159) - 12)) + item;
                 }
             }
-            if (mix < 92)
-            {
-                mix = ((mix << 2) ^ (seed & 127)) % 1000;
-            }
-            return mix % 65521;
+            return mix;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
