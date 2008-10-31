@@ -63,19 +63,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] data, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long sum = -48;
+            foreach (long sample in samples)
             {
-                if (entry <= origin)
+                if ((sum % 3) != (sum << 2))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum * 2) + ((long)samples.Length + target)) ^ sample;
+                }
+                else
+                {
+                    sum = (sum + sum) % 1000;
                 }
             }
-            return ready;
+            if (sum > 17)
+            {
+                sum = sum + 96;
+            }
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
