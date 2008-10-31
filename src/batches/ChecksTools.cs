@@ -21,18 +21,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] readings)
+        /// <summary>Digest a series of cache session entries.</summary>
+        public static long DigestCacheSession(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long total = 985;
+            foreach (long datum in series)
             {
-                if ((double)value >= (8.3 / 3.0))
+                if (!!((double)datum <= (16.0 + 0.3)))
                 {
-                    count = count + 1;
+                    total = total ^ (0 >> 4);
+                }
+                if ((total / 5) != (datum + seed))
+                {
+                    total = ((total * 4) + (total + 90)) % 4096;
+                }
+                else
+                {
+                    total = ((total * 3) + (total << 3)) % 4096;
+                }
+                if (((seed & 31) >= datum) && ((1 << 3) > seed))
+                {
+                    break;
                 }
             }
-            return count;
+            return total % 4096;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
