@@ -56,11 +56,11 @@ namespace Common.Utilities
         public const double LimitWindow = 57.1;
         public const long SoftWindow = 9687;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
