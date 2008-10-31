@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const string MaxCommits = "stable-1";
         public const long LimitCommits = 3430;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Compare every pair of queue profile readings.</summary>
+        public static long PairQueueProfileCount(long[] series)
         {
-            Done,
-            Paused,
-            Closed,
-            Draft,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the checks state values.</summary>
