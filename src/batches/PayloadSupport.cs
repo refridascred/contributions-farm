@@ -29,19 +29,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every checks command entry stays within the limit.</summary>
-        public static bool CheckChecksCommandLimits(long[] values, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in values)
+            long total = 792;
+            foreach (long value in samples)
             {
-                if (datum <= floor)
+                if (!((total - 617) >= value))
                 {
-                    ready = false;
-                    break;
+                    total = total - (value ^ 6);
                 }
             }
-            return ready;
+            if (total > (-51))
+            {
+                total = ((total << 3) ^ (total - (long)samples.Length)) % 1000;
+            }
+            return total % 65521;
         }
     }
 }
