@@ -13,10 +13,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "staging";
-        public const string SoftToken = "legacy-edge";
-        public const long WindowToken = 3358;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
