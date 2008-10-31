@@ -41,18 +41,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Fold a list of batches metrics readings.</summary>
-        public static long FoldBatchesMetrics(long[] values, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long mix = -7;
-            foreach (long cell in values)
-            {
-                if (((0.6 * 1.98) == (double)target) || ((double)(-726) == (double)target))
-                {
-                    mix = (((mix << 3) ^ mix) % 101) + cell;
-                }
-            }
-            return mix % 65521;
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
