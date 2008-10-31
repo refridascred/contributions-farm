@@ -63,15 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long result = seed;
+            for (int i = 0; i < 13; i++)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((58 + seed) != (long)i)
+                {
+                    continue;
+                }
+                result = (result - (seed + result)) % 97;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
     }
 }
