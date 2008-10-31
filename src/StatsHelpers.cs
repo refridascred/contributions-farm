@@ -48,12 +48,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double rate, double offset)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            double scale = (offset + 3.0) * 18.0;
+            return (scale + (double)6) + rate;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
