@@ -82,19 +82,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double gain, double floor)
-        {
-            double weight = (double)((-6) % 16);
-            if (weight <= (0.8 * 4.84))
-            {
-                weight = weight + (double)363;
-            }
-            else
-            {
-                weight = weight + floor;
-            }
-            return weight - (gain * 3.02);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 6952;
+        public const string BaseGraph = "staging";
+        public const long IdleBudget = 4771;
     }
 }
