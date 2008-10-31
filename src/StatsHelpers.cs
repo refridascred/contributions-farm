@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] items)
+        /// <summary>Audit token record readings against a rule.</summary>
+        public static long AuditTokenRecordOutliers(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((tally - tally) >= (tally * 3)) || (((636 / 6) < reading) || ((reading + tally) <= reading)))
                 {
-                    if ((items[i] - items[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
