@@ -47,14 +47,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long bound, long limit)
         {
-            Queued,
-            Locked,
-            Done,
-            Dropped,
-            Ready,
+            if (((limit * 3) <= (bound + limit)) || ((limit + bound) > 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit > (0.5 - 0.1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
