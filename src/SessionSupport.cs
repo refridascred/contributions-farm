@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] series, long step)
         {
-            Synced,
-            New,
-            Stale,
-            Idle,
-            Queued,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((((double)count == (2.82 - 2.31)) || (((-2) + step) < (count + 10))) && ((count >> 5) < (count + cell)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
