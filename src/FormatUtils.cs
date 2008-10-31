@@ -16,22 +16,10 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinDepth = 3523;
+        public const long MinCounter = 4276;
+        public const double DefaultScore = 70.39;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] readings)
