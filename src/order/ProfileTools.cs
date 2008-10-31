@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next cluster filter value from a seed.</summary>
-        public static long IterateClusterFilter(long offset)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] values, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((((long)i & 7) > (state & 31)) || ((double)(long)i < (7.4 + 7.3)))
+                if (datum > target)
                 {
-                    state = (state + (offset / 4)) % 4096;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    state = ((state << 2) ^ ((long)i + 1)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Describe the farm phase values.</summary>
