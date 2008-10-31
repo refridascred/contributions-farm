@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 7134;
-        public const long MinChannel = 7485;
-        public const string HardInterval = "cached";
+        /// <summary>Rank checks githubfarm input into a small class.</summary>
+        public static long SortChecksGithubfarm(long seed, long step)
+        {
+            if ((seed % 60) >= (step ^ 40))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step - seed) >= (step + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
