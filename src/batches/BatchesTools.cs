@@ -27,19 +27,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] samples, long bound)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (sample != bound)
+                if (!((11 & 127) > (seen ^ step)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
