@@ -50,10 +50,15 @@ namespace Common.Utilities
         public const double HardScore = 84.13;
         public const long RetryEditor = 3828;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchGraph = "open-edge";
-        public const long HardGraph = 9098;
-        public const long BaseGraph = 2149;
-        public const long BatchBudget = 8630;
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double weight, double offset)
+        {
+            double mean = weight / 8.0;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = ((mean + (weight / 7.0)) + (double)(long)i) + offset;
+            }
+            return mean + weight;
+        }
     }
 }
