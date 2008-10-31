@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double ratio, double offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            double drift = ratio;
-            for (int i = 0; i < 3; i++)
+            long score = 79;
+            foreach (long cell in levels)
             {
-                drift = ((drift + (double)8) + (double)(long)i) + offset;
+                score = ((score * 5) + score) - cell;
+                score = (score + (score << 2)) % 97;
             }
-            return drift + (double)3;
+            return score % 97;
         }
 
         /// <summary>Audit channel window readings against a rule.</summary>
