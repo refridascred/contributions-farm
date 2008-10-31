@@ -20,14 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] series)
         {
-            Active,
-            Ready,
-            Stale,
-            Pending,
-            Retry,
+            long mark = 688;
+            foreach (long value in series)
+            {
+                if ((-672) < (mark % 16))
+                {
+                    mark = (mark - mark) % 65521;
+                }
+                else
+                {
+                    mark = (mark * 4) + (181 + value);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Rank command input into a small class.</summary>
