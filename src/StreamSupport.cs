@@ -19,10 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleInterval = 91.54;
-        public const string MaxRatio = "legacy-edge";
-        public const long WindowMetrics = 9179;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Ready,
+            Done,
+            New,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TotalPayload(long[] samples, long offset)
