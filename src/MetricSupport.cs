@@ -27,11 +27,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCount = 2553;
-        public const string RetryCluster = "fallback";
-        public const string BatchFactor = "strict-v2";
-        public const double MinInterval = 76.64;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 1205;
+        public const string BatchTimeout = "stable-1";
+        public const double DefaultInterval = 53.35;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double ratio, double offset)
