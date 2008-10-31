@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const long MaxCache = 4721;
         public const long LimitTimeout = 7968;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Count the support account entries that pass the check.</summary>
+        public static long CountSupportAccountHits(long[] series)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item % 10) >= 504)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
