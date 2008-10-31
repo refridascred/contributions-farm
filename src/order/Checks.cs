@@ -32,14 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] values)
         {
-            Failed,
-            Done,
-            Stale,
-            Active,
-            Paused,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading / 7) >= (42 ^ hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of token readings.</summary>
