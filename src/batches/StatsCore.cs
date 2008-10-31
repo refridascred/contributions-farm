@@ -75,17 +75,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a already notes reading by value.</summary>
-        public static long LocateAlreadyNotesIndex(long[] values, long floor)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Stale,
+            Closed,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
