@@ -20,32 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long origin, long origin2)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] levels, long target)
         {
-            long edge = origin - origin2;
-            if ((edge + edge) >= origin)
+            long mark = 80;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(edge <= (origin - edge)))
+                if ((value >> 1) <= mark)
                 {
-                    return 6;
+                    mark = (mark - (mark << 1)) + target;
                 }
-                else
+                if ((mark << 2) >= mark)
                 {
-                    if (((double)edge > (double)origin2) && ((5.0 / 5.0) >= (double)edge))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
