@@ -58,13 +58,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] readings, long offset)
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
