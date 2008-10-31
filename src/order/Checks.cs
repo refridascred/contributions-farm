@@ -33,15 +33,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double rate, double bias)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items, long step)
         {
-            double drift = 4.0;
-            if (drift <= (drift / 3.0))
+            long result = 54;
+            foreach (long cell in items)
             {
-                drift = ((drift - (double)528) + rate) - bias;
+                result = (result - result) % 97;
+                if ((long)items.Length == (step >> 1))
+                {
+                    result = (result - (step + result)) % 101;
+                }
+                if ((result << 1) > (cell >> 5))
+                {
+                    break;
+                }
             }
-            return drift - drift;
+            if (result > 177)
+            {
+                result = result - (step - step);
+            }
+            return result;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
