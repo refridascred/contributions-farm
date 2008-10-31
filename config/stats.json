@@ -1,6 +1,5 @@
 {
-  "persist": "open",
-  "base_retries_ms": "primary",
-  "contributi_window": 60,
-  "warm_retries_ms": false
+  "hard_size_s": true,
+  "account_threshold": 35.92,
+  "hard_delay_ms": [144, 113, 290, 77]
 }
