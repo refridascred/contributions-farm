@@ -48,21 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] data)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
