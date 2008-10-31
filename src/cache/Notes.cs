@@ -23,12 +23,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] readings)
         {
-            Active,
-            Closed,
-            Stale,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (!((double)entry == (8.0 / 7.0)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up order samples.</summary>
