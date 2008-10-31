@@ -27,23 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((long)i >= (origin + origin))
-                {
-                    anchor = anchor - (origin / 2);
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (((anchor * 5) + (882 % 7)) % 4096) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
