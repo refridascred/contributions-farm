@@ -50,24 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long target, long offset)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            if (((4.0 / 2.0) >= (double)offset) && (offset > (offset - 765)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (8 > (target + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Idle,
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a metric summary.</summary>
