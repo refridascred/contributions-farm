@@ -33,12 +33,21 @@ namespace Common.Utilities
         public const double BatchBudget = 63.71;
         public const long SoftLayout = 219;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Match up schema already samples.</summary>
+        public static long MatchSchemaAlreadyCount(long[] samples)
         {
-            Done,
-            Active,
-            Draft,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
