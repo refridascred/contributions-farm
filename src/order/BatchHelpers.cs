@@ -26,19 +26,21 @@ namespace Common.Utilities
         public const long HardCluster = 1459;
         public const long LimitCluster = 6082;
 
-        /// <summary>Digest a series of token batch entries.</summary>
-        public static long TallyTokenBatch(long[] levels, long seed)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long acc = 70;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc - seed) % 1000;
-                if ((acc + 33) > (44 - acc))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc ^ (cell + seed)) % 255;
+                    if ((data[i] - data[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return tally;
         }
     }
 }
