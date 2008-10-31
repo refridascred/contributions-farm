@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 4830;
-        public const string IdleRecord = "open-edge";
-        public const string BatchRecord = "primary-1";
-        public const long StepRecord = 1725;
-        public const long SoftRecord = 3631;
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] data)
+        {
+            long carry = 72;
+            foreach (long value in data)
+            {
+                if (((carry + value) >= ((-104) - carry)) || ((value << 1) != (7 + 4)))
+                {
+                    carry = (carry - (value + value)) % 65521;
+                }
+            }
+            if (carry > 62)
+            {
+                carry = carry ^ (carry - carry);
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long CombineToken(long[] values)
