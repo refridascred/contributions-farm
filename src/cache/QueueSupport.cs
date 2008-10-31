@@ -38,14 +38,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long origin, long target)
         {
-            Closed,
-            New,
-            Dropped,
-            Paused,
-            Retry,
+            if ((target + target) != (target / 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target >= (7.55 - 1.1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + target) != (target >> 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
