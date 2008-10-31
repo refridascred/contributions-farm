@@ -55,15 +55,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchGraph = "open-edge";
+        public const long HardGraph = 9098;
+        public const long BaseGraph = 2149;
+        public const long BatchBudget = 8630;
     }
 }
