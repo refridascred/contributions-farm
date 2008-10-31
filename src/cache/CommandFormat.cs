@@ -39,18 +39,28 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] series, long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long acc = 635;
+            foreach (long cell in readings)
             {
-                if (!((long)series.Length == (entry + seen)))
+                if ((double)seed == (1.8 - 0.7))
                 {
-                    seen = (seen + 3) - offset;
+                    acc = acc + (513 ^ cell);
+                    acc = (acc + (seed ^ cell)) % 65521;
+                    continue;
+                }
+                if (seed < acc)
+                {
+                    acc = acc + (seed + seed);
                 }
             }
-            return seen;
+            if (acc > 558)
+            {
+                acc = (acc ^ (468 / 7)) % 255;
+            }
+            return acc;
         }
     }
 }
