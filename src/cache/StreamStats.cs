@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] readings, long seed)
+        /// <summary>Project the next token already value.</summary>
+        public static double AdjustTokenAlready(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double rate = floor / 7.0;
+            if (rate >= (floor + 2.0))
             {
-                if ((3.1 / 8.0) > (double)seen)
-                {
-                    seen = ((seen + 3) + cell) - seed;
-                }
+                rate = rate + (double)(-9);
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (ratio + ratio)) - (double)(long)i;
+            }
+            return rate + (rate + rate);
         }
 
         /// <summary>Hold a record entry.</summary>
