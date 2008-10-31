@@ -1,23 +1,25 @@
 # entry settings
-channel_threshold:
-  warm_threshold: 28.74
-  hard_delay_pct:
-    - 269
-    - 57
-    - 250
-  burst_capacity_count:
-    - blue
+persist:
+  sync_capacity_pct: 6892
+  strict: 69.62
+  min_capacity: latest
+  notes_ttl:
+    - local
+    - local
+    - edge
     - fallback
-  base_window:
-    warm_ratio_ms: true
-    min_interval_s: 3266
-    cache_ttl_s: false
-    min_ratio: open
-    audit: 58
-    idle_capacity: staging
-  verbose: eu-west
-batch_threshold: true
-warm_ratio_count: standard
-sync_limit_s: true
-batches_delay: 8961
-payload_ttl: staging
+  hard_window: 10.92
+notes_retries: false
+hard_capacity_s: true
+max_capacity_count:
+  cache_ratio_ms: 3579
+  default_interval_count: 9.0
+  min_interval_ms: 40
+  hard_interval:
+    - 277
+    - 474
+    - 107
+    - 263
+  enabled: 93.38
+  metrics_retries: 91
+base_retries_s: strict
