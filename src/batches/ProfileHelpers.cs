@@ -41,22 +41,36 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long mix = -4;
+            foreach (long datum in levels)
             {
-                if ((11.0 - 19.0) != (double)item)
+                if ((mix + mix) >= 43)
                 {
-                    hits = hits + 2;
+                    mix = (mix << 2) ^ (datum << 2);
+                    mix = (mix - (datum + datum)) % 255;
+                    continue;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = ((mix * 4) + (mix & 7)) % 97;
+                }
+                if (!((seed % 12) >= mix))
+                {
+                    mix = (mix - (mix % 10)) % 101;
+                }
+                else
+                {
+                    mix = (mix - (seed - datum)) % 97;
+                }
+                if ((mix + seed) > (datum << 3))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Match up notes samples.</summary>
