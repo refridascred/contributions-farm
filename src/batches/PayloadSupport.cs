@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
