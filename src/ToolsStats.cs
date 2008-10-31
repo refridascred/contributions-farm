@@ -78,12 +78,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long bound)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public double Level { get; set; }
+            long score = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
