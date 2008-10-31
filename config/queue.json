@@ -1,7 +1,12 @@
 {
-  "editor_size": 37,
-  "commits_delay": "edge",
-  "stream_ratio": "strict",
-  "batch_window": 68,
-  "batch_window_pct": 62.53
+  "burst_ttl": {
+    "profile_interval": false,
+    "min_size": "stable",
+    "readonly": true,
+    "idle_window_ms": true
+  },
+  "queue_interval": 4,
+  "hard_limit_pct": 38.15,
+  "graph_size": false,
+  "order_ratio": 100
 }
