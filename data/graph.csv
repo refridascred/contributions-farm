@@ -1,7 +1,6 @@
-id,ratio,count
-1,89.01,119
-2,659,primary
-3,primary,947
-4,25.91,22.58
-5,30,33.23
-6,774,92.74
+id,ratio,owner,label
+1,open,33.4,759
+2,primary,strict,742
+3,859,634,strict
+4,89.78,314,599
+5,15.08,427,90
