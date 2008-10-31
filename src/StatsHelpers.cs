@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] items, long floor)
         {
-            long carry = 512;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)carry < (20.0 * 9.7))
+                if ((double)6 >= (double)cell)
                 {
-                    carry = ((carry * 5) + reading) % 65521;
+                    tally = (tally + 2) + floor;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a format stats.</summary>
