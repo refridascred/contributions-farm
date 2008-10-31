@@ -23,11 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            Retry,
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
