@@ -33,15 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double gain, double span)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            double rate = gain;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate - gain) - (double)(long)i) - span;
-            }
-            return rate - (double)46;
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
