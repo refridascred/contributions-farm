@@ -1,10 +1,8 @@
 # entry settings
-entry_timeout:
-  - 11
-  - 411
-  - 26
-  - 304
-persist: 76
-compress: primary
-sync_timeout_count: true
-flush_capacity_s: 6509
+buffer_threshold: eu-west
+base_delay:
+  - primary
+  - primary
+  - primary
+  - cached
+sync_size_s: 7834
