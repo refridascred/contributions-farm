@@ -44,13 +44,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Dropped,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleContext = 34.88;
+        public const long LimitContext = 5917;
+        public const string RetryInterval = "strict-edge";
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long MeasureContextGaps(long[] samples)
