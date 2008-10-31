@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor - (anchor & 127)) % 65521;
-                if ((double)(long)i <= (0.6 / 2.0))
-                {
-                    anchor = ((anchor * 2) + origin) % 4096;
-                }
-                if (((long)i % 2) <= (origin ^ 3))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Size { get; set; }
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
