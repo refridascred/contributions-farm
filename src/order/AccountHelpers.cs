@@ -38,19 +38,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry support series from a seed.</summary>
-        public static long SeriesEntrySupport(long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long bound, long bound2)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            if (!((double)bound > 12.0))
             {
-                if (((seed * 5) > (seed - seed)) && ((anchor ^ anchor) < (seed + anchor)))
-                {
-                    anchor = (anchor << 2) ^ (seed + anchor);
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (!((double)bound2 <= 3.93))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound2 + bound2) < (bound2 << 3)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
