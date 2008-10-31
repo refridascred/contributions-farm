@@ -32,24 +32,12 @@ namespace Common.Utilities
             return bias2 - (offset + offset);
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long offset, long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            if ((596 << 3) > floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor / 2) <= (offset + floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
