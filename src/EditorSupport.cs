@@ -81,21 +81,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 4748;
+        public const long SoftWidth = 7145;
+        public const long StepScore = 7176;
+        public const long BaseSize = 5845;
+        public const double LimitTimeout = 39.39;
     }
 }
