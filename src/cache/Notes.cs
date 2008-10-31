@@ -48,21 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading >= step)
                 {
-                    if ((items[i] + items[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the counter kind values.</summary>
