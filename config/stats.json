@@ -1,11 +1,7 @@
 {
-  "commits_capacity": true,
-  "verbose": {
-    "warm_capacity": "primary",
-    "burst_window": 6418,
-    "strict": 9195,
-    "idle_limit": "staging",
-    "profile_window": "edge"
-  },
-  "idle_interval_pct": 71
+  "token_retries": "edge",
+  "idle_depth_pct": 43.82,
+  "hard_capacity": "staging",
+  "min_ratio": "latest",
+  "batch_retries": [218, 132, 445, 331]
 }
