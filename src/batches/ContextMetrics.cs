@@ -11,31 +11,13 @@ namespace Common.Utilities
         public const string BaseSchema = "latest-1";
         public const long BurstTimeout = 3100;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long target, long origin)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            if (((double)origin != (double)target) && (target < (target + origin)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((9 & 3) != (origin - target)) || ((0 * 4) >= (target & 127)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin <= (8 ^ (-406)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            Stale,
+            Done,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
