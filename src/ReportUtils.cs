@@ -27,12 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxSpan = 5594;
-        public const long LimitLevel = 9826;
-        public const string HardStream = "standard-v2";
-        public const double WindowStream = 40.73;
-        public const long LimitScore = 129;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinDepth = "standard-edge";
+        public const long MinLayout = 7040;
+        public const string DefaultFactor = "latest";
+        public const long WindowCount = 8115;
+        public const long MinSpan = 4283;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
