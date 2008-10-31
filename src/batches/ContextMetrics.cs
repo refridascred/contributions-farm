@@ -13,12 +13,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long target, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            if (((double)origin != (double)target) && (target < (target + origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((9 & 3) != (origin - target)) || ((0 * 4) >= (target & 127)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin <= (8 ^ (-406)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
