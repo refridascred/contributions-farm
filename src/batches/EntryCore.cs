@@ -42,18 +42,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)tally > (19.0 + 0.9)) && ((tally + entry) >= ((-164) ^ tally)))
                 {
-                    if ((values[i] - values[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
