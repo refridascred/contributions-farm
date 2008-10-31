@@ -53,18 +53,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] samples)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally << 2) > (tally + tally))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            Idle,
+            Queued,
+            Synced,
+            Closed,
         }
     }
 }
