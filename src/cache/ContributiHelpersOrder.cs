@@ -13,18 +13,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate cluster stats samples.</summary>
-        public static long TotalClusterStats(long[] items, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] data)
         {
-            long result = 826;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((bound + 92) >= (cell ^ result))
+                if ((reading - matches) > ((long)data.Length - matches))
                 {
-                    result = ((result * 2) + (253 - 583)) % 4096;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
