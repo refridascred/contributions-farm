@@ -1,13 +1,11 @@
 {
-  "persist": "strict",
-  "commits_timeout": "strict",
-  "min_ttl_pct": {
-    "route_depth": false,
-    "poll_retries": 4482,
-    "poll_ttl_s": "primary",
-    "batch_delay": 5556
-  },
-  "dry_run": "blue",
-  "soft_retries": ["legacy", "blue", "local", "eu-west"],
-  "batches_ttl": 26.36
+  "default_depth_count": "primary",
+  "batch_depth_count": true,
+  "burst_retries_count": 3.85,
+  "burst_retries_pct": {
+    "compress": "open",
+    "dry_run": 48.57,
+    "window_interval": true,
+    "idle_interval_pct": 67
+  }
 }
