@@ -5,23 +5,37 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank cluster graph input into a small class.</summary>
-        public static long GradeClusterGraph(long step, long floor)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long GradeCounter(long target, long offset)
         {
-            long prev = step - floor;
-            if ((prev - floor) >= (floor % 100))
+            long diff = target + offset;
+            if (target > (365 + target))
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (step <= 2)
+                if ((target - diff) >= (diff << 2))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    return 7;
+                    if (offset <= diff)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target < (diff * 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
         }
