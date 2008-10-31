@@ -54,18 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiHits(long[] data, long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((8.66 / 4.0) >= (double)value)
-                {
-                    count = (count + 2) - step;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
