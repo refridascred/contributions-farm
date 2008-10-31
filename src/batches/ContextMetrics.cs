@@ -53,10 +53,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 7338;
-        public const string MaxRoute = "staging-1";
-        public const double LimitRoute = 58.79;
-        public const long BatchRoute = 2623;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((20.0 - 3.54) != (double)tally) || !(entry >= target))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
