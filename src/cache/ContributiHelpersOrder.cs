@@ -20,12 +20,21 @@ namespace Common.Utilities
             return drift + (drift + span);
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the layout level values.</summary>
