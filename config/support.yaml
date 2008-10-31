@@ -1,6 +1,19 @@
 # support settings
-idle_interval_pct: 60
-min_interval: false
-poll_window_s: 455
-payload_retries: staging
-poll_capacity: blue
+retry_limit_s: 500
+queue_depth: eu-west
+idle_ratio_ms:
+  channel_capacity: 48
+  retry_threshold: stable
+  profile_timeout:
+    entry_window:
+      - local
+      - latest
+      - cached
+    payload_threshold:
+      - 421
+      - 439
+      - 91
+    account_retries: 30
+    payload_ratio: 97.19
+    sync_ratio: true
+    max_retries: 3641
