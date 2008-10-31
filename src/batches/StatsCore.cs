@@ -41,11 +41,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 4996;
-        public const long MaxRatio = 1181;
-        public const string MaxScore = "alpha";
-        public const long RetryMetrics = 9313;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool VerifyFormatLimits(long[] data, long origin)
