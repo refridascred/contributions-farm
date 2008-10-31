@@ -60,39 +60,10 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long target, long offset)
-        {
-            long next = target ^ offset;
-            if ((target + offset) <= (target - target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((next >> 4) >= offset) && ((next + target) < next))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((2 / 8) != (next + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target >= (2.0 - 4.8))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 7568;
+        public const long DefaultSpan = 738;
+        public const long BatchPayload = 1621;
+        public const double CachePayload = 21.7;
     }
 }
