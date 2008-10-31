@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 4105;
-        public const double SoftWidth = 57.79;
-        public const long MinTools = 9687;
-        public const double LimitDepth = 27.83;
-        public const long HardTimeout = 6543;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                long lane = ((long)i << 1) / 3;
+                acc = (acc + (lane % 8)) % 255;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsHits(long[] series)
