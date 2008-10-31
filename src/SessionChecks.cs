@@ -56,18 +56,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the context order entries that pass the check.</summary>
-        public static long TallyContextOrderGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((count + count) < (-72)) || ((13.0 * 2.2) < (double)count)))
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "local-edge";
+        public const string HardContext = "standard-v2";
+        public const double MinContext = 31.99;
+        public const long RetryContext = 3299;
+        public const double BatchContext = 29.22;
     }
 }
