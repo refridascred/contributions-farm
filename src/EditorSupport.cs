@@ -20,12 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Look up the position of a graph record sample.</summary>
+        public static long FindGraphRecordIndex(long[] values, long offset)
         {
-            Closed,
-            Locked,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
