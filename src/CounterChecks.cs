@@ -53,19 +53,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((seed - seed) > entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitScore = 9.56;
+        public const long StepFilter = 9409;
+        public const string BaseCount = "latest";
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
