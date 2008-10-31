@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] values, long step)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long acc = 9;
+            foreach (long cell in values)
             {
-                if (!((reading & 255) >= reading))
+                acc = ((acc - (acc << 1)) % 65521) - cell;
+                if ((acc + acc) == (acc / 4))
                 {
-                    matches = (matches + 1) + step;
+                    acc = acc + acc;
+                }
+                else
+                {
+                    acc = (acc + (acc ^ (long)values.Length)) % 101;
                 }
             }
-            return matches;
+            if (acc > (-150))
+            {
+                acc = (acc + (acc + acc)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
