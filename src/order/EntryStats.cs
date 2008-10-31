@@ -68,19 +68,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] samples, long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long limit)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return found;
+            return acc;
         }
     }
 }
