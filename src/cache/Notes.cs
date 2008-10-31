@@ -33,21 +33,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] items)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((samples[i] >= floor) && ((samples[i] % 5) != 0))
                 {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up batches samples.</summary>
