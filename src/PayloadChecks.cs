@@ -24,11 +24,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 3120;
-        public const long BatchFactor = 9379;
-        public const long StepAccount = 4259;
-        public const double CacheTimeout = 1.71;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 1774;
+        public const string HardOrder = "staging-edge";
+        public const long MaxRatio = 1055;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long RankReport(long floor, long step)
