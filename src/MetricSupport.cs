@@ -32,31 +32,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long step, long seed)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            if (((0 + step) >= (seed - 707)) && ((step ^ step) > (step - step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed <= (seed % 2)) && (seed <= (seed >> 1)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((step * 2) >= (seed - step)) && ((step * 3) > seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Queued,
+            Closed,
+            Idle,
         }
     }
 }
