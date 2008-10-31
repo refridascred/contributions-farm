@@ -1,7 +1,14 @@
 # githubfarm settings
-buffer_timeout:
-  - cached
-  - strict
-  - stable
-poll_interval_pct: false
-route_retries: 45.25
+idle_retries:
+  - 444
+  - 137
+  - 426
+  - 181
+default_window: false
+base_ratio:
+  - 163
+  - 67
+  - 75
+  - 167
+poll_retries: 85.94
+poll_timeout_pct: 75
