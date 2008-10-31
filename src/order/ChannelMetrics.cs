@@ -47,19 +47,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate order counter readings against a bound.</summary>
-        public static bool GuardOrderCounterRange(long[] data, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (datum != target)
+                if (item >= seed)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
