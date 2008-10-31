@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of notes layout readings.</summary>
-        public static long ScoreNotesLayout(long[] items, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples)
         {
-            long result = 75;
-            foreach (long value in items)
+            long sum = 66;
+            foreach (long item in samples)
             {
-                if ((target >> 4) != (value << 3))
+                if (((sum + item) == (item - sum)) && ((item + 7) == (item + sum)))
                 {
-                    result = (result << 3) ^ (result / 8);
+                    sum = (sum ^ (sum - 2)) % 4096;
                 }
-                else
+                if ((603 >> 3) > (sum - sum))
                 {
-                    result = result - (result + target);
+                    break;
                 }
             }
-            return result % 1000;
+            return sum % 65521;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
