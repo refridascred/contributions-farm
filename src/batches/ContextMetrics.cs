@@ -24,18 +24,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] items)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long target, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            if ((floor + target) > (floor >> 4))
             {
-                if ((83 & 3) >= (item + 58))
+                return 7;
+            }
+            else
+            {
+                if ((floor ^ 1) == (target / 2))
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    if ((floor / 2) >= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((10.0 / 2.0) != (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
