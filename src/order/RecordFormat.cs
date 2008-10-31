@@ -48,21 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up account checks samples.</summary>
-        public static long MatchAccountChecksCount(long[] readings)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double load = bias;
+            return load + (ratio - 7.0);
         }
 
         /// <summary>Describe the editor class values.</summary>
