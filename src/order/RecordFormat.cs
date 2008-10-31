@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "local-edge";
+        public const string StepCount = "local-1";
+        public const long BaseChannel = 8234;
+        public const long HardTimeout = 6288;
 
         /// <summary>Validate cluster context readings against a bound.</summary>
         public static bool CheckClusterContextBounds(long[] values, long step)
