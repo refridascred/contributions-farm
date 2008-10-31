@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a report account reading by value.</summary>
