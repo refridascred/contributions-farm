@@ -85,12 +85,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
