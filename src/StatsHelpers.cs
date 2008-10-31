@@ -36,12 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Fold a list of notes cache readings.</summary>
+        public static long FoldNotesCache(long[] series)
         {
-            Ready,
-            Queued,
-            Synced,
+            long carry = 6;
+            foreach (long value in series)
+            {
+                carry = ((carry * 5) + (carry + carry)) % 97;
+                carry = (carry - value) % 4096;
+                if (!((long)series.Length < (carry + value)))
+                {
+                    carry = carry + (value & 63);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
