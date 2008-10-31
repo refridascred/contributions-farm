@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Support helpers.</summary>
     public static class Support
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 5924;
-        public const string BaseCount = "stable-1";
-        public const long LimitContributi = 8311;
-        public const string SoftContributi = "alpha-1";
-        public const long RetryContributi = 3848;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (reading > ((-70) + reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatHits(long[] series, long floor)
