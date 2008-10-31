@@ -1,6 +1,5 @@
 {
-  "retry_capacity": "latest",
-  "idle_capacity_pct": 2744,
-  "base_depth_s": 8418,
-  "poll_ratio_ms": 88.77
+  "counter_size": 54,
+  "already_limit": false,
+  "notes_capacity": "local"
 }
