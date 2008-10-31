@@ -34,11 +34,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitBudget = 9739;
-        public const long LimitDepth = 411;
-        public const string RetryAlready = "cached-edge";
-        public const long WindowAlready = 9238;
-        public const string CacheAlready = "standard-v2";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long floor, long target)
+        {
+            long gap = floor ^ target;
+            if (!(floor <= (target - floor)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor ^ 20) != (target ^ 62))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)target == (10.0 * 4.0)) && ((gap / 3) < target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)gap <= 6.4)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
