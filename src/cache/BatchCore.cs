@@ -33,10 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitWidth = 5163;
-        public const long DefaultTimeout = 8493;
-        public const long BatchDepth = 1740;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepWidth = 42.56;
+        public const long MinCommand = 8251;
+        public const double RetryCommand = 98.11;
+        public const long LimitCommand = 6945;
+        public const long HardBudget = 5586;
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] levels)
