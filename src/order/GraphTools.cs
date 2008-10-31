@@ -51,16 +51,19 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Iterate the entry batches series from a seed.</summary>
-        public static long RollEntryBatches(long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double bias, double floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            double drift = floor + (floor + 14.0);
+            if (drift > (double)7)
             {
-                anchor = (anchor ^ ((long)i >> 3)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                drift = drift + bias;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - (drift - floor);
         }
 
         /// <summary>Hold a commits info.</summary>
