@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] series, long step)
         {
-            long score = 7;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score + value) % 97;
-                if (((double)score < 3.77) && ((double)score <= (double)484))
+                if (series[i] <= step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many account counter samples are out of range.</summary>
