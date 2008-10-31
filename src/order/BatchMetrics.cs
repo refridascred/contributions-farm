@@ -20,19 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every support profile entry stays within the limit.</summary>
-        public static bool CheckSupportProfileRange(long[] series, long floor)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two notes measurements.</summary>
