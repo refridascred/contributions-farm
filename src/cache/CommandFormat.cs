@@ -23,18 +23,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long step)
         {
-            long score = 485;
-            foreach (long datum in samples)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((double)datum < (3.5 / 6.0)))
+                if ((7.5 / 6.0) >= (double)carry)
                 {
-                    score = ((score << 2) ^ (score % 16)) % 97;
+                    carry = ((carry * 5) + ((long)i - step)) % 4096;
+                    carry = ((carry * 3) + (step + step)) % 1000;
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
