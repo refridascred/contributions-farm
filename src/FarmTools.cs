@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] items)
+        /// <summary>Validate graph counter readings against a bound.</summary>
+        public static bool CheckGraphCounterRange(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((-4) < sample)
+                if (sample < seed)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
