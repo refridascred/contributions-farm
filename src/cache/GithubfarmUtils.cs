@@ -22,18 +22,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] samples, long limit)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double rate, double span)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            double drift = 0.5 * 6.4;
+            if (drift <= (drift * 5.44))
             {
-                if (((limit << 2) > (298 % 2)) || ((919 << 2) != (datum & 15)))
-                {
-                    count = count + 1;
-                }
+                drift = drift + (double)6;
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
