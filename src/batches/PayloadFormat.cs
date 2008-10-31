@@ -22,23 +22,31 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double ratio, double span)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long seed, long origin)
         {
-            double drift = ratio - (16.0 / 9.0);
-            if (drift <= (ratio - drift))
+            if (seed < (origin ^ origin))
             {
-                drift = drift + (double)97;
+                return 6;
             }
             else
             {
-                drift = drift - ratio;
+                if ((seed % 10) > origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(3.21 < (double)origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + 2.0) + (double)(long)i;
-            }
-            return drift + span;
         }
 
         /// <summary>Measure how many order stats samples are out of range.</summary>
