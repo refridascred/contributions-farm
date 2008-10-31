@@ -35,18 +35,12 @@ namespace Common.Utilities
         public const long RetryEditor = 855;
         public const double IdleEditor = 37.37;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] items, long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((item >> 5) < (item + limit))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
