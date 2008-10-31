@@ -51,19 +51,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((5.82 * 4.63) > (double)floor)
-                {
-                    carry = carry ^ (carry % 60);
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Done,
+            Ready,
+            Synced,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
