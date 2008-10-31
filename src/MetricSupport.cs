@@ -20,16 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark << 3) ^ (step ^ step)) % 255;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Queued,
+            Pending,
+            Locked,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
