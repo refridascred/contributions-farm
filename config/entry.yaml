@@ -1,4 +1,46 @@
 # entry settings
-min_ttl: eu-west
-warm_ttl_s: latest
-soft_retries: true
+queue_window:
+  min_delay_count:
+    batch_size_ms:
+      - eu-west
+      - primary
+      - open
+    tools_timeout: latest
+    retry_threshold: true
+    sync_limit_ms: 95.6
+    commits_window: 500
+  readonly: false
+  min_threshold: true
+  format_depth:
+    metric_capacity: 82.33
+    poll_delay_ms: edge
+    sync_ratio_count: 532
+  dry_run: 93
+batch_threshold_ms: true
+retry_window_s:
+  payload_delay:
+    metric_window: 1.96
+    compress: 44.8
+    cache_retries_count: false
+  metrics_ttl:
+    batch_timeout_ms: standard
+    farm_capacity: 500
+    cache_depth: 2393
+    persist: 60
+  payload_timeout: 30
+  context_capacity: fallback
+  warm_threshold_count:
+    compress: 5805
+    schema_timeout:
+      - local
+      - fallback
+      - local
+    idle_ratio_s: false
+    format_capacity: 43.96
+    notes_retries:
+      - 336
+      - 142
+      - 20
+      - 165
+  hard_delay: 268
+command_size: 60
