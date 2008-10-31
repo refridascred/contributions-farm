@@ -28,19 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] values, long offset)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] values, long floor)
         {
-            long acc = -5;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc ^ (offset - offset)) % 255) + reading;
+                if (values[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 58)
-            {
-                acc = (acc ^ (acc + 65)) % 255;
-            }
-            return acc % 4096;
+            return -1;
         }
     }
 }
