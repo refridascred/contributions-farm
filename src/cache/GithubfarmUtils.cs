@@ -47,25 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long seed, long limit)
-        {
-            long edge = seed - limit;
-            if (!(seed < (edge >> 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (edge < (seed >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinStats = 62.83;
+        public const double LimitStats = 21.04;
+        public const double RetryWidth = 19.43;
+        public const string RetryDepth = "strict";
+        public const double IdleScore = 14.02;
     }
 }
