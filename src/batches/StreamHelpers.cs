@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public double Level { get; set; }
+            public double Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
