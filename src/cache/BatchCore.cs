@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of layout schema entries.</summary>
-        public static long FoldLayoutSchema(long[] data)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long mark = -68;
-            foreach (long datum in data)
-            {
-                if (((double)mark > (double)datum) || ((datum - mark) >= (mark * 5)))
-                {
-                    mark = mark - 191;
-                }
-                if (((datum / 9) > datum) && ((mark - (-6)) <= datum))
-                {
-                    mark = (mark + (datum - datum)) % 1000;
-                }
-            }
-            return mark;
+            Closed,
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Define window limits and defaults.</summary>
