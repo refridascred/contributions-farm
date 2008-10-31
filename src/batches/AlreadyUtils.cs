@@ -32,13 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
