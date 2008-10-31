@@ -55,32 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long bound, long bound2)
+        /// <summary>Validate tools buffer readings against a bound.</summary>
+        public static bool VerifyToolsBufferLimits(long[] readings, long offset)
         {
-            long next = bound ^ bound2;
-            if (((5.0 + 8.0) <= (double)bound) || ((bound + bound2) > (81 ^ bound2)))
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((10 + bound2) == (471 - 12))
+                if (entry >= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((next + bound2) < bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
