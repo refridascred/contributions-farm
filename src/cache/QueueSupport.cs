@@ -24,16 +24,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 19; i++)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                mark = mark + offset;
-                mark = ((mark * 3) + (long)i) % 101;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return mark;
+            return state;
         }
     }
 }
