@@ -48,18 +48,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many stats format samples are out of range.</summary>
-        public static long MeasureStatsFormatMatches(long[] items)
+        /// <summary>Locate a editor context reading by value.</summary>
+        public static long LookupEditorContextIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (3 <= item)
+                if (values[i] == step)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up support metrics samples.</summary>
