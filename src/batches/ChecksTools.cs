@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardLevel = 7564;
-        public const string BatchGithubfarm = "stable";
-        public const string CacheInterval = "local-edge";
-        public const double MinBudget = 45.65;
-        public const string MinWidth = "fallback";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 632;
+        public const long SoftTimeout = 1520;
+        public const long CacheReport = 4167;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryLimits(long[] readings, long offset)
