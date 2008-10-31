@@ -22,17 +22,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] levels, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] data, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (levels[i] <= target)
+                if (!(((736 + 9) > (tally * 4)) || ((datum % 7) >= tally)))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + target;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
