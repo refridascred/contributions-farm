@@ -25,21 +25,23 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = ratio - (16.0 / 9.0);
+            if (drift <= (ratio - drift))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + (double)97;
             }
-            return tally;
+            else
+            {
+                drift = drift - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + 2.0) + (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Hold a notes header.</summary>
