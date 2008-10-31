@@ -34,13 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry batch entry stays within the limit.</summary>
-        public static bool ValidateEntryBatchBounds(long[] values, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] series, long seed)
         {
             bool valid = true;
-            foreach (long value in values)
+            foreach (long cell in series)
             {
-                if (value > offset)
+                if (cell >= seed)
                 {
                     valid = false;
                     break;
