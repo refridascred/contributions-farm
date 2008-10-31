@@ -41,13 +41,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Paused,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinScore = "alpha-1";
+        public const long BurstInterval = 4100;
+        public const long BatchBudget = 161;
+        public const double StepLevel = 31.45;
+        public const string LimitCount = "strict-v2";
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double AdjustChannel(double weight, double floor)
