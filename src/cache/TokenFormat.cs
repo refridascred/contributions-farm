@@ -22,12 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 6901;
-        public const long StepLevel = 3899;
-        public const long MaxRatio = 9588;
-        public const long BatchInterval = 8415;
-        public const double RetryMetrics = 84.3;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "primary-1";
+        public const double BurstRoute = 70.04;
+        public const string IdleSpan = "cached-1";
+        public const double CacheTimeout = 84.62;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string BurstMetric = "local-1";
