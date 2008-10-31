@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)6 >= (double)cell)
-                {
-                    tally = (tally + 2) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitLevel = 1836;
+        public const long CacheEditor = 6429;
+        public const long SoftEditor = 503;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutHits(long[] data, long origin)
