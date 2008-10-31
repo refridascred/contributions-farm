@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Synced,
-            Ready,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 764;
+        public const double WindowSize = 56.49;
+        public const double MinCache = 27.9;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ProjectFarm(double ratio, double floor)
