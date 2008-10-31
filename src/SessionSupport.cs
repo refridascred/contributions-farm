@@ -15,22 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] values)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell ^ cell) == (cell * 3))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public double Total { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
