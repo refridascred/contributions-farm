@@ -24,11 +24,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            Done,
+            Pending,
+            Failed,
+            Stale,
+            Paused,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
