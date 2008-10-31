@@ -22,11 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "primary-1";
-        public const double BurstRoute = 70.04;
-        public const string IdleSpan = "cached-1";
-        public const double CacheTimeout = 84.62;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 5661;
+        public const long HardReport = 2436;
+        public const long BatchCount = 9075;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double ProjectStats(double rate, double offset)
