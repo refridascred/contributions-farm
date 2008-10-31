@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Paused,
             Ready,
-            Locked,
-            Draft,
+            Failed,
+            Pending,
             New,
+            Dropped,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
