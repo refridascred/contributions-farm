@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the support context entries that pass the check.</summary>
-        public static long MeasureSupportContextOutliers(long[] levels)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (((datum & 7) != (datum - datum)) && !(hits > (datum / 7)))
+                if (!(bound >= mix))
                 {
-                    hits = hits + 2;
+                    mix = (mix - (mix % 7)) % 101;
                 }
+                mix = ((mix * 3) + bound) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a schema entry.</summary>
