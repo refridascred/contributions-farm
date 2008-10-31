@@ -37,15 +37,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double gain, double span)
         {
-            long acc = 682;
-            foreach (long item in values)
-            {
-                acc = (acc * 4) + (item / 3);
-            }
-            return acc;
+            double mean = span;
+            return (mean - (mean / 8.0)) + gain;
         }
     }
 }
