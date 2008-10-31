@@ -36,16 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] items, long step)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long state = 75;
+            foreach (long datum in items)
             {
-                sum = sum ^ sum;
-                sum = ((sum * 5) + (long)i) % 65521;
+                state = ((((state << 3) ^ (0 % 100)) % 1000) ^ datum) + step;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
