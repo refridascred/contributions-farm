@@ -28,13 +28,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            Failed,
+            Done,
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Fold a list of token readings.</summary>
