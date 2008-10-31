@@ -23,22 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter entry samples.</summary>
-        public static long TallyCounterEntry(long[] data, long target)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long anchor = 4;
-            foreach (long datum in data)
-            {
-                if ((anchor + datum) != (7 << 3))
-                {
-                    anchor = (anchor << 3) ^ datum;
-                }
-            }
-            if (anchor < 202)
-            {
-                anchor = (anchor << 3) ^ target;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a graph info.</summary>
