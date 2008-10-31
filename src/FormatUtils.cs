@@ -53,19 +53,15 @@ namespace Common.Utilities
         public const long MinAccount = 387;
         public const long WindowAccount = 44;
 
-        /// <summary>Validate contributi window readings against a bound.</summary>
-        public static bool ValidateContributiWindowRange(long[] samples, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long origin)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Validate report metrics readings against a bound.</summary>
