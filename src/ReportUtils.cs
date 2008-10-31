@@ -40,12 +40,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
             Failed,
-            Active,
-            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Hold a stream entry.</summary>
