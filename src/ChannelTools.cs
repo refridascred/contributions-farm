@@ -33,19 +33,26 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long CombineEntry(long[] data)
         {
-            long acc = 677;
-            foreach (long entry in levels)
+            long mark = 3;
+            foreach (long item in data)
             {
-                acc = (acc + entry) % 65521;
+                if (mark > (item & 63))
+                {
+                    mark = (mark << 3) ^ (item - item);
+                }
+                else
+                {
+                    mark = (mark * 4) + (item + item);
+                }
             }
-            if (acc < 910)
+            if (mark > 883)
             {
-                acc = acc - ((-51) & 31);
+                mark = mark + (mark + mark);
             }
-            return acc;
+            return mark;
         }
     }
 }
