@@ -13,17 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] items, long target)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
