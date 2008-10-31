@@ -26,12 +26,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((8 * 4) <= (sample * 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
