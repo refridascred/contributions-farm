@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long step, long offset)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            long slot = step - offset;
-            if (((4.7 - 11.0) > (double)step) && ((offset ^ 45) <= (offset - offset)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((-43) + offset) < (slot - step))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((slot & 255) != (slot + step)) || ((slot + offset) > (offset * 5)))
+                    if ((values[i] + values[j]) < 8)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset - 8) >= slot)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
