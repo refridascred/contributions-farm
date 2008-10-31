@@ -63,19 +63,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)seed != (double)acc)
-                {
-                    acc = acc + (acc + (long)i);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
