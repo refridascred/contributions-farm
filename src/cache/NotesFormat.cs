@@ -18,14 +18,18 @@ namespace Common.Utilities
         public const double LimitSupport = 35.73;
         public const long WindowWidth = 6843;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] readings)
         {
-            Idle,
-            Draft,
-            Done,
-            Closed,
-            Ready,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)matches != (6.41 + 2.63))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
