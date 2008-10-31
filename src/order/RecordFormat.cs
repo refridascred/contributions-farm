@@ -41,22 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long floor)
         {
-            long acc = 773;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (acc < reading)
+                if (samples[i] == floor)
                 {
-                    acc = ((acc << 3) ^ (long)readings.Length) % 4096;
+                    return (long)i;
                 }
             }
-            if (acc > 866)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
