@@ -42,28 +42,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((seed + (long)i) == (carry >> 4)) && ((seed & 1) <= seed)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = ((carry << 2) ^ seed) % 97;
-                    carry = ((carry << 2) ^ (carry + carry)) % 97;
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                if ((90 + seed) < (seed >> 2))
-                {
-                    carry = (carry ^ (seed * 4)) % 255;
-                }
-                if ((10.0 - 2.6) == (double)(long)i)
-                {
-                    carry = (carry - (carry ^ seed)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
     }
 }
