@@ -59,39 +59,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long bound, long limit)
-        {
-            long step = bound + limit;
-            if ((limit - limit) >= 80)
-            {
-                return 4;
-            }
-            else
-            {
-                if (bound < (limit - limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (168 < (step + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((limit + 2) != ((-49) * 4)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitWidth = 74.27;
+        public const long BaseSize = 3016;
+        public const long WindowAlready = 4111;
     }
 }
