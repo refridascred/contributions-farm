@@ -1,23 +1,8 @@
 # githubfarm settings
-soft_capacity:
+schema_window:
   - standard
-  - primary
-  - primary
-verbose:
-  - 315
-  - 185
-  - 373
-  - 441
-audit:
-  compress: 30
-  readonly: blue
-  max_retries_pct: stable
-  cache_delay_s: 7533
-  poll_delay_ms:
-    - 323
-    - 393
-metric_ttl: 37.01
-retry_timeout_ms:
-  - 75
-  - 374
-soft_size: 82.61
+  - edge
+  - cached
+  - strict
+strict: true
+burst_timeout: 54.61
