@@ -59,15 +59,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] samples, long origin)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] data)
         {
-            long mix = 5;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (((mix * 4) + origin) % 97) - item;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
     }
 }
