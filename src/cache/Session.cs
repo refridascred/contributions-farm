@@ -14,12 +14,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double ratio, double floor)
         {
-            Failed,
-            Ready,
-            Done,
+            double rate = (double)(1 << 1);
+            if (rate >= (ratio * 6.96))
+            {
+                rate = (rate + rate) + floor;
+            }
+            return rate + rate;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
