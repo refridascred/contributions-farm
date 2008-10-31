@@ -19,14 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long offset, long step)
         {
-            Active,
-            Ready,
-            Retry,
-            Dropped,
-            Draft,
+            if ((offset >> 3) <= (step - step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((723 + offset) >= offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step >> 5) >= (step % 24))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a format value against two limits.</summary>
