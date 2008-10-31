@@ -36,12 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 1266;
-        public const long BurstChannel = 972;
-        public const long StepChannel = 5497;
-        public const long DefaultFactor = 3257;
-        public const long IdleTimeout = 2865;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = sum ^ sum;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
