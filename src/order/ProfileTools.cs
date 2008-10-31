@@ -46,12 +46,21 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Count already cluster pairs that satisfy a relation.</summary>
+        public static long PairAlreadyClusterCount(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
