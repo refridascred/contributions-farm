@@ -17,18 +17,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit channel window readings against a rule.</summary>
-        public static long CountChannelWindowMatches(long[] values, long target)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen > (seen >> 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 2) - sample) - target;
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a channel record.</summary>
