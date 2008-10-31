@@ -31,17 +31,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > limit) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultBudget = 18.92;
+        public const string CacheScore = "strict";
+        public const long DefaultMetrics = 3357;
+        public const string RetryRatio = "staging-edge";
     }
 }
