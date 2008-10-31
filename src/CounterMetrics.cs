@@ -54,9 +54,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitWidth = 74.27;
-        public const long BaseSize = 3016;
-        public const long WindowAlready = 4111;
+        /// <summary>Grade a profile window value against two limits.</summary>
+        public static long SortProfileWindow(long step, long origin)
+        {
+            if ((origin / 2) <= (origin << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step + step) > (73 * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
