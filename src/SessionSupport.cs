@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit account command readings against a rule.</summary>
-        public static long MeasureAccountCommandHits(long[] readings, long bound)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((bound % 5) == (2 >> 4))
+                if ((double)seen > (4.74 * 2.26))
                 {
-                    hits = (hits + 2) ^ entry;
+                    seen = ((seen + 2) + item) - seed;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a stats summary.</summary>
