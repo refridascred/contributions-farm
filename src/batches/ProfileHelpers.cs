@@ -54,18 +54,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a editor context reading by value.</summary>
-        public static long LookupEditorContextIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseRatio = 2875;
+        public const long MaxLevel = 8519;
+        public const string StepOrder = "fallback";
+        public const long RetryInterval = 9848;
+        public const long SoftSize = 5479;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long TotalCounter(long[] values)
