@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] levels, long offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((hits / 7) < offset)
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
