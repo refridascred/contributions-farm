@@ -35,31 +35,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] values, long limit)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] items, long step)
         {
-            long mix = -740;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)mix < (double)7)
+                if (items[i] < step)
                 {
-                    mix = ((mix ^ (mix * 5)) % 4096) + value;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (mix + 68)) % 4096;
-                }
-                mix = mix - (long)values.Length;
-                if ((double)limit <= (2.0 - 7.24))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix > 28)
-            {
-                mix = (mix + 30) % 255;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the tools kind values.</summary>
