@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the graph cluster entries that pass the check.</summary>
-        public static long TallyGraphClusterOutliers(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)limit == (double)tally)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxScore = "stable-v2";
+        public const long BatchDepth = 5814;
+        public const string MinProfile = "staging-1";
+        public const double RetryProfile = 13.99;
+        public const long DefaultProfile = 9407;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
