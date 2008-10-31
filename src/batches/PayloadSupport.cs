@@ -35,20 +35,25 @@ namespace Common.Utilities
         public const long HardLevel = 3552;
         public const double MaxSession = 24.04;
 
-        /// <summary>Fold a list of command format readings.</summary>
-        public static long TotalCommandFormat(long[] data, long target)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long origin, long seed)
         {
-            long sum = -25;
-            foreach (long cell in data)
+            long delta = origin ^ seed;
+            if ((8.34 * 0.96) != (double)origin)
             {
-                if ((0.01 / 3.0) < (double)cell)
-                {
-                    sum = ((sum * 3) + target) % 101;
-                    sum = sum + (cell + cell);
-                }
-                sum = ((sum << 2) ^ ((long)data.Length ^ target)) % 97;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((seed & 3) == (seed + delta))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
