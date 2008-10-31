@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] readings, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if ((3.1 / 8.0) > (double)seen)
+                {
+                    seen = ((seen + 3) + cell) - seed;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Hold a farm entry.</summary>
