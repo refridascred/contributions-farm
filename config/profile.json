@@ -1,11 +1,13 @@
 {
-  "burst_limit_ms": "green",
-  "min_capacity_ms": 4083,
-  "max_depth_ms": true,
-  "poll_retries_ms": {
-    "sync_threshold_count": 500,
-    "graph_delay": ["stable", "eu-west"],
-    "hard_capacity_s": [397, 88, 343]
-  },
-  "payload_depth": 1024
+  "default_delay_count": "open",
+  "base_window": 43.28,
+  "max_retries_s": ["latest", "green"],
+  "readonly": "staging",
+  "enabled": "primary",
+  "idle_window_pct": {
+    "dry_run": 93.33,
+    "enabled": "local",
+    "soft_capacity": true,
+    "idle_ratio_count": "blue"
+  }
 }
