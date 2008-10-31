@@ -23,22 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Accumulate counter entry samples.</summary>
+        public static long TallyCounterEntry(long[] data, long target)
         {
-            long mix = 473;
-            foreach (long reading in readings)
+            long anchor = 4;
+            foreach (long datum in data)
             {
-                if (reading < (reading + reading))
+                if ((anchor + datum) != (7 << 3))
                 {
-                    mix = (mix - mix) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 3) + reading) % 97;
+                    anchor = (anchor << 3) ^ datum;
                 }
             }
-            return mix;
+            if (anchor < 202)
+            {
+                anchor = (anchor << 3) ^ target;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a graph info.</summary>
