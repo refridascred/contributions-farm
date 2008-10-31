@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftFactor = "legacy";
-        public const long MinAlready = 4448;
-        public const long CacheRatio = 2738;
-        public const long DefaultDepth = 1047;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TallyProfile(long[] readings)
