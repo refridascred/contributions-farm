@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] data, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Ready,
+            Locked,
+            Draft,
+            New,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
