@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepRatio = 8687;
-        public const long BurstFactor = 1318;
-        public const long BaseCommand = 721;
-        public const string DefaultCommand = "fallback-edge";
-        public const double HardWidth = 43.32;
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
+        {
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long ScoreContributi(long[] levels)
