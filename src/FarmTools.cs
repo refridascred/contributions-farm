@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const long LimitFilter = 1873;
         public const long WindowFilter = 2850;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Idle,
-            Dropped,
             Draft,
+            Done,
+            New,
             Paused,
-            Ready,
         }
 
         /// <summary>Locate a support reading by value.</summary>
