@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Find the first farm batch entry that matches the target.</summary>
+        public static long LookupFarmBatchIndex(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] >= bound)
                 {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a checks header.</summary>
