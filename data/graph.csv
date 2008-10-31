@@ -1,10 +1,7 @@
-id,label,score,active
-1,542,latest,blue
-2,edge,legacy,62.71
-3,76.68,green,790
-4,88.24,standard,56.46
-5,56.07,648,55.31
-6,694,cached,92.57
-7,196,green,eu-west
-8,blue,local,236
-9,992,stable,eu-west
+id,owner,ratio,region,level
+1,458,standard,85.79,721
+2,green,89.34,57.37,79.0
+3,strict,80,legacy,cached
+4,latest,43.95,21.49,895
+5,47.43,standard,72,114
+6,818,174,eu-west,stable
