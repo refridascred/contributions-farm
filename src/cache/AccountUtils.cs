@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] levels, long offset)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (((double)count >= (double)offset) && ((double)offset > 18.0))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
