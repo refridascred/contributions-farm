@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] data, long origin)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
-            public double Rank { get; set; }
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
