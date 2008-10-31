@@ -32,25 +32,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the commits entry series from a seed.</summary>
-        public static long StepCommitsEntry(long origin)
+        /// <summary>Count the session window entries that pass the check.</summary>
+        public static long CountSessionWindowMatches(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                carry = carry - carry;
-                if (((double)(long)i != (19.0 - 9.91)) || ((origin + carry) < (long)i))
+                if (((double)entry >= (3.61 - 2.2)) && (entry < hits))
                 {
-                    carry = ((carry * 4) + (56 & 31)) % 101;
+                    hits = hits + 1;
                 }
-                if (!(75 > carry))
-                {
-                    long offset = (origin - carry) * 2;
-                    carry = (carry << 3) ^ offset;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
     }
 }
