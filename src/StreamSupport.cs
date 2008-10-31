@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a commits filter figure with a bias.</summary>
-        public static double ScaleCommitsFilter(double weight, double span)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double bias)
         {
-            double scale = (double)92 + (span * 6.1);
-            return (scale + (double)0) + weight;
+            double load = (double)((-338) - 22);
+            if (load < (bias / 6.0))
+            {
+                load = load - bias;
+            }
+            else
+            {
+                load = load - (load * 1.4);
+            }
+            return load + gain;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
