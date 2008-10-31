@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] series, long seed)
         {
-            long mark = 95;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (((mark + mark) > (91 % 60)) && ((reading & 3) >= mark))
+                if (!(((long)series.Length >> 2) == (seed * 3)) && ((5.16 > (double)seed) && (seed > count)))
                 {
-                    mark = ((mark << 3) ^ (882 + reading)) % 101;
+                    count = (count + 2) ^ item;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
