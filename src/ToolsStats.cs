@@ -82,15 +82,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long bound)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] values, long bound)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if (reading > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
