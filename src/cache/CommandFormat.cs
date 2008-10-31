@@ -26,18 +26,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long carry = 719;
-            foreach (long entry in series)
-            {
-                if ((entry + entry) >= carry)
-                {
-                    carry = (carry - (1 - 32)) % 255;
-                }
-            }
-            return carry;
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
