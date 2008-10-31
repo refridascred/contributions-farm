@@ -16,10 +16,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinDepth = 3523;
-        public const long MinCounter = 4276;
-        public const double DefaultScore = 70.39;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] readings)
