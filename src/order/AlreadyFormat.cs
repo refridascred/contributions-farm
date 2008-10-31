@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitFactor = 8495;
-        public const double BurstScore = 79.7;
-        public const long BaseChannel = 2177;
-        public const double MinChannel = 52.1;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long offset, long step)
