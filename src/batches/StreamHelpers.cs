@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public double Level { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleInterval = 2612;
+        public const long StepAccount = 7317;
+        public const double BaseAccount = 67.06;
+        public const long LimitSize = 2159;
+        public const long MaxWidth = 6395;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 2129;
