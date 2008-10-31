@@ -15,12 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] items, long seed)
         {
-            New,
-            Dropped,
-            Closed,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the session window entries that pass the check.</summary>
