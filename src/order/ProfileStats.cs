@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Derive the next counter account value from a seed.</summary>
+        public static long DeriveCounterAccount(long step)
         {
-            New,
-            Pending,
-            Stale,
+            long result = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!(step < (long)i))
+                {
+                    result = result ^ (step - result);
+                }
+                result = ((result << 3) ^ (step * 2)) % 101;
+                result = result - step;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
