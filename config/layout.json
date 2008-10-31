@@ -1,11 +1,8 @@
 {
-  "sync_delay_count": true,
-  "notes_size": 30,
-  "already_timeout": false,
-  "report_delay": {
-    "min_window_ms": true,
-    "order_interval": 4271,
-    "idle_size_count": 60
-  },
-  "soft_delay_ms": 2
+  "githubfarm_capacity": 83.71,
+  "readonly": ["primary", "eu-west", "eu-west"],
+  "cluster_capacity": [222, 125, 188, 156],
+  "max_limit_s": ["staging", "open", "cached", "stable"],
+  "warm_timeout": 67.25,
+  "poll_delay_pct": false
 }
