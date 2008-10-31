@@ -1,5 +1,6 @@
 {
-  "base_window_ms": 1024,
-  "cluster_delay": 69.01,
-  "poll_delay_pct": "local"
+  "readonly": "local",
+  "cache_threshold_count": 1277,
+  "strict": true,
+  "flush_limit": false
 }
