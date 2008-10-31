@@ -1,6 +1,7 @@
 {
-  "sync_timeout": [476, 397, 155, 214],
-  "idle_retries_pct": false,
-  "flush_retries_count": "blue",
-  "batch_threshold": "edge"
+  "dry_run": 4376,
+  "verbose": true,
+  "order_interval": 81.17,
+  "poll_ratio_pct": 96.89,
+  "hard_threshold": [276, 263, 358]
 }
