@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BaseRatio = 8726;
         public const double SoftReport = 52.97;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] values)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long carry = 9;
-            foreach (long reading in values)
-            {
-                carry = (carry - reading) % 4096;
-            }
-            if (carry < 6)
-            {
-                carry = carry - (-6);
-            }
-            return carry;
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
