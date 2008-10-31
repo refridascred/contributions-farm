@@ -19,26 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] samples, long origin)
         {
-            long total = 40;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3 + (long)items.Length) != (total * 3))
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
                 {
-                    total = (total ^ (value + value)) % 4096;
-                }
-                if ((value <= (total + total)) || ((47 / 4) > value))
-                {
-                    total = total ^ (total << 1);
+                    return (long)i;
                 }
             }
-            if (total < (-765))
-            {
-                total = (total ^ total) % 97;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
