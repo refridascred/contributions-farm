@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Draft,
-            New,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "standard";
+        public const string SoftSupport = "local-v2";
+        public const double CacheSupport = 42.0;
+        public const double BurstBudget = 93.29;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchHits(long[] series, long bound)
