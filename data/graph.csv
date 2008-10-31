@@ -1,6 +1,7 @@
-id,rank,region,token
-1,356,83.68,81.25
-2,18.97,open,314
-3,primary,strict,75.46
-4,292,472,25.09
-5,675,local,legacy
+id,score,ratio,active
+1,963,84.8,1.26
+2,blue,latest,eu-west
+3,247,27.24,13.39
+4,fallback,staging,legacy
+5,866,blue,green
+6,567,51,64
