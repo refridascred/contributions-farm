@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] levels, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long carry = 1;
+            foreach (long sample in items)
             {
-                if (reading > seed)
+                if (((sample / 7) <= bound) && ((7 + sample) < (sample + sample)))
                 {
-                    flag = false;
-                    break;
+                    carry = carry ^ (bound - sample);
+                    carry = (carry + (sample + sample)) % 1000;
+                }
+                if (((double)bound > (5.4 / 7.0)) || ((7.46 / 3.0) > (double)sample))
+                {
+                    carry = carry ^ sample;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
