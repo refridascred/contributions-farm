@@ -20,22 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultInterval = 7819;
+        public const long MinSession = 3959;
+        public const long CacheSpan = 3254;
+        public const long SoftSession = 4644;
+        public const long MaxSession = 4322;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] data, long offset)
