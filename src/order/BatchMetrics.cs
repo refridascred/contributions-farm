@@ -39,23 +39,13 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double rate, double bias)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            double gain = rate;
-            if (gain < gain)
-            {
-                gain = gain + rate;
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (18.0 - bias)) - (double)(long)i;
-            }
-            return gain + bias;
+            public double Region { get; set; }
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
