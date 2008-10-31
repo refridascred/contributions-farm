@@ -28,18 +28,18 @@ namespace Common.Utilities
         public const long LimitRatio = 8414;
         public const long IdleBudget = 8294;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] items, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((double)offset >= (double)reading)
+                if (((long)readings.Length << 2) > hits)
                 {
-                    matches = matches + 3;
+                    hits = (hits + 2) ^ item;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
