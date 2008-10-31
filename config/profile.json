@@ -1,6 +1,7 @@
 {
-  "idle_retries": true,
-  "flush_depth_pct": false,
-  "poll_threshold": false,
-  "idle_limit_count": 4578
+  "idle_interval_ms": false,
+  "flush_size_ms": 9200,
+  "default_ratio": 500,
+  "readonly": 2247,
+  "command_ratio": true
 }
