@@ -13,19 +13,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] readings, long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long limit, long target)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            if ((7.19 - 0.65) < (double)target)
             {
-                if (datum < origin)
+                return 3;
+            }
+            else
+            {
+                if ((target + limit) <= 87)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
