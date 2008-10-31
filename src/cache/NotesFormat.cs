@@ -20,9 +20,14 @@ namespace Common.Utilities
         public const long RetryEditor = 855;
         public const double IdleEditor = 37.37;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "staging-1";
-        public const string HardBudget = "latest-edge";
-        public const string LimitStats = "standard-v2";
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Idle,
+            Draft,
+            Done,
+            Closed,
+            Ready,
+        }
     }
 }
