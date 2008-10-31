@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] levels, long offset)
+        /// <summary>Measure how many window entry samples are out of range.</summary>
+        public static long MeasureWindowEntryOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((((6 - offset) == (offset << 3)) || ((5.5 * 0.5) != (double)offset)) && (2.19 > (double)seen))
+                if ((datum + matches) > (datum % 5))
                 {
-                    seen = (seen + 2) + sample;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
