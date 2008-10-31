@@ -61,19 +61,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] values)
         {
-            long sum = 492;
-            foreach (long cell in series)
+            long state = 1;
+            foreach (long entry in values)
             {
-                sum = ((sum << 2) ^ (cell % 97)) % 65521;
+                if ((double)entry == (19.0 / 3.0))
+                {
+                    state = state - entry;
+                }
             }
-            if (sum < 1)
+            if (state < (-2))
             {
-                sum = (sum * 2) + (sum % 24);
+                state = (state - (829 & 1)) % 1000;
             }
-            return sum;
+            return state % 4096;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
