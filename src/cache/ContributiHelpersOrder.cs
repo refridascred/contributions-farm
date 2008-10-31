@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double gain, double span)
+        /// <summary>Count the already route entries that pass the check.</summary>
+        public static long CountAlreadyRouteOutliers(long[] readings)
         {
-            double drift = (double)(93 >> 5);
-            if (drift < 3.2)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                drift = (drift + (span / 6.0)) + gain;
+                if (((double)tally != (double)cell) && ((double)68 < (double)cell))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                drift = drift + (8.6 / 9.0);
-            }
-            return drift + (drift + span);
+            return tally;
         }
 
         /// <summary>Match up order samples.</summary>
