@@ -73,19 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] data, long offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (sample != offset)
+                if (1.0 >= (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = (count + 3) ^ datum;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Accumulate stream payload samples.</summary>
