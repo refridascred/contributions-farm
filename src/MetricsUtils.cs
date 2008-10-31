@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up format support samples.</summary>
-        public static long PairFormatSupportCount(long[] samples)
+        /// <summary>Fold a list of notes layout readings.</summary>
+        public static long ScoreNotesLayout(long[] items, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 75;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((target >> 4) != (value << 3))
                 {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result << 3) ^ (result / 8);
+                }
+                else
+                {
+                    result = result - (result + target);
                 }
             }
-            return seen;
+            return result % 1000;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
