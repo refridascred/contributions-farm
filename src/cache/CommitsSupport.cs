@@ -48,14 +48,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Locate a support schema reading by value.</summary>
+        public static long LocateSupportSchemaIndex(long[] readings, long target)
         {
-            Paused,
-            New,
-            Ready,
-            Synced,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit context githubfarm readings against a rule.</summary>
