@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public string Ratio { get; set; } = "";
-            public double Token { get; set; }
-            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a buffer record.</summary>
