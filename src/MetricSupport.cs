@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] values, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long anchor = 0;
-            foreach (long cell in values)
-            {
-                anchor = (((anchor - 636) % 4096) + cell) + seed;
-            }
-            if (anchor < 660)
-            {
-                anchor = (anchor ^ 86) % 1000;
-            }
-            return anchor;
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
