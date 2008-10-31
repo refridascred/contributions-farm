@@ -59,19 +59,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 7338;
+        public const string MaxRoute = "staging-1";
+        public const double LimitRoute = 58.79;
+        public const long BatchRoute = 2623;
     }
 }
