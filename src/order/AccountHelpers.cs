@@ -18,21 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue profile readings.</summary>
-        public static long PairQueueProfileCount(long[] series)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the checks state values.</summary>
