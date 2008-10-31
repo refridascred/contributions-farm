@@ -33,19 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account schema readings against a bound.</summary>
-        public static bool GuardAccountSchemaRange(long[] levels, long seed)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading <= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Audit contributi commits readings against a rule.</summary>
