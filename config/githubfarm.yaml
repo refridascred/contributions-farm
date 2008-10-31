@@ -1,24 +1,9 @@
 # githubfarm settings
-format_limit: 3772
-order_delay: 5722
-notes_delay:
-  warm_capacity_count: fallback
-  stats_capacity: 1927
-  audit: 5
-  max_delay_count:
-    metric_ratio: 9592
-    default_threshold:
-      - 449
-      - 464
-    warm_depth_count: legacy
-    retry_timeout_ms: 25.4
-    compress: legacy
-retry_limit:
-  soft_limit_pct: 96
-  notes_timeout: false
-  enabled: 94.78
-  idle_threshold_pct: stable
-  base_limit_s: primary
-  sync_ratio_pct: 8094
-already_window: 28
-flush_limit_count: blue
+burst_size: 250
+audit: 500
+max_retries: 21.46
+burst_interval: false
+min_ratio_s:
+  - 76
+  - 80
+format_ratio: 6.62
