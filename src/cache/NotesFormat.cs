@@ -19,21 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Check that every session window entry stays within the limit.</summary>
+        public static bool ValidateSessionWindowRange(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item != limit)
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
