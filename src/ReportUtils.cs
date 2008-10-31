@@ -38,18 +38,17 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Audit layout record readings against a rule.</summary>
-        public static long AuditLayoutRecordHits(long[] data)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((16.0 + 3.7) != (double)matches)
+                if (samples[i] > bound)
                 {
-                    matches = (matches + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
