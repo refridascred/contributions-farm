@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two metric record measurements.</summary>
-        public static double ProjectMetricRecord(double scale, double offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double scale2 = (double)(703 - 356);
-            if (scale2 > scale2)
-            {
-                scale2 = ((scale2 - scale2) - scale) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - 5.32) - (double)(long)i;
-            }
-            return scale2 + scale2;
+            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
