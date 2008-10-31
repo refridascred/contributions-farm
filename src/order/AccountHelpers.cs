@@ -90,9 +90,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 6952;
-        public const string BaseGraph = "staging";
-        public const long IdleBudget = 4771;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Done,
+            New,
+            Synced,
+        }
     }
 }
