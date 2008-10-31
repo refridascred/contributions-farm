@@ -46,9 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 5769;
-        public const long HardRatio = 1120;
-        public const string HardToken = "primary";
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public double Weight { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
