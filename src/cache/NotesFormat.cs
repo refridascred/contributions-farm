@@ -16,20 +16,10 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstCount = 9.64;
+        public const long DefaultSpan = 9118;
+        public const long CacheBatch = 7752;
 
         /// <summary>Combine cache schema values into a single score.</summary>
         public static long FoldCacheSchema(long[] values)
