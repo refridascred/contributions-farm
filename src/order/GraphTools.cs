@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Look up the position of a batch schema sample.</summary>
