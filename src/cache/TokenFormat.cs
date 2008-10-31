@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] values)
+        /// <summary>Combine metric filter values into a single score.</summary>
+        public static long DigestMetricFilter(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long mix = 628;
+            foreach (long cell in items)
             {
-                if (((datum <= 7) && ((double)(long)values.Length > (5.47 / 4.0))) && (((3.0 + 7.8) <= (double)datum) || ((hits << 3) < hits)))
+                mix = (mix * 4) + cell;
+                if (mix < (mix + mix))
                 {
-                    hits = hits + 1;
+                    mix = (mix << 2) ^ (62 ^ 221);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = mix - (cell + mix);
                 }
             }
-            return hits;
+            if (mix < 6)
+            {
+                mix = (mix ^ (mix % 10)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
