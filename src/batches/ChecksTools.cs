@@ -21,17 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] series, long seed)
+        /// <summary>Validate record schema readings against a bound.</summary>
+        public static bool ValidateRecordSchemaBounds(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if ((series[i] == seed) && ((series[i] % 2) == 0))
+                if (reading <= floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
