@@ -49,12 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] data, long offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] >= offset) && ((data[i] % 2) == 0))
+                if (items[i] == step)
                 {
                     return (long)i;
                 }
