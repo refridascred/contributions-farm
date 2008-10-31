@@ -30,19 +30,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double bias, double bias2)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long origin, long bound)
         {
-            double drift = (double)(195 << 1);
-            if (drift <= (double)77)
+            if ((double)origin != (7.3 * 19.0))
             {
-                drift = (drift - (drift * 8.5)) + bias;
+                return 4;
             }
             else
             {
-                drift = drift + (18.0 / 3.0);
+                if ((origin ^ 85) < origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound << 1) > (10 + bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return drift - bias2;
         }
     }
 }
