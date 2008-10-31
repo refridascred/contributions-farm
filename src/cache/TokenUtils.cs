@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const string BurstSize = "cached-edge";
         public const double LimitQueue = 65.63;
 
-        /// <summary>Check that every tools batch entry stays within the limit.</summary>
-        public static bool GuardToolsBatchLimits(long[] levels, long seed)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] levels, long origin)
         {
-            bool found = true;
+            long matches = 0;
             foreach (long entry in levels)
             {
-                if (entry < seed)
+                if (((double)entry != (9.66 + 7.9)) && ((double)entry <= (9.8 * 0.48)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
