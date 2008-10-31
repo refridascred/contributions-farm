@@ -1,13 +1,6 @@
 {
-  "warm_ratio_s": [186, 88, 82],
-  "compress": {
-    "idle_retries_ms": "fallback",
-    "enabled": "standard",
-    "hard_ratio_count": "primary",
-    "token_ratio": 3057
-  },
-  "cache_retries": 100,
-  "batch_limit_s": "stable",
-  "soft_size_s": "local",
-  "cache_ttl": 100
+  "max_delay_s": true,
+  "sync_retries": false,
+  "idle_limit": 100,
+  "cache_interval": 6611
 }
