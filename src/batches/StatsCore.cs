@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public bool Level { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public double Offset { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleSpan = 8772;
+        public const long HardDepth = 9191;
+        public const double SoftTimeout = 90.91;
+        public const double StepEntry = 41.26;
 
         /// <summary>Project the next report value.</summary>
         public static double ScaleReport(double ratio, double floor)
