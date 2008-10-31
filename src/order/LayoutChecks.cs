@@ -43,19 +43,21 @@ namespace Common.Utilities
         public const string CacheSize = "staging-1";
         public const long BatchChannel = 9132;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] samples)
+        /// <summary>Match up githubfarm batch samples.</summary>
+        public static long PairGithubfarmBatchCount(long[] series)
         {
-            long mix = 838;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix ^ (sample % 8);
-                if (!(613 > (sample + mix)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
