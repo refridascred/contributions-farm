@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseDepth = 32.09;
-        public const string BurstFilter = "strict-edge";
-        public const string DefaultSize = "cached-1";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 7134;
+        public const long MinChannel = 7485;
+        public const string HardInterval = "cached";
 
         /// <summary>Rank window input into a small class.</summary>
         public static long ClassifyWindow(long bound, long origin)
