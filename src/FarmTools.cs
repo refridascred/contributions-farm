@@ -19,23 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a graph report figure with a bias.</summary>
-        public static double ScaleGraphReport(double ratio, double offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadOutliers(long[] samples, long seed)
         {
-            double rate = (double)0 / 3.0;
-            if (rate < (rate * 1.8))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                rate = rate - (offset / 5.0);
+                if (seen >= (0 - 99))
+                {
+                    seen = ((seen + 1) + value) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (ratio * 6.7)) + (double)(long)i;
-            }
-            return rate + (offset / 7.0);
+            return seen;
         }
 
         /// <summary>Digest a series of contributi account entries.</summary>
