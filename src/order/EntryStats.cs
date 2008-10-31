@@ -48,24 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long limit, long limit2)
+        /// <summary>Derive the next graph checks value from a seed.</summary>
+        public static long SeriesGraphChecks(long bound)
         {
-            if ((limit * 5) < (limit2 - limit2))
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((limit2 & 7) != ((-52) / 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
