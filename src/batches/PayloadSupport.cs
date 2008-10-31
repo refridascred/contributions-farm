@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] readings, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!((380 < limit) && ((long)readings.Length == (count & 255))))
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Describe the batches class values.</summary>
