@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long cur = bound + offset;
-            if ((bound ^ offset) <= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset < (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset + bound) >= (bound + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((cur % 3) > ((-6) - 96))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Project the next account value.</summary>
