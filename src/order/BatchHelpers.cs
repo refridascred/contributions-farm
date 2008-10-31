@@ -26,17 +26,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] samples, long bound)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 601;
+            foreach (long reading in data)
             {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (anchor & 63)) - reading;
             }
-            return -1;
+            return anchor % 97;
         }
     }
 }
