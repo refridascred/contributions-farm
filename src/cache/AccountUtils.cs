@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardDepth = 89.18;
-        public const long StepRatio = 3289;
-        public const double LimitScore = 47.49;
-        public const long MinSession = 1621;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
