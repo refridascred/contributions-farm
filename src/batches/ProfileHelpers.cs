@@ -78,32 +78,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long limit, long seed)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long offset)
         {
-            long gap = limit + seed;
-            if ((double)gap <= (4.8 + 2.72))
+            long carry = offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                carry = (carry << 3) ^ carry;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((limit & 31) == (limit + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed & 63) <= limit) && ((56 * 2) < (limit - (-164))))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
