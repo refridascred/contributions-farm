@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] data, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long target)
         {
-            long mark = 64;
-            foreach (long item in data)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (((73 % 16) >= bound) || ((mark - 860) <= mark))
-                {
-                    mark = (mark + (long)data.Length) % 255;
-                }
-                if (((bound - mark) >= (bound + item)) || ((double)mark != (double)item))
-                {
-                    break;
-                }
+                score = ((score * 2) + (target - score)) % 1000;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Find the first record tools entry that matches the target.</summary>
