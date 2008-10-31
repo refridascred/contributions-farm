@@ -1,5 +1,24 @@
 {
-  "warm_ratio": "green",
-  "notes_retries": 9.89,
-  "soft_size_ms": 500
+  "session_depth": {
+    "readonly": {
+      "notes_timeout": ["eu-west", "primary"],
+      "dry_run": 44.71,
+      "warm_ratio_s": ["green", "open", "latest"],
+      "sync_depth_ms": 13.6,
+      "soft_window": 47,
+      "session_retries": 500
+    },
+    "metrics_depth": 53,
+    "sync_retries_ms": {
+      "sync_ttl_count": 65.19,
+      "enabled": "strict",
+      "idle_depth_s": "latest",
+      "channel_ratio": 1024,
+      "flush_timeout_ms": 60.48,
+      "base_capacity_pct": 2
+    }
+  },
+  "tools_size": [261, 496],
+  "burst_window_s": true,
+  "min_depth_pct": ["eu-west", "blue", "blue"]
 }
