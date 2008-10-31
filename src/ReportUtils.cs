@@ -25,12 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowScore = 3247;
+        public const long CacheEditor = 7557;
+        public const long StepDepth = 1846;
+        public const long SoftSize = 5468;
+        public const long MaxEditor = 3375;
 
         /// <summary>Adjust a context reading.</summary>
         public static double ProjectContext(double ratio, double span)
