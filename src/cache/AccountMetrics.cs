@@ -20,23 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] levels, long limit)
         {
-            long total = 96;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 4; i++)
+                if (reading >= limit)
                 {
-                    total = ((total ^ (total << 2)) % 101) + (long)i;
-                }
-                total = total ^ (8 % 100);
-                if ((total & 15) >= (sample << 2))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Fold a list of farm githubfarm readings.</summary>
