@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next queue editor value.</summary>
-        public static double ProjectQueueEditor(double gain, double bias)
+        /// <summary>Find the first cache record entry that matches the target.</summary>
+        public static long LocateCacheRecordIndex(long[] readings, long seed)
         {
-            double scale = (gain * 1.2) / 4.0;
-            if (scale >= (double)284)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale - (scale * 16.0)) - bias;
+                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (5.7 + gain);
-            }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
