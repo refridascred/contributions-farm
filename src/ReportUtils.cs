@@ -56,23 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate record counter samples.</summary>
-        public static long WeighRecordCounter(long[] data, long floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long total = 59;
-            foreach (long item in data)
-            {
-                if ((double)total == (6.0 + 6.44))
-                {
-                    total = (total * 3) + item;
-                    continue;
-                }
-                if ((double)floor == (8.0 + 8.9))
-                {
-                    total = (total + (item & 3)) % 101;
-                }
-            }
-            return total;
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
     }
 }
