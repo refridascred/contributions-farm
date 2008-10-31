@@ -41,15 +41,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a editor order counter forward.</summary>
-        public static long SeriesEditorOrder(long limit)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] series, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
+            long sum = 27;
+            foreach (long entry in series)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (((42 >> 4) == (sum ^ origin)) && ((double)entry <= (8.0 / 8.0)))
+                {
+                    sum = (sum ^ (entry + entry)) % 65521;
+                }
+                else
+                {
+                    sum = (sum - ((-663) + sum)) % 255;
+                }
             }
-            return score;
+            return sum % 4096;
         }
 
         /// <summary>Hold a metrics summary.</summary>
