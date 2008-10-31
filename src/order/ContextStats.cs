@@ -20,19 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] series, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if (entry >= bound)
+                if (sample > floor)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
