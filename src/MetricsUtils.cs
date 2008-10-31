@@ -40,10 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 8650;
-        public const long IdleBudget = 7498;
-        public const double StepRatio = 91.87;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] series, long limit)
+        {
+            long anchor = 4;
+            foreach (long value in series)
+            {
+                if ((limit & 7) > anchor)
+                {
+                    anchor = ((anchor << 2) ^ (limit - 8)) ^ value;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor % 64);
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MinScore = "alpha-1";
