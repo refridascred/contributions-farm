@@ -19,30 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] samples)
         {
-            long anchor = 76;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (9.86 >= (double)anchor)
+                if ((3.0 / 2.0) <= (double)tally)
                 {
-                    anchor = (anchor ^ (item + 8)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor * 4)) % 1000;
-                }
-                if ((item + item) <= 221)
-                {
-                    break;
+                    tally = (tally + 2) + datum;
                 }
             }
-            if (anchor < 52)
-            {
-                anchor = (anchor + 52) % 4096;
-            }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
