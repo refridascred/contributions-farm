@@ -36,12 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] levels, long offset)
         {
-            Failed,
-            Closed,
-            Active,
+            long total = 18;
+            foreach (long cell in levels)
+            {
+                total = ((((total * 5) + 74) % 97) - cell) - offset;
+            }
+            return total;
         }
     }
 }
