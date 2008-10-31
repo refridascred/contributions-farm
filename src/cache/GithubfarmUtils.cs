@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long seed, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
+            if (!((seed + step) > (step + 25)))
             {
-                state = state ^ state;
-                state = ((state * 3) + (long)i) % 65521;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((step << 2) > seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a farm stats.</summary>
