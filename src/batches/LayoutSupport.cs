@@ -60,10 +60,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 4584;
-        public const double WindowRatio = 51.48;
-        public const long CacheFormat = 8852;
-        public const long BatchFormat = 6721;
+        /// <summary>Digest a series of contributi context entries.</summary>
+        public static long TotalContributiContext(long[] values)
+        {
+            long sum = 1;
+            foreach (long entry in values)
+            {
+                sum = sum - (entry + entry);
+            }
+            return sum;
+        }
     }
 }
