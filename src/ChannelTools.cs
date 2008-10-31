@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a record support value against two limits.</summary>
-        public static long GradeRecordSupport(long step, long offset)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            if (!((5.4 * 1.0) > (double)step))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((0.1 * 1.36) != (double)step) || (1 > (offset ^ step)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Ready,
+            Idle,
+            Synced,
         }
 
         /// <summary>Project the next window command value.</summary>
