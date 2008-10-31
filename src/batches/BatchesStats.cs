@@ -13,18 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] levels)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double weight = (double)87;
+            if (weight < weight)
             {
-                if ((91 - sample) > sample)
-                {
-                    matches = matches + 2;
-                }
+                weight = (weight - (weight - ratio)) - offset;
             }
-            return matches;
+            else
+            {
+                weight = weight - ratio;
+            }
+            return weight - (7.2 / 6.0);
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
