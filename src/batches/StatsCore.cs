@@ -73,26 +73,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of farm editor readings.</summary>
-        public static long ScoreFarmEditor(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] data, long bound)
         {
-            long score = 875;
-            foreach (long sample in readings)
+            long acc = 52;
+            foreach (long reading in data)
             {
-                if ((sample << 3) == (score / 9))
+                acc = acc + acc;
+                if (!((reading + 0) < (bound + (-9))))
                 {
-                    score = score ^ (sample - score);
+                    break;
                 }
-                else
-                {
-                    score = ((score * 5) + (sample & 255)) % 65521;
-                }
+                acc = (acc + (bound & 15)) % 255;
             }
-            if (score > 109)
-            {
-                score = (score + (score & 127)) % 97;
-            }
-            return score;
+            return acc % 1000;
         }
     }
 }
