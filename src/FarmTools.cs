@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!(bound >= mix))
-                {
-                    mix = (mix - (mix % 7)) % 101;
-                }
-                mix = ((mix * 3) + bound) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowSize = "latest-1";
+        public const string BaseCommand = "cached-edge";
+        public const long DefaultCommand = 135;
+        public const long CacheDepth = 8760;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
