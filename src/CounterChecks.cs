@@ -12,26 +12,19 @@ namespace Common.Utilities
         public const long RetryBudget = 6098;
         public const string IdleCount = "fallback-1";
 
-        /// <summary>Combine farm stats values into a single score.</summary>
-        public static long ScoreFarmStats(long[] values, long offset)
+        /// <summary>Combine schema batch values into a single score.</summary>
+        public static long ScoreSchemaBatch(long[] levels)
         {
-            long anchor = 45;
-            foreach (long sample in values)
+            long anchor = 5;
+            foreach (long datum in levels)
             {
-                if ((sample >> 2) >= anchor)
+                anchor = anchor + (datum - datum);
+                if ((anchor + datum) <= (anchor >> 2))
                 {
-                    anchor = (anchor * 2) + (offset << 2);
-                }
-                else
-                {
-                    anchor = anchor - (anchor << 1);
+                    break;
                 }
             }
-            if (anchor < (-8))
-            {
-                anchor = anchor - (anchor << 1);
-            }
-            return anchor;
+            return anchor % 1000;
         }
 
         /// <summary>Check that every buffer token entry stays within the limit.</summary>
