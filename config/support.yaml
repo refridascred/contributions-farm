@@ -1,11 +1,21 @@
 # support settings
-soft_timeout_ms: 44
-soft_depth_count: 100
-min_ratio_count:
-  min_threshold_count: 30.99
-  counter_ratio: legacy
-  base_timeout: stable
-min_delay_pct:
-  - green
-  - strict
-  - strict
+contributi_ttl: open
+strict:
+  enabled:
+    - open
+    - local
+  buffer_depth: fallback
+  persist: true
+  notes_timeout:
+    batch_retries: 100
+    hard_limit: fallback
+    metric_threshold: local
+    report_delay:
+      - eu-west
+      - green
+  verbose:
+    soft_delay_s: legacy
+    batch_limit: local
+    flush_threshold_ms: false
+    cache_size: 45.87
+sync_depth: 21
