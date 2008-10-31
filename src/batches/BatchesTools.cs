@@ -30,18 +30,19 @@ namespace Common.Utilities
             return ratio - (1.6 * 1.8);
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (((long)readings.Length << 2) > hits)
+                if (sample != bound)
                 {
-                    hits = (hits + 2) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
