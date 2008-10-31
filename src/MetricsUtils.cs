@@ -44,12 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Check that every farm payload entry stays within the limit.</summary>
+        public static bool GuardFarmPayloadBounds(long[] values, long offset)
         {
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
