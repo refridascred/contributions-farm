@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BaseSupport = "standard";
-        public const string SoftSupport = "local-v2";
-        public const double CacheSupport = 42.0;
-        public const double BurstBudget = 93.29;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((92 ^ offset) > (offset >> 5))
+                {
+                    carry = (carry + (offset / 9)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Match up order samples.</summary>
         public static long MatchOrderCount(long[] values)
