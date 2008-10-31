@@ -108,16 +108,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] data, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 4) + (long)i) % 97;
+                if ((data[i] > limit) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
