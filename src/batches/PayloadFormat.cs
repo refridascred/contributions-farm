@@ -41,18 +41,18 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] values, long step)
+        /// <summary>Measure how many order stats samples are out of range.</summary>
+        public static long TallyOrderStatsMatches(long[] levels, long step)
         {
-            long mix = -534;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((step + 4) >= mix)
+                if (datum < (matches + (-82)))
                 {
-                    mix = ((mix + step) % 65521) + entry;
+                    matches = (matches + 1) + step;
                 }
             }
-            return mix % 4096;
+            return matches;
         }
     }
 }
