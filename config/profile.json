@@ -1,8 +1,5 @@
 {
-  "verbose": ["open", "legacy", "fallback", "eu-west"],
-  "audit": ["eu-west", "latest"],
-  "stats_ttl": 1024,
-  "idle_interval_count": "fallback",
-  "session_window": ["legacy", "strict", "local", "fallback"],
-  "queue_timeout": "primary"
+  "context_depth": "cached",
+  "commits_retries": true,
+  "buffer_capacity": 20
 }
