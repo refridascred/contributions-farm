@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] series, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowBounds(long[] data, long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (!(((long)series.Length >> 2) == (seed * 3)) && ((5.16 > (double)seed) && (seed > count)))
+                if (datum != target)
                 {
-                    count = (count + 2) ^ item;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
