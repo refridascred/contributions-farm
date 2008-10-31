@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] readings)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading >> 2) == (reading / 8))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            New,
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Hold a layout snapshot.</summary>
