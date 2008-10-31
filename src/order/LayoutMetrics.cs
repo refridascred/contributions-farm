@@ -16,12 +16,11 @@ namespace Common.Utilities
             return gain + (double)18;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double ratio, double bias)
         {
-            Retry,
-            New,
-            Queued,
+            double mean = ratio;
+            return mean - (mean + bias);
         }
 
         /// <summary>Blend two notes measurements.</summary>
