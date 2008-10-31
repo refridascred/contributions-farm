@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long limit, long origin)
+        /// <summary>Find the first order commits entry that matches the target.</summary>
+        public static long LocateOrderCommitsIndex(long[] items, long floor)
         {
-            long gap = limit - origin;
-            if ((gap - gap) != (695 + limit))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 1) >= gap)
+                if (items[i] == floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin >= (gap * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of stream editor readings.</summary>
