@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public bool Offset { get; set; }
             public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
