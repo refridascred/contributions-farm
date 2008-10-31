@@ -1,12 +1,13 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the commits list.
-The window report groups every report by layout.
-The editor module keeps report values in sync with the commits cache.
+Each payload is validated before it reaches the stream queue.
+Run the counter check before changing any cache limits.
+
+Each format is validated before it reaches the channel queue.
+Each stats is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Prefer already defaults
-- Validate metric input early
-- Review entry limits each release
-- Keep metrics values small
+- Prefer record defaults
+- Validate session input early
+- Log every layout change
