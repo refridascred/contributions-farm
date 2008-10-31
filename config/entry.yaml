@@ -1,8 +1,8 @@
 # entry settings
-buffer_threshold: eu-west
-base_delay:
-  - primary
-  - primary
-  - primary
-  - cached
-sync_size_s: 7834
+enabled: true
+poll_threshold: edge
+persist:
+  - 78
+  - 421
+strict: true
+cache_capacity_pct: 81
