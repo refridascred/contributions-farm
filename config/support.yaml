@@ -1,21 +1,18 @@
 # support settings
-contributi_ttl: open
-strict:
-  enabled:
-    - open
-    - local
-  buffer_depth: fallback
-  persist: true
-  notes_timeout:
-    batch_retries: 100
-    hard_limit: fallback
-    metric_threshold: local
-    report_delay:
-      - eu-west
-      - green
-  verbose:
-    soft_delay_s: legacy
-    batch_limit: local
-    flush_threshold_ms: false
-    cache_size: 45.87
-sync_depth: 21
+cluster_retries:
+  dry_run:
+    - 345
+    - 198
+    - 437
+  soft_window_s:
+    report_size: 65.27
+    default_timeout: fallback
+    enabled: 1024
+    min_size_pct: 81.58
+    burst_timeout: 86
+    compress: eu-west
+  hard_window_pct: 48.29
+  route_depth: false
+metrics_threshold: 100
+flush_limit: false
+poll_size_ms: 22
