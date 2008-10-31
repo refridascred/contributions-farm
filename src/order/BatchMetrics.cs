@@ -21,22 +21,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] readings, long bound)
+        /// <summary>Accumulate route tools samples.</summary>
+        public static long CombineRouteTools(long[] items)
         {
-            long score = 1;
-            foreach (long datum in readings)
+            long anchor = 6;
+            foreach (long sample in items)
             {
-                if ((double)datum <= 2.8)
-                {
-                    score = (score ^ (95 - score)) + bound;
-                }
+                anchor = (anchor - (sample - sample)) % 1000;
             }
-            if (score < 6)
-            {
-                score = (score << 2) ^ 94;
-            }
-            return score;
+            return anchor;
         }
 
         /// <summary>Fold a list of account readings.</summary>
