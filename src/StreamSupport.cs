@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] items)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
-            public double Total { get; set; }
+            long state = 34;
+            foreach (long cell in items)
+            {
+                state = ((state << 2) ^ (cell + cell)) % 1000;
+            }
+            if (state < 73)
+            {
+                state = (state - state) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a graph options.</summary>
