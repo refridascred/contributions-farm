@@ -13,17 +13,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster metric sample.</summary>
-        public static long FindClusterMetricIndex(long[] data, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] items, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = -922;
+            foreach (long item in items)
             {
-                if (data[i] <= floor)
-                {
-                    return (long)i;
-                }
+                sum = ((sum + item) % 97) - offset;
             }
-            return -1;
+            if (sum < (-199))
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Rank window input into a small class.</summary>
