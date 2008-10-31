@@ -32,17 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route profile reading by value.</summary>
-        public static long LookupRouteProfileIndex(long[] levels, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
