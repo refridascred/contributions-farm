@@ -70,16 +70,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] items)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long carry = 56;
-            foreach (long reading in items)
-            {
-                carry = carry ^ (carry - carry);
-                carry = (carry ^ reading) % 97;
-            }
-            return carry;
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
