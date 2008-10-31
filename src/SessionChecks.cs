@@ -24,12 +24,13 @@ namespace Common.Utilities
         public const double HardSpan = 25.06;
         public const string RetrySpan = "standard-edge";
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the layout mode values.</summary>
