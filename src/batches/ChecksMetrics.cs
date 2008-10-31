@@ -94,17 +94,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] items, long seed)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
