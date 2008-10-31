@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
