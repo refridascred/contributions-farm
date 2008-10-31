@@ -35,14 +35,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long bound, long offset)
         {
-            Paused,
-            Synced,
-            Retry,
-            Done,
-            Stale,
+            long step = bound ^ offset;
+            if ((offset << 2) < bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (offset >= (step + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((962 + 850) < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step <= (offset / 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
