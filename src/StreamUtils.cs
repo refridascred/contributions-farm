@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long origin, long offset)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            if ((double)offset >= (8.08 - 5.23))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset + origin) > (origin * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Project the next account value.</summary>
