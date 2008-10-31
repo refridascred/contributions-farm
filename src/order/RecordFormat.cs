@@ -53,10 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleWidth = 167;
-        public const double CacheRoute = 67.59;
-        public const long LimitRoute = 5694;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Digest a series of filter metrics entries.</summary>
         public static long TallyFilterMetrics(long[] series, long seed)
