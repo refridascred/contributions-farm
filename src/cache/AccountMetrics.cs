@@ -78,18 +78,38 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batch record samples are out of range.</summary>
-        public static long AuditBatchRecordHits(long[] levels, long origin)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long origin, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if (!((6 + origin) <= target))
             {
-                if (443 < (hits + origin))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin <= (8.55 + 8.0))
                 {
-                    hits = (hits + 1) - reading;
+                    return 3;
+                }
+                else
+                {
+                    if ((target ^ origin) <= (origin ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((target - (-766)) > (origin >> 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
