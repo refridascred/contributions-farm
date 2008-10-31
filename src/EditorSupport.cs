@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long HardStats = 3117;
-        public const long StepStats = 3566;
-        public const string BatchFactor = "strict";
-        public const long SoftStats = 2254;
-        public const long RetrySize = 9123;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((22 - hits) == (33 + hits))
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool CheckWindowBounds(long[] data, long seed)
