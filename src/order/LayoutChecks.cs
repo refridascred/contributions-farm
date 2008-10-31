@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of batch buffer readings.</summary>
-        public static long WeighBatchBuffer(long[] series, long floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long bound, long target)
         {
-            long mix = 56;
-            foreach (long datum in series)
+            long bound2 = bound + target;
+            if ((double)bound2 == (double)bound)
             {
-                if ((double)datum <= (5.0 * 18.0))
+                return 4;
+            }
+            else
+            {
+                if (77 >= target)
                 {
-                    mix = ((mix * 2) + (811 + mix)) % 65521;
+                    return 6;
                 }
                 else
                 {
-                    mix = mix ^ floor;
+                    if ((bound2 + bound2) >= (bound2 >> 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3.0 - 11.0) == (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Hold a filter options.</summary>
