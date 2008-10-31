@@ -29,19 +29,39 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Validate window queue readings against a bound.</summary>
-        public static bool GuardWindowQueueRange(long[] series, long origin)
+        /// <summary>Grade a batch notes value against two limits.</summary>
+        public static long BucketBatchNotes(long seed, long bound)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long delta = seed + bound;
+            if ((double)bound <= (6.0 / 7.0))
             {
-                if (sample < origin)
+                return 2;
+            }
+            else
+            {
+                if (!((delta % 3) > delta))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((9.08 / 5.0) > (double)bound) && (70 >= (seed * 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((delta & 63) >= seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
