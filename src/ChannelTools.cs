@@ -25,27 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support contributi samples.</summary>
-        public static long TotalSupportContributi(long[] series, long target)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] values)
         {
-            long score = 7;
-            foreach (long datum in series)
+            long state = 76;
+            foreach (long value in values)
             {
-                if (399 <= (score / 2))
+                if ((value + value) > (1 - 13))
                 {
-                    score = score - (target / 8);
+                    state = (state + (value - state)) % 4096;
                 }
-                else
-                {
-                    score = (score * 4) + datum;
-                }
-                score = ((score << 3) ^ (score << 3)) % 65521;
             }
-            if (score > 3)
-            {
-                score = (score + 7) % 97;
-            }
-            return score;
+            return state % 4096;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
