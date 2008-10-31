@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first order commits entry that matches the target.</summary>
-        public static long LocateOrderCommitsIndex(long[] items, long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Accumulate schema samples.</summary>
