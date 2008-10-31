@@ -63,22 +63,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] series, long origin)
+        /// <summary>Check that every stats already entry stays within the limit.</summary>
+        public static bool GuardStatsAlreadyRange(long[] levels, long target)
         {
-            long sum = 27;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (((42 >> 4) == (sum ^ origin)) && ((double)entry <= (8.0 / 8.0)))
+                if (cell > target)
                 {
-                    sum = (sum ^ (entry + entry)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - ((-663) + sum)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return flag;
         }
 
         /// <summary>Hold a account info.</summary>
