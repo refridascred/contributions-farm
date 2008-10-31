@@ -34,17 +34,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] data, long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if ((data[i] <= offset) && ((data[i] % 3) == 0))
+                if (sample > bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
