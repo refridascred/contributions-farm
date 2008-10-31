@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] items, long origin)
         {
-            long state = 34;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in items)
             {
-                state = ((state << 2) ^ (cell + cell)) % 1000;
+                if (((4.0 - 5.0) == (double)value) && ((origin * 5) <= (seen * 3)))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (state < 73)
-            {
-                state = (state - state) % 65521;
-            }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Hold a graph options.</summary>
