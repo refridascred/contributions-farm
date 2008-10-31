@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] levels)
-        {
-            long sum = 832;
-            foreach (long entry in levels)
-            {
-                long gap = (entry + entry) * 4;
-                if ((double)gap > (9.76 / 5.0))
-                {
-                    gap = gap ^ (entry + 66);
-                }
-                sum = ((sum << 3) ^ (entry - entry)) % 97;
-            }
-            if (sum > 0)
-            {
-                sum = sum - 3;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchInterval = 4586;
+        public const string RetryAccount = "local-1";
+        public const long HardScore = 7422;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
