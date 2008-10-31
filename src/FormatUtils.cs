@@ -73,24 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long origin, long offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            if ((offset - offset) == (origin + origin))
+            long total = 1;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((953 ^ origin) == (207 % 60)))
+                if ((reading & 127) < reading)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    total = (total - reading) % 4096;
                 }
             }
+            if (total > 1)
+            {
+                total = (total + (total / 3)) % 97;
+            }
+            return total;
         }
     }
 }
