@@ -94,13 +94,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Synced,
-            Stale,
-            Paused,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardCount = 6830;
+        public const long RetryScore = 8034;
+        public const double DefaultTools = 26.05;
     }
 }
