@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 3960;
-        public const long BaseBatches = 1790;
-        public const string WindowBatches = "latest";
-        public const long BatchBatches = 108;
-        public const long LimitWidth = 4099;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] values)
+        {
+            long mark = -43;
+            foreach (long item in values)
+            {
+                mark = ((mark * 2) + (item / 2)) % 97;
+                mark = (mark - (95 + mark)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long SortFarm(long target, long origin)
