@@ -1,54 +1,10 @@
 # support settings
-poll_timeout_pct: 623
-persist:
-  default_retries_ms:
-    persist: true
-    min_timeout: 100
-    min_depth_count:
-      - primary
-      - green
-      - eu-west
-  stream_limit:
-    - green
-    - staging
-    - open
-  strict:
-    - staging
-    - standard
-    - staging
-    - legacy
-  enabled: standard
-  queue_limit:
-    filter_limit: local
-    idle_delay_count: 100
-    enabled: open
-    min_depth_s: true
-    context_interval: 86.63
-poll_size_pct: true
-default_timeout:
-  verbose: 394
-  readonly: 1024
-  audit: edge
-  max_retries_ms:
-    - 106
-    - 170
-    - 495
-    - 375
-  batch_ttl_s:
-    retry_retries_pct: 28.99
-    poll_window_ms: 30
-    burst_size_ms: 1.83
-    soft_interval_s:
-      - fallback
-      - latest
-      - stable
-      - fallback
-    soft_window: 4227
-  warm_ratio_count: green
-token_size: 60
-sync_size_s:
-  base_size: standard
-  verbose: staging
-  enabled:
-    - 376
-    - 75
+default_delay: 98
+max_ttl:
+  min_ratio_count: 68.76
+  burst_ttl: 8
+  batches_ttl: 9345
+  support_threshold: true
+dry_run: 9739
+flush_ratio_pct: 30.02
+burst_retries_pct: true
