@@ -28,22 +28,26 @@ namespace Common.Utilities
             return scale + (span - span);
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] series, long bound)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] readings, long offset)
         {
-            long sum = 8;
-            foreach (long value in series)
+            long carry = 95;
+            foreach (long entry in readings)
             {
-                if (((sum - 50) >= (bound << 1)) || ((bound + sum) >= bound))
+                if (!((offset * 5) <= (9 * 3)))
                 {
-                    sum = ((sum - (sum * 2)) % 1000) ^ value;
+                    carry = carry + (carry + entry);
+                }
+                if (offset >= (entry - offset))
+                {
+                    carry = carry - carry;
                 }
             }
-            if (sum < (-53))
+            if (carry < 1)
             {
-                sum = (sum << 2) ^ 6;
+                carry = ((carry << 2) ^ (carry << 3)) % 255;
             }
-            return sum % 97;
+            return carry % 1000;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
