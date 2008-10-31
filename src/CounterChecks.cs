@@ -42,13 +42,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Score { get; set; }
             public long Size { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
