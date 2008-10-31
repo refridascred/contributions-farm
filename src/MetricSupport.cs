@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Count the cluster profile entries that pass the check.</summary>
+        public static long AuditClusterProfileOutliers(long[] items)
         {
-            long acc = 564;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((acc ^ acc) < ((-6) >> 2))
+                if (value < hits)
                 {
-                    acc = (acc ^ (acc + datum)) % 65521;
-                }
-                if ((datum + (long)items.Length) <= (acc + 389))
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (acc > 63)
-            {
-                acc = ((acc << 2) ^ acc) % 255;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
