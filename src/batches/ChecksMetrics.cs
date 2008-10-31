@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] values, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long sum = 70;
+            foreach (long sample in series)
             {
-                if (sample > bound)
+                if (!((6 << 2) < (sum & 127)))
                 {
-                    stale = false;
+                    sum = sum - sample;
+                }
+                if ((double)sample > (double)sum)
+                {
                     break;
                 }
             }
-            return stale;
+            if (sum > (-3))
+            {
+                sum = (sum * 2) + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a notes entry.</summary>
