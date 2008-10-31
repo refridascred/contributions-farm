@@ -43,11 +43,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            Queued,
+            New,
+            Locked,
         }
     }
 }
