@@ -37,18 +37,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] values, long step)
+        /// <summary>Measure how many order commits samples are out of range.</summary>
+        public static long AuditOrderCommitsGaps(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((seen & 3) >= (entry + seen))
+                if ((double)tally > 1.0)
                 {
-                    seen = (seen + 1) + step;
+                    tally = ((tally + 1) + datum) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
