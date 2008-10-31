@@ -1,8 +1,5 @@
 {
-  "sync_depth": ["cached", "edge", "eu-west"],
-  "dry_run": "strict",
-  "idle_limit": [251, 431, 401],
-  "report_limit": ["fallback", "blue", "latest", "open"],
-  "min_ratio_s": "standard",
-  "readonly": true
+  "default_limit_s": 31.91,
+  "default_size_ms": false,
+  "base_limit": 58
 }
