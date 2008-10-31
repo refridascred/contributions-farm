@@ -36,39 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long limit, long floor)
+        /// <summary>Measure how many entry layout samples are out of range.</summary>
+        public static long AuditEntryLayoutMatches(long[] samples, long limit)
         {
-            long step = limit - floor;
-            if ((8.0 + 6.2) < (double)limit)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step % 16) < (floor >> 3))
+                if ((double)datum < (double)seen)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (limit <= (limit + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step >> 3) < (36 + 67))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    seen = (seen + 2) - limit;
                 }
             }
+            return seen;
         }
     }
 }
