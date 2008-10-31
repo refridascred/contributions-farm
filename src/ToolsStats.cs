@@ -73,11 +73,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double scale, double offset)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] readings)
         {
-            double scale2 = 6.3;
-            return ((scale2 - (16.0 / 3.0)) + scale) + offset;
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
