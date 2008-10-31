@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Stale,
-            Closed,
-            Failed,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 4328;
+        public const long MinLevel = 6274;
+        public const long BatchTools = 9335;
 
         /// <summary>Check that every cache editor entry stays within the limit.</summary>
         public static bool VerifyCacheEditorBounds(long[] readings, long offset)
