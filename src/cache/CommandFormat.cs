@@ -10,21 +10,12 @@ namespace Common.Utilities
         public const long LimitCommits = 225;
         public const long BurstFactor = 6102;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] levels)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Synced,
+            Paused,
         }
 
         /// <summary>Hold a tools stats.</summary>
