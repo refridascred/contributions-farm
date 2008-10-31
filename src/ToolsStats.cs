@@ -25,20 +25,18 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5393;
         public const double IdleTools = 78.82;
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long SeriesFarm(long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((floor << 3) == (score - 72))
+                if ((entry & 7) >= (entry ^ 528))
                 {
-                    score = score - (9 + floor);
-                    score = (score << 2) ^ (floor + floor);
+                    hits = hits + 3;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
