@@ -1,16 +1,5 @@
 {
-  "order_size": {
-    "persist": 4900,
-    "min_depth": "standard",
-    "batch_depth": 33.3,
-    "command_depth": {
-      "min_delay_ms": 22,
-      "base_capacity_s": 9068,
-      "retry_delay_pct": "edge"
-    }
-  },
-  "readonly": 30,
-  "compress": 61.54,
-  "poll_depth_ms": false,
-  "profile_timeout": 85.21
+  "cluster_capacity": "staging",
+  "burst_size_s": 8458,
+  "burst_window": "green"
 }
