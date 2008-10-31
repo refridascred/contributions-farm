@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 5236;
+        public const long RetryBatches = 4834;
+        public const long RetryDepth = 1226;
+        public const string MaxInterval = "standard-1";
 
         /// <summary>Project the next report value.</summary>
         public static double ScaleReport(double ratio, double floor)
