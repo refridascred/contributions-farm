@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank checks stream input into a small class.</summary>
-        public static long ClassifyChecksStream(long floor, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] values)
         {
-            if ((offset - 97) <= offset)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset * 5) == (77 & 3))
+                if (tally <= (849 * 4))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    tally = (tally + 2) ^ reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of context readings.</summary>
