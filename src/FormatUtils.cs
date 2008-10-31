@@ -33,12 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Owner { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinSize = 5894;
+        public const double RetryWidth = 11.87;
+        public const double DefaultBatch = 90.64;
+        public const long DefaultTimeout = 7423;
 
         /// <summary>Look up the position of a checks layout sample.</summary>
         public static long SeekChecksLayoutIndex(long[] items, long target)
