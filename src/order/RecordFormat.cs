@@ -55,39 +55,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long target, long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] values, long target)
         {
-            long bound2 = target + bound;
-            if ((double)bound2 >= (double)target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 ^ target) < (bound2 >> 3))
+                if (values[i] < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((960 >= bound) && ((double)bound <= (8.3 + 14.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((bound - target) != (bound / 9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
