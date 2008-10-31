@@ -39,10 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultBudget = 18.92;
-        public const string CacheScore = "strict";
-        public const long DefaultMetrics = 3357;
-        public const string RetryRatio = "staging-edge";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (615 > (reading >> 1))
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
+        }
     }
 }
