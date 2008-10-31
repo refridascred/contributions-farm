@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long step, long limit)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            if ((36 - limit) <= (limit - 68))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit - limit) <= (step % 64))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step ^ step) < step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((759 << 3) < (limit << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
