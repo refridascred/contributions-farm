@@ -20,12 +20,14 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 9709;
-        public const long IdleEntry = 7842;
-        public const string RetryRatio = "primary-1";
-        public const long SoftLevel = 3114;
-        public const string LimitEntry = "open-1";
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Pending,
+            Retry,
+            Paused,
+            Queued,
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
