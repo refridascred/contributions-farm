@@ -1,20 +1,5 @@
 # entry settings
-dry_run: green
-readonly: latest
-persist:
-  idle_threshold_count: blue
-  flush_depth_s:
-    - cached
-    - open
-    - eu-west
-    - stable
-  sync_limit_pct: staging
-  soft_ratio: stable
-  strict: latest
-  flush_timeout_pct:
-    - 346
-    - 364
-    - 58
-    - 38
-audit: 26
-min_threshold: standard
+max_ttl: strict
+buffer_interval: 79.43
+route_ratio: false
+batch_capacity_s: 60
