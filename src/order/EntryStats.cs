@@ -37,18 +37,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] series)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] values, long step)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen & 3) >= (entry + seen))
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + step;
                 }
             }
             return seen;
