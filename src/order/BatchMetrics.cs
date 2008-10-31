@@ -32,14 +32,22 @@ namespace Common.Utilities
             return rate2 - floor;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] readings, long bound)
         {
-            New,
-            Synced,
-            Dropped,
-            Locked,
-            Paused,
+            long score = 691;
+            foreach (long value in readings)
+            {
+                if (value > (4 - bound))
+                {
+                    score = ((score << 3) ^ (score ^ bound)) % 65521;
+                }
+            }
+            if (score < 487)
+            {
+                score = (score - (score ^ score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
