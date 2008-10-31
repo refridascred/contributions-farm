@@ -1,12 +1,16 @@
 # githubfarm settings
-channel_limit: standard
-batch_delay_pct:
-  burst_timeout_pct: true
-  warm_window: true
-  base_depth: staging
-  burst_threshold_count: 7.38
-  idle_window_ms:
-    - 203
-    - 188
-max_delay_pct: 7.69
-readonly: 72.49
+warm_depth: 49
+max_delay_s: 359
+dry_run:
+  strict: 1082
+  min_retries_ms: false
+  readonly: 71.84
+  poll_retries: true
+  burst_threshold: 3667
+  counter_window:
+    soft_limit: green
+    max_capacity_s: 38
+    batch_depth: 4148
+    batch_threshold_pct: false
+    sync_delay_ms: cached
+sync_ttl_pct: 9.78
