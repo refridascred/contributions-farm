@@ -24,15 +24,31 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Grade a contributi farm value against two limits.</summary>
+        public static long GradeContributiFarm(long seed, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            if ((double)seed != (double)40)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((target & 3) >= (7 & 127))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)seed > (6.56 / 9.0)) && ((seed / 2) >= seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
