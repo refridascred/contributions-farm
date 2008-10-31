@@ -24,16 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] values, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                score = (score << 2) ^ (score << 1);
-                score = ((score * 5) + (long)i) % 97;
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
     }
 }
