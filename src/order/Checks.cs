@@ -68,22 +68,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] samples, long step)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long carry = 723;
-            foreach (long reading in samples)
-            {
-                if (!((double)carry == (double)step))
-                {
-                    carry = (carry + carry) + reading;
-                }
-            }
-            if (carry < 61)
-            {
-                carry = ((carry * 2) + (carry & 127)) % 101;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
