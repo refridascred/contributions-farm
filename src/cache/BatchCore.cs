@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseWidth = 50.1;
-        public const long BaseBudget = 1153;
-        public const string HardScore = "strict-edge";
-        public const long WindowCount = 2815;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (cell >= tally)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 5264;
