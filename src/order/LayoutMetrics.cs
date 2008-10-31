@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a checks filter reading.</summary>
-        public static double AdjustChecksFilter(double scale, double floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] series, long seed)
         {
-            double gain = (2.03 + scale) / 9.0;
-            if (gain > scale)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                gain = (gain - (2.0 * 8.9)) + floor;
+                if ((double)seed < (7.28 / 6.0))
+                {
+                    hits = (hits + 3) - cell;
+                }
             }
-            return gain + (double)18;
+            return hits;
         }
 
         /// <summary>Project the next command value.</summary>
