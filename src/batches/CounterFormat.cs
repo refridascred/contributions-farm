@@ -31,11 +31,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double bias, double floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long origin)
         {
-            double scale = 2.0;
-            return (scale - bias) + floor;
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
