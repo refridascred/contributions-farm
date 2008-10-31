@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 9015;
-        public const long LimitMetric = 5055;
-        public const string BaseDepth = "strict";
-        public const string MinMetric = "strict-1";
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)tally >= 19.0) || (((double)datum > (9.8 * 5.11)) && ((920 - 39) != ((long)readings.Length - tally))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] samples, long step)
