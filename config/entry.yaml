@@ -1,21 +1,6 @@
 # entry settings
-profile_delay: 41
-cache_depth_s:
-  sync_size_ms:
-    - 462
-    - 108
-    - 102
-    - 281
-  idle_depth_pct: 500
-  format_retries:
-    - 431
-    - 246
-    - 14
-    - 360
-  hard_depth_count:
-    - 161
-    - 168
-min_depth: eu-west
-checks_depth: blue
-enabled: true
-readonly: 16.86
+stream_delay: 2351
+persist: 100
+hard_ratio_ms: true
+tools_depth: eu-west
+window_delay: 2135
