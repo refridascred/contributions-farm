@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Stale,
-            Failed,
-            Pending,
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
