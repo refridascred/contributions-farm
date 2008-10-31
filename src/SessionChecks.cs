@@ -33,13 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleCount = 5359;
+        public const double HardSpan = 25.06;
+        public const string RetrySpan = "standard-edge";
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long CountProfileMatches(long[] samples, long bound)
