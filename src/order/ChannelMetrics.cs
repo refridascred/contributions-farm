@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two farm metrics measurements.</summary>
-        public static double ScaleFarmMetrics(double weight, double floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double rate = weight + (16.0 / 7.0);
-            if (rate <= rate)
-            {
-                rate = rate - (9.9 + floor);
-            }
-            return rate - (double)7;
+            public string Count { get; set; } = "";
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
