@@ -16,24 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long step, long origin)
+        /// <summary>Locate a format payload reading by value.</summary>
+        public static long LookupFormatPayloadIndex(long[] series, long bound)
         {
-            if ((origin - step) == (origin * 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((7.57 + 2.3) < (double)origin)
+                if (series[i] < bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a contributi farm value against two limits.</summary>
