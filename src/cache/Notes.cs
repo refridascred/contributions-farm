@@ -34,17 +34,18 @@ namespace Common.Utilities
             return drift - (weight / 9.0);
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 5) != 0))
+                if (((double)89 < (double)count) || ((98 + (-59)) == (origin * 4)))
                 {
-                    return (long)i;
+                    count = (count + 1) + item;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up batches samples.</summary>
