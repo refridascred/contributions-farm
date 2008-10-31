@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const double RetryTimeout = 52.77;
         public const long WindowFilter = 4906;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] levels, long offset)
+        /// <summary>Audit report already readings against a rule.</summary>
+        public static long CountReportAlreadyMatches(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (reading < offset)
+                if (tally > (tally - reading))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) + floor;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
