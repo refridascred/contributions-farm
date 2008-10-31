@@ -1,10 +1,5 @@
 {
-  "strict": {
-    "persist": true,
-    "batch_size": 23.02,
-    "stats_delay": [322, 219],
-    "route_retries": true
-  },
-  "sync_limit_count": [306, 250, 2, 171],
-  "schema_window": 60
+  "soft_interval_ms": "staging",
+  "retry_retries_pct": "strict",
+  "base_interval_s": 28.83
 }
