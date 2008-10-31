@@ -53,13 +53,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Idle,
-            Queued,
-            Synced,
-            Closed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardBudget = 4815;
+        public const string MinLevel = "open";
+        public const double LimitMetric = 64.88;
     }
 }
