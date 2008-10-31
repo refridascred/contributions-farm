@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const double WindowSize = 56.49;
         public const double MinCache = 27.9;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 5939;
-        public const long BurstScore = 9219;
-        public const long BaseBudget = 2536;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] samples)
+        {
+            long state = 405;
+            foreach (long sample in samples)
+            {
+                state = (state + state) % 255;
+                if ((sample % 8) <= (state + sample))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TallyContributi(long[] readings, long offset)
