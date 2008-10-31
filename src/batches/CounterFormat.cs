@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] series, long seed)
         {
-            long mark = -43;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 2) + (item / 2)) % 97;
-                mark = (mark - (95 + mark)) % 1000;
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
