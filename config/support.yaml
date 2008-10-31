@@ -1,36 +1,11 @@
 # support settings
-idle_ttl_ms:
-  compress: 91
-  base_capacity_count: 60
-  warm_threshold_s:
-    buffer_capacity: 3039
-    githubfarm_window: primary
-    metric_capacity: standard
-    max_retries_ms: 100
-    max_size_count: 6394
-  soft_depth_count: eu-west
-  dry_run: 60
-min_window_count:
-  schema_limit: strict
-  hard_ttl_count: strict
-  batch_limit_s:
-    - 203
-    - 212
-    - 31
-  sync_limit_count:
-    burst_ratio_ms: false
-    editor_ttl: 88
-    sync_interval_pct: 27
-compress: stable
-cluster_depth: fallback
-audit:
-  strict: false
-  cache_window: false
-  hard_interval_ms: 53.7
-  context_capacity: 60
-  compress:
-    - edge
-    - open
-    - stable
-    - local
-account_interval: 80.73
+min_capacity_count: 59.66
+batch_interval:
+  - 234
+  - 184
+enabled: 53
+notes_capacity: standard
+dry_run:
+  - 126
+  - 209
+  - 273
