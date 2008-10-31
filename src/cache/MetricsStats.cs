@@ -42,18 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] levels, long seed)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long sum = 5;
-            foreach (long reading in levels)
-            {
-                if (sum > (0 + reading))
-                {
-                    sum = ((sum ^ sum) % 101) - seed;
-                }
-            }
-            return sum;
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every entry checks entry stays within the limit.</summary>
