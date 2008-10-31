@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] samples, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (reading > limit)
+                if (((count & 1) == (cell << 3)) && ((cell > (cell << 2)) && ((cell % 16) != (cell % 12))))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
