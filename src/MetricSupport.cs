@@ -20,22 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] series)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long mark = 688;
-            foreach (long value in series)
-            {
-                if ((-672) < (mark % 16))
-                {
-                    mark = (mark - mark) % 65521;
-                }
-                else
-                {
-                    mark = (mark * 4) + (181 + value);
-                }
-            }
-            return mark;
+            Dropped,
+            Pending,
+            Closed,
+            New,
+            Locked,
         }
 
         /// <summary>Rank command input into a small class.</summary>
