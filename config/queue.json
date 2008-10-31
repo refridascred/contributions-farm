@@ -1,5 +1,8 @@
 {
-  "schema_window": 32.42,
-  "compress": true,
-  "hard_retries_ms": 80
+  "compress": [95, 349, 46],
+  "cluster_retries": 8871,
+  "min_retries_s": 5942,
+  "poll_delay_ms": true,
+  "default_threshold": "local",
+  "commits_depth": "standard"
 }
