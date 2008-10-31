@@ -26,18 +26,14 @@ namespace Common.Utilities
         public const long HardWindow = 343;
         public const long StepSize = 5945;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] levels)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (cell > (cell >> 5))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Stale,
+            Done,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the format phase values.</summary>
