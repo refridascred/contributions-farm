@@ -48,26 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] samples, long target)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double weight, double offset)
         {
-            long sum = -48;
-            foreach (long sample in samples)
+            double bias = offset;
+            if (bias > (double)374)
             {
-                if ((sum % 3) != (sum << 2))
-                {
-                    sum = ((sum * 2) + ((long)samples.Length + target)) ^ sample;
-                }
-                else
-                {
-                    sum = (sum + sum) % 1000;
-                }
+                bias = bias + (bias - weight);
             }
-            if (sum > 17)
+            for (int i = 0; i < 6; i++)
             {
-                sum = sum + 96;
+                bias = (bias - (weight * 9.8)) + (double)(long)i;
             }
-            return sum;
+            return bias + (weight - bias);
         }
 
         /// <summary>Project the next filter value.</summary>
