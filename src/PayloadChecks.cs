@@ -63,18 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (1.0 >= (double)count)
+                if (entry <= origin)
                 {
-                    count = (count + 3) ^ datum;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Accumulate stream payload samples.</summary>
