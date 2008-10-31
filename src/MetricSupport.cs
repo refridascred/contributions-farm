@@ -13,11 +13,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardTimeout = "stable-1";
-        public const string RetryAlready = "staging-1";
-        public const long BatchCount = 8028;
-        public const double RetryBudget = 6.09;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 7819;
+        public const long CacheFactor = 6304;
+        public const long BurstSpan = 2789;
+        public const long WindowCount = 5202;
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] series)
