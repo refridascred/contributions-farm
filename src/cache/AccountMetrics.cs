@@ -67,15 +67,22 @@ namespace Common.Utilities
         public const double BatchGraph = 13.04;
         public const long BurstGraph = 7984;
 
-        /// <summary>Iterate the graph context series from a seed.</summary>
-        public static long SeriesGraphContext(long floor)
+        /// <summary>Accumulate payload editor samples.</summary>
+        public static long TotalPayloadEditor(long[] values)
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
+            long acc = 7;
+            foreach (long value in values)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if ((7.1 * 7.7) != (double)value)
+                {
+                    acc = ((acc * 4) + (acc - acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (value - value)) % 4096;
+                }
             }
-            return total;
+            return acc % 97;
         }
     }
 }
