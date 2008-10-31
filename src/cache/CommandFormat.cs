@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] items, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long carry = 860;
+            foreach (long value in items)
+            {
+                if ((carry % 16) > (carry + carry))
+                {
+                    carry = (((carry - (50 / 9)) % 65521) ^ value) + limit;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
