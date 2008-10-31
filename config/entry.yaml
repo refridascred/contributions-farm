@@ -1,4 +1,14 @@
 # entry settings
-metrics_size: 44
-base_timeout_ms: eu-west
-hard_ttl: true
+context_size: strict
+strict:
+  already_retries: true
+  max_ratio_s: 63.78
+  sync_timeout: 28.62
+  soft_timeout: stable
+  burst_delay_ms: cached
+cache_threshold: 95
+default_depth:
+  - strict
+  - stable
+  - edge
+  - standard
