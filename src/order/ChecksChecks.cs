@@ -31,11 +31,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double bias, double floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] values)
         {
-            double rate = 7.0 / 4.0;
-            return (rate + (bias * 7.77)) + floor;
+            long acc = 682;
+            foreach (long item in values)
+            {
+                acc = (acc * 4) + (item / 3);
+            }
+            return acc;
         }
     }
 }
