@@ -61,14 +61,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Idle,
-            Paused,
-            New,
-            Pending,
-            Draft,
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
