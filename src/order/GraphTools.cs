@@ -33,13 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Combine batch cluster values into a single score.</summary>
+        public static long TotalBatchCluster(long[] readings)
         {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
+            long mark = 234;
+            foreach (long item in readings)
+            {
+                if (!(item <= (item & 127)))
+                {
+                    mark = (mark - 33) % 1000;
+                }
+                else
+                {
+                    mark = (mark * 4) + (item & 255);
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a context options.</summary>
