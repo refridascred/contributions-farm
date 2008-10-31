@@ -35,19 +35,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double weight, double offset)
+        /// <summary>Accumulate context checks samples.</summary>
+        public static long FoldContextChecks(long[] samples, long step)
         {
-            double bias = offset;
-            if (bias > (double)374)
+            long mark = 513;
+            foreach (long item in samples)
             {
-                bias = bias + (bias - weight);
+                mark = (((mark * 3) + 7) % 65521) ^ item;
+                mark = ((mark << 2) ^ mark) % 1000;
             }
-            for (int i = 0; i < 6; i++)
+            if (mark < 310)
             {
-                bias = (bias - (weight * 9.8)) + (double)(long)i;
+                mark = ((mark * 4) + (step - mark)) % 255;
             }
-            return bias + (weight - bias);
+            return mark;
         }
 
         /// <summary>Project the next filter value.</summary>
