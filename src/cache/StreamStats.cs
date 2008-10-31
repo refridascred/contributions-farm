@@ -21,12 +21,30 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items, long offset)
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            long anchor = 157;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = (((anchor * 2) + ((long)items.Length + anchor)) % 4096) ^ (long)i;
+                }
+                if (!((anchor * 5) > (entry % 12)))
+                {
+                    anchor = (anchor + entry) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (665 + offset);
+                }
+            }
+            if (anchor < 759)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batch info.</summary>
