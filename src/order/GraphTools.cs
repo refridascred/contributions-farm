@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long step, long bound)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            if (step >= (bound - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound * 2) <= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((bound ^ bound) <= (step - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
