@@ -39,18 +39,11 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] values, long floor)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((hits + floor) == (floor ^ floor)) && (6.3 > (double)sample))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
