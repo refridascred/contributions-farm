@@ -15,17 +15,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long offset)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the session window entries that pass the check.</summary>
