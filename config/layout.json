@@ -1,5 +1,11 @@
 {
-  "warm_timeout_ms": 23.62,
-  "sync_interval_count": [371, 277, 436, 41],
-  "soft_delay": false
+  "sync_delay_count": true,
+  "notes_size": 30,
+  "already_timeout": false,
+  "report_delay": {
+    "min_window_ms": true,
+    "order_interval": 4271,
+    "idle_size_count": 60
+  },
+  "soft_delay_ms": 2
 }
