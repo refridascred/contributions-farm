@@ -12,9 +12,16 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-for item in strict open; do
+mode="${1:-open}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in blue eu-west legacy staging; do
     log "checking ${item}"
 done
-
-CHANNEL_LIMIT=162
-log "limit is ${CHANNEL_LIMIT}"
