@@ -62,18 +62,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit githubfarm editor readings against a rule.</summary>
-        public static long MeasureGithubfarmEditorMatches(long[] readings, long origin)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value < 8.48)
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
+            Failed,
+            Done,
+            Closed,
+            Paused,
         }
     }
 }
