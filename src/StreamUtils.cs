@@ -78,12 +78,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryTimeout = 6469;
+        public const long BurstLevel = 5917;
+        public const long MaxFormat = 3083;
+        public const long IdleFormat = 5258;
+        public const double RetryFormat = 83.87;
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool ValidateSessionBounds(long[] readings, long origin)
