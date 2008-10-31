@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] series, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long step, long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long prev = step ^ offset;
+            if (9.0 > (double)offset)
             {
-                if ((((double)count == (2.82 - 2.31)) || (((-2) + step) < (count + 10))) && ((count >> 5) < (count + cell)))
+                return 3;
+            }
+            else
+            {
+                if ((double)offset == (5.82 / 5.0))
                 {
-                    count = count + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((step & 31) >= (prev & 15))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((837 + 305) > step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
