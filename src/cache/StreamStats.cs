@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Iterate the queue batches series from a seed.</summary>
+        public static long IterateQueueBatches(long floor)
         {
-            Dropped,
-            Paused,
-            Active,
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a farm entry.</summary>
