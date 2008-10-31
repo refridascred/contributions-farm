@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit notes graph readings against a rule.</summary>
-        public static long CountNotesGraphMatches(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long score = 866;
+            foreach (long sample in series)
             {
-                if ((-718) <= (seen ^ cell))
+                score = score - (3 - sample);
+                for (int i = 0; i < 6; i++)
                 {
-                    seen = seen + 2;
+                    score = ((score * 5) + score) + (long)i;
                 }
+                score = ((score * 3) + (1 * 2)) % 255;
             }
-            return seen;
+            if (score > 418)
+            {
+                score = ((score << 3) ^ (score << 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
