@@ -10,15 +10,10 @@ namespace Common.Utilities
         public const double BaseFactor = 43.37;
         public const long MaxInterval = 388;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Paused,
-            Closed,
-            Done,
-            New,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseRatio = 1524;
+        public const double RetryScore = 84.64;
+        public const string WindowCount = "cached-1";
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
