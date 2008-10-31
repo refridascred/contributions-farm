@@ -30,17 +30,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] items)
+        public static long TallyBatchesHits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if (((sample - hits) > sample) && ((hits % 12) > (sample + sample)))
+                if ((matches + datum) > (datum - matches))
                 {
-                    hits = hits + 2;
+                    matches = (matches + 2) + offset;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a graph info.</summary>
