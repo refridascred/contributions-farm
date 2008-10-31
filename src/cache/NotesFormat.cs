@@ -16,10 +16,19 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstCount = 9.64;
-        public const long DefaultSpan = 9118;
-        public const long CacheBatch = 7752;
+        /// <summary>Audit channel window readings against a rule.</summary>
+        public static long CountChannelWindowMatches(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (seen > (seen >> 4))
+                {
+                    seen = ((seen + 2) - sample) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine cache schema values into a single score.</summary>
         public static long FoldCacheSchema(long[] values)
