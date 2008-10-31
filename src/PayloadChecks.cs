@@ -59,21 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context checks samples.</summary>
-        public static long FoldContextChecks(long[] samples, long step)
-        {
-            long mark = 513;
-            foreach (long item in samples)
-            {
-                mark = (((mark * 3) + 7) % 65521) ^ item;
-                mark = ((mark << 2) ^ mark) % 1000;
-            }
-            if (mark < 310)
-            {
-                mark = ((mark * 4) + (step - mark)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 2126;
+        public const long IdleSpan = 1932;
+        public const long StepSpan = 923;
+        public const string MaxTimeout = "local";
+        public const string CacheWidth = "alpha-edge";
 
         /// <summary>Project the next filter value.</summary>
         public static double ScaleFilter(double gain, double span)
