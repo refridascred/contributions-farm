@@ -1,5 +1,21 @@
 {
-  "sync_retries_s": true,
-  "enabled": [47, 203, 20, 321],
-  "readonly": false
+  "warm_delay": 2408,
+  "notes_ttl": 9,
+  "burst_capacity_pct": false,
+  "readonly": 250,
+  "persist": {
+    "hard_interval_s": "cached",
+    "persist": {
+      "max_ttl_ms": [182, 151, 137, 301],
+      "cache_ratio": "green",
+      "cache_size_ms": 2578,
+      "session_limit": "open",
+      "readonly": true
+    },
+    "cache_retries": false,
+    "sync_limit_s": "local",
+    "route_threshold": true,
+    "soft_ttl_pct": 51
+  },
+  "idle_timeout": 500
 }
