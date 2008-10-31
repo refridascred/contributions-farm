@@ -1,7 +1,11 @@
 {
-  "burst_threshold_count": 48,
-  "hard_size": 1512,
-  "burst_interval_s": "fallback",
-  "readonly": 6119,
-  "strict": [199, 246, 198, 274]
+  "stream_ttl": "stable",
+  "order_capacity": 43,
+  "flush_window_s": {
+    "farm_capacity": "open",
+    "channel_ratio": "strict",
+    "hard_timeout_count": 14.81
+  },
+  "burst_ttl": 60,
+  "tools_limit": 74.54
 }
