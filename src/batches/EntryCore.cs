@@ -17,18 +17,16 @@ namespace Common.Utilities
             return (rate - (bias * 9.4)) + gain;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long anchor = 6;
+            foreach (long entry in values)
             {
-                if (hits > (78 + hits))
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                anchor = ((anchor + anchor) % 101) + bound;
+                anchor = (anchor - (entry * 4)) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a counter header.</summary>
