@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitBudget = 8576;
-        public const long SoftSize = 6013;
-        public const double CacheChecks = 3.48;
-        public const long BatchSpan = 5834;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Draft,
+            New,
+            Failed,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long TotalMetrics(long[] levels)
