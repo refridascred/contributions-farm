@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            public double Size { get; set; }
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            long total = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(((-11) - (long)i) == (9 + 29)))
+                {
+                    total = total ^ (target / 3);
+                }
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
