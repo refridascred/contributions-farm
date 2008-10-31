@@ -26,9 +26,11 @@ namespace Common.Utilities
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
         {
-            Dropped,
-            New,
+            Draft,
             Paused,
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Count the token stats entries that pass the check.</summary>
