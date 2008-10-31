@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] readings, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (cell > bound)
+                if (!((380 < limit) && ((long)readings.Length == (count & 255))))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Hold a contributi header.</summary>
