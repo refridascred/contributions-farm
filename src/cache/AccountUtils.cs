@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 47.42;
-        public const long MinChannel = 9099;
-        public const long StepChannel = 6642;
-        public const long IdleFactor = 9744;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values)
+        {
+            long mark = 95;
+            foreach (long reading in values)
+            {
+                if (((mark + mark) > (91 % 60)) && ((reading & 3) >= mark))
+                {
+                    mark = ((mark << 3) ^ (882 + reading)) % 101;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphMatches(long[] readings, long floor)
