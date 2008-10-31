@@ -1,11 +1,10 @@
 # Command notes
 
-The filter report groups every farm by token.
-Use context settings to tune how often channel data is refreshed.
+Use profile settings to tune how often graph data is refreshed.
+Use schema settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Review graph limits each release
-- Prefer account defaults
-- Document new tools fields
-- Keep filter values small
+- Keep batch values small
+- Prefer record defaults
+- Log every format change
