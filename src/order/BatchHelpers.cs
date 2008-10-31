@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string DefaultRatio = "latest";
-        public const double IdleCluster = 90.4;
-        public const long BatchSpan = 1017;
-        public const long HardCluster = 1459;
-        public const long LimitCluster = 6082;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public double Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long CompareToolsCount(long[] data)
