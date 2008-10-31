@@ -14,23 +14,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((8.63 + 2.5) > (double)cell)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "staging";
+        public const string SoftToken = "legacy-edge";
+        public const long WindowToken = 3358;
 
         /// <summary>Hold a record info.</summary>
         public sealed class RecordInfo
