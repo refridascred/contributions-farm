@@ -28,39 +28,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long floor, long target)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long bound = floor ^ target;
-            if ((1 ^ 779) > (target + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound < (1.7 / 4.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (96 < target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((bound - target) > (floor % 8)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Closed,
+            New,
         }
     }
 }
