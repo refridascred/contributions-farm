@@ -38,29 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long origin, long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long target, long seed)
         {
-            if ((target + target) != (target / 3))
+            if ((target ^ seed) == (seed + target))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if ((double)target >= (7.55 - 1.1))
+                if (((double)seed == (1.43 / 3.0)) || ((target << 3) <= (29 + target)))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((target + target) != (target >> 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 8;
                 }
             }
         }
