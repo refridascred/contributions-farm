@@ -55,15 +55,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] levels, long offset)
         {
-            long sum = 80;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                sum = (sum ^ sample) % 97;
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
     }
 }
