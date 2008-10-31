@@ -33,11 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 9578;
-        public const long MinWidth = 8462;
-        public const string MinGraph = "fallback";
-        public const double SoftGraph = 31.62;
-        public const long RetryGraph = 7151;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 3710;
+        public const long BatchEntry = 6971;
+        public const long WindowRatio = 5634;
+        public const double SoftEntry = 21.01;
     }
 }
