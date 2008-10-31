@@ -19,29 +19,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long target, long target2)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long seed, long limit)
         {
-            long next = target + target2;
-            if ((next + 3) <= (next ^ target2))
+            if ((double)seed > (4.1 * 6.34))
             {
                 return 1;
             }
             else
             {
-                if ((double)target2 < (double)next)
+                if (!((seed % 16) <= (limit & 127)))
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    if (((target >> 3) < 528) || ((target2 + target) <= (target % 97)))
+                    if (!(298 >= (seed - seed)))
                     {
-                        return 5;
+                        return 2;
                     }
                     else
                     {
-                        return 0;
+                        return 3;
                     }
                 }
             }
