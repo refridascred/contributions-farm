@@ -54,16 +54,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] data, long floor)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (total + ((long)i - total)) % 4096;
-                total = ((total * 2) + (long)i) % 101;
+                if ((data[i] <= floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
