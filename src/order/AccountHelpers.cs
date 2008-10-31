@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 4006;
+        public const double MinRatio = 73.63;
+        public const string CacheContributi = "cached-v2";
+        public const string WindowFactor = "latest-edge";
+        public const double SoftRatio = 26.74;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long StepEditor(long step)
