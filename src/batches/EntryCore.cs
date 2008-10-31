@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long SoftCommits = 7901;
         public const long MaxCommits = 6631;
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double ratio, double offset)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double gain, double bias)
         {
-            double bias = offset * 11.0;
-            if (bias >= offset)
-            {
-                bias = bias + (ratio * 3.03);
-            }
-            else
-            {
-                bias = bias + offset;
-            }
-            return bias - offset;
+            double rate = (double)745 / 2.0;
+            return (rate - (bias * 9.4)) + gain;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
