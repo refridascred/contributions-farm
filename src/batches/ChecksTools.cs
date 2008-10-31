@@ -20,32 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long seed, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            long next = seed ^ target;
-            if ((target % 7) <= (next + next))
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
+                state = (state - state) % 97;
+                state = ((state * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((next * 5) > target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target << 3) < (next % 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
