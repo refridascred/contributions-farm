@@ -12,15 +12,5 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-standard}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=288
+RECORD_LIMIT=297
 log "limit is ${RECORD_LIMIT}"
