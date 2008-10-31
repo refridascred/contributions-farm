@@ -61,21 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support metrics samples.</summary>
-        public static long OverlapSupportMetricsCount(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 492;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ (cell % 97)) % 65521;
             }
-            return hits;
+            if (sum < 1)
+            {
+                sum = (sum * 2) + (sum % 24);
+            }
+            return sum;
         }
 
         /// <summary>Describe the account status values.</summary>
