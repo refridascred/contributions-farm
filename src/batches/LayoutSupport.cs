@@ -45,19 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics counter readings against a bound.</summary>
-        public static bool VerifyMetricsCounterLimits(long[] series, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (reading <= origin)
+                if (reading < floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Digest a series of contributi context entries.</summary>
