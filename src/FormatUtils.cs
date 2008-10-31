@@ -69,21 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] levels)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (step > (7 >> 5))
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + datum;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
