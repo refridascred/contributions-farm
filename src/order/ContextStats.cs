@@ -42,11 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 1119;
-        public const double HardCluster = 12.78;
-        public const long MinWidth = 2793;
-        public const long BatchCluster = 180;
-        public const long LimitCluster = 946;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Pending,
+            Dropped,
+            Synced,
+        }
     }
 }
