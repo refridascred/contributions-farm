@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double rate, double span)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long step)
         {
-            double rate2 = rate;
-            for (int i = 0; i < 8; i++)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                rate2 = (rate2 - (span - rate2)) + (double)(long)i;
+                if (!((total & 7) >= (long)i))
+                {
+                    total = total + (step - total);
+                    total = (total ^ (3 + 86)) % 101;
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return rate2 + (rate * 6.0);
+            return total;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
