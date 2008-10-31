@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const double RetryChecks = 72.39;
         public const long DefaultSpan = 8716;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 47.41;
-        public const long HardMetric = 7698;
-        public const long BatchMetric = 8191;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long RankChannel(long bound, long offset)
