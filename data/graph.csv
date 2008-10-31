@@ -1,11 +1,6 @@
-id,state,label,ratio
-1,15.79,132,13.93
-2,stable,499,eu-west
-3,43.58,10.51,45.75
-4,15.56,37.35,414
-5,blue,54.13,standard
-6,606,621,661
-7,stable,214,219
-8,legacy,185,44
-9,818,152,103
-10,standard,staging,open
+id,count,weight,score
+1,open,fallback,35.97
+2,80.95,78.0,907
+3,270,stable,primary
+4,215,433,271
+5,78.71,682,green
