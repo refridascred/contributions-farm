@@ -59,21 +59,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] data)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long bound, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step = bound + limit;
+            if ((limit - limit) >= 80)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (bound < (limit - limit))
                 {
-                    if ((data[i] - data[j]) != 7)
+                    return 3;
+                }
+                else
+                {
+                    if (168 < (step + step))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((limit + 2) != ((-49) * 4)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
