@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long SoftFactor = 7800;
         public const long DefaultFactor = 6024;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long PairSupportCount(long[] items)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowLimits(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample <= step)
                 {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
