@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double scale, double floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] levels, long limit)
         {
-            double weight = scale;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = (weight - (weight + floor)) + (double)(long)i;
+                if ((levels[i] <= limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight + floor;
+            return -1;
         }
 
         /// <summary>Hold a layout header.</summary>
