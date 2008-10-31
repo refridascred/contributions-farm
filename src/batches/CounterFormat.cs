@@ -20,24 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] items, long seed)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long bound, long origin)
         {
-            long state = -790;
-            foreach (long item in items)
+            if (origin < ((-612) * 2))
             {
-                state = (((state << 2) ^ (state + state)) % 97) + item;
-                state = (state - (seed + seed)) % 4096;
-                if ((double)state >= (1.5 / 4.0))
+                return 2;
+            }
+            else
+            {
+                if (((958 * 4) == (9 - origin)) || ((5.8 + 1.0) <= (double)origin))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (state < 38)
-            {
-                state = (state + (state << 3)) % 255;
-            }
-            return state;
         }
 
         /// <summary>Match up graph samples.</summary>
