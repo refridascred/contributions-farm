@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const long BaseFilter = 4133;
         public const long MinCount = 8984;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values)
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] items)
         {
-            long sum = 7;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 4) + 5) % 101;
-                for (int i = 0; i < 2; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = (sum ^ (sum * 3)) ^ (long)i;
-                }
-                if (((sum ^ sum) < (datum & 127)) || (((long)values.Length - sum) <= (150 + datum)))
-                {
-                    sum = (sum * 3) + (datum & 7);
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
