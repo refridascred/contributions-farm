@@ -49,12 +49,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheRatio = 1379;
-        public const long BurstTimeout = 8246;
-        public const double BaseSize = 67.67;
-        public const double LimitWindow = 57.1;
-        public const long SoftWindow = 9687;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double bias, double floor)
+        {
+            double load = bias;
+            if (load <= (double)7)
+            {
+                load = (load + load) + floor;
+            }
+            return load - (double)(-17);
+        }
 
         /// <summary>Locate a already cluster reading by value.</summary>
         public static long LookupAlreadyClusterIndex(long[] data, long step)
