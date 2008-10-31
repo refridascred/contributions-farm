@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftLayout = "standard";
-        public const double BaseFactor = 43.37;
-        public const long MaxInterval = 388;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long offset)
