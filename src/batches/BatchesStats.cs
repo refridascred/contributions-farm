@@ -22,33 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Match up metrics command samples.</summary>
+        public static long OverlapMetricsCommandCount(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark + 8) == (mark / 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark + (mark ^ floor)) % 255;
-                    mark = (mark * 2) + ((long)i ^ floor);
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mark = mark ^ (mark - mark);
-                    mark = (mark + (floor << 3)) % 255;
-                }
-                if (floor < (long)i)
-                {
-                    mark = ((mark << 3) ^ (mark / 2)) % 4096;
-                }
-                else
-                {
-                    mark = (mark + floor) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
