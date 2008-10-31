@@ -68,18 +68,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stream already samples are out of range.</summary>
-        public static long MeasureStreamAlreadyMatches(long[] levels, long limit)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (item < (136 / 8))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Ready,
+            Closed,
+            Failed,
         }
     }
 }
