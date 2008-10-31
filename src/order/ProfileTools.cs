@@ -63,18 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] samples, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seen * 5) == (origin * 2))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
     }
 }
