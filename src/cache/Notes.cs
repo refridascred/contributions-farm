@@ -40,18 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] levels, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)limit <= (8.8 - 10.0))
+                if ((data[i] >= offset) && ((data[i] % 2) == 0))
                 {
-                    hits = (hits + 2) + item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
