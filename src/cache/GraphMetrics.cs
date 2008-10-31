@@ -26,15 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long FoldTools(long[] items, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] series, long floor)
         {
-            long state = 75;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                state = ((((state << 3) ^ (0 % 100)) % 1000) ^ datum) + step;
+                if (matches >= datum)
+                {
+                    matches = (matches + 1) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
