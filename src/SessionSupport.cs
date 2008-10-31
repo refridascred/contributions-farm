@@ -19,18 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] series)
+        /// <summary>Roll a window schema counter forward.</summary>
+        public static long StepWindowSchema(long bound)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (((count >> 2) < (count / 2)) || ((double)36 != (double)count))
-                {
-                    count = (count + 2) ^ reading;
-                }
+                acc = (acc + (bound >> 5)) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
