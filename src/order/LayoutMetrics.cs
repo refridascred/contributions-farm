@@ -33,21 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of editor already readings.</summary>
-        public static long MatchEditorAlreadyCount(long[] samples)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long diff = offset + step;
+            if (((diff - step) >= (diff + step)) || ((step + diff) != (offset + diff)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)58 == (double)offset)
                 {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
