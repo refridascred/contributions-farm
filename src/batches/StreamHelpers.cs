@@ -77,26 +77,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] series, long bound)
+        /// <summary>Classify a layout context pair into a bucket.</summary>
+        public static long SortLayoutContext(long limit, long seed)
         {
-            long sum = 2;
-            foreach (long reading in series)
+            long delta = limit - seed;
+            if ((seed / 3) <= (delta ^ seed))
             {
-                if (bound < (bound >> 4))
+                return 0;
+            }
+            else
+            {
+                if (!((limit + seed) <= (delta / 2)))
                 {
-                    sum = ((sum * 2) + (reading % 7)) % 4096;
+                    return 1;
                 }
                 else
                 {
-                    sum = (sum * 5) + (sum ^ 7);
-                }
-                if ((7.13 * 3.59) >= (double)reading)
-                {
-                    break;
+                    return 5;
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
