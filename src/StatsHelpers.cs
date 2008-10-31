@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit token record readings against a rule.</summary>
-        public static long AuditTokenRecordOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((tally - tally) >= (tally * 3)) || (((636 / 6) < reading) || ((reading + tally) <= reading)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 3725;
+        public const long SoftFactor = 7800;
+        public const long DefaultFactor = 6024;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long FindMetricIndex(long[] samples, long origin)
