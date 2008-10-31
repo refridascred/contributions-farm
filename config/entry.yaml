@@ -1,25 +1,16 @@
 # entry settings
-persist:
-  sync_capacity_pct: 6892
-  strict: 69.62
-  min_capacity: latest
-  notes_ttl:
-    - local
-    - local
-    - edge
-    - fallback
-  hard_window: 10.92
-notes_retries: false
-hard_capacity_s: true
-max_capacity_count:
-  cache_ratio_ms: 3579
-  default_interval_count: 9.0
-  min_interval_ms: 40
-  hard_interval:
-    - 277
-    - 474
-    - 107
-    - 263
-  enabled: 93.38
-  metrics_retries: 91
-base_retries_s: strict
+schema_interval:
+  cache_size_ms:
+    hard_depth_pct: 78
+    idle_ratio_count: 66
+    burst_threshold_count: 1686
+    cluster_capacity:
+      - legacy
+      - open
+    batch_threshold_pct: stable
+  cache_ratio_pct: 1024
+  soft_capacity: 44
+  contributi_limit: 45.84
+  dry_run: 8398
+sync_ttl_count: 4644
+batch_window_count: 30
