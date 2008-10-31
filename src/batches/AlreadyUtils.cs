@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Synced,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 4105;
+        public const double SoftWidth = 57.79;
+        public const long MinTools = 9687;
+        public const double LimitDepth = 27.83;
+        public const long HardTimeout = 6543;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsHits(long[] series)
