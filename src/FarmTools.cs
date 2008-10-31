@@ -27,14 +27,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] items)
         {
-            Stale,
-            Pending,
-            Ready,
-            Idle,
-            Closed,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((-4) < sample)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
