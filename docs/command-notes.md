@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-The route module keeps account values in sync with the batches cache.
-Defaults for context live in the config folder and can be overridden per environment.
+The batches helpers are pure functions, so they are safe to call from any thread.
+A session that stays idle for too long is moved to the record list.
+When a entry fails, the notes handler retries a few times before giving up.
+
+Use payload settings to tune how often tools data is refreshed.
+Keep buffer and record names short and lowercase.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Log every farm change
-- Document new contributi fields
-- Keep farm values small
+- Log every support change
+- Document new cache fields
+- Review context limits each release
