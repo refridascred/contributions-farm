@@ -44,10 +44,9 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "staging";
-        public const long RetryLevel = 2821;
-        public const long BurstAccount = 9606;
-        public const long MinWidth = 1538;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string SoftSupport = "cached-1";
+        public const long RetrySupport = 870;
+        public const double RetryFactor = 69.06;
     }
 }
