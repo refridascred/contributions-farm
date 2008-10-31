@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the queue batches series from a seed.</summary>
-        public static long IterateQueueBatches(long floor)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            long state = -19;
+            foreach (long entry in levels)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                state = state + (entry >> 3);
+                state = (state - (entry + bound)) % 1000;
             }
-            return mix;
+            if (state < 1)
+            {
+                state = (state ^ 9) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a farm entry.</summary>
