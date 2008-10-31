@@ -22,12 +22,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 4970;
-        public const string MaxFactor = "legacy-1";
-        public const double SoftCache = 16.3;
-        public const long WindowCache = 2727;
-        public const long MinCache = 2540;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long floor, long limit)
+        {
+            long offset = floor + limit;
+            if ((floor + limit) == (limit + 218))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit > (limit - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset >> 5) <= floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long LookupEntryIndex(long[] readings, long seed)
