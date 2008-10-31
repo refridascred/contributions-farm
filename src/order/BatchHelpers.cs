@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] readings, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (((datum / 7) >= datum) || ((double)step > 0.44))
+                if ((((6 - offset) == (offset << 3)) || ((5.5 * 0.5) != (double)offset)) && (2.19 > (double)seen))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a counter header.</summary>
