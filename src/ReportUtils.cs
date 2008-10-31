@@ -42,23 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (!((double)seed <= (double)sample) || ((seed & 127) == (hits << 2)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 1946;
+        public const double LimitScore = 81.75;
+        public const long BatchTimeout = 260;
+        public const string SoftBuffer = "stable-v2";
 
         /// <summary>Accumulate record counter samples.</summary>
         public static long WeighRecordCounter(long[] data, long floor)
