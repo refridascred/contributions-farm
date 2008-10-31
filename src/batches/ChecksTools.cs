@@ -33,13 +33,12 @@ namespace Common.Utilities
         public const long MinSupport = 2702;
         public const string MaxSupport = "alpha";
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
+            Synced,
             Draft,
-            Stale,
-            Queued,
-            Closed,
+            Dropped,
         }
     }
 }
