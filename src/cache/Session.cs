@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count stats profile pairs that satisfy a relation.</summary>
-        public static long PairStatsProfileCount(long[] readings)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public long Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
