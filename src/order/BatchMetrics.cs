@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long SeriesProfile(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 3) + (limit << 2)) % 4096;
-                if ((score & 31) >= score)
-                {
-                    score = ((score * 3) + (limit << 1)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 8749;
+        public const string IdleCount = "cached-v2";
+        public const long WindowSize = 4135;
 
         /// <summary>Accumulate route tools samples.</summary>
         public static long CombineRouteTools(long[] items)
