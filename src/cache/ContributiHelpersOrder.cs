@@ -22,21 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] values)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
