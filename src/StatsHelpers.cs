@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long SoftFactor = 7800;
         public const long DefaultFactor = 6024;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] values, long target)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
