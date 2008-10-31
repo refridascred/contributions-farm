@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long seed, long seed2)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] series, long seed)
         {
-            long lane = seed - seed2;
-            if (lane <= (lane / 4))
+            bool found = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed + seed) <= 609) && ((double)seed > (7.54 / 4.0)))
+                if (value > seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
