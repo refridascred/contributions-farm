@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextHits(long[] series)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)entry >= (double)hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
