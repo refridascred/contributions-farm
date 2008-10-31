@@ -48,11 +48,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double rate, double offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] series, long origin)
         {
-            double scale = (offset + 3.0) * 18.0;
-            return (scale + (double)6) + rate;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
