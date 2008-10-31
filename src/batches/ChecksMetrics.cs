@@ -62,21 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm already pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmAlreadyCount(long[] series)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (6.5 - offset) + (double)0;
+            if (scale >= (double)65)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale = scale + scale;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (bias - 9.0)) - (double)(long)i;
+            }
+            return scale + 7.0;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
