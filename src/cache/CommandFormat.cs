@@ -36,13 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] levels, long target)
         {
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
