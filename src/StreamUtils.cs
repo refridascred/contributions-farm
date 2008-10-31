@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many notes graph samples are out of range.</summary>
-        public static long CountNotesGraphHits(long[] items)
+        /// <summary>Classify a token order pair into a bucket.</summary>
+        public static long RankTokenOrder(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((offset ^ offset) < (bound % 10))
             {
-                if ((((value + hits) > 3) || ((double)value <= (double)hits)) || (((double)value < 6.0) && ((value << 1) >= (value >> 5))))
+                return 0;
+            }
+            else
+            {
+                if ((double)offset < (2.11 - 13.0))
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)bound > (8.8 + 1.47))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound <= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next account value.</summary>
