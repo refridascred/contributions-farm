@@ -39,13 +39,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            Dropped,
-            Paused,
-            Active,
-            Ready,
+            long total = 77;
+            foreach (long cell in samples)
+            {
+                if ((57 > (cell >> 4)) || ((total + cell) < cell))
+                {
+                    total = (total + (total + cell)) % 65521;
+                }
+            }
+            if (total > 178)
+            {
+                total = (total ^ total) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
