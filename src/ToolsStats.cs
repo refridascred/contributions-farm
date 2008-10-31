@@ -44,31 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long bound, long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            if ((target + 444) > (bound - bound))
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((bound - bound) < target) || ((double)bound != (double)target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((12.0 <= (double)target) && (target >= (619 - bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Check that every stats already entry stays within the limit.</summary>
