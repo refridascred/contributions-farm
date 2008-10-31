@@ -1,5 +1,24 @@
 {
-  "cluster_capacity": "staging",
-  "burst_size_s": 8458,
-  "burst_window": "green"
+  "persist": 1599,
+  "metric_timeout": {
+    "idle_depth_pct": {
+      "entry_depth": "eu-west",
+      "hard_capacity": 85,
+      "poll_ttl_count": 6,
+      "idle_window_count": "blue",
+      "contributi_ttl": "fallback"
+    },
+    "editor_interval": "staging",
+    "audit": 221,
+    "cache_interval": "standard",
+    "layout_size": "fallback",
+    "base_depth": {
+      "contributi_delay": "primary",
+      "warm_timeout": "eu-west",
+      "sync_size": "primary",
+      "min_ratio_count": 60
+    }
+  },
+  "dry_run": 77,
+  "poll_size_ms": 95.72
 }
