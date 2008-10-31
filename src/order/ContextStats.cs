@@ -41,16 +41,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] samples, long step)
+        /// <summary>Scale a account counter figure with a bias.</summary>
+        public static double BlendAccountCounter(double bias, double bias2)
         {
-            long mix = 1;
-            foreach (long reading in samples)
+            double mean = bias2;
+            if (mean > (double)7)
             {
-                mix = ((mix ^ (1 + 3)) ^ reading) + step;
-                mix = (mix << 3) ^ (780 & 1);
+                mean = mean + (bias / 8.0);
             }
-            return mix % 65521;
+            return mean + (bias2 - bias2);
         }
     }
 }
