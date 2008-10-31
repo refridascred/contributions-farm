@@ -45,21 +45,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Scale a graph metrics figure with a bias.</summary>
+        public static double ScaleGraphMetrics(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = weight;
+            if (scale > (double)(-69))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale - (weight * 1.0)) - offset;
             }
-            return seen;
+            else
+            {
+                scale = scale + 4.49;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (0.15 / 9.0)) - (double)(long)i;
+            }
+            return scale - (scale / 8.0);
         }
     }
 }
