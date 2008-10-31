@@ -32,18 +32,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] readings)
+        /// <summary>Count the token stats entries that pass the check.</summary>
+        public static long AuditTokenStatsOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (9 < (matches - matches))
+                if (!((datum - hits) > (hits - (long)series.Length)))
                 {
-                    matches = (matches + 2) + datum;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
