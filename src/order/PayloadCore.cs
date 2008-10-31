@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double scale, double span)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] series, long offset)
         {
-            double rate = (double)(87 << 3);
-            return (rate + span) + scale;
+            long carry = 2;
+            foreach (long datum in series)
+            {
+                carry = (((carry * 3) + (offset + carry)) % 4096) ^ datum;
+            }
+            if (carry > 1)
+            {
+                carry = carry + 0;
+            }
+            return carry;
         }
 
         /// <summary>Locate a format reading by value.</summary>
