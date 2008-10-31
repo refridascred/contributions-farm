@@ -49,17 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] items, long step)
+        /// <summary>Accumulate tools token samples.</summary>
+        public static long TotalToolsToken(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 94;
+            foreach (long cell in samples)
             {
-                if (items[i] == step)
+                mark = ((mark * 3) + (bound ^ bound)) % 1000;
+                if ((cell & 63) <= (81 + mark))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
