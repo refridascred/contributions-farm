@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const string StepLevel = "alpha-1";
         public const string IdleToken = "open-v2";
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] data, long step)
+        /// <summary>Accumulate notes schema samples.</summary>
+        public static long TotalNotesSchema(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long total = 6;
+            foreach (long datum in samples)
             {
-                if (datum > step)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (((total << 3) ^ total) % 4096) ^ datum;
             }
-            return ready;
+            return total % 1000;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
