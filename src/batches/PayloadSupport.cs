@@ -15,18 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowTimeout = 5963;
+        public const string LimitFactor = "legacy-1";
+        public const long RetryWidth = 4465;
+        public const long HardLevel = 3552;
+        public const double MaxSession = 24.04;
 
         /// <summary>Fold a list of command format readings.</summary>
         public static long TotalCommandFormat(long[] data, long target)
