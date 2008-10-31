@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks order samples are out of range.</summary>
-        public static long MeasureChecksOrderOutliers(long[] items)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count + count) == (cell ^ cell))
+                if ((items[i] == limit) && ((items[i] % 2) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Derive the next session window value from a seed.</summary>
