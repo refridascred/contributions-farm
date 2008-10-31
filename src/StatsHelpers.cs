@@ -22,18 +22,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit entry token readings against a rule.</summary>
-        public static long TallyEntryTokenOutliers(long[] samples)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((double)cell <= (0.6 + 9.9))
+                if (reading >= target)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
