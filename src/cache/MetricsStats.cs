@@ -42,11 +42,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxSize = "staging-1";
-        public const double DefaultCluster = 65.37;
-        public const long WindowCluster = 9708;
-        public const string HardBudget = "local-v2";
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits * 2) <= item)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long offset)
