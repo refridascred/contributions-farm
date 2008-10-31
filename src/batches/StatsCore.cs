@@ -41,13 +41,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
-        {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 4996;
+        public const long MaxRatio = 1181;
+        public const string MaxScore = "alpha";
+        public const long RetryMetrics = 9313;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool VerifyFormatLimits(long[] data, long origin)
