@@ -68,19 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double bias, double offset)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double load = offset;
-            if (load >= (offset - offset))
-            {
-                load = load - (2.34 + offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (double)6) + (double)(long)i;
-            }
-            return load + (bias * 3.2);
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
