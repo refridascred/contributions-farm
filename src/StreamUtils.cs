@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] items, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((sample >> 5) >= (hits / 6))
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
+            Synced,
+            Queued,
+            Stale,
         }
 
         /// <summary>Project the next account value.</summary>
