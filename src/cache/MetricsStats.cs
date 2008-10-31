@@ -25,30 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] items, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
-            long result = 51;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)items.Length > (4.6 - 3.61))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result ^ (bound + item);
-                }
-                else
-                {
-                    result = (result << 3) ^ (item + item);
-                }
-                if ((((long)items.Length * 5) <= (result * 5)) || (193 > (item + bound)))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (result > 12)
-            {
-                result = (result ^ (bound & 63)) % 255;
-            }
-            return result;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
