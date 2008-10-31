@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == limit) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepSpan = 88.08;
+        public const long StepCount = 5208;
+        public const long LimitPayload = 3155;
+        public const double WindowPayload = 52.17;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] values)
