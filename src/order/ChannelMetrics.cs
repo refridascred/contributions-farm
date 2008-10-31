@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Check that every report counter entry stays within the limit.</summary>
+        public static bool CheckReportCounterLimits(long[] series, long bound)
         {
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up format samples.</summary>
