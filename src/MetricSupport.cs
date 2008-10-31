@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 1205;
-        public const string BatchTimeout = "stable-1";
-        public const double DefaultInterval = 53.35;
+        /// <summary>Count the stats account entries that pass the check.</summary>
+        public static long AuditStatsAccountOutliers(long[] samples, long offset)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((10.0 + 14.0) < (double)value)
+                {
+                    count = (count + 3) - offset;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double ratio, double offset)
