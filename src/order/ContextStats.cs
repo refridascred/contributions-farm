@@ -44,15 +44,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a account counter figure with a bias.</summary>
-        public static double BlendAccountCounter(double bias, double bias2)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels, long offset)
         {
-            double mean = bias2;
-            if (mean > (double)7)
+            long acc = -612;
+            foreach (long value in levels)
             {
-                mean = mean + (bias / 8.0);
+                if (((acc + 4) > (acc + value)) && ((-5) > (offset / 4)))
+                {
+                    acc = (acc ^ offset) % 1000;
+                }
+                acc = acc + value;
             }
-            return mean + (bias2 - bias2);
+            if (acc < 951)
+            {
+                acc = ((acc << 3) ^ (offset - acc)) % 97;
+            }
+            return acc;
         }
     }
 }
