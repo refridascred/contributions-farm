@@ -42,16 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the farm contributi series from a seed.</summary>
-        public static long IterateFarmContributi(long step)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] samples, long bound)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                state = (state - state) % 65521;
-                state = ((state * 2) + (long)i) % 101;
+                if (((((long)samples.Length / 6) >= (seen & 127)) && ((338 << 3) <= ((-4) + bound))) && ((reading % 16) != (seen >> 5)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
