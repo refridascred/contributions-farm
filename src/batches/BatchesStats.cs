@@ -27,15 +27,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long step)
+        /// <summary>Derive the next token githubfarm value from a seed.</summary>
+        public static long StepTokenGithubfarm(long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                acc = (acc * 2) + (long)i;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
