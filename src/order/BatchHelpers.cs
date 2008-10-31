@@ -14,18 +14,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] levels, long seed)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double bias, double span)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            double ratio = span;
+            if (ratio < bias)
             {
-                if ((15.0 * 8.22) == (double)item)
-                {
-                    seen = (seen + 3) - seed;
-                }
+                ratio = ratio + (double)53;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (bias / 7.0);
+            }
+            return ratio - (ratio / 2.0);
         }
 
         /// <summary>Define window limits and defaults.</summary>
