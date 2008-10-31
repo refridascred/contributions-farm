@@ -28,12 +28,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double BlendQueue(double bias, double offset)
         {
-            Queued,
-            Closed,
-            Idle,
+            double rate = (offset - 5.0) + (bias - offset);
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate + offset;
         }
     }
 }
