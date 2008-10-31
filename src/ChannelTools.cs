@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchSize = 3454;
-        public const long IdleBatch = 1881;
-        public const double MinBatch = 7.03;
-        public const double BaseBatch = 66.35;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long floor, long bound)
+        {
+            if ((double)bound >= 6.0)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((14.0 * 15.0) == (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Accumulate support contributi samples.</summary>
         public static long TotalSupportContributi(long[] series, long target)
