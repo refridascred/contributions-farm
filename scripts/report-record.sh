@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached primary latest local; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-RECORD_LIMIT=220
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-standard}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
