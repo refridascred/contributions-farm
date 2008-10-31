@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            New,
-            Done,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MinScore = 89.99;
+        public const long HardSize = 3778;
+        public const long MinRoute = 3031;
+        public const string HardLevel = "alpha-edge";
+        public const string SoftDepth = "strict-edge";
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
