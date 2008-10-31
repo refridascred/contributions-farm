@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] readings)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally - tally) == (tally << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + datum;
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
