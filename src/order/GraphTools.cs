@@ -46,13 +46,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] data)
         {
-            New,
-            Stale,
-            Failed,
-            Ready,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally * 5) < value)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
