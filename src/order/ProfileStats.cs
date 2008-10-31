@@ -35,39 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch notes value against two limits.</summary>
-        public static long BucketBatchNotes(long seed, long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double scale, double bias)
         {
-            long delta = seed + bound;
-            if ((double)bound <= (6.0 / 7.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((delta % 3) > delta))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((9.08 / 5.0) > (double)bound) && (70 >= (seed * 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((delta & 63) >= seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double scale2 = (double)(655 ^ 11);
+            return (scale2 - scale) + bias;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
