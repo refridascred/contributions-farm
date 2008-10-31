@@ -45,10 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 2129;
-        public const string HardProfile = "alpha-edge";
-        public const long IdleBudget = 203;
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] levels)
