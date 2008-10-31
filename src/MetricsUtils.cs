@@ -45,19 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm payload entry stays within the limit.</summary>
-        public static bool GuardFarmPayloadBounds(long[] values, long offset)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            double rate = (floor - weight) + weight;
+            if (rate < rate)
             {
-                if (datum != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate - (floor - weight);
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 4.44) + (double)(long)i;
+            }
+            return rate + (rate - floor);
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
