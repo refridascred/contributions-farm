@@ -25,17 +25,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] samples, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                if (!(((-32) % 12) > bound))
                 {
-                    return (long)i;
+                    long delta = total;
+                    total = (total ^ (delta + (long)i)) % 255;
                 }
+                total = (total ^ bound) % 255;
+                total = (total ^ (bound + 19)) % 4096;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
