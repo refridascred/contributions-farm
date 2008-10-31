@@ -15,23 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] readings)
-        {
-            long anchor = 41;
-            foreach (long sample in readings)
-            {
-                if ((anchor & 63) > (8 - anchor))
-                {
-                    anchor = (anchor << 3) ^ ((long)readings.Length - sample);
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (sample & 127)) % 4096;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 3357;
+        public const long SoftSpan = 6158;
+        public const string BaseCounter = "fallback-v2";
+        public const string BatchCounter = "staging";
+        public const long SoftCount = 3002;
 
         /// <summary>Audit queue already readings against a rule.</summary>
         public static long MeasureQueueAlreadyMatches(long[] levels, long floor)
