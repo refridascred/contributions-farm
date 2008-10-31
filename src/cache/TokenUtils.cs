@@ -14,18 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] series)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long mark = 1;
-            foreach (long cell in series)
-            {
-                if (5 > (cell << 1))
-                {
-                    mark = (mark - (cell << 1)) % 101;
-                }
-            }
-            return mark;
+            Ready,
+            Pending,
+            Active,
+            Done,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
