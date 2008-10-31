@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] items)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long limit, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long edge = limit - step;
+            if ((8.5 + 6.43) < (double)limit)
             {
-                if ((tally << 3) > (799 + 6))
+                return 5;
+            }
+            else
+            {
+                if ((64 / 5) == (step ^ step))
                 {
-                    tally = (tally + 2) - entry;
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit & 7) >= (edge & 63)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
