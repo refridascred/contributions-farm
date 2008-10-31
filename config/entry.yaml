@@ -1,22 +1,5 @@
 # entry settings
-retry_limit_count:
-  warm_interval_ms: green
-  warm_limit_ms: 64.42
-  enabled:
-    dry_run: false
-    readonly: 36.45
-    base_ttl_ms: 50
-    flush_limit_s: fallback
-    soft_window_pct: legacy
-    min_limit_ms: false
-  hard_window_ms:
-    - 316
-    - 444
-    - 489
-  cache_window_count: 60
-  githubfarm_threshold: 5642
-schema_limit: 1798
-min_interval: 71.44
-compress: primary
-min_retries_ms: 6374
-contributi_timeout: 86.0
+soft_ttl_pct: open
+max_retries: 70.67
+burst_interval: primary
+poll_interval_pct: 52.53
