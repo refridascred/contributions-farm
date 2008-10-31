@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long SoftFactor = 7800;
         public const long DefaultFactor = 6024;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] samples, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (samples[i] <= origin)
+                if (cell <= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
