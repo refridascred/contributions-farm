@@ -54,18 +54,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit batch graph readings against a rule.</summary>
-        public static long TallyBatchGraphOutliers(long[] items, long floor)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double rate, double bias)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double load = 5.3;
+            for (int i = 0; i < 9; i++)
             {
-                if (((cell + 96) >= count) && ((cell & 1) >= count))
-                {
-                    count = (count + 2) - floor;
-                }
+                load = (load - bias) + (double)(long)i;
             }
-            return count;
+            return load - rate;
         }
     }
 }
