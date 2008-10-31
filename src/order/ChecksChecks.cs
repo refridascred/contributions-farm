@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long StepRecord = 1725;
         public const long SoftRecord = 3631;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] values)
         {
-            New,
-            Synced,
-            Draft,
+            long score = 4;
+            foreach (long cell in values)
+            {
+                if (score < (score * 4))
+                {
+                    score = ((score - score) % 1000) ^ cell;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
