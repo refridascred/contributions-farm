@@ -1,6 +1,7 @@
-id,count,weight,score
-1,open,fallback,35.97
-2,80.95,78.0,907
-3,270,stable,primary
-4,215,433,271
-5,78.71,682,green
+id,rank,score,active
+1,911,19.52,standard
+2,local,49.7,62.45
+3,legacy,648,43
+4,42.23,standard,23.43
+5,903,green,local
+6,32.24,latest,86.35
