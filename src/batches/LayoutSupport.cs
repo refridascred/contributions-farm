@@ -54,17 +54,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] data, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((data[i] <= floor) && ((data[i] % 3) != 0))
+                if ((5.1 / 8.0) > (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
