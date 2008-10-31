@@ -27,16 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token githubfarm value from a seed.</summary>
-        public static long StepTokenGithubfarm(long offset)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] levels)
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                acc = (acc * 2) + (long)i;
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((count % 100) == (sample ^ sample))
+                {
+                    count = count + 3;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
