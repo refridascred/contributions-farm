@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double gain, double bias)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long step, long floor)
         {
-            double weight = gain * 4.32;
-            if (weight > (bias + bias))
+            if (step <= (step >> 2))
             {
-                weight = weight + (weight / 7.0);
+                return 3;
             }
             else
             {
-                weight = weight - (weight / 3.0);
+                if ((double)floor <= (2.3 * 4.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return weight + 3.4;
         }
 
         /// <summary>Project the next metrics metric value.</summary>
