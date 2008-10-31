@@ -37,20 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetrySize = 64.26;
+        public const string BaseTimeout = "primary-1";
+        public const long LimitCount = 7713;
+        public const string CacheWindow = "stable";
+        public const long BatchWindow = 1323;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double LimitWidth = 74.27;
