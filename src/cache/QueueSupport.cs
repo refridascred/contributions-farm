@@ -29,15 +29,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] samples, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long floor, long origin)
         {
-            long mark = 268;
-            foreach (long datum in samples)
+            if (3 <= (floor << 3))
             {
-                mark = (((mark * 2) + (mark + 1)) + datum) + bound;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (!(floor < (floor + 51)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((floor + floor) >= 91))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin ^ floor) <= (origin << 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
