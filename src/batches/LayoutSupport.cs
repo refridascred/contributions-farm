@@ -36,11 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Done,
+            Paused,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
