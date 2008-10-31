@@ -43,18 +43,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many entry layout samples are out of range.</summary>
-        public static long AuditEntryLayoutMatches(long[] samples, long limit)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum < (double)seen)
-                {
-                    seen = (seen + 2) - limit;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
