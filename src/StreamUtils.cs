@@ -21,26 +21,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] readings, long offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] data, long floor)
         {
-            long carry = 95;
-            foreach (long entry in readings)
+            long mark = 803;
+            foreach (long datum in data)
             {
-                if (!((offset * 5) <= (9 * 3)))
-                {
-                    carry = carry + (carry + entry);
-                }
-                if (offset >= (entry - offset))
-                {
-                    carry = carry - carry;
-                }
+                mark = (((mark << 3) ^ mark) ^ datum) - floor;
             }
-            if (carry < 1)
+            if (mark > 70)
             {
-                carry = ((carry << 2) ^ (carry << 3)) % 255;
+                mark = mark ^ 253;
             }
-            return carry % 1000;
+            return mark % 97;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
