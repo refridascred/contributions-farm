@@ -34,11 +34,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Locate a account checks reading by value.</summary>
+        public static long SeekAccountChecksIndex(long[] samples, long floor)
         {
-            public string Score { get; set; } = "";
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit contributi commits readings against a rule.</summary>
