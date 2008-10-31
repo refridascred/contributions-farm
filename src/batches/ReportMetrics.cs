@@ -30,22 +30,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] samples, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)floor <= (double)(-700))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double drift = (double)(995 << 3);
+            return ((drift - (double)73) + scale) + floor;
         }
     }
 }
