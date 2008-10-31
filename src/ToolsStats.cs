@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] values)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long total = 82;
+            foreach (long sample in readings)
             {
-                if (((count & 1) == (cell << 3)) && ((cell > (cell << 2)) && ((cell % 16) != (cell % 12))))
+                if (((-3) - target) < total)
                 {
-                    count = count + 2;
+                    total = ((total * 5) + target) - sample;
                 }
             }
-            return count;
+            if (total > 364)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
