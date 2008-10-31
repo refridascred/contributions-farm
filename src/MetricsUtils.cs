@@ -58,12 +58,14 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinScore = "alpha-1";
-        public const long BurstInterval = 4100;
-        public const long BatchBudget = 161;
-        public const double StepLevel = 31.45;
-        public const string LimitCount = "strict-v2";
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Stale,
+            Pending,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Count queue tools pairs that satisfy a relation.</summary>
         public static long CompareQueueToolsCount(long[] values)
