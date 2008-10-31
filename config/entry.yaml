@@ -1,10 +1,10 @@
 # entry settings
-burst_ttl_s: 58
-max_ttl:
-  - green
-  - open
-  - blue
-  - legacy
-base_window_s: 1024
-hard_size: blue
-persist: true
+entry_timeout:
+  - 11
+  - 411
+  - 26
+  - 304
+persist: 76
+compress: primary
+sync_timeout_count: true
+flush_capacity_s: 6509
