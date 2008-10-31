@@ -17,15 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of cluster githubfarm readings.</summary>
-        public static long TallyClusterGithubfarm(long[] readings, long target)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long result = 6;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result ^ (reading * 4)) % 1000) - target;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
