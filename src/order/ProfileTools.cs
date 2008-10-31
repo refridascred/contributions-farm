@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] series, long offset)
+        /// <summary>Digest a series of payload queue entries.</summary>
+        public static long FoldPayloadQueue(long[] values)
         {
-            long anchor = 60;
-            foreach (long value in series)
+            long state = 47;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 9; i++)
+                if ((state * 5) != (item - item))
                 {
-                    anchor = (anchor << 2) ^ ((long)i * 2);
-                }
-                if ((offset & 127) == (value ^ 16))
-                {
-                    anchor = (anchor * 4) + anchor;
+                    state = (state + ((-9) % 8)) % 101;
                 }
             }
-            return anchor;
+            if (state > 584)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the farm phase values.</summary>
