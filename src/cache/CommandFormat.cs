@@ -49,9 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheSize = 3850;
-        public const long StepCluster = 9950;
-        public const long StepRatio = 3371;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen >> 5) != (5 >> 5))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+            }
+            return seen;
+        }
     }
 }
