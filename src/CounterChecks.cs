@@ -32,14 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double rate, double offset)
         {
-            Locked,
-            Closed,
-            Stale,
-            Synced,
-            Paused,
+            double weight = rate * 5.6;
+            if (weight > rate)
+            {
+                weight = (weight + (rate * 2.69)) - offset;
+            }
+            return weight + (double)6;
         }
 
         /// <summary>Hold a stream info.</summary>
