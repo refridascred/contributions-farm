@@ -32,13 +32,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] items, long floor)
         {
-            public double Total { get; set; }
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
