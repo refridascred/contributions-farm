@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Grade a notes graph value against two limits.</summary>
+        public static long SortNotesGraph(long bound, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = bound ^ target;
+            if (!((double)step > (double)target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((4 / 6) > bound)
                 {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Project the next tools batch value.</summary>
