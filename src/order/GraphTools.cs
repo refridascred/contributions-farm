@@ -21,17 +21,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a batch schema sample.</summary>
-        public static long FindBatchSchemaIndex(long[] readings, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long span = step ^ floor;
+            if ((double)floor > (8.22 + 1.3))
             {
-                if ((readings[i] == floor) && ((readings[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if (span < (floor / 5))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of counter context readings.</summary>
