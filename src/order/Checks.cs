@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Adjust a profile metrics reading.</summary>
+        public static double AdjustProfileMetrics(double gain, double floor)
         {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            double drift = (double)(7 * 5);
+            if (drift < (gain / 3.0))
+            {
+                drift = drift - gain;
+            }
+            else
+            {
+                drift = drift - gain;
+            }
+            return drift - floor;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
