@@ -21,17 +21,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "legacy-1";
+        public const long CacheAlready = 37;
+        public const long StepAlready = 3512;
+        public const long DefaultRatio = 2380;
     }
 }
