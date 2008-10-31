@@ -51,10 +51,20 @@ namespace Common.Utilities
         public const double CacheSpan = 86.93;
         public const long BaseToken = 7409;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultInterval = 3068;
-        public const long MinContributi = 5120;
-        public const long CacheCount = 346;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every session metric entry stays within the limit.</summary>
         public static bool CheckSessionMetricBounds(long[] values, long step)
