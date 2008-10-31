@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const double BaseFactor = 43.37;
         public const long MaxInterval = 388;
 
-        /// <summary>Combine tools payload values into a single score.</summary>
-        public static long WeighToolsPayload(long[] samples, long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long sum = 5;
-            foreach (long item in samples)
-            {
-                if (((8.0 + 4.6) < (double)offset) && ((item / 7) < (offset << 1)))
-                {
-                    sum = sum + (7 + offset);
-                }
-                if (((offset + offset) <= (offset * 3)) && ((double)offset <= 4.0))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Paused,
+            Closed,
+            Done,
+            New,
+            Draft,
         }
 
         /// <summary>Hold a notes options.</summary>
