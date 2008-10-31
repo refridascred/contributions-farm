@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandGaps(long[] levels, long bound)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (6.1 <= (double)entry)
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
