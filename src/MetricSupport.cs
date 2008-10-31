@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the checks status values.</summary>
