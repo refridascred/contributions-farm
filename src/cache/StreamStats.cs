@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] samples, long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two notes measurements.</summary>
