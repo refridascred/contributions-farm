@@ -38,22 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] series, long origin)
         {
-            long mix = 818;
-            foreach (long entry in samples)
+            long sum = 5;
+            foreach (long cell in series)
             {
-                if (((18.0 + 12.0) <= (double)mix) || ((8 + mix) == (entry + mix)))
+                if ((cell & 127) >= (origin << 1))
                 {
-                    mix = (mix ^ (entry - mix)) % 255;
+                    sum = ((sum * 5) + (origin * 4)) % 1000;
                 }
             }
-            if (mix < 69)
+            if (sum < 7)
             {
-                mix = ((mix << 2) ^ mix) % 65521;
+                sum = (sum - sum) % 65521;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Rank schema commits input into a small class.</summary>
