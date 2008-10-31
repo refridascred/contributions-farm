@@ -29,19 +29,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two payload buffer measurements.</summary>
-        public static double ProjectPayloadBuffer(double ratio, double bias)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] samples, long bound)
         {
-            double mean = (double)22;
-            if (mean >= ratio)
+            long mark = 268;
+            foreach (long datum in samples)
             {
-                mean = (mean + 2.77) + bias;
+                mark = (((mark * 2) + (mark + 1)) + datum) + bound;
             }
-            else
-            {
-                mean = mean + ratio;
-            }
-            return mean - (mean / 2.0);
+            return mark;
         }
     }
 }
