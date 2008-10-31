@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] series, long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((8.7 / 8.0) > (double)matches)
-                {
-                    matches = ((matches + 3) + sample) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
