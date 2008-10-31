@@ -1,5 +1,5 @@
 {
-  "audit": "green",
-  "stats_delay": 77.05,
-  "persist": 250
+  "default_interval_ms": 6.21,
+  "base_threshold_count": 79.38,
+  "hard_capacity": ["strict", "staging", "green"]
 }
