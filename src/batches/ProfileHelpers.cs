@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitWidth = 6065;
+        public const long StepContext = 313;
+        public const double BaseContext = 37.99;
+        public const long StepBudget = 2727;
+        public const long CacheScore = 4049;
 
         /// <summary>Measure how many stats format samples are out of range.</summary>
         public static long MeasureStatsFormatMatches(long[] items)
