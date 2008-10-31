@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] series, long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LocateSupportIndex(long[] items, long offset)
         {
-            long carry = 2;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (((carry * 3) + (offset + carry)) % 4096) ^ datum;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 1)
-            {
-                carry = carry + 0;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Locate a format reading by value.</summary>
