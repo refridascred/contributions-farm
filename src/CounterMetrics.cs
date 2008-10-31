@@ -19,14 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] levels, long origin)
         {
-            Retry,
-            Done,
-            Active,
-            Locked,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
