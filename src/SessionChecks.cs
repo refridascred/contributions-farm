@@ -41,19 +41,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double ratio, double span)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsLimits(long[] levels, long limit)
         {
-            double mean = ratio;
-            if (mean < mean)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                mean = (mean - ratio) - span;
+                if (entry < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + (ratio / 4.0);
-            }
-            return mean + ratio;
+            return ok;
         }
 
         /// <summary>Locate a route reading by value.</summary>
