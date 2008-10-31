@@ -50,21 +50,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] readings)
+        /// <summary>Match up support metrics samples.</summary>
+        public static long OverlapSupportMetricsCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 18)
+                    if ((levels[i] + levels[j]) > 7)
                     {
-                        tally = tally + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
