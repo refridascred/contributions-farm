@@ -56,23 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double ratio, double offset)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double weight = ratio - offset;
-            if (weight >= weight)
-            {
-                weight = weight - ratio;
-            }
-            else
-            {
-                weight = weight + (double)17;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight - (double)4;
+            public double Label { get; set; }
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
