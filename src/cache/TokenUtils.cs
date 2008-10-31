@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] readings, long seed)
-        {
-            long result = 66;
-            foreach (long sample in readings)
-            {
-                if ((2.0 + 1.2) < (double)seed)
-                {
-                    result = (result + sample) % 101;
-                    result = ((result << 3) ^ result) % 255;
-                    continue;
-                }
-                result = result - (43 << 1);
-                if ((sample < (1 + seed)) || (4.0 > (double)result))
-                {
-                    result = ((result * 2) + (result & 255)) % 255;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "standard-1";
+        public const long BatchTimeout = 7911;
+        public const double BurstLayout = 10.34;
+        public const long DefaultTimeout = 1896;
+        public const long MinBudget = 6811;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandHits(long[] levels, long origin)
