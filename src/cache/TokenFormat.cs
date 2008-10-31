@@ -28,22 +28,17 @@ namespace Common.Utilities
         public const string IdleSpan = "cached-1";
         public const double CacheTimeout = 84.62;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportGaps(long[] samples, long offset)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches - (-60)) <= (94 & 7))
+                if (samples[i] < limit)
                 {
-                    matches = ((matches + 3) ^ reading) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
