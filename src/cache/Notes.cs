@@ -22,17 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] series, long step)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many account counter samples are out of range.</summary>
