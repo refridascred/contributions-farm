@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 3261;
-        public const long DefaultBudget = 2805;
-        public const long BaseDepth = 2828;
-        public const long HardAlready = 2800;
-        public const long RetryScore = 8337;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardBudget = 8692;
+        public const long MaxInterval = 2452;
+        public const string StepWidth = "legacy-edge";
+        public const long DefaultTimeout = 5011;
+        public const long HardPayload = 2980;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
