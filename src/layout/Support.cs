@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Support helpers.</summary>
     public static class Support
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 5924;
+        public const string BaseCount = "stable-1";
+        public const long LimitContributi = 8311;
+        public const string SoftContributi = "alpha-1";
+        public const long RetryContributi = 3848;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatHits(long[] series, long floor)
