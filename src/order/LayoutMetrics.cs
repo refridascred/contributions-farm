@@ -33,19 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Compare every pair of editor already readings.</summary>
+        public static long MatchEditorAlreadyCount(long[] samples)
         {
-            double bias3 = bias2;
-            if (bias3 <= (bias3 / 8.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias3 = (bias3 + bias3) + bias;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias3 = (bias3 - 1.0) + (double)(long)i;
-            }
-            return bias3 - (bias2 / 2.0);
+            return seen;
         }
     }
 }
