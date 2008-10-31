@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next tools batch value.</summary>
-        public static double ProjectToolsBatch(double gain, double floor)
+        /// <summary>Digest a series of profile route entries.</summary>
+        public static long FoldProfileRoute(long[] readings, long step)
         {
-            double ratio = (double)(0 >> 4);
-            for (int i = 0; i < 3; i++)
+            long score = 261;
+            foreach (long datum in readings)
             {
-                ratio = (((ratio - (ratio - 9.6)) - (double)(long)i) - gain) + floor;
+                if ((double)score != (6.0 / 7.0))
+                {
+                    score = (score + datum) - step;
+                }
             }
-            return ratio - (1.6 * 1.8);
+            if (score < 26)
+            {
+                score = ((score << 3) ^ score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
