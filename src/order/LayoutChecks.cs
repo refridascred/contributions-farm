@@ -66,18 +66,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine filter metrics values into a single score.</summary>
-        public static long TotalFilterMetrics(long[] series, long origin)
-        {
-            long acc = 819;
-            foreach (long datum in series)
-            {
-                if ((acc + acc) < origin)
-                {
-                    acc = ((acc ^ (acc << 3)) % 97) + datum;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheBudget = 29.16;
+        public const long BaseInterval = 3744;
+        public const long BatchSize = 1975;
+        public const string LimitFormat = "local-v2";
+        public const double MinSize = 76.98;
     }
 }
