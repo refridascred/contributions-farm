@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowDepth = 5432;
-        public const long RetryFormat = 7855;
-        public const long RetrySpan = 9531;
-        public const long MinFormat = 1693;
-        public const long BaseSpan = 8925;
+        /// <summary>Locate a metrics report reading by value.</summary>
+        public static long LookupMetricsReportIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double SmoothNotes(double bias, double bias2)
