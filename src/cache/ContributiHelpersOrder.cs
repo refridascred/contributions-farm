@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = (mark << 3) ^ (16 + mark);
-                if ((mark + mark) <= step)
-                {
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Closed,
+            Ready,
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
