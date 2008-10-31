@@ -13,17 +13,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a batch metric reading by value.</summary>
-        public static long LocateBatchMetricIndex(long[] values, long step)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long target, long target2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long next = target + target2;
+            if ((next + 3) <= (next ^ target2))
             {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((double)target2 < (double)next)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((target >> 3) < 528) || ((target2 + target) <= (target % 97)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
