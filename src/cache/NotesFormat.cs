@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session window entry stays within the limit.</summary>
-        public static bool ValidateSessionWindowRange(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleInterval = "local-v2";
+        public const long MaxLevel = 5288;
+        public const string DefaultEditor = "cached-v2";
+        public const long RetryEditor = 855;
+        public const double IdleEditor = 37.37;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long AuditCacheOutliers(long[] items, long limit)
