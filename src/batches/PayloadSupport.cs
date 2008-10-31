@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of token account readings.</summary>
-        public static long TallyTokenAccount(long[] samples)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long result = 1;
-            foreach (long datum in samples)
-            {
-                if ((result - 4) > (952 + result))
-                {
-                    break;
-                }
-                else
-                {
-                    result = (result ^ (result / 6)) % 65521;
-                    result = result + (3 ^ datum);
-                }
-                if (((long)samples.Length ^ datum) >= datum)
-                {
-                    result = result + datum;
-                }
-            }
-            return result;
+            public bool Offset { get; set; }
+            public double Limit { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
