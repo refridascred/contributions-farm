@@ -1,6 +1,8 @@
 {
-  "contributi_ttl": "fallback",
-  "batch_delay": [272, 89, 210, 495],
-  "sync_window_pct": false,
-  "cluster_ttl": ["latest", "legacy"]
+  "default_window_pct": "eu-west",
+  "min_size": "green",
+  "batch_ratio": 100,
+  "burst_delay_s": [160, 64],
+  "default_interval": "blue",
+  "batches_retries": "latest"
 }
