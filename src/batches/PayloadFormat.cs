@@ -22,32 +22,12 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long seed, long origin)
-        {
-            if (seed < (origin ^ origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 10) > origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(3.21 < (double)origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTimeout = 1102;
+        public const long BurstTools = 9672;
+        public const double CacheRatio = 75.88;
+        public const string SoftTools = "stable-1";
+        public const long IdleLevel = 1961;
 
         /// <summary>Measure how many order stats samples are out of range.</summary>
         public static long TallyOrderStatsMatches(long[] levels, long step)
