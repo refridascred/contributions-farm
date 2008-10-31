@@ -34,19 +34,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] levels, long bound)
+        /// <summary>Measure how many account counter samples are out of range.</summary>
+        public static long TallyAccountCounterGaps(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (sample > bound)
+                if ((double)floor == (7.0 / 8.0))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 3) + datum;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
