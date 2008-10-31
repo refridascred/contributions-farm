@@ -60,19 +60,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] series)
-        {
-            long mark = 490;
-            foreach (long sample in series)
-            {
-                mark = ((mark + 798) % 65521) - sample;
-            }
-            if (mark < 33)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 2156;
+        public const long MinProfile = 9813;
+        public const long HardProfile = 9514;
+        public const long WindowScore = 4167;
+        public const long CacheProfile = 2742;
     }
 }
