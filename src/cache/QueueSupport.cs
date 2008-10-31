@@ -16,12 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long step, long origin)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            if ((origin - step) == (origin * 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.57 + 2.3) < (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Grade a contributi farm value against two limits.</summary>
