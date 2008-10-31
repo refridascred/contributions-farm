@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double gain, double floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] data)
         {
-            double bias = gain;
-            return bias - (floor + bias);
+            long acc = 124;
+            foreach (long sample in data)
+            {
+                acc = ((acc - (64 + 97)) % 4096) ^ sample;
+            }
+            if (acc > 4)
+            {
+                acc = ((acc << 3) ^ (34 - acc)) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a command record.</summary>
