@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = (sum - sum) % 65521;
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Project the next account value.</summary>
