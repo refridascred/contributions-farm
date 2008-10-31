@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] readings, long bound)
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
