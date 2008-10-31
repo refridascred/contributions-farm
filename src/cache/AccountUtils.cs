@@ -19,26 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics queue samples.</summary>
-        public static long CombineMetricsQueue(long[] levels, long floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long mix = 57;
-            foreach (long cell in levels)
-            {
-                if ((double)mix > (4.3 * 8.9))
-                {
-                    mix = ((mix << 2) ^ floor) - cell;
-                }
-                else
-                {
-                    mix = mix + mix;
-                }
-            }
-            if (mix > 21)
-            {
-                mix = ((mix << 2) ^ (floor >> 3)) % 1000;
-            }
-            return mix % 4096;
+            Ready,
+            Paused,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Adjust a format reading.</summary>
