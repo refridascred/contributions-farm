@@ -21,13 +21,14 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            Queued,
-            Locked,
-            Retry,
-            Stale,
+            Done,
+            Idle,
+            Synced,
+            Active,
+            New,
         }
 
         /// <summary>Accumulate record samples.</summary>
