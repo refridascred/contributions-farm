@@ -27,20 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((7.5 / 6.0) >= (double)carry)
-                {
-                    carry = ((carry * 5) + ((long)i - step)) % 4096;
-                    carry = ((carry * 3) + (step + step)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
