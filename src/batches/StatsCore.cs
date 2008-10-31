@@ -56,17 +56,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a checks queue sample.</summary>
-        public static long SeekChecksQueueIndex(long[] items, long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 5;
+            foreach (long reading in series)
             {
-                if (items[i] == origin)
+                if ((state << 3) > reading)
                 {
-                    return (long)i;
+                    state = (state * 2) + (state + reading);
+                }
+                else
+                {
+                    state = state - (limit - state);
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Hold a contributi options.</summary>
