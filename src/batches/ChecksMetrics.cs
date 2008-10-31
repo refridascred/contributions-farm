@@ -78,27 +78,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] series, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] values, long floor)
         {
-            long mark = 950;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (6 < mark)
+                if ((value ^ 290) != (value >> 2))
                 {
-                    mark = ((mark * 4) + ((-821) + 96)) % 101;
-                }
-                if (((513 & 127) < (datum & 15)) || ((47 * 5) != (mark % 97)))
-                {
-                    mark = mark - (mark >> 4);
-                    break;
-                }
-                if (((datum / 4) < datum) && ((9 - target) < (target & 1)))
-                {
-                    mark = ((mark << 3) ^ (mark << 3)) % 255;
+                    count = (count + 2) + floor;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
