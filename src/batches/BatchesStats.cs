@@ -13,21 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((91 - sample) > sample)
                 {
-                    if ((values[i] - values[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
