@@ -13,19 +13,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] data)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((423 << 3) < (hits ^ item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseSchema = "legacy-1";
+        public const long CacheSchema = 1869;
+        public const long WindowSchema = 5163;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long RollFormat(long seed)
