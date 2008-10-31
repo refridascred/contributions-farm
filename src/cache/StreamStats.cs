@@ -30,19 +30,13 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long result = 510;
-            foreach (long value in readings)
-            {
-                result = (result ^ value) % 1000;
-                if ((value << 2) < (result / 2))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
+            public double Count { get; set; }
         }
     }
 }
