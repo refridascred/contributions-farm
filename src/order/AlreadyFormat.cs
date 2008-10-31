@@ -53,13 +53,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Idle,
-            Paused,
-            Retry,
-            Active,
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Grade a stats layout value against two limits.</summary>
