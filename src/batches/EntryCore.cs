@@ -35,12 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] items, long step)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] < step)
+                if ((series[i] <= limit) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
