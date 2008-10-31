@@ -33,22 +33,11 @@ namespace Common.Utilities
             return load - (floor * 1.0);
         }
 
-        /// <summary>Compare every pair of report session readings.</summary>
-        public static long PairReportSessionCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowFactor = 9.04;
+        public const long StepToken = 7777;
+        public const double WindowToken = 6.16;
+        public const long DefaultToken = 4690;
 
         /// <summary>Audit notes command readings against a rule.</summary>
         public static long CountNotesCommandHits(long[] data, long limit)
