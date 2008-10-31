@@ -56,11 +56,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 9533;
-        public const double HardWidth = 9.98;
-        public const double HardScore = 84.13;
-        public const long RetryEditor = 3828;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long limit, long bound)
+        {
+            if (54 < bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit ^ limit) == (limit + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double ProjectGraph(double weight, double offset)
