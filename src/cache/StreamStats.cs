@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels, long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long limit)
         {
-            long state = -19;
-            foreach (long entry in levels)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                state = state + (entry >> 3);
-                state = (state - (entry + bound)) % 1000;
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (state < 1)
-            {
-                state = (state ^ 9) % 65521;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Hold a farm entry.</summary>
