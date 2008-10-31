@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long step, long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long prev = step ^ offset;
-            if (9.0 > (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset == (5.82 / 5.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step & 31) >= (prev & 15))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((837 + 305) > step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
