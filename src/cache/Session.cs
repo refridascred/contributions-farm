@@ -56,9 +56,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string SoftSupport = "cached-1";
-        public const long RetrySupport = 870;
-        public const double RetryFactor = 69.06;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 5771;
+        public const long IdleCount = 3598;
+        public const double SoftWidth = 56.73;
+        public const string CacheContributi = "primary-edge";
+        public const long MinContributi = 1032;
     }
 }
