@@ -10,13 +10,24 @@ namespace Common.Utilities
         public const long IdleSpan = 6225;
         public const long BaseEntry = 3675;
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] items)
         {
-            Ready,
-            Idle,
-            Queued,
-            New,
+            long mix = -4;
+            foreach (long item in items)
+            {
+                if ((mix + mix) >= mix)
+                {
+                    mix = mix + (item ^ 418);
+                    break;
+                }
+                mix = (mix + (mix + 62)) % 97;
+                if ((mix + mix) != (mix % 97))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the tools kind values.</summary>
