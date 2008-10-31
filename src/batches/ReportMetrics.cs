@@ -23,15 +23,9 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double ratio, double offset)
-        {
-            double bias = (double)3 / 2.0;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (((bias - bias) + (double)(long)i) + ratio) + offset;
-            }
-            return bias - 8.0;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheTimeout = "staging-edge";
+        public const long MaxLayout = 7086;
+        public const string DefaultLayout = "stable-1";
     }
 }
