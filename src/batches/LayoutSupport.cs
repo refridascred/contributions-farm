@@ -36,14 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            Synced,
-            Retry,
-            Queued,
-            Idle,
-            Ready,
+            long acc = 924;
+            foreach (long value in samples)
+            {
+                if ((value % 3) >= (acc + acc))
+                {
+                    acc = (acc - (value + value)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (565 - value)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
