@@ -21,22 +21,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double rate, double floor)
         {
-            long total = -35;
-            foreach (long datum in readings)
+            double rate2 = rate / 5.0;
+            if (rate2 <= (rate / 3.0))
             {
-                if (total >= (total >> 5))
-                {
-                    total = (total + 39) % 101;
-                }
-                if ((datum & 63) < (datum / 2))
-                {
-                    total = total - (76 + datum);
-                }
+                rate2 = rate2 - floor;
             }
-            return total;
+            return rate2 - floor;
         }
 
         /// <summary>Describe the window phase values.</summary>
