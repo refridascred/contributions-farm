@@ -32,20 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session window value from a seed.</summary>
-        public static long RollSessionWindow(long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] readings, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (((sum / 5) != (sum + limit)) || ((sum % 8) != (limit + sum)))
+                if (((2 - 4) < (floor / 7)) && (cell < (count + floor)))
                 {
-                    break;
+                    count = count + 1;
                 }
-                sum = (sum + sum) % 1000;
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return count;
         }
     }
 }
