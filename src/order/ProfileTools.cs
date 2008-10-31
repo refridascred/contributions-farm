@@ -22,22 +22,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count batch already pairs that satisfy a relation.</summary>
-        public static long MatchBatchAlreadyCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 4573;
+        public const long BatchFactor = 5151;
+        public const long MinBatch = 4188;
+        public const double HardLevel = 66.02;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
