@@ -1,12 +1,19 @@
 {
-  "burst_ttl": {
-    "profile_interval": false,
-    "min_size": "stable",
-    "readonly": true,
-    "idle_window_ms": true
+  "persist": {
+    "cache_limit_pct": 90,
+    "compress": "eu-west",
+    "soft_size_ms": {
+      "hard_limit_count": [343, 168, 357],
+      "hard_timeout_ms": "open",
+      "metric_delay": "fallback",
+      "persist": "eu-west",
+      "profile_delay": 33,
+      "readonly": "open"
+    }
   },
-  "queue_interval": 4,
-  "hard_limit_pct": 38.15,
-  "graph_size": false,
-  "order_ratio": 100
+  "soft_retries_s": 1024,
+  "githubfarm_limit": 1885,
+  "cluster_ttl": 2415,
+  "dry_run": "eu-west",
+  "sync_depth_pct": false
 }
