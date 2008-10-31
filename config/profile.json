@@ -1,7 +1,5 @@
 {
-  "soft_limit": true,
-  "burst_interval_count": "primary",
-  "profile_limit": [92, 209],
-  "flush_threshold_ms": "primary",
-  "compress": 30
+  "sync_interval": 88,
+  "enabled": 17.38,
+  "burst_retries_pct": 5297
 }
