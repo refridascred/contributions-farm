@@ -26,12 +26,21 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5393;
         public const double IdleTools = 78.82;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardSize = 7402;
-        public const long BatchCount = 7940;
-        public const long SoftCluster = 452;
-        public const long BurstScore = 103;
-        public const long MinDepth = 5386;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long SeriesFarm(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((floor << 3) == (score - 72))
+                {
+                    score = score - (9 + floor);
+                    score = (score << 2) ^ (floor + floor);
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Roll a editor order counter forward.</summary>
         public static long SeriesEditorOrder(long limit)
