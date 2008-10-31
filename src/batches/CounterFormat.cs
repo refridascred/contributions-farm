@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long acc = 124;
-            foreach (long sample in data)
-            {
-                acc = ((acc - (64 + 97)) % 4096) ^ sample;
-            }
-            if (acc > 4)
-            {
-                acc = ((acc << 3) ^ (34 - acc)) % 97;
-            }
-            return acc % 65521;
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a command record.</summary>
