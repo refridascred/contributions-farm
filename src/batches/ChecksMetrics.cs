@@ -25,26 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long sum = 70;
-            foreach (long sample in series)
-            {
-                if (!((6 << 2) < (sum & 127)))
-                {
-                    sum = sum - sample;
-                }
-                if ((double)sample > (double)sum)
-                {
-                    break;
-                }
-            }
-            if (sum > (-3))
-            {
-                sum = (sum * 2) + sum;
-            }
-            return sum % 65521;
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of batch readings.</summary>
