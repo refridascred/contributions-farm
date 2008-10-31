@@ -25,18 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 8366;
+        public const long BurstFactor = 480;
+        public const long IdleSupport = 2568;
+        public const double HardSupport = 30.88;
+        public const long MaxSize = 7449;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsBounds(long[] readings, long bound)
