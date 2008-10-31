@@ -22,38 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] levels, long seed)
         {
-            if ((offset <= target) || ((offset + target) <= 7))
+            long result = 9;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(161 > (offset ^ target)))
+                if ((double)74 >= (double)seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset >> 4) <= (target << 2)) || ((double)15 >= (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target + 26) == (target - offset)) || ((double)target >= (8.0 - 6.62)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    result = ((result << 2) ^ (577 - seed)) + entry;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
