@@ -50,15 +50,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double bias, double span)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            double gain = span;
-            if (gain > (4.0 + 4.0))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = (gain + (5.0 - gain)) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain - 6.2;
+            return seen;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
