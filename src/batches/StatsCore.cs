@@ -41,22 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long anchor = 84;
-            foreach (long entry in series)
-            {
-                if ((anchor + entry) > anchor)
-                {
-                    anchor = (anchor * 5) + (anchor / 4);
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + entry) % 101;
-                }
-            }
-            return anchor % 4096;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
