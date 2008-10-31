@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((hits + reading) >= 496)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BaseWidth = 50.1;
+        public const long BaseBudget = 1153;
+        public const string HardScore = "strict-edge";
+        public const long WindowCount = 2815;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 5264;
