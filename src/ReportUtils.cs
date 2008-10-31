@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit order account readings against a rule.</summary>
+        public static long CountOrderAccountMatches(long[] samples)
         {
-            Locked,
-            Stale,
-            New,
-            Failed,
-            Pending,
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (tally < 940)
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of report readings.</summary>
