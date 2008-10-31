@@ -51,17 +51,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] data, long seed)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (data[i] == seed)
+                carry = ((carry * 5) + (seed ^ carry)) % 97;
+                if (!(6 <= carry))
                 {
-                    return (long)i;
+                    carry = carry + (seed + carry);
                 }
+                else
+                {
+                    carry = carry + (carry - 0);
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
