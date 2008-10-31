@@ -13,11 +13,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] items, long bound)
         {
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            long score = 0;
+            foreach (long datum in items)
+            {
+                score = (score ^ (bound - datum)) % 255;
+                score = score + (score >> 1);
+            }
+            if (score > 1)
+            {
+                score = (score * 3) + (bound + score);
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate channel samples.</summary>
