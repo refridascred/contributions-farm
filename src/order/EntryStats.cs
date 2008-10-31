@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            Closed,
+            New,
+            Synced,
+            Stale,
+            Idle,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
