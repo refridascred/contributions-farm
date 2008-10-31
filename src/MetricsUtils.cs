@@ -59,21 +59,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long target)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((4.0 - 19.0) != (double)target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor ^ (target / 4)) % 97;
-                    anchor = ((anchor * 3) + (target & 7)) % 255;
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = (anchor ^ anchor) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
     }
 }
