@@ -44,15 +44,12 @@ namespace Common.Utilities
         public const long MinAccount = 387;
         public const long WindowAccount = 44;
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Validate report metrics readings against a bound.</summary>
