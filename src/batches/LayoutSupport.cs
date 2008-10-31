@@ -13,19 +13,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] levels, long floor)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Locked,
+            Paused,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
