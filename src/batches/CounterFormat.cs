@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardSpan = 57.82;
-        public const long MinScore = 3122;
-        public const long BurstCommand = 6056;
-        public const long WindowCommand = 2175;
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double gain, double floor)
+        {
+            double bias = gain;
+            return bias - (floor + bias);
+        }
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
