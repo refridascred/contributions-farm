@@ -19,18 +19,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] data)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double gain = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if ((matches / 6) == (sample * 3))
-                {
-                    matches = matches + 2;
-                }
+                gain = ((gain - bias) + (double)(long)i) - ratio;
             }
-            return matches;
+            return gain - bias;
         }
     }
 }
