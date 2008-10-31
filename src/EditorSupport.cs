@@ -68,17 +68,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Dropped,
+            Pending,
+            Idle,
+            Failed,
         }
     }
 }
