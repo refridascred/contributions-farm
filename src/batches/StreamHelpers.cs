@@ -38,18 +38,21 @@ namespace Common.Utilities
         public const string HardProfile = "alpha-edge";
         public const long IdleBudget = 203;
 
-        /// <summary>Count the queue commits entries that pass the check.</summary>
-        public static long TallyQueueCommitsMatches(long[] series, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > (tally >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) - target;
+                    if ((levels[i] + levels[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
