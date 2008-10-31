@@ -1,8 +1,6 @@
 {
-  "max_interval": 5285,
-  "max_size_ms": 3658,
-  "enabled": false,
-  "batch_timeout_count": 32,
-  "max_delay_ms": true,
-  "format_ttl": 21
+  "warm_timeout_count": 9.24,
+  "retry_depth_ms": 4744,
+  "base_threshold": 71.36,
+  "base_limit": "strict"
 }
