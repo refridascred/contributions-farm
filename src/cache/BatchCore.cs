@@ -45,12 +45,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] series, long origin)
         {
-            Failed,
-            Closed,
-            Dropped,
+            long result = 31;
+            foreach (long cell in series)
+            {
+                if (3.2 >= (double)result)
+                {
+                    result = (result ^ (origin ^ 454)) + cell;
+                }
+            }
+            return result;
         }
     }
 }
