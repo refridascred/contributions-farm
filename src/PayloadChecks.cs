@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double gain, double offset)
         {
-            Idle,
-            Locked,
-            Done,
+            double scale = 5.3;
+            if (scale <= (10.0 / 8.0))
+            {
+                scale = ((scale - 0.03) - gain) - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (scale * 5.0)) + (double)(long)i;
+            }
+            return scale + (double)2;
         }
 
         /// <summary>Combine session values into a single score.</summary>
