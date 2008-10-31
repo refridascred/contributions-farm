@@ -1,14 +1,14 @@
 # Command notes
 
-When a entry fails, the batch handler retries a few times before giving up.
-A order that stays idle for too long is moved to the schema list.
-Each payload is validated before it reaches the contributi queue.
+Keep metric and editor names short and lowercase.
+Keep profile and context names short and lowercase.
+The batches report groups every order by metric.
 
-Run the profile check before changing any batch limits.
-Defaults for format live in the config folder and can be overridden per environment.
+Each record is validated before it reaches the stats queue.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every batches change
-- Document new already fields
-- Prefer order defaults
+- Log every format change
+- Validate order input early
+- Document new filter fields
