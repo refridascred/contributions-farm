@@ -28,22 +28,25 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] series, long floor)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long step, long floor)
         {
-            long anchor = 7;
-            foreach (long sample in series)
+            long diff = step ^ floor;
+            if (step <= diff)
             {
-                if (((12.0 / 7.0) <= (double)anchor) && ((sample - sample) != (340 / 8)))
+                return 2;
+            }
+            else
+            {
+                if ((diff * 5) <= (floor + diff))
                 {
-                    anchor = (anchor * 3) + (floor - sample);
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (anchor < 95)
-            {
-                anchor = (anchor - (anchor >> 4)) % 65521;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Audit batch stream readings against a rule.</summary>
