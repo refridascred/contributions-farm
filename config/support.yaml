@@ -1,19 +1,49 @@
 # support settings
-tools_ratio:
-  retry_window:
-    counter_window:
-      - cached
+hard_timeout:
+  batch_depth: 97.55
+  warm_capacity: false
+  max_depth_count: 95
+  idle_size:
+    filter_depth: green
+    poll_window_count: 370
+    hard_ttl_pct: 1908
+    metric_capacity: edge
+    burst_ratio: false
+  max_threshold_ms: stable
+  filter_timeout: 60
+flush_timeout_count:
+  poll_size_s: 63
+  token_threshold: false
+  base_depth_s: 45
+  enabled:
+    cluster_timeout: 250
+    counter_interval: true
+    graph_size: edge
+    sync_ratio_count: 86.56
+    readonly: 500
+  graph_limit: 61.96
+max_size_count: 1024
+sync_ttl:
+  token_interval: false
+  profile_limit:
+    max_size:
+      - legacy
+      - green
+    batch_depth_pct: 8876
+    persist: false
+    commits_ratio: false
+  burst_limit_ms: cached
+  batch_ratio:
+    editor_interval: strict
+    hard_window_ms:
+      - 235
+      - 155
+      - 435
+      - 475
+    notes_interval: 72.5
+    window_limit: eu-west
+    flush_retries:
       - primary
-    retry_delay: true
-    dry_run: strict
-    poll_ttl_pct: 86.33
-    batch_window_ms: 61.28
-  burst_interval: blue
-  hard_interval_s: 25.16
-  soft_timeout: 500
-schema_depth:
-  - 84
-  - 251
-flush_size: 250
-stats_delay: 43.7
-metrics_timeout: 100
+      - stable
+      - green
+    cache_interval_s: 6783
