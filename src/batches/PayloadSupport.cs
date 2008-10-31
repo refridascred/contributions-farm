@@ -23,19 +23,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every report checks entry stays within the limit.</summary>
-        public static bool GuardReportChecksBounds(long[] values, long target)
+        /// <summary>Fold a list of command format readings.</summary>
+        public static long TotalCommandFormat(long[] data, long target)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long sum = -25;
+            foreach (long cell in data)
             {
-                if (sample > target)
+                if ((0.01 / 3.0) < (double)cell)
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 3) + target) % 101;
+                    sum = sum + (cell + cell);
                 }
+                sum = ((sum << 2) ^ ((long)data.Length ^ target)) % 97;
             }
-            return found;
+            return sum;
         }
     }
 }
