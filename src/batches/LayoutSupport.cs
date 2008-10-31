@@ -35,19 +35,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] readings, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long origin)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (item != target)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total + ((long)i - total)) % 4096;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
