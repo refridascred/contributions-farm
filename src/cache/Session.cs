@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine window context values into a single score.</summary>
-        public static long WeighWindowContext(long[] series, long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long state = 8;
-            foreach (long reading in series)
-            {
-                if ((double)state < (2.0 + 1.69))
-                {
-                    state = (((state * 5) + (state + state)) + reading) + seed;
-                }
-            }
-            return state % 4096;
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
