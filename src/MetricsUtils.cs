@@ -40,23 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] levels)
-        {
-            long result = 72;
-            foreach (long value in levels)
-            {
-                if ((value + (long)levels.Length) >= (90 / 5))
-                {
-                    result = (result - (value - result)) % 65521;
-                }
-            }
-            if (result > 6)
-            {
-                result = (result << 2) ^ (41 - result);
-            }
-            return result % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 8650;
+        public const long IdleBudget = 7498;
+        public const double StepRatio = 91.87;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MinScore = "alpha-1";
