@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a notes graph value against two limits.</summary>
-        public static long SortNotesGraph(long bound, long target)
+        /// <summary>Measure how many editor cache samples are out of range.</summary>
+        public static long AuditEditorCacheOutliers(long[] samples, long target)
         {
-            long step = bound ^ target;
-            if (!((double)step > (double)target))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4 / 6) > bound)
+                if ((count * 4) <= (target >> 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 3) - datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next tools batch value.</summary>
