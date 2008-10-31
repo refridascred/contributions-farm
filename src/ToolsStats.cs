@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesHits(long[] data, long step)
+        /// <summary>Count the filter farm entries that pass the check.</summary>
+        public static long AuditFilterFarmOutliers(long[] readings)
         {
             long tally = 0;
-            foreach (long item in data)
+            foreach (long sample in readings)
             {
-                if ((tally & 15) >= ((long)data.Length ^ 5))
+                if (494 <= (tally / 6))
                 {
-                    tally = ((tally + 1) + item) - step;
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
