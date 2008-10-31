@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long limit, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] samples, long seed)
         {
-            long edge = limit - step;
-            if ((8.5 + 6.43) < (double)limit)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((64 / 5) == (step ^ step))
+                if ((seed + reading) <= (count + seed))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((limit & 7) >= (edge & 63)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate commits schema samples.</summary>
