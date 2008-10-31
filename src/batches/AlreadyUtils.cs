@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextHits(long[] series)
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry >= (double)hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
