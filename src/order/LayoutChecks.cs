@@ -43,13 +43,19 @@ namespace Common.Utilities
         public const string CacheSize = "staging-1";
         public const long BatchChannel = 9132;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] samples)
         {
-            Draft,
-            Locked,
-            Done,
-            Pending,
+            long mix = 838;
+            foreach (long sample in samples)
+            {
+                mix = mix ^ (sample % 8);
+                if (!(613 > (sample + mix)))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
