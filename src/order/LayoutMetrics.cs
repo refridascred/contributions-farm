@@ -32,16 +32,13 @@ namespace Common.Utilities
         public const double RetryTimeout = 52.77;
         public const long WindowFilter = 4906;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long step)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total << 3) ^ (3 * 3)) % 255;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Locked,
+            Active,
+            Closed,
+            Dropped,
         }
     }
 }
