@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define layout limits and defaults.</summary>
