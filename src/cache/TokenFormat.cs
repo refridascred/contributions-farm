@@ -28,9 +28,22 @@ namespace Common.Utilities
         public const string IdleSpan = "cached-1";
         public const double CacheTimeout = 84.62;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstMetric = "local-1";
-        public const double SoftRatio = 73.26;
-        public const double StepMetric = 27.03;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportGaps(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches - (-60)) <= (94 & 7))
+                {
+                    matches = ((matches + 3) ^ reading) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
