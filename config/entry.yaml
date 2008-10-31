@@ -1,8 +1,5 @@
 # entry settings
-enabled: true
-poll_threshold: edge
-persist:
-  - 78
-  - 421
-strict: true
-cache_capacity_pct: 81
+min_interval: 631
+readonly: 649
+strict: 100
+warm_threshold_count: fallback
