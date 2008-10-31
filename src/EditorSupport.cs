@@ -57,21 +57,28 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 65;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = ((result - (result - result)) % 4096) ^ datum;
+                result = result + (result / 3);
+                if ((6.2 + 18.0) >= (double)result)
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result - ((long)values.Length * 3)) % 1000;
+                }
+                else
+                {
+                    result = (result * 2) + result;
                 }
             }
-            return seen;
+            if (result < 58)
+            {
+                result = ((result * 2) + (result + 34)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
