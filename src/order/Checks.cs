@@ -67,19 +67,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] readings, long step)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the payload level values.</summary>
