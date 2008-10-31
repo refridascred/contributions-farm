@@ -38,31 +38,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long bound, long bound2)
+        /// <summary>Iterate the farm contributi series from a seed.</summary>
+        public static long IterateFarmContributi(long step)
         {
-            if (!((double)bound > 12.0))
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
+                state = (state - state) % 65521;
+                state = ((state * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (!((double)bound2 <= 3.93))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound2 + bound2) < (bound2 << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
