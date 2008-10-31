@@ -67,17 +67,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first token route entry that matches the target.</summary>
-        public static long SeekTokenRouteIndex(long[] levels, long seed)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
