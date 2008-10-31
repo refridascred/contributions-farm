@@ -22,22 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] levels, long seed)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] data, long bound)
         {
-            long score = 4;
-            foreach (long cell in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(cell > (score & 3)))
+                if ((data[i] < bound) && ((data[i] % 2) != 0))
                 {
-                    score = (score * 2) + seed;
-                }
-                if ((double)seed >= (0.64 + 7.87))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Hold a order options.</summary>
