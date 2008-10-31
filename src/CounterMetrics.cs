@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double rate, double bias)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadHits(long[] items)
         {
-            double mean = bias / 8.0;
-            if (mean <= (double)941)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                mean = mean - bias;
+                if (((hits * 4) != (entry - hits)) || ((hits + entry) <= (entry << 2)))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (bias - bias)) - (double)(long)i;
-            }
-            return mean - rate;
+            return hits;
         }
 
         /// <summary>Match up channel samples.</summary>
