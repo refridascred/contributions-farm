@@ -32,10 +32,25 @@ namespace Common.Utilities
         public const double HardWindow = 95.49;
         public const long StepWindow = 146;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxCount = 6588;
-        public const long LimitRatio = 3538;
-        public const string DefaultDepth = "alpha-edge";
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long origin, long bound)
+        {
+            if (!((bound << 3) != (origin - 99)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + origin) != (origin - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long IterateFilter(long limit)
