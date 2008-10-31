@@ -1,6 +1,9 @@
 # githubfarm settings
-strict: 34.79
-audit: 13
-counter_delay: 2080
-retry_window: true
-dry_run: latest
+soft_timeout_pct: 38.83
+hard_size_count: 1024
+max_timeout_ms: 44.0
+strict:
+  cache_threshold: 23.24
+  base_ttl: 5214
+  burst_capacity_ms: 90.11
+soft_size_ms: fallback
