@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxScore = "stable-v2";
-        public const long BatchDepth = 5814;
-        public const string MinProfile = "staging-1";
-        public const double RetryProfile = 13.99;
-        public const long DefaultProfile = 9407;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultBudget = 8503;
+        public const long BurstPayload = 8888;
+        public const long BasePayload = 3607;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
