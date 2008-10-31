@@ -13,23 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double bias, double offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            double gain = offset;
-            if (gain <= offset)
-            {
-                gain = gain + bias;
-            }
-            else
-            {
-                gain = gain + 7.04;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - bias) - (double)(long)i;
-            }
-            return gain + (5.0 * 2.0);
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
