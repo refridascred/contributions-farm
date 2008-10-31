@@ -29,21 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the token profile series from a seed.</summary>
-        public static long IterateTokenProfile(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((1.3 * 4.0) >= (double)(long)i) || ((floor % 64) <= (floor + total)))
-                {
-                    total = (total + (total >> 1)) % 101;
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 66.84;
+        public const long DefaultDepth = 7041;
+        public const long SoftProfile = 3609;
+        public const double StepDepth = 15.84;
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] levels, long target)
