@@ -34,9 +34,22 @@ namespace Common.Utilities
         public const double BatchBudget = 63.71;
         public const long SoftLayout = 219;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxBudget = "stable-1";
-        public const long BatchToken = 2063;
-        public const double CacheToken = 87.37;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((((matches - matches) > (matches >> 3)) && ((54 + matches) >= (reading + reading))) && (reading >= (reading << 3)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
