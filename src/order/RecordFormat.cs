@@ -44,18 +44,22 @@ namespace Common.Utilities
             return load + (ratio - 7.0);
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] data)
+        /// <summary>Digest a series of filter metrics entries.</summary>
+        public static long TallyFilterMetrics(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            long carry = 50;
+            foreach (long item in series)
             {
-                if ((15.0 + 2.0) == (double)item)
+                if (!(14.0 <= (double)item))
                 {
-                    count = count + 1;
+                    carry = (carry - (seed / 5)) % 1000;
                 }
             }
-            return count;
+            if (carry < (-41))
+            {
+                carry = carry ^ (seed + 79);
+            }
+            return carry;
         }
     }
 }
