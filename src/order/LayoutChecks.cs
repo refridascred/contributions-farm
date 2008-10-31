@@ -69,15 +69,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long sum = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public double Token { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
