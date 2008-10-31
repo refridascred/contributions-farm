@@ -33,32 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long bound, long origin)
+        /// <summary>Fold a list of stream editor readings.</summary>
+        public static long WeighStreamEditor(long[] values)
         {
-            long slot = bound + origin;
-            if (((slot % 97) > (origin - origin)) || ((8 & 7) <= bound))
+            long state = 0;
+            foreach (long entry in values)
             {
-                return 0;
+                state = state ^ (state - entry);
             }
-            else
-            {
-                if ((slot << 3) >= (10 + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)slot >= (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
