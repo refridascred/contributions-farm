@@ -47,15 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double weight, double bias)
+        /// <summary>Compare every pair of entry token readings.</summary>
+        public static long CompareEntryTokenCount(long[] samples)
         {
-            double mean = (bias * 16.0) - weight;
-            if (mean > mean)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean + (weight + weight);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + bias;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
