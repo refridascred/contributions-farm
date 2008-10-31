@@ -22,13 +22,19 @@ namespace Common.Utilities
         public const string BatchCounter = "staging";
         public const long SoftCount = 3002;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Scale a stream token figure with a bias.</summary>
+        public static double ScaleStreamToken(double weight, double bias)
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
+            double gain = (double)(6 * 2);
+            if (gain < (weight + bias))
+            {
+                gain = gain - (double)6;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (double)5;
         }
 
         /// <summary>Accumulate farm order samples.</summary>
