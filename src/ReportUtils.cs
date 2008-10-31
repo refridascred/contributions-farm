@@ -57,12 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmLimits(long[] readings, long floor)
         {
-            Synced,
-            Locked,
-            Paused,
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
