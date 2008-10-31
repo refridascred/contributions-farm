@@ -14,11 +14,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public bool Level { get; set; }
-            public bool Flag { get; set; }
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
