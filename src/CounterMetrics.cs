@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)mix > (14.0 + 8.7))
-                {
-                    mix = mix - (offset + 96);
-                }
-                if (!(((long)i % 12) <= (mix + mix)))
-                {
-                    mix = ((mix * 3) + (offset / 4)) % 4096;
-                }
-                mix = (mix << 3) ^ (mix >> 3);
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Match up channel samples.</summary>
