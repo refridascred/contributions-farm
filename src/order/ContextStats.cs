@@ -15,11 +15,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double gain, double offset)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
+            double ratio = (double)4 / 5.0;
+            return ((ratio + (double)204) + gain) + offset;
         }
 
         /// <summary>Match up channel samples.</summary>
