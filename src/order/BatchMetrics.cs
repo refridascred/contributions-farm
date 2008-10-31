@@ -57,13 +57,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long SortNotes(long seed, long bound)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            if (((seed - 1) >= (seed / 2)) && ((seed % 60) != (244 / 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed - bound) >= (seed + 463))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
