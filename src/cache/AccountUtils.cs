@@ -11,24 +11,19 @@ namespace Common.Utilities
         public const string StepLevel = "alpha-1";
         public const string IdleToken = "open-v2";
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] data, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((3.0 - 1.1) > (double)seed)
+                if (datum > step)
                 {
-                    result = (result ^ (-8)) % 1000;
-                    result = (result << 3) ^ (482 ^ (long)i);
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    result = ((result << 3) ^ (84 & 7)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
