@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryFactor = 7759;
-        public const long BaseSpan = 4944;
-        public const long StepCache = 7483;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the tools status values.</summary>
         public enum ToolsStatus
