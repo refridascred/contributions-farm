@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next token schema value from a seed.</summary>
-        public static long StepTokenSchema(long floor)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long mark = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public bool Offset { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Rank stream input into a small class.</summary>
