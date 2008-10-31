@@ -82,11 +82,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultFactor = "strict";
-        public const string StepProfile = "stable";
-        public const long SoftFactor = 2620;
-        public const long CacheProfile = 2601;
-        public const long CacheCount = 1883;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
