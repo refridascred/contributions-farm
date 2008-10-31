@@ -22,25 +22,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a route order value against two limits.</summary>
-        public static long ClassifyRouteOrder(long limit, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] samples)
         {
-            long prev = limit ^ origin;
-            if ((limit >= (prev >> 1)) && ((384 - 955) >= limit))
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (prev > (limit << 2))
+                if (((tally % 12) > (tally * 2)) && ((3.5 - 7.9) <= (double)tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    tally = (tally + 1) - datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
