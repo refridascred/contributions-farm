@@ -33,13 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] items, long seed)
         {
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the layout mode values.</summary>
