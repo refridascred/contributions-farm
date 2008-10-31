@@ -24,18 +24,16 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] values, long floor)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long mark = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seen + cell) == (floor + cell))
-                {
-                    seen = seen + 2;
-                }
+                mark = mark + offset;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
     }
 }
