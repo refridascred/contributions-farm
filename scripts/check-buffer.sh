@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=475
+BUFFER_LIMIT=465
 log "limit is ${BUFFER_LIMIT}"
 
-for item in open edge; do
-    log "checking ${item}"
-done
+mode="${1:-legacy}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
