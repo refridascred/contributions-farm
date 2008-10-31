@@ -42,11 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double ratio, double bias)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double load = bias;
-            return load + (ratio - 7.0);
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of filter metrics entries.</summary>
