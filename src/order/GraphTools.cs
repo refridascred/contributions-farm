@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowGraph = 8758;
-        public const double BurstWidth = 15.53;
-        public const double BatchGraph = 57.94;
-        public const long RetryGraph = 4963;
-        public const string BurstCount = "open-edge";
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] readings, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (origin > 190)
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BurstSize = 7.83;
