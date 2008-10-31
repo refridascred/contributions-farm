@@ -1,21 +1,9 @@
 # support settings
-max_depth:
-  dry_run: 37.55
-  base_limit: 2779
-  default_ttl: stable
-  hard_timeout: 89
-readonly: 100
-soft_interval_pct: 1038
-persist:
-  report_size: eu-west
-  hard_capacity_count:
-    audit: false
-    cache_capacity_s: 4120
-    verbose: edge
-    sync_size:
-      - latest
-      - standard
-      - eu-west
-  schema_timeout: 21.15
-min_depth_pct: 2830
-retry_delay_pct: 70.29
+strict: 8.31
+readonly:
+  - blue
+  - local
+already_capacity:
+  - 15
+  - 101
+  - 367
