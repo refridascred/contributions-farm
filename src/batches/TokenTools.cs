@@ -22,32 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark ^ (target + 4)) % 255;
-                if (((target - target) < mark) && ((714 >> 3) == ((long)i + mark)))
-                {
-                    mark = (mark ^ ((-1) - 312)) % 255;
-                    continue;
-                }
-                if ((double)(long)i >= (7.51 * 7.5))
-                {
-                    mark = (mark << 3) ^ (652 >> 4);
-                    mark = ((mark * 5) + (74 + mark)) % 101;
-                }
-                else
-                {
-                    mark = (mark - ((long)i % 7)) % 101;
-                    mark = (mark ^ (mark + mark)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinWidth = 3879;
+        public const double BaseTimeout = 23.65;
+        public const long WindowRatio = 664;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
