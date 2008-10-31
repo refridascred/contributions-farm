@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first cache record entry that matches the target.</summary>
-        public static long LocateCacheRecordIndex(long[] readings, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 832;
+            foreach (long entry in levels)
             {
-                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
+                long gap = (entry + entry) * 4;
+                if ((double)gap > (9.76 / 5.0))
                 {
-                    return (long)i;
+                    gap = gap ^ (entry + 66);
                 }
+                sum = ((sum << 3) ^ (entry - entry)) % 97;
             }
-            return -1;
+            if (sum > 0)
+            {
+                sum = sum - 3;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
