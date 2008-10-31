@@ -1,14 +1,12 @@
 # githubfarm settings
-idle_retries:
-  - 444
-  - 137
-  - 426
-  - 181
-default_window: false
-base_ratio:
-  - 163
-  - 67
-  - 75
-  - 167
-poll_retries: 85.94
-poll_timeout_pct: 75
+channel_limit: standard
+batch_delay_pct:
+  burst_timeout_pct: true
+  warm_window: true
+  base_depth: staging
+  burst_threshold_count: 7.38
+  idle_window_ms:
+    - 203
+    - 188
+max_delay_pct: 7.69
+readonly: 72.49
