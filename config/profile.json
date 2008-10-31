@@ -1,5 +1,7 @@
 {
-  "persist": 79,
-  "batch_capacity": 98,
-  "verbose": true
+  "cache_delay": true,
+  "cache_limit_s": 30,
+  "warm_limit_count": 87,
+  "metric_limit": 3.13,
+  "sync_delay_s": 19
 }
