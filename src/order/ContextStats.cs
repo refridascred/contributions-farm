@@ -42,13 +42,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 1119;
+        public const double HardCluster = 12.78;
+        public const long MinWidth = 2793;
+        public const long BatchCluster = 180;
+        public const long LimitCluster = 946;
     }
 }
