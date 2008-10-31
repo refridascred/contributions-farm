@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Done,
             Retry,
-            Synced,
+            Pending,
             Dropped,
-            Draft,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
