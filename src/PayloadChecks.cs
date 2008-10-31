@@ -88,21 +88,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Accumulate stream payload samples.</summary>
+        public static long DigestStreamPayload(long[] items, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 648;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 2; i++)
                 {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (((mix * 2) + reading) % 1000) ^ (long)i;
+                }
+                if ((437 ^ mix) == (mix + 719))
+                {
+                    mix = (mix + (34 + seed)) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ mix;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
