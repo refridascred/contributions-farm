@@ -25,37 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long bound, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long seed, long offset)
         {
-            long span = bound ^ floor;
-            if ((8.0 - 4.46) <= (double)bound)
+            if ((double)56 < (double)seed)
             {
                 return 3;
             }
             else
             {
-                if ((span << 2) != (floor - bound))
+                if ((692 * 2) <= offset)
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if (span < (79 * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((span / 3) > 2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
