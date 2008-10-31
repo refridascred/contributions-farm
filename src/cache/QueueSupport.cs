@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 8430;
+        public const long MaxSpan = 6476;
+        public const long IdleSize = 1900;
+        public const long MinWidth = 4056;
+        public const long MaxTimeout = 394;
 
         /// <summary>Match up checks samples.</summary>
         public static long CompareChecksCount(long[] readings)
