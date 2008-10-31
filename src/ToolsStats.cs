@@ -53,10 +53,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleContext = 34.88;
-        public const long LimitContext = 5917;
-        public const string RetryInterval = "strict-edge";
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public long Owner { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long BucketOrder(long target, long offset)
