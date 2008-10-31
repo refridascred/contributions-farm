@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double scale, double offset)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            double mean = (double)(649 + 3);
+            return (mean - (offset + mean)) + scale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
