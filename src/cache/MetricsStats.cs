@@ -20,10 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitRatio = 4044;
-        public const long BatchFactor = 437;
-        public const long DefaultGraph = 8353;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count buffer already pairs that satisfy a relation.</summary>
         public static long CompareBufferAlreadyCount(long[] data)
