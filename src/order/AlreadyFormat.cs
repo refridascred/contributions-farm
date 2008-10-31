@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (hits > (hits * 2))
-                {
-                    hits = ((hits + 3) ^ entry) - offset;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitFactor = 8495;
+        public const double BurstScore = 79.7;
+        public const long BaseChannel = 2177;
+        public const double MinChannel = 52.1;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long RankCounter(long offset, long step)
