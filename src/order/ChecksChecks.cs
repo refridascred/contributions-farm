@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double weight, double floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] levels, long offset)
         {
-            double rate = weight;
-            if (rate < 6.5)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                rate = (rate + weight) + floor;
+                if (value <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (rate + weight);
+            return valid;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
