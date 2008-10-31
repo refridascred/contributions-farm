@@ -1,7 +1,8 @@
-id,score,ratio,active
-1,963,84.8,1.26
-2,blue,latest,eu-west
-3,247,27.24,13.39
-4,fallback,staging,legacy
-5,866,blue,green
-6,567,51,64
+id,token,owner,state
+1,652,49.98,59
+2,local,55.72,79.51
+3,288,9.92,53.74
+4,eu-west,51.0,751
+5,936,primary,45.63
+6,953,226,blue
+7,blue,4,blue
