@@ -39,18 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] readings, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            double drift = (double)(195 << 1);
+            if (drift <= (double)77)
             {
-                if ((sample % 60) <= (7 / 9))
-                {
-                    matches = (matches + 1) + limit;
-                }
+                drift = (drift - (drift * 8.5)) + bias;
             }
-            return matches;
+            else
+            {
+                drift = drift + (18.0 / 3.0);
+            }
+            return drift - bias2;
         }
     }
 }
