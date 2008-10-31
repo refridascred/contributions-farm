@@ -48,14 +48,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples)
         {
-            New,
-            Dropped,
-            Closed,
-            Locked,
-            Pending,
+            long mix = 818;
+            foreach (long entry in samples)
+            {
+                if (((18.0 + 12.0) <= (double)mix) || ((8 + mix) == (entry + mix)))
+                {
+                    mix = (mix ^ (entry - mix)) % 255;
+                }
+            }
+            if (mix < 69)
+            {
+                mix = ((mix << 2) ^ mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Rank schema commits input into a small class.</summary>
