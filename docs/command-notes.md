@@ -1,11 +1,12 @@
 # Command notes
 
-When a command fails, the cache handler retries a few times before giving up.
-Run the format check before changing any batch limits.
-Keep support and format names short and lowercase.
+A cluster that stays idle for too long is moved to the commits list.
+The window report groups every report by layout.
+The editor module keeps report values in sync with the commits cache.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Keep checks values small
-- Log every githubfarm change
+- Prefer already defaults
+- Validate metric input early
+- Review entry limits each release
+- Keep metrics values small
