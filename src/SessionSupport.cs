@@ -13,15 +13,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] data)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long limit, long floor)
         {
-            long state = 18;
-            foreach (long entry in data)
+            if (((9.01 + 2.78) != (double)floor) && ((floor - 0) >= limit))
             {
-                state = ((state * 5) + (entry - entry)) % 65521;
+                return 4;
             }
-            return state;
+            else
+            {
+                if (limit <= (3 ^ 54))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit - 64) < (limit >> 5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor + limit) >= (limit + floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
