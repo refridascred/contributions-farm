@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] samples, long seed)
+        /// <summary>Audit notes graph readings against a rule.</summary>
+        public static long CountNotesGraphMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((seed ^ (-670)) <= (sample << 3))
+                if ((-718) <= (seen ^ cell))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine already values into a single score.</summary>
