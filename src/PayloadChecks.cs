@@ -24,15 +24,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Dropped,
-            Draft,
-            New,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 3120;
+        public const long BatchFactor = 9379;
+        public const long StepAccount = 4259;
+        public const double CacheTimeout = 1.71;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long RankReport(long floor, long step)
