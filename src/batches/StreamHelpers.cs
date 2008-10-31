@@ -82,13 +82,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] samples, long floor)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public double Total { get; set; }
-            public double Score { get; set; }
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
