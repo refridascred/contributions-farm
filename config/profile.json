@@ -1,9 +1,5 @@
 {
-  "burst_limit_s": "cached",
-  "readonly": {
-    "dry_run": "staging",
-    "warm_ratio_pct": "fallback",
-    "payload_depth": [350, 197]
-  },
-  "editor_interval": "stable"
+  "compress": 60,
+  "flush_capacity": "staging",
+  "default_delay_s": false
 }
