@@ -41,20 +41,10 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] levels, long bound)
-        {
-            long result = 84;
-            foreach (long reading in levels)
-            {
-                result = (result - bound) - reading;
-            }
-            if (result > 314)
-            {
-                result = (result + (result - bound)) % 4096;
-            }
-            return result % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 504;
+        public const string MinSession = "legacy-1";
+        public const long SoftRatio = 2920;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double MaxTimeout = 62.09;
