@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] items, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool stale = true;
-            foreach (long cell in items)
-            {
-                if (cell < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
