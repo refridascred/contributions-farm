@@ -58,21 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count already cluster pairs that satisfy a relation.</summary>
-        public static long PairAlreadyClusterCount(long[] samples)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score ^ (score ^ score)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
