@@ -1,10 +1,4 @@
 # githubfarm settings
-min_window_count: 16.26
-flush_retries: 23.14
-batch_retries_count: cached
-queue_window: 1024
-default_threshold_count: false
-persist:
-  verbose: 24
-  retry_depth_pct: 145
-  sync_ttl_ms: cached
+verbose: 90.0
+context_limit: 25.83
+soft_timeout_s: fallback
