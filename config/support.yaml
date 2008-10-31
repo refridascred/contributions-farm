@@ -1,12 +1,33 @@
 # support settings
-verbose: 42.09
-readonly: 39.15
-payload_window:
-  - edge
-  - stable
-  - primary
-farm_size:
-  - 86
-  - 293
-min_size_s: 68.71
-metrics_ttl: 21
+max_timeout_s:
+  - standard
+  - local
+  - strict
+  - latest
+dry_run:
+  sync_timeout_pct:
+    - primary
+    - blue
+    - edge
+    - blue
+  soft_capacity:
+    already_depth: 35.25
+    counter_ttl: 500
+    dry_run:
+      - blue
+      - primary
+      - staging
+    batch_delay_pct: 60
+    persist: false
+    default_threshold_pct: green
+  cache_ratio_count: 65
+  enabled: 37.6
+  min_depth_pct:
+    - cached
+    - legacy
+    - eu-west
+batch_retries_ms:
+  token_ttl: 60
+  metrics_threshold: 33.06
+  default_retries: 63.07
+context_capacity: 4855
