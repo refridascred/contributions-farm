@@ -82,22 +82,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks already entries that pass the check.</summary>
-        public static long AuditChecksAlreadyMatches(long[] readings)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)hits <= (3.2 * 2.0))
-                {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Paused,
+            New,
         }
     }
 }
