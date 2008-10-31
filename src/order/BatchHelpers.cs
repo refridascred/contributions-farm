@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of buffer support entries.</summary>
-        public static long CombineBufferSupport(long[] levels)
+        /// <summary>Count the graph cluster entries that pass the check.</summary>
+        public static long TallyGraphClusterOutliers(long[] levels, long limit)
         {
-            long carry = 9;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry << 2) ^ (value % 3)) % 1000;
+                if ((double)limit == (double)tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
             }
-            return carry % 4096;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
