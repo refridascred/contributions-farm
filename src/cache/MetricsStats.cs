@@ -60,16 +60,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 1000;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Project the next notes value.</summary>
