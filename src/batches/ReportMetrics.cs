@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] samples)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long state = 965;
-            foreach (long sample in samples)
-            {
-                state = (((state * 4) + (state & 3)) % 255) + sample;
-            }
-            if (state > 310)
-            {
-                state = state - (state % 7);
-            }
-            return state;
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Define token limits and defaults.</summary>
