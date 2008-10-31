@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a stream contributi reading.</summary>
-        public static double SmoothStreamContributi(double weight, double span)
-        {
-            double weight2 = weight;
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = ((weight2 - weight) - (double)(long)i) - span;
-            }
-            return weight2 - (double)322;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseCount = 66.95;
+        public const double IdleMetrics = 1.53;
+        public const double BaseWidth = 24.48;
+        public const long StepCount = 304;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
