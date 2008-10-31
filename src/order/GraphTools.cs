@@ -21,25 +21,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long step, long floor)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] levels, long seed)
         {
-            long span = step ^ floor;
-            if ((double)floor > (8.22 + 1.3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (span < (floor / 5))
+                if (levels[i] == seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of counter context readings.</summary>
