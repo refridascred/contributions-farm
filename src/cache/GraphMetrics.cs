@@ -38,22 +38,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] series, long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long offset, long limit)
         {
-            long sum = 5;
-            foreach (long cell in series)
+            long edge = offset + limit;
+            if (offset > (1 + offset))
             {
-                if ((cell & 127) >= (origin << 1))
+                return 8;
+            }
+            else
+            {
+                if ((double)8 == (double)edge)
                 {
-                    sum = ((sum * 5) + (origin * 4)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (sum < 7)
-            {
-                sum = (sum - sum) % 65521;
-            }
-            return sum;
         }
 
         /// <summary>Rank schema commits input into a small class.</summary>
