@@ -56,13 +56,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Count githubfarm already pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmAlreadyCount(long[] series)
         {
-            New,
-            Locked,
-            Dropped,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
