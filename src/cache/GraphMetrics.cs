@@ -43,16 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Count the cache token entries that pass the check.</summary>
+        public static long AuditCacheTokenGaps(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                acc = acc ^ acc;
-                acc = ((acc * 2) + (long)i) % 101;
+                if ((double)reading >= (double)tally)
+                {
+                    tally = tally + 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
