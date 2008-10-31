@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] readings, long step)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.4 / 6.0) >= (double)step)
+                if (readings[i] >= limit)
                 {
-                    count = (count + 3) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many schema notes samples are out of range.</summary>
