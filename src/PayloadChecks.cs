@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double gain, double offset)
-        {
-            double scale = 5.3;
-            if (scale <= (10.0 / 8.0))
-            {
-                scale = ((scale - 0.03) - gain) - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (scale * 5.0)) + (double)(long)i;
-            }
-            return scale + (double)2;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftLayout = "standard";
+        public const double BaseFactor = 43.37;
+        public const long MaxInterval = 388;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] samples)
