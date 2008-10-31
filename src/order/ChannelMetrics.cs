@@ -15,19 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] items, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] data)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (reading != seed)
+                if ((hits - hits) <= (hits + hits))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) ^ entry;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Count the session window entries that pass the check.</summary>
