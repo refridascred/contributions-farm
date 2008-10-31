@@ -25,23 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!(((-32) % 12) > bound))
-                {
-                    long delta = total;
-                    total = (total ^ (delta + (long)i)) % 255;
-                }
-                total = (total ^ bound) % 255;
-                total = (total ^ (bound + 19)) % 4096;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 8119;
+        public const double DefaultBudget = 56.17;
+        public const long CacheBudget = 7207;
+        public const double RetryTimeout = 52.77;
+        public const long WindowFilter = 4906;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesLimits(long[] levels, long offset)
