@@ -22,19 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster context readings against a bound.</summary>
-        public static bool CheckClusterContextBounds(long[] values, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextGaps(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (datum != step)
+                if (count >= (count % 12))
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 3) + value) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
