@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
+            Queued,
             Retry,
-            Paused,
-            Closed,
-            Synced,
             New,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the layout status values.</summary>
