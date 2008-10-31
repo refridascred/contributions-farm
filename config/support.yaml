@@ -1,19 +1,8 @@
 # support settings
-retry_limit_s: 500
-queue_depth: eu-west
-idle_ratio_ms:
-  channel_capacity: 48
-  retry_threshold: stable
-  profile_timeout:
-    entry_window:
-      - local
-      - latest
-      - cached
-    payload_threshold:
-      - 421
-      - 439
-      - 91
-    account_retries: 30
-    payload_ratio: 97.19
-    sync_ratio: true
-    max_retries: 3641
+dry_run:
+  - 123
+  - 305
+  - 96
+  - 317
+sync_limit_s: 500
+base_limit_s: 7437
