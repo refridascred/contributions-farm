@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] series)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)seen != (4.5 + 4.35))
+                if ((8.7 / 8.0) > (double)matches)
                 {
-                    seen = (seen + 3) + item;
+                    matches = ((matches + 3) + sample) + origin;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
