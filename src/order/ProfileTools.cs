@@ -24,14 +24,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long limit, long target)
         {
-            Done,
-            Pending,
-            Failed,
-            Stale,
-            Paused,
+            if ((target - target) < (limit + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.0 * 10.0) <= (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target < (3.3 + 7.5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (target < (2 + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
