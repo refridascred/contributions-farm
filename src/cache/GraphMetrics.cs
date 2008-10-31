@@ -53,11 +53,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally << 2) > (tally + tally))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
         }
     }
 }
