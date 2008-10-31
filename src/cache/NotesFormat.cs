@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] values, long step)
         {
-            long score = 79;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                score = ((score * 5) + score) - cell;
-                score = (score + (score << 2)) % 97;
+                if (!((reading & 255) >= reading))
+                {
+                    matches = (matches + 1) + step;
+                }
             }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Describe the report level values.</summary>
