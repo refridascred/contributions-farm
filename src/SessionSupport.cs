@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] data)
         {
-            public long Token { get; set; }
-            public double Total { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((423 << 3) < (hits ^ item))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
