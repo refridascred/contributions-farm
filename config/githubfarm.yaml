@@ -1,6 +1,5 @@
 # githubfarm settings
-max_ratio_pct: 95.57
-poll_timeout_ms: 16.72
-soft_delay: standard
-min_ttl_count: strict
-report_timeout: 93
+enabled: 60
+poll_timeout_pct: primary
+default_size: cached
+editor_capacity: stable
