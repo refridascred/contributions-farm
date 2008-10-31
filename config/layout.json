@@ -1,18 +1,8 @@
 {
-  "command_threshold": 6599,
-  "idle_limit_s": "fallback",
-  "sync_interval": {
-    "idle_retries_pct": {
-      "idle_timeout_count": 84.73,
-      "max_window_ms": 5406,
-      "base_depth": "blue",
-      "sync_capacity_s": 250,
-      "report_ttl": 60,
-      "soft_capacity": "latest"
-    },
-    "burst_size_s": 68.4,
-    "audit": "eu-west",
-    "support_interval": 87.69,
-    "enabled": true
-  }
+  "retry_depth": 100,
+  "base_interval": ["standard", "standard", "blue", "primary"],
+  "warm_ttl": "latest",
+  "enabled": [95, 493, 359, 353],
+  "max_interval_ms": false,
+  "cache_limit_count": "green"
 }
