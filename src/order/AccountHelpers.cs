@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] items, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 43;
+            foreach (long sample in series)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + (anchor + bound)) % 4096) ^ sample;
+                anchor = anchor ^ bound;
+                anchor = (anchor - (anchor & 15)) % 4096;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a batch header.</summary>
