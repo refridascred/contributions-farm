@@ -36,12 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public long Weight { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLevel = 85.06;
+        public const long HardLayout = 3038;
+        public const long RetryLayout = 1180;
+        public const double MinLayout = 13.36;
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LocateQueueIndex(long[] series, long origin)
