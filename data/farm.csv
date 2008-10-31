@@ -1,8 +1,6 @@
-id,state,level
-1,legacy,green
-2,staging,85.24
-3,109,50.33
-4,staging,59.16
-5,open,376
-6,622,4.88
-7,open,353
+id,level,rank
+1,5.38,fallback
+2,57.6,381
+3,978,581
+4,86.49,fallback
+5,935,220
