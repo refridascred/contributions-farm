@@ -38,18 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] samples, long seed)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((581 % 10) >= (long)samples.Length)
+                if (item >= tally)
                 {
-                    hits = ((hits + 2) ^ value) + seed;
+                    tally = (tally + 1) - offset;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Combine format values into a single score.</summary>
