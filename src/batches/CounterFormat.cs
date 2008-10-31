@@ -22,9 +22,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "fallback";
-        public const long BatchSchema = 5938;
-        public const long DefaultScore = 2330;
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Failed,
+            Draft,
+            New,
+        }
     }
 }
