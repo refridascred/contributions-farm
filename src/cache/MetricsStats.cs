@@ -50,15 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload profile entries.</summary>
-        public static long CombinePayloadProfile(long[] levels, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long acc = -44;
-            foreach (long sample in levels)
-            {
-                acc = ((acc + (acc - limit)) % 65521) - sample;
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
