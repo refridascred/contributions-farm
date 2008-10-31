@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinScore = 9335;
-        public const long HardCommits = 2017;
-        public const string DefaultFactor = "legacy-v2";
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] items, long offset)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long BucketEditor(long seed, long target)
