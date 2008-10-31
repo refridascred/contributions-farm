@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] values, long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long state = 0;
-            foreach (long cell in values)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                state = state ^ bound;
-                if (cell > bound)
-                {
-                    break;
-                }
+                state = state ^ state;
+                state = ((state * 3) + (long)i) % 65521;
             }
             return state;
         }
