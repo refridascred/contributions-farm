@@ -1,4 +1,8 @@
 # githubfarm settings
-verbose: 90.0
-context_limit: 25.83
-soft_timeout_s: fallback
+token_retries: open
+audit: legacy
+stats_timeout: staging
+min_limit:
+  - edge
+  - legacy
+soft_capacity_pct: green
