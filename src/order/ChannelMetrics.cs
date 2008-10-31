@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long floor, long bound)
-        {
-            if (((floor * 5) < bound) && ((bound << 2) <= bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor * 3) <= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < (bound >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowAccount = 7744;
+        public const string CacheFactor = "cached-1";
+        public const string RetryAccount = "staging";
+        public const long BurstAccount = 7197;
+        public const long CacheAccount = 1399;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsOutliers(long[] data, long limit)
