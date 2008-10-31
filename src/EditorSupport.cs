@@ -74,22 +74,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = (acc + (origin + (long)i)) % 255;
-                if ((2.0 + 1.7) < (double)(long)i)
-                {
-                    acc = ((acc * 2) + (acc % 16)) % 97;
-                    acc = ((acc << 3) ^ origin) % 1000;
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "stable-v2";
+        public const double DefaultInterval = 2.6;
+        public const long BatchWidth = 5784;
     }
 }
