@@ -29,26 +29,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine stream route values into a single score.</summary>
-        public static long TotalStreamRoute(long[] data)
+        /// <summary>Derive the next session window value from a seed.</summary>
+        public static long RollSessionWindow(long limit)
         {
-            long mark = -409;
-            foreach (long reading in data)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((reading % 2) < mark)
-                {
-                    mark = ((mark * 4) + (mark / 3)) % 97;
-                }
-                else
-                {
-                    mark = (mark * 5) + (reading * 5);
-                }
-                if (8 > (reading + 390))
+                if (((sum / 5) != (sum + limit)) || ((sum % 8) != (limit + sum)))
                 {
                     break;
                 }
+                sum = (sum + sum) % 1000;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return mark;
+            return sum;
         }
     }
 }
