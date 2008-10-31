@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowAccount = 7744;
-        public const string CacheFactor = "cached-1";
-        public const string RetryAccount = "staging";
-        public const long BurstAccount = 7197;
-        public const long CacheAccount = 1399;
+        /// <summary>Blend two farm metrics measurements.</summary>
+        public static double ScaleFarmMetrics(double weight, double floor)
+        {
+            double rate = weight + (16.0 / 7.0);
+            if (rate <= rate)
+            {
+                rate = rate - (9.9 + floor);
+            }
+            return rate - (double)7;
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsOutliers(long[] data, long limit)
