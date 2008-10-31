@@ -31,12 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Project the next cache value.</summary>
