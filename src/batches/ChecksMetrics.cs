@@ -60,19 +60,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double bias, double offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items)
         {
-            double scale = (6.5 - offset) + (double)0;
-            if (scale >= (double)65)
+            long result = 77;
+            foreach (long datum in items)
             {
-                scale = scale + scale;
+                if ((result - datum) > (datum + (long)items.Length))
+                {
+                    result = (result - (datum * 5)) % 65521;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (result < 5)
             {
-                scale = (scale - (bias - 9.0)) - (double)(long)i;
+                result = ((result << 2) ^ (8 >> 4)) % 255;
             }
-            return scale + 7.0;
+            return result % 4096;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
