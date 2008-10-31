@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] readings, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long seed, long origin)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long bound = seed ^ origin;
+            if (!((origin >> 4) <= (1 / 7)))
             {
-                if (reading != step)
+                return 1;
+            }
+            else
+            {
+                if ((6 ^ origin) >= bound)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound * 2) > (origin << 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a channel header.</summary>
