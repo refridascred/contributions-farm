@@ -18,21 +18,18 @@ namespace Common.Utilities
         public const long HardWindow = 343;
         public const long StepSize = 5945;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] levels)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (cell > (cell >> 5))
                 {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
