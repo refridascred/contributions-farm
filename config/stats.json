@@ -1,5 +1,8 @@
 {
-  "verbose": 9,
-  "hard_timeout_s": true,
-  "session_ratio": 308
+  "enabled": ["eu-west", "legacy", "open", "cached"],
+  "flush_retries_ms": "legacy",
+  "cache_ttl": "local",
+  "flush_delay_ms": [235, 2],
+  "flush_depth_count": [405, 185, 335],
+  "warm_ttl_count": 87
 }
