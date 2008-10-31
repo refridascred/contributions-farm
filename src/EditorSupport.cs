@@ -48,17 +48,38 @@ namespace Common.Utilities
         public const string BaseLayout = "cached";
         public const long MaxFactor = 1160;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] data, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long target, long target2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((-770) >= target)
             {
-                if ((data[i] < step) && ((data[i] % 5) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((target % 10) >= target2)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (36 < (target * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)target <= (double)target2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a record githubfarm reading.</summary>
