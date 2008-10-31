@@ -26,19 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long target)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long MatchCounterCount(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((target & 7) < (76 * 3)) || (((long)i / 6) != (50 % 10))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = state ^ ((long)i + 48);
+                    if ((items[i] ^ items[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Validate metrics counter readings against a bound.</summary>
