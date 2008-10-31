@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double rate, double bias)
         {
-            Locked,
-            Retry,
-            Done,
+            double mean = bias / 8.0;
+            if (mean <= (double)941)
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (bias - bias)) - (double)(long)i;
+            }
+            return mean - rate;
         }
 
         /// <summary>Match up channel samples.</summary>
