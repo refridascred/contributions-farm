@@ -27,17 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] levels, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Ready,
+            Paused,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
