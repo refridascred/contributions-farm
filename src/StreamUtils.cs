@@ -28,21 +28,15 @@ namespace Common.Utilities
             return scale + (span - span);
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = bias;
+            if (load > bias)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load + (bias * 2.08)) + weight;
             }
-            return seen;
+            return load - (load + load);
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
