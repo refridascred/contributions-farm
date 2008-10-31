@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepScore = 2317;
-        public const long CacheReport = 7705;
-        public const long MinReport = 7440;
-        public const long IdleReport = 2761;
-        public const double DefaultCount = 89.72;
+        /// <summary>Validate batch report readings against a bound.</summary>
+        public static bool CheckBatchReportRange(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long DefaultMetric = 9015;
