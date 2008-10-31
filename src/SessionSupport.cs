@@ -31,15 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 6824;
+        public const long BurstCommits = 9771;
+        public const long LimitDepth = 6868;
+        public const double MaxTimeout = 14.29;
+        public const long IdleBudget = 4591;
     }
 }
