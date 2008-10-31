@@ -39,20 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] items, long seed)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mark = 7;
-            foreach (long value in items)
-            {
-                if (seed >= (seed + value))
-                {
-                    long matches = (9 & 1) + (value >> 1);
-                    mark = mark ^ (1 + matches);
-                }
-                mark = ((mark * 3) + (697 % 8)) % 255;
-            }
-            return mark;
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
