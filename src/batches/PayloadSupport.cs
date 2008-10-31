@@ -30,12 +30,15 @@ namespace Common.Utilities
         public const long HardLevel = 3552;
         public const double MaxSession = 24.04;
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] items)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
+            long state = 47;
+            foreach (long cell in items)
+            {
+                state = (((state << 3) ^ (state ^ state)) % 1000) ^ cell;
+            }
+            return state;
         }
     }
 }
