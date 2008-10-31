@@ -24,21 +24,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = -768;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                score = (score ^ (score % 7)) + origin;
+                if ((7 + datum) >= (long)values.Length)
                 {
-                    if ((items[i] - items[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score << 2) ^ datum) % 255;
+                }
+                else
+                {
+                    score = ((score * 4) + (score << 2)) % 65521;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
