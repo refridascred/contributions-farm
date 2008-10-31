@@ -17,18 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] readings, long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long result = -308;
-            foreach (long sample in readings)
-            {
-                if ((origin << 2) <= result)
-                {
-                    result = ((result * 4) + (result - sample)) % 1000;
-                }
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
