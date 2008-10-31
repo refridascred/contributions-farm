@@ -33,11 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinSize = 5894;
-        public const double RetryWidth = 11.87;
-        public const double DefaultBatch = 90.64;
-        public const long DefaultTimeout = 7423;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = (sum + (origin + sum)) % 1000;
+                sum = ((sum * 4) + (long)i) % 4096;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a checks layout sample.</summary>
         public static long SeekChecksLayoutIndex(long[] items, long target)
