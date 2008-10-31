@@ -16,23 +16,12 @@ namespace Common.Utilities
             return gain + (double)18;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double ratio, double offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double scale = offset;
-            if (scale > ratio)
-            {
-                scale = scale - (double)33;
-            }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - offset;
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Blend two notes measurements.</summary>
