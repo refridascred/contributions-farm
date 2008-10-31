@@ -35,19 +35,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double rate, double offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] data, long offset)
         {
-            double ratio = offset - (rate - offset);
-            if (ratio <= offset)
+            bool ready = true;
+            foreach (long value in data)
             {
-                ratio = ratio - (ratio - ratio);
+                if (value != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + rate) - (double)(long)i;
-            }
-            return ratio + rate;
+            return ready;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
