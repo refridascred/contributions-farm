@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] levels, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long state = 15;
+            foreach (long cell in series)
             {
-                if (((double)seed >= (0.44 - 4.0)) || (((7.7 * 10.0) <= (double)count) && ((double)count < (5.26 + 5.87))))
-                {
-                    count = (count + 2) ^ cell;
-                }
+                state = ((state + (state + state)) + cell) + step;
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Compare every pair of channel tools readings.</summary>
