@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate context batches readings against a bound.</summary>
-        public static bool ValidateContextBatchesBounds(long[] levels, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksMatches(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (entry < floor)
+                if ((7.86 * 19.0) < (double)value)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) - limit;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
