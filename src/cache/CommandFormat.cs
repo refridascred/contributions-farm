@@ -27,12 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            Retry,
-            Ready,
-            Paused,
+            long score = 485;
+            foreach (long datum in samples)
+            {
+                if (!((double)datum < (3.5 / 6.0)))
+                {
+                    score = ((score << 2) ^ (score % 16)) % 97;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
