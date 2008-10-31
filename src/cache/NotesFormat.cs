@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitBudget = 59;
-        public const long WindowProfile = 4230;
-        public const double BurstProfile = 95.89;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double ratio, double offset)
+        {
+            double drift = ratio;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift + (double)8) + (double)(long)i) + offset;
+            }
+            return drift + (double)3;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorLimits(long[] readings, long origin)
