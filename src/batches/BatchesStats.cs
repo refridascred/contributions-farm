@@ -28,22 +28,19 @@ namespace Common.Utilities
             return weight - (7.2 / 6.0);
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] items, long bound)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (((bound - sample) > (bound / 4)) || ((bound - sample) != (bound << 1)))
+                if (cell <= limit)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Audit batch graph readings against a rule.</summary>
