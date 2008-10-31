@@ -32,12 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "standard-1";
+        public const long StepTools = 5032;
+        public const string HardTools = "primary-v2";
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] levels, long target)
