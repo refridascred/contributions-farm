@@ -1,7 +1,7 @@
-id,owner,ratio,region,level
-1,458,standard,85.79,721
-2,green,89.34,57.37,79.0
-3,strict,80,legacy,cached
-4,latest,43.95,21.49,895
-5,47.43,standard,72,114
-6,818,174,eu-west,stable
+id,score,active,state,region
+1,171,77.02,cached,34.22
+2,open,17.35,open,194
+3,579,green,edge,green
+4,blue,580,462,52.36
+5,659,621,387,staging
+6,blue,522,285,48.55
