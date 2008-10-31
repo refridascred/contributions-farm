@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double ratio, double bias)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            double load = (double)(98 & 63);
-            if (load < bias)
-            {
-                load = (load - (6.8 * 7.49)) - ratio;
-            }
-            else
-            {
-                load = load - (load + 17.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load - bias;
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a batch metric reading by value.</summary>
