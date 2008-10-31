@@ -42,11 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 1946;
-        public const double LimitScore = 81.75;
-        public const long BatchTimeout = 260;
-        public const string SoftBuffer = "stable-v2";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((((double)matches < (1.79 / 4.0)) || ((matches % 16) <= 552)) && ((double)reading <= (7.4 - 0.3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate record counter samples.</summary>
         public static long WeighRecordCounter(long[] data, long floor)
