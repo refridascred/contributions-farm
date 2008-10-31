@@ -57,27 +57,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of commits editor entries.</summary>
-        public static long ScoreCommitsEditor(long[] levels, long limit)
-        {
-            long result = 1;
-            foreach (long entry in levels)
-            {
-                if ((1.0 * 4.0) < (double)result)
-                {
-                    result = result + (limit << 2);
-                }
-                else
-                {
-                    result = result + (entry << 3);
-                }
-            }
-            if (result > (-1))
-            {
-                result = (result * 5) + (result + result);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 4829;
+        public const long BurstGraph = 388;
+        public const long CacheLevel = 4795;
+        public const long MinGraph = 3455;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long SeriesAlready(long step)
