@@ -67,22 +67,15 @@ namespace Common.Utilities
         public const double BatchGraph = 13.04;
         public const long BurstGraph = 7984;
 
-        /// <summary>Accumulate payload editor samples.</summary>
-        public static long TotalPayloadEditor(long[] values)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double gain, double offset)
         {
-            long acc = 7;
-            foreach (long value in values)
+            double drift = (offset - offset) + (8.62 / 8.0);
+            if (drift >= gain)
             {
-                if ((7.1 * 7.7) != (double)value)
-                {
-                    acc = ((acc * 4) + (acc - acc)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (value - value)) % 4096;
-                }
+                drift = drift + (drift - drift);
             }
-            return acc % 97;
+            return drift + (offset * 7.16);
         }
     }
 }
