@@ -32,11 +32,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double scale, double floor)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double ratio, double offset)
         {
-            double drift = (double)(995 << 3);
-            return ((drift - (double)73) + scale) + floor;
+            double bias = (double)3 / 2.0;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (((bias - bias) + (double)(long)i) + ratio) + offset;
+            }
+            return bias - 8.0;
         }
     }
 }
