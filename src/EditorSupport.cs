@@ -33,21 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster tools samples.</summary>
-        public static long OverlapClusterToolsCount(long[] series)
+        /// <summary>Accumulate channel order samples.</summary>
+        public static long TotalChannelOrder(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = -2;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = (mark + cell) % 101;
+                if ((double)cell < (double)614)
                 {
-                    if ((series[i] ^ series[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = mark - (cell + cell);
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a notes info.</summary>
