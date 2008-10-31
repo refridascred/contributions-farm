@@ -20,13 +20,32 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long floor, long origin)
         {
-            Pending,
-            Retry,
-            Paused,
-            Queued,
+            long step = floor + origin;
+            if (floor < (origin / 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)step <= (double)floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin << 3) <= step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a farm entry.</summary>
