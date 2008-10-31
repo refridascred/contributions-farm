@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up channel profile samples.</summary>
-        public static long CompareChannelProfileCount(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 512;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)carry < (20.0 * 9.7))
                 {
-                    if ((samples[i] - samples[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 5) + reading) % 65521;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Hold a format stats.</summary>
