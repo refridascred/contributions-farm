@@ -32,13 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
