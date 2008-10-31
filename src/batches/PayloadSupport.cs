@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Measure how many checks editor samples are out of range.</summary>
+        public static long TallyChecksEditorOutliers(long[] levels, long step)
         {
-            public bool Offset { get; set; }
-            public double Limit { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((step >> 3) >= (6 + step))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
