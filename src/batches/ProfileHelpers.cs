@@ -41,12 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            Pending,
+            Closed,
+            Idle,
+            Paused,
         }
 
         /// <summary>Blend two order measurements.</summary>
