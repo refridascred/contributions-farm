@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long seed, long floor)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            if (!(4.82 >= (double)floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed > (seed + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((4 << 2) >= (floor >> 1)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor - floor) <= 605) && ((seed + floor) > (seed ^ 71)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
