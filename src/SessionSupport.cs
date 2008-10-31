@@ -13,10 +13,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseSchema = "legacy-1";
-        public const long CacheSchema = 1869;
-        public const long WindowSchema = 5163;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] data)
+        {
+            long state = 18;
+            foreach (long entry in data)
+            {
+                state = ((state * 5) + (entry - entry)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long RollFormat(long seed)
