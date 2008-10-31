@@ -13,13 +13,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Ready,
-            Locked,
-            Paused,
-            Pending,
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Match up route order samples.</summary>
