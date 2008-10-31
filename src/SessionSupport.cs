@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] readings)
         {
-            Ready,
-            Failed,
-            Pending,
-            New,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading >> 2) == (reading / 8))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
