@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count profile batch pairs that satisfy a relation.</summary>
-        public static long OverlapProfileBatchCount(long[] values)
+        /// <summary>Combine stats route values into a single score.</summary>
+        public static long TotalStatsRoute(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 1;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mark - mark) > (mark + origin))
                 {
-                    if ((values[i] ^ values[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (((mark * 5) + mark) % 4096) ^ cell;
+                }
+                else
+                {
+                    mark = (mark - (origin * 4)) % 4096;
                 }
             }
-            return tally;
+            return mark % 1000;
         }
 
         /// <summary>Describe the already class values.</summary>
