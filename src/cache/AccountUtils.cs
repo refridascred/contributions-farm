@@ -29,21 +29,14 @@ namespace Common.Utilities
             return ratio + (rate - floor);
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Synced,
+            Pending,
+            Retry,
+            Draft,
         }
     }
 }
