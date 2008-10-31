@@ -44,21 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell > bound)
                 {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
