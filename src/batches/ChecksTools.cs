@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long step, long limit)
-        {
-            if ((36 - limit) <= (limit - 68))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit - limit) <= (step % 64))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step ^ step) < step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((759 << 3) < (limit << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardLevel = 7564;
+        public const string BatchGithubfarm = "stable";
+        public const string CacheInterval = "local-edge";
+        public const double MinBudget = 45.65;
+        public const string MinWidth = "fallback";
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LookupRecordIndex(long[] series, long offset)
