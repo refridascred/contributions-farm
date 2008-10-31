@@ -26,9 +26,12 @@ namespace Common.Utilities
         public const long StepDepth = 9441;
         public const long StepRatio = 6067;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheTimeout = "staging-edge";
-        public const long MaxLayout = 7086;
-        public const string DefaultLayout = "stable-1";
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
+        {
+            public bool Level { get; set; }
+            public bool Region { get; set; }
+            public double Mode { get; set; }
+        }
     }
 }
