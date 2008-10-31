@@ -43,17 +43,18 @@ namespace Common.Utilities
             return (scale2 - scale) + bias;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long floor)
+        /// <summary>Accumulate farm order samples.</summary>
+        public static long WeighFarmOrder(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = -236;
+            foreach (long cell in series)
             {
-                if ((items[i] <= floor) && ((items[i] % 3) != 0))
+                if ((197 - anchor) > cell)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 2) + cell) % 97;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
