@@ -53,28 +53,39 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Classify a commits stats pair into a bucket.</summary>
+        public static long RankCommitsStats(long offset, long step)
         {
-            long result = 65;
-            foreach (long datum in values)
+            long prev = offset ^ step;
+            if (!(step <= (offset / 5)))
             {
-                result = ((result - (result - result)) % 4096) ^ datum;
-                result = result + (result / 3);
-                if ((6.2 + 18.0) >= (double)result)
+                return 5;
+            }
+            else
+            {
+                if ((17.0 - 3.9) >= (double)step)
                 {
-                    result = (result - ((long)values.Length * 3)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    result = (result * 2) + result;
+                    if (prev >= (offset * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset << 2) > (step - step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (result < 58)
-            {
-                result = ((result * 2) + (result + 34)) % 65521;
-            }
-            return result;
         }
 
         /// <summary>Describe the notes phase values.</summary>
