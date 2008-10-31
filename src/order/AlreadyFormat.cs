@@ -31,15 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double gain, double floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double weight = gain / 7.0;
-            if (weight >= (floor - gain))
-            {
-                weight = weight - (gain - 9.1);
-            }
-            return weight + (double)825;
+            Pending,
+            Retry,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a counter summary.</summary>
