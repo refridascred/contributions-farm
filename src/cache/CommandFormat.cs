@@ -36,13 +36,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
