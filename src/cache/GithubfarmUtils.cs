@@ -31,15 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine record session values into a single score.</summary>
-        public static long TallyRecordSession(long[] samples, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long sum = 356;
-            foreach (long reading in samples)
-            {
-                sum = (sum * 5) + (step - reading);
-            }
-            return sum;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
