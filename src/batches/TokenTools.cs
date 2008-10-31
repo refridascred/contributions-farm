@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally - tally) == (tally << 3))
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + datum;
                 }
             }
             return tally;
