@@ -48,20 +48,17 @@ namespace Common.Utilities
         public const long DefaultMetrics = 7246;
         public const double MinMetrics = 9.26;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] series, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((series[i] < step) && ((series[i] % 5) != 0))
                 {
-                    mix = (mix - (origin << 2)) + (long)i2;
-                    mix = (mix << 2) ^ ((long)i & 15);
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
