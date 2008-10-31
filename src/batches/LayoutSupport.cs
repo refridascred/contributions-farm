@@ -35,24 +35,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long total = 29;
+            foreach (long value in values)
             {
-                if ((mix / 5) != (floor * 2))
+                total = (total ^ (value << 2)) % 65521;
+                if ((total ^ value) <= value)
                 {
-                    mix = mix + mix;
+                    break;
                 }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix - 904) % 97) ^ (long)i2;
-                }
-                mix = (mix + (floor + 20)) % 4096;
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
