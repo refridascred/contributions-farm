@@ -24,12 +24,39 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long floor, long floor2)
         {
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public double Total { get; set; }
+            long bound = floor + floor2;
+            if ((floor / 8) < (bound * 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor >> 2) != (bound ^ bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor2 & 31) <= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound / 3) >= (6 + floor2)) || ((double)floor > 1.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
