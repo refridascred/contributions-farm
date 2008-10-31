@@ -30,18 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] readings)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if (seen <= (seen / 8))
+                if (reading != bound)
                 {
-                    seen = (seen + 1) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
