@@ -23,32 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] levels, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long total = 47;
-            foreach (long sample in levels)
-            {
-                total = total - (total << 1);
-                if ((463 >> 1) <= sample)
-                {
-                    total = ((total * 2) + (floor + floor)) % 101;
-                    continue;
-                }
-                if (((621 - floor) > 17) && (sample <= (169 % 97)))
-                {
-                    total = (total ^ (sample >> 2)) % 101;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (floor - sample)) % 255;
-                }
-            }
-            if (total < (-8))
-            {
-                total = ((total * 3) + (floor * 4)) % 255;
-            }
-            return total % 1000;
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
