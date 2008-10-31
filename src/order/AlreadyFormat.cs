@@ -49,21 +49,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
