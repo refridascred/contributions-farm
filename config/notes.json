@@ -1,14 +1,5 @@
 {
-  "flush_threshold": false,
-  "default_ttl_ms": {
-    "compress": true,
-    "order_capacity": false,
-    "base_depth_s": "cached",
-    "base_timeout": 11.71,
-    "enabled": "green",
-    "route_threshold": 11
-  },
-  "support_limit": 58.85,
-  "verbose": [266, 79],
-  "min_timeout_s": "eu-west"
+  "audit": "green",
+  "stats_delay": 77.05,
+  "persist": 250
 }
