@@ -21,13 +21,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
