@@ -12,12 +12,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
+            Draft,
+            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
