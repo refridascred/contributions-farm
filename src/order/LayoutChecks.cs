@@ -25,19 +25,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] data, long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            double load = rate;
+            if (load > (double)368)
             {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load - (load - 6.2);
             }
-            return stale;
+            else
+            {
+                load = load + floor;
+            }
+            return load - (load - floor);
         }
 
         /// <summary>Describe the account kind values.</summary>
