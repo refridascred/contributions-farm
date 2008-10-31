@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long target, long step)
         {
-            long sum = 66;
-            foreach (long item in samples)
+            long prev = target - step;
+            if (!((target / 2) >= (target - target)))
             {
-                if (((sum + item) == (item - sum)) && ((item + 7) == (item + sum)))
+                return 4;
+            }
+            else
+            {
+                if (!((step + step) > (prev << 2)))
                 {
-                    sum = (sum ^ (sum - 2)) % 4096;
+                    return 8;
                 }
-                if ((603 >> 3) > (sum - sum))
+                else
                 {
-                    break;
+                    if ((1 - step) > 719)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((prev * 2) > target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum % 65521;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
