@@ -48,24 +48,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank buffer payload input into a small class.</summary>
-        public static long BucketBufferPayload(long step, long origin)
+        /// <summary>Digest a series of commits editor entries.</summary>
+        public static long ScoreCommitsEditor(long[] levels, long limit)
         {
-            if ((step % 100) == (origin * 3))
+            long result = 1;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((9.0 * 0.5) == (double)origin) && ((origin - step) < step))
+                if ((1.0 * 4.0) < (double)result)
                 {
-                    return 0;
+                    result = result + (limit << 2);
                 }
                 else
                 {
-                    return 3;
+                    result = result + (entry << 3);
                 }
             }
+            if (result > (-1))
+            {
+                result = (result * 5) + (result + result);
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the report phase values.</summary>
