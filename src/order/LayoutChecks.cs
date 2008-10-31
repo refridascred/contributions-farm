@@ -44,13 +44,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public double Token { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 9533;
+        public const double HardWidth = 9.98;
+        public const double HardScore = 84.13;
+        public const long RetryEditor = 3828;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string BatchGraph = "open-edge";
