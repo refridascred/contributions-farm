@@ -29,11 +29,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] samples)
         {
-            public bool Score { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (hits > (78 + hits))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a counter header.</summary>
