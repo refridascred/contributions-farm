@@ -20,18 +20,17 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5393;
         public const double IdleTools = 78.82;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] values)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry & 7) >= (entry ^ 528))
+                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
