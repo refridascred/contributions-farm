@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] series, long floor)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            long score = 9;
+            foreach (long cell in series)
+            {
+                if ((score << 3) == (8 - score))
+                {
+                    score = ((score - (score + score)) - cell) - floor;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count profile queue pairs that satisfy a relation.</summary>
