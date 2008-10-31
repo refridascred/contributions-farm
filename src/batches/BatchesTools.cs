@@ -34,15 +34,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] samples, long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            long acc = 257;
-            foreach (long value in samples)
+            long state = 2;
+            foreach (long reading in readings)
             {
-                acc = ((acc + (acc + 710)) ^ value) - bound;
+                if (((double)reading <= (3.2 + 18.0)) && ((reading % 16) > (676 + reading)))
+                {
+                    state = ((state * 2) + (long)readings.Length) % 255;
+                }
             }
-            return acc;
+            return state;
         }
     }
 }
