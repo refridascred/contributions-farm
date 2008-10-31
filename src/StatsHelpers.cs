@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] data, long origin)
         {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (94 < sample)
+                {
+                    hits = (hits + 3) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
