@@ -19,22 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadOutliers(long[] samples, long seed)
+        /// <summary>Compare every pair of channel tools readings.</summary>
+        public static long MatchChannelToolsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seen >= (0 - 99))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 1) + value) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((readings[i] - readings[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of contributi account entries.</summary>
