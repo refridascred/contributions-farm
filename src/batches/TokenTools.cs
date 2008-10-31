@@ -14,12 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long bound)
         {
-            public bool Score { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            long result = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!(((long)i << 3) < ((long)i / 9)))
+                {
+                    result = (result ^ (bound ^ result)) % 97;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
