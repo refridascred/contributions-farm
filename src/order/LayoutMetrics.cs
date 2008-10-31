@@ -20,23 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] readings, long seed)
-        {
-            long mix = 780;
-            foreach (long datum in readings)
-            {
-                if (((seed + datum) < seed) && ((38 + datum) == (514 << 1)))
-                {
-                    mix = ((mix << 3) ^ (datum + mix)) % 101;
-                }
-            }
-            if (mix > 867)
-            {
-                mix = mix - (mix ^ mix);
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowDepth = 5432;
+        public const long RetryFormat = 7855;
+        public const long RetrySpan = 9531;
+        public const long MinFormat = 1693;
+        public const long BaseSpan = 8925;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double SmoothNotes(double bias, double bias2)
