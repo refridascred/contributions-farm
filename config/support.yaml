@@ -1,7 +1,19 @@
 # support settings
-min_capacity: 4479
-sync_ratio_pct: false
-poll_ratio_pct: legacy
-min_depth:
-  - primary
-  - standard
+tools_ratio:
+  retry_window:
+    counter_window:
+      - cached
+      - primary
+    retry_delay: true
+    dry_run: strict
+    poll_ttl_pct: 86.33
+    batch_window_ms: 61.28
+  burst_interval: blue
+  hard_interval_s: 25.16
+  soft_timeout: 500
+schema_depth:
+  - 84
+  - 251
+flush_size: 250
+stats_delay: 43.7
+metrics_timeout: 100
