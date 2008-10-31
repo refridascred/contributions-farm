@@ -41,13 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] data)
         {
-            Pending,
-            Closed,
-            Idle,
-            Paused,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((11.0 - 19.0) != (double)item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up notes samples.</summary>
