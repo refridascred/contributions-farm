@@ -29,21 +29,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] samples)
+        /// <summary>Blend two payload buffer measurements.</summary>
+        public static double ProjectPayloadBuffer(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)22;
+            if (mean >= ratio)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + 2.77) + bias;
             }
-            return tally;
+            else
+            {
+                mean = mean + ratio;
+            }
+            return mean - (mean / 2.0);
         }
     }
 }
