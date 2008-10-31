@@ -39,17 +39,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double ratio, double bias)
         {
-            long sum = origin;
-            for (int i = 0; i < 18; i++)
+            double ratio2 = 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                sum = (sum + (origin + sum)) % 1000;
-                sum = ((sum * 4) + (long)i) % 4096;
-                sum = ((sum * 5) + (long)i) % 101;
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
             }
-            return sum;
+            return ratio2 - (9.7 - bias);
         }
 
         /// <summary>Hold a channel record.</summary>
