@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultLevel = 3254;
-        public const string BurstNotes = "standard-edge";
-        public const string HardNotes = "local-v2";
-        public const double CacheFactor = 35.0;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Retry,
+            Closed,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
