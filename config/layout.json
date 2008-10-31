@@ -1,6 +1,8 @@
 {
-  "sync_delay": "blue",
-  "compress": false,
-  "idle_timeout_count": 2580,
-  "entry_retries": 25
+  "format_interval": 500,
+  "batch_capacity": 250,
+  "min_capacity_ms": "primary",
+  "retry_retries": ["edge", "primary", "legacy", "blue"],
+  "min_ttl_pct": "primary",
+  "compress": false
 }
