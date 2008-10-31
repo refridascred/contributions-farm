@@ -72,18 +72,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] samples)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((value + value) > value) && !((value + value) <= (value ^ seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            New,
+            Queued,
+            Done,
+            Draft,
+            Active,
         }
     }
 }
