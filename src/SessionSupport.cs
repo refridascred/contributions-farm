@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] series)
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (((count >> 2) < (count / 2)) || ((double)36 != (double)count))
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
