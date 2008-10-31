@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double MinBatch = 7.03;
         public const double BaseBatch = 66.35;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public double Label { get; set; }
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstTimeout = 1262;
+        public const long WindowLayout = 3258;
+        public const string MaxWidth = "strict-v2";
+        public const string DefaultLayout = "stable-1";
+        public const string MinLayout = "open-edge";
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long DeriveFormat(long target)
