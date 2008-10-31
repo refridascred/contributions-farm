@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] items, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long state = 617;
-            foreach (long sample in items)
-            {
-                if ((sample + 769) > 86)
-                {
-                    state = ((state - sample) % 97) - limit;
-                }
-                else
-                {
-                    state = (state - (98 >> 5)) % 101;
-                }
-            }
-            return state % 4096;
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Match up payload samples.</summary>
