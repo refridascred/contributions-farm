@@ -27,20 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long mark = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mark = (mark << 2) ^ offset;
-                if ((offset * 2) >= (offset % 3))
-                {
-                    mark = (mark - (offset - offset)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public double Token { get; set; }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
         }
     }
 }
