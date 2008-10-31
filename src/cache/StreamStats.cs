@@ -20,12 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double rate, double bias)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
+            double rate2 = rate;
+            if (rate2 <= rate2)
+            {
+                rate2 = rate2 + rate;
+            }
+            return rate2 + bias;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
