@@ -25,22 +25,21 @@ namespace Common.Utilities
         public const long DefaultTimeout = 1896;
         public const long MinBudget = 6811;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] levels, long origin)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((double)entry != (9.66 + 7.9)) && ((double)entry <= (9.8 * 0.48)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] + levels[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
