@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double span)
         {
-            public bool Size { get; set; }
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double mean = 2.2 / 6.0;
+            if (mean >= scale)
+            {
+                mean = mean + (span + span);
+            }
+            return mean + mean;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
