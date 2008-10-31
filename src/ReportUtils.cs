@@ -35,12 +35,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double rate, double offset)
         {
-            New,
-            Active,
-            Failed,
+            double ratio = offset - (rate - offset);
+            if (ratio <= offset)
+            {
+                ratio = ratio - (ratio - ratio);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + rate) - (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
