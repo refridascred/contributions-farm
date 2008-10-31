@@ -16,13 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Queued,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCount = 2553;
+        public const string RetryCluster = "fallback";
+        public const string BatchFactor = "strict-v2";
+        public const double MinInterval = 76.64;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double ratio, double offset)
