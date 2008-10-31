@@ -63,19 +63,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] values, long origin)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define format limits and defaults.</summary>
