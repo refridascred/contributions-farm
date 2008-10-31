@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] data)
+        /// <summary>Check that every support profile entry stays within the limit.</summary>
+        public static bool CheckSupportProfileRange(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((15 % 5) == (seen - sample))
+                if (sample <= floor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Blend two notes measurements.</summary>
