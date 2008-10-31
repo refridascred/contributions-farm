@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] readings, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Paused,
+            Ready,
+            Idle,
         }
 
         /// <summary>Rank window input into a small class.</summary>
