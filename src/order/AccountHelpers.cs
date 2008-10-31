@@ -29,17 +29,16 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] series, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
+                total = ((total << 3) ^ (step - (long)i)) % 255;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
