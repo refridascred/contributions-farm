@@ -1,22 +1,7 @@
 {
-  "command_ratio": 55,
-  "soft_capacity": {
-    "default_threshold_count": "standard",
-    "retry_ttl_s": false,
-    "format_retries": 8.84,
-    "sync_capacity_count": "legacy"
-  },
-  "base_size": {
-    "retry_retries_ms": "strict",
-    "commits_ratio": {
-      "graph_depth": 5.42,
-      "strict": 9639,
-      "poll_interval": 60.98,
-      "format_size": true
-    },
-    "batch_retries": 59.81,
-    "base_interval_s": false,
-    "persist": 76,
-    "min_delay": "green"
-  }
+  "compress": "open",
+  "graph_capacity": "standard",
+  "session_timeout": ["blue", "green", "staging"],
+  "persist": "edge",
+  "strict": false
 }
