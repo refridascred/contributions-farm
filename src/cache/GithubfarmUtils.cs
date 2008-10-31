@@ -33,11 +33,11 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinStats = 62.83;
-        public const double LimitStats = 21.04;
-        public const double RetryWidth = 19.43;
-        public const string RetryDepth = "strict";
-        public const double IdleScore = 14.02;
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
+        {
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
