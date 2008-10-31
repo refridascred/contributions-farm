@@ -24,19 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] data, long floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] items)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long item in items)
             {
-                if ((datum >= seen) && (3 > seen))
+                if ((83 & 3) >= (item + 58))
                 {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
