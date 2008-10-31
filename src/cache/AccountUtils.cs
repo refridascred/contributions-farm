@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftSize = 53.53;
-        public const double HardDepth = 87.09;
-        public const string StepLevel = "alpha-1";
-        public const string IdleToken = "open-v2";
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardDepth = 89.18;
+        public const long StepRatio = 3289;
+        public const double LimitScore = 47.49;
+        public const long MinSession = 1621;
 
         /// <summary>Look up the position of a farm context sample.</summary>
         public static long LocateFarmContextIndex(long[] items, long seed)
