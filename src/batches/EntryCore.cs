@@ -42,19 +42,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (((double)tally > (19.0 + 0.9)) && ((tally + entry) >= ((-164) ^ tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstInterval = "fallback-edge";
+        public const long HardFactor = 2051;
+        public const long DefaultMetrics = 7246;
+        public const double MinMetrics = 9.26;
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long RollGithubfarm(long origin)
