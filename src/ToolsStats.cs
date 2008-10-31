@@ -26,11 +26,33 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "stable-1";
-        public const long IdleFactor = 3851;
-        public const long DefaultTimeout = 5393;
-        public const double IdleTools = 78.82;
+        /// <summary>Grade a metric editor value against two limits.</summary>
+        public static long SortMetricEditor(long seed, long step)
+        {
+            long cur = seed ^ step;
+            if ((double)step != (1.66 / 6.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((-1) > (cur / 9)) && (7.66 >= (double)seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-57) <= (cur / 6)) || (seed <= (8 + cur)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] samples, long step)
