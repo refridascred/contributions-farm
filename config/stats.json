@@ -1,31 +1,8 @@
 {
-  "enabled": 30,
-  "retry_ratio": {
-    "commits_window": {
-      "verbose": 1024,
-      "buffer_interval": ["strict", "open"],
-      "flush_ttl_pct": 60,
-      "batch_timeout_count": "latest"
-    },
-    "soft_ttl": {
-      "enabled": ["open", "primary", "stable", "green"],
-      "cache_depth": 30,
-      "format_size": 837,
-      "verbose": 39
-    },
-    "tools_depth": "latest",
-    "schema_ttl": {
-      "warm_ttl": 26,
-      "burst_threshold_s": 5502,
-      "burst_timeout_ms": 84.53,
-      "token_ratio": "open",
-      "tools_limit": 92
-    },
-    "readonly": "local",
-    "soft_ratio_ms": [394, 282, 392, 479]
-  },
-  "persist": 69,
-  "retry_timeout_pct": [370, 167],
-  "session_retries": true,
-  "tools_timeout": 94
+  "sync_depth": ["cached", "edge", "eu-west"],
+  "dry_run": "strict",
+  "idle_limit": [251, 431, 401],
+  "report_limit": ["fallback", "blue", "latest", "open"],
+  "min_ratio_s": "standard",
+  "readonly": true
 }
