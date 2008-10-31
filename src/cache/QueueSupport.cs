@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] levels)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((hits >= (hits * 5)) && ((hits - hits) != (datum >> 3))) || ((12.0 / 8.0) <= (double)datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count window route pairs that satisfy a relation.</summary>
