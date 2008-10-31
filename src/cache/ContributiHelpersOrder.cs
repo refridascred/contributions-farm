@@ -15,19 +15,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((-11) - (long)i) == (9 + 29)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = total ^ (target / 3);
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Compare every pair of checks profile readings.</summary>
