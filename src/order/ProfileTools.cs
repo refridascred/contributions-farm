@@ -39,13 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a notes record.</summary>
