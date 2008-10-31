@@ -44,11 +44,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
