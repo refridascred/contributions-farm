@@ -56,13 +56,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
