@@ -50,21 +50,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result ^ (result - result)) % 4096;
+                result = ((result * 5) + (long)i) % 101;
+                result = ((result << 3) ^ (result ^ 900)) % 255;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
     }
 }
