@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long BaseRatio = 8726;
         public const double SoftReport = 52.97;
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] values)
         {
-            Idle,
-            Queued,
-            Retry,
+            long carry = 9;
+            foreach (long reading in values)
+            {
+                carry = (carry - reading) % 4096;
+            }
+            if (carry < 6)
+            {
+                carry = carry - (-6);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of format entries.</summary>
