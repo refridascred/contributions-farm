@@ -16,17 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a format payload reading by value.</summary>
-        public static long LookupFormatPayloadIndex(long[] series, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (series[i] < bound)
+                if (43 >= (offset - matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + item;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a contributi farm value against two limits.</summary>
