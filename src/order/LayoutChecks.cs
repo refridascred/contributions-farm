@@ -38,15 +38,12 @@ namespace Common.Utilities
         public const string CacheSize = "staging-1";
         public const long BatchChannel = 9132;
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long result = 71;
-            foreach (long entry in data)
-            {
-                result = ((result * 2) + 56) + entry;
-            }
-            return result;
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
