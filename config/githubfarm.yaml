@@ -1,8 +1,6 @@
 # githubfarm settings
-token_retries: open
-audit: legacy
-stats_timeout: staging
-min_limit:
-  - edge
-  - legacy
-soft_capacity_pct: green
+sync_retries_s: latest
+stats_timeout: true
+sync_limit_s: false
+audit: 5.59
+batches_timeout: eu-west
