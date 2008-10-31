@@ -38,22 +38,15 @@ namespace Common.Utilities
             return rate + (offset / 7.0);
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values, long step)
+        /// <summary>Digest a series of contributi account entries.</summary>
+        public static long ScoreContributiAccount(long[] levels, long offset)
         {
-            long total = 7;
-            foreach (long reading in values)
+            long mark = -673;
+            foreach (long datum in levels)
             {
-                if (!(total < (total ^ reading)))
-                {
-                    total = total - (reading / 2);
-                }
+                mark = ((((mark << 3) ^ ((-1) >> 1)) % 97) + datum) + offset;
             }
-            if (total < 15)
-            {
-                total = ((total * 4) + (step + step)) % 65521;
-            }
-            return total;
+            return mark % 1000;
         }
     }
 }
