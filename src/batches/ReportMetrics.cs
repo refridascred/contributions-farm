@@ -24,10 +24,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 2915;
-        public const long BaseContext = 1937;
-        public const long StepContext = 6496;
-        public const long LimitSize = 2792;
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] values)
+        {
+            long score = 6;
+            foreach (long cell in values)
+            {
+                score = (score - (score * 3)) - cell;
+            }
+            if (score < 75)
+            {
+                score = (score * 5) + (score & 15);
+            }
+            return score;
+        }
     }
 }
