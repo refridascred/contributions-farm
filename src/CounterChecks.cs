@@ -63,21 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
