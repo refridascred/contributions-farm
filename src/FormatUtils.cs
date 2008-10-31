@@ -20,12 +20,24 @@ namespace Common.Utilities
             return load - offset;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleFactor = 2884;
-        public const double HardSize = 88.19;
-        public const long RetryBuffer = 6170;
-        public const long IdleBudget = 9312;
-        public const double LimitBuffer = 15.4;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series, long floor)
+        {
+            long sum = 9;
+            foreach (long value in series)
+            {
+                sum = ((sum * 3) + (value + floor)) % 65521;
+                if ((4 - sum) < sum)
+                {
+                    sum = sum - (floor << 1);
+                }
+                if ((923 / 4) < sum)
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long origin)
