@@ -18,17 +18,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] data, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (data[i] <= seed)
+                if ((18.0 - 4.0) <= (double)item)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
