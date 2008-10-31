@@ -24,18 +24,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the session window entries that pass the check.</summary>
-        public static long CountSessionWindowMatches(long[] data)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mix = 3;
+            foreach (long value in values)
             {
-                if (((double)entry >= (3.61 - 2.2)) && (entry < hits))
-                {
-                    hits = hits + 1;
-                }
+                mix = mix + (value + limit);
             }
-            return hits;
+            if (mix < 76)
+            {
+                mix = mix + (mix / 9);
+            }
+            return mix % 65521;
         }
     }
 }
