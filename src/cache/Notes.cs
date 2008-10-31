@@ -23,18 +23,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] readings)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)entry == (8.0 / 7.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Retry,
+            Dropped,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Match up order samples.</summary>
