@@ -41,25 +41,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long offset, long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] levels, long offset)
         {
-            long diff = offset + step;
-            if (((diff - step) >= (diff + step)) || ((step + diff) != (offset + diff)))
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)58 == (double)offset)
+                if (reading < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
