@@ -55,17 +55,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] series, long offset)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long floor, long floor2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (426 > (floor2 - floor))
             {
-                if ((series[i] <= offset) && ((series[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((4.3 * 2.5) == (double)floor2)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (floor2 <= (floor % 97))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor2 > (3.3 + 7.3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
