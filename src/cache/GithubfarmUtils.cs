@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long seed, long step)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            if (!((seed + step) > (step + 25)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step << 2) > seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
