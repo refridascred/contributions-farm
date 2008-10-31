@@ -28,12 +28,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRatio = 68.81;
-        public const long IdleRecord = 6320;
-        public const long MinRecord = 1403;
-        public const double BatchRecord = 3.62;
-        public const string CacheScore = "fallback-edge";
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long step)
+        {
+            if ((step >> 2) == ((-6) - offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step > (step - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricOutliers(long[] items)
