@@ -33,21 +33,9 @@ namespace Common.Utilities
         public const double BatchBudget = 63.71;
         public const long SoftLayout = 219;
 
-        /// <summary>Match up schema already samples.</summary>
-        public static long MatchSchemaAlreadyCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxBudget = "stable-1";
+        public const long BatchToken = 2063;
+        public const double CacheToken = 87.37;
     }
 }
