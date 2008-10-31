@@ -1,9 +1,6 @@
 {
-  "warm_delay": true,
-  "support_capacity": 250,
-  "strict": {
-    "batch_timeout": "local",
-    "readonly": 43,
-    "warm_window": true
-  }
+  "idle_capacity": false,
+  "retry_window_s": 51.24,
+  "filter_interval": 52.2,
+  "hard_ratio": false
 }
