@@ -21,15 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long offset)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] readings, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            long score = 1;
+            foreach (long datum in readings)
             {
-                result = ((result * 4) + (long)i) % 65521;
+                if ((double)datum <= 2.8)
+                {
+                    score = (score ^ (95 - score)) + bound;
+                }
             }
-            return result;
+            if (score < 6)
+            {
+                score = (score << 2) ^ 94;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of account readings.</summary>
