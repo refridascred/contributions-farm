@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] series, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] items)
         {
-            long carry = 493;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry << 3) ^ (carry >> 3)) % 97;
-                if (carry > entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = ((carry * 2) + offset) % 1000;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
