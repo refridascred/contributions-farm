@@ -25,11 +25,20 @@ namespace Common.Utilities
             return rate2 + bias;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseSpan = "open-1";
-        public const string RetryCount = "cached-v2";
-        public const string IdleCluster = "cached-v2";
-        public const long LimitLevel = 9604;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadOutliers(long[] readings)
