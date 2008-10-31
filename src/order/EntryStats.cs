@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long bound, long offset)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] items, long limit)
         {
-            if (((double)bound > 7.8) && ((offset + offset) >= (bound % 2)))
+            long state = 617;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset == (6.8 - 3.0))
+                if ((sample + 769) > 86)
                 {
-                    return 3;
+                    state = ((state - sample) % 97) - limit;
                 }
                 else
                 {
-                    if (((17.0 * 9.0) >= (6.75 + 0.91)) && ((bound * 5) != (bound + offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    state = (state - (98 >> 5)) % 101;
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Match up payload samples.</summary>
