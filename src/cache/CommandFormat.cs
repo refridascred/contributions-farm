@@ -44,17 +44,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] readings, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] series, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
+                if (!((long)series.Length == (entry + seen)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - offset;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
