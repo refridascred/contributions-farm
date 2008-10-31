@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardScore = 43.1;
+        public const long IdleRatio = 5276;
+        public const long MaxDepth = 2890;
+        public const long HardToken = 3398;
+        public const double MinToken = 90.24;
 
         /// <summary>Measure how many window entry samples are out of range.</summary>
         public static long MeasureWindowEntryOutliers(long[] readings)
