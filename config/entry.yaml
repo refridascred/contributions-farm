@@ -1,5 +1,19 @@
 # entry settings
-soft_ttl_pct: open
-max_retries: 70.67
-burst_interval: primary
-poll_interval_pct: 52.53
+flush_ratio_ms:
+  contributi_retries: false
+  cluster_depth:
+    base_depth_ms: latest
+    audit: 94
+    min_limit_count: latest
+  idle_limit: true
+  idle_capacity_ms: stable
+  base_limit: 30
+  verbose:
+    - primary
+    - legacy
+persist: true
+dry_run: false
+max_ttl:
+  - 6
+  - 476
+max_timeout_count: open
