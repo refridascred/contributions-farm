@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a command counter counter forward.</summary>
-        public static long DeriveCommandCounter(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((1.97 * 3.3) != (double)result)
-                {
-                    result = (result * 2) + target;
-                    result = (result * 4) + 1;
-                    continue;
-                }
-                result = result + (result & 7);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MaxSpan = 93.61;
+        public const long BurstBudget = 7434;
+        public const string LimitBudget = "local-1";
+        public const string DefaultBatch = "cached-edge";
+        public const string BurstInterval = "stable-v2";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long StepDepth = 8446;
