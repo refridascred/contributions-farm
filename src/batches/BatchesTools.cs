@@ -29,18 +29,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] items, long offset)
         {
-            long state = 2;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((double)reading <= (3.2 + 18.0)) && ((reading % 16) > (676 + reading)))
+                if ((double)offset >= (double)reading)
                 {
-                    state = ((state * 2) + (long)readings.Length) % 255;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
