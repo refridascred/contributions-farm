@@ -1,9 +1,7 @@
-id,token,owner,label,weight
-1,277,34.21,blue,178
-2,44,staging,31.04,fallback
-3,131,350,latest,legacy
-4,primary,staging,677,200
-5,55.98,cached,39.18,492
-6,260,178,48.8,76.67
-7,stable,green,51.9,19.66
-8,legacy,standard,334,standard
+id,weight,token,owner
+1,staging,standard,725
+2,5.27,843,771
+3,755,83.19,559
+4,blue,27.35,strict
+5,671,12.36,512
+6,3.1,543,493
