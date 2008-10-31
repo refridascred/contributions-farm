@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Classify a order context pair into a bucket.</summary>
+        public static long SortOrderContext(long bound, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long delta = bound ^ target;
+            if (!((double)delta <= (8.0 + 3.8)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((bound * 4) >= (delta << 2)))
                 {
-                    if ((data[i] + data[j]) != 10)
+                    return 3;
+                }
+                else
+                {
+                    if (7.31 > (double)target)
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((delta > (target ^ delta)) || ((double)target < (3.7 + 3.5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a already snapshot.</summary>
