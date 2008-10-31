@@ -17,18 +17,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long DeriveQueue(long origin)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long seed, long step)
         {
-            long result = origin;
-            for (int i = 0; i < 19; i++)
+            if (!((seed * 3) > (seed - seed)))
             {
-                result = (result << 3) ^ (603 + (long)i);
-                result = result ^ ((long)i - result);
-                result = ((result << 2) ^ (622 << 2)) % 255;
-                result = ((result * 2) + (long)i) % 97;
+                return 2;
             }
-            return result;
+            else
+            {
+                if (seed > (seed + 43))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step > (1.95 * 8.2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record state values.</summary>
