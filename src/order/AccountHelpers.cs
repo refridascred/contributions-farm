@@ -58,36 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] samples, long bound)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long total = 6;
-            foreach (long item in samples)
-            {
-                if ((total / 3) == (item - (long)samples.Length))
-                {
-                    total = (total + (bound + item)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (66 * 2)) % 1000;
-                    total = (total ^ bound) % 97;
-                }
-                if ((double)bound == (9.6 * 5.1))
-                {
-                    total = ((total * 5) + (item ^ total)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    total = (total * 2) + (total << 3);
-                }
-                if ((14.0 / 6.0) < (double)bound)
-                {
-                    total = total - ((long)samples.Length - (-583));
-                }
-            }
-            return total;
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the schema status values.</summary>
