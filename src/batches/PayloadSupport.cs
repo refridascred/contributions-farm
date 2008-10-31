@@ -23,12 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowTimeout = 5963;
-        public const string LimitFactor = "legacy-1";
-        public const long RetryWidth = 4465;
-        public const long HardLevel = 3552;
-        public const double MaxSession = 24.04;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "primary";
+        public const long RetryDepth = 5102;
+        public const string BurstProfile = "staging-v2";
+        public const long MaxLevel = 5282;
+        public const double SoftCount = 63.17;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TotalEditor(long[] items)
