@@ -48,12 +48,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
-        {
-            Pending,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 5769;
+        public const long HardRatio = 1120;
+        public const string HardToken = "primary";
     }
 }
