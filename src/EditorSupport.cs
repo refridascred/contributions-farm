@@ -88,14 +88,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Find the first token route entry that matches the target.</summary>
+        public static long SeekTokenRouteIndex(long[] levels, long seed)
         {
-            Active,
-            Dropped,
-            Pending,
-            Idle,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
