@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseScore = 5869;
-        public const long IdleSchema = 3870;
-        public const string BaseSchema = "latest-1";
-        public const long BurstTimeout = 3100;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] series)
+        {
+            long result = -5;
+            foreach (long value in series)
+            {
+                if ((value + result) > (1 + value))
+                {
+                    result = (result ^ (result + result)) % 97;
+                }
+            }
+            if (result > 72)
+            {
+                result = result - (result - result);
+            }
+            return result % 97;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LookupClusterIndex(long[] data, long limit)
