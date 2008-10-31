@@ -1,5 +1,8 @@
 {
-  "context_depth": "cached",
-  "commits_retries": true,
-  "buffer_capacity": 20
+  "poll_depth_ms": 250,
+  "counter_ttl": ["legacy", "legacy", "latest", "strict"],
+  "verbose": 86.15,
+  "audit": 5573,
+  "payload_ratio": 39.05,
+  "strict": 59
 }
