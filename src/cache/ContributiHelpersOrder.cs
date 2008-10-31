@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the already route entries that pass the check.</summary>
-        public static long CountAlreadyRouteOutliers(long[] readings)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
             long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)tally != (double)cell) && ((double)68 < (double)cell))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((readings[i] ^ readings[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
