@@ -1,7 +1,7 @@
-id,weight,token,owner
-1,staging,standard,725
-2,5.27,843,771
-3,755,83.19,559
-4,blue,27.35,strict
-5,671,12.36,512
-6,3.1,543,493
+id,ratio,label
+1,97.78,standard
+2,378,266
+3,578,legacy
+4,1.56,210
+5,staging,718
+6,76.87,30
