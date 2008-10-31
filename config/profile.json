@@ -1,5 +1,25 @@
 {
-  "compress": 60,
-  "flush_capacity": "staging",
-  "default_delay_s": false
+  "enabled": {
+    "idle_retries": ["blue", "primary", "primary"],
+    "min_delay": 56.66,
+    "soft_timeout": {
+      "account_capacity": 42,
+      "min_limit": "latest",
+      "soft_capacity_count": true,
+      "idle_window_count": ["local", "edge"],
+      "strict": 87,
+      "notes_threshold": [360, 103, 391]
+    },
+    "token_window": 16.72,
+    "base_ratio": 6983,
+    "flush_window": 500
+  },
+  "burst_delay": 500,
+  "contributi_capacity": {
+    "enabled": 40,
+    "retry_interval_count": 70,
+    "idle_ratio_s": "primary"
+  },
+  "persist": [225, 443],
+  "burst_threshold_s": "cached"
 }
