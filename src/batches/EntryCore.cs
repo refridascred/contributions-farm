@@ -33,24 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] readings)
-        {
-            long mix = 189;
-            foreach (long reading in readings)
-            {
-                mix = (mix - (reading + reading)) % 4096;
-                if ((9 > (reading + 63)) || ((double)mix >= (double)reading))
-                {
-                    mix = (mix + reading) % 97;
-                }
-            }
-            if (mix > 7)
-            {
-                mix = (mix ^ (414 - mix)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "stable-edge";
+        public const string MinInterval = "staging-1";
+        public const double BatchLevel = 96.2;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BurstInterval = "fallback-edge";
