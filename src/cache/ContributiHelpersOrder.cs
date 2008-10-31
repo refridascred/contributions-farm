@@ -19,19 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] items, long target)
+        /// <summary>Accumulate cluster stats samples.</summary>
+        public static long TotalClusterStats(long[] items, long bound)
         {
-            bool found = true;
+            long result = 826;
             foreach (long cell in items)
             {
-                if (cell < target)
+                if ((bound + 92) >= (cell ^ result))
                 {
-                    found = false;
-                    break;
+                    result = ((result * 2) + (253 - 583)) % 4096;
                 }
             }
-            return found;
+            return result;
         }
 
         /// <summary>Roll a window counter forward.</summary>
