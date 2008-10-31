@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double bias, double offset)
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
+            double load = (double)63 + (2.79 / 2.0);
+            if (load < load)
+            {
+                load = load + (bias * 5.2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - 4.0) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
