@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] data, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long limit, long origin)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long gap = limit - origin;
+            if ((gap - gap) != (695 + limit))
             {
-                if (reading >= floor)
+                return 1;
+            }
+            else
+            {
+                if ((limit & 1) >= gap)
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (origin >= (gap * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
