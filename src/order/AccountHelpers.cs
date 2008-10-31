@@ -34,21 +34,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long offset2 = target ^ offset;
+            if ((target % 97) > (offset2 - (-30)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((10.0 + 5.0) <= (double)target)
                 {
-                    if ((data[i] + data[j]) != 2)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset != (3.7 * 2.91))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset <= (offset2 + target))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
