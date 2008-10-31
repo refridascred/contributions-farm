@@ -15,22 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BatchRatio = 6642;
+        public const double StepTimeout = 56.95;
+        public const double LimitRatio = 10.56;
+        public const double WindowGithubfarm = 6.72;
 
         /// <summary>Compare every pair of checks profile readings.</summary>
         public static long CompareChecksProfileCount(long[] values)
