@@ -1,8 +1,10 @@
 {
-  "poll_depth_ms": 250,
-  "counter_ttl": ["legacy", "legacy", "latest", "strict"],
-  "verbose": 86.15,
-  "audit": 5573,
-  "payload_ratio": 39.05,
-  "strict": 59
+  "max_timeout": 56.11,
+  "persist": "legacy",
+  "soft_threshold_count": {
+    "base_limit_pct": true,
+    "max_ratio_s": false,
+    "report_retries": "local"
+  },
+  "flush_size_count": 13
 }
