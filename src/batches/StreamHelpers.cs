@@ -53,22 +53,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 3172;
+        public const double DefaultPayload = 33.14;
+        public const long MinPayload = 1260;
+        public const double CachePayload = 59.61;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double HardSupport = 48.74;
