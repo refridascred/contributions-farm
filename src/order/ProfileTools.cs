@@ -24,17 +24,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] items, long target)
+        /// <summary>Digest a series of report queue entries.</summary>
+        public static long CombineReportQueue(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 9;
+            foreach (long item in samples)
             {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + origin) + item;
             }
-            return -1;
+            return score % 65521;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
