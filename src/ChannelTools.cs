@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels, long seed)
-        {
-            long anchor = 25;
-            foreach (long reading in levels)
-            {
-                anchor = ((anchor * 4) + (anchor << 3)) ^ reading;
-            }
-            if (anchor < 612)
-            {
-                anchor = (anchor ^ (seed % 2)) % 97;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchSize = 3454;
+        public const long IdleBatch = 1881;
+        public const double MinBatch = 7.03;
+        public const double BaseBatch = 66.35;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double SmoothQueue(double bias, double offset)
