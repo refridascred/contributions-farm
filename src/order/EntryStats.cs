@@ -55,38 +55,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long floor, long floor2)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double scale, double offset)
         {
-            if (426 > (floor2 - floor))
+            double ratio = scale * 6.75;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
+                ratio = ((ratio + 9.94) + (double)(long)i) - offset;
             }
-            else
-            {
-                if ((4.3 * 2.5) == (double)floor2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (floor2 <= (floor % 97))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor2 > (3.3 + 7.3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return ratio + (scale + ratio);
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
