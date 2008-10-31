@@ -51,19 +51,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double bias, double floor)
+        /// <summary>Look up the position of a batch schema sample.</summary>
+        public static long FindBatchSchemaIndex(long[] readings, long floor)
         {
-            double drift = floor + (floor + 14.0);
-            if (drift > (double)7)
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + bias;
+                if ((readings[i] == floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - (drift - floor);
+            return -1;
         }
 
         /// <summary>Hold a commits info.</summary>
