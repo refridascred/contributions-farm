@@ -1,16 +1,14 @@
 {
-  "sync_delay": 91,
-  "verbose": 37.55,
-  "channel_ttl": [386, 226],
-  "min_delay_ms": {
-    "compress": [349, 466, 191, 53],
-    "enabled": {
-      "persist": 51,
-      "checks_interval": 58,
-      "dry_run": true,
-      "retry_limit_ms": "legacy",
-      "hard_timeout": 4544
-    },
-    "burst_window_pct": "strict"
-  }
+  "idle_retries": [104, 304, 117, 37],
+  "max_delay_count": {
+    "min_depth_count": 74.05,
+    "audit": 5458,
+    "readonly": false,
+    "sync_size_count": [405, 113],
+    "batch_window_s": "strict",
+    "context_limit": "strict"
+  },
+  "context_capacity": "stable",
+  "soft_ttl_ms": true,
+  "profile_ratio": [6, 31, 256]
 }
