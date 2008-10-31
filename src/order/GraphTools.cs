@@ -12,10 +12,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstSize = 7.83;
-        public const string MaxCount = "alpha";
-        public const double RetryCache = 97.91;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double weight, double offset)
+        {
+            double ratio = (double)(6 * 3);
+            if (ratio > (weight * 9.3))
+            {
+                ratio = (ratio - weight) + offset;
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - 4.01) + (double)(long)i;
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Iterate the entry batches series from a seed.</summary>
         public static long RollEntryBatches(long limit)
