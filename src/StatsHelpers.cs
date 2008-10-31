@@ -42,18 +42,12 @@ namespace Common.Utilities
         public const long RetryLayout = 1180;
         public const double MinLayout = 13.36;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] series)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((double)tally != (20.0 - 8.13))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            Idle,
+            New,
+            Pending,
         }
 
         /// <summary>Hold a token options.</summary>
