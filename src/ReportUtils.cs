@@ -27,12 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinDepth = "standard-edge";
-        public const long MinLayout = 7040;
-        public const string DefaultFactor = "latest";
-        public const long WindowCount = 8115;
-        public const long MinSpan = 4283;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading < (86 << 1)) || (((reading % 2) > (hits << 1)) && ((hits * 3) > reading)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
