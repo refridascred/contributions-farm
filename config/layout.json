@@ -1,8 +1,17 @@
 {
-  "format_interval": 500,
-  "batch_capacity": 250,
-  "min_capacity_ms": "primary",
-  "retry_retries": ["edge", "primary", "legacy", "blue"],
-  "min_ttl_pct": "primary",
-  "compress": false
+  "flush_delay": true,
+  "stream_ratio": {
+    "strict": ["staging", "cached"],
+    "stream_interval": "local",
+    "support_capacity": "open",
+    "warm_retries_s": 19,
+    "hard_interval_pct": 82,
+    "profile_retries": 38.55
+  },
+  "cluster_interval": 2213,
+  "warm_limit_ms": {
+    "max_limit_count": "blue",
+    "burst_retries_s": 62.56,
+    "base_delay_count": "eu-west"
+  }
 }
