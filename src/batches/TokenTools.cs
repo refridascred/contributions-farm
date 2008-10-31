@@ -22,23 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long RollFormat(long target)
         {
-            long sum = -215;
-            foreach (long datum in levels)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((sum - datum) > (sum + 426))
+                mark = (mark ^ (target + 4)) % 255;
+                if (((target - target) < mark) && ((714 >> 3) == ((long)i + mark)))
                 {
-                    sum = (sum - (sum ^ 65)) % 101;
-                    sum = (sum + (sum & 3)) % 255;
+                    mark = (mark ^ ((-1) - 312)) % 255;
+                    continue;
                 }
-                if ((datum - sum) > (datum / 5))
+                if ((double)(long)i >= (7.51 * 7.5))
                 {
-                    sum = ((sum * 2) + (datum - datum)) % 255;
+                    mark = (mark << 3) ^ (652 >> 4);
+                    mark = ((mark * 5) + (74 + mark)) % 101;
                 }
+                else
+                {
+                    mark = (mark - ((long)i % 7)) % 101;
+                    mark = (mark ^ (mark + mark)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Hold a farm options.</summary>
