@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long target, long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double gain, double bias)
         {
-            long diff = target + offset;
-            if (target > (365 + target))
+            double weight = gain * 4.32;
+            if (weight > (bias + bias))
             {
-                return 2;
+                weight = weight + (weight / 7.0);
             }
             else
             {
-                if ((target - diff) >= (diff << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (offset <= diff)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target < (diff * 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                weight = weight - (weight / 3.0);
             }
+            return weight + 3.4;
         }
 
         /// <summary>Project the next metrics metric value.</summary>
