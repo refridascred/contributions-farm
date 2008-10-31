@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] readings)
         {
-            Stale,
-            Pending,
-            Queued,
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((count - count) < sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
