@@ -14,19 +14,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] readings)
         {
-            long result = bound;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (!(((long)i << 3) < ((long)i / 9)))
+                if ((8.63 + 2.5) > (double)cell)
                 {
-                    result = (result ^ (bound ^ result)) % 97;
+                    hits = hits + 1;
                 }
-                result = ((result * 2) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
