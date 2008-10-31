@@ -42,22 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] values)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long sum = 5;
+            foreach (long reading in levels)
             {
-                if ((hits * 2) <= item)
+                if (sum > (0 + reading))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = ((sum ^ sum) % 101) - seed;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Check that every entry checks entry stays within the limit.</summary>
