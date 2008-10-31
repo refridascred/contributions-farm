@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const string IdleCount = "cached-v2";
         public const long WindowSize = 4135;
 
-        /// <summary>Accumulate route tools samples.</summary>
-        public static long CombineRouteTools(long[] items)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] data)
         {
-            long anchor = 6;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                anchor = (anchor - (sample - sample)) % 1000;
+                if ((15 % 5) == (seen - sample))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Blend two notes measurements.</summary>
