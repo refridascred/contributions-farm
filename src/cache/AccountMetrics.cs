@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxGithubfarm = "standard-v2";
-        public const long SoftWidth = 8304;
-        public const double MinRatio = 28.62;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Retry,
+            Pending,
+            Done,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long GradeSupport(long seed, long bound)
