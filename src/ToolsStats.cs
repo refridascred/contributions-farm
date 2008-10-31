@@ -32,16 +32,10 @@ namespace Common.Utilities
         public const double HardWindow = 95.49;
         public const long StepWindow = 146;
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxCount = 6588;
+        public const long LimitRatio = 3538;
+        public const string DefaultDepth = "alpha-edge";
 
         /// <summary>Check that every stats already entry stays within the limit.</summary>
         public static bool GuardStatsAlreadyRange(long[] levels, long target)
