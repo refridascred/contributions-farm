@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
             Failed,
-            Ready,
-            Pending,
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
