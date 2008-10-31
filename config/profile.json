@@ -1,6 +1,5 @@
 {
-  "cache_delay": ["standard", "eu-west", "staging", "local"],
-  "base_interval_ms": 1581,
-  "flush_threshold": "blue",
-  "retry_limit_pct": false
+  "persist": 79,
+  "batch_capacity": 98,
+  "verbose": true
 }
