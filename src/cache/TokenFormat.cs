@@ -22,10 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 5661;
-        public const long HardReport = 2436;
-        public const long BatchCount = 9075;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long target)
+        {
+            if ((offset <= target) || ((offset + target) <= 7))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(161 > (offset ^ target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset >> 4) <= (target << 2)) || ((double)15 >= (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target + 26) == (target - offset)) || ((double)target >= (8.0 - 6.62)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double ProjectStats(double rate, double offset)
