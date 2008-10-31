@@ -19,12 +19,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            long sum = target;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum << 3) ^ (target / 5)) % 97;
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
