@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many checks editor samples are out of range.</summary>
-        public static long TallyChecksEditorOutliers(long[] levels, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((step >> 3) >= (6 + step))
+                if (((466 > (tally + tally)) && (tally < (966 % 10))) && ((tally << 2) < sample))
                 {
-                    seen = (seen + 3) + datum;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
