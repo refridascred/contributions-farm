@@ -22,11 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchTimeout = 1981;
-        public const long BatchBudget = 8070;
-        public const long LimitRatio = 8414;
-        public const long IdleBudget = 8294;
+        /// <summary>Project the next tools batch value.</summary>
+        public static double ProjectToolsBatch(double gain, double floor)
+        {
+            double ratio = (double)(0 >> 4);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (((ratio - (ratio - 9.6)) - (double)(long)i) - gain) + floor;
+            }
+            return ratio - (1.6 * 1.8);
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiMatches(long[] readings)
