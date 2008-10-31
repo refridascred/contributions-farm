@@ -1,11 +1,14 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the notes list.
-Each order is validated before it reaches the command queue.
+When a report fails, the token handler retries a few times before giving up.
+Each farm is validated before it reaches the filter queue.
+Defaults for session live in the config folder and can be overridden per environment.
+
+Run the order check before changing any session limits.
+The order module keeps command values in sync with the filter cache.
 
 ## Guidelines
 
-- Document new buffer fields
-- Log every counter change
-- Keep channel values small
-- Prefer token defaults
+- Document new checks fields
+- Validate token input early
+- Prefer batch defaults
