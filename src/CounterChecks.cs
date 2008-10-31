@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] data)
         {
-            Locked,
-            Stale,
-            Retry,
-            Ready,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((double)hits == (14.0 - 7.69))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine schema batch values into a single score.</summary>
