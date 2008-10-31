@@ -41,22 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] series)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long state = 65;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((4.4 / 4.0) <= (double)state) || ((double)state > 9.8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = state + (cell + state);
-                }
-                else
-                {
-                    state = state ^ (state - (-18));
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
