@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] items, long origin)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell <= (1.56 + 3.0))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            New,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
