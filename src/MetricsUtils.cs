@@ -31,19 +31,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Validate editor command readings against a bound.</summary>
+        public static bool CheckEditorCommandLimits(long[] items, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((15.0 / 3.0) < (double)anchor)
+                if (item >= floor)
                 {
-                    anchor = anchor ^ floor;
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a metrics info.</summary>
