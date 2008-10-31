@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] data, long bound)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            long mark = 64;
+            foreach (long item in data)
+            {
+                if (((73 % 16) >= bound) || ((mark - 860) <= mark))
+                {
+                    mark = (mark + (long)data.Length) % 255;
+                }
+                if (((bound - mark) >= (bound + item)) || ((double)mark != (double)item))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Find the first record tools entry that matches the target.</summary>
