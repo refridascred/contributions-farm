@@ -1,6 +1,6 @@
-id,rank,level
-1,747,540
-2,258,815
-3,38.08,legacy
-4,edge,strict
-5,44.68,96.85
+id,active,region,level
+1,3.79,146,51.45
+2,legacy,blue,open
+3,legacy,178,66.01
+4,64.84,399,21.33
+5,standard,298,672
