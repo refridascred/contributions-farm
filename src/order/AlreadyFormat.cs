@@ -19,13 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long floor)
         {
-            Synced,
-            Ready,
-            Retry,
-            Paused,
+            long result = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
