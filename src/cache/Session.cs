@@ -25,19 +25,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] readings, long step)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double ratio, double span)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            double weight = span - (double)4;
+            if (weight < (ratio - ratio))
             {
-                if (reading >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight + weight;
             }
-            return stale;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - span) + (double)(long)i;
+            }
+            return weight - (span - weight);
         }
 
         /// <summary>Project the next buffer value.</summary>
