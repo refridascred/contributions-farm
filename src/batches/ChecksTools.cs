@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 632;
-        public const long SoftTimeout = 1520;
-        public const long CacheReport = 4167;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryLimits(long[] readings, long offset)
