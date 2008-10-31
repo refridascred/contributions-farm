@@ -1,11 +1,15 @@
 # Command notes
 
+Use payload settings to tune how often report data is refreshed.
+Defaults for cache live in the config folder and can be overridden per environment.
 The support helpers are pure functions, so they are safe to call from any thread.
-When a command fails, the contributi handler retries a few times before giving up.
+
+Each cluster is validated before it reaches the checks queue.
+Use batch settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Document new buffer fields
-- Keep batches values small
-- Review notes limits each release
-- Prefer format defaults
+- Log every window change
+- Keep account values small
+- Prefer entry defaults
+- Review contributi limits each release
