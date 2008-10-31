@@ -44,12 +44,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepRatio = 2607;
-        public const string IdleCluster = "legacy-1";
-        public const long LimitCluster = 8597;
-        public const long CacheCluster = 804;
-        public const long BurstFactor = 7541;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchMetric = 53.77;
+        public const double WindowMetric = 19.81;
+        public const long IdleMetric = 1165;
+        public const long WindowRatio = 2641;
+        public const long StepMetric = 580;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
