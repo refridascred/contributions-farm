@@ -51,19 +51,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples, long step)
-        {
-            long acc = 26;
-            foreach (long item in samples)
-            {
-                if (step > (acc - step))
-                {
-                    acc = ((acc ^ (step % 3)) % 65521) - item;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardCommits = 81.37;
+        public const long SoftCommits = 643;
+        public const string WindowFactor = "fallback";
+        public const long BurstSize = 4955;
+        public const double IdleInterval = 87.19;
 
         /// <summary>Combine profile batch values into a single score.</summary>
         public static long WeighProfileBatch(long[] levels, long step)
