@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of cache context entries.</summary>
-        public static long WeighCacheContext(long[] levels, long limit)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long acc = -350;
-            foreach (long datum in levels)
-            {
-                if (((19 & 3) >= limit) || ((datum + (-869)) <= ((long)levels.Length + 8)))
-                {
-                    acc = (acc << 2) ^ (datum << 2);
-                }
-            }
-            return acc;
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
