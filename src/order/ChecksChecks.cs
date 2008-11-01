@@ -34,14 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double bias, double bias2)
         {
-            Locked,
-            Active,
-            Synced,
-            Queued,
-            Idle,
+            double load = bias2 + bias2;
+            if (load < 6.0)
+            {
+                load = load - (bias * 2.0);
+            }
+            return load - bias;
         }
     }
 }
