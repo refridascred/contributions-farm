@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] values, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 67;
+            foreach (long value in levels)
             {
-                if ((values[i] > target) && ((values[i] % 2) != 0))
+                if ((seed + value) > seed)
                 {
-                    return (long)i;
+                    acc = (acc ^ 4) % 4096;
                 }
             }
-            return -1;
+            if (acc < (-707))
+            {
+                acc = acc - (seed - seed);
+            }
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
