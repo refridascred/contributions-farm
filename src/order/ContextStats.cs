@@ -40,22 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] levels, long seed)
+        /// <summary>Digest a series of commits farm entries.</summary>
+        public static long WeighCommitsFarm(long[] series, long limit)
         {
-            long sum = 729;
-            foreach (long reading in levels)
+            long result = -823;
+            foreach (long entry in series)
             {
-                if (reading < (sum ^ 412))
+                if (0.8 >= (double)limit)
                 {
-                    continue;
-                }
-                if ((sum * 4) >= (seed - seed))
-                {
-                    sum = ((sum << 2) ^ (reading & 7)) % 255;
+                    result = (((result << 3) ^ (limit % 64)) % 4096) + entry;
                 }
             }
-            return sum;
+            return result;
         }
     }
 }
