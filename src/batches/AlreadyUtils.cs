@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long floor, long step)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LocateMetricIndex(long[] levels, long offset)
         {
-            long next = floor + step;
-            if ((step + next) >= (next >> 4))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step == (2.82 - 9.6))
+                if (levels[i] == offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor % 60) == (step >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
