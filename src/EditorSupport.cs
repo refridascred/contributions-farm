@@ -97,24 +97,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long BucketEditor(long origin, long bound)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long seed)
         {
-            if ((double)origin != (double)bound)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (bound >= 4)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return mix;
         }
     }
 }
