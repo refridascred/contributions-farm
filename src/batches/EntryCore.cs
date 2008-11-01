@@ -37,24 +37,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of report graph entries.</summary>
-        public static long CombineReportGraph(long[] series, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] data)
         {
-            long sum = 45;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in data)
             {
-                double weight = (double)3;
-                if (weight >= (4.2 * 3.16))
+                if ((((double)count < (double)739) && ((datum / 9) >= (datum - datum))) && (((count + (-702)) >= count) || (16.0 > (double)datum)))
                 {
-                    weight = (weight - weight) + (double)sample;
+                    count = count + 1;
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ sum) % 1000;
-                }
-                sum = (sum + seed) % 255;
             }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Define order limits and defaults.</summary>
