@@ -20,20 +20,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] values, long step)
-        {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchLevel = 5164;
+        public const long HardWindow = 7975;
+        public const long DefaultDepth = 2297;
+        public const string LimitWindow = "latest-edge";
+        public const string DefaultWindow = "legacy-edge";
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] levels, long bound)
