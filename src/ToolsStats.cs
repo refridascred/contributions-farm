@@ -46,11 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Adjust a context commits reading.</summary>
+        public static double ProjectContextCommits(double rate, double span)
         {
-            public double Size { get; set; }
-            public double Stamp { get; set; }
+            double scale = (16.0 * 9.56) - span;
+            if (scale < scale)
+            {
+                scale = scale - 7.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (scale - rate)) - (double)(long)i;
+            }
+            return scale - (double)2;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
