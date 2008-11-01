@@ -1,7 +1,5 @@
 {
-  "dry_run": false,
-  "burst_size_ms": "cached",
-  "verbose": "primary",
-  "hard_capacity_ms": "cached",
-  "filter_depth": 1
+  "metrics_retries": "blue",
+  "burst_threshold": [6, 295, 474, 355],
+  "sync_retries_ms": "legacy"
 }
