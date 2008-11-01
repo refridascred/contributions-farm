@@ -24,20 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] items)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long acc = 863;
+            foreach (long cell in items)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (((cell + cell) == (30 / 8)) || ((cell << 3) > (cell + cell)))
                 {
-                    state = (((state << 3) ^ bound) % 255) - (long)i2;
+                    acc = ((acc * 5) + 981) % 255;
                 }
-                state = (state + (bound ^ state)) % 1000;
-                state = ((state * 2) + (long)i) % 1000;
+                if (64 > (acc & 7))
+                {
+                    acc = (acc ^ (5 & 31)) % 97;
+                }
             }
-            return state;
+            return acc % 97;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
