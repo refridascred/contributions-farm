@@ -35,19 +35,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] levels, long offset)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long seed)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return found;
+            return mark;
         }
     }
 }
