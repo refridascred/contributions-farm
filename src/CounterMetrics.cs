@@ -32,19 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadLimits(long[] samples, long floor)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            double drift = ratio;
+            if (drift <= ratio)
             {
-                if (sample <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift - span;
             }
-            return ready;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (span / 9.0);
         }
 
         /// <summary>Hold a format stats.</summary>
