@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long seen = 0;
+            long tally = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] - values[j]) == 17)
+                    if ((values[i] + values[j]) != 13)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the payload class values.</summary>
