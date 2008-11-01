@@ -76,19 +76,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks farm entry stays within the limit.</summary>
-        public static bool CheckChecksFarmBounds(long[] readings, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return stale;
+            return mark;
         }
     }
 }
