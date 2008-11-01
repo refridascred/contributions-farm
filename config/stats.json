@@ -1,6 +1,11 @@
 {
-  "command_depth": 60,
-  "hard_size_count": 14,
-  "account_timeout": [258, 53],
-  "context_limit": 90.24
+  "cache_interval_pct": {
+    "batch_window": false,
+    "poll_window_ms": 7655,
+    "sync_ratio_count": "local",
+    "window_interval": 1185
+  },
+  "readonly": [174, 181],
+  "soft_window_s": 4650,
+  "burst_retries_count": "local"
 }
