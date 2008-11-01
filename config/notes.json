@@ -1,6 +1,11 @@
 {
-  "soft_interval_ms": "primary",
-  "warm_size": "strict",
-  "readonly": [233, 128],
-  "profile_threshold": "open"
+  "metric_capacity": 1024,
+  "flush_ttl_pct": ["staging", "blue"],
+  "min_capacity_pct": 64.97,
+  "burst_delay": 47,
+  "burst_timeout_s": {
+    "context_retries": 31.12,
+    "profile_delay": 754,
+    "editor_threshold": ["fallback", "staging", "latest"]
+  }
 }
