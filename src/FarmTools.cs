@@ -22,18 +22,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] readings, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                if ((((cell - hits) <= cell) && ((hits + hits) == (cell + hits))) || ((double)hits <= 1.1))
+                if ((acc % 97) >= step)
                 {
-                    hits = (hits + 1) - step;
+                    break;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
     }
 }
