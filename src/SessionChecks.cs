@@ -27,22 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] series, long origin)
+        /// <summary>Derive the next entry githubfarm value from a seed.</summary>
+        public static long IterateEntryGithubfarm(long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (origin > (seen + reading))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Hold a profile header.</summary>
