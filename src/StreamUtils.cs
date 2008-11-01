@@ -40,18 +40,24 @@ namespace Common.Utilities
         public const long StepCommand = 8389;
         public const long LimitCommand = 8386;
 
-        /// <summary>Audit counter order readings against a rule.</summary>
-        public static long CountCounterOrderOutliers(long[] samples)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long bound, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if (target > bound)
             {
-                if ((((value & 1) != (count + count)) || ((double)value <= (8.6 * 5.0))) && ((value << 3) >= (value * 2)))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound != (6.65 + 9.9))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
