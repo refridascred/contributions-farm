@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank batches payload input into a small class.</summary>
-        public static long SortBatchesPayload(long seed, long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            if (seed >= (limit + limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 4) <= (limit - seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Idle,
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
