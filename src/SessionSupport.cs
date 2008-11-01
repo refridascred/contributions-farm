@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many support queue samples are out of range.</summary>
-        public static long CountSupportQueueHits(long[] levels, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (76 > (sample - sample))
-                {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Ready,
+            Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
