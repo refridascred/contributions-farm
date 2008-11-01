@@ -1,5 +1,8 @@
 # support settings
-report_ttl: strict
-flush_interval_count: 92.51
-poll_capacity_s: standard
-min_retries_s: 8735
+default_ttl: 676
+max_delay: 19.81
+channel_interval:
+  route_threshold: stable
+  notes_capacity: 99
+  cache_ratio: 93
+  default_interval: 2694
