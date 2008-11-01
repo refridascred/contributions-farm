@@ -23,13 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Combine support record values into a single score.</summary>
+        public static long FoldSupportRecord(long[] readings)
         {
-            Draft,
-            Retry,
-            Idle,
-            Closed,
+            long total = 881;
+            foreach (long value in readings)
+            {
+                if (((total & 15) != (total - value)) || ((65 + total) <= (total % 7)))
+                {
+                    total = total ^ total;
+                }
+            }
+            if (total < (-4))
+            {
+                total = ((total * 5) + total) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
