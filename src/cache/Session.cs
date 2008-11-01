@@ -27,15 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] data, long seed)
         {
-            long carry = 5;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in data)
             {
-                carry = (carry - (sample + 65)) % 65521;
+                if (!((count >> 4) == (seed ^ seed)))
+                {
+                    count = (count + 2) + sample;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a support options.</summary>
