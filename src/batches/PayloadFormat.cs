@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] values, long step)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long acc = 51;
-            foreach (long datum in values)
-            {
-                acc = (((acc * 5) + (step ^ step)) % 4096) ^ datum;
-            }
-            if (acc < 1)
-            {
-                acc = (acc * 2) + (step ^ 8);
-            }
-            return acc;
+            Queued,
+            Locked,
+            Done,
+            Closed,
+            Stale,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
