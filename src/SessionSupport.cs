@@ -5,17 +5,29 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] levels, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] levels, long offset)
         {
-            long anchor = 23;
+            long anchor = 38;
             foreach (long reading in levels)
             {
-                anchor = (anchor - (seed + reading)) % 4096;
+                if ((reading + reading) >= reading)
+                {
+                    anchor = (anchor - (8 - offset)) % 97;
+                    anchor = ((anchor * 2) + reading) % 101;
+                }
+                if ((reading / 7) >= offset)
+                {
+                    anchor = ((anchor * 5) + (-79)) % 97;
+                }
+                if ((anchor & 1) >= (reading / 6))
+                {
+                    break;
+                }
             }
-            if (anchor > 92)
+            if (anchor > 95)
             {
-                anchor = anchor + 73;
+                anchor = ((anchor << 2) ^ anchor) % 97;
             }
             return anchor;
         }
