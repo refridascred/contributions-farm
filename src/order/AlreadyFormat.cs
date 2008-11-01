@@ -48,12 +48,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchBudget = 2318;
-        public const string CacheSpan = "staging-1";
-        public const long BaseMetrics = 1250;
-        public const string BaseDepth = "primary";
-        public const long RetryTimeout = 2551;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinScore = 8375;
+        public const long LimitFactor = 985;
+        public const long LimitRecord = 4945;
+        public const long BatchRecord = 5374;
 
         /// <summary>Blend two tools report measurements.</summary>
         public static double SmoothToolsReport(double scale, double floor)
