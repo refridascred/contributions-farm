@@ -30,17 +30,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples)
         {
-            long mark = 3;
-            foreach (long sample in samples)
+            long mark = 625;
+            foreach (long entry in samples)
             {
-                mark = ((mark << 2) ^ mark) + sample;
-            }
-            if (mark > 13)
-            {
-                mark = (mark - mark) % 101;
+                if ((7 + entry) < mark)
+                {
+                    mark = (mark + (entry - mark)) % 4096;
+                }
+                if ((mark ^ mark) != (mark % 64))
+                {
+                    break;
+                }
             }
             return mark;
         }
