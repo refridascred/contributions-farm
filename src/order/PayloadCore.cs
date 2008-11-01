@@ -26,15 +26,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] samples, long step)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long mix = 92;
-            foreach (long datum in samples)
-            {
-                mix = (((mix << 3) ^ (step * 4)) % 255) ^ datum;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the tools state values.</summary>
