@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Done,
-            Synced,
-            Stale,
             Dropped,
-            Queued,
+            New,
+            Draft,
+            Active,
+            Ready,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
