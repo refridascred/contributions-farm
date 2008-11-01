@@ -1,11 +1,10 @@
 # Command notes
 
-The tools report groups every contributi by report.
-The counter report groups every session by route.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Keep route values small
-- Prefer format defaults
-- Document new entry fields
-- Review queue limits each release
+- Prefer route defaults
+- Validate support input early
+- Review counter limits each release
