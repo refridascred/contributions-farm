@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
+            Queued,
+            Retry,
+            Paused,
+            New,
+            Failed,
         }
 
         /// <summary>Accumulate record samples.</summary>
