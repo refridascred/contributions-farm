@@ -40,11 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (22 >= (count ^ count))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
     }
 }
