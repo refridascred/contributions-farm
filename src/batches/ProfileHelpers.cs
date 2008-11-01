@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a record cluster reading by value.</summary>
-        public static long LookupRecordClusterIndex(long[] levels, long bound)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
+                if ((7.3 * 5.48) <= (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the queue level values.</summary>
