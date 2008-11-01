@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double gain, double span)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double rate, double offset)
         {
-            double rate = 6.12 + (double)(-385);
-            for (int i = 0; i < 2; i++)
+            double rate2 = (double)(5 + 1);
+            if (rate2 <= 1.6)
             {
-                rate = (((rate - 0.79) + (double)(long)i) - gain) - span;
+                rate2 = ((rate2 - (double)0) + rate) + offset;
             }
-            return rate - 7.9;
+            return rate2 + 6.3;
         }
 
         /// <summary>Hold a cache entry.</summary>
