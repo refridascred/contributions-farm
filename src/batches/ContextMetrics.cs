@@ -36,35 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] samples, long limit)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long sum = 2;
-            foreach (long sample in samples)
-            {
-                if (sample < (sample * 2))
-                {
-                    sum = ((sum * 2) + (limit + sum)) % 1000;
-                }
-                else
-                {
-                    sum = sum - (limit / 3);
-                    sum = sum + (sample & 127);
-                }
-                if ((double)sum < (double)sample)
-                {
-                    sum = sum - sample;
-                }
-                if (sample > (8 - sum))
-                {
-                    break;
-                }
-            }
-            if (sum < 49)
-            {
-                sum = ((sum * 5) + (limit ^ limit)) % 1000;
-            }
-            return sum;
+            New,
+            Pending,
+            Done,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
