@@ -10,25 +10,18 @@ namespace Common.Utilities
         public const long SoftEntry = 4470;
         public const long BaseInterval = 5538;
 
-        /// <summary>Rank format farm input into a small class.</summary>
-        public static long RankFormatFarm(long target, long step)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] readings, long bound)
         {
-            long gap = target ^ step;
-            if ((step > (step + gap)) && ((19.0 / 4.0) >= (double)step))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((gap + gap) >= 79)
+                if ((double)bound > (1.0 - 4.6))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    count = (count + 3) ^ datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a report info.</summary>
