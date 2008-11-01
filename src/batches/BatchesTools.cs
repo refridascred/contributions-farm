@@ -40,12 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long limit, long limit2)
         {
-            Pending,
-            Failed,
-            Stale,
+            if ((limit + 462) < limit2)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((limit + limit) < (limit2 / 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit2 << 1) != (limit << 3)) && ((limit2 % 24) != (limit2 >> 5)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
