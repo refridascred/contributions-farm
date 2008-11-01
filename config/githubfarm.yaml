@@ -1,15 +1,12 @@
 # githubfarm settings
-filter_depth:
-  layout_size: 72.72
-  retry_retries_s: 98
-  readonly: standard
-  min_retries: cached
-hard_retries: 93.45
-record_ratio:
-  soft_ttl_count: 94
-  retry_timeout: open
-  batch_timeout_pct: 21.75
-  poll_ratio_ms: latest
-soft_retries: 68.54
-min_ratio: 11
-flush_size: false
+cache_limit_count:
+  persist: false
+  max_size: 250
+  commits_interval: fallback
+  audit:
+    max_retries_s: standard
+    token_size: 500
+    commits_delay: true
+  retry_depth: open
+editor_delay: false
+verbose: 15.84
