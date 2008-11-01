@@ -32,21 +32,35 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] samples)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 95;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)score > 1.0) || (sample >= (score * 4)))
                 {
-                    if ((samples[i] + samples[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
+                }
+                else
+                {
+                    score = (score ^ sample) % 4096;
+                }
+                if (((score % 2) >= sample) && (17.0 >= (double)score))
+                {
+                    score = (score + score) % 255;
+                }
+                score = ((score * 3) + (sample - 3)) % 65521;
+                if ((score - score) > (score + sample))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (score > 73)
+            {
+                score = (score - score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Project the next format layout value.</summary>
