@@ -20,13 +20,17 @@ namespace Common.Utilities
             return (weight2 + weight) + bias;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] levels, long step)
         {
-            Pending,
-            Idle,
-            Done,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
