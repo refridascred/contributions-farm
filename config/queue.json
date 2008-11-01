@@ -1,8 +1,8 @@
 {
-  "default_threshold_s": 29.32,
-  "poll_delay": "latest",
-  "hard_ratio_s": true,
-  "batch_window": "primary",
-  "retry_size_count": "green",
-  "default_window_s": "open"
+  "warm_size_pct": ["eu-west", "open", "stable", "standard"],
+  "command_ttl": "eu-west",
+  "min_retries_s": "blue",
+  "flush_ttl_s": 80,
+  "dry_run": "legacy",
+  "cache_ratio_pct": [209, 277, 124, 241]
 }
