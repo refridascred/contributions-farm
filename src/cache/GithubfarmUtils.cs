@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long RetryMetric = 8534;
         public const long WindowLevel = 22;
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            New,
-            Closed,
-            Failed,
-            Draft,
-            Queued,
+            public string Stamp { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
