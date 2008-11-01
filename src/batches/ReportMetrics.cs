@@ -17,22 +17,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the githubfarm profile entries that pass the check.</summary>
-        public static long MeasureGithubfarmProfileMatches(long[] values, long target)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] series)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((value & 63) >= seen) || ((seen - target) != (5 + seen)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Accumulate tools samples.</summary>
