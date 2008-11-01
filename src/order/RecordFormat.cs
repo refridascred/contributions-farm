@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Roll a window contributi counter forward.</summary>
+        public static long SeriesWindowContributi(long limit)
         {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = (acc ^ ((long)i + limit)) % 101;
+                if ((long)i >= (6 / 2))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
