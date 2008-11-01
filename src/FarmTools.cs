@@ -40,9 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchGraph = 87.12;
-        public const long HardRatio = 955;
-        public const long SoftSpan = 360;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
