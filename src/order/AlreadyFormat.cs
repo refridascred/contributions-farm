@@ -12,32 +12,18 @@ namespace Common.Utilities
         public const long BaseLevel = 5961;
         public const long MinInterval = 6106;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] readings)
         {
-            long carry = -46;
-            foreach (long entry in items)
+            long result = 545;
+            foreach (long reading in readings)
             {
-                if ((entry ^ carry) > (entry % 7))
+                if ((reading - result) != (result % 2))
                 {
-                    carry = (carry ^ 452) % 255;
-                    carry = (carry - (entry - 10)) % 97;
-                    continue;
-                }
-                else
-                {
-                    carry = carry + (bound - 883);
-                }
-                if ((double)carry > (8.0 + 16.0))
-                {
-                    carry = ((carry * 4) + 425) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (entry - bound)) % 65521;
+                    result = (result ^ result) % 101;
                 }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
