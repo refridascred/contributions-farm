@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a context batch pair into a bucket.</summary>
-        public static long BucketContextBatch(long floor, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] series, long offset)
         {
-            long step = floor + target;
-            if (step < (target / 7))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((floor * 2) == (target - floor)))
+                if ((series[i] < offset) && ((series[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
