@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstInterval = 4824;
-        public const string HardFormat = "latest-1";
-        public const double MinFormat = 70.31;
-        public const string IdleFormat = "stable";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (((tally >> 3) >= seed) && ((15.0 + 9.73) == (double)entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long CountOrderGaps(long[] readings)
