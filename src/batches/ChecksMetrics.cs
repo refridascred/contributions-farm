@@ -35,18 +35,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 6419;
         public const long HardBatches = 9534;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] data, long step)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!((0.64 + 7.5) >= (double)tally))
-                {
-                    tally = ((tally + 3) ^ datum) - step;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
