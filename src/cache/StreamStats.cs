@@ -33,15 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] levels, long limit)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long carry = 90;
-            foreach (long value in levels)
-            {
-                carry = ((carry - (value ^ 4)) % 101) - limit;
-            }
-            return carry;
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
