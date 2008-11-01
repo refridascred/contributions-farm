@@ -1,5 +1,6 @@
 {
-  "commits_capacity": ["stable", "legacy"],
-  "default_size_pct": 31,
-  "persist": 560
+  "soft_window_s": 30,
+  "readonly": 2453,
+  "base_window": "standard",
+  "enabled": 2475
 }
