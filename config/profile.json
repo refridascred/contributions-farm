@@ -1,8 +1,9 @@
 {
-  "editor_capacity": 15.84,
-  "audit": 34.57,
-  "readonly": ["staging", "staging", "primary", "edge"],
-  "warm_size_ms": 40.63,
-  "compress": 52.77,
-  "verbose": ["cached", "latest", "eu-west"]
+  "support_window": [302, 101, 38, 313],
+  "max_limit_s": true,
+  "flush_retries": {
+    "cache_interval": 63,
+    "batch_capacity_ms": "legacy",
+    "hard_timeout": false
+  }
 }
