@@ -65,17 +65,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] items, long bound)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] <= bound) && ((items[i] % 5) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the notes queue entries that pass the check.</summary>
