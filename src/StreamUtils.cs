@@ -19,13 +19,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] values, long seed)
         {
-            Synced,
-            Active,
-            Closed,
-            Retry,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally + 26) == (seed >> 5))
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
