@@ -52,13 +52,13 @@ namespace Common.Utilities
         public const string BurstTimeout = "cached-1";
         public const string SoftSize = "cached-edge";
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Synced,
+            Active,
             Idle,
-            New,
-            Dropped,
+            Closed,
+            Failed,
         }
     }
 }
