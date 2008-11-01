@@ -63,21 +63,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the channel route series from a seed.</summary>
-        public static long SeriesChannelRoute(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                score = score + (origin / 9);
-                if ((9.0 * 6.0) <= (double)(long)i)
-                {
-                    break;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftQueue = "standard-v2";
+        public const long RetryQueue = 460;
+        public const long MinSpan = 9529;
+        public const long StepTimeout = 3013;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long CombineBatches(long[] series, long floor)
