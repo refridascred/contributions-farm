@@ -13,19 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] levels, long limit)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (entry <= limit)
+                if (sample < floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Blend two command measurements.</summary>
