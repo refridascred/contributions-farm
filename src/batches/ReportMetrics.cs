@@ -32,19 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] samples, long target)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long carry = 592;
-            foreach (long reading in samples)
-            {
-                carry = (carry + (851 ^ target)) + reading;
-                if ((target / 3) == (carry * 4))
-                {
-                    carry = (carry - 8) % 4096;
-                }
-            }
-            return carry;
+            Ready,
+            Stale,
+            Dropped,
+            Idle,
+            Paused,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
