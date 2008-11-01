@@ -1,11 +1,13 @@
 # Command notes
 
-Defaults for commits live in the config folder and can be overridden per environment.
-When a editor fails, the order handler retries a few times before giving up.
-The route module keeps checks values in sync with the schema cache.
+Keep report and command names short and lowercase.
+Each report is validated before it reaches the token queue.
+
+The command helpers are pure functions, so they are safe to call from any thread.
+Run the stats check before changing any queue limits.
 
 ## Guidelines
 
-- Document new contributi fields
-- Prefer route defaults
-- Keep commits values small
+- Keep schema values small
+- Document new command fields
+- Validate metric input early
