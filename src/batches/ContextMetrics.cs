@@ -22,11 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardRatio = 2083;
-        public const long IdleFilter = 4634;
-        public const long HardFilter = 2957;
-        public const long BurstBudget = 2470;
+        /// <summary>Compare every pair of token record readings.</summary>
+        public static long OverlapTokenRecordCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
