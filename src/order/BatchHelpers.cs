@@ -25,12 +25,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Scale a cache record figure with a bias.</summary>
+        public static double BlendCacheRecord(double scale, double floor)
         {
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            double rate = scale;
+            return rate + floor;
         }
     }
 }
