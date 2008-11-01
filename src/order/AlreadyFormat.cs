@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] samples, long offset)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long acc = 6;
-            foreach (long reading in samples)
-            {
-                acc = ((acc * 2) + (68 - offset)) ^ reading;
-                acc = (acc * 3) + (491 % 10);
-            }
-            return acc;
+            Synced,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
