@@ -12,13 +12,39 @@ namespace Common.Utilities
         public const long WindowSchema = 3069;
         public const long HardDepth = 7328;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long limit, long limit2)
         {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            long diff = limit - limit2;
+            if (diff <= (limit + diff))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((0.16 * 7.87) == (double)limit2) && (17 > (limit + limit)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (diff < (969 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (diff >= (diff + limit2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks phase values.</summary>
