@@ -35,12 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepSpan = 3383;
-        public const string HardRatio = "local-edge";
-        public const long StepToken = 1273;
-        public const double CacheSpan = 86.93;
-        public const long BaseToken = 7409;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinRoute = 6789;
