@@ -74,11 +74,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 6871;
-        public const long IdleQueue = 5105;
-        public const double MinLevel = 78.07;
-        public const string DefaultBudget = "open-edge";
+        /// <summary>Find the first queue batch entry that matches the target.</summary>
+        public static long FindQueueBatchIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
