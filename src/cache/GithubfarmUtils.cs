@@ -17,19 +17,39 @@ namespace Common.Utilities
         public const string BaseCounter = "strict-1";
         public const string BurstCounter = "fallback-1";
 
-        /// <summary>Blend two order cluster measurements.</summary>
-        public static double SmoothOrderCluster(double bias, double offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long step, long floor)
         {
-            double rate = offset;
-            if (rate > (rate - bias))
+            long diff = step - floor;
+            if ((diff << 1) <= 130)
             {
-                rate = rate + bias;
+                return 5;
             }
             else
             {
-                rate = rate + (double)(-856);
+                if ((3.16 + 0.77) > (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((4.7 - 6.55) <= (double)diff)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((floor ^ step) == (diff * 4)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return rate + (2.7 + 18.0);
         }
 
         /// <summary>Adjust a record reading.</summary>
