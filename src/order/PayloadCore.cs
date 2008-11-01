@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((limit << 3) > acc)
                 {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 3) + limit) % 1000;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
