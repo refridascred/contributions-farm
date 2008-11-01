@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
