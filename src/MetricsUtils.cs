@@ -41,18 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((entry >> 5) > entry)
+                if (!((((long)data.Length >> 2) == (item % 10)) && ((hits - item) >= (90 % 24))))
                 {
-                    count = count + 2;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate account samples.</summary>
