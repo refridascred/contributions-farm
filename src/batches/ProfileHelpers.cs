@@ -85,14 +85,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count the session farm entries that pass the check.</summary>
+        public static long CountSessionFarmOutliers(long[] items, long limit)
         {
-            Active,
-            Draft,
-            Synced,
-            Paused,
-            Failed,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((2 >> 3) != (entry + limit))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
