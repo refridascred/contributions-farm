@@ -34,31 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank cache route input into a small class.</summary>
-        public static long SortCacheRoute(long origin, long floor)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] readings, long offset)
         {
-            if ((double)floor <= (0.3 + 1.9))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor >> 3) > (30 + (-56)))
+                if (!(((double)offset < 16.0) && ((sample << 1) != (1 + sample))))
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if ((13.0 * 4.4) > (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
