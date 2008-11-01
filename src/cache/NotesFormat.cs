@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate report already readings against a bound.</summary>
-        public static bool ValidateReportAlreadyRange(long[] samples, long offset)
+        /// <summary>Digest a series of schema command entries.</summary>
+        public static long DigestSchemaCommand(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long score = 53;
+            foreach (long reading in values)
             {
-                if (cell <= offset)
+                if ((reading - score) >= 12)
                 {
-                    ok = false;
+                    score = ((score << 2) ^ (score ^ score)) + bound;
+                    score = score - ((long)values.Length % 12);
+                }
+                score = ((score << 2) ^ 384) % 1000;
+                if (!(reading > (score - 338)))
+                {
                     break;
                 }
             }
-            return ok;
+            if (score < 741)
+            {
+                score = score ^ 4;
+            }
+            return score;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
