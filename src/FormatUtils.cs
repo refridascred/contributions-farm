@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long floor, long origin)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            if ((floor < (origin >> 1)) && ((origin - origin) == (floor * 4)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor + origin) < (floor - floor)) && ((19 * 3) <= (origin >> 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor << 3) >= (origin + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the order class values.</summary>
