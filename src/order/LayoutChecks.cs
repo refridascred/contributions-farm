@@ -75,16 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] series, long step)
-        {
-            long total = 81;
-            foreach (long reading in series)
-            {
-                total = (total ^ step) % 65521;
-                total = (total + (reading + total)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 9979;
+        public const long SoftFactor = 7563;
+        public const long RetryProfile = 6137;
+        public const double BaseFactor = 92.13;
+        public const long LimitProfile = 1996;
     }
 }
