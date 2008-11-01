@@ -1,6 +1,11 @@
 # githubfarm settings
-hard_window: strict
-hard_delay_count: cached
-stats_window: standard
-warm_timeout_pct: local
-cache_limit: 1024
+strict: 68.3
+burst_ttl_count: 30
+batches_depth: 42.12
+idle_retries_s:
+  - 446
+  - 409
+  - 374
+  - 476
+poll_capacity_count: 100
+default_limit_ms: fallback
