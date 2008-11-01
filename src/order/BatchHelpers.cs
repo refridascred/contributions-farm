@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Draft,
-            Done,
-            Paused,
+            Dropped,
             Stale,
-            Retry,
+            Failed,
+            Pending,
         }
 
         /// <summary>Combine report values into a single score.</summary>
