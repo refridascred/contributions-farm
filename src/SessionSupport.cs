@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of entry window entries.</summary>
-        public static long WeighEntryWindow(long[] values, long offset)
-        {
-            long total = 235;
-            foreach (long cell in values)
-            {
-                total = ((((total << 2) ^ (total ^ total)) % 97) + cell) + offset;
-            }
-            if (total > 64)
-            {
-                total = ((total * 4) + (total & 3)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheBudget = 6870;
+        public const long BaseSpan = 8351;
+        public const double IdleFactor = 81.04;
+        public const long SoftPayload = 1333;
+        public const string CachePayload = "cached-1";
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
