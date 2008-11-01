@@ -65,23 +65,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long limit, long origin)
         {
-            long carry = 87;
-            foreach (long item in readings)
+            if ((double)origin == (3.0 - 7.05))
             {
-                carry = (carry - (item / 2)) % 97;
-                if (!((carry ^ 104) >= (item - carry)))
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) <= limit)
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((-223) <= limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((138 ^ limit) <= (origin + 73))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (carry > 71)
-            {
-                carry = (carry ^ (carry - carry)) % 1000;
-            }
-            return carry;
         }
     }
 }
