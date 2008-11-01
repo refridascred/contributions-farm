@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Dropped,
-            New,
-            Draft,
-            Active,
-            Ready,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchNotes = "primary-1";
+        public const long SoftNotes = 6262;
+        public const long SoftLevel = 4660;
+        public const long BaseLevel = 5961;
+        public const long MinInterval = 6106;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] items, long bound)
