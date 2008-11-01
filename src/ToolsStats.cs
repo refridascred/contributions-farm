@@ -23,18 +23,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] levels, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry / 6) <= step)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Pending,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
