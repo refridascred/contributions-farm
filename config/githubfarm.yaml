@@ -1,15 +1,5 @@
 # githubfarm settings
-compress:
-  batch_retries_count: 500
-  verbose: 94.69
-  strict:
-    verbose: 47
-    audit: primary
-    persist: 81.47
-    commits_timeout: true
-    stats_size: true
-    idle_delay_ms: 27
-  max_threshold: false
-  queue_retries: 5.38
-warm_delay_ms: 41.14
-batch_ttl: staging
+commits_interval: staging
+default_timeout_ms: 21.31
+hard_depth_ms: eu-west
+entry_depth: 4.42
