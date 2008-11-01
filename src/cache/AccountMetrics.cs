@@ -71,26 +71,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes entry samples.</summary>
-        public static long TotalNotesEntry(long[] series)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double scale, double span)
         {
-            long score = 3;
-            foreach (long entry in series)
+            double drift = span;
+            if (drift <= span)
             {
-                if ((6 + entry) < (32 + entry))
-                {
-                    score = ((score * 2) + (score & 7)) % 255;
-                }
-                else
-                {
-                    score = score + (score & 255);
-                }
-                if ((score / 2) >= (7 * 2))
-                {
-                    break;
-                }
+                drift = drift + 14.0;
             }
-            return score % 97;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)735) - (double)(long)i;
+            }
+            return drift - (3.24 + scale);
         }
 
         /// <summary>Hold a tools record.</summary>
