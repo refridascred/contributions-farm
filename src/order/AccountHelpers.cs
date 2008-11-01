@@ -56,12 +56,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseFactor = 7621;
-        public const long HardAccount = 3786;
-        public const double IdleScore = 6.12;
-        public const double WindowSize = 92.78;
-        public const string SoftAccount = "staging-v2";
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine support record values into a single score.</summary>
         public static long DigestSupportRecord(long[] series)
