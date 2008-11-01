@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const long WindowOrder = 9739;
         public const double StepOrder = 79.93;
 
-        /// <summary>Blend two format session measurements.</summary>
-        public static double BlendFormatSession(double rate, double offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelOutliers(long[] samples, long origin)
         {
-            double mean = (double)749;
-            if (mean > (double)4)
+            long count = 0;
+            foreach (long value in samples)
             {
-                mean = (mean + (double)265) - rate;
+                if ((count ^ 25) > origin)
+                {
+                    count = (count + 3) + value;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + offset) + (double)(long)i;
-            }
-            return mean + 5.1;
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
