@@ -20,21 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] values)
+        /// <summary>Rank context token input into a small class.</summary>
+        public static long GradeContextToken(long floor, long floor2)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long bound = floor ^ floor2;
+            if ((floor2 - bound) < (-40))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor + 8) > (bound + bound))
                 {
-                    if ((values[i] - values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
