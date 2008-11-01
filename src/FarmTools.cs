@@ -22,12 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphOutliers(long[] readings, long step)
         {
-            Dropped,
-            Retry,
-            Queued,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((90 + step) <= (22 - cell))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
