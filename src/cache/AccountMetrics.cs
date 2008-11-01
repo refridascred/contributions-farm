@@ -41,22 +41,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of farm githubfarm readings.</summary>
-        public static long TotalFarmGithubfarm(long[] data, long step)
+        /// <summary>Match up session editor samples.</summary>
+        public static long MatchSessionEditorCount(long[] levels)
         {
-            long score = 877;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((step + score) < step))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score - (69 >> 3);
-                }
-                if ((213 ^ score) != (entry + score))
-                {
-                    score = (score - 946) % 4096;
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
