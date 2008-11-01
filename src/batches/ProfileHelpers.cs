@@ -63,18 +63,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] samples, long bound)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value + value) > matches)
-                {
-                    matches = (matches + 2) + bound;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
