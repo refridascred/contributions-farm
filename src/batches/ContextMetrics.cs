@@ -44,26 +44,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] levels, long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long result = 390;
-            foreach (long reading in levels)
-            {
-                if (((reading ^ seed) < reading) || (18 >= (seed << 3)))
-                {
-                    result = ((result << 2) ^ (result * 3)) % 255;
-                }
-                if ((result & 31) < seed)
-                {
-                    result = ((result * 5) + (reading * 2)) % 4096;
-                }
-            }
-            if (result > 71)
-            {
-                result = (result * 4) + (result % 100);
-            }
-            return result;
+            Idle,
+            Retry,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
