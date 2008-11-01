@@ -31,11 +31,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 6824;
-        public const long BurstCommits = 9771;
-        public const long LimitDepth = 6868;
-        public const double MaxTimeout = 14.29;
-        public const long IdleBudget = 4591;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
