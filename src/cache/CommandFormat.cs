@@ -28,17 +28,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] values, long bound)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
