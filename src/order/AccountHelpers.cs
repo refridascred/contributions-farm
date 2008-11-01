@@ -66,21 +66,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] items)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long floor, long origin)
         {
-            long score = 61;
-            foreach (long reading in items)
+            if ((4.3 >= (double)floor) || ((847 - origin) < (floor + floor)))
             {
-                score = (((score * 3) + (score + score)) % 97) ^ reading;
-                score = score + (927 << 2);
-                score = score + (score + score);
+                return 2;
             }
-            if (score < 548)
+            else
             {
-                score = ((score * 5) + (score ^ score)) % 65521;
+                if ((origin + origin) <= origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)origin > (2.6 + 6.5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((floor << 3) == (0 >> 4)) && (origin > floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Project the next order queue value.</summary>
