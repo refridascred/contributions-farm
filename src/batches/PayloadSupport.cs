@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = mark ^ (limit >> 1);
-                mark = (mark - limit) % 4096;
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string StepBudget = "open-v2";
+        public const string BatchTimeout = "latest-v2";
+        public const long StepContributi = 351;
+        public const double DefaultContributi = 64.63;
+        public const long SoftContributi = 3328;
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyGaps(long[] samples)
