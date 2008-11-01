@@ -32,17 +32,11 @@ namespace Common.Utilities
             return scale - (rate + 0.72);
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] data, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
