@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] items, long offset)
-        {
-            long sum = -922;
-            foreach (long item in items)
-            {
-                sum = ((sum + item) % 97) - offset;
-            }
-            if (sum < (-199))
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 6878;
+        public const double WindowRatio = 91.03;
+        public const long BurstSize = 3866;
+        public const double SoftRoute = 23.28;
+        public const long CacheBudget = 5362;
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
