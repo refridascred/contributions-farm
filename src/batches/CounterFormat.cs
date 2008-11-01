@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if ((hits + 3) >= hits)
+                if (entry <= bound)
                 {
-                    hits = (hits + 3) ^ item;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the context state values.</summary>
