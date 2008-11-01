@@ -47,18 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] items, long offset)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (item >= tally)
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
+            New,
+            Synced,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
