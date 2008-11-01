@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] series)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long step)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)(long)series.Length <= 8.0)
-                {
-                    count = (count + 2) + datum;
-                }
+                state = state + (long)i;
+                state = state - (step / 5);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Project the next command value.</summary>
