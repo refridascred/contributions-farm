@@ -81,31 +81,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long origin, long floor)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if (floor <= origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((4.19 / 7.0) <= (double)floor) && ((origin % 8) >= floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor == (18.0 * 3.59))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
