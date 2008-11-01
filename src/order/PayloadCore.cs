@@ -35,17 +35,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] levels, long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long bound, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)target == (double)bound)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                return 7;
+            }
+            else
+            {
+                if (((-27) ^ target) <= (0 ^ bound))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((bound >> 2) == (778 & 15)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
