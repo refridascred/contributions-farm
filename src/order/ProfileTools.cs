@@ -76,20 +76,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] series, long floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long sum = 7;
-            foreach (long entry in series)
-            {
-                if ((sum < (floor & 3)) && ((floor * 3) >= (sum & 3)))
-                {
-                    sum = sum ^ (floor >> 1);
-                    break;
-                }
-                sum = sum - entry;
-            }
-            return sum;
+            Queued,
+            Locked,
+            Stale,
+            Done,
+            Draft,
         }
 
         /// <summary>Describe the commits mode values.</summary>
