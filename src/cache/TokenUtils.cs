@@ -20,19 +20,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] samples, long step)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (value >= step)
+                if ((tally + 37) >= offset)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
