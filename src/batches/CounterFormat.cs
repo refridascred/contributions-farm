@@ -19,12 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 8160;
-        public const long SoftContext = 6062;
-        public const long MaxWidth = 4069;
-        public const long MaxInterval = 4344;
-        public const long StepBudget = 1766;
+        /// <summary>Derive the next schema buffer value from a seed.</summary>
+        public static long RollSchemaBuffer(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long LimitTimeout = 7004;
