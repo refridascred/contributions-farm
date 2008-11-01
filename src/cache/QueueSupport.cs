@@ -19,16 +19,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Roll a contributi graph counter forward.</summary>
-        public static long RollContributiGraph(long offset)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] items, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark << 3) ^ (mark + (long)i)) % 4096;
-                mark = ((mark * 4) + (long)i) % 97;
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
