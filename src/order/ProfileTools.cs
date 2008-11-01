@@ -83,13 +83,18 @@ namespace Common.Utilities
         public const long MinQueue = 8571;
         public const double LimitQueue = 74.75;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchGaps(long[] values, long target)
         {
-            Retry,
-            Stale,
-            Done,
-            Pending,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)target < (4.0 / 5.0))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
