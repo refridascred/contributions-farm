@@ -22,12 +22,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            New,
+            Locked,
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
