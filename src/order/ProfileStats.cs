@@ -26,11 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] items, long step)
         {
-            public bool Weight { get; set; }
-            public double Token { get; set; }
+            long mix = 5;
+            foreach (long item in items)
+            {
+                if ((double)item == (4.0 * 17.0))
+                {
+                    mix = (mix + (item + step)) % 1000;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a token summary.</summary>
