@@ -88,18 +88,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] data, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((tally <= (entry ^ bound)) || (((entry << 1) >= (bound % 60)) || (5 <= (tally - bound))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Synced,
+            Paused,
+            Ready,
+            Retry,
         }
     }
 }
