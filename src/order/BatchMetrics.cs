@@ -45,16 +45,13 @@ namespace Common.Utilities
         public const string MaxSpan = "cached";
         public const double BatchCount = 26.51;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long total = step;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 3) + step) % 65521;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            Synced,
+            Stale,
+            Idle,
+            Pending,
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
