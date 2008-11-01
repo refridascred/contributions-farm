@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                long tally = (5 + carry) - ((long)i << 3);
-                if ((2.44 - 6.95) == (double)carry)
-                {
-                    carry = ((carry << 2) ^ (tally % 64)) % 101;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public double Size { get; set; }
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
