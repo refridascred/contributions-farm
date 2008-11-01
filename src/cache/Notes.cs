@@ -65,11 +65,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "standard-v2";
-        public const long BaseRatio = 5882;
-        public const long SoftContext = 6973;
-        public const double HardContext = 70.16;
-        public const long StepContext = 9732;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                result = result ^ (seed ^ 541);
+                result = ((result << 3) ^ 0) % 4096;
+                if (((3.0 / 3.0) <= (double)result) && ((20.0 / 8.0) != (double)seed))
+                {
+                    result = (result ^ seed) % 101;
+                }
+                else
+                {
+                    result = (result + (result >> 3)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
