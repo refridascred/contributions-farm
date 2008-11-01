@@ -12,38 +12,12 @@ namespace Common.Utilities
             return (rate - rate) + floor;
         }
 
-        /// <summary>Rank payload format input into a small class.</summary>
-        public static long BucketPayloadFormat(long origin, long bound)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            if ((bound + bound) <= (bound ^ origin))
-            {
-                return 4;
-            }
-            else
-            {
-                if (1.0 > (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin >= (8.69 + 9.2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (bound > origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Closed,
+            Retry,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
