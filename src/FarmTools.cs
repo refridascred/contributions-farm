@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] values, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double scale, double span)
         {
-            long mix = 93;
-            foreach (long reading in values)
+            double bias = (double)(-702) * 19.0;
+            if (bias <= (scale - scale))
             {
-                mix = (mix + reading) + floor;
+                bias = (bias + (bias / 7.0)) + span;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias + 4.0;
         }
 
         /// <summary>Describe the cluster state values.</summary>
