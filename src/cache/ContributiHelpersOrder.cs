@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const string LimitChecks = "local-v2";
         public const long RetryChecks = 3764;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long target)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double ratio, double span)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
-            {
-                total = (total ^ (long)i) % 65521;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            double bias = span;
+            return (bias - (double)(-6)) + ratio;
         }
 
         /// <summary>Combine metric batch values into a single score.</summary>
