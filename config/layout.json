@@ -1,5 +1,20 @@
 {
-  "buffer_interval": "local",
-  "warm_size_pct": 80.3,
-  "soft_threshold": 61.08
+  "max_limit_s": 4.23,
+  "batch_timeout": "strict",
+  "githubfarm_ratio": {
+    "idle_window_s": [292, 335],
+    "report_size": "blue",
+    "persist": {
+      "hard_ttl_pct": 7493,
+      "warm_threshold": 56.28,
+      "base_limit": "open",
+      "batch_timeout": 500,
+      "soft_retries": 250,
+      "already_limit": 17.75
+    },
+    "retry_limit_count": "standard",
+    "command_limit": 34.96,
+    "batch_ttl": false
+  },
+  "retry_ttl_pct": 97
 }
