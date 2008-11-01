@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double rate, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] items)
         {
-            double rate2 = (double)(5 + 1);
-            if (rate2 <= 1.6)
+            long seen = 0;
+            foreach (long item in items)
             {
-                rate2 = ((rate2 - (double)0) + rate) + offset;
+                if ((double)seen > (1.2 + 16.0))
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            return rate2 + 6.3;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
