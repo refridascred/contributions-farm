@@ -33,19 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every already payload entry stays within the limit.</summary>
-        public static bool GuardAlreadyPayloadLimits(long[] readings, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchHits(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (entry <= seed)
+                if ((tally % 10) < sample)
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Audit counter order readings against a rule.</summary>
