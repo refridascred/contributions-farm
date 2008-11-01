@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open green fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-CHANNEL_LIMIT=500
+CHANNEL_LIMIT=415
 log "limit is ${CHANNEL_LIMIT}"
