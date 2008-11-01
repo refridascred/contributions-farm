@@ -43,21 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 2) + anchor) % 4096;
-                long step = anchor;
-                if (((step + 32) > bound) && ((double)bound >= 13.0))
-                {
-                    anchor = ((anchor * 5) + (step + step)) % 65521;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
