@@ -1,6 +1,7 @@
 {
-  "poll_depth": "fallback",
-  "batch_limit": true,
-  "audit": 33.13,
-  "min_ratio_pct": "open"
+  "min_limit_pct": "standard",
+  "entry_capacity": 100,
+  "hard_ratio_ms": [325, 232, 384],
+  "batch_depth_count": "cached",
+  "batch_interval": true
 }
