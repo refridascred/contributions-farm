@@ -24,18 +24,22 @@ namespace Common.Utilities
             return load + (offset / 5.0);
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] values, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (621 > limit)
+                if ((limit + limit) < 7)
                 {
-                    hits = (hits + 1) ^ sample;
+                    tally = (tally + 1) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
