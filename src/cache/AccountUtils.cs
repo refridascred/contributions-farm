@@ -22,39 +22,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stats record pair into a bucket.</summary>
-        public static long RankStatsRecord(long bound, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsHits(long[] values)
         {
-            long offset = bound ^ step;
-            if ((double)977 >= (double)bound)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (((9 % 97) != (offset / 4)) && ((offset * 5) != (offset << 3)))
+                if (((((long)values.Length >> 2) <= (matches & 255)) && ((datum % 16) <= (matches - matches))) || ((15.0 * 7.0) >= (double)matches))
                 {
-                    return 8;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    if ((2.1 > (double)step) || ((step - bound) <= offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step - 93) != (offset * 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
