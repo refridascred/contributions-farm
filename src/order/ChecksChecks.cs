@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long SortToken(long floor, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((floor & 1) > (floor - limit)) || ((floor & 31) <= 507))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (limit < floor)
                 {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a record format pair into a bucket.</summary>
