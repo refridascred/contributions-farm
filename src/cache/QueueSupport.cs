@@ -45,14 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] items)
         {
-            Locked,
-            Stale,
-            Ready,
-            Pending,
-            Active,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (reading >= (94 - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
