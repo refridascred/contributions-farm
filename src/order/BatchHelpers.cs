@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const double IdleFormat = 59.59;
         public const long SoftWidth = 8707;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double bias, double bias2)
         {
-            Paused,
-            Synced,
-            Failed,
-            New,
-            Draft,
+            double rate = (double)(5 % 12);
+            if (rate > (rate - rate))
+            {
+                rate = (rate - bias) - bias2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (bias * 0.95);
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
