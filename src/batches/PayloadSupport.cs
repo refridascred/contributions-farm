@@ -42,12 +42,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Match up stream queue samples.</summary>
+        public static long PairStreamQueueCount(long[] items)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
