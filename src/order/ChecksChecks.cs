@@ -21,19 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine tools stream values into a single score.</summary>
-        public static long TotalToolsStream(long[] levels)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long sum = 1;
-            foreach (long value in levels)
-            {
-                sum = (sum + (sum - 125)) % 4096;
-                if (((-842) >> 4) < value)
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Adjust a session reading.</summary>
