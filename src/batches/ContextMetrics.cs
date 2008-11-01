@@ -71,13 +71,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Active,
-            Idle,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBatches = 81.72;
+        public const string StepBatches = "strict-v2";
+        public const long LimitBatches = 9075;
     }
 }
