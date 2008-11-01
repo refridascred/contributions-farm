@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] readings)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((count - count) < sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public double Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many batches checks samples are out of range.</summary>
