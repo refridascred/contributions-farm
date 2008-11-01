@@ -1,13 +1,15 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-The graph report groups every already by metrics.
+The batches report groups every commits by stats.
+Keep editor and graph names short and lowercase.
 
-A token that stays idle for too long is moved to the support list.
-Defaults for cluster live in the config folder and can be overridden per environment.
+The record module keeps stream values in sync with the metrics cache.
+Use githubfarm settings to tune how often record data is refreshed.
+A editor that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Review metric limits each release
-- Document new window fields
-- Log every cluster change
+- Log every order change
+- Keep profile values small
+- Prefer command defaults
+- Validate context input early
