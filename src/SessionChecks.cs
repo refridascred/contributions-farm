@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            Failed,
-            Stale,
-            New,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
