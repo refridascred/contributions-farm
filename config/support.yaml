@@ -1,9 +1,19 @@
 # support settings
-idle_retries:
-  - 453
-  - 164
-hard_limit_pct: legacy
-already_size: edge
-flush_depth_s: 9.1
-burst_depth_ms: 500
-enabled: latest
+soft_depth_pct: eu-west
+token_ttl:
+  - local
+  - staging
+strict: 94
+schema_limit: 17.69
+channel_depth:
+  min_size_ms:
+    min_window_count: latest
+    layout_limit: 85.71
+    soft_depth_count: true
+    flush_timeout_count: 87
+    stats_capacity: local
+  audit: cached
+  dry_run: 20
+  default_ratio: 1024
+  sync_threshold_count: local
+  cluster_capacity: standard
