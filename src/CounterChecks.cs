@@ -20,13 +20,12 @@ namespace Common.Utilities
             return gain + (double)218;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Active,
-            Done,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BurstWidth = 90.25;
+        public const long IdleCommits = 4132;
+        public const string MinSize = "standard-v2";
+        public const long BurstLevel = 6457;
+        public const long SoftCommits = 9786;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double AdjustGraph(double rate, double offset)
