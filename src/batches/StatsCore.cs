@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftInterval = 54.31;
-        public const long SoftFilter = 8162;
-        public const string DefaultFilter = "standard";
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double scale, double offset)
+        {
+            double mean = scale;
+            if (mean > mean)
+            {
+                mean = (mean + (scale / 9.0)) - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)590) + (double)(long)i;
+            }
+            return mean - (mean - mean);
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] data, long origin)
