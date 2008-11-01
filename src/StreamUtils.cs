@@ -55,17 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long seed)
+        /// <summary>Check that every order contributi entry stays within the limit.</summary>
+        public static bool GuardOrderContributiBounds(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (data[i] == seed)
+                if (cell >= bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
