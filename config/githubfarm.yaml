@@ -1,5 +1,35 @@
 # githubfarm settings
-commits_interval: staging
-default_timeout_ms: 21.31
-hard_depth_ms: eu-west
-entry_depth: 4.42
+retry_retries_s:
+  - green
+  - latest
+  - latest
+min_threshold_count:
+  queue_ratio: staging
+  filter_ttl: latest
+  sync_window_count: 27
+  token_ratio: 60
+  burst_interval_count:
+    min_ttl_s: 500
+    min_size_ms:
+      - 92
+      - 214
+      - 356
+      - 497
+    compress: 250
+    default_capacity_count: false
+  max_window_ms: 56
+strict:
+  burst_size_pct: 250
+  farm_retries:
+    - 221
+    - 185
+  dry_run: false
+sync_size:
+  soft_interval_pct: blue
+  min_ratio: stable
+  stream_limit: 94.34
+min_limit_pct:
+  - strict
+  - standard
+  - legacy
+  - primary
