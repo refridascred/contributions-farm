@@ -37,12 +37,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 3646;
-        public const long DefaultBatch = 2137;
-        public const long LimitBatch = 4586;
-        public const long StepBatch = 3183;
-        public const string BaseFactor = "strict";
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] samples)
+        {
+            long sum = 534;
+            foreach (long entry in samples)
+            {
+                sum = ((sum * 4) + (entry - 5)) % 101;
+            }
+            if (sum < 304)
+            {
+                sum = (sum - (sum / 7)) % 4096;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
