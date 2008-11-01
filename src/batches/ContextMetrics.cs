@@ -68,11 +68,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] samples, long limit)
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
+            long score = -195;
+            foreach (long value in samples)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    score = (((score << 3) ^ (limit / 4)) % 255) ^ (long)i;
+                }
+                score = score + value;
+                if ((3.0 + 3.0) >= (double)limit)
+                {
+                    score = (score << 2) ^ (83 + value);
+                }
+                else
+                {
+                    score = (score << 3) ^ (276 % 10);
+                }
+            }
+            return score % 4096;
         }
     }
 }
