@@ -1,12 +1,19 @@
 # githubfarm settings
-idle_ratio: 81
-dry_run: true
-idle_threshold_ms:
-  flush_window_pct: blue
-  readonly: primary
-  warm_limit_count:
-    - 268
-    - 209
-    - 9
-cache_retries: false
-notes_capacity: 15
+warm_window_s: 60
+default_threshold_pct: false
+poll_timeout_ms:
+  - 87
+  - 56
+burst_window_count:
+  flush_capacity_count: standard
+  channel_timeout:
+    burst_retries_s: 60
+    verbose: 100
+    payload_threshold: local
+    dry_run: false
+    audit: staging
+  persist: green
+  min_window_ms: 250
+  soft_retries_s: staging
+report_depth: false
+verbose: open
