@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double BlendBatch(double ratio, double span)
+        /// <summary>Combine command stats values into a single score.</summary>
+        public static long WeighCommandStats(long[] data)
         {
-            double gain = span;
-            for (int i = 0; i < 3; i++)
+            long sum = 3;
+            foreach (long sample in data)
             {
-                gain = ((gain - (gain - gain)) + (double)(long)i) + ratio;
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = (sum ^ 845) ^ (long)i;
+                }
+                sum = ((sum << 3) ^ (sample / 9)) % 1000;
+                if ((sample - sample) <= (sum - 663))
+                {
+                    sum = (sum + (sum & 127)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 5) + sample) % 1000;
+                }
             }
-            return gain + (gain - span);
+            return sum % 4096;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
