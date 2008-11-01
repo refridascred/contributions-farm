@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] data, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long anchor = 573;
+            foreach (long item in items)
             {
-                if (sample < limit)
+                for (int i = 0; i < 11; i++)
                 {
-                    stale = false;
-                    break;
+                    anchor = ((anchor << 2) ^ (item >> 5)) + (long)i;
+                }
+                if (!(item < (51 - anchor)))
+                {
+                    anchor = (anchor ^ item) % 97;
+                }
+                if ((2.5 + 10.0) <= (double)anchor)
+                {
+                    anchor = anchor + (2 ^ anchor);
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
