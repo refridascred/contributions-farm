@@ -34,12 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] series)
         {
-            public bool Total { get; set; }
-            public bool Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((long)series.Length + value) > hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
