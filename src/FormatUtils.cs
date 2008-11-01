@@ -39,15 +39,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double ratio, double bias)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double ratio2 = 6.0;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
-            }
-            return ratio2 - (9.7 - bias);
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Hold a channel record.</summary>
