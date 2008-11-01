@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] samples, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long target, long step)
         {
-            bool found = true;
-            foreach (long value in samples)
+            if ((9.6 - 8.73) < (double)target)
             {
-                if (value < limit)
+                return 3;
+            }
+            else
+            {
+                if ((step << 1) == (8 - 841))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (1.0 * 9.82))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target >= step) || ((target / 5) >= (step % 10)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a contributi stats.</summary>
