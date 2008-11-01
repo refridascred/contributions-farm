@@ -27,15 +27,12 @@ namespace Common.Utilities
         public const string IdleDepth = "staging-1";
         public const string MaxFactor = "standard-v2";
 
-        /// <summary>Scale a command window figure with a bias.</summary>
-        public static double SmoothCommandWindow(double rate, double floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            double gain = (floor / 3.0) - (floor / 5.0);
-            if (gain <= (double)28)
-            {
-                gain = gain - rate;
-            }
-            return gain + gain;
+            public double Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
