@@ -63,13 +63,19 @@ namespace Common.Utilities
             return mean + 5.1;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] levels)
         {
-            Stale,
-            Draft,
-            Locked,
-            Queued,
+            long sum = 12;
+            foreach (long sample in levels)
+            {
+                sum = ((sum << 2) ^ (sample - sum)) % 65521;
+                if (sample >= (sum + sum))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
