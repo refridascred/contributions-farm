@@ -1,5 +1,7 @@
 {
-  "batch_retries": "local",
-  "cache_retries": "strict",
-  "contributi_size": 78
+  "soft_limit_count": "staging",
+  "base_retries": 64.15,
+  "hard_window_pct": 63,
+  "soft_delay": 40,
+  "min_interval_ms": "fallback"
 }
