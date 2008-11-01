@@ -31,18 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] data)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((22 - hits) == (33 + hits))
-                {
-                    hits = (hits + 1) - entry;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the schema kind values.</summary>
