@@ -1,6 +1,6 @@
-id,count,weight,region
-1,33.21,79.22,local
-2,blue,396,cached
-3,green,latest,343
-4,local,97.06,654
-5,blue,15.61,strict
+id,state,rank
+1,452,88.58
+2,764,54.57
+3,332,60.04
+4,stable,64.85
+5,blue,796
