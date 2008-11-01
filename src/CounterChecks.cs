@@ -71,13 +71,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] values, long step)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
