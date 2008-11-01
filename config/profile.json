@@ -1,7 +1,5 @@
 {
-  "payload_timeout": "strict",
-  "default_depth_s": 250,
-  "compress": "edge",
-  "burst_window": [444, 479, 111, 334],
-  "context_capacity": "eu-west"
+  "strict": 3820,
+  "commits_window": "stable",
+  "persist": true
 }
