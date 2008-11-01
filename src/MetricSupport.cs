@@ -28,17 +28,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] items, long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (7.5 - gain) + (7.9 * 2.0);
+            if (ratio < (offset * 3.39))
             {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (gain + offset);
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (ratio + ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (double)289) + (double)(long)i;
+            }
+            return ratio - gain;
         }
     }
 }
