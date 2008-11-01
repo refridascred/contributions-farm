@@ -42,19 +42,13 @@ namespace Common.Utilities
         public const long RetryChannel = 4050;
         public const long BatchSize = 4821;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] series, long bound)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the already level values.</summary>
