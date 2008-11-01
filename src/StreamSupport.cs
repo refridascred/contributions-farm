@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] readings, long bound)
+        /// <summary>Grade a contributi batches value against two limits.</summary>
+        public static long GradeContributiBatches(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long prev = floor + seed;
+            if (!(((-13) + seed) >= (prev & 15)))
             {
-                if ((bound + item) == (bound + 402))
+                return 5;
+            }
+            else
+            {
+                if (!(seed <= (floor << 3)))
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
