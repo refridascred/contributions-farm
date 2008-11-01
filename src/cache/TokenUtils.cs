@@ -12,37 +12,22 @@ namespace Common.Utilities
             return (rate - rate) + floor;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long bound, long origin)
+        /// <summary>Rank profile format input into a small class.</summary>
+        public static long GradeProfileFormat(long origin, long origin2)
         {
-            long diff = bound ^ origin;
-            if (((bound + diff) <= diff) && ((diff >> 2) <= (diff % 8)))
+            if (origin2 >= (origin + origin2))
             {
                 return 4;
             }
             else
             {
-                if ((double)origin >= (double)bound)
+                if ((origin2 % 7) == (origin2 + origin))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((diff % 60) > diff)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((96 % 12) >= (bound % 16)) && (2 < (bound + origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
