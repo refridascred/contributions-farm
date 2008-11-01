@@ -39,15 +39,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Compare every pair of context account readings.</summary>
+        public static long CompareContextAccountCount(long[] levels)
         {
-            long mark = 257;
-            foreach (long datum in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark + (107 / 2)) % 255) + datum;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
