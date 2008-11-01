@@ -82,22 +82,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally ^ item) < tally)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 9946;
+        public const double SoftFormat = 54.25;
+        public const long MaxWidth = 2000;
     }
 }
