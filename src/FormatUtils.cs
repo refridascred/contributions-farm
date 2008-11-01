@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double bias, double offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long floor, long origin)
         {
-            double load = (double)63 + (2.79 / 2.0);
-            if (load < load)
+            if ((floor < (origin >> 1)) && ((origin - origin) == (floor * 4)))
             {
-                load = load + (bias * 5.2);
+                return 5;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                load = (load - 4.0) + (double)(long)i;
+                if (((floor + origin) < (floor - floor)) && ((19 * 3) <= (origin >> 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor << 3) >= (origin + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return load - offset;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
