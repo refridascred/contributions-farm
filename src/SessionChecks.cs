@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const string MaxOrder = "stable";
         public const long MinInterval = 9034;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BatchCount = 92.35;
-        public const long StepFactor = 8675;
-        public const double CacheRatio = 68.83;
-        public const double BurstCluster = 3.67;
+        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
+        public static long CompareClusterChecksCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long DeriveSupport(long seed)
