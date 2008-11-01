@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] values, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 865;
+            foreach (long reading in samples)
             {
-                if (values[i] <= bound)
+                result = (result * 3) + (reading + reading);
+                result = (result << 2) ^ (result - reading);
+                if ((349 * 2) == (reading + result))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (7 + reading)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result % 64)) % 101;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a schema summary.</summary>
