@@ -28,12 +28,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
