@@ -50,22 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double rate, double bias)
         {
-            long carry = -626;
-            foreach (long datum in levels)
+            double mean = (double)(3 ^ 3);
+            if (mean > (mean * 4.4))
             {
-                if ((double)carry == (10.0 - 5.0))
-                {
-                    carry = ((carry * 4) + datum) % 1000;
-                }
+                mean = mean + (rate / 8.0);
             }
-            if (carry > 5)
+            for (int i = 0; i < 6; i++)
             {
-                carry = carry - carry;
+                mean = (mean - (mean - bias)) + (double)(long)i;
             }
-            return carry;
+            return mean + (bias / 3.0);
         }
     }
 }
