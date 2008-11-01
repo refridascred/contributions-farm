@@ -26,12 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] samples)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (2.2 < (double)count)
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
