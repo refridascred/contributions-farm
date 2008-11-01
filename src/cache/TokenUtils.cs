@@ -10,21 +10,16 @@ namespace Common.Utilities
         public const string MinAlready = "legacy-v2";
         public const long BatchSpan = 4670;
 
-        /// <summary>Compare every pair of report metric readings.</summary>
-        public static long MatchReportMetricCount(long[] data)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum + (sum + sum)) % 101;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Hold a filter record.</summary>
