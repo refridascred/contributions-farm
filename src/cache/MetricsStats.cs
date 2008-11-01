@@ -20,23 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a stats layout reading.</summary>
-        public static double BlendStatsLayout(double ratio, double bias)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double bias2 = (double)(55 + 2);
-            if (bias2 <= (2.0 - ratio))
-            {
-                bias2 = bias2 + bias;
-            }
-            else
-            {
-                bias2 = bias2 + (double)961;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 + (2.35 * 7.1);
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate contributi support readings against a bound.</summary>
