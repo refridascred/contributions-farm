@@ -16,12 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Synced,
-            Idle,
-            Dropped,
+            Locked,
+            New,
+            Queued,
+            Draft,
         }
 
         /// <summary>Validate graph counter readings against a bound.</summary>
