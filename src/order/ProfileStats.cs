@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long seed, long limit)
         {
-            New,
-            Done,
-            Ready,
-            Dropped,
-            Queued,
+            if ((double)limit < (12.0 + 4.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((seed >> 4) > seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed < (25 + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((limit - seed) <= (seed & 7)) || ((seed + seed) < (seed - 73)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
