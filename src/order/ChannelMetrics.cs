@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((2.81 / 2.0) < (double)cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitSpan = 42.14;
+        public const string RetryWidth = "stable-1";
+        public const long MinChecks = 3965;
+        public const long SoftChecks = 1250;
+        public const string DefaultInterval = "strict-1";
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
