@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the batches entry series from a seed.</summary>
-        public static long IterateBatchesEntry(long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = sum ^ (927 & 15);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
