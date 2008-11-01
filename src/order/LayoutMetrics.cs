@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] values)
+        /// <summary>Digest a series of account report entries.</summary>
+        public static long TotalAccountReport(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mix = 388;
+            foreach (long datum in samples)
             {
-                if ((item ^ item) <= (item + 6))
+                if ((mix + mix) <= mix)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mix = (mix ^ mix) + datum;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
