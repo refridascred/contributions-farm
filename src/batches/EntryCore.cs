@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long floor, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] data)
         {
-            long bound = floor ^ origin;
-            if ((2 + floor) <= (bound / 7))
+            long state = 4;
+            foreach (long reading in data)
             {
-                return 7;
+                state = ((state << 3) ^ reading) % 97;
             }
-            else
-            {
-                if ((bound & 127) > (floor - bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (bound > (origin - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return state % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
