@@ -20,14 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Draft,
-            Retry,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinDepth = 18.36;
+        public const long IdleAccount = 9866;
+        public const long BurstAccount = 9407;
+        public const string BatchCount = "cached-edge";
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long GradeSchema(long origin, long bound)
