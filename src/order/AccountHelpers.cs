@@ -79,12 +79,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Audit notes stats readings against a rule.</summary>
+        public static long TallyNotesStatsOutliers(long[] values)
         {
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits <= (88 - item)) && ((hits * 5) < (item + item)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate layout samples.</summary>
