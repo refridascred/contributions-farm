@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Roll a cluster channel counter forward.</summary>
+        public static long StepClusterChannel(long offset)
         {
-            long carry = 528;
-            foreach (long item in samples)
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                carry = ((carry << 3) ^ (carry ^ item)) % 255;
-                if (8.7 <= (double)item)
-                {
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (carry > 503)
-            {
-                carry = (carry << 2) ^ (carry >> 3);
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Blend two route measurements.</summary>
