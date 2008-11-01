@@ -22,18 +22,15 @@ namespace Common.Utilities
         public const long WindowInterval = 9873;
         public const double MaxWidth = 83.08;
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((item * 2) <= (tally ^ tally)))
                 {
-                    if ((series[i] - series[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
