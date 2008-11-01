@@ -35,17 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] readings, long limit)
+        /// <summary>Iterate the filter format series from a seed.</summary>
+        public static long RollFilterFormat(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
+                if ((target >> 3) >= ((long)i / 2))
                 {
-                    return (long)i;
+                    score = (score ^ 884) % 97;
                 }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
