@@ -47,18 +47,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] levels, long step)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((-7) ^ cell) >= (step & 63))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public double Size { get; set; }
         }
     }
 }
