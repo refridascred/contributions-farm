@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 6878;
-        public const double WindowRatio = 91.03;
-        public const long BurstSize = 3866;
-        public const double SoftRoute = 23.28;
-        public const long CacheBudget = 5362;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaLimits(long[] levels, long offset)
