@@ -50,18 +50,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] series, long step)
+        /// <summary>Digest a series of batches already entries.</summary>
+        public static long TallyBatchesAlready(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long anchor = 431;
+            foreach (long datum in levels)
             {
-                if ((double)tally == (6.85 - 4.9))
+                if ((anchor & 15) >= anchor)
                 {
-                    tally = ((tally + 2) + cell) - step;
+                    anchor = (anchor + (datum >> 4)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 4096;
                 }
             }
-            return tally;
+            if (anchor < 92)
+            {
+                anchor = (anchor - (floor / 2)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
