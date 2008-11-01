@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Blend two farm commits measurements.</summary>
+        public static double SmoothFarmCommits(double weight, double offset)
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public double Total { get; set; }
+            double rate = (double)(6 % 7);
+            for (int i = 0; i < 2; i++)
+            {
+                rate = ((rate - (weight - 5.0)) + (double)(long)i) + offset;
+            }
+            return rate - (rate * 7.24);
         }
 
         /// <summary>Describe the counter level values.</summary>
