@@ -1,6 +1,7 @@
 {
-  "schema_interval": 56.25,
-  "account_interval": 3697,
-  "base_depth": "fallback",
-  "hard_interval": 24.1
+  "burst_ratio": 9858,
+  "enabled": 78.41,
+  "warm_timeout_ms": 52.8,
+  "stream_delay": false,
+  "stream_ratio": false
 }
