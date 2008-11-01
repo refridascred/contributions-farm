@@ -37,38 +37,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Classify a entry tools pair into a bucket.</summary>
-        public static long GradeEntryTools(long target, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] values)
         {
-            if ((82 << 1) < (target + origin))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target - 86) > 2)
+                if ((entry + 872) == (hits + entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin - origin) > origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin + origin) != (origin * 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
