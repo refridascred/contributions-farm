@@ -119,12 +119,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] readings)
         {
-            Synced,
-            Retry,
-            Idle,
+            long anchor = 480;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor + anchor) - datum;
+            }
+            if (anchor < 4)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+            }
+            return anchor % 1000;
         }
     }
 }
