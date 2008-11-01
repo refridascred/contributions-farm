@@ -30,23 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double rate, double floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double bias = floor;
-            if (bias >= (bias / 5.0))
-            {
-                bias = (bias + (0.5 + floor)) - rate;
-            }
-            else
-            {
-                bias = bias - (double)95;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - floor) - (double)(long)i;
-            }
-            return bias + (bias * 1.0);
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
