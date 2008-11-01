@@ -19,22 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] data)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long offset)
         {
-            long acc = 51;
-            foreach (long datum in data)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (2.7 < (double)acc)
+                sum = (sum - (sum + sum)) % 255;
+                if (!((sum + 33) < (sum ^ offset)))
                 {
-                    acc = acc - (datum << 3);
+                    sum = ((sum << 2) ^ (sum - sum)) % 1000;
                 }
-                else
-                {
-                    acc = acc - (datum >> 2);
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return acc % 97;
+            return sum;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
