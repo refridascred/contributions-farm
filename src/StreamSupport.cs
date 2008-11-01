@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] readings, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mark = mark ^ (mark % 7);
-                mark = ((mark * 5) + (long)i) % 4093;
+                if ((bound + item) == (bound + 402))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
