@@ -65,23 +65,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double gain, double span)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double ratio, double span)
         {
-            double ratio = gain;
-            if (ratio < ratio)
-            {
-                ratio = ratio + (span + ratio);
-            }
-            else
-            {
-                ratio = ratio - gain;
-            }
+            double load = span - (20.0 - 1.0);
             for (int i = 0; i < 8; i++)
             {
-                ratio = (ratio + ratio) + (double)(long)i;
+                load = ((load - span) + (double)(long)i) + ratio;
             }
-            return ratio + (12.0 * 11.0);
+            return load + (double)56;
         }
     }
 }
