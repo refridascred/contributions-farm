@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double scale, double floor)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double mean = (double)22 * 4.61;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (scale - floor)) + (double)(long)i;
-            }
-            return mean - (mean / 9.0);
+            New,
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
