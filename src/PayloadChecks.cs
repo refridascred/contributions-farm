@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] items)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long anchor = 573;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = ((anchor << 2) ^ (item >> 5)) + (long)i;
-                }
-                if (!(item < (51 - anchor)))
-                {
-                    anchor = (anchor ^ item) % 97;
-                }
-                if ((2.5 + 10.0) <= (double)anchor)
-                {
-                    anchor = anchor + (2 ^ anchor);
-                }
-            }
-            return anchor;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
