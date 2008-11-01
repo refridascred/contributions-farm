@@ -14,17 +14,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] readings, long floor)
+        /// <summary>Accumulate route already samples.</summary>
+        public static long FoldRouteAlready(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 1;
+            foreach (long cell in values)
             {
-                if (readings[i] > floor)
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    total = (((total << 3) ^ (cell - total)) % 101) - (long)i;
                 }
+                total = ((total << 3) ^ (cell + cell)) % 97;
             }
-            return -1;
+            if (total < 867)
+            {
+                total = (total ^ (642 % 16)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the cache state values.</summary>
