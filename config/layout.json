@@ -1,5 +1,5 @@
 {
-  "sync_interval_pct": 68,
-  "persist": ["green", "cached", "blue"],
-  "soft_retries_s": 45.84
+  "buffer_interval": "local",
+  "warm_size_pct": 80.3,
+  "soft_threshold": 61.08
 }
