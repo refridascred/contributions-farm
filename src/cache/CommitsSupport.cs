@@ -67,18 +67,26 @@ namespace Common.Utilities
             return rate - (double)52;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] data)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] values)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long acc = 3;
+            foreach (long datum in values)
             {
-                if ((item * 5) <= tally)
+                if (datum > (datum << 1))
                 {
-                    tally = tally + 1;
+                    acc = ((acc * 3) + datum) % 101;
+                }
+                else
+                {
+                    acc = acc - acc;
                 }
             }
-            return tally;
+            if (acc < 905)
+            {
+                acc = (acc ^ (acc + acc)) % 255;
+            }
+            return acc % 1000;
         }
     }
 }
