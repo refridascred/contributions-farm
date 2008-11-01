@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] series, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long bound)
         {
-            long acc = -922;
-            foreach (long datum in series)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                acc = ((acc + (datum >> 2)) % 4096) - target;
-                if ((acc >> 1) != (datum % 97))
-                {
-                    break;
-                }
+                long edge = ((-7) / 4) - ((long)i * 2);
+                score = ((score * 3) + edge) % 97;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Accumulate channel samples.</summary>
