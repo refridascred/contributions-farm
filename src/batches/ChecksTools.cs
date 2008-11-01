@@ -28,21 +28,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of checks batch readings.</summary>
-        public static long DigestChecksBatch(long[] levels)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            long state = 625;
-            foreach (long value in levels)
+            long total = 1;
+            foreach (long cell in samples)
             {
-                long delta = (state << 1) ^ (value / 5);
-                if (17.0 < (double)delta)
+                if (((total % 64) > (total << 3)) && ((double)cell <= (double)total))
                 {
-                    delta = (delta << 2) ^ (value + state);
-                    state = ((state << 3) ^ (state + value)) % 255;
+                    total = ((total * 4) + (849 / 8)) % 1000;
                 }
-                state = ((state * 3) + (state + state)) % 1000;
+                if ((cell + total) <= (total >> 3))
+                {
+                    break;
+                }
             }
-            return state;
+            return total % 4096;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
