@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=113
+RECORD_LIMIT=251
 log "limit is ${RECORD_LIMIT}"
 
 count=0
