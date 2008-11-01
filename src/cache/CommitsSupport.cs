@@ -77,26 +77,31 @@ namespace Common.Utilities
             return rate - (double)52;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long origin, long floor)
         {
-            long acc = 3;
-            foreach (long datum in values)
+            if ((origin ^ 9) <= origin)
             {
-                if (datum > (datum << 1))
+                return 3;
+            }
+            else
+            {
+                if (75 <= (floor - 255))
                 {
-                    acc = ((acc * 3) + datum) % 101;
+                    return 1;
                 }
                 else
                 {
-                    acc = acc - acc;
+                    if (((origin + floor) != (origin / 8)) || ((floor & 127) <= (55 & 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (acc < 905)
-            {
-                acc = (acc ^ (acc + acc)) % 255;
-            }
-            return acc % 1000;
         }
     }
 }
