@@ -39,13 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] items, long bound)
         {
-            Done,
-            Draft,
-            Stale,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
