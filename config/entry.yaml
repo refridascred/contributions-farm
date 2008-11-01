@@ -1,7 +1,19 @@
 # entry settings
-idle_delay_s: stable
-strict:
-  - 168
-  - 339
-persist: 30
-entry_window: false
+batch_interval_ms: false
+cache_threshold_count: true
+readonly:
+  batch_capacity_s:
+    dry_run: cached
+    flush_window: 97
+    enabled: 30
+    graph_ttl:
+      - eu-west
+      - green
+    min_threshold: 3145
+  cache_ttl_pct:
+    - green
+    - local
+  idle_window: edge
+  window_window: true
+  sync_window: 61.23
+  format_timeout: 77.38
