@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 528;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = ((carry << 3) ^ (carry ^ item)) % 255;
+                if (8.7 <= (double)item)
                 {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            if (carry > 503)
+            {
+                carry = (carry << 2) ^ (carry >> 3);
+            }
+            return carry;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
