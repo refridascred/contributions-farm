@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] readings)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] series, long bound)
         {
-            long state = 3;
-            foreach (long sample in readings)
+            long score = 19;
+            foreach (long value in series)
             {
-                state = (state * 2) + state;
-                state = (state - (sample << 3)) % 65521;
-                if ((sample + sample) > (sample << 3))
+                if ((value & 31) >= (value << 1))
                 {
-                    state = (state ^ (sample + 7)) % 4096;
+                    score = score - (score + bound);
+                }
+                if (((score - value) <= (bound << 2)) || ((score / 8) >= value))
+                {
+                    break;
                 }
             }
-            return state;
+            if (score < 74)
+            {
+                score = ((score << 3) ^ (bound % 2)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the route class values.</summary>
