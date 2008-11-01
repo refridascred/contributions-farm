@@ -32,15 +32,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] values, long origin)
         {
-            long mark = 68;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                mark = (((mark - (187 & 63)) % 65521) ^ datum) + limit;
+                if (seen <= (long)values.Length)
+                {
+                    seen = ((seen + 1) ^ cell) - origin;
+                }
             }
-            return mark % 65521;
+            return seen;
         }
     }
 }
