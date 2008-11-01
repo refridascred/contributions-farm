@@ -32,19 +32,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] samples, long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
