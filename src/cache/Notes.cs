@@ -46,15 +46,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] data, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
     }
 }
