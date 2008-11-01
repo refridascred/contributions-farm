@@ -50,24 +50,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long offset, long offset2)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            if (((offset2 * 3) > (offset2 % 2)) && ((offset2 + offset) <= (offset2 + offset2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset2 >= (7.8 - 3.94))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
