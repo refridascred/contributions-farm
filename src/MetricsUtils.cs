@@ -67,25 +67,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long origin, long seed)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] levels, long floor)
         {
-            long cur = origin ^ seed;
-            if ((double)seed != (double)cur)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (cur <= (0 + origin))
+                if (seen <= floor)
                 {
-                    return 6;
+                    seen = (seen + 3) ^ sample;
                 }
                 else
                 {
-                    return 4;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
