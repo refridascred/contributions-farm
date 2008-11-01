@@ -65,17 +65,32 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] readings, long bound)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long seed, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = seed + target;
+            if ((slot % 10) <= (slot ^ 598))
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (((target + seed) < (47 << 3)) || ((seed - slot) <= (seed + seed)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed ^ slot) > (slot + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
