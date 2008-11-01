@@ -20,14 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long bound, long origin)
         {
-            Draft,
-            Paused,
-            Failed,
-            Retry,
-            Queued,
+            long next = bound ^ origin;
+            if (8 >= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((next % 97) < (368 << 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((1.4 * 7.0) <= (9.0 * 9.57)) || ((origin % 24) == (bound - origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)bound < (double)860))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a contributi record.</summary>
