@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] items, long seed)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long floor, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long next = floor + step;
+            if ((step + next) >= (next >> 4))
             {
-                if ((seed - 3) <= (seed + cell))
+                return 8;
+            }
+            else
+            {
+                if ((double)step == (2.82 - 9.6))
                 {
-                    hits = hits + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((floor % 60) == (step >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
