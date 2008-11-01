@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (((-44) + hits) > (hits + entry))
+                if ((sample + (long)samples.Length) != (61 ^ 36))
                 {
-                    hits = hits + 3;
+                    count = (count + 3) + seed;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the route status values.</summary>
