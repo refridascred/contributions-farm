@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of payload queue entries.</summary>
-        public static long FoldPayloadQueue(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] readings)
         {
-            long state = 47;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((state * 5) != (item - item))
+                if ((reading + 2) >= (-23))
                 {
-                    state = (state + ((-9) % 8)) % 101;
+                    hits = hits + 3;
                 }
             }
-            if (state > 584)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the farm phase values.</summary>
