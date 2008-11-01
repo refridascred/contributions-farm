@@ -34,23 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (datum <= (9 % 12))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTools = "standard-v2";
+        public const string IdleTools = "legacy";
+        public const long DefaultTools = 2942;
+        public const string BatchTools = "open";
+        public const long LimitTools = 4238;
 
         /// <summary>Describe the buffer level values.</summary>
         public enum BufferLevel
