@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] data)
-        {
-            long result = 832;
-            foreach (long cell in data)
-            {
-                if (((cell % 8) > (cell + cell)) || ((result ^ cell) > (result + result)))
-                {
-                    result = (result ^ cell) % 65521;
-                }
-            }
-            if (result > 4)
-            {
-                result = ((result << 2) ^ result) % 101;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 9133;
+        public const long HardSize = 5958;
+        public const string BaseSize = "strict-edge";
+        public const double SoftSupport = 91.09;
+        public const long BatchSupport = 7632;
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
