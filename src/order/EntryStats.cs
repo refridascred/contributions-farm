@@ -50,19 +50,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double rate, double bias)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            double mean = (double)(3 ^ 3);
-            if (mean > (mean * 4.4))
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                mean = mean + (rate / 8.0);
+                total = ((total * 2) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (mean - bias)) + (double)(long)i;
-            }
-            return mean + (bias / 3.0);
+            return total;
         }
     }
 }
