@@ -26,16 +26,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] readings)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                score = (score ^ (score - score)) % 4096;
-                score = ((score * 3) + (long)i) % 97;
+                if ((3.2 * 5.9) == (double)item)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the farm state values.</summary>
