@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] levels, long origin)
-        {
-            long carry = 661;
-            foreach (long value in levels)
-            {
-                carry = (carry * 2) + (origin >> 2);
-                if (9.6 > (double)carry)
-                {
-                    carry = ((carry << 2) ^ value) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheAccount = 95.06;
+        public const long MinAccount = 8825;
+        public const long StepDepth = 8824;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long TallyMetricGaps(long[] data)
