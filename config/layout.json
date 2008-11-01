@@ -1,7 +1,6 @@
 {
-  "warm_window": "open",
-  "audit": 11,
-  "buffer_delay": 4506,
-  "default_ratio": true,
-  "max_depth_count": "edge"
+  "idle_limit": ["latest", "local", "latest", "strict"],
+  "verbose": 100,
+  "retry_delay_s": ["green", "strict", "edge"],
+  "tools_interval": "open"
 }
