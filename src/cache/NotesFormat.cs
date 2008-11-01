@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values)
-        {
-            long score = 79;
-            foreach (long value in values)
-            {
-                score = ((score << 3) ^ ((-19) ^ value)) % 255;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 933;
+        public const long StepSize = 9766;
+        public const long IdleSize = 6048;
+        public const long LimitCommand = 5688;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] samples)
