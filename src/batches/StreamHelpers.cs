@@ -30,24 +30,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine format layout values into a single score.</summary>
-        public static long ScoreFormatLayout(long[] levels)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            long score = 33;
-            foreach (long cell in levels)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(cell < score))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    score = score ^ (score + cell);
-                    continue;
+                    acc = (((acc << 3) ^ (limit << 3)) % 4096) - (long)i2;
+                    acc = (acc << 2) ^ 929;
                 }
-                score = score + 440;
-                if ((cell % 12) <= 993)
-                {
-                    score = ((score << 2) ^ (791 - cell)) % 1000;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
