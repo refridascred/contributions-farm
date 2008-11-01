@@ -44,11 +44,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] data, long step)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
