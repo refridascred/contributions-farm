@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowBudget = 4167;
-        public const long MinCommand = 7688;
-        public const long HardCommand = 5476;
-        public const long IdleCount = 9090;
-        public const string MaxCommand = "stable-edge";
+        /// <summary>Blend two commits counter measurements.</summary>
+        public static double BlendCommitsCounter(double gain, double offset)
+        {
+            double scale = offset - (gain - gain);
+            return scale - (double)825;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long CombineRecord(long[] data)
