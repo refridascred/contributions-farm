@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const double SoftRoute = 23.28;
         public const long CacheBudget = 5362;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] levels, long offset)
         {
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
