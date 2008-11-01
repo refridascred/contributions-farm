@@ -18,15 +18,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long bound, long origin)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            long span = bound + origin;
+            if ((origin - origin) >= (6 + bound))
             {
-                score = ((score * 2) + (long)i) % 65521;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (bound <= (span + bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin % 64) > (span - bound)) || (origin <= (bound % 10)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound - origin) == (6 - span))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
