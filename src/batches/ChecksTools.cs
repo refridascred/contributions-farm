@@ -47,18 +47,38 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesOutliers(long[] levels)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long offset, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if (((33 % 24) != (limit % 16)) && ((47 % 97) >= (limit % 60)))
             {
-                if ((item < (item / 4)) || ((3.1 + 5.5) == (double)item))
+                return 6;
+            }
+            else
+            {
+                if ((912 >= (offset << 1)) && (23 <= (limit + limit)))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset - offset) < (limit + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (6.6 >= (8.0 - 10.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the cache level values.</summary>
