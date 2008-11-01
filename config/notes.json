@@ -1,6 +1,6 @@
 {
-  "default_delay_count": ["legacy", "stable"],
-  "max_retries_ms": true,
-  "batch_ratio": 250,
-  "tools_limit": true
+  "compress": "staging",
+  "batch_ratio_s": [95, 240, 367, 110],
+  "persist": "fallback",
+  "order_delay": true
 }
