@@ -5,24 +5,29 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long bound, long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long offset)
         {
-            if ((bound > (bound & 3)) && ((5 + bound) > (step ^ 592)))
+            long carry = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (step < (bound + step))
+                if ((offset + offset) > (offset << 1))
                 {
-                    return 2;
+                    carry = ((carry << 2) ^ (offset * 2)) % 1000;
+                }
+                if (((long)i >> 3) >= offset)
+                {
+                    carry = (carry * 5) + (9 + (long)i);
+                    continue;
                 }
                 else
                 {
-                    return 8;
+                    carry = ((carry * 2) + carry) % 101;
                 }
+                carry = ((carry * 4) + (offset + carry)) % 65521;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Describe the tools phase values.</summary>
