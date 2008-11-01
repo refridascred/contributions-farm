@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string MinAlready = "legacy-v2";
         public const long BatchSpan = 4670;
 
-        /// <summary>Check that every farm support entry stays within the limit.</summary>
-        public static bool GuardFarmSupportLimits(long[] series, long floor)
+        /// <summary>Compare every pair of report metric readings.</summary>
+        public static long MatchReportMetricCount(long[] data)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a filter record.</summary>
