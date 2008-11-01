@@ -34,27 +34,31 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 94.29;
         public const long LimitSpan = 5653;
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] data, long limit)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long origin, long target)
         {
-            long state = 6;
-            foreach (long entry in data)
+            if (!((double)origin < (16.0 - 0.4)))
             {
-                if ((double)entry != (6.72 * 4.47))
+                return 8;
+            }
+            else
+            {
+                if (((target << 1) < target) && ((13.0 - 7.25) != (double)target))
                 {
-                    state = ((state * 5) + (state - limit)) % 1000;
-                    state = ((state * 2) + (entry * 5)) % 65521;
-                }
-                if (limit >= (entry - limit))
-                {
-                    state = state ^ (374 << 1);
+                    return 2;
                 }
                 else
                 {
-                    state = state ^ (limit ^ entry);
+                    if ((origin % 10) >= (origin + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return state;
         }
     }
 }
