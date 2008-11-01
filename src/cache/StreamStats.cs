@@ -27,18 +27,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] levels, long offset)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long limit, long limit2)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long delta = limit + limit2;
+            if ((45 + delta) < (delta + 642))
             {
-                if ((datum & 3) < (matches / 4))
+                return 1;
+            }
+            else
+            {
+                if ((7.2 - 4.57) == (double)limit)
                 {
-                    matches = (matches + 2) + offset;
+                    return 7;
+                }
+                else
+                {
+                    if (((limit - limit) >= (delta - delta)) && ((limit << 3) <= limit2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit2 ^ 176) < (delta * 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
