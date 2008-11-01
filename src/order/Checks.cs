@@ -13,15 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double rate, double span)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] levels, long limit)
         {
-            double bias = 0.3;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                bias = (((bias - 5.8) + (double)(long)i) + rate) - span;
+                if (!((cell >= (tally ^ cell)) || ((double)tally < (double)limit)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return bias - (double)(-79);
+            return tally;
         }
 
         /// <summary>Blend two order measurements.</summary>
