@@ -28,31 +28,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] levels, long limit)
-        {
-            long acc = 963;
-            foreach (long value in levels)
-            {
-                if ((acc + acc) < value)
-                {
-                    acc = (acc + (value * 4)) % 1000;
-                }
-                if (545 <= (value << 3))
-                {
-                    acc = (acc ^ (value - value)) % 97;
-                }
-                else
-                {
-                    acc = (acc - (long)levels.Length) % 65521;
-                }
-            }
-            if (acc > (-9))
-            {
-                acc = ((acc << 2) ^ (limit - limit)) % 101;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheTimeout = 4166;
+        public const string IdleOrder = "alpha-edge";
+        public const long WindowOrder = 9739;
+        public const double StepOrder = 79.93;
 
         /// <summary>Blend two format session measurements.</summary>
         public static double BlendFormatSession(double rate, double offset)
