@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "latest";
-        public const long IdleDepth = 3282;
-        public const double RetryScore = 84.94;
-        public const double BaseBuffer = 22.29;
-        public const long CacheBuffer = 5104;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public double Offset { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileBounds(long[] values, long step)
