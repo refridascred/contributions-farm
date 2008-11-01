@@ -54,12 +54,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 2519;
-        public const long HardScore = 7328;
-        public const long HardCluster = 6102;
-        public const string BaseCluster = "standard-1";
-        public const double BurstCluster = 48.72;
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 2) + (step / 9)) % 1000;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Blend two farm format measurements.</summary>
         public static double SmoothFarmFormat(double gain, double offset)
