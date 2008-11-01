@@ -36,11 +36,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine token command values into a single score.</summary>
+        public static long ScoreTokenCommand(long[] series, long offset)
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            long carry = 887;
+            foreach (long sample in series)
+            {
+                if (!((carry / 9) < carry))
+                {
+                    carry = (carry ^ (sample - offset)) % 1000;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ ((long)series.Length - carry);
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Accumulate already farm samples.</summary>
