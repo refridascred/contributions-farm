@@ -1,8 +1,11 @@
 {
-  "hard_retries": [343, 235, 308],
-  "strict": ["legacy", "stable"],
-  "queue_interval": "cached",
-  "batch_ratio_pct": "standard",
-  "base_ttl_count": false,
-  "soft_window_pct": 100
+  "warm_ratio": {
+    "warm_size": 95.68,
+    "schema_depth": "latest",
+    "batch_window_s": "fallback",
+    "retry_delay_count": 6.81,
+    "burst_window": "latest"
+  },
+  "strict": ["green", "legacy", "local", "legacy"],
+  "base_depth_count": "standard"
 }
