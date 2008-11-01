@@ -89,18 +89,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] items)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((284 - matches) == (sample * 5)) && ((double)sample == (9.9 / 5.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public bool Total { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
