@@ -1,13 +1,14 @@
 # githubfarm settings
-support_delay:
-  - latest
-  - latest
-  - standard
-  - fallback
-readonly: strict
-batch_retries_pct:
-  enabled: 500
-  token_limit: open
-  editor_capacity: edge
-  verbose: 100
-  compress: open
+default_delay_ms: true
+audit: local
+default_limit: 877
+poll_ttl:
+  account_timeout: 31.41
+  poll_retries_pct:
+    verbose: 4246
+    context_timeout: true
+    readonly:
+      - 239
+      - 184
+      - 351
+  min_timeout_s: 30
