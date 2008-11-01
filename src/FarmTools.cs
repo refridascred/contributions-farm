@@ -30,19 +30,31 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double ratio, double span)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long seed, long step)
         {
-            double gain = ratio;
-            if (gain >= (double)39)
+            if ((step - step) >= step)
             {
-                gain = gain - (double)46;
+                return 8;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                gain = (gain + span) + (double)(long)i;
+                if (step < (step + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-5) ^ (-4)) != (step >> 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return gain - (ratio * 16.0);
         }
     }
 }
