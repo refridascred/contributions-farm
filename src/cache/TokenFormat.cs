@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long LimitSpan = 1617;
         public const long SoftLayout = 5381;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] samples, long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 283;
+            foreach (long datum in samples)
             {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (datum + datum)) % 4096;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
