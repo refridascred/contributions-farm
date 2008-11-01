@@ -40,12 +40,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long offset, long origin)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long lane = offset + origin;
+            if (lane >= 398)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((lane << 1) > (lane - offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
