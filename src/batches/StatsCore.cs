@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double scale, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] samples, long floor)
         {
-            double mean = scale;
-            if (mean > mean)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                mean = (mean + (scale / 9.0)) - offset;
+                if ((entry % 10) <= hits)
+                {
+                    hits = (hits + 2) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)590) + (double)(long)i;
-            }
-            return mean - (mean - mean);
+            return hits;
         }
 
         /// <summary>Describe the record level values.</summary>
