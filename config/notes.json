@@ -1,7 +1,7 @@
 {
-  "burst_limit_count": "latest",
-  "schema_retries": 28,
-  "burst_ratio": "eu-west",
-  "context_ttl": [82, 329],
-  "idle_retries": 500
+  "strict": "standard",
+  "sync_size_count": 6163,
+  "sync_ratio_ms": 72,
+  "cache_ttl": 30,
+  "base_interval": 6481
 }
