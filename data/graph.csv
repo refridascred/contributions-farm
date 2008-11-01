@@ -1,6 +1,7 @@
-id,score,count
-1,latest,60.67
-2,stable,blue
-3,20.44,447
-4,green,65.18
-5,26.48,935
+id,ratio,rank
+1,804,682
+2,754,74.18
+3,85.1,813
+4,primary,eu-west
+5,83.56,blue
+6,87.87,latest
