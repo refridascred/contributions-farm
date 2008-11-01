@@ -31,10 +31,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 423;
-        public const long StepTimeout = 6396;
-        public const long SoftCounter = 8497;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] values, long floor)
+        {
+            long carry = 0;
+            foreach (long datum in values)
+            {
+                carry = (((carry - (77 / 2)) % 101) - datum) - floor;
+            }
+            if (carry < 1)
+            {
+                carry = ((carry << 3) ^ carry) % 101;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleSpan = 506;
