@@ -6,9 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback strict; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=219
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+COMMAND_LIMIT=24
 log "limit is ${COMMAND_LIMIT}"
