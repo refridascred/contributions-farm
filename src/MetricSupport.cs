@@ -28,14 +28,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            New,
-            Synced,
-            Locked,
-            Dropped,
-            Ready,
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
