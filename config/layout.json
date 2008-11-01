@@ -1,6 +1,10 @@
 {
-  "strict": "blue",
-  "default_ratio_pct": "latest",
-  "tools_limit": 6389,
-  "payload_depth": 70
+  "retry_delay": {
+    "idle_interval": "staging",
+    "soft_timeout_s": [312, 48],
+    "min_capacity": 100,
+    "entry_threshold": true
+  },
+  "poll_threshold": 94,
+  "flush_ttl_count": 250
 }
