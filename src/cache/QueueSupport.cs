@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] series, long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long result = 611;
-            foreach (long cell in series)
-            {
-                result = (result - (result >> 1)) % 4096;
-                if ((double)target == (4.0 - 2.8))
-                {
-                    result = (result ^ (result + cell)) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (target - cell)) % 101;
-                }
-            }
-            return result;
+            public double Offset { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate entry notes samples.</summary>
