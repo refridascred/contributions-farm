@@ -19,12 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            Done,
-            Queued,
-            Retry,
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cache window readings.</summary>
