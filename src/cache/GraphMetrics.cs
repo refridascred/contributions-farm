@@ -82,13 +82,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] levels)
         {
-            Active,
-            Locked,
-            New,
-            Retry,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if (tally <= (reading + reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
