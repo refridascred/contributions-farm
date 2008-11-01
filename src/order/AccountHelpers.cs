@@ -42,19 +42,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] readings, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long mark = 80;
+            foreach (long value in levels)
             {
-                if (value >= bound)
+                if (((value / 3) == (value ^ mark)) && ((842 - mark) == (value - value)))
                 {
-                    flag = false;
+                    mark = (mark + (mark & 7)) % 4096;
+                }
+                if (!(((-171) ^ value) <= value))
+                {
                     break;
                 }
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Derive the next already buffer value from a seed.</summary>
