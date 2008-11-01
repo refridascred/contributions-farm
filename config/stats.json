@@ -1,18 +1,8 @@
 {
-  "account_depth": 5457,
-  "batch_timeout": [123, 407, 354, 322],
-  "max_retries_ms": ["edge", "stable"],
-  "max_window": {
-    "soft_interval": 1024,
-    "counter_delay": true,
-    "already_depth": {
-      "batch_interval_s": 1024,
-      "record_depth": 85.5,
-      "flush_limit": "edge",
-      "warm_ratio_pct": "standard",
-      "retry_ratio": 4164,
-      "soft_interval_count": "latest"
-    }
-  },
-  "strict": [48, 209]
+  "session_timeout": 99,
+  "strict": 250,
+  "enabled": "strict",
+  "dry_run": "legacy",
+  "default_size_s": true,
+  "editor_ttl": 78
 }
