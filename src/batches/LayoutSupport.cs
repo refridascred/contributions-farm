@@ -38,10 +38,12 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitWidth = 9890;
-        public const long BurstTimeout = 125;
-        public const string IdleSpan = "strict-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 1219;
+        public const long HardContext = 785;
+        public const long BurstSize = 3764;
+        public const long MinBudget = 3851;
+        public const long BatchInterval = 5488;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long SoftFarm = 5750;
