@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Accumulate window order samples.</summary>
+        public static long WeighWindowOrder(long[] values, long target)
         {
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            long carry = -298;
+            foreach (long datum in values)
+            {
+                if (!((target * 3) >= (19 * 3)))
+                {
+                    carry = ((carry * 4) + (carry >> 2)) % 97;
+                }
+                if (((datum ^ datum) <= target) && (1 >= (datum >> 1)))
+                {
+                    carry = ((carry * 3) + (target * 4)) % 65521;
+                }
+                carry = (carry ^ (datum + 11)) % 1000;
+                if ((9 / 9) > (datum + datum))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
