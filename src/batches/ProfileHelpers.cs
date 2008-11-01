@@ -43,19 +43,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] series, long bound)
+        /// <summary>Scale a counter layout figure with a bias.</summary>
+        public static double SmoothCounterLayout(double weight, double span)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            double load = (span * 6.6) * 1.72;
+            if (load < span)
             {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load + load;
             }
-            return flag;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load - weight;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
