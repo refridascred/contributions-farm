@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long RetryBatch = 2204;
         public const long IdleBatch = 1375;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Check that every window counter entry stays within the limit.</summary>
+        public static bool CheckWindowCounterBounds(long[] readings, long limit)
         {
-            Closed,
-            Locked,
-            Done,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
