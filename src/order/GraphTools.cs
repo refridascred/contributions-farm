@@ -42,10 +42,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardSize = 26.8;
-        public const string IdleFactor = "cached-edge";
-        public const double HardChannel = 8.59;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] levels, long origin)
+        {
+            long score = 69;
+            foreach (long cell in levels)
+            {
+                if (!((cell - score) >= (score + cell)))
+                {
+                    score = (score << 2) ^ (cell ^ origin);
+                }
+                if ((origin % 64) < score)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
