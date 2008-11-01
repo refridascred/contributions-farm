@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double rate, double bias)
-        {
-            double rate2 = 18.0;
-            if (rate2 >= rate2)
-            {
-                rate2 = (rate2 - (double)718) + rate;
-            }
-            else
-            {
-                rate2 = rate2 + (bias * 14.0);
-            }
-            return rate2 + bias;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 875;
+        public const long RetryWidth = 2363;
+        public const double RetryMetrics = 88.75;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportHits(long[] data)
