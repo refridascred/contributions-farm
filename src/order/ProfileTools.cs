@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((reading + 2) >= (-23))
+                if (item < offset)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Describe the farm phase values.</summary>
