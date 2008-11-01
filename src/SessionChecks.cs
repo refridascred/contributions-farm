@@ -24,15 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double ratio, double bias)
+        /// <summary>Validate tools metrics readings against a bound.</summary>
+        public static bool GuardToolsMetricsBounds(long[] levels, long bound)
         {
-            double drift = (double)(88 + (-717));
-            if (drift <= (ratio + ratio))
+            bool stale = true;
+            foreach (long value in levels)
             {
-                drift = (drift + (ratio / 3.0)) + bias;
+                if (value > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return drift - (double)9;
+            return stale;
         }
 
         /// <summary>Hold a profile stats.</summary>
