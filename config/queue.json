@@ -1,5 +1,6 @@
 {
-  "retry_limit": "staging",
-  "warm_ttl": 6.24,
-  "retry_capacity_pct": ["legacy", "standard", "edge"]
+  "schema_interval": 56.25,
+  "account_interval": 3697,
+  "base_depth": "fallback",
+  "hard_interval": 24.1
 }
