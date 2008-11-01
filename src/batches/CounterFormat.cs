@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] samples)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((seen / 6) > (seen - item))
+                if ((target - datum) >= target)
                 {
-                    seen = seen + 1;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the notes status values.</summary>
