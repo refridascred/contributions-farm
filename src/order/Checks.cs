@@ -44,12 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Pending,
-            Idle,
-            Failed,
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the route level values.</summary>
