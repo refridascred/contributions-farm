@@ -45,18 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] items)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((((double)matches < (1.79 / 4.0)) || ((matches % 16) <= 552)) && ((double)reading <= (7.4 - 0.3)))
+                if (!(((seen - item) >= (seen & 7)) || (seen >= (item + item))))
                 {
-                    matches = matches + 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
