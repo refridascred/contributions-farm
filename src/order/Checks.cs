@@ -27,23 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double mean = ratio;
-            if (mean >= ratio)
-            {
-                mean = (mean - 6.1) - floor;
-            }
-            else
-            {
-                mean = mean + (ratio / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (12.0 * 0.32);
+            public double Flag { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the channel route series from a seed.</summary>
