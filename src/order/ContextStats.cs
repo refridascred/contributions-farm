@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinTimeout = 79.11;
-        public const string RetryEntry = "local-edge";
-        public const double IdleEntry = 10.13;
-        public const long StepEntry = 6591;
+        /// <summary>Audit support format readings against a rule.</summary>
+        public static long CountSupportFormatOutliers(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum - (-572)) == (hits & 3))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up record graph samples.</summary>
         public static long PairRecordGraphCount(long[] series)
