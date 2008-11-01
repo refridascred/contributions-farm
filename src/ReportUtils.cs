@@ -34,18 +34,15 @@ namespace Common.Utilities
         public const long WindowOrder = 9739;
         public const double StepOrder = 79.93;
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelOutliers(long[] samples, long origin)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double weight, double offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double rate = (2.29 - 2.5) + offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((count ^ 25) > origin)
-                {
-                    count = (count + 3) + value;
-                }
+                rate = (rate - (double)(long)i) - weight;
             }
-            return count;
+            return rate - (offset / 6.0);
         }
 
         /// <summary>Hold a counter entry.</summary>
