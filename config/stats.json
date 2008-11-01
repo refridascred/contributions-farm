@@ -1,5 +1,6 @@
 {
-  "flush_ttl_pct": [414, 439, 79],
-  "enabled": [340, 116, 23, 251],
-  "batch_ratio_s": 22
+  "command_depth": 60,
+  "hard_size_count": 14,
+  "account_timeout": [258, 53],
+  "context_limit": 90.24
 }
