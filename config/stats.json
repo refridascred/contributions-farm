@@ -1,6 +1,7 @@
 {
-  "flush_ratio_ms": true,
-  "token_size": 100,
-  "batch_capacity": "cached",
-  "hard_timeout_s": ["primary", "fallback", "fallback", "stable"]
+  "verbose": 17.76,
+  "cache_depth": false,
+  "stream_threshold": true,
+  "record_delay": 4133,
+  "channel_depth": 54.62
 }
