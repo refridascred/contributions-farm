@@ -72,31 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank layout channel input into a small class.</summary>
-        public static long ClassifyLayoutChannel(long origin, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] samples, long origin)
         {
-            if (4.92 < (double)limit)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((1 + limit) >= (145 * 3))
+                if ((origin & 63) > 82)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (1.6 < (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = (matches + 2) + reading;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
