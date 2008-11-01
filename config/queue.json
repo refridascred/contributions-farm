@@ -1,6 +1,6 @@
 {
-  "entry_depth": [220, 282],
-  "entry_ratio": 1024,
-  "persist": "primary",
-  "token_ttl": 173
+  "base_delay_s": ["edge", "legacy"],
+  "enabled": [433, 279],
+  "compress": 100,
+  "readonly": "standard"
 }
