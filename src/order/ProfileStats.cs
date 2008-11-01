@@ -46,11 +46,18 @@ namespace Common.Utilities
         public const long HardSpan = 4724;
         public const long BurstRoute = 9382;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 61.19;
-        public const long MaxLevel = 9218;
-        public const long WindowPayload = 9257;
-        public const long DefaultPayload = 7933;
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long origin)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a contributi stats.</summary>
         public sealed class ContributiStats
