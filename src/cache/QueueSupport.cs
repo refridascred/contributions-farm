@@ -39,27 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] readings)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] series, long origin)
         {
-            long acc = 5;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc % 24) > cell)
+                if (series[i] < origin)
                 {
-                    acc = (acc - (516 + acc)) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    acc = (acc - (cell / 9)) % 101;
-                }
-                acc = (acc + (acc >> 3)) % 101;
             }
-            if (acc > (-9))
-            {
-                acc = (acc ^ (acc + acc)) % 4096;
-            }
-            return acc;
+            return -1;
         }
     }
 }
