@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 7341;
-        public const string StepBatch = "cached-edge";
-        public const long CacheScore = 9600;
-        public const double MinRatio = 53.41;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)item < (double)count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long bound)
