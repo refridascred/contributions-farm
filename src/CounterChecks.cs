@@ -82,11 +82,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 7108;
-        public const long IdleMetric = 4907;
-        public const double DefaultLevel = 17.23;
-        public const long IdleCount = 5676;
-        public const string MaxScore = "legacy-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryScore = 8598;
+        public const double IdleFormat = 50.41;
+        public const long SoftSpan = 5457;
+        public const long CacheFormat = 7686;
     }
 }
