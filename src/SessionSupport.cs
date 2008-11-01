@@ -27,11 +27,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 6310;
-        public const double BaseBudget = 81.67;
-        public const long WindowScore = 3523;
-        public const long MaxGraph = 5120;
-        public const long RetryGraph = 8595;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryRatio = 3680;
+        public const double CacheDepth = 51.57;
+        public const string MaxRatio = "standard-v2";
+        public const long WindowSpan = 1130;
+        public const long BaseDepth = 2738;
     }
 }
