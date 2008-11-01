@@ -1,15 +1,13 @@
 # githubfarm settings
-context_timeout: 30
-flush_timeout_pct: 9823
-entry_depth: latest
-notes_size:
-  strict:
-    - 416
-    - 131
-    - 342
-    - 426
-  batch_size_ms: cached
-  enabled: latest
-  route_timeout: 500
-  already_window: 23
-  warm_ttl_ms: local
+enabled: green
+githubfarm_window: 4426
+burst_retries_pct:
+  base_ttl_ms:
+    sync_retries: stable
+    idle_size_pct: 245
+    persist: standard
+    retry_interval: stable
+    metric_threshold: open
+  hard_ttl_ms: 94
+  audit: latest
+  warm_window: 25.3
