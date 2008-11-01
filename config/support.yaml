@@ -1,12 +1,18 @@
 # support settings
-poll_interval_s: local
-batch_size_ms: 22
-layout_limit: open
-readonly:
-  soft_depth_count: 100
-  max_size:
-    - green
-    - strict
-  audit: true
-  session_size: false
-  flush_interval: 50.15
+burst_capacity_s:
+  - open
+  - green
+  - staging
+poll_limit_ms: staging
+max_size:
+  - 242
+  - 448
+  - 18
+  - 465
+session_threshold: 7.62
+commits_size:
+  support_size: open
+  burst_interval_pct: legacy
+  sync_limit_s: 9051
+  base_limit_pct: stable
+  audit: 90.7
