@@ -47,15 +47,21 @@ namespace Common.Utilities
         public const string CacheBudget = "legacy";
         public const double WindowBudget = 89.22;
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double weight, double floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            double rate = (double)((-555) % 3);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (((rate + 10.0) + (double)(long)i) - weight) - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - rate;
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
