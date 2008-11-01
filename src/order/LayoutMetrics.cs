@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long DefaultContributi = 6887;
         public const double LimitContributi = 92.01;
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (gain * 19.0) + (double)7;
+            if (bias <= 0.14)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias + (double)6) + span;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + gain) - (double)(long)i;
+            }
+            return bias - (4.4 - bias);
         }
 
         /// <summary>Hold a metric info.</summary>
