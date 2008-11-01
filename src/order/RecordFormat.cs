@@ -64,17 +64,18 @@ namespace Common.Utilities
         public const long WindowCache = 6155;
         public const long HardTimeout = 7770;
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] values, long target)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (values[i] < target)
+                if (((entry > (entry & 63)) && ((9 * 4) > (hits - entry))) || (hits >= entry))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
