@@ -47,13 +47,27 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long limit)
         {
-            Idle,
-            Failed,
-            Paused,
-            Synced,
+            long total = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((limit < total) && ((3.27 / 4.0) >= (double)limit))
+                {
+                    total = (total + (limit - total)) % 1000;
+                }
+                else
+                {
+                    total = (total - (total + limit)) % 1000;
+                }
+                if (!(((limit + limit) <= (total + total)) && ((limit / 8) >= limit)))
+                {
+                    total = (total ^ ((-879) % 10)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the cache level values.</summary>
