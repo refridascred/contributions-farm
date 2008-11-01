@@ -30,15 +30,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values, long origin)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long acc = 41;
-            foreach (long item in values)
-            {
-                acc = (acc + (origin ^ acc)) ^ item;
-            }
-            return acc % 1000;
+            Closed,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a entry entry.</summary>
