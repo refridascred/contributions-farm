@@ -43,15 +43,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] items, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((items[i] == target) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Find the first account command entry that matches the target.</summary>
