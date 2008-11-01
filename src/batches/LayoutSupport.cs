@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] series, long offset)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportBounds(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((series[i] < offset) && ((series[i] % 2) == 0))
+                if (entry <= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
