@@ -21,21 +21,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] >= step) && ((values[i] % 3) != 0))
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
