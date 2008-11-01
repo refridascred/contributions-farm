@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] data)
-        {
-            long score = 5;
-            foreach (long datum in data)
-            {
-                score = score - datum;
-                if (datum < (datum & 31))
-                {
-                    score = ((score << 3) ^ datum) % 4096;
-                }
-                else
-                {
-                    score = (score ^ score) % 1000;
-                }
-            }
-            if (score < 4)
-            {
-                score = ((score << 3) ^ (score / 3)) % 65521;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 5804;
+        public const long RetryFactor = 7942;
+        public const long WindowLevel = 6100;
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] samples)
