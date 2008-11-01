@@ -25,13 +25,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] levels, long limit)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            long acc = 82;
+            foreach (long cell in levels)
+            {
+                if (acc <= (cell ^ 675))
+                {
+                    acc = (acc + acc) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (cell ^ 68)) % 101;
+                }
+                if ((1.2 + 2.0) < (double)limit)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
