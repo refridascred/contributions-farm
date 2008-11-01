@@ -60,13 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Audit queue metric readings against a rule.</summary>
+        public static long AuditQueueMetricGaps(long[] levels, long bound)
         {
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally << 2) >= (item / 3))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first queue batch entry that matches the target.</summary>
