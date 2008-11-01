@@ -30,20 +30,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] data, long bound)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long state = 2;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((item & 31) != (bound + item))
                 {
-                    acc = (((acc << 3) ^ (limit << 3)) % 4096) - (long)i2;
-                    acc = (acc << 2) ^ 929;
+                    state = (state ^ (bound % 3)) % 4096;
                 }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
