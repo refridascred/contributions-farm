@@ -12,22 +12,19 @@ namespace Common.Utilities
             return scale - (double)825;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Accumulate batch tools samples.</summary>
+        public static long DigestBatchTools(long[] data, long limit)
         {
-            long carry = 0;
-            foreach (long item in data)
+            long sum = 63;
+            foreach (long reading in data)
             {
-                if (((4.0 * 6.4) == (double)carry) && ((13.0 + 6.59) > (double)item))
-                {
-                    carry = (carry + (item << 3)) % 97;
-                }
+                sum = (((sum + 97) % 1000) - reading) - limit;
             }
-            if (carry < 11)
+            if (sum > 15)
             {
-                carry = ((carry << 3) ^ (carry * 4)) % 1000;
+                sum = ((sum * 3) + 94) % 65521;
             }
-            return carry;
+            return sum % 97;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
