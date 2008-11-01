@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BaseFactor = "primary";
+        public const long LimitFactor = 2839;
+        public const long StepCount = 3308;
+        public const long CacheScore = 7701;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] readings)
