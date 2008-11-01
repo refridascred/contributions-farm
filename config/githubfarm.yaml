@@ -1,5 +1,6 @@
 # githubfarm settings
-burst_size_pct: 21
-dry_run: 1024
-max_threshold_pct: 1907
-cluster_limit: 64
+hard_window: strict
+hard_delay_count: cached
+stats_window: standard
+warm_timeout_pct: local
+cache_limit: 1024
