@@ -33,31 +33,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long seed, long offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            if ((seed & 63) < offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset & 255) > (offset << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed * 4) != (offset + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
