@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 8899;
-        public const long SoftChecks = 913;
-        public const string RetryFactor = "open-1";
-        public const long MaxCount = 417;
-        public const long StepChecks = 9477;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a record format pair into a bucket.</summary>
         public static long SortRecordFormat(long limit, long origin)
