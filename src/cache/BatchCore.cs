@@ -24,18 +24,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Fold a list of cache report readings.</summary>
+        public static long TotalCacheReport(long[] series)
         {
-            long result = -18;
-            foreach (long entry in values)
+            long state = 860;
+            foreach (long sample in series)
             {
-                if (((entry / 7) < (539 + result)) && ((result + entry) >= (entry + result)))
+                if ((double)state != (8.29 / 5.0))
                 {
-                    result = (result - (result / 3)) % 4096;
+                    state = state - (sample << 1);
+                }
+                if ((sample + sample) <= sample)
+                {
+                    state = (state - (state * 3)) % 101;
                 }
             }
-            return result;
+            return state % 97;
         }
 
         /// <summary>Fold a list of format readings.</summary>
