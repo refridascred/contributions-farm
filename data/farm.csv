@@ -1,7 +1,7 @@
-id,region,ratio
-1,standard,local
-2,78.65,3.95
-3,653,17.07
-4,94.94,primary
-5,30.75,881
-6,standard,34.68
+id,count,active
+1,41.69,50.75
+2,818,79.07
+3,edge,76.33
+4,green,88.69
+5,782,205
+6,60.33,38.93
