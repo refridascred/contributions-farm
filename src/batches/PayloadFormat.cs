@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] data)
+        /// <summary>Project the next cluster graph value.</summary>
+        public static double AdjustClusterGraph(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double drift = (double)(658 >> 1);
+            return (drift - ratio) + span;
         }
 
         /// <summary>Blend two token measurements.</summary>
