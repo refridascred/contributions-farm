@@ -38,19 +38,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterRange(long[] levels, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long acc = 41;
+            foreach (long item in values)
             {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (acc + (origin ^ acc)) ^ item;
             }
-            return ok;
+            return acc % 1000;
         }
 
         /// <summary>Hold a entry entry.</summary>
