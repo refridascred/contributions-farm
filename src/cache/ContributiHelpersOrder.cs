@@ -25,26 +25,12 @@ namespace Common.Utilities
         public const long RetryBatch = 2204;
         public const long IdleBatch = 1375;
 
-        /// <summary>Combine metric batch values into a single score.</summary>
-        public static long ScoreMetricBatch(long[] items, long step)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long mix = 45;
-            foreach (long reading in items)
-            {
-                if (((6 + mix) >= (step + mix)) || ((mix % 10) < (reading + mix)))
-                {
-                    mix = (mix << 2) ^ step;
-                }
-                if (mix >= reading)
-                {
-                    break;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = (mix - (mix >> 4)) % 1000;
-            }
-            return mix % 4096;
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
