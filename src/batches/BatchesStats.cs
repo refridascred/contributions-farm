@@ -20,23 +20,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double AdjustSupport(double scale, double floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] readings, long seed)
         {
-            double bias = (double)(920 % 8);
-            if (bias < (9.0 / 4.0))
+            long carry = 5;
+            foreach (long value in readings)
             {
-                bias = bias - (scale * 8.1);
+                if (((carry % 2) > (seed >> 4)) || ((carry << 3) >= (value >> 5)))
+                {
+                    carry = (carry ^ (value / 2)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (seed * 5);
+                }
             }
-            else
+            if (carry < 61)
             {
-                bias = bias - floor;
+                carry = ((carry << 2) ^ carry) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - floor) - (double)(long)i;
-            }
-            return bias + (bias - scale);
+            return carry;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
