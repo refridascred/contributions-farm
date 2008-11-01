@@ -1,22 +1,5 @@
 # githubfarm settings
-warm_threshold_pct: 82.86
-support_interval: eu-west
-max_delay_ms: green
-sync_ttl_pct: 28.3
-idle_limit:
-  window_capacity: 95
-  idle_interval_ms: green
-  schema_timeout:
-    - fallback
-    - eu-west
-    - standard
-  profile_size: 93
-  enabled: 500
-  route_interval:
-    sync_delay_count: 7908
-    poll_delay_pct: 5701
-    batches_size: standard
-    window_timeout: 71
-    max_threshold_count: 2523
-    sync_threshold_pct: 80.39
-filter_timeout: 29
+cache_retries_ms: 61
+cache_ttl: local
+dry_run: edge
+soft_ratio_count: 1024
