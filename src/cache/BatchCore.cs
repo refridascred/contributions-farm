@@ -39,13 +39,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
