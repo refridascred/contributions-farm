@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const double BurstBudget = 91.96;
         public const long StepEntry = 4084;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 8838;
+        public const long StepBudget = 3369;
+        public const long BurstChannel = 3810;
+        public const long IdleChannel = 9576;
+        public const long BatchCount = 776;
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] values, long origin)
