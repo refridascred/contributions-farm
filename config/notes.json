@@ -1,7 +1,8 @@
 {
-  "cache_ratio_ms": "edge",
-  "dry_run": 50.84,
-  "checks_ttl": 100,
-  "compress": true,
-  "warm_limit_s": [191, 440, 437, 25]
+  "default_capacity_pct": 36,
+  "format_ttl": 4097,
+  "cache_window": true,
+  "audit": true,
+  "format_delay": 1160,
+  "checks_window": "primary"
 }
