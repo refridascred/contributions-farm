@@ -28,13 +28,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
+            Locked,
+            Dropped,
+            Paused,
         }
     }
 }
