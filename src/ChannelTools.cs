@@ -20,18 +20,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] items)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (count <= (reading - count))
-                {
-                    count = count + 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
     }
 }
