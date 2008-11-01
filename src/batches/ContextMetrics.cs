@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = (carry + 87) % 65521;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
