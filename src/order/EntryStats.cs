@@ -38,21 +38,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count already account pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyAccountCount(long[] readings)
+        /// <summary>Iterate the filter cluster series from a seed.</summary>
+        public static long SeriesFilterCluster(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total - floor) + (long)i2;
+                    total = total ^ floor;
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Derive the next graph checks value from a seed.</summary>
