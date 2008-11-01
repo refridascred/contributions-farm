@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next metrics queue value from a seed.</summary>
-        public static long StepMetricsQueue(long limit)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(limit >= (acc ^ acc)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (limit + acc)) % 1000;
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    acc = (acc ^ (112 % 12)) % 4096;
-                    acc = ((acc << 3) ^ (acc % 60)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
