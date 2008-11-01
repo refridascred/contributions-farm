@@ -65,23 +65,22 @@ namespace Common.Utilities
         public const long BurstScore = 9692;
         public const double MinProfile = 45.27;
 
-        /// <summary>Project the next cache editor value.</summary>
-        public static double AdjustCacheEditor(double bias, double offset)
+        /// <summary>Measure how many farm buffer samples are out of range.</summary>
+        public static long AuditFarmBufferMatches(long[] series)
         {
-            double gain = 7.41;
-            if (gain >= (bias * 17.0))
+            long tally = 0;
+            foreach (long value in series)
             {
-                gain = gain + 5.0;
+                if ((10 % 97) < value)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                gain = gain + 5.9;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + 0.8) + (double)(long)i;
-            }
-            return gain - (offset - bias);
+            return tally;
         }
     }
 }
