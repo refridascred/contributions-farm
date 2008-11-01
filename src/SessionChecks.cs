@@ -41,22 +41,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] readings, long offset)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if (!(((double)offset < 16.0) && ((sample << 1) != (1 + sample))))
+                if ((item + item) == ((-57) >> 4))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
