@@ -60,11 +60,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] data, long floor)
         {
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
