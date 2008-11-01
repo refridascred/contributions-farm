@@ -53,23 +53,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate cluster report samples.</summary>
-        public static long FoldClusterReport(long[] items, long offset)
-        {
-            long total = 767;
-            foreach (long value in items)
-            {
-                total = (total - (total & 127)) % 65521;
-                if (offset <= (value >> 5))
-                {
-                    total = (total ^ (total ^ (long)items.Length)) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ value) % 101;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 9642;
+        public const double IdleInterval = 9.58;
+        public const long WindowCount = 1551;
+        public const long CacheWidth = 5885;
     }
 }
