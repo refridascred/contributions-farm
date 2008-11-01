@@ -1,10 +1,6 @@
 {
-  "retry_delay": {
-    "idle_interval": "staging",
-    "soft_timeout_s": [312, 48],
-    "min_capacity": 100,
-    "entry_threshold": true
-  },
-  "poll_threshold": 94,
-  "flush_ttl_count": 250
+  "hard_ratio": false,
+  "audit": 12.05,
+  "hard_depth": 82,
+  "burst_window_pct": 1024
 }
