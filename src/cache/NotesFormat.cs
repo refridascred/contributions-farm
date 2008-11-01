@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of schema command entries.</summary>
-        public static long DigestSchemaCommand(long[] values, long bound)
-        {
-            long score = 53;
-            foreach (long reading in values)
-            {
-                if ((reading - score) >= 12)
-                {
-                    score = ((score << 2) ^ (score ^ score)) + bound;
-                    score = score - ((long)values.Length % 12);
-                }
-                score = ((score << 2) ^ 384) % 1000;
-                if (!(reading > (score - 338)))
-                {
-                    break;
-                }
-            }
-            if (score < 741)
-            {
-                score = score ^ 4;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchLevel = 314;
+        public const long IdleBudget = 8693;
+        public const string DefaultDepth = "standard-edge";
+        public const double BaseChecks = 85.16;
+        public const double MaxChecks = 14.25;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
