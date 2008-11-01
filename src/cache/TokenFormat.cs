@@ -33,22 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] items)
-        {
-            long total = 30;
-            foreach (long entry in items)
-            {
-                if (19 >= (total >> 1))
-                {
-                    total = total - entry;
-                }
-            }
-            if (total < 161)
-            {
-                total = (total - (total * 5)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleCount = 8050;
+        public const double IdleMetric = 94.06;
+        public const long BaseMetric = 2524;
+        public const long StepWidth = 5680;
+        public const double BaseSpan = 90.52;
     }
 }
