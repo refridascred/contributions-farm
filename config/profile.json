@@ -1,13 +1,8 @@
 {
-  "readonly": 864,
-  "layout_ratio": 66,
-  "batches_ttl": 79,
-  "hard_window": 500,
-  "base_delay_s": 42.31,
-  "flush_threshold_count": {
-    "verbose": "local",
-    "cache_capacity_count": "green",
-    "format_limit": 692,
-    "default_ttl_pct": [202, 92]
-  }
+  "strict": false,
+  "verbose": "edge",
+  "compress": false,
+  "retry_interval": true,
+  "retry_timeout_pct": 60,
+  "cache_ttl": 30
 }
