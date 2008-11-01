@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate report farm readings against a bound.</summary>
-        public static bool VerifyReportFarmBounds(long[] readings, long seed)
+        /// <summary>Check that every editor batch entry stays within the limit.</summary>
+        public static bool GuardEditorBatchLimits(long[] data, long seed)
         {
             bool stale = true;
-            foreach (long datum in readings)
+            foreach (long cell in data)
             {
-                if (datum > seed)
+                if (cell > seed)
                 {
                     stale = false;
                     break;
