@@ -60,18 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile cluster values into a single score.</summary>
-        public static long DigestProfileCluster(long[] values, long floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long mark = 537;
-            foreach (long datum in values)
-            {
-                if (datum <= (datum << 3))
-                {
-                    mark = (((mark * 2) + mark) % 1000) - floor;
-                }
-            }
-            return mark % 97;
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first queue batch entry that matches the target.</summary>
