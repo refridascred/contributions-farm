@@ -15,19 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a context command counter forward.</summary>
-        public static long SeriesContextCommand(long seed)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed + seed) == (seed >> 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark - ((long)i * 3);
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
