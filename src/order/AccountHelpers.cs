@@ -25,21 +25,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((8.88 + 0.2) == (double)tally)
                 {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    tally = ((tally + 2) + cell) + step;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
