@@ -60,10 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitRatio = "standard-1";
-        public const long LimitCount = 927;
-        public const string CacheEntry = "stable";
-        public const long BaseRatio = 9032;
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double ratio, double span)
+        {
+            double gain = 6.0 / 3.0;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (((gain + 7.0) + (double)(long)i) + ratio) - span;
+            }
+            return gain - (8.19 * 0.04);
+        }
     }
 }
