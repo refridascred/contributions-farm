@@ -41,18 +41,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportMatches(long[] series, long target)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)target == (5.47 + 2.8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) ^ reading;
+                    if ((items[i] - items[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
