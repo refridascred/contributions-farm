@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
-            public double Label { get; set; }
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the notes kind values.</summary>
