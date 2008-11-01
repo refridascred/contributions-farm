@@ -28,11 +28,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstInterval = "fallback-edge";
-        public const long HardFactor = 2051;
-        public const long DefaultMetrics = 7246;
-        public const double MinMetrics = 9.26;
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double rate, double offset)
+        {
+            double drift = rate - (3.4 - rate);
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + offset) + (double)(long)i;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Digest a series of report graph entries.</summary>
         public static long CombineReportGraph(long[] series, long seed)
