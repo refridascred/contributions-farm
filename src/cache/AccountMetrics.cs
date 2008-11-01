@@ -26,19 +26,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] items, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (((60 + mix) != (mix + mix)) && ((mix + (long)i) != (floor % 16)))
+                if (datum <= bound)
                 {
-                    mix = mix + (floor * 5);
+                    ready = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Fold a list of farm githubfarm readings.</summary>
