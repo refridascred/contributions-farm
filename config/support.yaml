@@ -1,6 +1,13 @@
 # support settings
-flush_threshold_count: primary
-cache_capacity: eu-west
-format_delay:
-  - local
-  - edge
+notes_window: 60
+dry_run: blue
+min_interval_s: 18
+verbose:
+  soft_limit: false
+  readonly:
+    - 274
+    - 492
+    - 132
+  retry_threshold: 85.3
+strict: false
+session_threshold: 9713
