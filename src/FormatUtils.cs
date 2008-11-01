@@ -57,19 +57,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every entry support entry stays within the limit.</summary>
-        public static bool GuardEntrySupportBounds(long[] values, long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < floor)
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
