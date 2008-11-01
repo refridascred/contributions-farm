@@ -58,13 +58,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] levels)
         {
-            Stale,
-            Pending,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry >> 5) > entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count queue tools pairs that satisfy a relation.</summary>
