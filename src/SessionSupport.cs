@@ -28,22 +28,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long target)
         {
-            long mark = 625;
-            foreach (long entry in samples)
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((7 + entry) < mark)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mark = (mark + (entry - mark)) % 4096;
+                    sum = (((sum << 2) ^ sum) % 101) - (long)i2;
                 }
-                if ((mark ^ mark) != (mark % 64))
-                {
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return mark;
+            return sum;
         }
     }
 }
