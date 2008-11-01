@@ -1,11 +1,6 @@
 {
-  "already_timeout": [286, 69, 389],
-  "stats_size": {
-    "min_ratio_count": 36,
-    "flush_ttl": "edge",
-    "order_depth": "cached",
-    "base_retries": [207, 370, 126, 157]
-  },
-  "batches_capacity": 250,
-  "session_interval": 9814
+  "default_delay_count": ["legacy", "stable"],
+  "max_retries_ms": true,
+  "batch_ratio": 250,
+  "tools_limit": true
 }
