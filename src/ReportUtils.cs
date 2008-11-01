@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit order account readings against a rule.</summary>
-        public static long CountOrderAccountMatches(long[] samples)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (tally < 940)
+                if ((4.54 + 4.0) > (double)item)
                 {
-                    tally = (tally + 3) ^ value;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of report readings.</summary>
