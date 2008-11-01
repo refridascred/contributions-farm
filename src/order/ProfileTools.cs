@@ -40,14 +40,31 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Classify a graph editor pair into a bucket.</summary>
+        public static long BucketGraphEditor(long step, long step2)
         {
-            Pending,
-            Dropped,
-            Idle,
-            New,
-            Locked,
+            if (step2 > step)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((step + step2) != (498 + step2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step >> 2) != (step2 * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
