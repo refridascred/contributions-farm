@@ -52,19 +52,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] items, long seed)
+        /// <summary>Match up stream payload samples.</summary>
+        public static long MatchStreamPayloadCount(long[] values)
         {
-            long score = 8;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score ^ score) % 97) ^ cell;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (score < 14)
-            {
-                score = score - seed;
-            }
-            return score;
+            return tally;
         }
     }
 }
