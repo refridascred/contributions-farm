@@ -39,12 +39,12 @@ namespace Common.Utilities
             return bias + (bias - scale);
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            Closed,
             Done,
-            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
