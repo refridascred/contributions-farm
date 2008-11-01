@@ -20,19 +20,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            double scale = span;
-            if (scale > (rate * 16.0))
-            {
-                scale = scale + scale;
-            }
-            else
-            {
-                scale = scale + (scale + span);
-            }
-            return scale + (rate + rate);
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
