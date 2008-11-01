@@ -29,22 +29,21 @@ namespace Common.Utilities
             return (ratio + 15.0) + weight;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            long anchor = 22;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (82 < item)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor ^ 14) % 65521;
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (anchor > (-65))
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Hold a cluster entry.</summary>
