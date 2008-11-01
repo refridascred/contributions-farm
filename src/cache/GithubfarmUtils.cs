@@ -48,17 +48,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (levels[i] <= step)
+                if (cell <= limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
