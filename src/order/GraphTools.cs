@@ -23,10 +23,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstBudget = 1915;
-        public const long DefaultRecord = 292;
-        public const double BatchRecord = 16.7;
+        /// <summary>Look up the position of a record context sample.</summary>
+        public static long LookupRecordContextIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a queue buffer counter forward.</summary>
         public static long RollQueueBuffer(long seed)
