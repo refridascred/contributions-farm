@@ -20,12 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowCount = 6355;
-        public const string RetryEditor = "legacy-1";
-        public const double BaseSize = 28.61;
-        public const string IdleDepth = "staging-1";
-        public const string MaxFactor = "standard-v2";
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long bound, long step)
+        {
+            if (step < (bound ^ bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step * 3) == (step ^ step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) >= (bound % 60))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
