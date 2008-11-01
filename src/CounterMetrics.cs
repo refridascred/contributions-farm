@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchCount = 521;
-        public const long IdleFilter = 347;
-        public const long RetryFilter = 3781;
-        public const long BaseFilter = 4133;
-        public const long MinCount = 8984;
+        /// <summary>Audit counter filter readings against a rule.</summary>
+        public static long AuditCounterFilterMatches(long[] values, long step)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry + entry) < (819 * 4)))
+                {
+                    seen = (seen + 3) + step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up tools samples.</summary>
         public static long CompareToolsCount(long[] items)
