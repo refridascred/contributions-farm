@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long CacheInterval = 3777;
         public const long BurstWidth = 2892;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] readings, long origin)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Adjust a farm reading.</summary>
