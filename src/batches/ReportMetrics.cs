@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 7251;
-        public const double SoftTimeout = 81.88;
-        public const long DefaultBudget = 4786;
-        public const long IdleStream = 5404;
-        public const string StepStream = "fallback";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] samples, long target)
+        {
+            long carry = 592;
+            foreach (long reading in samples)
+            {
+                carry = (carry + (851 ^ target)) + reading;
+                if ((target / 3) == (carry * 4))
+                {
+                    carry = (carry - 8) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long BucketCounter(long origin, long bound)
