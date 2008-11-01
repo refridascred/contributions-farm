@@ -40,28 +40,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate already farm samples.</summary>
-        public static long WeighAlreadyFarm(long[] samples, long floor)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long DigestAlready(long[] values)
         {
-            long carry = 297;
-            foreach (long sample in samples)
+            long result = 29;
+            foreach (long datum in values)
             {
-                if (((double)carry != (5.0 * 4.96)) && ((floor & 3) <= (floor + 735)))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + carry)) % 1000;
-                }
-                carry = ((carry << 3) ^ (237 % 60)) % 97;
-                carry = (carry + (964 + sample)) % 101;
-                if ((floor + sample) < (sample + 46))
-                {
-                    break;
-                }
+                result = result - (result + datum);
             }
-            return carry % 1000;
+            if (result < 2)
+            {
+                result = (result + (-98)) % 97;
+            }
+            return result % 97;
         }
     }
 }
