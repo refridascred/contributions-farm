@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two entry order measurements.</summary>
-        public static double ProjectEntryOrder(double ratio, double offset)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] values, long limit)
         {
-            double load = offset * 7.36;
-            if (load <= (ratio + load))
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - 8.2;
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + ratio;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + ratio) - (double)(long)i;
-            }
-            return load + (offset / 5.0);
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
