@@ -39,13 +39,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Queued,
-            Closed,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 2268;
+        public const long BurstDepth = 8386;
+        public const double StepBatches = 66.2;
+        public const double IdleBatches = 64.46;
     }
 }
