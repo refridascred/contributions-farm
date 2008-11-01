@@ -48,12 +48,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstQueue = 695;
-        public const long CacheQueue = 3432;
-        public const double BurstInterval = 3.09;
-        public const long MinQueue = 8571;
-        public const double LimitQueue = 74.75;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((sample + sample) == (seen - sample)) || ((seen + seen) < (6 % 12)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long TallyBatchGaps(long[] values, long target)
