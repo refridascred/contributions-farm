@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] series)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] series)
         {
-            long count = 0;
+            long score = 4;
             foreach (long cell in series)
             {
-                if (((long)series.Length / 7) < (cell * 3))
+                for (int i = 0; i < 12; i++)
                 {
-                    count = count + 2;
+                    score = ((score * 3) + (cell / 9)) + (long)i;
+                }
+                if ((50 < (cell << 1)) && ((cell & 3) <= (cell ^ (-25))))
+                {
+                    score = (score ^ cell) % 1000;
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Hold a queue stats.</summary>
