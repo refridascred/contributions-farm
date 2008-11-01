@@ -44,19 +44,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] series, long origin)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (cell > origin)
+                if (limit <= (limit - value))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Iterate the account already series from a seed.</summary>
