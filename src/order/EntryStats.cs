@@ -72,13 +72,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] readings)
         {
-            Failed,
-            Stale,
-            Closed,
-            Idle,
+            long carry = 87;
+            foreach (long item in readings)
+            {
+                carry = (carry - (item / 2)) % 97;
+                if (!((carry ^ 104) >= (item - carry)))
+                {
+                    break;
+                }
+            }
+            if (carry > 71)
+            {
+                carry = (carry ^ (carry - carry)) % 1000;
+            }
+            return carry;
         }
     }
 }
