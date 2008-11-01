@@ -49,17 +49,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a window route sample.</summary>
-        public static long LocateWindowRouteIndex(long[] samples, long offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (samples[i] >= offset)
+                if ((item + item) <= (6 * 2))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
