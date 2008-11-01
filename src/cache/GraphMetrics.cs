@@ -13,19 +13,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] data, long offset)
+        /// <summary>Rank record buffer input into a small class.</summary>
+        public static long RankRecordBuffer(long target, long seed)
         {
-            bool flag = true;
-            foreach (long item in data)
+            if ((target / 6) <= (target * 5))
             {
-                if (item != offset)
+                return 7;
+            }
+            else
+            {
+                if ((target - target) == (seed ^ seed))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)45 <= (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target + seed) > (760 << 3)) || ((seed - seed) >= seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Compare every pair of cache window readings.</summary>
