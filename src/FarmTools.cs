@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] series)
+        /// <summary>Compare every pair of already batch readings.</summary>
+        public static long MatchAlreadyBatchCount(long[] series)
         {
             long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) > 18)
+                    if ((series[i] - series[j]) != 6)
                     {
                         matches = matches + 1;
                     }
