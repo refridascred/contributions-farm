@@ -1,5 +1,9 @@
 {
-  "base_window_ms": "strict",
-  "poll_retries": 20,
-  "sync_interval_count": 46
+  "cache_delay": [18, 401, 287],
+  "base_delay": {
+    "soft_retries": 656,
+    "account_threshold": 1024,
+    "batches_ttl": "legacy"
+  },
+  "cache_ratio": 46.17
 }
