@@ -41,21 +41,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up session editor samples.</summary>
-        public static long MatchSessionEditorCount(long[] levels)
+        /// <summary>Combine profile cluster values into a single score.</summary>
+        public static long DigestProfileCluster(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 537;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= (datum << 3))
                 {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (((mark * 2) + mark) % 1000) - floor;
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
