@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (seen < (sample ^ 876))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 8292;
+        public const double LimitBudget = 95.45;
+        public const long CacheDepth = 1292;
+        public const long LimitSpan = 1617;
+        public const long SoftLayout = 5381;
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileOutliers(long[] data)
