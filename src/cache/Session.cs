@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] items, long target)
         {
-            long sum = 527;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = sum - (sum + reading);
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the notes kind values.</summary>
