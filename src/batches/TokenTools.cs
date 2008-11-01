@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long offset, long seed)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            if ((offset - seed) <= (83 >> 4))
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)offset > (double)seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed <= 18.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
