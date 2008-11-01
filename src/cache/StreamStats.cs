@@ -14,17 +14,39 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] levels, long origin)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long offset, long offset2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = offset ^ offset2;
+            if (!((2.59 + 9.6) == (double)offset2))
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset2 < 0.1)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((offset2 / 6) <= (-213)) || (offset >= (bound + bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset2 ^ bound) >= (bound - offset2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
