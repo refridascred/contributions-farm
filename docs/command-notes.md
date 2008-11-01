@@ -1,15 +1,11 @@
 # Command notes
 
-When a report fails, the account handler retries a few times before giving up.
-Each graph is validated before it reaches the metrics queue.
-
-The account helpers are pure functions, so they are safe to call from any thread.
-Use contributi settings to tune how often cluster data is refreshed.
-The filter module keeps channel values in sync with the command cache.
+Defaults for commits live in the config folder and can be overridden per environment.
+When a editor fails, the order handler retries a few times before giving up.
+The route module keeps checks values in sync with the schema cache.
 
 ## Guidelines
 
-- Validate order input early
-- Log every schema change
-- Keep farm values small
-- Document new profile fields
+- Document new contributi fields
+- Prefer route defaults
+- Keep commits values small
