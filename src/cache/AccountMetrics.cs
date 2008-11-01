@@ -99,10 +99,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 2832;
-        public const long CacheWidth = 8448;
-        public const double RetryStream = 26.19;
-        public const string LimitStream = "cached-v2";
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Active,
+            Pending,
+            Idle,
+            Dropped,
+            Stale,
+        }
     }
 }
