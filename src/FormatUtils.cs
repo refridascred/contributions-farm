@@ -20,12 +20,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
