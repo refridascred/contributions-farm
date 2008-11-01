@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double ratio, double floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] items, long limit)
         {
-            double gain = (0.94 + floor) - 2.1;
-            if (gain <= gain)
+            long count = 0;
+            foreach (long item in items)
             {
-                gain = gain + floor;
+                if (((-9) % 16) < (limit ^ 55))
+                {
+                    count = (count + 2) + item;
+                }
             }
-            else
-            {
-                gain = gain - (gain - ratio);
-            }
-            return gain + (double)218;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
