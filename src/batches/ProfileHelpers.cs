@@ -58,19 +58,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] series, long bound)
         {
-            long result = 3;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                result = (result << 2) ^ (datum + result);
-                if (!((result ^ (long)values.Length) < (-32)))
+                if (entry >= bound)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return result % 65521;
+            return ready;
         }
 
         /// <summary>Adjust a stream reading.</summary>
