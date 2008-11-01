@@ -1,5 +1,13 @@
 {
-  "strict": 3820,
-  "commits_window": "stable",
-  "persist": true
+  "audit": 95,
+  "poll_depth": 1331,
+  "channel_size": {
+    "flush_retries_ms": 51.58,
+    "batch_window_ms": "local",
+    "layout_size": 44,
+    "verbose": "edge",
+    "record_delay": 78.5
+  },
+  "record_ttl": 60,
+  "poll_limit": 15
 }
