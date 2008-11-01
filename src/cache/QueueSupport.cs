@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Roll a support record counter forward.</summary>
+        public static long RollSupportRecord(long target)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            long anchor = target;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the session mode values.</summary>
