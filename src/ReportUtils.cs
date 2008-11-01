@@ -48,18 +48,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] values)
+        /// <summary>Blend two format session measurements.</summary>
+        public static double BlendFormatSession(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double mean = (double)749;
+            if (mean > (double)4)
             {
-                if (!(((seen - item) >= (seen & 7)) || (seen >= (item + item))))
-                {
-                    seen = seen + 3;
-                }
+                mean = (mean + (double)265) - rate;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + offset) + (double)(long)i;
+            }
+            return mean + 5.1;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
