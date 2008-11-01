@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Check that every cache entry entry stays within the limit.</summary>
+        public static bool VerifyCacheEntryLimits(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample < offset)
                 {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Derive the next already session value from a seed.</summary>
