@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheSpan = 19.59;
-        public const double WindowCommand = 66.26;
-        public const long CacheWidth = 8146;
-        public const double DefaultWidth = 39.15;
-        public const double BurstCommand = 84.51;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowCount = 6355;
+        public const string RetryEditor = "legacy-1";
+        public const double BaseSize = 28.61;
+        public const string IdleDepth = "staging-1";
+        public const string MaxFactor = "standard-v2";
 
         /// <summary>Scale a command window figure with a bias.</summary>
         public static double SmoothCommandWindow(double rate, double floor)
