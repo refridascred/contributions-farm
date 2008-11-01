@@ -101,11 +101,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultDepth = 5622;
-        public const long LimitInterval = 7832;
-        public const string MaxProfile = "primary-edge";
-        public const string BaseFactor = "primary-edge";
-        public const long BurstTimeout = 4895;
+        /// <summary>Roll a contributi graph counter forward.</summary>
+        public static long DeriveContributiGraph(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    mix = ((mix + (mix + 79)) % 65521) + (long)i2;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
