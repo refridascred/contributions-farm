@@ -71,13 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Idle,
-            New,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleSpan = 506;
+        public const long BaseInterval = 4167;
+        public const long BatchContext = 9589;
+        public const long BaseContext = 9559;
+        public const long MaxContext = 6526;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long GradeAlready(long target, long origin)
