@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] values, long target)
         {
-            Failed,
-            Paused,
-            Locked,
-            Queued,
-            Done,
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (sample > (sample ^ hits))
+                {
+                    hits = (hits + 2) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
