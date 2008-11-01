@@ -62,13 +62,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] series)
         {
-            Ready,
-            Stale,
-            Paused,
-            New,
+            long anchor = 39;
+            foreach (long cell in series)
+            {
+                if ((62 ^ anchor) >= (anchor + cell))
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
