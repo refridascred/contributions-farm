@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Done,
-            Idle,
-            Dropped,
-            Pending,
+            Ready,
+            Locked,
             Synced,
         }
 
