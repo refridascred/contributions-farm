@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorOutliers(long[] data, long offset)
+        /// <summary>Classify a batch payload pair into a bucket.</summary>
+        public static long BucketBatchPayload(long target, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if ((double)target == (double)997)
             {
-                if ((datum / 8) >= (datum & 63))
+                return 0;
+            }
+            else
+            {
+                if ((double)target < (double)offset)
                 {
-                    count = (count + 2) - offset;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Match up record graph samples.</summary>
