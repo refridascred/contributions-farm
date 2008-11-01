@@ -67,18 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] samples, long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((origin & 63) > 82)
+                if (value < bound)
                 {
-                    matches = (matches + 2) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
