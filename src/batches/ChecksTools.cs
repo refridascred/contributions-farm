@@ -34,22 +34,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Adjust a contributi session reading.</summary>
+        public static double AdjustContributiSession(double scale, double floor)
         {
-            long total = 1;
-            foreach (long cell in samples)
+            double drift = (double)771 / 2.0;
+            if (drift > (drift + floor))
             {
-                if (((total % 64) > (total << 3)) && ((double)cell <= (double)total))
-                {
-                    total = ((total * 4) + (849 / 8)) % 1000;
-                }
-                if ((cell + total) <= (total >> 3))
-                {
-                    break;
-                }
+                drift = (drift + drift) - scale;
             }
-            return total % 4096;
+            return drift - floor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
