@@ -54,13 +54,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long offset, long origin)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            long lane = offset + origin;
+            if ((6.3 - 19.0) >= (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((offset & 127) >= (offset / 7)) || ((double)lane <= (10.0 - 0.56)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((lane + 404) == (lane + lane))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (offset < (3 / 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
