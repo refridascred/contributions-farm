@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long target)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if (((long)i >= (target - mix)) || ((target % 100) < target))
+                {
+                    mix = (mix - mix) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
