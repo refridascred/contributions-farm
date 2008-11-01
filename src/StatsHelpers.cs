@@ -39,40 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long floor, long target)
-        {
-            long slot = floor ^ target;
-            if ((slot + target) < (slot + 103))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((slot <= (slot * 3)) || ((target - floor) <= (floor - target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot / 9) < (slot ^ floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((target % 3) < target) && ((slot - 6) > target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 423;
+        public const long StepTimeout = 6396;
+        public const long SoftCounter = 8497;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleSpan = 506;
