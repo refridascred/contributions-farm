@@ -1,7 +1,7 @@
 {
-  "verbose": 17.76,
-  "cache_depth": false,
-  "stream_threshold": true,
-  "record_delay": 4133,
-  "channel_depth": 54.62
+  "cache_delay": false,
+  "readonly": 1577,
+  "warm_ratio_ms": 53,
+  "layout_limit": 39,
+  "warm_delay_s": true
 }
