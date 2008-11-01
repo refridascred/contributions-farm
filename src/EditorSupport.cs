@@ -31,15 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cluster order values into a single score.</summary>
-        public static long WeighClusterOrder(long[] values, long step)
+        /// <summary>Measure how many batch context samples are out of range.</summary>
+        public static long MeasureBatchContextOutliers(long[] levels)
         {
-            long sum = 8;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                sum = (((sum ^ (sum << 2)) % 1000) ^ cell) + step;
+                if (((6 < ((long)levels.Length / 3)) || (value < count)) && ((count - count) <= (long)levels.Length))
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
