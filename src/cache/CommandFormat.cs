@@ -28,17 +28,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 86;
+            foreach (long datum in samples)
             {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
+                score = ((score ^ (score ^ score)) - datum) - seed;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
