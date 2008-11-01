@@ -1,17 +1,12 @@
 # entry settings
-sync_delay_s:
-  base_ratio_count: latest
-  default_depth_pct: false
-  route_capacity: cached
-  flush_ratio_count: 374
-  flush_interval_ms:
-    persist: 53
-    stats_ttl: 1
-    max_ttl_count:
-      - 46
-      - 438
-hard_delay: fallback
-hard_ttl_pct: 6.04
-batch_retries_ms: 8221
-tools_capacity: 7306
-buffer_capacity: 7026
+tools_threshold: 500
+route_interval:
+  compress: 22
+  retry_ratio_ms: cached
+  sync_capacity: 16
+default_ttl: false
+dry_run:
+  - green
+  - open
+  - strict
+  - standard
