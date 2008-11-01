@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Draft,
+            Active,
         }
 
         /// <summary>Locate a route order reading by value.</summary>
