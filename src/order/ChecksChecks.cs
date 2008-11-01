@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleCount = 365;
-        public const long SoftEntry = 4470;
-        public const long BaseInterval = 5538;
+        /// <summary>Validate layout cluster readings against a bound.</summary>
+        public static bool VerifyLayoutClusterLimits(long[] data, long step)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportGaps(long[] readings, long bound)
