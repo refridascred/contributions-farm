@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "standard-edge";
+        public const double CacheRatio = 60.27;
+        public const long IdleChannel = 7384;
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long bound, long origin)
