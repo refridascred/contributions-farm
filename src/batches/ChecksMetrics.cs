@@ -61,23 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items)
-        {
-            long result = 77;
-            foreach (long datum in items)
-            {
-                if ((result - datum) > (datum + (long)items.Length))
-                {
-                    result = (result - (datum * 5)) % 65521;
-                }
-            }
-            if (result < 5)
-            {
-                result = ((result << 2) ^ (8 >> 4)) % 255;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstBudget = 9374;
+        public const long DefaultRatio = 7597;
+        public const string RetryCache = "legacy-edge";
+        public const long SoftCache = 3456;
+        public const string IdleCache = "fallback-v2";
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesMatches(long[] readings, long offset)
