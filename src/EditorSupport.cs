@@ -97,19 +97,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long BucketEditor(long origin, long bound)
         {
-            long anchor = 480;
-            foreach (long datum in readings)
+            if ((double)origin != (double)bound)
             {
-                anchor = (anchor + anchor) - datum;
+                return 4;
             }
-            if (anchor < 4)
+            else
             {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
+                if (bound >= 4)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return anchor % 1000;
         }
     }
 }
