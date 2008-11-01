@@ -1,19 +1,5 @@
 {
-  "idle_capacity_count": "open",
-  "batch_timeout_s": "strict",
-  "flush_window_ms": 38.72,
-  "compress": "strict",
-  "channel_ttl": {
-    "batches_retries": "edge",
-    "farm_timeout": {
-      "verbose": false,
-      "filter_threshold": false,
-      "default_limit_ms": "edge",
-      "base_size_s": false,
-      "flush_threshold_ms": true,
-      "hard_ttl": "primary"
-    },
-    "poll_retries": true
-  },
-  "cache_retries": "blue"
+  "flush_capacity": "staging",
+  "idle_ratio_ms": 79,
+  "report_size": [37, 442, 467, 409]
 }
