@@ -56,22 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchBudget = 2318;
+        public const string CacheSpan = "staging-1";
+        public const long BaseMetrics = 1250;
+        public const string BaseDepth = "primary";
+        public const long RetryTimeout = 2551;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] values)
