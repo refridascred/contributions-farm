@@ -1,7 +1,5 @@
 {
-  "hard_ttl_s": "standard",
-  "sync_window": true,
-  "verbose": 58.0,
-  "idle_limit_pct": false,
-  "checks_threshold": 64.32
+  "retry_limit": "staging",
+  "warm_ttl": 6.24,
+  "retry_capacity_pct": ["legacy", "standard", "edge"]
 }
