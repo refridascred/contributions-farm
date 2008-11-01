@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit counter filter readings against a rule.</summary>
-        public static long AuditCounterFilterMatches(long[] values, long step)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long StepEditor(long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long state = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((entry + entry) < (819 * 4)))
+                long tally = ((long)i * 2) + ((long)i ^ state);
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    seen = (seen + 3) + step;
+                    tally = (((tally * 2) + (state + state)) % 255) - (long)i2;
                 }
+                state = (state - (tally >> 4)) % 255;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Match up tools samples.</summary>
