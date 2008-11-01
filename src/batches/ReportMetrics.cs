@@ -34,18 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] levels, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long score = 0;
-            foreach (long item in levels)
-            {
-                if ((item + 11) > score)
-                {
-                    score = score + (origin + origin);
-                }
-            }
-            return score % 1000;
+            Idle,
+            Synced,
+            Pending,
+            Done,
+            Ready,
         }
     }
 }
