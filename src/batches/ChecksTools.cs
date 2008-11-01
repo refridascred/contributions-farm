@@ -49,12 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] items, long seed)
         {
-            Failed,
-            Retry,
-            Locked,
+            long score = 8;
+            foreach (long cell in items)
+            {
+                score = ((score ^ score) % 97) ^ cell;
+            }
+            if (score < 14)
+            {
+                score = score - seed;
+            }
+            return score;
         }
     }
 }
