@@ -28,18 +28,15 @@ namespace Common.Utilities
         public const long DefaultRecord = 292;
         public const double BatchRecord = 16.7;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] data)
+        /// <summary>Roll a queue buffer counter forward.</summary>
+        public static long RollQueueBuffer(long seed)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long score = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((tally * 5) < value)
-                {
-                    tally = tally + 3;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Combine batches report values into a single score.</summary>
