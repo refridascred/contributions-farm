@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string CacheScore = "staging";
+        public const double BaseEntry = 59.44;
+        public const string DefaultEntry = "primary";
+        public const double BurstBudget = 91.96;
+        public const long StepEntry = 4084;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long CompareSupportCount(long[] readings)
