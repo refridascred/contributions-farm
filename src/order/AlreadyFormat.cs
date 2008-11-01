@@ -53,19 +53,17 @@ namespace Common.Utilities
         public const long DefaultRoute = 3874;
         public const string BurstRoute = "staging-edge";
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] series, long step)
+        /// <summary>Locate a editor contributi reading by value.</summary>
+        public static long FindEditorContributiIndex(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != step)
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
