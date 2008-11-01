@@ -22,18 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseTimeout = 2611;
+        public const long WindowFactor = 6892;
+        public const long BatchMetric = 1516;
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
