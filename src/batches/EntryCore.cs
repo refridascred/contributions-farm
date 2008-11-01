@@ -13,20 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftRatio = "staging-edge";
+        public const string IdleGraph = "strict-v2";
+        public const string DefaultRatio = "standard-edge";
+        public const double StepWidth = 89.31;
+        public const long BaseCount = 5857;
 
         /// <summary>Blend two command measurements.</summary>
         public static double SmoothCommand(double rate, double offset)
