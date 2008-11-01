@@ -31,15 +31,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double ratio, double bias)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            double bias2 = bias;
-            if (bias2 > bias2)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = bias2 + ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 - 4.9;
+            return hits;
         }
     }
 }
