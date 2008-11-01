@@ -39,11 +39,31 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Rank cache route input into a small class.</summary>
+        public static long SortCacheRoute(long origin, long floor)
         {
-            public bool Total { get; set; }
-            public double Label { get; set; }
+            if ((double)floor <= (0.3 + 1.9))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor >> 3) > (30 + (-56)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((13.0 * 4.4) > (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
