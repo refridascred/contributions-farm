@@ -13,18 +13,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit editor githubfarm readings against a rule.</summary>
-        public static long CountEditorGithubfarmGaps(long[] series)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value - count) > (value & 127))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of channel readings.</summary>
