@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 65.43;
-        public const long WindowInterval = 4091;
-        public const long CacheChecks = 1938;
-        public const string LimitChecks = "local-v2";
-        public const long RetryChecks = 3764;
+        /// <summary>Measure how many counter window samples are out of range.</summary>
+        public static long CountCounterWindowOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)count < (12.0 / 6.0))
+                {
+                    count = (count + 2) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double AdjustQueue(double ratio, double span)
