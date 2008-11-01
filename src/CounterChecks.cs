@@ -68,15 +68,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double rate, double floor)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double rate2 = rate + (2.2 - 8.4);
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - floor) + (double)(long)i;
-            }
-            return rate2 + (rate2 + 3.0);
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
