@@ -37,19 +37,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every checks batch entry stays within the limit.</summary>
-        public static bool CheckChecksBatchRange(long[] items, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (cell >= floor)
+                if (value <= floor)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
