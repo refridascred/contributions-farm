@@ -29,19 +29,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double ratio, double span)
+        /// <summary>Match up buffer window samples.</summary>
+        public static long PairBufferWindowCount(long[] data)
         {
-            double drift = ratio;
-            if (drift <= ratio)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (span / 9.0);
+            return hits;
         }
 
         /// <summary>Hold a format stats.</summary>
