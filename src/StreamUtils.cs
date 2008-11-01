@@ -58,11 +58,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next format layout value.</summary>
-        public static double AdjustFormatLayout(double rate, double offset)
+        /// <summary>Rank report context input into a small class.</summary>
+        public static long BucketReportContext(long floor, long offset)
         {
-            double ratio = offset;
-            return (ratio - ratio) + rate;
+            long delta = floor + offset;
+            if (floor <= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset >> 3) > (delta + delta)) && ((floor - offset) != (floor + offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)delta >= (4.37 / 6.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (floor >= delta)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
