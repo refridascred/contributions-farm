@@ -45,18 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordHits(long[] levels)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (reading <= (count + reading))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
