@@ -12,21 +12,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((4.0 * 6.4) == (double)carry) && ((13.0 + 6.59) > (double)item))
                 {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry + (item << 3)) % 97;
                 }
             }
-            return tally;
+            if (carry < 11)
+            {
+                carry = ((carry << 3) ^ (carry * 4)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
