@@ -59,12 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public bool Region { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
