@@ -1,5 +1,6 @@
 # githubfarm settings
-cache_retries_ms: 61
-cache_ttl: local
-dry_run: edge
-soft_ratio_count: 1024
+cache_ttl: primary
+retry_ttl_s: false
+flush_retries: 73.81
+batch_ttl_s: 83
+warm_limit: 250
