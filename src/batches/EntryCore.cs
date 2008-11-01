@@ -37,19 +37,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((((double)count < (double)739) && ((datum / 9) >= (datum - datum))) && (((count + (-702)) >= count) || (16.0 > (double)datum)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinBudget = 9911;
+        public const double BurstRatio = 13.6;
+        public const long DefaultCount = 5663;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double MaxInterval = 50.97;
