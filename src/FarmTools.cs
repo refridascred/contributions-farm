@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of already batch readings.</summary>
-        public static long MatchAlreadyBatchCount(long[] series)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Paused,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the stats kind values.</summary>
