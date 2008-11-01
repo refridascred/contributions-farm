@@ -37,20 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks schema counter forward.</summary>
-        public static long IterateChecksSchema(long origin)
+        /// <summary>Compare every pair of batch session readings.</summary>
+        public static long MatchBatchSessionCount(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor - (long)i) % 97;
-                if (origin > ((long)i & 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - (anchor + 3)) % 255;
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return hits;
         }
     }
 }
