@@ -33,22 +33,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] values)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long step, long step2)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long lane = step + step2;
+            if ((7.0 + 9.0) == (double)step)
             {
-                if (((((long)values.Length >> 2) <= (matches & 255)) && ((datum % 16) <= (matches - matches))) || ((15.0 * 7.0) >= (double)matches))
+                return 5;
+            }
+            else
+            {
+                if ((lane >= (step & 63)) && ((double)step >= 3.62))
                 {
-                    matches = matches + 3;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)717 < (double)lane)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((0 >> 5) == ((-324) + step2)) && ((double)step2 < (double)84))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
