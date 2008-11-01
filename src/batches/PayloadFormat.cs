@@ -29,18 +29,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit schema context readings against a rule.</summary>
-        public static long CountSchemaContextOutliers(long[] series)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((-4) >= (matches - sample))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a cluster entry.</summary>
