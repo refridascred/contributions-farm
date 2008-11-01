@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Failed,
-            Active,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftInterval = 54.31;
+        public const long SoftFilter = 8162;
+        public const string DefaultFilter = "standard";
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] data, long origin)
