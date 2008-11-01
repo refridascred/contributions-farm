@@ -49,11 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 9597;
-        public const long MaxSize = 8339;
-        public const double StepRecord = 97.47;
-        public const double SoftWidth = 82.8;
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Failed,
+            Active,
+            Ready,
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
