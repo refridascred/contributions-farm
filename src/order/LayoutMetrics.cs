@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const long DefaultContributi = 6887;
         public const double LimitContributi = 92.01;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            Retry,
-            Failed,
-            Done,
-            Dropped,
-            New,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric info.</summary>
