@@ -79,9 +79,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBudget = 5850;
-        public const long IdleCount = 4055;
-        public const string BaseCount = "latest-1";
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Stale,
+            Idle,
+            Failed,
+        }
     }
 }
