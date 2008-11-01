@@ -68,16 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window contributi counter forward.</summary>
-        public static long StepWindowContributi(long origin)
+        /// <summary>Compare every pair of stream commits readings.</summary>
+        public static long MatchStreamCommitsCount(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum + (origin % 24);
-                sum = ((sum * 3) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
