@@ -1,7 +1,14 @@
 {
-  "cache_limit": true,
-  "persist": ["edge", "standard", "edge"],
-  "buffer_interval": "stable",
-  "burst_window": 74,
-  "batch_timeout": "latest"
+  "strict": 90.03,
+  "format_limit": false,
+  "compress": {
+    "hard_limit_pct": 77,
+    "default_window_s": 79.0,
+    "retry_threshold": 43,
+    "min_size": 37,
+    "max_ratio_ms": 6.4,
+    "report_depth": "primary"
+  },
+  "verbose": 12.65,
+  "batch_ratio_s": 30
 }
