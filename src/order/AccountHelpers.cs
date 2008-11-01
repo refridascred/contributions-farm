@@ -42,14 +42,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
-        {
-            Stale,
-            Failed,
-            Idle,
-            New,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinFactor = 1622;
+        public const long LimitNotes = 7310;
+        public const long WindowInterval = 2873;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double HardCommits = 81.37;
