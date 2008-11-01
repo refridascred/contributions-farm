@@ -30,18 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] levels)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (((reading > (seen >> 3)) || (reading > (reading ^ reading))) || (((-36) / 6) < (seen + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a checks reading.</summary>
