@@ -1,7 +1,5 @@
 {
-  "persist": 6625,
-  "enabled": "blue",
-  "min_ttl_pct": 100,
-  "retry_size_s": ["primary", "green"],
-  "token_ttl": ["open", "standard"]
+  "readonly": "standard",
+  "profile_depth": 80,
+  "poll_ratio_s": 8191
 }
