@@ -66,15 +66,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two payload layout measurements.</summary>
-        public static double SmoothPayloadLayout(double weight, double offset)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long step, long offset)
         {
-            double rate = (double)((-2) % 3);
-            if (rate <= rate)
+            if (((double)offset < (double)step) && (offset > (offset * 4)))
             {
-                rate = ((rate - (double)85) + weight) - offset;
+                return 2;
             }
-            return rate - (double)52;
+            else
+            {
+                if ((step - offset) >= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Rank editor input into a small class.</summary>
