@@ -20,21 +20,12 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Compare every pair of record counter readings.</summary>
-        public static long OverlapRecordCounterCount(long[] items)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Failed,
+            Locked,
         }
 
         /// <summary>Fold a list of checks batch readings.</summary>
