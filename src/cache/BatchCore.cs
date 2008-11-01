@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel token reading.</summary>
-        public static double AdjustChannelToken(double weight, double floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double ratio = (floor - floor) * 9.4;
-            if (ratio <= ratio)
-            {
-                ratio = ratio + (double)964;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + weight) - (double)(long)i;
-            }
-            return ratio - floor;
+            Closed,
+            Locked,
+            Retry,
         }
     }
 }
