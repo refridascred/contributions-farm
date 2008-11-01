@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first buffer stream entry that matches the target.</summary>
-        public static long LocateBufferStreamIndex(long[] items, long step)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (double)(310 + 0);
+            return (load + ratio) + span;
         }
 
         /// <summary>Count the githubfarm profile entries that pass the check.</summary>
