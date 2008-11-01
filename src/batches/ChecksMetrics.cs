@@ -36,13 +36,18 @@ namespace Common.Utilities
         public const long StepCounter = 3169;
         public const long MaxWidth = 957;
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] data)
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((item & 3) < (item % 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first graph entry entry that matches the target.</summary>
