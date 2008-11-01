@@ -1,6 +1,5 @@
 {
-  "cache_depth_count": 2114,
-  "commits_capacity": "latest",
-  "strict": [215, 326, 66, 417],
-  "cache_depth": "primary"
+  "githubfarm_ratio": ["stable", "strict", "primary", "latest"],
+  "cache_depth_pct": 61,
+  "compress": 8668
 }
