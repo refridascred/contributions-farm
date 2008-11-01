@@ -1,7 +1,22 @@
 {
-  "soft_ratio": [421, 361, 443],
-  "readonly": "standard",
-  "metric_interval": 43.97,
-  "compress": 28,
-  "verbose": true
+  "metrics_interval": {
+    "retry_retries_count": {
+      "route_window": "primary",
+      "persist": [37, 355, 129],
+      "burst_capacity": 9088,
+      "enabled": false
+    },
+    "warm_ratio_pct": 1012,
+    "strict": 60
+  },
+  "dry_run": "legacy",
+  "support_window": 4.51,
+  "compress": "edge",
+  "cache_timeout_pct": {
+    "buffer_delay": false,
+    "hard_limit_s": "open",
+    "command_timeout": 1576,
+    "soft_retries_s": 21,
+    "idle_retries_pct": 9
+  }
 }
