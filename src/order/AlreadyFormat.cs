@@ -47,17 +47,15 @@ namespace Common.Utilities
         public const long DefaultRoute = 3874;
         public const string BurstRoute = "staging-edge";
 
-        /// <summary>Locate a editor contributi reading by value.</summary>
-        public static long FindEditorContributiIndex(long[] series, long origin)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] >= origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
     }
 }
