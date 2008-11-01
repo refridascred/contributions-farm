@@ -49,12 +49,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] data)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
