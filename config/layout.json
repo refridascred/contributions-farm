@@ -1,11 +1,14 @@
 {
-  "compress": false,
-  "retry_size_count": "fallback",
-  "min_delay_s": "local",
-  "queue_ttl": {
-    "flush_timeout_s": 97,
-    "metrics_retries": [226, 462],
-    "window_window": [91, 333, 365, 247]
+  "sync_size_count": 9055,
+  "persist": [21, 464, 288],
+  "hard_timeout_count": [7, 263, 300],
+  "batch_size_pct": {
+    "cache_ttl_count": ["primary", "strict", "edge"],
+    "window_delay": 62.67,
+    "dry_run": "eu-west",
+    "hard_limit_pct": "primary",
+    "token_interval": 71,
+    "farm_window": 39
   },
-  "queue_depth": "local"
+  "poll_retries": 8318
 }
