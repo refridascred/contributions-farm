@@ -34,11 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 1787;
-        public const long WindowRatio = 8464;
-        public const long MaxFormat = 763;
-        public const string DefaultFormat = "strict";
-        public const double SoftFormat = 33.13;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Ready,
+            Retry,
+            Synced,
+            Dropped,
+        }
     }
 }
