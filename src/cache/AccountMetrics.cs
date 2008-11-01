@@ -26,15 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the tools editor series from a seed.</summary>
-        public static long RollToolsEditor(long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                score = ((score * 3) + (long)i) % 97;
+                if (((double)sample != (6.05 / 3.0)) && ((sample / 2) > (321 * 5)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
