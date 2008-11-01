@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] items, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] values)
         {
-            long mark = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((15.0 / 9.0) == (double)mark)
+                if (!(6 > (matches / 4)) || (((matches ^ datum) <= (datum + datum)) || ((matches - datum) >= (matches + 581))))
                 {
-                    mark = (((mark - (long)items.Length) % 65521) ^ entry) + target;
+                    matches = matches + 1;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
