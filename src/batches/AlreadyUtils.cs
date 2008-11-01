@@ -47,13 +47,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Active,
-            New,
-            Stale,
-            Paused,
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Accumulate cluster report samples.</summary>
