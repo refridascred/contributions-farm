@@ -29,13 +29,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public bool Mode { get; set; }
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
