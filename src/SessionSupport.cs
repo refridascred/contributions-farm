@@ -40,11 +40,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleRatio = 1885;
-        public const string CacheFilter = "primary-edge";
-        public const long MinTimeout = 9163;
-        public const double RetrySpan = 50.78;
-        public const long LimitDepth = 7774;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Dropped,
+            Retry,
+            Synced,
+        }
     }
 }
