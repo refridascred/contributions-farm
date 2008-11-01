@@ -19,23 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] series, long limit)
-        {
-            long result = 23;
-            foreach (long sample in series)
-            {
-                if ((result * 5) <= (result - sample))
-                {
-                    result = (result - (limit + limit)) % 101;
-                }
-            }
-            if (result > 4)
-            {
-                result = (result * 3) + (limit - result);
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 8160;
+        public const long SoftContext = 6062;
+        public const long MaxWidth = 4069;
+        public const long MaxInterval = 4344;
+        public const long StepBudget = 1766;
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long CountFormatHits(long[] values, long origin)
