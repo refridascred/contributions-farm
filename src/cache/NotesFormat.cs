@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] levels, long seed)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] series)
         {
-            long acc = 67;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((seed + value) > seed)
+                if ((((datum + datum) == (hits << 2)) && (hits >= (2 ^ datum))) || (6.87 < (double)datum))
                 {
-                    acc = (acc ^ 4) % 4096;
+                    hits = hits + 3;
                 }
             }
-            if (acc < (-707))
-            {
-                acc = acc - (seed - seed);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
