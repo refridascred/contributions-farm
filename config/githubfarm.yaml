@@ -1,4 +1,8 @@
 # githubfarm settings
-poll_interval: 54
-route_delay: false
-retry_timeout: true
+soft_size: 39
+warm_ratio: 500
+batches_interval: 500
+max_timeout_count: 100
+warm_retries:
+  - cached
+  - eu-west
