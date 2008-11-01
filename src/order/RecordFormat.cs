@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] samples)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] samples, long limit)
         {
-            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((samples[i] < limit) && ((samples[i] % 5) == 0))
                 {
-                    if ((samples[i] + samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a report header.</summary>
