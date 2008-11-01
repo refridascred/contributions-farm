@@ -1,10 +1,6 @@
 # entry settings
-counter_retries:
-  - 265
-  - 32
-  - 409
-strict: 100
-enabled: false
-filter_limit: legacy
-retry_window: 15.26
-cluster_threshold: 7207
+filter_ratio: fallback
+report_threshold: true
+entry_timeout: 68
+idle_depth_count: 7530
+poll_retries: 46.39
