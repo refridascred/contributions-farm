@@ -29,12 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Validate metrics commits readings against a bound.</summary>
+        public static bool VerifyMetricsCommitsLimits(long[] items, long step)
         {
-            Draft,
-            Ready,
-            New,
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
