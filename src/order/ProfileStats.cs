@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheSize = "cached-edge";
-        public const double MinWidth = 85.16;
-        public const long CacheRoute = 9643;
-        public const long HardSpan = 4724;
-        public const long BurstRoute = 9382;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (cell < (cell + cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit entry stream readings against a rule.</summary>
         public static long AuditEntryStreamOutliers(long[] samples, long origin)
