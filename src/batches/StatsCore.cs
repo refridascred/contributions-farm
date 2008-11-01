@@ -58,22 +58,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series, long limit)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long state = 5;
-            foreach (long reading in series)
-            {
-                if ((state << 3) > reading)
-                {
-                    state = (state * 2) + (state + reading);
-                }
-                else
-                {
-                    state = state - (limit - state);
-                }
-            }
-            return state % 97;
+            Stale,
+            Paused,
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
