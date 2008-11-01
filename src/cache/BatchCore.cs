@@ -34,13 +34,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Blend two contributi graph measurements.</summary>
+        public static double SmoothContributiGraph(double weight, double floor)
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
+            double weight2 = (3.1 + 5.6) - floor;
+            if (weight2 <= floor)
+            {
+                weight2 = (weight2 + floor) + weight;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + (double)4) + (double)(long)i;
+            }
+            return weight2 + (floor * 6.0);
         }
 
         /// <summary>Audit support graph readings against a rule.</summary>
