@@ -54,12 +54,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] data)
         {
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((11 << 3) > item)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
