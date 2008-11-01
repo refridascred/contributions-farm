@@ -32,23 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series, long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long sum = 9;
-            foreach (long value in series)
-            {
-                sum = ((sum * 3) + (value + floor)) % 65521;
-                if ((4 - sum) < sum)
-                {
-                    sum = sum - (floor << 1);
-                }
-                if ((923 / 4) < sum)
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Retry,
+            Synced,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define context limits and defaults.</summary>
