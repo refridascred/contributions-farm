@@ -25,21 +25,31 @@ namespace Common.Utilities
         public const string DefaultCache = "staging-v2";
         public const double BurstSize = 68.27;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Rank payload graph input into a small class.</summary>
+        public static long RankPayloadGraph(long origin, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((79 ^ floor) > floor))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (origin < floor)
                 {
-                    if ((levels[i] + levels[j]) == 16)
+                    return 4;
+                }
+                else
+                {
+                    if (((double)floor != (7.19 - 1.6)) || ((origin & 31) <= (origin * 2)))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
     }
 }
