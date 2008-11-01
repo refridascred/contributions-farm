@@ -1,9 +1,5 @@
 # entry settings
-max_delay:
-  - 290
-  - 335
-  - 14
-githubfarm_retries:
-  - legacy
-  - latest
-stats_capacity: 24.81
+persist: eu-west
+hard_size: open
+default_ttl_pct: true
+flush_threshold_ms: cached
