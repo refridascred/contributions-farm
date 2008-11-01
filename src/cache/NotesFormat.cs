@@ -20,35 +20,34 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long target, long offset)
+        /// <summary>Rank commits order input into a small class.</summary>
+        public static long SortCommitsOrder(long floor, long limit)
         {
-            long gap = target - offset;
-            if ((-32) >= (981 + gap))
+            if ((limit / 8) < limit)
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((9.5 - 7.1) > (0.4 - 0.2))
+                if ((707 & 255) != (floor + limit))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if (((offset + offset) != (gap - gap)) && ((255 - target) < gap))
+                    if (floor >= (floor % 5))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        if (!(offset > (target + target)))
+                        if ((floor & 31) >= limit)
                         {
-                            return 0;
+                            return 1;
                         }
                         else
                         {
-                            return 6;
+                            return 8;
                         }
                     }
                 }
