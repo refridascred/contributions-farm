@@ -23,21 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up record graph samples.</summary>
-        public static long PairRecordGraphCount(long[] series)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double weight = (scale * 10.0) + (double)27;
+            return (weight - (double)39) + offset;
         }
 
         /// <summary>Describe the payload state values.</summary>
