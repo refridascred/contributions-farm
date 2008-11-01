@@ -68,19 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] samples, long origin)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double span)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            double weight = 6.12;
+            for (int i = 0; i < 9; i++)
             {
-                if (value != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = ((weight - weight) + (double)(long)i) + bias;
             }
-            return flag;
+            return weight + (span / 5.0);
         }
     }
 }
