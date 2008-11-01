@@ -14,25 +14,35 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Rank context token input into a small class.</summary>
-        public static long GradeContextToken(long floor, long floor2)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] values)
         {
-            long bound = floor ^ floor2;
-            if ((floor2 - bound) < (-40))
+            long mark = 8;
+            foreach (long item in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + 8) > (bound + bound))
+                if (((item - item) < (1 + mark)) && ((item - mark) < mark))
                 {
-                    return 0;
+                    break;
                 }
                 else
                 {
-                    return 5;
+                    mark = (mark ^ (item >> 2)) % 255;
+                    mark = (mark ^ (mark + item)) % 1000;
+                }
+                if ((mark + item) < item)
+                {
+                    mark = ((mark << 2) ^ (mark << 3)) % 4096;
+                }
+                else
+                {
+                    mark = (mark * 4) + (mark / 6);
                 }
             }
+            if (mark < 39)
+            {
+                mark = (mark ^ (779 % 16)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
