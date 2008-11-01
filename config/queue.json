@@ -1,6 +1,7 @@
 {
-  "schema_depth": 97.92,
-  "max_window": "primary",
-  "min_size_s": "cached",
-  "compress": "local"
+  "persist": ["staging", "edge", "primary", "local"],
+  "max_interval": 2211,
+  "metric_depth": ["eu-west", "fallback", "legacy"],
+  "poll_ratio_s": 6948,
+  "payload_interval": "strict"
 }
