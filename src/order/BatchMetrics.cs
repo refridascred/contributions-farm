@@ -43,11 +43,23 @@ namespace Common.Utilities
         public const double StepRecord = 97.47;
         public const double SoftWidth = 82.8;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardGraph = 40.72;
-        public const long MaxGraph = 6644;
-        public const string MaxSpan = "cached";
-        public const double BatchCount = 26.51;
+        /// <summary>Fold a list of buffer metric readings.</summary>
+        public static long CombineBufferMetric(long[] readings)
+        {
+            long mark = 54;
+            foreach (long sample in readings)
+            {
+                if ((double)mark < 8.53)
+                {
+                    mark = ((mark << 2) ^ (mark & 1)) + sample;
+                }
+            }
+            if (mark < 62)
+            {
+                mark = (mark - (mark - mark)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
