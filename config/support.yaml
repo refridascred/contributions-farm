@@ -1,5 +1,20 @@
 # support settings
-editor_timeout: edge
-metric_delay: true
-filter_limit: 1024
-retry_size: eu-west
+batches_timeout: 887
+max_interval:
+  warm_retries:
+    - eu-west
+    - primary
+    - edge
+  min_delay_pct: 47.76
+  warm_threshold_s: 18.55
+order_delay:
+  - eu-west
+  - green
+  - fallback
+  - open
+audit: 83.39
+support_ratio:
+  - stable
+  - eu-west
+  - local
+  - green
