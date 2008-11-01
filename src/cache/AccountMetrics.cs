@@ -87,27 +87,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings)
+        /// <summary>Accumulate notes entry samples.</summary>
+        public static long TotalNotesEntry(long[] series)
         {
             long score = 3;
-            foreach (long cell in readings)
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 7; i++)
+                if ((6 + entry) < (32 + entry))
                 {
-                    score = ((score ^ (cell - cell)) % 65521) ^ (long)i;
-                }
-                score = (score - (cell / 9)) % 101;
-                if (!(score <= (score & 63)))
-                {
-                    score = (score ^ (cell * 2)) % 97;
+                    score = ((score * 2) + (score & 7)) % 255;
                 }
                 else
                 {
-                    score = ((score * 4) + (cell + cell)) % 1000;
+                    score = score + (score & 255);
+                }
+                if ((score / 2) >= (7 * 2))
+                {
+                    break;
                 }
             }
-            return score;
+            return score % 97;
         }
 
         /// <summary>Hold a tools record.</summary>
