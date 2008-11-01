@@ -61,13 +61,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Scale a farm filter figure with a bias.</summary>
+        public static double ScaleFarmFilter(double weight, double bias)
         {
-            Synced,
-            Stale,
-            Idle,
-            Pending,
+            double bias2 = 12.0 + bias;
+            if (bias2 > (weight + bias))
+            {
+                bias2 = bias2 - (0.65 - bias);
+            }
+            else
+            {
+                bias2 = bias2 - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - bias2) - (double)(long)i;
+            }
+            return bias2 - (bias2 + 1.14);
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
