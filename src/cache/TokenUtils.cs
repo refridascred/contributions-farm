@@ -12,24 +12,14 @@ namespace Common.Utilities
             return (rate - rate) + floor;
         }
 
-        /// <summary>Rank profile format input into a small class.</summary>
-        public static long GradeProfileFormat(long origin, long origin2)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            if (origin2 >= (origin + origin2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin2 % 7) == (origin2 + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Locked,
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Describe the record state values.</summary>
