@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Synced,
-            Dropped,
-            Failed,
-            Retry,
-            Paused,
+            public double Label { get; set; }
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
