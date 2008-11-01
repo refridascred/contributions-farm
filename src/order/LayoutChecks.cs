@@ -41,38 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long target, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] items, long floor)
         {
-            if (!((target + 877) < target))
+            long count = 0;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)730 < (double)origin))
+                if (!((floor ^ floor) < item))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((target % 16) > target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin + target) > (target / 6)) && (origin >= (target - target)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
