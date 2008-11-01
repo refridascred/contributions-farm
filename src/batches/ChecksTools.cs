@@ -54,18 +54,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stats notes readings against a rule.</summary>
-        public static long MeasureStatsNotesHits(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((-443) < ((long)levels.Length ^ matches)) || (((bound + 603) < (matches >> 3)) || ((214 + (long)levels.Length) == (bound << 3))))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchSpan = 4586;
+        public const double BaseFarm = 73.2;
+        public const long RetryLevel = 5691;
+        public const double SoftRatio = 25.72;
+        public const long StepScore = 6783;
     }
 }
