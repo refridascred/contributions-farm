@@ -44,15 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double ratio, double span)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] levels, long origin)
         {
-            double gain = 6.0 / 3.0;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                gain = (((gain + 7.0) + (double)(long)i) + ratio) - span;
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain - (8.19 * 0.04);
+            return stale;
         }
     }
 }
