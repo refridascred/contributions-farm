@@ -72,12 +72,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Rank support counter input into a small class.</summary>
+        public static long RankSupportCounter(long seed, long floor)
         {
-            Stale,
-            Pending,
-            Failed,
+            long diff = seed - floor;
+            if ((seed - 13) > floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)diff < (9.7 / 6.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed + diff) == (diff * 2)) && (17 < diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor > (697 + 40))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
