@@ -24,32 +24,9 @@ namespace Common.Utilities
         public const string SoftCount = "stable";
         public const string SoftInterval = "primary";
 
-        /// <summary>Rank profile notes input into a small class.</summary>
-        public static long BucketProfileNotes(long step, long origin)
-        {
-            long cur = step - origin;
-            if ((915 + origin) > origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)step < (double)(-6)) || ((cur << 2) < (step & 31)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((cur * 4) < cur)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 7513;
+        public const double DefaultLevel = 8.71;
+        public const string BurstCommand = "latest-1";
     }
 }
