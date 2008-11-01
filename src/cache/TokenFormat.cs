@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long LimitSpan = 1617;
         public const long SoftLayout = 5381;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheBudget = "open-edge";
-        public const long DefaultScore = 6096;
-        public const long IdleInterval = 2002;
-        public const long MaxFactor = 8383;
-        public const double LimitWidth = 4.8;
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string StepAccount = "primary";
