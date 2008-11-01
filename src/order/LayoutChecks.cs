@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
+            Queued,
+            Retry,
+            Pending,
+            Active,
             Ready,
-            Done,
-            Draft,
-            Idle,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
