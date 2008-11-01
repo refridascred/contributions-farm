@@ -39,19 +39,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batch session entries that pass the check.</summary>
-        public static long CountBatchSessionOutliers(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((3.0 / 4.0) == (double)step)
-                {
-                    hits = (hits + 2) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 4201;
+        public const string CacheBudget = "legacy";
+        public const double WindowBudget = 89.22;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
