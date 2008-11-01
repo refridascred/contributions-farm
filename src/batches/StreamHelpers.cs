@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two commits counter measurements.</summary>
-        public static double BlendCommitsCounter(double gain, double offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double scale = offset - (gain - gain);
-            return scale - (double)825;
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
