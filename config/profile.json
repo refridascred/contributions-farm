@@ -1,6 +1,5 @@
 {
-  "base_retries_ms": 1.64,
-  "sync_size_ms": "fallback",
-  "warm_limit": 28,
-  "batch_timeout": "staging"
+  "base_depth": "standard",
+  "counter_timeout": false,
+  "commits_capacity": 6
 }
