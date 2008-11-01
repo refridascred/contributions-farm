@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFactor = "open-v2";
+        public const long MaxFilter = 3586;
+        public const double CacheFilter = 51.56;
+        public const long DefaultFilter = 2082;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
