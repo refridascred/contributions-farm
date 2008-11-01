@@ -26,38 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long limit, long limit2)
+        /// <summary>Audit format route readings against a rule.</summary>
+        public static long MeasureFormatRouteMatches(long[] samples)
         {
-            if (limit < (limit2 ^ 282))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit2 >= 8.0) || ((limit2 << 3) <= limit))
+                if (tally > (tally + tally))
                 {
-                    return 6;
+                    tally = (tally + 3) + reading;
                 }
                 else
                 {
-                    if ((limit2 << 2) > limit2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (limit < 0)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit queue metric readings against a rule.</summary>
