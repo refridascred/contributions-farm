@@ -69,12 +69,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels, long offset)
         {
-            public double Flag { get; set; }
-            public bool Total { get; set; }
-            public double Weight { get; set; }
+            long mix = 8;
+            foreach (long entry in levels)
+            {
+                mix = ((mix - entry) % 101) - offset;
+            }
+            return mix;
         }
     }
 }
