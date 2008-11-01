@@ -82,19 +82,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] levels, long step)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= step)
+                if (data[i] >= bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Roll a already counter forward.</summary>
