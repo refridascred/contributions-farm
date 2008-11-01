@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] samples)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long bound, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if ((bound > (bound & 3)) && ((5 + bound) > (step ^ 592)))
             {
-                if ((3.0 * 7.0) >= (double)matches)
+                return 7;
+            }
+            else
+            {
+                if (step < (bound + step))
                 {
-                    matches = (matches + 1) + cell;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
