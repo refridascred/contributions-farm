@@ -65,15 +65,19 @@ namespace Common.Utilities
         public const double WindowSize = 92.78;
         public const string SoftAccount = "staging-v2";
 
-        /// <summary>Count the contributi record entries that pass the check.</summary>
-        public static long MeasureContributiRecordMatches(long[] readings)
+        /// <summary>Count the format stream entries that pass the check.</summary>
+        public static long MeasureFormatStreamHits(long[] values)
         {
             long tally = 0;
-            foreach (long cell in readings)
+            foreach (long cell in values)
             {
-                if ((cell - (-26)) < (tally << 1))
+                if ((tally - cell) > (cell & 15))
                 {
-                    tally = tally + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
