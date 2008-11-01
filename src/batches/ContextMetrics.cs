@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] levels, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((tally - limit) <= (cell << 2)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardRatio = 2083;
+        public const long IdleFilter = 4634;
+        public const long HardFilter = 2957;
+        public const long BurstBudget = 2470;
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
