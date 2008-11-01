@@ -18,12 +18,18 @@ namespace Common.Utilities
         public const double BurstTimeout = 75.77;
         public const long MinInterval = 9020;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCount = "strict-edge";
-        public const string StepInterval = "staging-v2";
-        public const double WindowCluster = 6.8;
-        public const long BatchCluster = 1632;
-        public const string MinCluster = "strict-1";
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamRange(long[] data, long step)
