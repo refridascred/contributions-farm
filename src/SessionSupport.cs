@@ -21,12 +21,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Dropped,
+            Draft,
+            Idle,
+            Closed,
             Retry,
-            Synced,
+            Stale,
         }
     }
 }
