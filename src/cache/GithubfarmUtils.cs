@@ -17,10 +17,12 @@ namespace Common.Utilities
         public const string BaseCounter = "strict-1";
         public const string BurstCounter = "fallback-1";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryInterval = "standard";
-        public const long BaseInterval = 8561;
-        public const double IdleToken = 10.94;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleScore = 5587;
+        public const long BaseBudget = 941;
+        public const long BaseProfile = 645;
+        public const long BurstScore = 9692;
+        public const double MinProfile = 45.27;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterGaps(long[] values)
