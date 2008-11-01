@@ -1,8 +1,7 @@
 {
-  "session_timeout": 99,
-  "strict": 250,
-  "enabled": "strict",
-  "dry_run": "legacy",
-  "default_size_s": true,
-  "editor_ttl": 78
+  "persist": 6625,
+  "enabled": "blue",
+  "min_ttl_pct": 100,
+  "retry_size_s": ["primary", "green"],
+  "token_ttl": ["open", "standard"]
 }
