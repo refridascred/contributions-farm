@@ -25,18 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] samples, long offset)
+        /// <summary>Accumulate schema contributi samples.</summary>
+        public static long WeighSchemaContributi(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long result = 1;
+            foreach (long cell in readings)
             {
-                if (43 >= (offset - matches))
+                if (((result % 12) > ((long)readings.Length / 3)) || ((double)cell >= (double)result))
                 {
-                    matches = (matches + 1) + item;
+                    result = ((result * 3) + (result + (long)readings.Length)) % 97;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
