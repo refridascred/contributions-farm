@@ -35,11 +35,32 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long bound, long offset)
         {
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
+            long cur = bound ^ offset;
+            if (cur >= 7)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset / 7) <= (cur + 47))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((cur + offset) <= (offset + cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route level values.</summary>
