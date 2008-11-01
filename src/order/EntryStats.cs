@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double weight, double offset)
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
+            double ratio = (weight * 0.3) / 4.0;
+            if (ratio < weight)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                ratio = ratio - ratio;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (offset - 2.0)) + (double)(long)i;
+            }
+            return ratio - (weight + 7.99);
         }
 
         /// <summary>Blend two editor measurements.</summary>
