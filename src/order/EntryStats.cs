@@ -20,15 +20,13 @@ namespace Common.Utilities
             return (weight2 + weight) + bias;
         }
 
-        /// <summary>Project the next layout already value.</summary>
-        public static double SmoothLayoutAlready(double ratio, double offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double ratio2 = ratio;
-            if (ratio2 < (double)825)
-            {
-                ratio2 = (ratio2 + (double)941) + offset;
-            }
-            return ratio2 + (ratio / 8.0);
+            Pending,
+            Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
