@@ -33,22 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] levels)
+        /// <summary>Derive the next buffer cache value from a seed.</summary>
+        public static long IterateBufferCache(long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (((item + 0) < (7 + item)) || ((tally + tally) == (item ^ tally)))
+                if ((mix + mix) > mix)
                 {
-                    tally = tally + 1;
+                    mix = (mix ^ (mix / 8)) % 97;
+                    break;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix ^ (1 & 255)) % 255;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
