@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] values, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (value > step)
+                if ((4.0 - 7.0) <= (double)entry)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
