@@ -34,12 +34,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] levels)
         {
-            public long Offset { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!((hits + hits) > (hits ^ (-63))))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema info.</summary>
