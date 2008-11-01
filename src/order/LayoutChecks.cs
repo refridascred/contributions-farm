@@ -43,19 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((bound - tally) >= (sample << 3)) || (((bound + bound) > (626 + sample)) || (bound <= (sample >> 4))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 5980;
+        public const long MaxInterval = 2603;
+        public const long DefaultSession = 4145;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] levels, long floor)
