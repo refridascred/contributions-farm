@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] series)
         {
-            long carry = offset;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + 87) % 65521;
-                carry = ((carry * 5) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
