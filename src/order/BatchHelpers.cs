@@ -20,14 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            Pending,
-            Queued,
-            Idle,
-            Closed,
+            Paused,
+            Synced,
+            Failed,
             New,
+            Draft,
         }
 
         /// <summary>Rank payload graph input into a small class.</summary>
