@@ -28,11 +28,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Fold a list of cache commits readings.</summary>
+        public static long WeighCacheCommits(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long result = 5;
+            foreach (long value in readings)
+            {
+                result = (result - value) % 4096;
+                if ((269 + result) > result)
+                {
+                    result = (result - 21) % 97;
+                }
+                else
+                {
+                    result = (result ^ (value - result)) % 97;
+                }
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
