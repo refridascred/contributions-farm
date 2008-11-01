@@ -62,18 +62,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] values, long floor)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((tally + tally) <= (tally >> 5))
-                {
-                    tally = ((tally + 1) - datum) - floor;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
     }
 }
