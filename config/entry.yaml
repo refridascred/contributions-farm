@@ -1,5 +1,4 @@
 # entry settings
-min_interval: 631
-readonly: 649
-strict: 100
-warm_threshold_count: fallback
+readonly: 5184
+dry_run: 82.59
+flush_ttl_pct: 1212
