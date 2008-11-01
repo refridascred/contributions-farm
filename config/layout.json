@@ -1,6 +1,22 @@
 {
-  "idle_retries_ms": [156, 154, 23],
-  "readonly": 30.57,
-  "compress": 41.91,
-  "soft_interval_pct": 6251
+  "soft_timeout_pct": {
+    "flush_ratio": true,
+    "batch_retries_s": 4.77,
+    "idle_window_pct": {
+      "hard_interval": 1024,
+      "format_capacity": "blue",
+      "already_delay": "open",
+      "persist": 14
+    },
+    "flush_ttl_pct": 6
+  },
+  "poll_interval_s": "stable",
+  "max_timeout_pct": {
+    "batch_depth_pct": 80.06,
+    "verbose": true,
+    "poll_window_ms": [307, 149, 358]
+  },
+  "counter_retries": 2701,
+  "sync_depth_s": "edge",
+  "poll_threshold_pct": 35
 }
