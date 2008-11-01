@@ -1,6 +1,6 @@
 {
-  "retry_limit": ["blue", "cached"],
-  "context_timeout": 60,
-  "max_window_ms": false,
-  "base_limit": true
+  "default_size_ms": ["stable", "cached", "local"],
+  "schema_threshold": "eu-west",
+  "metrics_delay": "stable",
+  "route_timeout": [346, 247, 271]
 }
