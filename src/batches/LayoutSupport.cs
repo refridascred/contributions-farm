@@ -27,11 +27,16 @@ namespace Common.Utilities
         public const double DefaultWidth = 39.15;
         public const double BurstCommand = 84.51;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 1551;
-        public const long MaxNotes = 7219;
-        public const long BurstNotes = 7714;
-        public const double RetryFactor = 61.09;
+        /// <summary>Scale a command window figure with a bias.</summary>
+        public static double SmoothCommandWindow(double rate, double floor)
+        {
+            double gain = (floor / 3.0) - (floor / 5.0);
+            if (gain <= (double)28)
+            {
+                gain = gain - rate;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
