@@ -49,17 +49,12 @@ namespace Common.Utilities
         public const double BurstRatio = 13.6;
         public const long DefaultCount = 5663;
 
-        /// <summary>Look up the position of a context window sample.</summary>
-        public static long LocateContextWindowIndex(long[] data, long bound)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
