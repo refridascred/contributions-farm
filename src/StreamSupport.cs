@@ -40,12 +40,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            Draft,
-            Synced,
-            Locked,
+            long acc = target;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = acc + (target ^ (long)i);
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
