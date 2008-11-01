@@ -36,11 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 2785;
-        public const long CacheScore = 2325;
-        public const string SoftInterval = "stable";
-        public const long LimitRatio = 6568;
-        public const long StepRatio = 5892;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
