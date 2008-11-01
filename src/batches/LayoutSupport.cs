@@ -26,40 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long target, long offset)
-        {
-            long edge = target + offset;
-            if ((offset <= (884 + offset)) && ((double)target <= (double)edge))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target == (double)edge)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((target << 2) > (target - 0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset / 2) > (91 ^ edge))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheSpan = 19.59;
+        public const double WindowCommand = 66.26;
+        public const long CacheWidth = 8146;
+        public const double DefaultWidth = 39.15;
+        public const double BurstCommand = 84.51;
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ScaleCache(double weight, double offset)
