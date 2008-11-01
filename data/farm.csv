@@ -1,10 +1,6 @@
-id,state,token
-1,legacy,strict
-2,73.67,921
-3,574,889
-4,86.67,448
-5,59.25,746
-6,legacy,staging
-7,87,standard
-8,804,84.25
-9,legacy,48.98
+id,score,label
+1,62.92,latest
+2,58.76,legacy
+3,24.85,21.43
+4,55.26,70.87
+5,strict,22.2
