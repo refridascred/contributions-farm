@@ -20,18 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] levels)
+        /// <summary>Classify a record format pair into a bucket.</summary>
+        public static long SortRecordFormat(long limit, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long step = limit + origin;
+            if ((limit % 60) > 45)
             {
-                if ((double)sample <= (1.0 + 8.7))
+                return 8;
+            }
+            else
+            {
+                if (2.66 > (double)step)
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (((limit & 255) == (origin - step)) || ((double)origin > (4.7 * 1.2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (origin < (origin + 91))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
