@@ -65,14 +65,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Idle,
-            Queued,
-            Closed,
-            Draft,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowContext = "standard-v2";
+        public const long BaseRatio = 5882;
+        public const long SoftContext = 6973;
+        public const double HardContext = 70.16;
+        public const long StepContext = 9732;
     }
 }
