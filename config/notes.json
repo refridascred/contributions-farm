@@ -1,8 +1,13 @@
 {
-  "default_capacity_pct": 36,
-  "format_ttl": 4097,
-  "cache_window": true,
-  "audit": true,
-  "format_delay": 1160,
-  "checks_window": "primary"
+  "farm_depth": [202, 435, 321, 440],
+  "cache_depth_ms": {
+    "max_limit_s": 32.06,
+    "strict": 6874,
+    "base_capacity_s": 100,
+    "min_interval_ms": "stable"
+  },
+  "editor_retries": "staging",
+  "retry_limit_count": false,
+  "sync_depth_pct": "staging",
+  "poll_delay": 78
 }
