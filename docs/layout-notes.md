@@ -1,12 +1,14 @@
 # Layout notes
 
-The counter report groups every checks by schema.
-The metrics module keeps metrics values in sync with the farm cache.
-Keep format and format names short and lowercase.
+When a editor fails, the route handler retries a few times before giving up.
+When a farm fails, the support handler retries a few times before giving up.
+The stats report groups every channel by farm.
+
+The stats helpers are pure functions, so they are safe to call from any thread.
+When a payload fails, the booking handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep graph values small
-- Log every counter change
-- Prefer batches defaults
-- Document new layout fields
+- Validate command input early
+- Prefer metric defaults
+- Keep profile values small
