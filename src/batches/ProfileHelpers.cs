@@ -28,12 +28,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Derive the next session account value from a seed.</summary>
+        public static long StepSessionAccount(long floor)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Count { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry + (floor / 3)) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the stream token entries that pass the check.</summary>
