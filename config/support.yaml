@@ -1,7 +1,7 @@
 # support settings
-default_delay_pct: 70
-window_interval: legacy
-burst_ttl_pct: green
-persist: 250
-idle_capacity_count: 500
-payload_window: local
+readonly: 4222
+default_limit_count: true
+max_window: 29.95
+dry_run: 35.29
+counter_size: 500
+strict: edge
