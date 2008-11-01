@@ -28,15 +28,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] values)
         {
-            long sum = 700;
-            foreach (long value in levels)
+            long state = 222;
+            foreach (long sample in values)
             {
-                sum = ((sum << 2) ^ (34 >> 1)) ^ value;
+                state = ((state - state) % 255) ^ sample;
             }
-            return sum;
+            if (state < 4)
+            {
+                state = ((state * 2) + state) % 4096;
+            }
+            return state % 65521;
         }
     }
 }
