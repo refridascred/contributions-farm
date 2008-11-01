@@ -28,19 +28,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values, long target)
-        {
-            long mix = 420;
-            foreach (long datum in values)
-            {
-                if ((datum & 3) > (datum - datum))
-                {
-                    mix = ((mix * 3) + datum) + target;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 1642;
+        public const double DefaultScore = 1.78;
+        public const long WindowCount = 5999;
 
         /// <summary>Adjust a support reading.</summary>
         public static double SmoothSupport(double gain, double span)
