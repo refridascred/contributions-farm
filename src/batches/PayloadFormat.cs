@@ -35,17 +35,38 @@ namespace Common.Utilities
         public const string SoftTools = "stable-1";
         public const long IdleLevel = 1961;
 
-        /// <summary>Look up the position of a window schema sample.</summary>
-        public static long LookupWindowSchemaIndex(long[] levels, long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long offset, long offset2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)offset2 <= (8.7 + 9.0))
             {
-                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((offset2 >> 2) <= offset2)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset >= (offset2 % 7)) && ((offset * 4) == (offset & 63)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset > (7.8 + 17.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
