@@ -1,13 +1,11 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-Use format settings to tune how often layout data is refreshed.
-
-Use buffer settings to tune how often order data is refreshed.
-Each buffer is validated before it reaches the command queue.
+Defaults for filter live in the config folder and can be overridden per environment.
+Use counter settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Document new context fields
+- Review cluster limits each release
+- Document new format fields
+- Log every cache change
 - Prefer profile defaults
-- Validate queue input early
