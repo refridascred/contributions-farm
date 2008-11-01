@@ -44,11 +44,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinScore = 8375;
-        public const long LimitFactor = 985;
-        public const long LimitRecord = 4945;
-        public const long BatchRecord = 5374;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double bias, double bias2)
+        {
+            double weight = (double)((-23) ^ 7);
+            if (weight >= bias2)
+            {
+                weight = weight - bias;
+            }
+            else
+            {
+                weight = weight - (weight - 19.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (weight * 5.2)) + (double)(long)i;
+            }
+            return weight - (11.0 - 1.42);
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ScaleEntry(double gain, double bias)
