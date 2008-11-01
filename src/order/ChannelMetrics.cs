@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxSpan = "stable-1";
-        public const double WindowRatio = 75.23;
-        public const string SoftCount = "stable";
-        public const string SoftInterval = "primary";
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Retry,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double MaxCache = 81.11;
