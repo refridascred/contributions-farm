@@ -1,5 +1,6 @@
 {
-  "idle_interval": [259, 465, 183],
-  "retry_limit_s": "cached",
-  "soft_capacity_s": 30.12
+  "profile_depth": "fallback",
+  "format_depth": "stable",
+  "base_ttl_s": ["primary", "local"],
+  "retry_limit_count": "latest"
 }
