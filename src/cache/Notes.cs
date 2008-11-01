@@ -40,21 +40,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count stats report pairs that satisfy a relation.</summary>
-        public static long MatchStatsReportCount(long[] levels)
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = 4.77;
+            if (drift <= (floor + 11.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift + floor) - gain;
             }
-            return hits;
+            return drift + (drift - drift);
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
