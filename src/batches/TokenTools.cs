@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the layout window entries that pass the check.</summary>
-        public static long AuditLayoutWindowGaps(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long offset, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((offset - seed) <= (83 >> 4))
             {
-                if ((item > (item - item)) && !((count & 7) <= (item % 64)))
+                return 4;
+            }
+            else
+            {
+                if ((double)offset > (double)seed)
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed <= 18.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
