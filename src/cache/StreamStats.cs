@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheCount = "cached-v2";
-        public const string BatchGraph = "legacy-v2";
-        public const long MaxSpan = 4625;
-        public const long MinGraph = 260;
+        /// <summary>Audit window cluster readings against a rule.</summary>
+        public static long TallyWindowClusterHits(long[] values, long target)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((target < (hits ^ reading)) && ((target - hits) < 4))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate session samples.</summary>
         public static long TotalSession(long[] levels, long limit)
