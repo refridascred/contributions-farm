@@ -1,5 +1,13 @@
 {
-  "verbose": "green",
-  "compress": 60,
-  "persist": 23
+  "metrics_window": true,
+  "metric_depth": {
+    "commits_ttl": 90.39,
+    "flush_size": "open",
+    "record_capacity": false,
+    "dry_run": 100,
+    "sync_depth": true,
+    "filter_delay": 7.31
+  },
+  "flush_interval": true,
+  "flush_capacity_ms": [34, 52, 46, 486]
 }
