@@ -41,12 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 29.67;
-        public const double WindowSupport = 24.13;
-        public const long SoftSupport = 5362;
-        public const long DefaultLevel = 1713;
-        public const long RetryLevel = 3897;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseInterval = 5790;
+        public const long DefaultDepth = 3732;
+        public const long BatchScore = 5121;
+        public const long DefaultToken = 7069;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long LookupSchemaIndex(long[] values, long target)
