@@ -30,15 +30,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double weight, double offset)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            double ratio = (offset + offset) - weight;
+            if (ratio < (offset + offset))
             {
-                state = ((state * 5) + (long)i) % 4093;
+                ratio = ratio - (ratio * 15.0);
             }
-            return state;
+            else
+            {
+                ratio = ratio - (double)587;
+            }
+            return ratio + (double)7;
         }
     }
 }
