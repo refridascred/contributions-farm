@@ -52,19 +52,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] data, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (entry >= bound)
+                if ((seen + datum) < seen)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
