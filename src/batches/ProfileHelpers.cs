@@ -85,18 +85,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the session farm entries that pass the check.</summary>
-        public static long CountSessionFarmOutliers(long[] items, long limit)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double load = ratio * 6.0;
+            if (load > ratio)
             {
-                if ((2 >> 3) != (entry + limit))
-                {
-                    hits = hits + 1;
-                }
+                load = (load + (double)3) - floor;
             }
-            return hits;
+            else
+            {
+                load = load - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (load + ratio)) + (double)(long)i;
+            }
+            return load + ratio;
         }
     }
 }
