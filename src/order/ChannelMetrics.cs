@@ -21,30 +21,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] samples, long target)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] levels, long limit)
         {
-            long sum = 943;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(target <= (target & 63)))
+                if (levels[i] < limit)
                 {
-                    sum = (sum - (3 - sum)) % 97;
-                }
-                if ((double)value > 8.37)
-                {
-                    sum = ((sum * 5) + sum) % 65521;
-                }
-                else
-                {
-                    sum = sum - target;
-                }
-                if ((737 - 4) >= value)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
     }
 }
