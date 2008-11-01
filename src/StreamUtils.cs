@@ -17,20 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseWidth = 731;
+        public const long IdleFilter = 6214;
+        public const long BurstFilter = 3262;
+        public const long BatchFactor = 9920;
+        public const string StepFilter = "standard-1";
 
         /// <summary>Classify a notes entry pair into a bucket.</summary>
         public static long ClassifyNotesEntry(long target, long floor)
