@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long target, long step)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long seed, long limit)
         {
-            if ((9.6 - 8.73) < (double)target)
+            if ((double)limit == (4.42 / 6.0))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((step << 1) == (8 - 841))
+                if ((double)limit < 3.75)
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)step != (1.0 * 9.82))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target >= step) || ((target / 5) >= (step % 10)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
