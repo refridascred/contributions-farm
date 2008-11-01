@@ -14,32 +14,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long origin, long seed)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long offset = origin + seed;
-            if ((seed << 2) <= (offset & 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset & 3) != (7 + seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed / 2) <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
