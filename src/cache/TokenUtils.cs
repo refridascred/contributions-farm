@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a route schema figure with a bias.</summary>
-        public static double BlendRouteSchema(double ratio, double floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            double rate = ratio - (0.5 - 0.54);
-            return (rate - rate) + floor;
+            Done,
+            Idle,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Look up the position of a already sample.</summary>
