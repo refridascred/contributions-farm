@@ -1,5 +1,7 @@
 {
-  "soft_size_s": "fallback",
-  "compress": 421,
-  "batch_threshold_s": [436, 332, 184]
+  "burst_limit_count": "latest",
+  "schema_retries": 28,
+  "burst_ratio": "eu-west",
+  "context_ttl": [82, 329],
+  "idle_retries": 500
 }
