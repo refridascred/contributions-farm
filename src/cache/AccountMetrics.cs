@@ -62,17 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first queue batch entry that matches the target.</summary>
-        public static long FindQueueBatchIndex(long[] readings, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) == 0))
+                if (item > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Describe the route level values.</summary>
