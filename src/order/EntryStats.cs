@@ -64,15 +64,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Failed,
+            Stale,
+            Closed,
+            Idle,
         }
     }
 }
