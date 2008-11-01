@@ -12,22 +12,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardInterval = 5865;
+        public const long StepTools = 7582;
+        public const double MinTools = 90.27;
+        public const long IdleSize = 1800;
+        public const long DefaultFactor = 6403;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
