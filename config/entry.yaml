@@ -1,11 +1,4 @@
 # entry settings
-strict:
-  - 268
-  - 442
-cluster_depth: 100
-cache_delay_s: latest
-base_timeout_s:
-  - standard
-  - green
-  - green
-cache_delay_pct: false
+verbose: strict
+burst_window_pct: true
+session_window: 65.17
