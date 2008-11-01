@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] series, long offset)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultScore = 982;
+        public const long WindowQueue = 288;
+        public const long RetryQueue = 3956;
+        public const double BaseQueue = 19.38;
+        public const double BatchInterval = 0.3;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long MatchSessionCount(long[] data)
