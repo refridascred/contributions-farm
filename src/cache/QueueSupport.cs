@@ -10,39 +10,13 @@ namespace Common.Utilities
         public const long MinCount = 9398;
         public const double RetryAlready = 87.77;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long step, long origin)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long slot = step - origin;
-            if ((7.0 / 5.0) == (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin >> 2) < (slot - (-901)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step < (411 * 4)) && ((11.0 / 2.0) == (double)slot))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step - step) == (step % 8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
