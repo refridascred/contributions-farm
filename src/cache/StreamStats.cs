@@ -27,12 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleGithubfarm = 4841;
-        public const long RetryBudget = 3182;
-        public const long WindowGithubfarm = 2956;
-        public const double DefaultGithubfarm = 94.29;
-        public const long LimitSpan = 5653;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum & 3) < (matches / 4))
+                {
+                    matches = (matches + 2) + offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long RankFilter(long origin, long target)
