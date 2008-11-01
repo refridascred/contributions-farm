@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorHits(long[] values)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item + seen) <= (2 % 60))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
