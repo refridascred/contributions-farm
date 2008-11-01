@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchMetric = "primary-v2";
-        public const long MaxScore = 3082;
-        public const long RetryMetric = 8534;
-        public const long WindowLevel = 22;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell & 1) == ((-85) * 4))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a context header.</summary>
         public sealed class ContextHeader
