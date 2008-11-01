@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 4328;
-        public const long MinLevel = 6274;
-        public const long BatchTools = 9335;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Check that every cache editor entry stays within the limit.</summary>
         public static bool VerifyCacheEditorBounds(long[] readings, long offset)
