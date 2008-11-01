@@ -33,11 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleCount = 8050;
-        public const double IdleMetric = 94.06;
-        public const long BaseMetric = 2524;
-        public const long StepWidth = 5680;
-        public const double BaseSpan = 90.52;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            Ready,
+            Pending,
+            Locked,
+            Queued,
+            Paused,
+        }
     }
 }
