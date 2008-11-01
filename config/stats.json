@@ -1,15 +1,5 @@
 {
-  "batch_delay": ["cached", "strict", "local"],
-  "soft_ratio_pct": 38.79,
-  "readonly": "green",
-  "batch_ratio": "open",
-  "checks_window": {
-    "tools_timeout": 75,
-    "flush_retries_s": ["primary", "open", "staging"],
-    "enabled": 34,
-    "hard_retries": false,
-    "format_timeout": 42.15,
-    "hard_depth_count": "open"
-  },
-  "compress": 500
+  "commits_capacity": ["stable", "legacy"],
+  "default_size_pct": 31,
+  "persist": 560
 }
