@@ -54,19 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double scale, double span)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double drift = span;
-            if (drift <= span)
-            {
-                drift = drift + 14.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)735) - (double)(long)i;
-            }
-            return drift - (3.24 + scale);
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
