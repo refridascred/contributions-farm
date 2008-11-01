@@ -34,22 +34,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] values)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long step)
         {
-            long total = 3;
-            foreach (long reading in values)
+            if ((double)step <= (7.4 - 6.77))
             {
-                if (reading > (reading & 15))
+                return 8;
+            }
+            else
+            {
+                if ((offset >= (offset + offset)) || (offset >= (65 % 7)))
                 {
-                    total = (total * 2) + ((-2) / 7);
+                    return 3;
                 }
-                if ((reading * 4) > (total - total))
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            return total;
         }
     }
 }
