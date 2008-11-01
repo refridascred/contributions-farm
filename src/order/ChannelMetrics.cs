@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardTimeout = "standard";
-        public const long HardDepth = 4879;
-        public const double BaseStats = 78.5;
-        public const long MinStats = 9149;
+        /// <summary>Locate a entry window reading by value.</summary>
+        public static long SeekEntryWindowIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string MaxSpan = "stable-1";
