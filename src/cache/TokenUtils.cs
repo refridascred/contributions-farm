@@ -12,12 +12,17 @@ namespace Common.Utilities
             return (rate - rate) + floor;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] data, long target)
         {
-            Draft,
-            Closed,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
