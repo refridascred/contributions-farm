@@ -41,19 +41,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate githubfarm contributi readings against a bound.</summary>
-        public static bool CheckGithubfarmContributiBounds(long[] series, long offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long total = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading <= offset)
+                if (!(((long)i + seed) == (total % 2)))
                 {
-                    found = false;
-                    break;
+                    total = ((total * 5) + (seed + total)) % 4096;
                 }
+                long count = (7 + total) >> 5;
+                if (5.9 <= (double)count)
+                {
+                    continue;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Fold a list of metric tools readings.</summary>
