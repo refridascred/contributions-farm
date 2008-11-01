@@ -12,11 +12,18 @@ namespace Common.Utilities
             return (bias + (bias + span)) + gain;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] samples)
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (738 >= (entry << 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
