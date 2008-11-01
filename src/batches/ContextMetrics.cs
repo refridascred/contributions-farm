@@ -36,38 +36,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long target, long floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double rate, double floor)
         {
-            if ((floor + target) > (floor >> 4))
+            double bias = floor;
+            if (bias >= (bias / 5.0))
             {
-                return 7;
+                bias = (bias + (0.5 + floor)) - rate;
             }
             else
             {
-                if ((floor ^ 1) == (target / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 2) >= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((10.0 / 2.0) != (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                bias = bias - (double)95;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - floor) - (double)(long)i;
+            }
+            return bias + (bias * 1.0);
         }
 
         /// <summary>Compare every pair of commits entry readings.</summary>
