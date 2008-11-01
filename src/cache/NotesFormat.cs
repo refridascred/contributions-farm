@@ -37,18 +37,39 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] values)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long target, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long gap = target - offset;
+            if ((-32) >= (981 + gap))
             {
-                if ((entry + 872) == (hits + entry))
+                return 7;
+            }
+            else
+            {
+                if ((9.5 - 7.1) > (0.4 - 0.2))
                 {
-                    hits = hits + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (((offset + offset) != (gap - gap)) && ((255 - target) < gap))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(offset > (target + target)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
