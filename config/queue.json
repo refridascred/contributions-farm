@@ -1,5 +1,5 @@
 {
-  "min_ttl_count": "eu-west",
-  "flush_threshold_count": "strict",
-  "default_interval": 58.63
+  "metrics_capacity": "cached",
+  "max_depth": 3850,
+  "hard_ttl": true
 }
