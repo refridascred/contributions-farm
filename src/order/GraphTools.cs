@@ -23,18 +23,10 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstBudget = 1915;
+        public const long DefaultRecord = 292;
+        public const double BatchRecord = 16.7;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsOutliers(long[] data)
