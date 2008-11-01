@@ -75,11 +75,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long seed, long target)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
+            if (3 < (seed - seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed <= (6.0 + 16.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a commits record.</summary>
