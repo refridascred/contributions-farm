@@ -59,17 +59,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardBudget = 7166;
+        public const long MinScore = 1806;
+        public const string HardSession = "staging-v2";
+        public const long StepLevel = 8356;
     }
 }
