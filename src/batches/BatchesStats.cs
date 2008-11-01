@@ -48,9 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 6297;
-        public const double BatchChecks = 0.5;
-        public const long BurstChecks = 5869;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderBounds(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
