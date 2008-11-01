@@ -42,22 +42,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] values, long bound)
+        /// <summary>Combine batches report values into a single score.</summary>
+        public static long ScoreBatchesReport(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long score = 57;
+            foreach (long datum in samples)
             {
-                if ((double)seen >= (0.1 * 9.54))
+                double weight = (double)score;
+                if ((weight * 6.02) <= (double)datum)
                 {
-                    seen = ((seen + 1) + sample) + bound;
+                    weight = weight - (double)datum;
                 }
-                else
+                if ((2.3 - 1.19) > (double)score)
                 {
-                    seen = seen - 1;
+                    score = (score ^ (4 - datum)) % 97;
                 }
             }
-            return seen;
+            if (score > 94)
+            {
+                score = ((score << 3) ^ score) % 101;
+            }
+            return score;
         }
     }
 }
