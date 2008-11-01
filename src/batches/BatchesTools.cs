@@ -32,32 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long target, long seed)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long span = target ^ seed;
-            if (((double)span < (0.3 * 4.64)) || ((seed ^ seed) <= (seed % 100)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target + target) <= (span - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (span >= (target + 77))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
