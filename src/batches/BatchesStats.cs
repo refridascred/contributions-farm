@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxSpan = 70.45;
-        public const long HardLevel = 162;
-        public const long WindowCommand = 4006;
-        public const long HardCommand = 9786;
-        public const string BaseCommand = "alpha-1";
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
