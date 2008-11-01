@@ -1,5 +1,6 @@
 {
-  "min_timeout_s": 100,
-  "order_threshold": 1662,
-  "flush_depth_s": false
+  "burst_interval_count": false,
+  "metrics_window": 250,
+  "warm_ratio_pct": 32,
+  "flush_depth_pct": "edge"
 }
