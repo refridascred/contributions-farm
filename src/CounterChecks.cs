@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] readings, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] levels, long step)
         {
-            long sum = 228;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((value & 3) > 311)
+                if (cell > step)
                 {
-                    sum = (((sum << 3) ^ sum) % 65521) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return flag;
         }
 
         /// <summary>Validate session filter readings against a bound.</summary>
