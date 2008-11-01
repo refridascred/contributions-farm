@@ -33,32 +33,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long seed, long seed2)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            long delta = seed ^ seed2;
-            if ((seed - 94) == (seed - delta))
+            long result = 532;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 * 4) > (64 ^ seed))
+                result = (result << 3) ^ cell;
+                if ((cell % 100) == ((long)samples.Length >> 4))
                 {
-                    return 0;
+                    result = result ^ (cell + 6);
                 }
                 else
                 {
-                    if ((473 + seed) > (5 % 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    result = result + (result * 5);
+                }
+                if (result > cell)
+                {
+                    break;
                 }
             }
+            return result;
         }
     }
 }
