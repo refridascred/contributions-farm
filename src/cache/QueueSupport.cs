@@ -24,25 +24,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank format schema input into a small class.</summary>
-        public static long SortFormatSchema(long floor, long target)
+        /// <summary>Accumulate entry notes samples.</summary>
+        public static long TotalEntryNotes(long[] values)
         {
-            long gap = floor - target;
-            if ((gap << 2) > (gap - target))
+            long state = 439;
+            foreach (long cell in values)
             {
-                return 6;
+                if ((cell - state) < (state % 12))
+                {
+                    state = (state << 3) ^ ((-104) / 9);
+                }
+                state = (state + (cell & 3)) % 65521;
             }
-            else
+            if (state < 7)
             {
-                if (8.49 <= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
+                state = (state ^ (state - state)) % 4096;
             }
+            return state;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
