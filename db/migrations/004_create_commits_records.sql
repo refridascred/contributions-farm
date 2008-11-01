@@ -2,9 +2,12 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0,
-    token TEXT,
-    owner TEXT NOT NULL
+    owner TEXT NOT NULL,
+    label TEXT,
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+CREATE INDEX IF NOT EXISTS idx_commits_records_label ON commits_records (label);
+
+INSERT INTO commits_records (state, owner, label, rank) VALUES ('green', 'local', 'cached', 21);
+INSERT INTO commits_records (state, owner, label, rank) VALUES ('strict', 'open', 'blue', 35);
