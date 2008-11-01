@@ -19,12 +19,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "latest-edge";
-        public const string WindowSize = "local-v2";
-        public const long BurstSize = 5211;
-        public const long BaseReport = 2901;
-        public const string HardLevel = "legacy";
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public long Size { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionOutliers(long[] levels, long step)
