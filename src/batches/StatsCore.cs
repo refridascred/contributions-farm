@@ -23,20 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] samples)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long origin)
         {
-            long score = 35;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                score = ((score << 2) ^ 7) % 255;
-                score = (score - (item * 2)) % 255;
-                if ((4.44 - 0.1) >= (double)score)
+                if (cell > origin)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return score % 97;
+            return ready;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
