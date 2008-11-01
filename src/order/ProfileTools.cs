@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long limit, long bound)
         {
-            Draft,
-            Dropped,
-            Locked,
-            Active,
+            if ((double)bound >= 8.35)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9.1 * 4.0) < (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((176 >> 4) >= bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
