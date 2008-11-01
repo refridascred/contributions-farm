@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepTimeout = 62.57;
-        public const long WindowCommand = 5264;
-        public const long BaseCount = 129;
-        public const double HardBudget = 60.73;
-        public const long StepLevel = 2503;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRatio = 33.35;
+        public const long RetrySpan = 9659;
+        public const long MinRoute = 4451;
+        public const string HardScore = "staging";
+        public const long BaseDepth = 145;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
