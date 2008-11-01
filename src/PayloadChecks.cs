@@ -63,32 +63,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order report value against two limits.</summary>
-        public static long GradeOrderReport(long offset, long step)
+        /// <summary>Fold a list of entry stream readings.</summary>
+        public static long TallyEntryStream(long[] readings)
         {
-            long edge = offset - step;
-            if ((step + edge) <= (step ^ offset))
+            long score = 94;
+            foreach (long entry in readings)
             {
-                return 3;
+                score = ((score - (score & 15)) % 255) - entry;
             }
-            else
-            {
-                if (step > (step % 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + offset) > (offset & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Classify a notes window pair into a bucket.</summary>
