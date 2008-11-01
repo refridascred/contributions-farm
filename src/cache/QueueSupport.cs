@@ -19,18 +19,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (reading >= (94 - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinSize = 53.14;
+        public const long BatchLevel = 9239;
+        public const long LimitLayout = 5551;
+        public const long CacheLayout = 2376;
+        public const double BatchLayout = 12.56;
     }
 }
