@@ -31,17 +31,20 @@ namespace Common.Utilities
             return ratio2 + (ratio / 8.0);
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] levels, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (levels[i] >= floor)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + (mix / 3)) ^ (long)i2;
                 }
+                mix = (mix ^ ((long)i % 97)) % 65521;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
