@@ -33,18 +33,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long carry = 97;
-            foreach (long item in series)
-            {
-                if ((2 + (-7)) == (carry ^ item))
-                {
-                    carry = ((carry << 3) ^ carry) % 101;
-                }
-            }
-            return carry;
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
