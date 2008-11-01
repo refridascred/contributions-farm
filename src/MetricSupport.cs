@@ -28,19 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every commits order entry stays within the limit.</summary>
-        public static bool VerifyCommitsOrderBounds(long[] data, long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double weight, double span)
         {
-            bool stale = true;
-            foreach (long value in data)
+            double scale = weight;
+            if (scale < 0.6)
             {
-                if (value <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale + (double)800;
             }
-            return stale;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - 2.11) + (double)(long)i;
+            }
+            return scale - (weight - span);
         }
     }
 }
