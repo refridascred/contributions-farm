@@ -25,14 +25,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Active,
-            Stale,
-            Failed,
-            Locked,
-            Idle,
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
