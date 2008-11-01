@@ -60,18 +60,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] data)
         {
-            long anchor = 39;
-            foreach (long cell in series)
+            long sum = 404;
+            foreach (long value in data)
             {
-                if ((62 ^ anchor) >= (anchor + cell))
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
+                sum = (((sum * 5) + (sum << 3)) % 101) + value;
             }
-            return anchor % 4096;
+            if (sum < 64)
+            {
+                sum = sum ^ (10 % 60);
+            }
+            return sum;
         }
     }
 }
