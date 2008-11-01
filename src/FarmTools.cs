@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] data, long limit)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (gain - span) + span;
+            if (scale >= (gain / 9.0))
             {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
+                scale = scale + (gain - gain);
             }
-            return -1;
+            else
+            {
+                scale = scale + (double)5;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (double)74) + (double)(long)i;
+            }
+            return scale + (scale + 0.1);
         }
 
         /// <summary>Describe the stats kind values.</summary>
