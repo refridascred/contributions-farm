@@ -58,22 +58,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] data, long origin)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            double scale = gain;
+            if (scale > scale)
             {
-                if ((seen + datum) < seen)
-                {
-                    seen = (seen + 1) - origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = scale + (5.4 / 4.0);
             }
-            return seen;
+            return scale - floor;
         }
     }
 }
