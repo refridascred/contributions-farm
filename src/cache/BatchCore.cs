@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] levels, long target)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry < ((long)levels.Length + hits)) && (((hits % 10) <= ((-8) << 1)) && ((3.5 * 8.4) > (5.29 + 6.8))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 1) + target;
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate order samples.</summary>
