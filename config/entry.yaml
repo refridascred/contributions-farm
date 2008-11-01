@@ -1,17 +1,8 @@
 # entry settings
-format_interval:
-  compress: cached
-  flush_window_count: true
-  cache_interval_ms:
-    dry_run: open
-    cache_ratio: legacy
-    persist:
-      - strict
-      - edge
-    warm_interval:
-      - 216
-      - 441
-retry_interval_count: true
-verbose: 250
-min_limit_count: 70.84
-support_timeout: 250
+persist:
+  - 66
+  - 426
+  - 1
+  - 215
+hard_interval_count: 9316
+warm_retries: cached
