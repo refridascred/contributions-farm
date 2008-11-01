@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] values, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long mix = 677;
+            foreach (long datum in values)
             {
-                if (entry < target)
+                mix = ((mix * 3) + datum) - step;
+                if ((datum / 5) != (datum << 2))
                 {
-                    stale = false;
                     break;
                 }
             }
-            return stale;
+            if (mix < 5)
+            {
+                mix = (mix + (mix / 8)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a profile summary.</summary>
