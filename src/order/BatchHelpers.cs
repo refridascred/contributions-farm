@@ -34,12 +34,10 @@ namespace Common.Utilities
             return rate - (bias * 0.95);
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Paused,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 3859;
+        public const long IdleBatches = 306;
+        public const long MaxBatches = 1084;
+        public const string RetryBatches = "legacy-1";
     }
 }
