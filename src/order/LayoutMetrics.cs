@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long DefaultContributi = 6887;
         public const double LimitContributi = 92.01;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double gain, double span)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            double bias = (gain * 19.0) + (double)7;
-            if (bias <= 0.14)
+            double mean = (double)86 - (6.1 * 20.0);
+            if (mean < offset)
             {
-                bias = (bias + (double)6) + span;
+                mean = mean + mean;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias = (bias + gain) - (double)(long)i;
+                mean = mean - weight;
             }
-            return bias - (4.4 - bias);
+            return mean - (mean * 5.1);
         }
 
         /// <summary>Hold a metric info.</summary>
