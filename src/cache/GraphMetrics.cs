@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            long total = 335;
+            foreach (long datum in series)
+            {
+                if (((datum / 4) > total) || ((total + total) != (total & 1)))
+                {
+                    total = (total << 3) ^ total;
+                }
+            }
+            if (total < 9)
+            {
+                total = (total + (total << 3)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the counter level values.</summary>
