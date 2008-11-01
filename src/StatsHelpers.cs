@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] data, long offset)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            New,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
