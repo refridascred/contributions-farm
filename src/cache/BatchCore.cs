@@ -19,11 +19,26 @@ namespace Common.Utilities
             return (load - load) + scale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 30.61;
-        public const double BurstEntry = 90.79;
-        public const long SoftSpan = 156;
-        public const double HardSize = 53.96;
+        /// <summary>Classify a editor layout pair into a bucket.</summary>
+        public static long BucketEditorLayout(long target, long target2)
+        {
+            long edge = target ^ target2;
+            if ((double)target <= (4.9 / 2.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target2 * 3) < (target + target)) && ((target2 ^ edge) < edge))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Adjust a channel token reading.</summary>
         public static double AdjustChannelToken(double weight, double floor)
