@@ -1,5 +1,7 @@
 {
-  "hard_timeout_count": ["green", "legacy", "cached"],
-  "warm_threshold_pct": "eu-west",
-  "dry_run": [200, 378, 341, 345]
+  "dry_run": false,
+  "burst_size_ms": "cached",
+  "verbose": "primary",
+  "hard_capacity_ms": "cached",
+  "filter_depth": 1
 }
