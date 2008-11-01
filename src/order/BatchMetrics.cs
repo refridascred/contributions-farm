@@ -22,18 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            long result = 58;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)item > (7.2 - 9.26)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = ((result * 5) + item) % 1000;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
