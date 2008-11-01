@@ -37,19 +37,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] values, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (sample < seed)
+                if ((sample ^ hits) > (sample << 3))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
