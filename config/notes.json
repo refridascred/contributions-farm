@@ -1,8 +1,9 @@
 {
-  "flush_threshold_pct": "stable",
-  "strict": "green",
-  "audit": true,
-  "verbose": ["fallback", "cached"],
-  "retry_retries_count": false,
-  "retry_capacity_s": 22.89
+  "base_size_pct": false,
+  "compress": {
+    "compress": "fallback",
+    "burst_ratio": ["eu-west", "legacy", "latest", "staging"],
+    "enabled": true
+  },
+  "route_retries": 30.55
 }
