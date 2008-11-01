@@ -28,16 +28,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double rate, double floor)
-        {
-            double rate2 = rate / 5.0;
-            if (rate2 <= (rate / 3.0))
-            {
-                rate2 = rate2 - floor;
-            }
-            return rate2 - floor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 9597;
+        public const long MaxSize = 8339;
+        public const double StepRecord = 97.47;
+        public const double SoftWidth = 82.8;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double HardGraph = 40.72;
