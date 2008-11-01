@@ -14,13 +14,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            Active,
+            Done,
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
