@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate batch cluster samples.</summary>
-        public static long TallyBatchCluster(long[] series, long target)
-        {
-            long result = -32;
-            foreach (long item in series)
-            {
-                if ((503 <= result) && ((9.0 - 8.88) >= (double)(long)series.Length))
-                {
-                    result = ((result + (item >> 4)) % 65521) + target;
-                }
-            }
-            if (result < 626)
-            {
-                result = (result ^ (result << 3)) % 4096;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryRatio = 9571;
+        public const string WindowInterval = "open-1";
+        public const long RetryBudget = 5154;
+        public const long IdleAlready = 7259;
+        public const long LimitAlready = 8642;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] readings, long floor)
