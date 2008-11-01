@@ -1,6 +1,6 @@
 {
-  "soft_ttl_ms": ["edge", "standard"],
-  "verbose": true,
-  "sync_retries_count": "cached",
-  "batch_retries_ms": ["strict", "cached", "standard"]
+  "batches_limit": [321, 371],
+  "contributi_ratio": 500,
+  "burst_limit": "local",
+  "default_capacity_ms": 5479
 }
