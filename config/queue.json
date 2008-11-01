@@ -1,7 +1,8 @@
 {
-  "batch_delay_pct": 88.81,
-  "strict": ["blue", "standard"],
-  "hard_ratio_pct": false,
-  "retry_threshold_ms": 90.54,
-  "counter_ratio": "local"
+  "verbose": [188, 457],
+  "queue_timeout": ["standard", "strict", "eu-west", "stable"],
+  "hard_threshold": false,
+  "readonly": true,
+  "hard_limit": [44, 359],
+  "schema_size": true
 }
