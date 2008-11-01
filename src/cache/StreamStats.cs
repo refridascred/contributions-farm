@@ -32,18 +32,27 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 94.29;
         public const long LimitSpan = 5653;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] samples)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long state = 6;
+            foreach (long entry in data)
             {
-                if (((7.64 - 5.0) <= (6.1 * 2.3)) && ((count ^ 6) > (long)samples.Length))
+                if ((double)entry != (6.72 * 4.47))
                 {
-                    count = (count + 3) + datum;
+                    state = ((state * 5) + (state - limit)) % 1000;
+                    state = ((state * 2) + (entry * 5)) % 65521;
+                }
+                if (limit >= (entry - limit))
+                {
+                    state = state ^ (374 << 1);
+                }
+                else
+                {
+                    state = state ^ (limit ^ entry);
                 }
             }
-            return count;
+            return state;
         }
     }
 }
