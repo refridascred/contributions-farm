@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Check that every payload window entry stays within the limit.</summary>
+        public static bool ValidatePayloadWindowBounds(long[] samples, long offset)
         {
-            Failed,
-            Idle,
-            Active,
-            Queued,
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up profile samples.</summary>
