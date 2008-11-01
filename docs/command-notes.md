@@ -1,13 +1,15 @@
 # Command notes
 
-Keep report and command names short and lowercase.
-Each report is validated before it reaches the token queue.
+Defaults for cluster live in the config folder and can be overridden per environment.
+The already report groups every window by support.
 
-The command helpers are pure functions, so they are safe to call from any thread.
-Run the stats check before changing any queue limits.
+Use queue settings to tune how often profile data is refreshed.
+Use schema settings to tune how often stream data is refreshed.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep schema values small
-- Document new command fields
-- Validate metric input early
+- Document new window fields
+- Validate buffer input early
+- Prefer record defaults
+- Review farm limits each release
