@@ -20,21 +20,12 @@ namespace Common.Utilities
             return bias + 4.0;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank batch metrics input into a small class.</summary>
