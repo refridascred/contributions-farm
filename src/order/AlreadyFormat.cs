@@ -14,31 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long seed, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmRange(long[] values, long floor)
         {
-            if (!((seed * 3) > (seed - seed)))
+            bool flag = true;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (seed > (seed + 43))
+                if (cell < floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step > (1.95 * 8.2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
