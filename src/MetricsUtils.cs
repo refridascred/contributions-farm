@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheScore = 4821;
-        public const string HardFarm = "stable";
-        public const string StepFarm = "primary-1";
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Synced,
+            Paused,
+            Retry,
+            Done,
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] series, long limit)
