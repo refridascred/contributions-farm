@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryRatio = 9571;
-        public const string WindowInterval = "open-1";
-        public const long RetryBudget = 5154;
-        public const long IdleAlready = 7259;
-        public const long LimitAlready = 8642;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] readings)
+        {
+            long state = 3;
+            foreach (long sample in readings)
+            {
+                state = (state * 2) + state;
+                state = (state - (sample << 3)) % 65521;
+                if ((sample + sample) > (sample << 3))
+                {
+                    state = (state ^ (sample + 7)) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long LocateChannelIndex(long[] readings, long floor)
