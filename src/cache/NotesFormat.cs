@@ -20,38 +20,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank commits order input into a small class.</summary>
-        public static long SortCommitsOrder(long floor, long limit)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            if ((limit / 8) < limit)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((707 & 255) != (floor + limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (floor >= (floor % 5))
+                    if ((samples[i] - samples[j]) != 16)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor & 31) >= limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
