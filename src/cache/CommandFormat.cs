@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long LimitCommits = 225;
         public const long BurstFactor = 6102;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 3285;
-        public const string MinReport = "latest";
-        public const long HardReport = 5819;
-        public const string BurstReport = "standard";
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Adjust a record context reading.</summary>
         public static double ScaleRecordContext(double bias, double bias2)
