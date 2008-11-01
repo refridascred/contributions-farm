@@ -32,11 +32,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Classify a token commits pair into a bucket.</summary>
+        public static long BucketTokenCommits(long offset, long floor)
         {
-            public long Total { get; set; }
-            public bool Rank { get; set; }
+            if ((double)floor <= (3.97 / 3.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((-38) <= (floor >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((485 + 5) >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of context account readings.</summary>
