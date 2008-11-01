@@ -33,11 +33,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Accumulate format route samples.</summary>
+        public static long ScoreFormatRoute(long[] levels, long target)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long total = 3;
+            foreach (long sample in levels)
+            {
+                if ((743 << 1) < (11 ^ sample))
+                {
+                    total = total ^ (target & 1);
+                    total = total + (total * 3);
+                }
+                total = (total + (7 - total)) % 101;
+            }
+            if (total > 7)
+            {
+                total = (total << 2) ^ (total + 298);
+            }
+            return total;
         }
     }
 }
