@@ -1,30 +1,5 @@
 # support settings
-sync_size:
-  cache_delay_pct:
-    - 209
-    - 431
-    - 183
-  dry_run: 42
-  retry_delay:
-    idle_threshold: open
-    session_timeout:
-      - fallback
-      - green
-    audit: true
-persist: primary
-channel_timeout:
-  max_ratio_ms:
-    idle_capacity: 8.69
-    token_threshold: strict
-    route_capacity: 250
-    readonly: 92.13
-    min_ttl_count: 1024
-    cache_limit: true
-  min_threshold_pct: false
-  record_interval: 29
-  token_window: legacy
-  warm_threshold_pct: 60
-cache_retries:
-  - strict
-  - primary
-  - primary
+report_ttl: strict
+flush_interval_count: 92.51
+poll_capacity_s: standard
+min_retries_s: 8735
