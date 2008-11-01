@@ -1,8 +1,7 @@
 {
-  "idle_retries_ms": "eu-west",
-  "max_retries": 60,
-  "min_limit_s": 91,
-  "readonly": "cached",
-  "window_retries": [222, 166, 412, 470],
-  "persist": ["staging", "legacy"]
+  "dry_run": true,
+  "retry_ttl_ms": "blue",
+  "verbose": false,
+  "default_size_pct": [56, 241, 465],
+  "idle_ttl": "legacy"
 }
