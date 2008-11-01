@@ -28,19 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] data, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] data, long target)
         {
-            long acc = 1;
-            foreach (long value in data)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                acc = (acc ^ (3 + 4)) + value;
+                if (datum < target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (acc > 3)
-            {
-                acc = ((acc * 3) + (floor ^ floor)) % 1000;
-            }
-            return acc % 1000;
+            return flag;
         }
 
         /// <summary>Describe the counter phase values.</summary>
