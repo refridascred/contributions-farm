@@ -11,11 +11,15 @@ namespace Common.Utilities
         public const long RetryMetric = 8534;
         public const long WindowLevel = 22;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 9275;
-        public const long DefaultCounter = 4906;
-        public const string BaseCounter = "strict-1";
-        public const string BurstCounter = "fallback-1";
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            New,
+            Closed,
+            Failed,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleScore = 5587;
