@@ -17,39 +17,18 @@ namespace Common.Utilities
         public const string BaseCounter = "strict-1";
         public const string BurstCounter = "fallback-1";
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long step, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] items, long target)
         {
-            long diff = step - floor;
-            if ((diff << 1) <= 130)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((3.16 + 0.77) > (double)floor)
+                if ((target - cell) != (hits & 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((4.7 - 6.55) <= (double)diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((floor ^ step) == (diff * 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a record reading.</summary>
