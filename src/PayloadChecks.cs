@@ -27,23 +27,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long offset)
+        /// <summary>Audit queue filter readings against a rule.</summary>
+        public static long CountQueueFilterOutliers(long[] items, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (!(1 >= (mix ^ offset)))
+                if (seed <= (1 % 12))
                 {
-                    mix = (mix ^ (mix + offset)) % 101;
+                    matches = (matches + 3) + sample;
                 }
-                if (((long)i + mix) <= offset)
-                {
-                    mix = (mix + mix) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the cache state values.</summary>
