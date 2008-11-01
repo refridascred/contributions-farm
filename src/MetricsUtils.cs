@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank already cache input into a small class.</summary>
-        public static long ClassifyAlreadyCache(long limit, long target)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long prev = limit - target;
-            if (((double)target == (6.35 - 0.18)) && ((prev - prev) == (target & 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (prev > (6 + prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Done,
+            Failed,
+            New,
+            Active,
         }
 
         /// <summary>Roll a context command counter forward.</summary>
