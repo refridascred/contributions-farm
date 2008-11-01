@@ -1,6 +1,7 @@
 {
-  "flush_ttl_count": [390, 105, 8],
-  "default_limit_pct": [368, 90],
-  "metric_timeout": 9.57,
-  "hard_depth_pct": 9154
+  "warm_window": "open",
+  "audit": 11,
+  "buffer_delay": 4506,
+  "default_ratio": true,
+  "max_depth_count": "edge"
 }
