@@ -1,4 +1,11 @@
 # entry settings
-hard_ttl: 84.43
-githubfarm_depth: fallback
-sync_size_ms: 84.5
+strict:
+  - 268
+  - 442
+cluster_depth: 100
+cache_delay_s: latest
+base_timeout_s:
+  - standard
+  - green
+  - green
+cache_delay_pct: false
