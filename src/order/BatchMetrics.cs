@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a tools editor pair into a bucket.</summary>
-        public static long BucketToolsEditor(long floor, long floor2)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] data, long offset)
         {
-            if ((16.0 / 9.0) <= (double)floor2)
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2 / 2) < floor)
+                if (!!(count >= (offset - count)))
                 {
-                    return 7;
+                    count = (count + 3) - datum;
                 }
                 else
                 {
-                    if (!((floor / 5) >= 75))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
