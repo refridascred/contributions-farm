@@ -24,21 +24,12 @@ namespace Common.Utilities
         public const long IdleSize = 6048;
         public const long LimitCommand = 5688;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
