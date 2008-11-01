@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long DefaultContributi = 6887;
         public const double LimitContributi = 92.01;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardInterval = 5865;
-        public const long StepTools = 7582;
-        public const double MinTools = 90.27;
-        public const long IdleSize = 1800;
-        public const long DefaultFactor = 6403;
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Retry,
+            Failed,
+            Done,
+            Dropped,
+            New,
+        }
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
