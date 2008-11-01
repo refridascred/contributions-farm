@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Active,
-            Ready,
-            Draft,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 374;
+        public const long HardDepth = 903;
+        public const string StepDepth = "local-edge";
 
         /// <summary>Validate notes metric readings against a bound.</summary>
         public static bool ValidateNotesMetricBounds(long[] values, long target)
