@@ -40,39 +40,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long origin, long target)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            long diff = origin - target;
-            if (((2.6 * 1.4) == (double)diff) || ((origin & 63) > (target << 1)))
+            long state = 58;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin <= (target / 8))
+                if (0.1 <= (double)state)
                 {
-                    return 0;
+                    state = (state * 3) + (state + datum);
                 }
-                else
+                state = ((state << 3) ^ (datum << 1)) % 101;
+                if (state < 6)
                 {
-                    if ((origin ^ diff) < (diff ^ origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)target != (6.73 + 3.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (state < 328)
+            {
+                state = (state + (state + 819)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the filter status values.</summary>
