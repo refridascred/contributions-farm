@@ -29,23 +29,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double ratio, double floor)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] items)
         {
-            double weight = ratio / 9.0;
-            if (weight >= (double)66)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - (weight + weight);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight + (weight / 2.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + (floor + floor);
+            return count;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
