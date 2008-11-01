@@ -16,38 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank record buffer input into a small class.</summary>
-        public static long RankRecordBuffer(long target, long seed)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if ((target / 6) <= (target * 5))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target - target) == (seed ^ seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)45 <= (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((target + seed) > (760 << 3)) || ((seed - seed) >= seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Done,
+            Closed,
+            Synced,
         }
 
         /// <summary>Compare every pair of cache window readings.</summary>
