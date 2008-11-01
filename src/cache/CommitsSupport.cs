@@ -27,12 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowTimeout = 8308;
-        public const long HardFilter = 567;
-        public const long SoftFilter = 4835;
-        public const double IdleFilter = 23.63;
-        public const long BaseDepth = 802;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
