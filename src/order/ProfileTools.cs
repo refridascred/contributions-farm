@@ -62,15 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] values, long target)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)target < (4.0 / 5.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) + entry;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
