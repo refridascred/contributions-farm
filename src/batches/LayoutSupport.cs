@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] series, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutBounds(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (entry <= step)
+                if (item < floor)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Define command limits and defaults.</summary>
