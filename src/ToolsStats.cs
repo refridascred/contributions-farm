@@ -69,9 +69,12 @@ namespace Common.Utilities
             return load - (scale - scale);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 8498;
-        public const long SoftRatio = 2353;
-        public const long CacheCluster = 4484;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Dropped,
+            Paused,
+            Retry,
+        }
     }
 }
