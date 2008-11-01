@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (count <= (216 - sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a cache account counter forward.</summary>
