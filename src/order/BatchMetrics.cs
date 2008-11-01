@@ -76,15 +76,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Count the notes queue entries that pass the check.</summary>
+        public static long AuditNotesQueueOutliers(long[] levels, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if (!(((-17) % 10) >= (datum - origin)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
