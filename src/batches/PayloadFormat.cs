@@ -33,17 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] data, long bound)
+        /// <summary>Digest a series of window buffer entries.</summary>
+        public static long CombineWindowBuffer(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 4;
+            foreach (long reading in values)
             {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 3) ^ reading) % 4096;
             }
-            return -1;
+            if (mix > 45)
+            {
+                mix = ((mix * 4) + (bound + 3)) % 1000;
+            }
+            return mix % 1000;
         }
     }
 }
