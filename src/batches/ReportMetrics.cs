@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double scale, double bias)
         {
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
+            double drift = (4.52 - bias) / 8.0;
+            if (drift >= (bias * 0.43))
+            {
+                drift = drift - scale;
+            }
+            else
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (double)58) - (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Roll a token counter forward.</summary>
