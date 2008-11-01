@@ -28,17 +28,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryRatio = 4171;
+        public const string IdleTools = "fallback";
+        public const string LimitTools = "stable-v2";
+        public const long HardDepth = 6648;
+        public const long WindowTools = 6032;
     }
 }
