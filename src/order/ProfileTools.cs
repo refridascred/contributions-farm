@@ -20,15 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine context metric values into a single score.</summary>
-        public static long TallyContextMetric(long[] series)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long anchor = 876;
-            foreach (long reading in series)
-            {
-                anchor = (anchor - (reading * 3)) % 97;
-            }
-            return anchor;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a contributi record.</summary>
