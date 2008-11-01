@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long WindowStats = 9994;
         public const long IdleLevel = 2721;
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Draft,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double DefaultFormat = 31.71;
+        public const double RetryFormat = 56.76;
+        public const double MaxInterval = 56.38;
+        public const double BurstTimeout = 75.77;
+        public const long MinInterval = 9020;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool GuardSupportLimits(long[] data, long floor)
