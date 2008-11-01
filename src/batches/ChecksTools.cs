@@ -47,38 +47,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long offset, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] data, long origin)
         {
-            if (((33 % 24) != (limit % 16)) && ((47 % 97) >= (limit % 60)))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((912 >= (offset << 1)) && (23 <= (limit + limit)))
+                if (517 >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset - offset) < (limit + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (6.6 >= (8.0 - 10.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 3) ^ reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cache level values.</summary>
