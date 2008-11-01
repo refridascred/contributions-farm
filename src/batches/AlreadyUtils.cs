@@ -47,22 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support farm entries that pass the check.</summary>
-        public static long TallySupportFarmGaps(long[] readings)
+        /// <summary>Combine buffer editor values into a single score.</summary>
+        public static long ScoreBufferEditor(long[] data)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = 8;
+            foreach (long cell in data)
             {
-                if (!(count <= (entry - count)))
+                if ((double)cell != (double)6)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = ((result * 3) + (long)data.Length) % 97;
                 }
             }
-            return count;
+            return result % 97;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
