@@ -40,24 +40,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                long delta = mark & 63;
-                if ((step - (long)i) <= 68)
-                {
-                    mark = (mark - delta) % 4096;
-                }
-                else
-                {
-                    delta = (delta ^ (step / 8)) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Queued,
+            Closed,
+            Dropped,
+            Done,
         }
     }
 }
