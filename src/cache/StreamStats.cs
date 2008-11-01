@@ -23,15 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Dropped,
-            Failed,
-            Synced,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheCount = "cached-v2";
+        public const string BatchGraph = "legacy-v2";
+        public const long MaxSpan = 4625;
+        public const long MinGraph = 260;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long ClassifyContext(long limit, long limit2)
