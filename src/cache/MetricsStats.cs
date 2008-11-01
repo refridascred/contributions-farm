@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 5804;
-        public const long RetryFactor = 7942;
-        public const long WindowLevel = 6100;
+        /// <summary>Measure how many report account samples are out of range.</summary>
+        public static long AuditReportAccountMatches(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((count & 63) < (entry % 2)) || ((step << 2) <= entry))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a stats layout reading.</summary>
         public static double BlendStatsLayout(double ratio, double bias)
