@@ -22,22 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] levels, long origin)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            double gain = scale;
+            if (gain >= gain)
             {
-                if ((double)sample > (7.0 + 6.3))
-                {
-                    matches = (matches + 2) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                gain = (gain - scale) - bias;
             }
-            return matches;
+            return gain - 2.0;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
