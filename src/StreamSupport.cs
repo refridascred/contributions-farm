@@ -26,12 +26,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((long)i == (offset / 8)))
+                {
+                    mix = (mix ^ mix) % 97;
+                }
+                mix = ((mix * 5) + ((long)i & 7)) % 255;
+                mix = mix + (2 - mix);
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the payload state values.</summary>
