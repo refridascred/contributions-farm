@@ -30,15 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double rate, double offset)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            double drift = rate - (3.4 - rate);
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + offset) + (double)(long)i;
-            }
-            return drift - drift;
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Digest a series of report graph entries.</summary>
