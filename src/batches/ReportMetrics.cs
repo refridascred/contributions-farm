@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Classify a tools context pair into a bucket.</summary>
+        public static long RankToolsContext(long origin, long origin2)
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
+            if ((origin - origin2) >= origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin ^ 16) < (12 + origin)) && (origin2 >= (origin2 << 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin / 9) >= (origin2 & 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of account readings.</summary>
