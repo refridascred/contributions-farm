@@ -59,11 +59,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseInterval = 5790;
-        public const long DefaultDepth = 3732;
-        public const long BatchScore = 5121;
-        public const long DefaultToken = 7069;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 6845;
+        public const long WindowCache = 6155;
+        public const long HardTimeout = 7770;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long LookupSchemaIndex(long[] values, long target)
