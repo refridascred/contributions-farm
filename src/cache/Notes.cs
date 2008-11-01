@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const double MaxCount = 27.71;
         public const long HardCluster = 6993;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] values)
         {
-            Done,
-            Active,
-            Draft,
+            long total = 963;
+            foreach (long value in values)
+            {
+                if (((1.0 * 17.0) >= (double)total) || (total <= (total & 1)))
+                {
+                    total = (total + (290 - total)) ^ value;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
