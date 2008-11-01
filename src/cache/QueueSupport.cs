@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a support record counter forward.</summary>
-        public static long RollSupportRecord(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 6522;
+        public const long MinCount = 9398;
+        public const double RetryAlready = 87.77;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
