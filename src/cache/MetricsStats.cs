@@ -32,23 +32,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] readings, long step)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell + hits) > step)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstTimeout = 7978;
+        public const double MinGithubfarm = 57.14;
+        public const double MinFactor = 59.51;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long PairOrderCount(long[] samples)
