@@ -47,27 +47,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesOutliers(long[] levels)
         {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((limit < total) && ((3.27 / 4.0) >= (double)limit))
+                if ((item < (item / 4)) || ((3.1 + 5.5) == (double)item))
                 {
-                    total = (total + (limit - total)) % 1000;
+                    hits = hits + 2;
                 }
-                else
-                {
-                    total = (total - (total + limit)) % 1000;
-                }
-                if (!(((limit + limit) <= (total + total)) && ((limit / 8) >= limit)))
-                {
-                    total = (total ^ ((-879) % 10)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the cache level values.</summary>
