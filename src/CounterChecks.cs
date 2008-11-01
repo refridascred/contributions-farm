@@ -65,12 +65,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Stale,
+            Active,
             Synced,
-            Done,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a counter summary.</summary>
