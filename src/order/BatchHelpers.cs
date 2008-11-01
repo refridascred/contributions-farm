@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            Draft,
+            Done,
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Combine report values into a single score.</summary>
