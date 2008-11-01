@@ -15,14 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
-        {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheRatio = 62.38;
+        public const long IdleQueue = 5844;
+        public const double BatchQueue = 20.91;
+        public const long WindowInterval = 9873;
+        public const double MaxWidth = 83.08;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long PairBatchesCount(long[] series)
