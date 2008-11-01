@@ -29,11 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitBatches = 42.55;
-        public const double IdleRatio = 59.99;
-        public const long CacheTimeout = 6419;
-        public const long HardBatches = 9534;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double DefaultCounter = 30.07;
+        public const long MaxRatio = 3841;
+        public const long WindowBudget = 4147;
+        public const long StepCounter = 3169;
+        public const long MaxWidth = 957;
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
