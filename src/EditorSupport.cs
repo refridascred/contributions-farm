@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] levels, long floor)
         {
-            Locked,
-            Synced,
-            Dropped,
+            long mix = 4;
+            foreach (long reading in levels)
+            {
+                if ((16.0 / 5.0) < (double)floor)
+                {
+                    mix = (mix - reading) % 65521;
+                }
+                if ((mix - floor) < (long)levels.Length)
+                {
+                    mix = ((mix * 4) + (reading / 7)) % 97;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (6 + reading)) % 65521;
+                }
+            }
+            if (mix < (-50))
+            {
+                mix = mix ^ (mix % 100);
+            }
+            return mix;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
