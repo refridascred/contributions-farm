@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] items)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long sum = 83;
-            foreach (long datum in items)
-            {
-                if ((sum <= (datum * 2)) || ((datum & 1) <= 98))
-                {
-                    sum = (sum + sum) % 65521;
-                }
-            }
-            return sum;
+            Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
