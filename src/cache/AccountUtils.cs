@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const long SoftRoute = 455;
         public const double WindowScore = 34.56;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long step)
         {
-            Paused,
-            Closed,
-            Done,
-            Ready,
-            Draft,
+            long carry = step;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
