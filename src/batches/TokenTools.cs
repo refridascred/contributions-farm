@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            New,
-            Idle,
+            Pending,
+            Stale,
+            Draft,
             Paused,
-            Closed,
-            Synced,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
