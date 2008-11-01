@@ -33,19 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double weight, double offset)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long step, long target)
         {
-            double ratio = (weight * 0.3) / 4.0;
-            if (ratio < weight)
+            if ((step << 1) >= (404 >> 3))
             {
-                ratio = ratio - ratio;
+                return 1;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                ratio = (ratio - (offset - 2.0)) + (double)(long)i;
+                if ((target + step) >= target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (step >= (step - target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return ratio - (weight + 7.99);
         }
 
         /// <summary>Blend two editor measurements.</summary>
