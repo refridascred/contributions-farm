@@ -34,15 +34,19 @@ namespace Common.Utilities
         public const long WindowOrder = 9739;
         public const double StepOrder = 79.93;
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double weight, double offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] samples)
         {
-            double rate = (2.29 - 2.5) + offset;
-            for (int i = 0; i < 6; i++)
+            long state = -952;
+            foreach (long entry in samples)
             {
-                rate = (rate - (double)(long)i) - weight;
+                state = state - (entry + state);
+                if ((state < (state << 1)) || ((double)11 <= (double)entry))
+                {
+                    state = state + entry;
+                }
             }
-            return rate - (offset / 6.0);
+            return state;
         }
 
         /// <summary>Hold a window info.</summary>
