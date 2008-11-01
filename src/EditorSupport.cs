@@ -31,13 +31,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Combine cluster order values into a single score.</summary>
+        public static long WeighClusterOrder(long[] values, long step)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long sum = 8;
+            foreach (long cell in values)
+            {
+                sum = (((sum ^ (sum << 2)) % 1000) ^ cell) + step;
+            }
+            return sum;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
