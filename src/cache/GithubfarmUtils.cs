@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support account entries that pass the check.</summary>
-        public static long CountSupportAccountHits(long[] series)
+        /// <summary>Derive the next already session value from a seed.</summary>
+        public static long SeriesAlreadySession(long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item % 10) >= 504)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                total = ((total << 3) ^ (floor ^ floor)) % 101;
+                total = (total ^ (floor - floor)) % 1000;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
