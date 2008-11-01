@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFactor = "open-v2";
-        public const long MaxFilter = 3586;
-        public const double CacheFilter = 51.56;
-        public const long DefaultFilter = 2082;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleCount = 365;
+        public const long SoftEntry = 4470;
+        public const long BaseInterval = 5538;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
