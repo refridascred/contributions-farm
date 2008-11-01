@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] readings, long floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((20 ^ count) == (8 + count))
-                {
-                    count = ((count + 1) + item) + floor;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public double Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
