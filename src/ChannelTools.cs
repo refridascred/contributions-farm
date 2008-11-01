@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] levels, long floor)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = bias;
+            if (rate >= (bias2 - rate))
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + (rate - bias);
             }
-            return -1;
+            return rate - 3.65;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
