@@ -22,39 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long target, long limit)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double weight, double span)
         {
-            long diff = target + limit;
-            if ((target + diff) == (limit ^ limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((diff + target) != (target ^ 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((5 ^ diff) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target ^ limit) >= limit) || ((double)limit <= 9.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double ratio = (span + span) / 9.0;
+            return (ratio + 15.0) + weight;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
