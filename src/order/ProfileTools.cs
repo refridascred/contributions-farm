@@ -58,20 +58,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long origin, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 13; i++)
+            long prev = origin - limit;
+            if (4.4 > (double)prev)
             {
-                if ((58 + seed) != (long)i)
-                {
-                    continue;
-                }
-                result = (result - (seed + result)) % 97;
-                result = ((result * 2) + (long)i) % 65521;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((double)origin < (19.0 - 5.4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)origin > (double)prev))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
