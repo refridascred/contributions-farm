@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long WindowDepth = 6408;
         public const long LimitEditor = 7741;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultCount = 8375;
-        public const long IdleFactor = 649;
-        public const double HardBudget = 62.53;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = ((anchor << 2) ^ (anchor & 3)) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long DeriveChecks(long limit)
