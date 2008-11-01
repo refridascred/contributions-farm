@@ -87,13 +87,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
+            Active,
+            Draft,
+            Synced,
+            Paused,
+            Failed,
         }
     }
 }
