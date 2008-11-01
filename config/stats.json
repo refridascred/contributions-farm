@@ -1,5 +1,15 @@
 {
-  "default_window_count": "legacy",
-  "poll_delay": [424, 34, 370],
-  "burst_interval_ms": true
+  "batch_delay": ["cached", "strict", "local"],
+  "soft_ratio_pct": 38.79,
+  "readonly": "green",
+  "batch_ratio": "open",
+  "checks_window": {
+    "tools_timeout": 75,
+    "flush_retries_s": ["primary", "open", "staging"],
+    "enabled": 34,
+    "hard_retries": false,
+    "format_timeout": 42.15,
+    "hard_depth_count": "open"
+  },
+  "compress": 500
 }
