@@ -54,16 +54,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double span)
-        {
-            double mean = weight;
-            if (mean < (2.29 - weight))
-            {
-                mean = mean + span;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 2519;
+        public const long HardScore = 7328;
+        public const long HardCluster = 6102;
+        public const string BaseCluster = "standard-1";
+        public const double BurstCluster = 48.72;
 
         /// <summary>Blend two farm format measurements.</summary>
         public static double SmoothFarmFormat(double gain, double offset)
