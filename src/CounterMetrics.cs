@@ -39,14 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            New,
-            Locked,
-            Stale,
+            Synced,
+            Dropped,
             Pending,
-            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
