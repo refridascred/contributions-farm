@@ -37,15 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a stats report reading.</summary>
-        public static double ScaleStatsReport(double rate, double bias)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] series)
         {
-            double drift = rate;
-            if (drift >= (double)35)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - (double)657) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - (rate - rate);
+            return hits;
         }
     }
 }
