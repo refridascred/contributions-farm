@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] samples, long seed)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= seed)
+                if (data[i] == limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the stats kind values.</summary>
