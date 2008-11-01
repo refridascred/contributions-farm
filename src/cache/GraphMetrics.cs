@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] series)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long total = 335;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((datum / 4) > total) || ((total + total) != (total & 1)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (total << 3) ^ total;
+                    if ((data[i] ^ data[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < 9)
-            {
-                total = (total + (total << 3)) % 97;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the counter level values.</summary>
