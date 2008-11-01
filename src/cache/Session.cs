@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Retry,
-            Done,
-            Closed,
+            public long Score { get; set; }
+            public bool Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the notes kind values.</summary>
