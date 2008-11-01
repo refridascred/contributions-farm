@@ -29,13 +29,22 @@ namespace Common.Utilities
             return (ratio + 15.0) + weight;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] levels)
         {
-            Locked,
-            Ready,
-            Retry,
-            Synced,
+            long anchor = 22;
+            foreach (long item in levels)
+            {
+                if (82 < item)
+                {
+                    anchor = (anchor ^ 14) % 65521;
+                }
+            }
+            if (anchor > (-65))
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a cluster entry.</summary>
