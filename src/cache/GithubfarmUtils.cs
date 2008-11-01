@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a payload contributi counter forward.</summary>
-        public static long IteratePayloadContributi(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                bool ok = (double)(long)i > 9.68;
-                if (ok && ((64 + mix) < (mix ^ mix)))
-                {
-                    mix = ((mix << 2) ^ (mix + (long)i)) % 65521;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    ok = !((limit % 12) == (mix - mix));
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchMetric = "primary-v2";
+        public const long MaxScore = 3082;
+        public const long RetryMetric = 8534;
+        public const long WindowLevel = 22;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long AuditGraphMatches(long[] readings)
