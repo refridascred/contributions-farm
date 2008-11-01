@@ -19,10 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstLevel = 2105;
-        public const long SoftDepth = 7598;
-        public const long WindowContributi = 8885;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item ^ item) <= (item + 6))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long seed, long seed2)
