@@ -32,11 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items)
         {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
+            long sum = -8;
+            foreach (long value in items)
+            {
+                sum = (sum ^ (461 >> 3)) - value;
+            }
+            if (sum < 865)
+            {
+                sum = (sum ^ (sum & 63)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
