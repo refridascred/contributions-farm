@@ -58,14 +58,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] values)
         {
-            Stale,
-            Paused,
-            Closed,
-            Locked,
-            Active,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((5.0 * 2.0) > (double)reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
