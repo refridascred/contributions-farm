@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank session filter input into a small class.</summary>
-        public static long BucketSessionFilter(long target, long step)
+        /// <summary>Count the filter entry entries that pass the check.</summary>
+        public static long AuditFilterEntryOutliers(long[] samples)
         {
-            if (!(2 <= (step + target)))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step * 4) >= step)
+                if ((hits & 255) != (7 & 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (1 < (step & 31))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.1 * 6.3) == (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = (hits + 1) - sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit format filter readings against a rule.</summary>
