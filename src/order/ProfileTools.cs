@@ -76,14 +76,39 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long step, long origin)
         {
-            Queued,
-            Locked,
-            Stale,
-            Done,
-            Draft,
+            long edge = step + origin;
+            if (((edge + origin) <= (edge - origin)) || ((double)step >= (5.51 - 5.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin >= (edge - step)) || ((5.3 * 6.03) == (double)step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step >= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step <= (6.23 - 4.3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits mode values.</summary>
