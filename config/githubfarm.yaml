@@ -1,22 +1,15 @@
 # githubfarm settings
-dry_run:
-  enabled: 95
-  retry_window_ms: primary
-  min_depth_s: false
-  strict: 11.55
-  hard_window_pct: blue
-base_retries: 9484
-burst_ratio_s:
-  persist:
-    - open
-    - standard
-    - latest
-    - cached
-  idle_timeout: open
-  idle_timeout_s: 94
-  retry_size_count:
-    - 73
-    - 329
-  compress: latest
-hard_retries: 1911
-githubfarm_ratio: 11.8
+filter_depth:
+  layout_size: 72.72
+  retry_retries_s: 98
+  readonly: standard
+  min_retries: cached
+hard_retries: 93.45
+record_ratio:
+  soft_ttl_count: 94
+  retry_timeout: open
+  batch_timeout_pct: 21.75
+  poll_ratio_ms: latest
+soft_retries: 68.54
+min_ratio: 11
+flush_size: false
