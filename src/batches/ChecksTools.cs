@@ -34,18 +34,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] data, long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (517 >= origin)
+                if ((matches >> 3) >= (matches / 3))
                 {
-                    hits = (hits + 3) ^ reading;
+                    matches = ((matches + 2) ^ datum) + offset;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
