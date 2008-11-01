@@ -39,16 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] values)
-        {
-            long score = 0;
-            foreach (long entry in values)
-            {
-                score = (score ^ score) + entry;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryFactor = 5750;
+        public const double HardRoute = 2.06;
+        public const long SoftRoute = 4867;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterOutliers(long[] levels)
