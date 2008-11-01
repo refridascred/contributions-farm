@@ -1,11 +1,6 @@
 {
-  "metrics_depth": {
-    "sync_window_s": [244, 460],
-    "batches_depth": 11,
-    "idle_interval": 81,
-    "record_depth": "cached"
-  },
-  "hard_window_ms": true,
-  "poll_threshold_count": 31.04,
-  "sync_size": "open"
+  "report_delay": 36.97,
+  "metrics_timeout": 30,
+  "record_depth": true,
+  "cache_threshold": 1024
 }
