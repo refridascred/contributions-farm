@@ -72,22 +72,13 @@ namespace Common.Utilities
         public const long StepBatch = 3183;
         public const string BaseFactor = "strict";
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] values, long bound)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long total = -9;
-            foreach (long sample in values)
-            {
-                if ((bound * 3) != (bound % 5))
-                {
-                    total = total + (bound - sample);
-                }
-                if ((total >> 3) <= (bound % 12))
-                {
-                    total = (total << 3) ^ (698 * 5);
-                }
-            }
-            return total;
+            New,
+            Dropped,
+            Synced,
+            Active,
         }
     }
 }
