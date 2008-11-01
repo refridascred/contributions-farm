@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long seed, long limit)
         {
-            Locked,
-            Ready,
-            Draft,
-            Queued,
+            long cur = seed + limit;
+            if (((23 >> 1) != (cur / 2)) || ((cur >> 3) <= (352 % 24)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (cur > limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
