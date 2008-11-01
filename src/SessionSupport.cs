@@ -20,24 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] levels, long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long sum = 6;
-            foreach (long sample in levels)
-            {
-                long delta = (sum & 3) << 1;
-                sum = (((sum << 3) ^ (delta - 587)) % 65521) ^ sample;
-                if ((22 + 702) < sum)
-                {
-                    sum = sum ^ (offset * 2);
-                }
-            }
-            if (sum < 816)
-            {
-                sum = (sum ^ (offset - offset)) % 101;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
+            public double Level { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Describe the context phase values.</summary>
