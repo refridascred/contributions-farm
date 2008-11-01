@@ -54,22 +54,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] data, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((hits & 3) > (hits ^ hits))
+                if (((datum + 508) >= (long)data.Length) && ((5 >= (seed * 2)) && ((9 + 85) != (seen * 4))))
                 {
-                    hits = ((hits + 2) + item) + offset;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
