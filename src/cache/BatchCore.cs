@@ -19,25 +19,17 @@ namespace Common.Utilities
             return (load - load) + scale;
         }
 
-        /// <summary>Classify a editor layout pair into a bucket.</summary>
-        public static long BucketEditorLayout(long target, long target2)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] levels, long offset)
         {
-            long edge = target ^ target2;
-            if ((double)target <= (4.9 / 2.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target2 * 3) < (target + target)) && ((target2 ^ edge) < edge))
+                if (levels[i] >= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batch phase values.</summary>
