@@ -1,5 +1,5 @@
 {
-  "already_depth": "cached",
-  "support_ratio": 1,
-  "readonly": ["strict", "fallback", "latest", "strict"]
+  "max_capacity_pct": "standard",
+  "compress": "local",
+  "tools_ttl": 100
 }
