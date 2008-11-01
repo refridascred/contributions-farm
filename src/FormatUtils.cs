@@ -43,12 +43,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            Closed,
-            Synced,
-            Draft,
+            long mix = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Find the first account command entry that matches the target.</summary>
