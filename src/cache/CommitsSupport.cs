@@ -87,12 +87,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] data)
         {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item * 5) <= tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
