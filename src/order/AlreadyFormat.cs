@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long seed)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] samples, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score - score;
-                score = ((score * 3) + (long)i) % 4093;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
