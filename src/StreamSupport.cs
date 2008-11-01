@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double rate, double offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double rate2 = (offset * 8.08) / 3.0;
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = ((rate2 + offset) + (double)(long)i) - rate;
-            }
-            return rate2 + (offset * 4.0);
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a format options.</summary>
