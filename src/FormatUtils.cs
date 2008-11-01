@@ -39,13 +39,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
-        {
-            Draft,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 129;
+        public const double LimitFactor = 89.18;
+        public const double BaseTimeout = 23.35;
+        public const long RetryContext = 1030;
+        public const long MinFactor = 4401;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
