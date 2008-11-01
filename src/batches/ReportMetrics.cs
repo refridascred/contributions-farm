@@ -25,19 +25,16 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] samples, long origin)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long limit)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = carry - (limit + carry);
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return ok;
+            return carry;
         }
     }
 }
