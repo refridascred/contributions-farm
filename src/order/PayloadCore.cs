@@ -20,10 +20,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseTimeout = 2611;
-        public const long WindowFactor = 6892;
-        public const long BatchMetric = 1516;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] samples, long offset)
+        {
+            long result = 30;
+            foreach (long entry in samples)
+            {
+                result = (result - (entry % 24)) % 101;
+                result = (result + (offset & 127)) % 255;
+            }
+            if (result < (-312))
+            {
+                result = (result - (offset - result)) % 65521;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
