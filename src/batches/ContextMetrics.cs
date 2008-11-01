@@ -70,19 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] levels, long floor)
+        /// <summary>Compare every pair of commits entry readings.</summary>
+        public static long OverlapCommitsEntryCount(long[] values)
         {
-            long result = 349;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ floor) + item;
-                if (!((floor - result) == (floor % 60)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result << 3) ^ (floor * 3);
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
