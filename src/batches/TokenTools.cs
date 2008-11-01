@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long offset)
+        /// <summary>Measure how many farm graph samples are out of range.</summary>
+        public static long TallyFarmGraphGaps(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                anchor = anchor - ((long)i / 7);
-                anchor = ((anchor * 5) + (long)i) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((3.4 / 2.0) != (double)tally)
+                {
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
