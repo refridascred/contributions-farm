@@ -36,24 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long total = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!(((long)i + seed) == (total % 2)))
-                {
-                    total = ((total * 5) + (seed + total)) % 4096;
-                }
-                long count = (7 + total) >> 5;
-                if (5.9 <= (double)count)
-                {
-                    continue;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Pending,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Fold a list of metric tools readings.</summary>
