@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)origin < (6.0 + 2.7))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((861 >> 2) < (origin & 31))
                 {
-                    if ((items[i] + items[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
