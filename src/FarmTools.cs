@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double scale, double span)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long MatchProfileCount(long[] series)
         {
-            double bias = (double)(-702) * 19.0;
-            if (bias <= (scale - scale))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = (bias + (bias / 7.0)) + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias + 4.0;
+            return matches;
         }
 
         /// <summary>Hold a profile header.</summary>
