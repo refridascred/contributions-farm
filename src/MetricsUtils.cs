@@ -22,13 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Synced,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitFactor = 13.36;
+        public const double CacheQueue = 35.38;
+        public const long MaxQueue = 7687;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiMatches(long[] levels)
