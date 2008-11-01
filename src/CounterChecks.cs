@@ -65,17 +65,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double gain, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = gain;
+            if (ratio < ratio)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (span + ratio);
             }
-            return -1;
+            else
+            {
+                ratio = ratio - gain;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + (12.0 * 11.0);
         }
     }
 }
