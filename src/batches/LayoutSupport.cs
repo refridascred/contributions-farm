@@ -68,19 +68,19 @@ namespace Common.Utilities
         public const string MinFilter = "strict-edge";
         public const double MaxSize = 27.98;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] items, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] series, long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if (reading < floor)
+                if (cell > origin)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Iterate the account already series from a seed.</summary>
