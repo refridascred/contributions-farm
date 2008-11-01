@@ -44,17 +44,18 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] data, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((data[i] <= target) && ((data[i] % 3) != 0))
+                if ((count * 4) == (count - count))
                 {
-                    return (long)i;
+                    count = ((count + 1) ^ sample) - limit;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
