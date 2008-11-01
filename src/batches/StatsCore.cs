@@ -76,16 +76,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] items)
         {
-            long result = 360;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                result = ((result * 3) + (67 % 24)) % 101;
-                result = (result ^ (result ^ cell)) % 1000;
+                if (!((284 - matches) == (sample * 5)) && ((double)sample == (9.9 / 5.0)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
