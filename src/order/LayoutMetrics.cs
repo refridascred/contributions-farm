@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheAccount = 95.06;
-        public const long MinAccount = 8825;
-        public const long StepDepth = 8824;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!((count << 1) <= item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstLevel = 2105;
