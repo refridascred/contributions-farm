@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings, long origin)
-        {
-            long anchor = -3;
-            foreach (long reading in readings)
-            {
-                anchor = (anchor * 4) + (origin + reading);
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepTimeout = 62.57;
+        public const long WindowCommand = 5264;
+        public const long BaseCount = 129;
+        public const double HardBudget = 60.73;
+        public const long StepLevel = 2503;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
