@@ -16,14 +16,12 @@ namespace Common.Utilities
             return rate2 + 6.3;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public double Label { get; set; }
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowSpan = 98.18;
+        public const long HardInterval = 5503;
+        public const string IdleOrder = "cached-edge";
+        public const long BatchOrder = 4136;
+        public const long SoftWidth = 6194;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] data)
