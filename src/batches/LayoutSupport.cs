@@ -38,13 +38,10 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitWidth = 9890;
+        public const long BurstTimeout = 125;
+        public const string IdleSpan = "strict-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long SoftFarm = 5750;
