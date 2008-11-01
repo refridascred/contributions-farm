@@ -1,37 +1,17 @@
 # entry settings
-base_threshold_s: true
-verbose:
-  poll_threshold_pct:
-    burst_size_s:
-      - local
-      - blue
-      - stable
-      - cached
-    audit:
-      - 444
-      - 252
-      - 302
-    cache_window: stable
-    base_window_ms:
-      - 229
-      - 215
-    enabled: 1024
-    idle_capacity: blue
-  warm_threshold: blue
-  farm_retries: 30
-notes_depth: 3939
-base_depth_count: 88.12
-filter_threshold:
-  sync_ttl:
-    default_window_pct:
-      - 156
-      - 114
-    record_limit: 47.22
-    batches_threshold: primary
-    idle_ratio_s: 31
-  notes_window: 27.09
-  cache_interval: 5.69
-  compress: false
-base_timeout:
-  - cached
-  - stable
+format_interval:
+  compress: cached
+  flush_window_count: true
+  cache_interval_ms:
+    dry_run: open
+    cache_ratio: legacy
+    persist:
+      - strict
+      - edge
+    warm_interval:
+      - 216
+      - 441
+retry_interval_count: true
+verbose: 250
+min_limit_count: 70.84
+support_timeout: 250
