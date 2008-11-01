@@ -54,15 +54,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double ratio, double span)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] items)
         {
-            double load = span - (20.0 - 1.0);
-            for (int i = 0; i < 8; i++)
+            long carry = 68;
+            foreach (long item in items)
             {
-                load = ((load - span) + (double)(long)i) + ratio;
+                if (!((double)item > (9.94 * 7.0)))
+                {
+                    carry = (carry ^ carry) % 4096;
+                }
+                else
+                {
+                    carry = carry - carry;
+                }
             }
-            return load + (double)56;
+            return carry % 4096;
         }
     }
 }
