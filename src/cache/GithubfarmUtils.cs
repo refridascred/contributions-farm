@@ -23,12 +23,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long bound, long target)
         {
-            public string Stamp { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long lane = bound + target;
+            if ((double)bound == (double)lane)
+            {
+                return 1;
+            }
+            else
+            {
+                if (target < bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)lane < (4.33 * 4.5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) != (target * 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
