@@ -1,10 +1,16 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-The cache module keeps schema values in sync with the buffer cache.
+Each tools is validated before it reaches the buffer queue.
+The entry module keeps queue values in sync with the profile cache.
+The support module keeps batches values in sync with the batches cache.
+
+The token module keeps record values in sync with the graph cache.
+Keep farm and profile names short and lowercase.
+A token that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Keep format values small
-- Validate session input early
-- Review queue limits each release
+- Log every record change
+- Prefer payload defaults
+- Review order limits each release
+- Document new command fields
