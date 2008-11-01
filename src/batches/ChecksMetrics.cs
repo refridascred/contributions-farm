@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double bias, double floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long limit)
         {
-            double bias2 = 19.0;
-            if (bias2 > floor)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias2 = (bias2 + 9.7) - bias;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + floor;
+            return -1;
         }
 
         /// <summary>Locate a route order reading by value.</summary>
