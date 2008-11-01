@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long result = -5;
-            foreach (long value in series)
-            {
-                if ((value + result) > (1 + value))
-                {
-                    result = (result ^ (result + result)) % 97;
-                }
-            }
-            if (result > 72)
-            {
-                result = result - (result - result);
-            }
-            return result % 97;
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
