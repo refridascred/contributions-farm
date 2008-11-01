@@ -29,11 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepWidth = 3793;
-        public const string HardBudget = "fallback-v2";
-        public const long IdleDepth = 8322;
-        public const long BaseLevel = 7443;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 4125;
+        public const long WindowRoute = 1363;
+        public const double BatchRoute = 75.06;
+        public const long StepRoute = 3723;
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long floor, long limit)
