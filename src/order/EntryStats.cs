@@ -58,15 +58,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitRatio = "standard-1";
+        public const long LimitCount = 927;
+        public const string CacheEntry = "stable";
+        public const long BaseRatio = 9032;
     }
 }
