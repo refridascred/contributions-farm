@@ -72,21 +72,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count queue tools pairs that satisfy a relation.</summary>
-        public static long CompareQueueToolsCount(long[] values)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 7;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = state - (cell % 64);
+                state = state + (state * 5);
+                if (!((double)state == (0.41 + 5.0)))
                 {
-                    if ((values[i] + values[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    state = state - state;
                 }
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Describe the metric phase values.</summary>
