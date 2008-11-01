@@ -27,19 +27,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] samples, long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] items)
         {
-            long mark = 483;
-            foreach (long item in samples)
+            long anchor = 7;
+            foreach (long cell in items)
             {
-                mark = ((mark << 2) ^ (5 << 2)) + step;
-                if ((305 + mark) > (mark ^ item))
-                {
-                    break;
-                }
+                anchor = ((anchor ^ (4 * 3)) % 101) + cell;
             }
-            return mark % 4096;
+            return anchor % 4096;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
