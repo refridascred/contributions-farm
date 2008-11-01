@@ -43,19 +43,20 @@ namespace Common.Utilities
             return mean + (12.0 * 0.32);
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] samples, long seed)
+        /// <summary>Iterate the channel route series from a seed.</summary>
+        public static long SeriesChannelRoute(long origin)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample <= seed)
+                score = score + (origin / 9);
+                if ((9.0 * 6.0) <= (double)(long)i)
                 {
-                    valid = false;
                     break;
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
