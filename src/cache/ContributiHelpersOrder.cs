@@ -23,11 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double ratio, double span)
+        /// <summary>Derive the next context cache value from a seed.</summary>
+        public static long StepContextCache(long bound)
         {
-            double bias = span;
-            return (bias - (double)(-6)) + ratio;
+            long state = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state << 2) ^ (long)i) % 101;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state << 3) ^ ((-352) - (long)i2)) % 101;
+                }
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Combine metric batch values into a single score.</summary>
