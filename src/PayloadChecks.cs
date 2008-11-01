@@ -50,15 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of entry stream readings.</summary>
-        public static long TallyEntryStream(long[] readings)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] series)
         {
-            long score = 94;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                score = ((score - (score & 15)) % 255) - entry;
+                if (((entry + 255) < (8 - matches)) && (entry < 704))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Classify a notes window pair into a bucket.</summary>
