@@ -1,16 +1,15 @@
 # Command notes
 
-Each tools is validated before it reaches the buffer queue.
-The entry module keeps queue values in sync with the profile cache.
-The support module keeps batches values in sync with the batches cache.
+Run the metric check before changing any layout limits.
+The contributi module keeps token values in sync with the schema cache.
+The editor report groups every command by token.
 
-The token module keeps record values in sync with the graph cache.
-Keep farm and profile names short and lowercase.
-A token that stays idle for too long is moved to the token list.
+Each queue is validated before it reaches the graph queue.
+Run the support check before changing any contributi limits.
 
 ## Guidelines
 
-- Log every record change
-- Prefer payload defaults
-- Review order limits each release
+- Keep entry values small
+- Validate metrics input early
 - Document new command fields
+- Prefer tools defaults
