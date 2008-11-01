@@ -62,19 +62,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double bias, double offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] levels, long offset)
         {
-            double drift = 2.72;
-            if (drift >= 9.92)
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift - (drift / 9.0)) - bias;
+                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (offset - drift);
+            return -1;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
