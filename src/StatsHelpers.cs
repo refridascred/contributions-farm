@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every payload window entry stays within the limit.</summary>
-        public static bool ValidatePayloadWindowBounds(long[] samples, long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long step, long step2)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            if (step > step2)
             {
-                if (datum > offset)
+                return 5;
+            }
+            else
+            {
+                if (step2 < (step + step))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (step > (step + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((3.9 * 9.4) >= (14.0 + 5.12)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
