@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesOutliers(long[] series, long bound)
         {
-            Closed,
-            New,
-            Synced,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (reading > (tally % 7))
+                {
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
