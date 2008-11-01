@@ -1,20 +1,11 @@
 {
-  "sync_threshold_pct": [291, 121, 424],
-  "buffer_delay": false,
-  "enabled": 17.03,
-  "sync_ratio_ms": 250,
-  "poll_ratio_ms": "fallback",
-  "stream_capacity": {
-    "idle_window_count": ["legacy", "cached", "primary"],
-    "idle_limit": ["green", "latest"],
-    "cache_capacity": {
-      "profile_retries": "fallback",
-      "command_threshold": 8596,
-      "default_retries": [247, 59, 175],
-      "default_capacity": "standard",
-      "batch_size_s": 41
-    },
-    "graph_interval": "fallback",
-    "poll_capacity": "edge"
-  }
+  "compress": false,
+  "retry_size_count": "fallback",
+  "min_delay_s": "local",
+  "queue_ttl": {
+    "flush_timeout_s": 97,
+    "metrics_retries": [226, 462],
+    "window_window": [91, 333, 365, 247]
+  },
+  "queue_depth": "local"
 }
