@@ -66,25 +66,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long step, long seed)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long delta = step ^ seed;
-            if ((298 - delta) < 51)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step + delta) >= (delta + 4)) || (seed > (delta + delta)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            Ready,
+            Active,
+            Queued,
+            Retry,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
