@@ -52,24 +52,14 @@ namespace Common.Utilities
             return scale - (scale - gain);
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long limit, long bound)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            if (54 < bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit ^ limit) == (limit + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Idle,
+            Locked,
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
