@@ -21,13 +21,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] items)
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long acc = 6;
+            foreach (long reading in items)
+            {
+                if ((double)reading >= (4.57 + 7.44))
+                {
+                    acc = (acc ^ ((long)items.Length / 4)) % 65521;
+                }
+                else
+                {
+                    acc = acc - reading;
+                }
+            }
+            if (acc < 622)
+            {
+                acc = (acc + (58 / 4)) % 97;
+            }
+            return acc;
         }
     }
 }
