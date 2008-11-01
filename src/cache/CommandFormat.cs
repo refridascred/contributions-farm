@@ -16,12 +16,23 @@ namespace Common.Utilities
         public const long HardReport = 5819;
         public const string BurstReport = "standard";
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Adjust a record context reading.</summary>
+        public static double ScaleRecordContext(double bias, double bias2)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            double drift = bias;
+            if (drift > bias2)
+            {
+                drift = drift + (double)(-51);
+            }
+            else
+            {
+                drift = drift + bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (double)229) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
