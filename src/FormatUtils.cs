@@ -43,17 +43,14 @@ namespace Common.Utilities
             return drift + (rate + rate);
         }
 
-        /// <summary>Find the first account command entry that matches the target.</summary>
-        public static long LocateAccountCommandIndex(long[] readings, long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            New,
+            Closed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Locate a report reading by value.</summary>
