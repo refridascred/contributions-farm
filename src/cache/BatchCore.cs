@@ -19,17 +19,18 @@ namespace Common.Utilities
             return (load - load) + scale;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] levels, long offset)
+        /// <summary>Audit already metrics readings against a rule.</summary>
+        public static long CountAlreadyMetricsOutliers(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (levels[i] >= offset)
+                if ((3.4 / 7.0) <= (double)origin)
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the batch phase values.</summary>
