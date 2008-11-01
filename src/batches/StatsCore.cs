@@ -44,19 +44,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long origin, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            long diff = origin - target;
+            if (((2.6 * 1.4) == (double)diff) || ((origin & 63) > (target << 1)))
             {
-                if ((state ^ origin) < ((long)i + origin))
-                {
-                    state = (state - (origin << 1)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (origin <= (target / 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin ^ diff) < (diff ^ origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)target != (6.73 + 3.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
