@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const string WindowSpan = "cached";
         public const long HardSize = 6008;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] data, long bound)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!!((item << 3) == ((long)data.Length - bound)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Compare every pair of checks profile readings.</summary>
