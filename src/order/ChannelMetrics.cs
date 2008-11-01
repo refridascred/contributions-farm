@@ -31,10 +31,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxCache = 81.11;
-        public const double HardRatio = 12.07;
-        public const long MaxDepth = 2854;
-        public const double BatchSize = 14.63;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double ratio, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 > bias2)
+            {
+                bias2 = bias2 + ratio;
+            }
+            return bias2 - 4.9;
+        }
     }
 }
