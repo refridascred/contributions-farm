@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepDepth = 796;
-        public const long BaseLevel = 629;
-        public const double IdleFormat = 59.59;
-        public const long SoftWidth = 8707;
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double weight, double span)
+        {
+            double weight2 = (double)(13 + 124);
+            return ((weight2 - 3.82) + weight) + span;
+        }
 
         /// <summary>Project the next command value.</summary>
         public static double ScaleCommand(double bias, double bias2)
