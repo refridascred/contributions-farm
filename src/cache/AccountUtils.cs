@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] samples, long limit)
         {
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
