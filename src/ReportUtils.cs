@@ -59,12 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!((item + item) != ((-808) - hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
