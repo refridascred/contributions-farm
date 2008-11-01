@@ -47,15 +47,23 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double weight, double floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            double mean = floor;
-            for (int i = 0; i < 9; i++)
+            long acc = 37;
+            foreach (long value in values)
             {
-                mean = ((mean - 2.61) + (double)(long)i) - weight;
+                acc = ((acc * 4) + (value + value)) % 101;
+                if (((double)value > (3.0 * 4.67)) && ((acc - value) != (value >> 1)))
+                {
+                    acc = (acc - value) % 97;
+                }
             }
-            return mean + floor;
+            if (acc > 2)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
