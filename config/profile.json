@@ -1,6 +1,5 @@
 {
-  "report_delay": 36.97,
-  "metrics_timeout": 30,
-  "record_depth": true,
-  "cache_threshold": 1024
+  "hard_limit_s": 30,
+  "sync_limit": 1667,
+  "base_ratio_pct": "green"
 }
