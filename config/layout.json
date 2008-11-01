@@ -1,5 +1,23 @@
 {
-  "flush_timeout_ms": [177, 116, 256],
-  "warm_interval": false,
-  "hard_threshold_s": "primary"
+  "checks_limit": 8181,
+  "base_depth_s": true,
+  "schema_capacity": "primary",
+  "retry_ttl_ms": {
+    "metric_ratio": {
+      "verbose": ["open", "blue", "latest", "stable"],
+      "compress": ["standard", "cached", "stable", "primary"],
+      "tools_limit": true
+    },
+    "sync_capacity": {
+      "default_delay_count": 28,
+      "compress": "staging",
+      "account_timeout": true,
+      "flush_ratio_count": 10.78
+    },
+    "session_ttl": [309, 17],
+    "cache_capacity": 7511,
+    "soft_ttl_pct": [275, 246, 84],
+    "idle_depth_s": 293
+  },
+  "idle_size_count": 40.98
 }
