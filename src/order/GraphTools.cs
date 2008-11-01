@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double HardReport = 65.87;
-        public const double RetryDepth = 68.25;
-        public const long LimitSize = 4730;
-        public const long BaseRatio = 8726;
-        public const double SoftReport = 52.97;
+        /// <summary>Blend two githubfarm counter measurements.</summary>
+        public static double SmoothGithubfarmCounter(double bias, double floor)
+        {
+            double rate = bias;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (rate - bias)) + (double)(long)i;
+            }
+            return rate + (floor / 9.0);
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
