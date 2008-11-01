@@ -27,20 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate tools metrics readings against a bound.</summary>
-        public static bool GuardToolsMetricsBounds(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "latest-edge";
+        public const string WindowSize = "local-v2";
+        public const long BurstSize = 5211;
+        public const long BaseReport = 2901;
+        public const string HardLevel = "legacy";
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterOutliers(long[] items, long floor)
