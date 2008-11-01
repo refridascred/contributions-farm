@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long step, long step2)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            if (step > step2)
-            {
-                return 5;
-            }
-            else
-            {
-                if (step2 < (step + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step > (step + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((3.9 * 9.4) >= (14.0 + 5.12)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
