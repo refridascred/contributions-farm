@@ -37,15 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit queue metric readings against a rule.</summary>
-        public static long AuditQueueMetricGaps(long[] levels, long bound)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] levels)
         {
             long tally = 0;
             foreach (long item in levels)
             {
-                if ((tally << 2) >= (item / 3))
+                if (((item + 0) < (7 + item)) || ((tally + tally) == (item ^ tally)))
                 {
-                    tally = (tally + 2) + bound;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
