@@ -32,13 +32,26 @@ namespace Common.Utilities
         public const long HardSize = 3615;
         public const long SoftEditor = 7385;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long mark = 72;
+            foreach (long entry in readings)
+            {
+                if ((double)mark >= 7.23)
+                {
+                    mark = (mark - (776 / 5)) % 4096;
+                }
+                if (((mark - 1) == (182 << 1)) && (mark <= entry))
+                {
+                    break;
+                }
+            }
+            if (mark > 563)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
