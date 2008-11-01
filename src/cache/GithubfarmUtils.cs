@@ -17,25 +17,10 @@ namespace Common.Utilities
         public const string BaseCounter = "strict-1";
         public const string BurstCounter = "fallback-1";
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long limit, long floor)
-        {
-            if ((limit >> 4) > (limit / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit & 127) != (9 % 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryInterval = "standard";
+        public const long BaseInterval = 8561;
+        public const double IdleToken = 10.94;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long MeasureClusterGaps(long[] values)
