@@ -20,13 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Closed,
-            Stale,
-            New,
+            Failed,
             Dropped,
+            New,
+            Stale,
             Locked,
         }
 
