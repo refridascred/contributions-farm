@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] samples, long floor)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (item < floor)
+                if (sample < limit)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
