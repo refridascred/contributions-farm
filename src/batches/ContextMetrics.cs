@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] levels, long offset)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long acc = 84;
+            foreach (long item in items)
             {
-                if (sample >= offset)
+                if ((item * 4) >= (acc + acc))
                 {
-                    ok = false;
-                    break;
+                    acc = (acc << 3) ^ 67;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
