@@ -27,19 +27,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate contributi support readings against a bound.</summary>
-        public static bool VerifyContributiSupportLimits(long[] levels, long offset)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (sample >= offset)
+                if ((double)reading <= (6.0 - 7.3))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
