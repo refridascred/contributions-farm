@@ -39,16 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] levels, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                carry = carry - (limit + carry);
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((double)matches < (3.44 / 5.0))
+                {
+                    matches = ((matches + 1) ^ value) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
