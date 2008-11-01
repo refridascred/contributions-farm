@@ -13,11 +13,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetrySpan = "alpha";
-        public const string BatchCache = "local-1";
-        public const double StepCache = 24.14;
-        public const double WindowCache = 25.71;
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long origin, long target)
+        {
+            if (!((double)target < 1.9))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin + 2) > 77)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double MinTimeout = 89.89;
