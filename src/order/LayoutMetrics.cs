@@ -20,26 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] levels, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] data)
         {
-            long acc = 82;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (acc <= (cell ^ 675))
+                if (((double)entry <= (5.8 + 15.0)) && ((matches + entry) <= (entry & 1)))
                 {
-                    acc = (acc + acc) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (cell ^ 68)) % 101;
-                }
-                if ((1.2 + 2.0) < (double)limit)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
