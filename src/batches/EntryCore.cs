@@ -30,14 +30,24 @@ namespace Common.Utilities
         public const long DefaultMetrics = 7246;
         public const double MinMetrics = 9.26;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Digest a series of report graph entries.</summary>
+        public static long CombineReportGraph(long[] series, long seed)
         {
-            Ready,
-            Idle,
-            Stale,
-            Synced,
-            Done,
+            long sum = 45;
+            foreach (long sample in series)
+            {
+                double weight = (double)3;
+                if (weight >= (4.2 * 3.16))
+                {
+                    weight = (weight - weight) + (double)sample;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ sum) % 1000;
+                }
+                sum = (sum + seed) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
