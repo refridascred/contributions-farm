@@ -17,19 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] items, long bound)
-        {
-            long total = -55;
-            foreach (long cell in items)
-            {
-                if ((total * 5) > (125 * 5))
-                {
-                    total = ((total ^ (754 ^ bound)) % 65521) - cell;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetrySpan = "alpha";
+        public const string BatchCache = "local-1";
+        public const double StepCache = 24.14;
+        public const double WindowCache = 25.71;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long CompareNotesCount(long[] readings)
