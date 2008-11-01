@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a tools context pair into a bucket.</summary>
-        public static long RankToolsContext(long origin, long origin2)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            if ((origin - origin2) >= origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((origin ^ 16) < (12 + origin)) && (origin2 >= (origin2 << 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin / 9) >= (origin2 & 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the record phase values.</summary>
