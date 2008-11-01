@@ -67,18 +67,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] levels, long step)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (step > (7 >> 5))
+                if (data[i] == target)
                 {
-                    hits = (hits + 2) + datum;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
