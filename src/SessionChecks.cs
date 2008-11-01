@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 304;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((mark + mark) > (sample << 2)))
                 {
-                    if ((items[i] ^ items[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark ^ sample) % 101;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
