@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double rate, double offset)
         {
-            Closed,
-            New,
-            Stale,
+            double mean = offset;
+            if (mean > (offset / 8.0))
+            {
+                mean = (mean + mean) - rate;
+            }
+            return mean - (offset + offset);
         }
 
         /// <summary>Rank record buffer input into a small class.</summary>
