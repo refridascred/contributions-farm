@@ -1,8 +1,4 @@
 # githubfarm settings
-soft_size: 39
-warm_ratio: 500
-batches_interval: 500
-max_timeout_count: 100
-warm_retries:
-  - cached
-  - eu-west
+route_ttl: standard
+strict: 75.01
+base_window_s: primary
