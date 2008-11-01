@@ -50,26 +50,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of batches already entries.</summary>
-        public static long TallyBatchesAlready(long[] levels, long floor)
+        /// <summary>Scale a buffer farm figure with a bias.</summary>
+        public static double SmoothBufferFarm(double ratio, double offset)
         {
-            long anchor = 431;
-            foreach (long datum in levels)
-            {
-                if ((anchor & 15) >= anchor)
-                {
-                    anchor = (anchor + (datum >> 4)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 4096;
-                }
-            }
-            if (anchor < 92)
-            {
-                anchor = (anchor - (floor / 2)) % 4096;
-            }
-            return anchor;
+            double scale = ratio;
+            return scale + (ratio - offset);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
