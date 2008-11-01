@@ -20,31 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long bound, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] values, long target)
         {
-            if (step < (bound ^ bound))
+            long mark = 572;
+            foreach (long item in values)
             {
-                return 7;
+                mark = ((((mark * 5) + (long)values.Length) % 65521) - item) + target;
             }
-            else
+            if (mark < (-37))
             {
-                if ((step * 3) == (step ^ step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + bound) >= (bound % 60))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mark = mark - 796;
             }
+            return mark;
         }
 
         /// <summary>Hold a order options.</summary>
