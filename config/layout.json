@@ -1,6 +1,13 @@
 {
-  "hard_ratio": false,
-  "audit": 12.05,
-  "hard_depth": 82,
-  "burst_window_pct": 1024
+  "notes_interval": 18.69,
+  "burst_capacity_s": {
+    "notes_retries": true,
+    "order_timeout": ["primary", "strict"],
+    "cache_threshold_s": false,
+    "verbose": 88.78
+  },
+  "warm_interval_pct": [492, 317],
+  "buffer_depth": "cached",
+  "token_interval": 69,
+  "sync_threshold_pct": ["green", "cached", "legacy", "staging"]
 }
