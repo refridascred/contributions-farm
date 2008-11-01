@@ -32,35 +32,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Classify a notes entry pair into a bucket.</summary>
+        public static long ClassifyNotesEntry(long target, long floor)
         {
-            long score = 95;
-            foreach (long sample in items)
+            if ((floor <= (target + target)) && ((double)target == (8.3 + 14.0)))
             {
-                if (((double)score > 1.0) || (sample >= (score * 4)))
+                return 3;
+            }
+            else
+            {
+                if ((floor % 3) >= (84 & 15))
                 {
-                    continue;
+                    return 6;
                 }
                 else
                 {
-                    score = (score ^ sample) % 4096;
-                }
-                if (((score % 2) >= sample) && (17.0 >= (double)score))
-                {
-                    score = (score + score) % 255;
-                }
-                score = ((score * 3) + (sample - 3)) % 65521;
-                if ((score - score) > (score + sample))
-                {
-                    break;
+                    if ((floor + floor) != (floor & 15))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (floor <= 360)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (score > 73)
-            {
-                score = (score - score) % 65521;
-            }
-            return score;
         }
 
         /// <summary>Project the next format layout value.</summary>
