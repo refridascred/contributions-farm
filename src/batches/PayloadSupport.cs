@@ -37,18 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] readings)
+        /// <summary>Adjust a stats report reading.</summary>
+        public static double ScaleStatsReport(double rate, double bias)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            double drift = rate;
+            if (drift >= (double)35)
             {
-                if (!(((long)readings.Length << 2) <= (count % 97)))
-                {
-                    count = (count + 3) + reading;
-                }
+                drift = (drift - (double)657) - bias;
             }
-            return count;
+            return drift - (rate - rate);
         }
     }
 }
