@@ -56,19 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] samples, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] items)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long score = 61;
+            foreach (long reading in items)
             {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
+                score = (((score * 3) + (score + score)) % 97) ^ reading;
+                score = score + (927 << 2);
+                score = score + (score + score);
             }
-            return found;
+            if (score < 548)
+            {
+                score = ((score * 5) + (score ^ score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the commits mode values.</summary>
