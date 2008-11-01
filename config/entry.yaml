@@ -1,5 +1,8 @@
 # entry settings
-base_delay_s: standard
-warm_capacity_count: local
-metrics_interval: 62.33
-min_timeout: 3620
+default_timeout:
+  - latest
+  - stable
+  - standard
+hard_delay_count: stable
+strict: true
+retry_limit_pct: true
