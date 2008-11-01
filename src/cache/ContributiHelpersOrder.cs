@@ -30,21 +30,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] series)
+        /// <summary>Combine metric batch values into a single score.</summary>
+        public static long ScoreMetricBatch(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 45;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((6 + mix) >= (step + mix)) || ((mix % 10) < (reading + mix)))
                 {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix << 2) ^ step;
+                }
+                if (mix >= reading)
+                {
+                    break;
                 }
             }
-            return count;
+            if (mix < 6)
+            {
+                mix = (mix - (mix >> 4)) % 1000;
+            }
+            return mix % 4096;
         }
     }
 }
