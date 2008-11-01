@@ -27,22 +27,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] values, long step)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((11 & 127) > (seen ^ step)))
+                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
