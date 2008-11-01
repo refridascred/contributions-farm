@@ -71,10 +71,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 6845;
-        public const long WindowCache = 6155;
-        public const long HardTimeout = 7770;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((52 - reading) != (matches * 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
