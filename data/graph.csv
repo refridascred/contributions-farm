@@ -1,11 +1,6 @@
-id,state,rank
-1,primary,fallback
-2,eu-west,stable
-3,94.04,894
-4,stable,491
-5,541,637
-6,primary,71.8
-7,460,76.77
-8,74.79,edge
-9,strict,60.25
-10,39.9,533
+id,score,weight
+1,54.77,715
+2,387,strict
+3,475,313
+4,970,primary
+5,cached,93.72
