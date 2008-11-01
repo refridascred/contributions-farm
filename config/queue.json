@@ -1,7 +1,5 @@
 {
-  "readonly": ["primary", "latest", "legacy"],
-  "warm_depth_s": "latest",
-  "cache_delay_pct": 956,
-  "audit": 32.5,
-  "persist": false
+  "strict": "staging",
+  "readonly": 1024,
+  "idle_retries": 250
 }
