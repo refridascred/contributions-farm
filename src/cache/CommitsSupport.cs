@@ -27,13 +27,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            public string Ratio { get; set; } = "";
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Rank commits input into a small class.</summary>
