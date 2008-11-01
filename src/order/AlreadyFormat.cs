@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double ratio, double floor)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            double scale = (double)(692 - 129);
-            if (scale >= scale)
-            {
-                scale = scale - (3.9 + floor);
-            }
-            else
-            {
-                scale = scale - (floor - ratio);
-            }
-            return scale - scale;
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
