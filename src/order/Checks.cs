@@ -62,11 +62,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitDepth = "strict";
-        public const long IdleSpan = 9263;
-        public const string StepRoute = "standard";
-        public const string IdleRoute = "legacy";
-        public const long WindowBudget = 5726;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series, long floor)
+        {
+            long sum = 693;
+            foreach (long reading in series)
+            {
+                if (((1.5 / 2.0) != (double)sum) || (sum <= (sum - reading)))
+                {
+                    sum = (sum ^ (reading + floor)) % 1000;
+                    sum = ((sum * 2) + (floor * 3)) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (floor & 63)) % 255;
+                }
+                sum = (sum << 3) ^ (reading ^ 807);
+                if ((floor + sum) > (floor + 8))
+                {
+                    sum = sum + (reading & 255);
+                }
+            }
+            if (sum < 657)
+            {
+                sum = ((sum << 3) ^ sum) % 101;
+            }
+            return sum % 65521;
+        }
     }
 }
