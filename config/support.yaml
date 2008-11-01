@@ -1,8 +1,8 @@
 # support settings
-default_ttl: 676
-max_delay: 19.81
-channel_interval:
-  route_threshold: stable
-  notes_capacity: 99
-  cache_ratio: 93
-  default_interval: 2694
+readonly: 69.64
+default_ratio_s: 2480
+dry_run: latest
+stream_limit: 98.1
+channel_ratio:
+  - latest
+  - stable
