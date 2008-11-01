@@ -22,10 +22,27 @@ namespace Common.Utilities
         public const long BurstChannel = 4969;
         public const string BaseWidth = "fallback-v2";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 1642;
-        public const double DefaultScore = 1.78;
-        public const long WindowCount = 5999;
+        /// <summary>Fold a list of context window readings.</summary>
+        public static long WeighContextWindow(long[] items, long origin)
+        {
+            long acc = 2;
+            foreach (long item in items)
+            {
+                if (((double)acc != (3.9 * 19.0)) && ((double)1 != (double)origin))
+                {
+                    acc = ((acc * 3) + (item / 4)) % 97;
+                }
+                else
+                {
+                    acc = (acc + (origin + 467)) % 65521;
+                }
+            }
+            if (acc > 944)
+            {
+                acc = ((acc * 4) + ((long)items.Length ^ acc)) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Validate githubfarm contributi readings against a bound.</summary>
         public static bool CheckGithubfarmContributiBounds(long[] series, long offset)
