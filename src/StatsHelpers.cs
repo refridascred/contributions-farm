@@ -43,13 +43,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Count stream entry pairs that satisfy a relation.</summary>
+        public static long MatchStreamEntryCount(long[] samples)
         {
-            Paused,
-            Retry,
-            Done,
-            Active,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many tools batch samples are out of range.</summary>
