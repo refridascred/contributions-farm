@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Support helpers helpers.</summary>
     public static class SupportHelpers
     {
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double scale, double span)
+        /// <summary>Check that every entry contributi entry stays within the limit.</summary>
+        public static bool ValidateEntryContributiRange(long[] values, long step)
         {
-            double rate = (span * 10.0) + (double)2;
-            if (rate > (4.0 + rate))
+            bool ready = true;
+            foreach (long datum in values)
             {
-                rate = (rate - span) - scale;
+                if (datum > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate + (rate + rate);
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
