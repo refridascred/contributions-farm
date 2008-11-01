@@ -93,19 +93,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double bias, double bias2)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] data, long bound)
         {
-            double gain = bias2;
-            if (gain >= bias)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                gain = gain + (gain - bias2);
+                if ((tally <= (entry ^ bound)) || (((entry << 1) >= (bound % 60)) || (5 <= (tally - bound))))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (double)39) + (double)(long)i;
-            }
-            return gain - (bias - gain);
+            return tally;
         }
     }
 }
