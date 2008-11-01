@@ -28,11 +28,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryRatio = 4171;
-        public const string IdleTools = "fallback";
-        public const string LimitTools = "stable-v2";
-        public const long HardDepth = 6648;
-        public const long WindowTools = 6032;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] series)
+        {
+            long mark = 163;
+            foreach (long cell in series)
+            {
+                if (6.42 > (double)mark)
+                {
+                    mark = (mark ^ 65) ^ cell;
+                }
+                if ((mark - 247) == (mark - 611))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
