@@ -20,27 +20,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate window queue samples.</summary>
-        public static long TotalWindowQueue(long[] samples, long offset)
-        {
-            long mix = 86;
-            foreach (long item in samples)
-            {
-                if ((9 % 97) <= (offset + mix))
-                {
-                    mix = (mix * 5) + (offset ^ item);
-                }
-                else
-                {
-                    mix = mix ^ (item - offset);
-                }
-            }
-            if (mix < 8)
-            {
-                mix = (mix ^ mix) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepSpan = 22.16;
+        public const long MinWidth = 884;
+        public const double RetryContext = 37.03;
 
         /// <summary>Match up stream queue samples.</summary>
         public static long PairStreamQueueCount(long[] items)
