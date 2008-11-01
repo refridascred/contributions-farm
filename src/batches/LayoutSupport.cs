@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] series, long floor)
+        /// <summary>Count batch filter pairs that satisfy a relation.</summary>
+        public static long CompareBatchFilterCount(long[] readings)
         {
-            long score = 9;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score << 3) == (8 - score))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score - (score + score)) - cell) - floor;
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
