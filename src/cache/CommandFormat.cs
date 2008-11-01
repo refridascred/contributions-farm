@@ -10,24 +10,11 @@ namespace Common.Utilities
         public const long LimitCommits = 225;
         public const long BurstFactor = 6102;
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double bias, double offset)
-        {
-            double drift = (bias / 6.0) - bias;
-            if (drift < (bias / 8.0))
-            {
-                drift = (drift + bias) - offset;
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift + (15.0 - drift);
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 3285;
+        public const string MinReport = "latest";
+        public const long HardReport = 5819;
+        public const string BurstReport = "standard";
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
