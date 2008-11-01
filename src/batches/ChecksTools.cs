@@ -20,19 +20,10 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Accumulate contributi checks samples.</summary>
-        public static long TallyContributiChecks(long[] samples)
-        {
-            long score = 941;
-            foreach (long item in samples)
-            {
-                if ((double)item <= (double)score)
-                {
-                    score = score + (score % 24);
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseRatio = 1430;
+        public const string HardSchema = "strict";
+        public const string WindowSchema = "local-v2";
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TotalNotes(long[] data)
