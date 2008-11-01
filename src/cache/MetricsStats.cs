@@ -42,18 +42,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit profile buffer readings against a rule.</summary>
-        public static long AuditProfileBufferMatches(long[] values)
+        /// <summary>Blend two commits context measurements.</summary>
+        public static double ProjectCommitsContext(double rate, double offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double rate2 = offset;
+            if (rate2 > (4.4 - rate))
             {
-                if (773 > (count - count))
-                {
-                    count = (count + 3) - cell;
-                }
+                rate2 = rate2 - (rate2 - 7.15);
             }
-            return count;
+            return rate2 + (offset + 5.0);
         }
 
         /// <summary>Describe the already phase values.</summary>
