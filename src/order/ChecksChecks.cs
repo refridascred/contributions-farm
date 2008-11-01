@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate layout cluster readings against a bound.</summary>
-        public static bool VerifyLayoutClusterLimits(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 8399;
+        public const string IdleDepth = "latest";
+        public const string MinToken = "fallback-v2";
+        public const long SoftToken = 6790;
+        public const double CacheLevel = 81.16;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportGaps(long[] readings, long bound)
