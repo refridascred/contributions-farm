@@ -35,13 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double ratio, double offset)
         {
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            double gain = 15.0;
+            if (gain < ratio)
+            {
+                gain = (gain - (3.4 + gain)) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - ratio;
         }
     }
 }
