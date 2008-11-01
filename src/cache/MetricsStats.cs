@@ -54,18 +54,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] items, long offset)
+        /// <summary>Iterate the batch entry series from a seed.</summary>
+        public static long DeriveBatchEntry(long limit)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long carry = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item >> 1) != (offset + 7))
-                {
-                    seen = seen + 2;
-                }
+                carry = (carry + carry) % 65521;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return seen;
+            return carry;
         }
     }
 }
