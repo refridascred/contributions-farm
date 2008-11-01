@@ -15,19 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] data, long floor)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
