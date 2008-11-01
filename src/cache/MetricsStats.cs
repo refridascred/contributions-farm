@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many report account samples are out of range.</summary>
-        public static long AuditReportAccountMatches(long[] series, long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (((count & 63) < (entry % 2)) || ((step << 2) <= entry))
+                if (value < limit)
                 {
-                    count = count + 2;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Adjust a stats layout reading.</summary>
