@@ -59,39 +59,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long limit, long offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long step = limit - offset;
-            if ((46 + step) > (limit + 40))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((15.0 <= (double)limit) || ((limit % 64) >= 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((double)step >= (11.0 - 8.7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset & 63) >= (-8)) && ((limit << 1) < (17 - limit)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a cache stats.</summary>
