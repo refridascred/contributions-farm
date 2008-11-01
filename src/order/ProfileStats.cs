@@ -26,10 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseFactor = 5480;
-        public const long BatchDepth = 9147;
-        public const long CacheToken = 3856;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public bool Total { get; set; }
+            public bool Region { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long offset, long origin)
