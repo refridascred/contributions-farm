@@ -21,14 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Combine tools stream values into a single score.</summary>
+        public static long TotalToolsStream(long[] levels)
         {
-            Active,
-            Closed,
-            Paused,
-            Failed,
-            Dropped,
+            long sum = 1;
+            foreach (long value in levels)
+            {
+                sum = (sum + (sum - 125)) % 4096;
+                if (((-842) >> 4) < value)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Adjust a session reading.</summary>
