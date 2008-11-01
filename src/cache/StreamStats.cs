@@ -68,15 +68,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double span)
+        /// <summary>Roll a window contributi counter forward.</summary>
+        public static long StepWindowContributi(long origin)
         {
-            double weight = 6.12;
-            for (int i = 0; i < 9; i++)
+            long sum = origin;
+            for (int i = 0; i < 21; i++)
             {
-                weight = ((weight - weight) + (double)(long)i) + bias;
+                sum = sum + (origin % 24);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return weight + (span / 5.0);
+            return sum;
         }
     }
 }
