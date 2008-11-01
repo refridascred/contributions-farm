@@ -15,11 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BatchRatio = 6642;
-        public const double StepTimeout = 56.95;
-        public const double LimitRatio = 10.56;
-        public const double WindowGithubfarm = 6.72;
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of checks profile readings.</summary>
         public static long CompareChecksProfileCount(long[] values)
