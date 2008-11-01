@@ -1,8 +1,10 @@
 {
-  "strict": false,
-  "verbose": "edge",
-  "compress": false,
-  "retry_interval": true,
-  "retry_timeout_pct": 60,
-  "cache_ttl": 30
+  "stream_timeout": {
+    "max_window_pct": ["cached", "edge"],
+    "idle_size_s": 51,
+    "cache_limit": ["cached", "strict", "standard", "latest"]
+  },
+  "poll_ttl_s": "eu-west",
+  "route_threshold": [400, 447],
+  "warm_ratio_count": "cached"
 }
