@@ -21,18 +21,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] readings, long bound)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)bound > (1.0 - 4.6))
-                {
-                    count = (count + 3) ^ datum;
-                }
-            }
-            return count;
+            Active,
+            Closed,
+            Paused,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Adjust a session reading.</summary>
