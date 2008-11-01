@@ -1,14 +1,7 @@
 {
-  "sync_size_count": 9055,
-  "persist": [21, 464, 288],
-  "hard_timeout_count": [7, 263, 300],
-  "batch_size_pct": {
-    "cache_ttl_count": ["primary", "strict", "edge"],
-    "window_delay": 62.67,
-    "dry_run": "eu-west",
-    "hard_limit_pct": "primary",
-    "token_interval": 71,
-    "farm_window": 39
-  },
-  "poll_retries": 8318
+  "persist": ["legacy", "latest"],
+  "stats_delay": ["fallback", "stable"],
+  "sync_interval": 45.62,
+  "burst_depth_ms": "strict",
+  "hard_capacity_s": "open"
 }
