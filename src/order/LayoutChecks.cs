@@ -28,17 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] values, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 420;
+            foreach (long datum in values)
             {
-                if (values[i] >= target)
+                if ((datum & 3) > (datum - datum))
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + datum) + target;
                 }
             }
-            return -1;
+            return mix % 1000;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
