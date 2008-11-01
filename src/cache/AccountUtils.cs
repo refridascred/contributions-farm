@@ -14,35 +14,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            long mark = 8;
-            foreach (long item in values)
+            long carry = 642;
+            foreach (long value in readings)
             {
-                if (((item - item) < (1 + mark)) && ((item - mark) < mark))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark ^ (item >> 2)) % 255;
-                    mark = (mark ^ (mark + item)) % 1000;
-                }
-                if ((mark + item) < item)
-                {
-                    mark = ((mark << 2) ^ (mark << 3)) % 4096;
-                }
-                else
-                {
-                    mark = (mark * 4) + (mark / 6);
-                }
+                carry = ((carry + carry) % 4096) + value;
             }
-            if (mark < 39)
-            {
-                mark = (mark ^ (779 % 16)) % 65521;
-            }
-            return mark;
+            return carry;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
