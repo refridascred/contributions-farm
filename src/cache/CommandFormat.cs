@@ -28,15 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples, long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double rate, double span)
         {
-            long score = 86;
-            foreach (long datum in samples)
+            double drift = rate;
+            if (drift >= rate)
             {
-                score = ((score ^ (score ^ score)) - datum) - seed;
+                drift = (drift - rate) + span;
             }
-            return score;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift - rate;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
