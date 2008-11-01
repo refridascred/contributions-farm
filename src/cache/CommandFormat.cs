@@ -28,13 +28,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long limit)
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
