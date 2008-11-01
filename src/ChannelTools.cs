@@ -23,20 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    anchor = ((anchor << 2) ^ (anchor & 3)) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepInterval = 75.04;
+        public const string LimitDepth = "local-edge";
+        public const long IdleBatch = 417;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] items, long step)
