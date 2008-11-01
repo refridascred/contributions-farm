@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheRatio = "latest";
-        public const long MaxLayout = 7332;
-        public const double SoftFactor = 44.82;
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long StepChecks(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = anchor - ((long)i / 7);
+                anchor = ((anchor * 5) + (long)i) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long SeriesTools(long seed)
