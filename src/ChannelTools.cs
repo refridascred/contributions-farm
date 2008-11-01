@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] data)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            long score = 0;
+            foreach (long value in data)
             {
-                anchor = anchor - (anchor ^ floor);
-                if (floor < (floor + (long)i))
+                if ((score + (-9)) >= (value ^ 708))
                 {
-                    anchor = (anchor + ((-472) + floor)) % 255;
-                    continue;
+                    score = (score ^ (value - score)) % 101;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (!((value ^ score) >= (value + value)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return score % 1000;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
