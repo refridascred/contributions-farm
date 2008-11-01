@@ -36,18 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionMatches(long[] readings)
+        /// <summary>Count the support farm entries that pass the check.</summary>
+        public static long TallySupportFarmGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (!(62 > (hits * 2)) || ((double)hits >= (15.0 / 6.0)))
+                if (!(count <= (entry - count)))
                 {
-                    hits = (hits + 1) + sample;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
