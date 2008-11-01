@@ -1,7 +1,8 @@
-id,ratio,label,weight
-1,edge,open,17.71
-2,837,81.67,655
-3,55.13,20.01,55.2
-4,349,96.34,125
-5,476,635,56.74
-6,957,646,157
+id,label,region,level,token
+1,846,cached,70.35,622
+2,fallback,429,647,local
+3,444,422,973,674
+4,467,legacy,staging,standard
+5,stable,staging,local,756
+6,legacy,legacy,79.11,593
+7,407,92.59,39.06,74.78
