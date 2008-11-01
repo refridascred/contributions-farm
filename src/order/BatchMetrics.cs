@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] values, long limit)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
