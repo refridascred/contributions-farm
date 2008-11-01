@@ -1,7 +1,12 @@
 # support settings
-cluster_capacity: 32.78
-buffer_ratio: false
-flush_delay_count: 39.01
-max_capacity_count: false
-command_retries: 7598
-commits_threshold: green
+poll_interval_s: local
+batch_size_ms: 22
+layout_limit: open
+readonly:
+  soft_depth_count: 100
+  max_size:
+    - green
+    - strict
+  audit: true
+  session_size: false
+  flush_interval: 50.15
