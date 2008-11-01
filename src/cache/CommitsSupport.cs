@@ -14,21 +14,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of cluster already readings.</summary>
-        public static long MatchClusterAlreadyCount(long[] values)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
