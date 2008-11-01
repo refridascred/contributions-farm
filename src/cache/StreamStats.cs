@@ -24,39 +24,15 @@ namespace Common.Utilities
         public const long MaxSpan = 4625;
         public const long MinGraph = 260;
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long limit, long limit2)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels, long limit)
         {
-            long delta = limit + limit2;
-            if ((45 + delta) < (delta + 642))
+            long carry = 90;
+            foreach (long value in levels)
             {
-                return 1;
+                carry = ((carry - (value ^ 4)) % 101) - limit;
             }
-            else
-            {
-                if ((7.2 - 4.57) == (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((limit - limit) >= (delta - delta)) && ((limit << 3) <= limit2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit2 ^ 176) < (delta * 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
