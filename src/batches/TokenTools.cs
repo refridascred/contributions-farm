@@ -14,25 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long step, long floor)
+        /// <summary>Validate report farm readings against a bound.</summary>
+        public static bool VerifyReportFarmBounds(long[] readings, long seed)
         {
-            long bound = step + floor;
-            if (bound < (bound - step))
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((666 < step) && ((double)bound >= 9.3))
+                if (datum > seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
