@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const string MinAlready = "legacy-v2";
         public const long BatchSpan = 4670;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] data, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a filter record.</summary>
