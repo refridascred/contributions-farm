@@ -33,20 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long limit)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = ((mix * 3) + (mix / 3)) ^ (long)i2;
-                }
-                mix = (mix ^ ((long)i % 97)) % 65521;
-                mix = ((mix * 3) + (long)i) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
