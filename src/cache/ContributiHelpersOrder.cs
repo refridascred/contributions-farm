@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long offset, long seed)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] levels, long bound)
         {
-            if ((seed * 3) != (seed - seed))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed * 2) == (offset + seed)) || (seed > (seed * 5)))
+                if (levels[i] == bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)seed < (10.0 + 0.1)) && (offset < (seed >> 5)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((3.84 / 8.0) <= (double)seed) && (seed < (319 + offset)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
