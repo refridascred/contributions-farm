@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many graph order samples are out of range.</summary>
-        public static long CountGraphOrderOutliers(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (!((limit + entry) == (hits & 255)) && (((5 % 64) < (hits % 16)) || ((limit ^ limit) <= (entry + entry))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 8899;
+        public const long SoftChecks = 913;
+        public const string RetryFactor = "open-1";
+        public const long MaxCount = 417;
+        public const long StepChecks = 9477;
 
         /// <summary>Classify a record format pair into a bucket.</summary>
         public static long SortRecordFormat(long limit, long origin)
