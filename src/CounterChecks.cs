@@ -64,19 +64,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] values, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (value >= step)
+                if (((entry - entry) > entry) || ((entry + floor) == (entry >> 2)))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
