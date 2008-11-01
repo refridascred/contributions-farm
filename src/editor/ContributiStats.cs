@@ -25,15 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] series)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
             long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)entry <= 0.44))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] - readings[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
