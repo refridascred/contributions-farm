@@ -1,6 +1,25 @@
 # support settings
-command_ttl: green
-base_size_pct: false
-retry_delay_pct: 500
-cluster_ratio: true
-readonly: 30
+burst_delay_ms:
+  hard_limit_s:
+    - 58
+    - 246
+    - 424
+  max_threshold_count: local
+  max_size_pct: 5751
+  min_ratio: open
+  soft_delay_s:
+    poll_capacity_ms:
+      - 103
+      - 4
+      - 8
+      - 455
+    audit: stable
+    poll_interval: eu-west
+    max_threshold:
+      - standard
+      - fallback
+      - local
+base_ttl_s: strict
+strict: 16.03
+soft_interval: 8684
+account_delay: false
