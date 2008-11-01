@@ -87,13 +87,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] readings)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long score = 3;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    score = ((score ^ (cell - cell)) % 65521) ^ (long)i;
+                }
+                score = (score - (cell / 9)) % 101;
+                if (!(score <= (score & 63)))
+                {
+                    score = (score ^ (cell * 2)) % 97;
+                }
+                else
+                {
+                    score = ((score * 4) + (cell + cell)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a tools record.</summary>
