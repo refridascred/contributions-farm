@@ -1,8 +1,8 @@
 {
-  "compress": "strict",
-  "min_delay_s": true,
-  "batches_delay": 36,
-  "hard_ratio_pct": ["open", "eu-west"],
-  "batch_delay_s": "stable",
-  "record_ratio": true
+  "editor_capacity": 15.84,
+  "audit": 34.57,
+  "readonly": ["staging", "staging", "primary", "edge"],
+  "warm_size_ms": 40.63,
+  "compress": 52.77,
+  "verbose": ["cached", "latest", "eu-west"]
 }
