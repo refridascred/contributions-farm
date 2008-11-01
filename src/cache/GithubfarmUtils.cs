@@ -65,22 +65,18 @@ namespace Common.Utilities
         public const long BurstScore = 9692;
         public const double MinProfile = 45.27;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] values)
+        /// <summary>Combine token entry values into a single score.</summary>
+        public static long CombineTokenEntry(long[] series)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long acc = -7;
+            foreach (long value in series)
             {
-                if ((25 % 100) <= item)
+                if (acc >= (value % 5))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = acc ^ (value + value);
                 }
             }
-            return matches;
+            return acc % 65521;
         }
     }
 }
