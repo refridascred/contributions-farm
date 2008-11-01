@@ -1,13 +1,10 @@
 # entry settings
-dry_run: open
-layout_retries:
-  sync_window: blue
-  record_retries: latest
-  graph_capacity: local
-default_window: 80
-min_threshold_s:
-  - 386
-  - 176
-  - 169
-  - 36
-persist: 28.36
+counter_retries:
+  - 265
+  - 32
+  - 409
+strict: 100
+enabled: false
+filter_limit: legacy
+retry_window: 15.26
+cluster_threshold: 7207
