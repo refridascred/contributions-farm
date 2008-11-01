@@ -13,12 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftRatio = "staging-edge";
-        public const string IdleGraph = "strict-v2";
-        public const string DefaultRatio = "standard-edge";
-        public const double StepWidth = 89.31;
-        public const long BaseCount = 5857;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double SmoothCommand(double rate, double offset)
