@@ -35,19 +35,11 @@ namespace Common.Utilities
             return drift - (double)9;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double ratio, double offset)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double gain = 15.0;
-            if (gain < ratio)
-            {
-                gain = (gain - (3.4 + gain)) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain - ratio;
+            public bool Total { get; set; }
+            public double Label { get; set; }
         }
     }
 }
