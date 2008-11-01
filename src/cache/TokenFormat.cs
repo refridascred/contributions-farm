@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public double Size { get; set; }
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
+            Dropped,
+            New,
+            Queued,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
