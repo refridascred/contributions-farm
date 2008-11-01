@@ -53,15 +53,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            Done,
+            Paused,
+            Idle,
+            Synced,
+            Pending,
         }
 
         /// <summary>Blend two notes measurements.</summary>
