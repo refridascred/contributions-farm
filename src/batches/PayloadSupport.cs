@@ -25,21 +25,21 @@ namespace Common.Utilities
         public const long MinWidth = 884;
         public const double RetryContext = 37.03;
 
-        /// <summary>Match up stream queue samples.</summary>
-        public static long PairStreamQueueCount(long[] items)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 1)
+                    if ((series[i] + series[j]) != 17)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
