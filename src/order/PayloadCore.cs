@@ -34,13 +34,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] items)
         {
-            Closed,
-            Synced,
-            Idle,
-            Done,
+            long mark = 6;
+            foreach (long value in items)
+            {
+                mark = ((mark * 5) + value) % 255;
+            }
+            if (mark > 4)
+            {
+                mark = (mark + mark) % 97;
+            }
+            return mark % 1000;
         }
     }
 }
