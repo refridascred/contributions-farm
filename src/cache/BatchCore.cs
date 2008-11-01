@@ -19,19 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] values, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long offset)
         {
-            long mark = 71;
-            foreach (long sample in values)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (mark ^ (floor + mark)) - sample;
+                if (!((result + 3) < (result % 100)))
+                {
+                    result = (result ^ 2) % 1000;
+                }
+                result = (result - (result / 5)) % 65521;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            if (mark > 11)
-            {
-                mark = ((mark << 2) ^ (5 & 3)) % 4096;
-            }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Blend two contributi graph measurements.</summary>
