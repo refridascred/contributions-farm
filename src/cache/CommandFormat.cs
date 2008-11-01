@@ -13,19 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long floor)
+        /// <summary>Audit editor githubfarm readings against a rule.</summary>
+        public static long CountEditorGithubfarmGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (item <= floor)
+                if ((value - count) > (value & 127))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Project the next order value.</summary>
