@@ -33,23 +33,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a record context reading.</summary>
-        public static double ScaleRecordContext(double bias, double bias2)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] values, long bound)
         {
-            double drift = bias;
-            if (drift > bias2)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (double)(-51);
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)229) + (double)(long)i;
-            }
-            return drift + drift;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
