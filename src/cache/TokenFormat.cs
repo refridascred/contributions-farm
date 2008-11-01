@@ -30,26 +30,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] items)
-        {
-            long acc = 6;
-            foreach (long reading in items)
-            {
-                if ((double)reading >= (4.57 + 7.44))
-                {
-                    acc = (acc ^ ((long)items.Length / 4)) % 65521;
-                }
-                else
-                {
-                    acc = acc - reading;
-                }
-            }
-            if (acc < 622)
-            {
-                acc = (acc + (58 / 4)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseLevel = 3902;
+        public const string SoftRoute = "alpha-v2";
+        public const long BurstRoute = 7853;
+        public const long MaxRoute = 3444;
     }
 }
