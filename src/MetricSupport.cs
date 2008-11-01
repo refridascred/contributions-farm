@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of record tools readings.</summary>
-        public static long FoldRecordTools(long[] levels)
-        {
-            long carry = 4;
-            foreach (long entry in levels)
-            {
-                carry = (((carry * 5) + (carry % 3)) % 101) - entry;
-            }
-            if (carry < 93)
-            {
-                carry = (carry * 2) + (9 % 64);
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepTimeout = 3478;
+        public const long CacheInterval = 3777;
+        public const long BurstWidth = 2892;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long FoldBatches(long[] readings, long offset)
