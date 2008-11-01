@@ -19,21 +19,15 @@ namespace Common.Utilities
             return (load - load) + scale;
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ (-6)) ^ item;
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Adjust a channel token reading.</summary>
