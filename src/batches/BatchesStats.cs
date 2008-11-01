@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultDepth = 1959;
-        public const long WindowSpan = 747;
-        public const string DefaultSize = "staging-1";
-        public const long WindowSchema = 3069;
-        public const long HardDepth = 7328;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] series, long target)
+        {
+            long acc = -922;
+            foreach (long datum in series)
+            {
+                acc = ((acc + (datum >> 2)) % 4096) - target;
+                if ((acc >> 1) != (datum % 97))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
