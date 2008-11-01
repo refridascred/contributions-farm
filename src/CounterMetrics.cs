@@ -32,19 +32,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] samples, long floor)
         {
-            long sum = -8;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                sum = (sum ^ (461 >> 3)) - value;
+                if (sample <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (sum < 865)
-            {
-                sum = (sum ^ (sum & 63)) % 97;
-            }
-            return sum;
+            return ready;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
