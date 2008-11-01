@@ -22,13 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] levels, long origin)
         {
-            Stale,
-            Paused,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample > (7.0 + 6.3))
+                {
+                    matches = (matches + 2) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
