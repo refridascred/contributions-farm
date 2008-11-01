@@ -57,9 +57,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 9946;
-        public const double SoftFormat = 54.25;
-        public const long MaxWidth = 2000;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
