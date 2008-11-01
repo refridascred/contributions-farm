@@ -1,6 +1,7 @@
-id,score,weight
-1,54.77,715
-2,387,strict
-3,475,313
-4,970,primary
-5,cached,93.72
+id,level
+1,5.0
+2,staging
+3,strict
+4,open
+5,22.8
+6,414
