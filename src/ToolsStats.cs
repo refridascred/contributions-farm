@@ -14,13 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] readings)
         {
-            Locked,
-            Synced,
-            Pending,
-            Idle,
+            long state = 8;
+            foreach (long value in readings)
+            {
+                if (((value - value) <= (value - state)) && ((5.31 / 5.0) < (double)value))
+                {
+                    state = state ^ 29;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the checks state values.</summary>
