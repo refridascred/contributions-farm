@@ -45,12 +45,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Ready,
-            Locked,
+            Queued,
             Stale,
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
