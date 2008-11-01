@@ -43,23 +43,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cache commits readings.</summary>
-        public static long WeighCacheCommits(long[] readings)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] readings, long limit)
         {
-            long result = 5;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result - value) % 4096;
-                if ((269 + result) > result)
+                if ((readings[i] <= limit) && ((readings[i] % 2) != 0))
                 {
-                    result = (result - 21) % 97;
-                }
-                else
-                {
-                    result = (result ^ (value - result)) % 97;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Match up commits samples.</summary>
