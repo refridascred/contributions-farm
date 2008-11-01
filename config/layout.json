@@ -1,5 +1,5 @@
 {
-  "poll_size_ms": 55.1,
-  "report_interval": true,
-  "poll_depth": 8010
+  "base_size_s": 71.55,
+  "strict": "open",
+  "min_retries_count": false
 }
