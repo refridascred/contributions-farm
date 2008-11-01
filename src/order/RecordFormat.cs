@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] samples, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long floor, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (3.5 <= (double)floor)
             {
-                if ((samples[i] < limit) && ((samples[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((floor + limit) >= floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a report header.</summary>
