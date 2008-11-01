@@ -38,17 +38,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] values, long step)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (values[i] < step)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    mix = (((mix * 5) + (limit >> 4)) % 1000) - (long)i2;
+                    mix = ((mix << 2) ^ (limit + limit)) % 4096;
                 }
+                if (!(((6.2 + 6.79) == (double)mix) && (mix >= (limit + limit))))
+                {
+                    mix = (mix + (long)i) % 255;
+                }
+                if ((mix ^ mix) <= ((long)i + (-19)))
+                {
+                    mix = (mix * 3) + (limit >> 4);
+                }
+                else
+                {
+                    mix = (mix ^ (limit / 2)) % 101;
+                    mix = ((mix * 2) + (mix * 4)) % 101;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
