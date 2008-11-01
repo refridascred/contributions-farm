@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] readings, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] items, long step)
         {
-            long anchor = 715;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (floor < (entry ^ entry))
+                if (items[i] == step)
                 {
-                    anchor = ((anchor << 2) ^ (45 / 7)) % 4096;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit window cluster readings against a rule.</summary>
