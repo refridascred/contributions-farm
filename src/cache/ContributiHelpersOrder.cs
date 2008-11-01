@@ -15,17 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] values, long bound)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] data, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((values[i] <= bound) && ((values[i] % 5) != 0))
+                if (!!((item << 3) == ((long)data.Length - bound)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of checks profile readings.</summary>
