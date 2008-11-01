@@ -1,8 +1,6 @@
 {
-  "default_retries": 6,
-  "compress": [134, 389],
-  "burst_limit": 3,
-  "batch_delay_s": "strict",
-  "idle_timeout_s": 250,
-  "sync_retries": 8.66
+  "base_retries_ms": 1.64,
+  "sync_size_ms": "fallback",
+  "warm_limit": 28,
+  "batch_timeout": "staging"
 }
