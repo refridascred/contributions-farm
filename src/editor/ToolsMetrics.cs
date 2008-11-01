@@ -26,12 +26,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultSupport = 57.86;
-        public const double WindowSupport = 45.66;
-        public const long HardSupport = 7744;
-        public const double BatchSupport = 97.35;
-        public const double IdleWidth = 71.49;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultDepth = 2532;
+        public const string HardWidth = "cached-1";
+        public const long SoftToken = 925;
+        public const long StepToken = 190;
+        public const string HardToken = "latest-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const double LimitSpan = 10.28;
