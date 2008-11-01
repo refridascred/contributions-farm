@@ -86,38 +86,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long target, long target2)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] levels, long step)
         {
-            if ((-770) >= target)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target % 10) >= target2)
+                if (reading >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (36 < (target * 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)target <= (double)target2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Accumulate payload samples.</summary>
