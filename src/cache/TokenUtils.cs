@@ -47,11 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double scale, double span)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            double weight = scale + span;
-            return weight - (double)874;
+            long acc = 85;
+            foreach (long datum in levels)
+            {
+                if (datum < (acc - datum))
+                {
+                    acc = (acc - 6) % 65521;
+                }
+            }
+            return acc % 97;
         }
     }
 }
