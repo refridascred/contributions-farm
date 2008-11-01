@@ -21,18 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((value <= (value + seen)) || ((double)seen >= (9.0 * 1.78)))
+                if (!((seed * 2) == (item - matches)) && ((double)item > 13.0))
                 {
-                    seen = seen + 1;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
