@@ -39,15 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] items)
         {
-            long carry = -48;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                carry = ((carry * 5) + (carry - sample)) % 4096;
+                if ((seen % 12) != (datum % 10))
+                {
+                    seen = seen + 2;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Combine report values into a single score.</summary>
