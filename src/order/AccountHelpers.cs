@@ -58,19 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes stats readings against a rule.</summary>
-        public static long TallyNotesStatsOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits <= (88 - item)) && ((hits * 5) < (item + item)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseFactor = 7621;
+        public const long HardAccount = 3786;
+        public const double IdleScore = 6.12;
+        public const double WindowSize = 92.78;
+        public const string SoftAccount = "staging-v2";
 
         /// <summary>Count the contributi record entries that pass the check.</summary>
         public static long MeasureContributiRecordMatches(long[] readings)
