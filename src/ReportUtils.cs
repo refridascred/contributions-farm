@@ -31,13 +31,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Roll a payload filter counter forward.</summary>
+        public static long RollPayloadFilter(long floor)
         {
-            Failed,
-            Retry,
-            Ready,
-            Dropped,
+            long state = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((floor ^ floor) > floor)
+                {
+                    state = state + (state % 16);
+                    state = ((state * 4) + (state * 2)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
