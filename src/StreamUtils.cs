@@ -33,18 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] levels)
+        /// <summary>Check that every already payload entry stays within the limit.</summary>
+        public static bool GuardAlreadyPayloadLimits(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((long)levels.Length >= (seen + 1))
+                if (entry <= seed)
                 {
-                    seen = (seen + 1) + cell;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Audit counter order readings against a rule.</summary>
