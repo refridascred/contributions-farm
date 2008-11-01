@@ -51,13 +51,18 @@ namespace Common.Utilities
             return weight + (double)6;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Count the batch session entries that pass the check.</summary>
+        public static long CountBatchSessionOutliers(long[] series, long step)
         {
-            Draft,
-            Ready,
-            Retry,
-            Pending,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((3.0 / 4.0) == (double)step)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the checks phase values.</summary>
