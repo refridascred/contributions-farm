@@ -23,14 +23,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double scale, double bias)
         {
-            Closed,
-            Ready,
-            Done,
-            New,
-            Synced,
+            double mean = scale;
+            if (mean > 6.0)
+            {
+                mean = mean + (20.0 * 5.0);
+            }
+            else
+            {
+                mean = mean + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - 7.4) - (double)(long)i;
+            }
+            return mean - (bias + mean);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
