@@ -29,19 +29,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double weight, double span)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LocateChannelIndex(long[] items, long offset)
         {
-            double scale = weight;
-            if (scale < 0.6)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + (double)800;
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - 2.11) + (double)(long)i;
-            }
-            return scale - (weight - span);
+            return -1;
         }
     }
 }
