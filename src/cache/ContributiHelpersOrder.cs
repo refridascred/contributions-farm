@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] items)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            long mark = 93;
+            foreach (long sample in items)
             {
-                if (((long)i >= (target - mix)) || ((target % 100) < target))
-                {
-                    mix = (mix - mix) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                mark = ((mark - (8 % 16)) % 1000) ^ sample;
             }
-            return mix;
+            if (mark < 857)
+            {
+                mark = ((mark * 4) + mark) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
