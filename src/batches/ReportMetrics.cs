@@ -22,20 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardInterval = 6714;
+        public const long BatchNotes = 6626;
+        public const long MinNotes = 751;
+        public const long BurstNotes = 4294;
+        public const long DefaultNotes = 3965;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] items, long floor)
