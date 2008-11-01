@@ -22,22 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] series, long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long anchor = 4;
-            foreach (long value in series)
-            {
-                if ((limit & 7) > anchor)
-                {
-                    anchor = ((anchor << 2) ^ (limit - 8)) ^ value;
-                }
-                else
-                {
-                    anchor = anchor ^ (anchor % 64);
-                }
-            }
-            return anchor % 65521;
+            Synced,
+            Stale,
+            Queued,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
