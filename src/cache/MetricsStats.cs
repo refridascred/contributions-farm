@@ -54,13 +54,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] series)
         {
-            Draft,
-            Done,
-            Failed,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (sample > (seen / 2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the checks phase values.</summary>
