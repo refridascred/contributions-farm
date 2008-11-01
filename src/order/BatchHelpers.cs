@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] samples, long offset)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepDepth = 796;
+        public const long BaseLevel = 629;
+        public const double IdleFormat = 59.59;
+        public const long SoftWidth = 8707;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
