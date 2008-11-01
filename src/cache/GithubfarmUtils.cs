@@ -29,14 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Blend two order cluster measurements.</summary>
+        public static double SmoothOrderCluster(double bias, double offset)
         {
-            Closed,
-            Failed,
-            Locked,
-            Dropped,
-            Draft,
+            double rate = offset;
+            if (rate > (rate - bias))
+            {
+                rate = rate + bias;
+            }
+            else
+            {
+                rate = rate + (double)(-856);
+            }
+            return rate + (2.7 + 18.0);
         }
 
         /// <summary>Adjust a record reading.</summary>
