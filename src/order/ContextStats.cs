@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long WindowStats = 9994;
         public const long IdleLevel = 2721;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 31.71;
-        public const double RetryFormat = 56.76;
-        public const double MaxInterval = 56.38;
-        public const double BurstTimeout = 75.77;
-        public const long MinInterval = 9020;
+        /// <summary>Roll a graph checks counter forward.</summary>
+        public static long DeriveGraphChecks(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((step - 0) == (long)i)
+                {
+                    total = (total << 3) ^ (step % 100);
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] readings, long offset)
