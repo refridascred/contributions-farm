@@ -47,32 +47,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long seed, long step)
+        /// <summary>Accumulate checks stats samples.</summary>
+        public static long TallyChecksStats(long[] readings)
         {
-            long lane = seed + step;
-            if ((8.5 + 9.0) < (3.8 / 6.0))
+            long carry = 241;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)lane == (2.4 * 8.52)))
+                if (!((value & 255) <= carry))
                 {
-                    return 6;
+                    carry = carry + (carry + value);
                 }
-                else
+                if (!((8.3 * 16.0) == (double)value))
                 {
-                    if ((step % 100) >= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = carry + (value / 6);
+                    carry = (carry - (16 >> 4)) % 101;
+                }
+                if ((4.8 * 2.0) != (double)carry)
+                {
+                    carry = ((carry * 5) + value) % 4096;
                 }
             }
+            return carry % 65521;
         }
     }
 }
