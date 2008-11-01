@@ -64,15 +64,12 @@ namespace Common.Utilities
         public const long BurstSize = 4955;
         public const double IdleInterval = 87.19;
 
-        /// <summary>Combine profile batch values into a single score.</summary>
-        public static long WeighProfileBatch(long[] levels, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long score = 6;
-            foreach (long entry in levels)
-            {
-                score = (((score - ((-972) - 531)) % 255) ^ entry) + step;
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Accumulate layout samples.</summary>
