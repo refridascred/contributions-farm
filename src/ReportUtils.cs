@@ -45,12 +45,11 @@ namespace Common.Utilities
             return rate - (offset / 6.0);
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            public double Limit { get; set; }
+            public long Score { get; set; }
         }
     }
 }
