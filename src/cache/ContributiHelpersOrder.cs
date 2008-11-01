@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Closed,
-            Ready,
-            Active,
-            New,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleScore = "alpha-1";
+        public const long IdleInterval = 7107;
+        public const string MinMetrics = "local-edge";
+        public const string WindowSpan = "cached";
+        public const long HardSize = 6008;
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderHits(long[] data, long bound)
