@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats account entries that pass the check.</summary>
-        public static long AuditStatsAccountOutliers(long[] samples, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = 86;
+            foreach (long cell in samples)
             {
-                if ((10.0 + 14.0) < (double)value)
-                {
-                    count = (count + 3) - offset;
-                }
+                result = (((result ^ result) % 255) ^ cell) + step;
             }
-            return count;
+            if (result < 3)
+            {
+                result = (result + (long)samples.Length) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Blend two commits measurements.</summary>
