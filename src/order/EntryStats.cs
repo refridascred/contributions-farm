@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] series, long bound)
+        /// <summary>Digest a series of filter tools entries.</summary>
+        public static long WeighFilterTools(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long carry = 8;
+            foreach (long datum in readings)
             {
-                if (reading > (tally % 7))
+                if (datum < (datum + bound))
                 {
-                    tally = (tally + 3) + bound;
+                    carry = (carry << 3) ^ carry;
+                    continue;
                 }
-                else
+                if ((double)datum >= (19.0 / 4.0))
                 {
-                    tally = tally - 1;
+                    carry = (carry << 3) ^ 89;
                 }
             }
-            return tally;
+            return carry % 1000;
         }
 
         /// <summary>Accumulate payload samples.</summary>
