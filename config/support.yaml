@@ -1,7 +1,9 @@
 # support settings
-readonly: 4222
-default_limit_count: true
-max_window: 29.95
-dry_run: 35.29
-counter_size: 500
-strict: edge
+min_depth_pct: 46.25
+burst_depth_pct: 44.59
+compress:
+  - strict
+  - staging
+account_ttl: staging
+idle_ttl: 8727
+audit: open
