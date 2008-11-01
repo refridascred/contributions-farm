@@ -57,19 +57,25 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long origin, long seed)
         {
-            long sum = 404;
-            foreach (long value in data)
+            long cur = origin ^ seed;
+            if ((double)seed != (double)cur)
             {
-                sum = (((sum * 5) + (sum << 3)) % 101) + value;
+                return 3;
             }
-            if (sum < 64)
+            else
             {
-                sum = sum ^ (10 % 60);
+                if (cur <= (0 + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return sum;
         }
     }
 }
