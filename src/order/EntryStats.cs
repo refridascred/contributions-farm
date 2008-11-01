@@ -48,15 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next graph checks value from a seed.</summary>
-        public static long SeriesGraphChecks(long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] values, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((double)bound <= (3.4 * 4.2))
+                {
+                    matches = (matches + 2) + item;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
