@@ -1,5 +1,9 @@
 # support settings
-sync_capacity_ms: 62.62
-audit: 8.21
-cache_interval_pct: 60
-stats_timeout: 81
+idle_retries:
+  - 453
+  - 164
+hard_limit_pct: legacy
+already_size: edge
+flush_depth_s: 9.1
+burst_depth_ms: 500
+enabled: latest
