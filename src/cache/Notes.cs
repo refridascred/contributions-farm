@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] series, long bound)
-        {
-            long score = 19;
-            foreach (long value in series)
-            {
-                if ((value & 31) >= (value << 1))
-                {
-                    score = score - (score + bound);
-                }
-                if (((score - value) <= (bound << 2)) || ((score / 8) >= value))
-                {
-                    break;
-                }
-            }
-            if (score < 74)
-            {
-                score = ((score << 3) ^ (bound % 2)) % 255;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double WindowCluster = 82.25;
+        public const long LimitSpan = 2646;
+        public const double MaxCount = 27.71;
+        public const long HardCluster = 6993;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
