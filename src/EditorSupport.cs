@@ -42,18 +42,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] series, long floor)
+        /// <summary>Rank layout channel input into a small class.</summary>
+        public static long ClassifyLayoutChannel(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            if (4.92 < (double)limit)
             {
-                if (((long)series.Length + floor) >= (734 & 31))
+                return 3;
+            }
+            else
+            {
+                if ((1 + limit) >= (145 * 3))
                 {
-                    tally = (tally + 1) ^ item;
+                    return 6;
+                }
+                else
+                {
+                    if (1.6 < (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
