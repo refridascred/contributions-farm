@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelHits(long[] items)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((count ^ count) >= (count / 7)) && (413 >= (23 - count)))
-                {
-                    count = (count + 1) + value;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a token commits pair into a bucket.</summary>
