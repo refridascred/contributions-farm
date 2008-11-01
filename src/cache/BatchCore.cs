@@ -42,11 +42,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Adjust a metric format reading.</summary>
-        public static double AdjustMetricFormat(double gain, double bias)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double mean = bias;
-            return mean + gain;
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
