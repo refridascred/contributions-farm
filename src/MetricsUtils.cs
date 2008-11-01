@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitFactor = 13.36;
-        public const double CacheQueue = 35.38;
-        public const long MaxQueue = 7687;
+        /// <summary>Roll a context command counter forward.</summary>
+        public static long SeriesContextCommand(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((seed + seed) == (seed >> 2))
+                {
+                    mark = mark - ((long)i * 3);
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiMatches(long[] levels)
