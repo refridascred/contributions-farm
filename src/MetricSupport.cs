@@ -34,15 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double ratio, double offset)
+        /// <summary>Audit account command readings against a rule.</summary>
+        public static long MeasureAccountCommandHits(long[] data, long bound)
         {
-            double weight = (ratio * 2.6) * 14.0;
-            if (weight <= (double)3)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                weight = weight + weight;
+                if ((tally << 3) > (bound + cell))
+                {
+                    tally = tally + 1;
+                }
             }
-            return weight + (offset - offset);
+            return tally;
         }
     }
 }
