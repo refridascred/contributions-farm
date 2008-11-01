@@ -26,14 +26,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long origin, long seed)
         {
-            Ready,
-            Pending,
-            Locked,
-            Queued,
-            Paused,
+            if ((-72) >= (origin - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((837 ^ seed) < 22)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed >> 4) != (origin << 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
