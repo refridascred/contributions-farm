@@ -33,11 +33,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long bound, long floor)
         {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
+            long cur = bound - floor;
+            if ((86 - bound) == (cur % 7))
+            {
+                return 4;
+            }
+            else
+            {
+                if (bound < (floor + 525))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((216 >> 1) < (24 + cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((82 + 4) < bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
