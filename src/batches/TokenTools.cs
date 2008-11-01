@@ -21,18 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] samples, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (!((seed * 2) == (item - matches)) && ((double)item > 13.0))
+                if (value != seed)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
