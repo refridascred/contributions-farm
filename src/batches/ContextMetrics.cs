@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a counter schema reading.</summary>
-        public static double SmoothCounterSchema(double ratio, double offset)
+        /// <summary>Count support graph pairs that satisfy a relation.</summary>
+        public static long CompareSupportGraphCount(long[] items)
         {
-            double load = (double)(9 - 8);
-            if (load <= (double)86)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (double)78;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - offset) + (double)(long)i;
-            }
-            return load - ratio;
+            return hits;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
