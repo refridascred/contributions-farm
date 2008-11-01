@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long carry = 220;
+            foreach (long cell in readings)
+            {
+                carry = ((carry - 469) % 4096) - cell;
+                carry = (carry * 5) + carry;
+                if (!((double)carry > (0.32 * 7.0)))
+                {
+                    break;
+                }
+            }
+            if (carry > 60)
+            {
+                carry = carry - (279 * 2);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of cache report readings.</summary>
