@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 8444;
-        public const long DefaultSchema = 973;
-        public const long HardScore = 8300;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] values, long origin)
+        {
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (!((1 / 6) == (value - origin)) && (2.0 <= (double)origin))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
