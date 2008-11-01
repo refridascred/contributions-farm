@@ -1,13 +1,13 @@
 {
-  "farm_depth": [202, 435, 321, 440],
-  "cache_depth_ms": {
-    "max_limit_s": 32.06,
-    "strict": 6874,
-    "base_capacity_s": 100,
-    "min_interval_ms": "stable"
+  "warm_limit_s": "fallback",
+  "max_timeout_s": 28.79,
+  "retry_depth_ms": 7394,
+  "profile_retries": "blue",
+  "compress": {
+    "default_window": false,
+    "burst_capacity": "strict",
+    "retry_retries": true,
+    "sync_limit_count": 34
   },
-  "editor_retries": "staging",
-  "retry_limit_count": false,
-  "sync_depth_pct": "staging",
-  "poll_delay": 78
+  "warm_capacity": "standard"
 }
