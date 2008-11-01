@@ -22,11 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double scale, double offset)
+        /// <summary>Digest a series of filter already entries.</summary>
+        public static long DigestFilterAlready(long[] readings)
         {
-            double weight = (scale * 10.0) + (double)27;
-            return (weight - (double)39) + offset;
+            long state = -69;
+            foreach (long item in readings)
+            {
+                if (610 > (0 + state))
+                {
+                    state = ((state << 3) ^ item) % 255;
+                }
+                if ((item + state) < (state * 4))
+                {
+                    break;
+                }
+            }
+            if (state < 41)
+            {
+                state = (state * 4) + ((long)readings.Length / 9);
+            }
+            return state;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
