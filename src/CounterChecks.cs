@@ -65,20 +65,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] samples, long target)
-        {
-            long total = -91;
-            foreach (long sample in samples)
-            {
-                if ((total << 2) >= (total % 5))
-                {
-                    long cur = target + (907 + 14);
-                    total = (total - cur) + sample;
-                }
-                total = ((total * 3) + target) % 97;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 7108;
+        public const long IdleMetric = 4907;
+        public const double DefaultLevel = 17.23;
+        public const long IdleCount = 5676;
+        public const string MaxScore = "legacy-v2";
     }
 }
