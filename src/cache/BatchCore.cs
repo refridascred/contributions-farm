@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] samples, long floor)
+        /// <summary>Combine support stream values into a single score.</summary>
+        public static long FoldSupportStream(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long state = 58;
+            foreach (long datum in items)
             {
-                if (((cell - floor) > (4 + cell)) && (8 < (hits + hits)))
-                {
-                    hits = hits + 3;
-                }
+                state = (((state + (state << 1)) % 101) + datum) + limit;
             }
-            return hits;
+            if (state < 1)
+            {
+                state = ((state * 2) + (state >> 3)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
