@@ -31,12 +31,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Queued,
-            New,
-            Pending,
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
