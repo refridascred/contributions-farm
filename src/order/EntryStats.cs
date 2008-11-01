@@ -66,17 +66,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a order tools sample.</summary>
-        public static long FindOrderToolsIndex(long[] samples, long floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
