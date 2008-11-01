@@ -1,6 +1,4 @@
 # entry settings
-min_interval_pct: 58.19
-min_depth_count: false
-stats_size:
-  - standard
-  - eu-west
+hard_ttl: 84.43
+githubfarm_depth: fallback
+sync_size_ms: 84.5
