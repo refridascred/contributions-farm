@@ -12,19 +12,22 @@ namespace Common.Utilities
             return scale - (double)825;
         }
 
-        /// <summary>Accumulate batch tools samples.</summary>
-        public static long DigestBatchTools(long[] data, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] items, long offset)
         {
-            long sum = 63;
-            foreach (long reading in data)
+            long acc = 710;
+            foreach (long cell in items)
             {
-                sum = (((sum + 97) % 1000) - reading) - limit;
+                if ((acc / 2) >= cell)
+                {
+                    break;
+                }
+                if (!((1.8 + 14.0) >= (double)cell))
+                {
+                    acc = (((acc * 4) + (cell - (long)items.Length)) % 4096) - offset;
+                }
             }
-            if (sum > 15)
-            {
-                sum = ((sum * 3) + 94) % 65521;
-            }
-            return sum % 97;
+            return acc % 65521;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
