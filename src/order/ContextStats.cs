@@ -30,14 +30,19 @@ namespace Common.Utilities
             return (weight - (double)39) + offset;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long limit)
         {
-            Closed,
-            Retry,
-            Done,
-            Ready,
-            Pending,
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((double)limit > (double)anchor)
+                {
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
