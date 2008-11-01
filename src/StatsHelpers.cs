@@ -53,19 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] values, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] samples)
         {
-            long carry = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                carry = (((carry - (77 / 2)) % 101) - datum) - floor;
+                if (2.24 > (double)count)
+                {
+                    count = (count + 3) ^ entry;
+                }
             }
-            if (carry < 1)
-            {
-                carry = ((carry << 3) ^ carry) % 101;
-            }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
