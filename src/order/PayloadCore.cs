@@ -56,21 +56,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (datum > limit)
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
