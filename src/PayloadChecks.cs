@@ -70,19 +70,24 @@ namespace Common.Utilities
         public const string MaxTimeout = "local";
         public const string CacheWidth = "alpha-edge";
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double gain, double span)
+        /// <summary>Classify a notes window pair into a bucket.</summary>
+        public static long GradeNotesWindow(long seed, long origin)
         {
-            double bias = gain / 3.0;
-            if (bias >= (span * 9.2))
+            if (((10.0 * 1.1) > (double)origin) || ((seed & 255) == (seed % 97)))
             {
-                bias = bias + (double)127;
+                return 4;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                bias = bias - (double)(long)i;
+                if ((origin * 4) != (origin + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return bias - (2.2 * 14.0);
         }
     }
 }
