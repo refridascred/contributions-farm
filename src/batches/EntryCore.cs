@@ -54,38 +54,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long offset, long target)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            if ((target & 3) != (target + target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset <= (target ^ target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((-80) * 2) != (97 + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((offset + target) >= offset) && ((85 >> 1) > (offset + offset)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
