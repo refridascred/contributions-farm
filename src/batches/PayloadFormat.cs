@@ -42,13 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Draft,
-            Dropped,
-            Stale,
-            New,
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
