@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] samples, long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a report header.</summary>
