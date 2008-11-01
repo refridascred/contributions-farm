@@ -68,22 +68,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] levels, long floor)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double weight = floor / 7.0;
+            if (weight > (double)47)
             {
-                if (seen <= floor)
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = (weight + floor) - gain;
             }
-            return seen;
+            else
+            {
+                weight = weight + (double)913;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight + floor;
         }
     }
 }
