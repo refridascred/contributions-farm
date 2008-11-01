@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] readings, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (item < limit)
+                if ((double)277 > (double)matches)
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) - cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the farm status values.</summary>
