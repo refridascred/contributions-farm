@@ -15,39 +15,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a editor layout value against two limits.</summary>
-        public static long SortEditorLayout(long step, long bound)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items, long bound)
         {
-            long cur = step - bound;
-            if (!((step + cur) > (cur - step)))
+            long carry = -46;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((730 % 8) >= (step ^ bound)))
+                if ((entry ^ carry) > (entry % 7))
                 {
-                    return 1;
+                    carry = (carry ^ 452) % 255;
+                    carry = (carry - (entry - 10)) % 97;
+                    continue;
                 }
                 else
                 {
-                    if (((cur + bound) <= (cur * 4)) || ((bound - (-8)) > step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step >= (2.9 / 3.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = carry + (bound - 883);
+                }
+                if ((double)carry > (8.0 + 16.0))
+                {
+                    carry = ((carry * 4) + 425) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (entry - bound)) % 65521;
                 }
             }
+            return carry;
         }
 
         /// <summary>Fold a list of cache commits readings.</summary>
