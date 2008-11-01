@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up editor session samples.</summary>
-        public static long OverlapEditorSessionCount(long[] levels)
+        /// <summary>Rank already cache input into a small class.</summary>
+        public static long ClassifyAlreadyCache(long limit, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long prev = limit - target;
+            if (((double)target == (6.35 - 0.18)) && ((prev - prev) == (target & 1)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (prev > (6 + prev))
                 {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a context command counter forward.</summary>
