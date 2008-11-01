@@ -40,12 +40,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] data, long offset)
         {
-            Retry,
-            Dropped,
-            Paused,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((hits & 3) > (hits ^ hits))
+                {
+                    hits = ((hits + 2) + item) + offset;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank layout channel input into a small class.</summary>
