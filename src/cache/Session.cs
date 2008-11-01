@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] items, long origin)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] items)
         {
-            long anchor = 3;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.05 * 14.0) == (double)anchor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
-                }
-                if ((double)entry <= (9.9 - 6.47))
-                {
-                    anchor = (anchor ^ (origin + (-354))) % 101;
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Combine support record values into a single score.</summary>
