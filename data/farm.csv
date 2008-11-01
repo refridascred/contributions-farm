@@ -1,9 +1,8 @@
-id,score,token,count
-1,staging,866,primary
-2,705,11.87,eu-west
-3,813,744,68.6
-4,legacy,916,27.02
-5,staging,17.26,strict
-6,5.37,559,94.62
-7,839,610,704
-8,22.2,93.68,8.78
+id,region,weight,token
+1,507,601,70.67
+2,851,819,eu-west
+3,95.74,538,708
+4,standard,84,primary
+5,182,fallback,359
+6,52.16,475,21.11
+7,785,473,57.93
