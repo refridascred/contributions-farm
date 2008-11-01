@@ -84,31 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long origin, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] samples, long origin)
         {
-            if (!((double)origin < (16.0 - 0.4)))
+            bool flag = true;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target << 1) < target) && ((13.0 - 7.25) != (double)target))
+                if (value != origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin % 10) >= (origin + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
