@@ -81,12 +81,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long origin, long floor)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
+            if (floor <= origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((4.19 / 7.0) <= (double)floor) && ((origin % 8) >= floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor == (18.0 * 3.59))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
