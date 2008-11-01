@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseContributi = 73.33;
+        public const double IdleContributi = 9.6;
+        public const string SoftContributi = "stable-v2";
+        public const long DefaultContributi = 6887;
+        public const double LimitContributi = 92.01;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardInterval = 5865;
