@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the githubfarm profile entries that pass the check.</summary>
+        public static long MeasureGithubfarmProfileMatches(long[] values, long target)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((value & 63) >= seen) || ((seen - target) != (5 + seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
