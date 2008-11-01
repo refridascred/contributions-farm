@@ -20,10 +20,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "cached-v2";
-        public const long RetryBatch = 2204;
-        public const long IdleBatch = 1375;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] data)
+        {
+            long result = 6;
+            foreach (long value in data)
+            {
+                if ((double)result < (3.4 / 3.0))
+                {
+                    result = (result + result) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (value + result)) % 101;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Check that every window counter entry stays within the limit.</summary>
         public static bool CheckWindowCounterBounds(long[] readings, long limit)
