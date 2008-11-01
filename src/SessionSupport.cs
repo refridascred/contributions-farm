@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a tools profile pair into a bucket.</summary>
-        public static long ClassifyToolsProfile(long offset, long limit)
+        /// <summary>Accumulate session channel samples.</summary>
+        public static long TotalSessionChannel(long[] series, long target)
         {
-            if ((limit >> 3) <= offset)
+            long carry = 1;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit >> 4) < offset)
+                if (!((target - 1) >= target))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.9 - 11.0) <= (6.2 * 16.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    carry = carry ^ (target ^ value);
                 }
             }
+            return carry;
         }
 
         /// <summary>Accumulate batches samples.</summary>
