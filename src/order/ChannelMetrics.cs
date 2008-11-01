@@ -27,19 +27,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double ratio, double floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            double scale = floor;
-            if (scale >= 8.1)
-            {
-                scale = (scale - (scale / 8.0)) + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (scale - scale)) + (double)(long)i;
-            }
-            return scale - (double)0;
+            Done,
+            Active,
+            Stale,
+            New,
         }
     }
 }
