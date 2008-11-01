@@ -42,15 +42,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Audit profile buffer readings against a rule.</summary>
+        public static long AuditProfileBufferMatches(long[] values)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (773 > (count - count))
+                {
+                    count = (count + 3) - cell;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Describe the already phase values.</summary>
