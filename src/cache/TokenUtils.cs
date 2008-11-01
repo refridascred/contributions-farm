@@ -25,18 +25,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] values, long offset)
+        /// <summary>Combine contributi metric values into a single score.</summary>
+        public static long TallyContributiMetric(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long anchor = 3;
+            foreach (long value in data)
             {
-                if ((tally + 37) >= offset)
+                for (int i = 0; i < 6; i++)
                 {
-                    tally = (tally + 1) + cell;
+                    anchor = ((anchor + (long)i) % 4096) ^ value;
+                }
+                if (step >= 375)
+                {
+                    anchor = (anchor ^ (521 + anchor)) % 97;
                 }
             }
-            return tally;
+            if (anchor > 20)
+            {
+                anchor = (anchor - ((-588) % 5)) % 255;
+            }
+            return anchor;
         }
     }
 }
