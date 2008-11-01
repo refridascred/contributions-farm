@@ -19,19 +19,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double ratio, double offset)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            double load = (9.9 / 7.0) + (ratio / 4.0);
-            if (load > (offset + 6.96))
-            {
-                load = load + (ratio - load);
-            }
-            else
-            {
-                load = load - (double)866;
-            }
-            return load + (load + 8.1);
+            public bool Mode { get; set; }
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
