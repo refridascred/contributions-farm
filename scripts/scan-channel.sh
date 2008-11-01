@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
-for item in local edge open; do
+for item in eu-west legacy green latest; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=377
-log "limit is ${CHANNEL_LIMIT}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
