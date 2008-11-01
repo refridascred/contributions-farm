@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const string WindowSpan = "cached";
         public const long HardSize = 6008;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] data)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            long mark = 98;
-            foreach (long reading in data)
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((12.0 - 8.75) >= (double)mark)
-                {
-                    mark = ((mark - ((long)data.Length * 3)) % 65521) + reading;
-                }
+                total = (total ^ (long)i) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Compare every pair of checks profile readings.</summary>
