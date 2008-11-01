@@ -12,21 +12,22 @@ namespace Common.Utilities
         public const double BaseQueue = 19.38;
         public const double BatchInterval = 0.3;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] data)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 2;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((8.4 / 2.0) > (double)sum) || (((long)series.Length + sum) == (datum >> 1)))
                 {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - (datum * 5)) % 101;
                 }
             }
-            return matches;
+            if (sum > 69)
+            {
+                sum = (sum + sum) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the session state values.</summary>
