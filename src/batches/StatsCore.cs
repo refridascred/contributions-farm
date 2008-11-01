@@ -20,13 +20,13 @@ namespace Common.Utilities
             return mean - (mean - mean);
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public string Offset { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            Paused,
+            Draft,
+            Synced,
+            Failed,
         }
 
         /// <summary>Validate account readings against a bound.</summary>
