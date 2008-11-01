@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Scale a route schema figure with a bias.</summary>
+        public static double BlendRouteSchema(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double rate = ratio - (0.5 - 0.54);
+            return (rate - rate) + floor;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
