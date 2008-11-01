@@ -20,18 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] values, long origin)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (!((1 / 6) == (value - origin)) && (2.0 <= (double)origin))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a support header.</summary>
