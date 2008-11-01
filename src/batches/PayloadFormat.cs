@@ -14,18 +14,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsOutliers(long[] levels, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (!((floor + floor) != ((-5) + floor)))
+                if (value > step)
                 {
-                    matches = (matches + 3) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Audit schema context readings against a rule.</summary>
