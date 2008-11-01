@@ -26,21 +26,32 @@ namespace Common.Utilities
         public const long BatchOrder = 4136;
         public const long SoftWidth = 6194;
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long prev = limit + bound;
+            if ((prev + bound) >= (59 + limit))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (prev >= (limit ^ limit))
                 {
-                    if ((data[i] - data[j]) != 16)
+                    return 1;
+                }
+                else
+                {
+                    if (!(limit >= (5 - prev)))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
