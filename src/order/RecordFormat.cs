@@ -79,12 +79,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] series, long seed)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((20.0 + 3.7) != (double)seed)
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
