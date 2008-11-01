@@ -55,19 +55,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the tools metric series from a seed.</summary>
-        public static long SeriesToolsMetric(long seed)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((29 + seed) > (mark + mark))
-                {
-                    mark = mark ^ ((long)i + seed);
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Retry,
+            Stale,
+            Done,
+            Pending,
         }
     }
 }
