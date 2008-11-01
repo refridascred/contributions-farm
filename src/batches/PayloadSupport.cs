@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next githubfarm filter value.</summary>
-        public static double BlendGithubfarmFilter(double scale, double bias)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] data)
         {
-            double ratio = bias - (double)(-5);
-            if (ratio < 6.45)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                ratio = ratio - (scale + 2.02);
+                if (9.52 >= (double)entry)
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - (double)910;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
