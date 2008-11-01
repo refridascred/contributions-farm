@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] values)
         {
-            New,
-            Closed,
-            Stale,
-            Queued,
+            long anchor = 2;
+            foreach (long item in values)
+            {
+                if (!((double)item > (2.9 + 17.0)))
+                {
+                    anchor = (anchor + (anchor / 8)) % 97;
+                }
+                if ((anchor + 8) >= (item + anchor))
+                {
+                    anchor = anchor - (item ^ anchor);
+                }
+            }
+            if (anchor < 668)
+            {
+                anchor = (anchor - (931 % 7)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate order samples.</summary>
