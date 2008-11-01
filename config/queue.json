@@ -1,22 +1,7 @@
 {
-  "profile_threshold": {
-    "window_ratio": "blue",
-    "hard_timeout": 36.73,
-    "cache_ratio": {
-      "cache_delay": "legacy",
-      "stream_retries": 4702,
-      "retry_ttl_ms": true,
-      "batch_size_count": 8.3,
-      "persist": "latest"
-    },
-    "stream_depth": [384, 103]
-  },
-  "batch_window_s": ["cached", "staging", "latest"],
-  "min_ratio_count": [310, 185, 93],
-  "graph_depth": {
-    "default_retries_s": "standard",
-    "batch_depth": 9.59,
-    "readonly": true,
-    "warm_delay_count": "open"
-  }
+  "burst_ttl": "primary",
+  "burst_depth_s": "fallback",
+  "contributi_ttl": "open",
+  "base_ratio_count": 18.44,
+  "metric_limit": 250
 }
