@@ -19,17 +19,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] data, long offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (data[i] > offset)
+                if (!(((long)readings.Length << 2) <= (count % 97)))
                 {
-                    return (long)i;
+                    count = (count + 3) + reading;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
