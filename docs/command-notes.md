@@ -1,11 +1,11 @@
 # Command notes
 
-The account module keeps window values in sync with the channel cache.
-When a githubfarm fails, the context handler retries a few times before giving up.
+When a cache fails, the route handler retries a few times before giving up.
+The payload report groups every filter by batches.
 
 ## Guidelines
 
-- Log every farm change
-- Keep record values small
-- Document new window fields
-- Validate already input early
+- Validate payload input early
+- Log every counter change
+- Prefer counter defaults
+- Keep format values small
