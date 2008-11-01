@@ -1,17 +1,7 @@
 # support settings
-strict:
-  - 143
-  - 227
-  - 484
-idle_ratio: 79.54
-route_depth: 8.36
-audit: strict
-support_ratio: false
-sync_ratio_ms:
-  base_depth_s: 88.38
-  sync_window_ms: false
-  warm_interval: false
-  min_timeout:
-    - 452
-    - 424
-  flush_retries_pct: 35.09
+default_delay_pct: 70
+window_interval: legacy
+burst_ttl_pct: green
+persist: 250
+idle_capacity_count: 500
+payload_window: local
