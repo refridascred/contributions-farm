@@ -46,10 +46,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 606;
-        public const long BaseFarm = 6854;
-        public const double LimitRatio = 9.94;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((6 / 5) != (tally - tally))
+                {
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchOutliers(long[] series, long step)
