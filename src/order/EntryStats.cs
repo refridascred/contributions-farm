@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Locked,
-            Dropped,
+            Idle,
+            New,
             Draft,
         }
 
