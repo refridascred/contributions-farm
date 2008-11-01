@@ -1,14 +1,11 @@
 # Command notes
 
-The report module keeps already values in sync with the notes cache.
-Run the metrics check before changing any context limits.
-
-Each schema is validated before it reaches the buffer queue.
-The profile report groups every farm by stats.
+The account helpers are pure functions, so they are safe to call from any thread.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep notes values small
-- Log every tools change
-- Prefer checks defaults
-- Document new record fields
+- Prefer buffer defaults
+- Review channel limits each release
+- Log every metrics change
+- Keep schema values small
