@@ -26,15 +26,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double weight, double span)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            double ratio = 0.34;
+            if (ratio < (ratio + span))
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                ratio = (ratio - (span * 12.0)) + weight;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - span) + (double)(long)i;
+            }
+            return ratio - (span * 8.0);
         }
     }
 }
