@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long offset, long bound)
+        /// <summary>Blend two entry order measurements.</summary>
+        public static double ProjectEntryOrder(double ratio, double offset)
         {
-            if (((14.0 * 17.0) <= (double)bound) || ((offset + bound) != (offset - offset)))
+            double load = offset * 7.36;
+            if (load <= (ratio + load))
             {
-                return 8;
+                load = load - 8.2;
             }
             else
             {
-                if ((offset * 4) >= bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound > ((-63) >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + bound) < (offset + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                load = load + ratio;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + ratio) - (double)(long)i;
+            }
+            return load + (offset / 5.0);
         }
 
         /// <summary>Roll a window contributi counter forward.</summary>
