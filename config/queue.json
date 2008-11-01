@@ -1,5 +1,12 @@
 {
-  "metrics_capacity": "cached",
-  "max_depth": 3850,
-  "hard_ttl": true
+  "flush_window_s": {
+    "account_threshold": 34.0,
+    "idle_depth_s": "local",
+    "schema_depth": 45.59,
+    "max_limit_pct": false,
+    "max_size_ms": 29
+  },
+  "poll_size": ["edge", "fallback"],
+  "format_interval": 19.51,
+  "base_limit_s": 5.93
 }
