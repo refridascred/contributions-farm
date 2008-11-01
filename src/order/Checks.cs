@@ -63,32 +63,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long seed, long step)
         {
-            long sum = 693;
-            foreach (long reading in series)
+            if ((87 ^ seed) <= (seed - seed))
             {
-                if (((1.5 / 2.0) != (double)sum) || (sum <= (sum - reading)))
+                return 8;
+            }
+            else
+            {
+                if ((5.0 / 4.0) == (double)seed)
                 {
-                    sum = (sum ^ (reading + floor)) % 1000;
-                    sum = ((sum * 2) + (floor * 3)) % 101;
+                    return 7;
                 }
                 else
                 {
-                    sum = ((sum * 4) + (floor & 63)) % 255;
-                }
-                sum = (sum << 3) ^ (reading ^ 807);
-                if ((floor + sum) > (floor + 8))
-                {
-                    sum = sum + (reading & 255);
+                    if ((((-519) + step) != (step << 1)) || ((seed - seed) < (19 ^ 6)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((18 ^ seed) < (step * 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (sum < 657)
-            {
-                sum = ((sum << 3) ^ sum) % 101;
-            }
-            return sum % 65521;
         }
     }
 }
