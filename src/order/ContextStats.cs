@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long WindowStats = 9994;
         public const long IdleLevel = 2721;
 
-        /// <summary>Roll a graph checks counter forward.</summary>
-        public static long DeriveGraphChecks(long step)
+        /// <summary>Count order notes pairs that satisfy a relation.</summary>
+        public static long OverlapOrderNotesCount(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((step - 0) == (long)i)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total << 3) ^ (step % 100);
+                    if ((series[i] - series[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a route entry.</summary>
