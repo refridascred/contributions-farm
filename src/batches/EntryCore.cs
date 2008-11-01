@@ -19,10 +19,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "stable-edge";
-        public const string MinInterval = "staging-1";
-        public const double BatchLevel = 96.2;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string BurstInterval = "fallback-edge";
