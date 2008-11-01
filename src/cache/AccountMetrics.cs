@@ -26,19 +26,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] items, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long limit, long limit2)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            if (limit < (limit2 ^ 282))
             {
-                if (datum <= bound)
+                return 5;
+            }
+            else
+            {
+                if (((double)limit2 >= 8.0) || ((limit2 << 3) <= limit))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit2 << 2) > limit2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (limit < 0)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Combine profile cluster values into a single score.</summary>
