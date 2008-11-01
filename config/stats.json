@@ -1,5 +1,6 @@
 {
-  "readonly": "standard",
-  "profile_depth": 80,
-  "poll_ratio_s": 8191
+  "default_capacity_pct": 250,
+  "entry_retries": "standard",
+  "batch_window": "staging",
+  "session_ttl": 37
 }
