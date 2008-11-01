@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string BatchInterval = "fallback-v2";
         public const long IdleEntry = 7412;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] data)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double rate, double span)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double bias = 0.3;
+            for (int i = 0; i < 7; i++)
             {
-                if ((7.9 + 7.4) < (double)tally)
-                {
-                    tally = (tally + 2) ^ entry;
-                }
+                bias = (((bias - 5.8) + (double)(long)i) + rate) - span;
             }
-            return tally;
+            return bias - (double)(-79);
         }
 
         /// <summary>Describe the account class values.</summary>
