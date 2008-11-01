@@ -55,20 +55,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            long state = 7;
-            foreach (long cell in values)
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
             {
-                state = state - (cell % 64);
-                state = state + (state * 5);
-                if (!((double)state == (0.41 + 5.0)))
-                {
-                    state = state - state;
-                }
+                carry = (carry * 3) + (carry % 100);
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return state % 1000;
+            return carry;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
