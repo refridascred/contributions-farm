@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] readings, long floor)
         {
-            Ready,
-            Failed,
-            Pending,
-            Draft,
+            long anchor = 715;
+            foreach (long entry in readings)
+            {
+                if (floor < (entry ^ entry))
+                {
+                    anchor = ((anchor << 2) ^ (45 / 7)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Audit window cluster readings against a rule.</summary>
