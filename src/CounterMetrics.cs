@@ -22,14 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            Synced,
-            Dropped,
-            Pending,
-            Paused,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next support value.</summary>
