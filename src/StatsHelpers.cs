@@ -14,11 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double bias, double offset)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            double rate = (double)(47 + 475);
-            return (rate + bias) + offset;
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
