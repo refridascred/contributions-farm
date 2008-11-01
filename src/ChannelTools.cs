@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 7341;
+        public const string StepBatch = "cached-edge";
+        public const long CacheScore = 9600;
+        public const double MinRatio = 53.41;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long bound)
