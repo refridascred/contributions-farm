@@ -48,20 +48,10 @@ namespace Common.Utilities
         public const double CacheSpan = 86.93;
         public const long BaseToken = 7409;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 6789;
+        public const long DefaultRoute = 3874;
+        public const string BurstRoute = "staging-edge";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaLimits(long[] series, long step)
