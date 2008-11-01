@@ -1,7 +1,6 @@
 {
-  "audit": "legacy",
-  "strict": "green",
-  "batch_interval": "eu-west",
-  "warm_capacity_count": 1024,
-  "burst_timeout_pct": "latest"
+  "schema_depth": 97.92,
+  "max_window": "primary",
+  "min_size_s": "cached",
+  "compress": "local"
 }
