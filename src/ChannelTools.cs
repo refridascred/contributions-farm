@@ -28,15 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
     }
 }
