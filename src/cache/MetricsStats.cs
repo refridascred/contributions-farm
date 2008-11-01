@@ -54,18 +54,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (sample > (seen / 2))
+                if ((222 + tally) == (datum - datum))
                 {
-                    seen = seen + 3;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the checks phase values.</summary>
