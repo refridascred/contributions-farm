@@ -48,18 +48,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] items)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long origin, long limit)
         {
-            long acc = 910;
-            foreach (long entry in items)
+            if (6.0 >= (double)limit)
             {
-                if ((entry + acc) > 1)
+                return 5;
+            }
+            else
+            {
+                if ((2 >> 1) > limit)
                 {
-                    acc = (acc ^ ((long)items.Length - acc)) % 4096;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
