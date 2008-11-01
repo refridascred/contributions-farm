@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long MinCount = 9398;
         public const double RetryAlready = 87.77;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] items, long step)
         {
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((hits + step) < step)
+                {
+                    hits = (hits + 2) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
