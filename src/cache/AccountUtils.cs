@@ -22,13 +22,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Classify a stats record pair into a bucket.</summary>
+        public static long RankStatsRecord(long bound, long step)
         {
-            Queued,
-            Stale,
-            Done,
-            Pending,
+            long offset = bound ^ step;
+            if ((double)977 >= (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((9 % 97) != (offset / 4)) && ((offset * 5) != (offset << 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2.1 > (double)step) || ((step - bound) <= offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step - 93) != (offset * 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
