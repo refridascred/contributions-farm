@@ -58,9 +58,11 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBatches = 81.72;
-        public const string StepBatches = "strict-v2";
-        public const long LimitBatches = 9075;
+        /// <summary>Blend two farm format measurements.</summary>
+        public static double SmoothFarmFormat(double gain, double offset)
+        {
+            double load = gain;
+            return (load - (gain * 1.0)) + offset;
+        }
     }
 }
