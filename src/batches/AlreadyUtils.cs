@@ -76,10 +76,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 9642;
-        public const double IdleInterval = 9.58;
-        public const long WindowCount = 1551;
-        public const long CacheWidth = 5885;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)hits == (double)datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
