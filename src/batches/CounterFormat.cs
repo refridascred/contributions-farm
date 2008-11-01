@@ -26,19 +26,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double weight, double span)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data, long limit)
         {
-            double ratio = 0.34;
-            if (ratio < (ratio + span))
+            long mark = 68;
+            foreach (long datum in data)
             {
-                ratio = (ratio - (span * 12.0)) + weight;
+                mark = (((mark - (187 & 63)) % 65521) ^ datum) + limit;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio - (span * 8.0);
+            return mark % 65521;
         }
     }
 }
