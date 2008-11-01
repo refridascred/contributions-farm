@@ -45,11 +45,22 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchSpan = 4586;
-        public const double BaseFarm = 73.2;
-        public const long RetryLevel = 5691;
-        public const double SoftRatio = 25.72;
-        public const long StepScore = 6783;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items, long offset)
+        {
+            long result = 522;
+            foreach (long value in items)
+            {
+                if ((value + 0) != (value + value))
+                {
+                    result = (result ^ (47 >> 4)) % 255;
+                }
+            }
+            if (result < (-131))
+            {
+                result = result - (offset + (-9));
+            }
+            return result;
+        }
     }
 }
