@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "standard-edge";
-        public const double CacheRatio = 60.27;
-        public const long IdleChannel = 7384;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Draft,
+            Dropped,
+            Locked,
+            Active,
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long GradeStats(long bound, long origin)
