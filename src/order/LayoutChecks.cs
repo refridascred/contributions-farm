@@ -52,14 +52,19 @@ namespace Common.Utilities
             return scale - (scale - gain);
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] items, long limit)
         {
-            Idle,
-            Locked,
-            Closed,
-            Synced,
-            New,
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
