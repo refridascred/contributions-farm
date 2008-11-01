@@ -1,12 +1,12 @@
 # Command notes
 
-Each filter is validated before it reaches the counter queue.
-The channel module keeps cluster values in sync with the already cache.
-Use window settings to tune how often stream data is refreshed.
+The batch helpers are pure functions, so they are safe to call from any thread.
+A profile that stays idle for too long is moved to the record list.
+The account module keeps queue values in sync with the counter cache.
 
 ## Guidelines
 
-- Validate batch input early
-- Review record limits each release
-- Document new stats fields
-- Log every entry change
+- Review schema limits each release
+- Keep token values small
+- Document new metrics fields
+- Validate farm input early
