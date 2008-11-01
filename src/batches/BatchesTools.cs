@@ -27,19 +27,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] values)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            long state = 222;
-            foreach (long sample in values)
+            long mix = 2;
+            foreach (long reading in readings)
             {
-                state = ((state - state) % 255) ^ sample;
+                if ((reading + mix) > (mix ^ reading))
+                {
+                    mix = mix + reading;
+                }
             }
-            if (state < 4)
-            {
-                state = ((state * 2) + state) % 4096;
-            }
-            return state % 65521;
+            return mix;
         }
     }
 }
