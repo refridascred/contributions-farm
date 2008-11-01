@@ -23,11 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstRoute = 60.73;
-        public const long MinTimeout = 4856;
-        public const long HardRoute = 3953;
-        public const long WindowRoute = 9665;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "cached-v2";
+        public const long RetryBatch = 2204;
+        public const long IdleBatch = 1375;
 
         /// <summary>Combine metric batch values into a single score.</summary>
         public static long ScoreMetricBatch(long[] items, long step)
