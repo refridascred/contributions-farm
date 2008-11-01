@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double gain, double span)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double bias = span;
-            return (bias + (bias + span)) + gain;
+            Failed,
+            Stale,
+            New,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
