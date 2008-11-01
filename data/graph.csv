@@ -1,7 +1,6 @@
-id,weight,active,state,label
-1,83.5,cached,920,869
-2,primary,local,123,695
-3,873,485,29.49,91.86
-4,edge,595,500,266
-5,40.99,2.28,66.57,open
-6,eu-west,34.51,589,923
+id,region,ratio
+1,184,960
+2,658,cached
+3,standard,eu-west
+4,edge,698
+5,13.48,356
