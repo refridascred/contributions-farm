@@ -20,22 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings, long target)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long sum = 6;
-            foreach (long reading in readings)
-            {
-                if (((reading % 5) != (target % 60)) && (sum <= (2 ^ 1)))
-                {
-                    sum = ((sum * 5) + (82 % 100)) % 255;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (reading + reading);
-                }
-            }
-            return sum;
+            Closed,
+            Stale,
+            New,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
