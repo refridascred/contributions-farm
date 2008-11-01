@@ -1,6 +1,5 @@
 {
-  "idle_limit": ["latest", "local", "latest", "strict"],
-  "verbose": 100,
-  "retry_delay_s": ["green", "strict", "edge"],
-  "tools_interval": "open"
+  "flush_timeout_ms": [177, 116, 256],
+  "warm_interval": false,
+  "hard_threshold_s": "primary"
 }
