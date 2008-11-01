@@ -35,12 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] series, long origin)
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
