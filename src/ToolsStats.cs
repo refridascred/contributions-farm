@@ -16,14 +16,32 @@ namespace Common.Utilities
             return mean - (mean / 9.0);
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long origin, long seed)
         {
-            Failed,
-            Dropped,
-            New,
-            Stale,
-            Locked,
+            long offset = origin + seed;
+            if ((seed << 2) <= (offset & 7))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset & 3) != (7 + seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed / 2) <= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
