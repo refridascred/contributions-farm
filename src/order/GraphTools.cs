@@ -45,22 +45,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] levels, long origin)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long score = 69;
-            foreach (long cell in levels)
-            {
-                if (!((cell - score) >= (score + cell)))
-                {
-                    score = (score << 2) ^ (cell ^ origin);
-                }
-                if ((origin % 64) < score)
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the stats phase values.</summary>
