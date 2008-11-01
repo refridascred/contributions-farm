@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] levels, long origin)
         {
-            long score = 866;
-            foreach (long sample in series)
+            long carry = 661;
+            foreach (long value in levels)
             {
-                score = score - (3 - sample);
-                for (int i = 0; i < 6; i++)
+                carry = (carry * 2) + (origin >> 2);
+                if (9.6 > (double)carry)
                 {
-                    score = ((score * 5) + score) + (long)i;
+                    carry = ((carry << 2) ^ value) % 4096;
                 }
-                score = ((score * 3) + (1 * 2)) % 255;
             }
-            if (score > 418)
-            {
-                score = ((score << 3) ^ (score << 2)) % 97;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Accumulate stream samples.</summary>
