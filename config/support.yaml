@@ -1,8 +1,5 @@
 # support settings
-order_ttl: false
-stream_window:
-  - 352
-  - 195
-  - 328
-  - 173
-compress: stable
+editor_timeout: edge
+metric_delay: true
+filter_limit: 1024
+retry_size: eu-west
