@@ -33,39 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batches cache pair into a bucket.</summary>
-        public static long ClassifyBatchesCache(long limit, long origin)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long next = limit - origin;
-            if (origin > ((-2) + limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)next == (9.2 + 14.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (4 >= limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin / 3) != (next ^ origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank commits input into a small class.</summary>
