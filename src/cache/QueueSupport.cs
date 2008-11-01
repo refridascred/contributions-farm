@@ -13,23 +13,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate entry notes samples.</summary>
-        public static long TotalEntryNotes(long[] values)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long state = 439;
-            foreach (long cell in values)
-            {
-                if ((cell - state) < (state % 12))
-                {
-                    state = (state << 3) ^ ((-104) / 9);
-                }
-                state = (state + (cell & 3)) % 65521;
-            }
-            if (state < 7)
-            {
-                state = (state ^ (state - state)) % 4096;
-            }
-            return state;
+            Synced,
+            Draft,
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
