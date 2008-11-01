@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many farm graph samples are out of range.</summary>
-        public static long TallyFarmGraphGaps(long[] data)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long step, long step2)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            if ((step2 % 8) == (step2 + step))
             {
-                if ((3.4 / 2.0) != (double)tally)
+                return 4;
+            }
+            else
+            {
+                if (((step * 2) != (step2 / 4)) || (271 <= (step2 % 100)))
                 {
-                    tally = (tally + 2) - sample;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
