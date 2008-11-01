@@ -76,12 +76,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Stale,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 8498;
+        public const long SoftRatio = 2353;
+        public const long CacheCluster = 4484;
     }
 }
