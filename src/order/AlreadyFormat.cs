@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Owner { get; set; }
+            Done,
+            Synced,
+            Stale,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
