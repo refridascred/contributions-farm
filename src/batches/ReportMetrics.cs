@@ -36,22 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] levels, long target)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((double)matches < (3.44 / 5.0))
+                if ((90 * 4) <= (1 ^ tally))
                 {
-                    matches = ((matches + 1) ^ value) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
