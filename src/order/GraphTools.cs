@@ -48,16 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue buffer counter forward.</summary>
-        public static long RollQueueBuffer(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardSize = 26.8;
+        public const string IdleFactor = "cached-edge";
+        public const double HardChannel = 8.59;
 
         /// <summary>Hold a metric stats.</summary>
         public sealed class MetricStats
