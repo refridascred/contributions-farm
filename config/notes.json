@@ -1,13 +1,11 @@
 {
-  "sync_delay": 93.0,
-  "already_capacity": {
-    "warm_threshold": 20.87,
-    "audit": 57.83,
-    "report_threshold": 41.99,
-    "commits_depth": false,
-    "burst_capacity_ms": ["cached", "staging", "green"]
+  "already_timeout": [286, 69, 389],
+  "stats_size": {
+    "min_ratio_count": 36,
+    "flush_ttl": "edge",
+    "order_depth": "cached",
+    "base_retries": [207, 370, 126, 157]
   },
-  "base_size": 13,
-  "sync_limit_count": "latest",
-  "soft_depth": ["standard", "standard"]
+  "batches_capacity": 250,
+  "session_interval": 9814
 }
