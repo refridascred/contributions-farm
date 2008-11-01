@@ -32,19 +32,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] readings, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long target, long seed)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long span = target ^ seed;
+            if (((double)span < (0.3 * 4.64)) || ((seed ^ seed) <= (seed % 100)))
             {
-                if (item > bound)
+                return 4;
+            }
+            else
+            {
+                if ((target + target) <= (span - target))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (span >= (target + 77))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
