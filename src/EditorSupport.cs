@@ -114,15 +114,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record githubfarm reading.</summary>
-        public static double ScaleRecordGithubfarm(double bias, double offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] readings)
         {
-            double scale = offset;
-            for (int i = 0; i < 6; i++)
+            long result = 163;
+            foreach (long reading in readings)
             {
-                scale = (scale - (bias - offset)) - (double)(long)i;
+                result = ((result + (result / 6)) % 1000) - reading;
             }
-            return scale - (double)(-224);
+            if (result < 1)
+            {
+                result = (result << 3) ^ (long)readings.Length;
+            }
+            return result % 4096;
         }
     }
 }
