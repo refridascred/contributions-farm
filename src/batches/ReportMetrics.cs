@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout githubfarm readings against a bound.</summary>
-        public static bool ValidateLayoutGithubfarmBounds(long[] series, long floor)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Score { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
