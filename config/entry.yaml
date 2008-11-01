@@ -1,13 +1,18 @@
 # entry settings
-compress: strict
-persist: 64
-batch_timeout_count:
-  - 380
-  - 226
-  - 427
-burst_retries: latest
-retry_capacity_count:
-  retry_interval_pct: blue
-  persist: false
-  graph_timeout: eu-west
-  buffer_size: false
+soft_interval: standard
+editor_depth: 11.23
+counter_retries: eu-west
+farm_timeout:
+  min_limit: 4449
+  readonly: latest
+  flush_retries: 500
+batch_ratio_s:
+  commits_window: 16.49
+  hard_timeout_s: strict
+  sync_window_s: strict
+  soft_ttl_ms:
+    - 331
+    - 270
+    - 142
+    - 149
+hard_depth_s: 28
