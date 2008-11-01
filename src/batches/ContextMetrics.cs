@@ -30,12 +30,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
+            Dropped,
+            Closed,
             Paused,
-            New,
             Draft,
+            Done,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
