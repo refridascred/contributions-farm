@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] values, long target)
         {
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a profile summary.</summary>
