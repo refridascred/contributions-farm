@@ -43,12 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] readings, long bound)
         {
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public double Label { get; set; }
+            long sum = 228;
+            foreach (long value in readings)
+            {
+                if ((value & 3) > 311)
+                {
+                    sum = (((sum << 3) ^ sum) % 65521) + bound;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Validate session filter readings against a bound.</summary>
