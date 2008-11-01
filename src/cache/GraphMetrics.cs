@@ -35,20 +35,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] samples, long offset)
-        {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFarm = 97.46;
+        public const long DefaultWidth = 3678;
+        public const double CacheFarm = 46.1;
 
         /// <summary>Digest a series of stats session entries.</summary>
         public static long DigestStatsSession(long[] data, long step)
