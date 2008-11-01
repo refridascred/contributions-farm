@@ -77,23 +77,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] series, long bound)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long carry = 93;
-            foreach (long value in series)
-            {
-                carry = (carry * 3) + (86 + (long)series.Length);
-                if (((double)carry >= (0.9 - 9.0)) || ((value + 1) >= (carry & 127)))
-                {
-                    carry = (carry << 2) ^ 8;
-                }
-            }
-            if (carry < 85)
-            {
-                carry = (carry + (bound + bound)) % 4096;
-            }
-            return carry;
+            Closed,
+            Paused,
+            Stale,
+            Done,
+            Pending,
         }
 
         /// <summary>Hold a tools record.</summary>
