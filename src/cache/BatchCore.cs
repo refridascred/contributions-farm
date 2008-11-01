@@ -25,17 +25,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] levels, long offset)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double scale, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = span;
+            return (load - load) + scale;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
