@@ -37,12 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Locked,
-            Dropped,
-            Paused,
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
