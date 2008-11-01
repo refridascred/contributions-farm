@@ -41,19 +41,19 @@ namespace Common.Utilities
         public const long LimitRecord = 4945;
         public const long BatchRecord = 5374;
 
-        /// <summary>Blend two tools report measurements.</summary>
-        public static double SmoothToolsReport(double scale, double floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double gain, double bias)
         {
-            double scale2 = scale + (double)518;
-            if (scale2 >= (floor + 2.99))
+            double gain2 = gain;
+            if (gain2 > 7.0)
             {
-                scale2 = scale2 - (scale * 16.0);
+                gain2 = (gain2 + (double)352) - bias;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale2 = (scale2 - scale2) + (double)(long)i;
+                gain2 = gain2 + gain2;
             }
-            return scale2 + (double)936;
+            return gain2 + (double)5;
         }
     }
 }
