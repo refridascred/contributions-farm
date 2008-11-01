@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const double BaseStats = 78.5;
         public const long MinStats = 9149;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] levels)
         {
-            long carry = -63;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                carry = (carry + (cell + seed)) % 4096;
+                if (434 >= (hits + hits))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Rank profile notes input into a small class.</summary>
