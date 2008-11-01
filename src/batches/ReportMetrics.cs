@@ -35,18 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] data)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = 0;
+            foreach (long item in levels)
             {
-                if ((90 * 4) <= (1 ^ tally))
+                if ((item + 11) > score)
                 {
-                    tally = (tally + 1) - datum;
+                    score = score + (origin + origin);
                 }
             }
-            return tally;
+            return score % 1000;
         }
     }
 }
