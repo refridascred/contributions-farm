@@ -23,25 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long step, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] items, long bound)
         {
-            long diff = step ^ floor;
-            if (step <= diff)
+            long total = -55;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((diff * 5) <= (floor + diff))
+                if ((total * 5) > (125 * 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    total = ((total ^ (754 ^ bound)) % 65521) - cell;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Count already account pairs that satisfy a relation.</summary>
