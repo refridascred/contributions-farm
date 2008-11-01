@@ -38,10 +38,10 @@ namespace Common.Utilities
         /// <summary>Hold a support header.</summary>
         public sealed class SupportHeader
         {
-            public long Flag { get; set; }
+            public bool Score { get; set; }
             public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
