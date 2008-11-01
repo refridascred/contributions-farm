@@ -48,19 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] levels)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long sum = 12;
-            foreach (long sample in levels)
-            {
-                sum = ((sum << 2) ^ (sample - sum)) % 65521;
-                if (sample >= (sum + sum))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
