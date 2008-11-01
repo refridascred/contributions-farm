@@ -43,17 +43,19 @@ namespace Common.Utilities
             return scale + (rate + rate);
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] items, long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = floor - (floor - floor);
+            if (drift < (drift / 8.0))
             {
-                if ((items[i] == target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + rate;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (floor / 2.0)) + (double)(long)i;
+            }
+            return drift + (rate + rate);
         }
 
         /// <summary>Find the first account command entry that matches the target.</summary>
