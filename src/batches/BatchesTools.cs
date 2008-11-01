@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long step, long target)
+        /// <summary>Classify a cluster notes pair into a bucket.</summary>
+        public static long BucketClusterNotes(long origin, long floor)
         {
-            long span = step ^ target;
-            if ((target + step) < target)
+            if (!((5.67 * 7.51) == (double)floor))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (span < step)
+                if ((double)origin <= (double)floor)
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if ((span & 15) > (target ^ step))
+                    if ((origin <= floor) || ((550 >> 3) >= (floor * 5)))
                     {
-                        return 8;
+                        return 7;
                     }
                     else
                     {
-                        if (step >= (span & 7))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 3;
                     }
                 }
             }
