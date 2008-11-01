@@ -27,15 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] series, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (origin > (seen + reading))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
