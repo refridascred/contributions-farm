@@ -62,16 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double weight, double span)
-        {
-            double gain = span;
-            if (gain > (gain + span))
-            {
-                gain = gain - weight;
-            }
-            return gain - weight;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseBuffer = "cached-edge";
+        public const string DefaultFactor = "strict-1";
+        public const long RetryBuffer = 4032;
+        public const long LimitBuffer = 3029;
+        public const long BatchBuffer = 1959;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long RollEditor(long bound)
