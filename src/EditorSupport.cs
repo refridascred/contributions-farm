@@ -31,27 +31,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Blend two metric commits measurements.</summary>
+        public static double ScaleMetricCommits(double bias, double bias2)
         {
-            long anchor = -78;
-            foreach (long sample in levels)
+            double scale = bias;
+            if (scale > scale)
             {
-                anchor = anchor ^ anchor;
-                if ((anchor - anchor) > (anchor % 100))
-                {
-                    anchor = (anchor + (sample << 1)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (anchor << 3);
-                }
+                scale = scale + (5.96 * 20.0);
             }
-            if (anchor > 818)
+            else
             {
-                anchor = ((anchor << 3) ^ (anchor << 3)) % 255;
+                scale = scale + (6.1 / 4.0);
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + 2.0) + (double)(long)i;
+            }
+            return scale + bias2;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
