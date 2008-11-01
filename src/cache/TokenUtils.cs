@@ -28,18 +28,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] values, long target)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)entry > (15.0 - 17.0))
+                if (data[i] <= limit)
                 {
-                    tally = (tally + 2) - target;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
