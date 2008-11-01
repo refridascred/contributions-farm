@@ -21,19 +21,31 @@ namespace Common.Utilities
         public const long IdleStream = 5404;
         public const string StepStream = "fallback";
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] items, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long origin, long bound)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            if (((468 % 100) >= (3 + origin)) && ((36 - bound) > bound))
             {
-                if (cell >= floor)
+                return 4;
+            }
+            else
+            {
+                if ((origin >> 4) >= origin)
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)916 != (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
