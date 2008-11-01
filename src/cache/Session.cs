@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] items)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 7;
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mix + (-68)) < (value << 3))
                 {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ (275 + mix)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (value - mix)) % 1000;
+                }
+                if ((42 + 1) > (value + value))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mix > (-265))
+            {
+                mix = (mix - (mix & 7)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Project the next batches value.</summary>
