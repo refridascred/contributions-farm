@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] data)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            long score = 5;
+            foreach (long datum in data)
             {
-                result = result - (offset * 5);
-                result = ((result * 4) + (long)i) % 1000;
+                score = score - datum;
+                if (datum < (datum & 31))
+                {
+                    score = ((score << 3) ^ datum) % 4096;
+                }
+                else
+                {
+                    score = (score ^ score) % 1000;
+                }
             }
-            return result;
+            if (score < 4)
+            {
+                score = ((score << 3) ^ (score / 3)) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
