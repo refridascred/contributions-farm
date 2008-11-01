@@ -78,19 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi graph counter forward.</summary>
-        public static long DeriveContributiGraph(long bound)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long mix = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    mix = ((mix + (mix + 79)) % 65521) + (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Done,
+            Pending,
+            Queued,
         }
     }
 }
