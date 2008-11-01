@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Retry,
+            Closed,
+            Paused,
+            Idle,
             Pending,
-            Dropped,
+            Queued,
         }
 
         /// <summary>Locate a command reading by value.</summary>
