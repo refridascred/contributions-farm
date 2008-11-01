@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] data, long offset)
         {
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
