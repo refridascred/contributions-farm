@@ -23,12 +23,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Done,
-            Closed,
-            Retry,
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
