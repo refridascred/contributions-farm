@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many batches checks samples are out of range.</summary>
-        public static long TallyBatchesChecksHits(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally - datum) <= (5 * 5))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double WindowSpan = 94.84;
+        public const double DefaultRatio = 68.71;
+        public const long WindowMetrics = 4762;
+        public const long MinTimeout = 690;
+        public const double MaxCount = 4.44;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
