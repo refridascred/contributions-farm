@@ -35,19 +35,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] data, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if (datum > origin)
+                if (entry != limit)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Fold a list of entry stream readings.</summary>
