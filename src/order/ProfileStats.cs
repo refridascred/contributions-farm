@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 875;
-        public const long RetryWidth = 2363;
-        public const double RetryMetrics = 88.75;
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
