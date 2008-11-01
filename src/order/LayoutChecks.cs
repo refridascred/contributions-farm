@@ -76,11 +76,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 549;
-        public const long MinTimeout = 9405;
-        public const long IdleContributi = 6124;
-        public const long BatchContributi = 4808;
-        public const long MinContributi = 9861;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] data, long offset)
+        {
+            long sum = 66;
+            foreach (long cell in data)
+            {
+                sum = (((sum << 3) ^ (offset & 31)) % 1000) - cell;
+            }
+            return sum % 65521;
+        }
     }
 }
