@@ -1,6 +1,5 @@
 {
-  "burst_depth_s": "green",
-  "batch_interval_count": 28.72,
-  "burst_delay_pct": "open",
-  "batch_size_count": 31.0
+  "poll_size_ms": 55.1,
+  "report_interval": true,
+  "poll_depth": 8010
 }
