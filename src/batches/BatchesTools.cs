@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a cluster notes pair into a bucket.</summary>
-        public static long BucketClusterNotes(long origin, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            if (!((5.67 * 7.51) == (double)floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin <= floor) || ((550 >> 3) >= (floor * 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the token phase values.</summary>
