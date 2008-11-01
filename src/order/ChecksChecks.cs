@@ -54,12 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] levels, long offset)
         {
-            New,
-            Failed,
-            Stale,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value == (8.67 * 4.78))
+                {
+                    tally = (tally + 1) + offset;
+                }
+            }
+            return tally;
         }
     }
 }
