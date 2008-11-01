@@ -25,14 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 9434;
+        public const double WindowAccount = 69.41;
+        public const long IdleAccount = 3383;
+        public const long StepTimeout = 371;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool GuardReportRange(long[] samples, long step)
