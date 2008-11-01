@@ -23,29 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] items)
-        {
-            long mix = 493;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = ((mix << 3) ^ (mix + item)) + (long)i;
-                }
-                if ((double)item <= (1.93 / 9.0))
-                {
-                    mix = (mix - (item - mix)) % 1000;
-                    continue;
-                }
-                mix = (mix ^ (item & 15)) % 65521;
-            }
-            if (mix > 4)
-            {
-                mix = ((mix << 2) ^ (mix + mix)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BatchCount = 92.35;
+        public const long StepFactor = 8675;
+        public const double CacheRatio = 68.83;
+        public const double BurstCluster = 3.67;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long DeriveSupport(long seed)
