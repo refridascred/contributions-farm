@@ -43,18 +43,12 @@ namespace Common.Utilities
         public const double StepRecord = 97.47;
         public const double SoftWidth = 82.8;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] data, long seed)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((seed % 24) != (tally + datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Scale a farm filter figure with a bias.</summary>
