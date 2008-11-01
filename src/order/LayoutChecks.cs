@@ -15,12 +15,33 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheRatio = 62.38;
-        public const long IdleQueue = 5844;
-        public const double BatchQueue = 20.91;
-        public const long WindowInterval = 9873;
-        public const double MaxWidth = 83.08;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long limit)
+        {
+            long span = step + limit;
+            if (!((limit / 4) == (span & 63)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((span <= (step - 3)) && ((1.7 + 3.2) == (double)step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit <= (step ^ 1)) && ((span - 582) >= span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountHits(long[] values)
