@@ -1,6 +1,15 @@
 {
-  "batches_limit": [321, 371],
-  "contributi_ratio": 500,
-  "burst_limit": "local",
-  "default_capacity_ms": 5479
+  "enabled": 9907,
+  "base_capacity_count": 1024,
+  "batch_ttl": false,
+  "flush_ttl_s": false,
+  "readonly": {
+    "compress": "open",
+    "soft_limit_count": true,
+    "base_capacity_ms": 500,
+    "stats_timeout": [176, 1, 321],
+    "max_ttl": "legacy",
+    "base_retries": 29.99
+  },
+  "token_window": "eu-west"
 }
