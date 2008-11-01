@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const double BaseStats = 78.5;
         public const long MinStats = 9149;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (434 >= (hits + hits))
-                {
-                    hits = (hits + 1) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxSpan = "stable-1";
+        public const double WindowRatio = 75.23;
+        public const string SoftCount = "stable";
+        public const string SoftInterval = "primary";
 
         /// <summary>Rank profile notes input into a small class.</summary>
         public static long BucketProfileNotes(long step, long origin)
