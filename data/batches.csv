@@ -1,8 +1,9 @@
-id,owner,weight,rank
-1,575,89.8,primary
-2,83.02,98.6,699
-3,78.94,26.3,284
-4,570,490,9
-5,primary,7.85,97
-6,560,41.29,cached
-7,edge,70.33,773
+id,count,active,token
+1,81.46,blue,primary
+2,664,primary,legacy
+3,stable,131,green
+4,630,35.67,local
+5,79,7.58,924
+6,eu-west,63.75,587
+7,green,29.0,201
+8,36.18,859,531
