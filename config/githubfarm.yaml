@@ -1,9 +1,15 @@
 # githubfarm settings
-commits_interval:
-  - 388
-  - 363
-max_ratio_count: false
-dry_run:
-  - local
-  - local
-  - green
+compress:
+  batch_retries_count: 500
+  verbose: 94.69
+  strict:
+    verbose: 47
+    audit: primary
+    persist: 81.47
+    commits_timeout: true
+    stats_size: true
+    idle_delay_ms: 27
+  max_threshold: false
+  queue_retries: 5.38
+warm_delay_ms: 41.14
+batch_ttl: staging
