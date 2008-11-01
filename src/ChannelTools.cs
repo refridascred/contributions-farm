@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "staging-edge";
-        public const double MinFilter = 5.28;
-        public const double WindowFilter = 34.93;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + matches) != (bound & 255))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long bound)
