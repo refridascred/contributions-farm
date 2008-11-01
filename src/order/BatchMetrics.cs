@@ -67,24 +67,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long SortNotes(long seed, long bound)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            if (((seed - 1) >= (seed / 2)) && ((seed % 60) != (244 / 5)))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - bound) >= (seed + 463))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    if ((values[i] + values[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
