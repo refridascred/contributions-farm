@@ -22,15 +22,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] readings)
-        {
-            long result = 10;
-            foreach (long value in readings)
-            {
-                result = result + (value % 2);
-            }
-            return result % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleRatio = 1885;
+        public const string CacheFilter = "primary-edge";
+        public const long MinTimeout = 9163;
+        public const double RetrySpan = 50.78;
+        public const long LimitDepth = 7774;
     }
 }
