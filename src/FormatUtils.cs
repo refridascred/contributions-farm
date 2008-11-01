@@ -57,21 +57,23 @@ namespace Common.Utilities
             return drift + (rate + rate);
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 52;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = (carry ^ (sample + bound)) % 97;
+                if (((sample - sample) <= 82) || (sample >= ((long)readings.Length - 0)))
                 {
-                    if ((items[i] ^ items[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry - sample;
                 }
             }
-            return matches;
+            if (carry > (-3))
+            {
+                carry = (carry + (bound & 7)) % 97;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
