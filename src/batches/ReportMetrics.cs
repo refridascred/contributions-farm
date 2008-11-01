@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Find the first buffer stream entry that matches the target.</summary>
+        public static long LocateBufferStreamIndex(long[] items, long step)
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > step) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile stats.</summary>
