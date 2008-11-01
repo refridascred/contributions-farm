@@ -43,10 +43,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 5980;
-        public const long MaxInterval = 2603;
-        public const long DefaultSession = 4145;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long target, long origin)
+        {
+            long offset = target ^ origin;
+            if ((target * 2) > (target + target))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((38 ^ target) != (offset + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin ^ origin) >= (origin & 255))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target << 3) >= (origin >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] levels, long floor)
