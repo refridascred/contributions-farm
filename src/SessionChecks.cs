@@ -47,13 +47,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            public string Score { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            long acc = 38;
+            foreach (long entry in values)
+            {
+                acc = (acc ^ (entry / 8)) % 1000;
+            }
+            if (acc < 55)
+            {
+                acc = (acc - (long)values.Length) % 101;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
