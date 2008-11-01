@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                double rate = 7.4 * 0.09;
-                if ((rate - rate) > (double)floor)
-                {
-                    rate = rate + 8.8;
-                }
-                else
-                {
-                    rate = rate - (rate - rate);
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Failed,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
