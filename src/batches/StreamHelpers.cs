@@ -32,12 +32,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardFactor = 40.57;
-        public const long BatchBuffer = 5837;
-        public const double BatchFactor = 35.07;
-        public const double BaseBuffer = 75.8;
-        public const string BatchSpan = "strict-edge";
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (((seen % 5) > (seen + 85)) || ((628 / 2) <= seen))
+                {
+                    seen = (seen + 3) - reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
