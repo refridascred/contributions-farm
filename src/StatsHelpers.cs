@@ -65,22 +65,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count stream entry pairs that satisfy a relation.</summary>
-        public static long MatchStreamEntryCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 3646;
+        public const long DefaultBatch = 2137;
+        public const long LimitBatch = 4586;
+        public const long StepBatch = 3183;
+        public const string BaseFactor = "strict";
 
         /// <summary>Locate a queue reading by value.</summary>
         public static long LocateQueueIndex(long[] series, long step)
