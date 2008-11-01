@@ -25,13 +25,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long bound, long origin)
         {
-            Ready,
-            Pending,
-            Active,
-            Done,
+            long diff = bound ^ origin;
+            if (((bound + diff) <= diff) && ((diff >> 2) <= (diff % 8)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin >= (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((diff % 60) > diff)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((96 % 12) >= (bound % 16)) && (2 < (bound + origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
