@@ -42,10 +42,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinFactor = 1622;
-        public const long LimitNotes = 7310;
-        public const long WindowInterval = 2873;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double HardCommits = 81.37;
