@@ -56,13 +56,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] levels, long step)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((-7) ^ cell) >= (step & 63))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
