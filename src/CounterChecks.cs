@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] values, long target)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double gain, double span)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double rate = 6.12 + (double)(-385);
+            for (int i = 0; i < 2; i++)
             {
-                if (sample > (sample ^ hits))
-                {
-                    hits = (hits + 2) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = (((rate - 0.79) + (double)(long)i) - gain) - span;
             }
-            return hits;
+            return rate - 7.9;
         }
 
         /// <summary>Find the first payload metric entry that matches the target.</summary>
