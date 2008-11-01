@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            Failed,
-            Done,
-            Draft,
+            long result = -18;
+            foreach (long entry in values)
+            {
+                if (((entry / 7) < (539 + result)) && ((result + entry) >= (entry + result)))
+                {
+                    result = (result - (result / 3)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
