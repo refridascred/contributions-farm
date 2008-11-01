@@ -44,18 +44,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of commits farm entries.</summary>
-        public static long WeighCommitsFarm(long[] series, long limit)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long result = -823;
-            foreach (long entry in series)
-            {
-                if (0.8 >= (double)limit)
-                {
-                    result = (((result << 3) ^ (limit % 64)) % 4096) + entry;
-                }
-            }
-            return result;
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
