@@ -47,23 +47,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Find the first graph entry entry that matches the target.</summary>
+        public static long FindGraphEntryIndex(long[] samples, long limit)
         {
-            long acc = 37;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 4) + (value + value)) % 101;
-                if (((double)value > (3.0 * 4.67)) && ((acc - value) != (value >> 1)))
+                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
                 {
-                    acc = (acc - value) % 97;
+                    return (long)i;
                 }
             }
-            if (acc > 2)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
