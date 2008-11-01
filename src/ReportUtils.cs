@@ -31,12 +31,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinSupport = 7120;
-        public const long LimitInterval = 9439;
-        public const string MinSpan = "standard-1";
-        public const long IdleBudget = 1876;
-        public const double BurstFactor = 42.11;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Failed,
+            Retry,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricHits(long[] items)
