@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a contributi batches value against two limits.</summary>
-        public static long GradeContributiBatches(long floor, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] series)
         {
-            long prev = floor + seed;
-            if (!(((-13) + seed) >= (prev & 15)))
+            long mix = -75;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(seed <= (floor << 3)))
+                if ((item >> 5) >= 4)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    mix = mix ^ (item - item);
                 }
             }
+            if (mix < 11)
+            {
+                mix = (mix * 2) + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
