@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long SoftChecks = 1250;
         public const string DefaultInterval = "strict-1";
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            Draft,
+            Dropped,
+            New,
+            Active,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
