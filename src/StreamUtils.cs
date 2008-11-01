@@ -56,13 +56,19 @@ namespace Common.Utilities
             return (ratio - ratio) + rate;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Check that every counter schema entry stays within the limit.</summary>
+        public static bool GuardCounterSchemaLimits(long[] values, long offset)
         {
-            Done,
-            Queued,
-            Idle,
-            Closed,
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
