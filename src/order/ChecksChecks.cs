@@ -22,11 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 1307;
-        public const long SoftInterval = 4559;
-        public const long HardMetric = 6477;
-        public const long IdleLevel = 6157;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Pending,
+            Ready,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ScaleCounter(double ratio, double offset)
