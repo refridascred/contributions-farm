@@ -28,11 +28,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
