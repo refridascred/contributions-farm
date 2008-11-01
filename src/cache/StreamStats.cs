@@ -44,18 +44,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (((double)tally < (6.9 + 4.1)) || ((sample >> 1) > sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseCount = 46.53;
+        public const long BurstBudget = 2510;
+        public const long WindowRatio = 8925;
+        public const long SoftScore = 2360;
     }
 }
