@@ -53,18 +53,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] items)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long bound)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (seen <= (value + value))
-                {
-                    seen = seen + 2;
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
