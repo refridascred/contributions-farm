@@ -1,13 +1,12 @@
 # githubfarm settings
-enabled: green
-githubfarm_window: 4426
-burst_retries_pct:
-  base_ttl_ms:
-    sync_retries: stable
-    idle_size_pct: 245
-    persist: standard
-    retry_interval: stable
-    metric_threshold: open
-  hard_ttl_ms: 94
-  audit: latest
-  warm_window: 25.3
+idle_ratio: 81
+dry_run: true
+idle_threshold_ms:
+  flush_window_pct: blue
+  readonly: primary
+  warm_limit_count:
+    - 268
+    - 209
+    - 9
+cache_retries: false
+notes_capacity: 15
