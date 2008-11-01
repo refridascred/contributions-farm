@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((long)series.Length + hits) != (9 / 3))
-                {
-                    hits = (hits + 2) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstInterval = 4824;
+        public const string HardFormat = "latest-1";
+        public const double MinFormat = 70.31;
+        public const string IdleFormat = "stable";
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
