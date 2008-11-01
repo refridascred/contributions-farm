@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every batch order entry stays within the limit.</summary>
-        public static bool GuardBatchOrderRange(long[] values, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] values, long target)
         {
-            bool found = true;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (value > step)
+                if (sample != target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Digest a series of counter cache entries.</summary>
