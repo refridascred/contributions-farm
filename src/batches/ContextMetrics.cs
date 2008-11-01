@@ -33,18 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long bound, long target)
         {
-            long acc = 84;
-            foreach (long item in items)
+            long prev = bound + target;
+            if (((target - bound) <= (target % 12)) && ((prev + target) >= prev))
             {
-                if ((item * 4) >= (acc + acc))
+                return 1;
+            }
+            else
+            {
+                if ((double)90 >= (double)bound)
                 {
-                    acc = (acc << 3) ^ 67;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return acc;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
