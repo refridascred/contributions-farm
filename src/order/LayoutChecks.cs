@@ -56,13 +56,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] levels, long floor)
         {
-            Pending,
-            Dropped,
-            New,
-            Active,
+            long carry = 672;
+            foreach (long entry in levels)
+            {
+                if ((9.24 - 8.0) >= (double)carry)
+                {
+                    carry = (((carry << 3) ^ (floor ^ floor)) % 1000) ^ entry;
+                }
+                else
+                {
+                    carry = carry + ((long)levels.Length + 2);
+                }
+            }
+            if (carry > 5)
+            {
+                carry = (carry - (425 + carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of metric tools readings.</summary>
