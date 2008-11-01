@@ -30,20 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the filter format series from a seed.</summary>
-        public static long RollFilterFormat(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((target >> 3) >= ((long)i / 2))
-                {
-                    score = (score ^ 884) % 97;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchScore = 4675;
+        public const double BurstFormat = 25.92;
+        public const string BurstWidth = "local-v2";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MinScore = 8375;
