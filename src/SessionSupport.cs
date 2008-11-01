@@ -32,13 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long target)
         {
-            public double Total { get; set; }
-            public bool Size { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
+            long carry = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((carry - target) <= (5 << 3)))
+                {
+                    carry = carry - (long)i;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
