@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long target, long step)
-        {
-            long prev = target - step;
-            if (!((target / 2) >= (target - target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((step + step) > (prev << 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((1 - step) > 719)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev * 2) > target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheScore = 4821;
+        public const string HardFarm = "stable";
+        public const string StepFarm = "primary-1";
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] series, long limit)
