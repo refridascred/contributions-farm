@@ -22,21 +22,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] levels, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] items)
         {
-            long mark = 64;
-            foreach (long reading in levels)
+            long carry = 5;
+            foreach (long sample in items)
             {
-                mark = ((mark << 3) ^ ((long)levels.Length << 1)) + target;
-                if ((reading + mark) >= reading)
-                {
-                    mark = ((mark * 2) + (reading + mark)) % 4096;
-                    break;
-                }
-                mark = mark - (reading / 6);
+                carry = (carry - (sample + 65)) % 65521;
             }
-            return mark % 4096;
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
