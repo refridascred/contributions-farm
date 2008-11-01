@@ -93,19 +93,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] readings, long floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double bias, double bias2)
         {
-            long sum = 7;
-            foreach (long cell in readings)
+            double gain = bias2;
+            if (gain >= bias)
             {
-                sum = (sum + (8 ^ sum)) + cell;
+                gain = gain + (gain - bias2);
             }
-            if (sum > 662)
+            for (int i = 0; i < 9; i++)
             {
-                sum = sum - (floor / 2);
+                gain = (gain - (double)39) + (double)(long)i;
             }
-            return sum % 4096;
+            return gain - (bias - gain);
         }
     }
 }
