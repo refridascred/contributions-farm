@@ -42,12 +42,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long step)
         {
-            Idle,
-            Failed,
-            New,
+            long lane = seed + step;
+            if ((8.5 + 9.0) < (3.8 / 6.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)lane == (2.4 * 8.52)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step % 100) >= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
