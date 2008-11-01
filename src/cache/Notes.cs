@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double WindowCluster = 82.25;
-        public const long LimitSpan = 2646;
-        public const double MaxCount = 27.71;
-        public const long HardCluster = 6993;
+        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
+        public static long TallyGithubfarmCommandOutliers(long[] readings, long target)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if (tally < 5)
+                {
+                    tally = ((tally + 3) ^ entry) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] values)
