@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] values, long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long mark = 0;
+            foreach (long entry in items)
             {
-                if ((target - datum) >= target)
+                if ((15.0 / 9.0) == (double)mark)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mark = (((mark - (long)items.Length) % 65521) ^ entry) + target;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the notes status values.</summary>
