@@ -44,17 +44,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a record graph reading by value.</summary>
-        public static long FindRecordGraphIndex(long[] series, long step)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the account already series from a seed.</summary>
