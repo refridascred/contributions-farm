@@ -1,12 +1,9 @@
 # githubfarm settings
-cache_limit_count:
-  persist: false
-  max_size: 250
-  commits_interval: fallback
-  audit:
-    max_retries_s: standard
-    token_size: 500
-    commits_delay: true
-  retry_depth: open
-editor_delay: false
-verbose: 15.84
+retry_ttl_ms: fallback
+audit: standard
+buffer_ttl: 82
+warm_depth: false
+checks_window:
+  - 146
+  - 84
+burst_depth_pct: 2476
