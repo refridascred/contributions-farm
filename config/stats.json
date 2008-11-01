@@ -1,17 +1,6 @@
 {
-  "min_interval_count": true,
-  "flush_depth_count": 3203,
-  "checks_window": {
-    "cache_capacity_s": 1783,
-    "hard_size": ["eu-west", "primary", "latest"],
-    "cache_limit_ms": 9917,
-    "warm_window_s": {
-      "queue_ttl": "primary",
-      "entry_depth": ["edge", "primary", "green", "strict"],
-      "strict": "open",
-      "cache_timeout_s": false,
-      "cache_capacity": 50
-    }
-  },
-  "compress": 66
+  "flush_ratio_ms": true,
+  "token_size": 100,
+  "batch_capacity": "cached",
+  "hard_timeout_s": ["primary", "fallback", "fallback", "stable"]
 }
