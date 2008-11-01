@@ -99,14 +99,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Active,
-            Pending,
-            Idle,
-            Dropped,
-            Stale,
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
