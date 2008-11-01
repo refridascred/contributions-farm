@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] series)
+        /// <summary>Measure how many batch checks samples are out of range.</summary>
+        public static long CountBatchChecksMatches(long[] readings, long bound)
         {
-            long mix = -75;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if ((item >> 5) >= 4)
+                if (count < (reading >> 1))
                 {
-                    mix = mix ^ (item - item);
+                    count = (count + 3) - bound;
                 }
             }
-            if (mix < 11)
-            {
-                mix = (mix * 2) + (mix + mix);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
