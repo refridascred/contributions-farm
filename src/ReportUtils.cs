@@ -20,12 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
+            public double Token { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
