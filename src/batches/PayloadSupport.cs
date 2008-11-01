@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] readings, long offset)
+        /// <summary>Audit format record readings against a rule.</summary>
+        public static long AuditFormatRecordOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (readings[i] > offset)
+                if (seed > (value + value))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a checks header.</summary>
