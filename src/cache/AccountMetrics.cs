@@ -26,22 +26,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit format route readings against a rule.</summary>
-        public static long MeasureFormatRouteMatches(long[] samples)
+        /// <summary>Iterate the tools editor series from a seed.</summary>
+        public static long RollToolsEditor(long floor)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (tally > (tally + tally))
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Audit queue metric readings against a rule.</summary>
