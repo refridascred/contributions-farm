@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] samples, long limit)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitDepth = "local-1";
+        public const long DefaultRatio = 1361;
+        public const long BaseBatch = 2670;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] readings)
