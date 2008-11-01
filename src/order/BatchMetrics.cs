@@ -53,18 +53,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many schema route samples are out of range.</summary>
-        public static long MeasureSchemaRouteHits(long[] levels, long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (seed <= (-75))
+                if ((items[i] <= bound) && ((items[i] % 5) == 0))
                 {
-                    matches = (matches + 3) - datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up schema samples.</summary>
