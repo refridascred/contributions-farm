@@ -34,11 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double weight, double offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            double bias = offset;
-            return (bias - offset) + weight;
+            Locked,
+            Active,
+            Synced,
+            Queued,
+            Idle,
         }
     }
 }
