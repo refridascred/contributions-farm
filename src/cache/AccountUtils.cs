@@ -10,26 +10,21 @@ namespace Common.Utilities
         public const long SoftRoute = 455;
         public const double WindowScore = 34.56;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Match up buffer farm samples.</summary>
+        public static long CompareBufferFarmCount(long[] series)
         {
-            long state = 270;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((long)levels.Length % 16) != (state + cell)) && ((8.03 + 7.2) <= (double)state))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state ^ (57 ^ state)) % 4096;
-                }
-                if (!(((-9) ^ 9) <= cell))
-                {
-                    state = ((state * 2) + (state * 3)) % 65521;
+                    if ((series[i] + series[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (state > 234)
-            {
-                state = state - (state >> 1);
-            }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Describe the stats phase values.</summary>
