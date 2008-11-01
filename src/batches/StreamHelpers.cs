@@ -30,11 +30,28 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 4125;
-        public const long WindowRoute = 1363;
-        public const double BatchRoute = 75.06;
-        public const long StepRoute = 3723;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] readings)
+        {
+            long acc = 2;
+            foreach (long value in readings)
+            {
+                double rate = (double)(acc ^ value);
+                if ((rate >= (rate * 9.38)) && ((value ^ (-542)) < (value >> 1)))
+                {
+                    rate = rate + rate;
+                }
+                if ((double)value == (double)acc)
+                {
+                    acc = (acc << 3) ^ value;
+                }
+                if (((long)readings.Length + acc) >= (value >> 1))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long floor, long limit)
