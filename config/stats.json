@@ -1,6 +1,7 @@
 {
-  "default_capacity_pct": 250,
-  "entry_retries": "standard",
-  "batch_window": "staging",
-  "session_ttl": 37
+  "sync_ttl_ms": 22.16,
+  "verbose": 500,
+  "batch_timeout_count": "eu-west",
+  "default_size_pct": 57,
+  "contributi_window": false
 }
