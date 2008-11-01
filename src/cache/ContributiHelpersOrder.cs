@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const string WindowSpan = "cached";
         public const long HardSize = 6008;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] data)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            long mark = 98;
+            foreach (long reading in data)
+            {
+                if ((12.0 - 8.75) >= (double)mark)
+                {
+                    mark = ((mark - ((long)data.Length * 3)) % 65521) + reading;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of checks profile readings.</summary>
