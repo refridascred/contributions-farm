@@ -35,31 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long bound, long target)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            if ((double)target == (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((-27) ^ target) <= (0 ^ bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((bound >> 2) == (778 & 15)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate already farm samples.</summary>
