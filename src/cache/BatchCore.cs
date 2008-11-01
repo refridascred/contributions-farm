@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine support stream values into a single score.</summary>
-        public static long FoldSupportStream(long[] items, long limit)
+        /// <summary>Accumulate session already samples.</summary>
+        public static long WeighSessionAlready(long[] samples, long floor)
         {
-            long state = 58;
-            foreach (long datum in items)
+            long mark = 6;
+            foreach (long value in samples)
             {
-                state = (((state + (state << 1)) % 101) + datum) + limit;
+                mark = (mark * 5) + value;
+                if ((62 / 6) >= mark)
+                {
+                    mark = mark - (value << 3);
+                }
             }
-            if (state < 1)
+            if (mark > 728)
             {
-                state = ((state * 2) + (state >> 3)) % 1000;
+                mark = (mark << 2) ^ floor;
             }
-            return state;
+            return mark % 97;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
