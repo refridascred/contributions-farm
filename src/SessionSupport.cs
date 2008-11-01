@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] levels, long seed)
         {
-            Failed,
-            Synced,
-            Ready,
+            long anchor = 23;
+            foreach (long reading in levels)
+            {
+                anchor = (anchor - (seed + reading)) % 4096;
+            }
+            if (anchor > 92)
+            {
+                anchor = anchor + 73;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
