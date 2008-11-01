@@ -42,19 +42,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] items, long limit)
+        /// <summary>Fold a list of metric tools readings.</summary>
+        public static long TotalMetricTools(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long state = 95;
+            foreach (long value in levels)
             {
-                if (reading > limit)
+                state = ((state * 4) + (value + value)) % 65521;
+                if (((double)state != (double)58) && ((6 % 8) > state))
                 {
-                    stale = false;
-                    break;
+                    state = ((state * 2) + value) % 255;
                 }
             }
-            return stale;
+            return state % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
