@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] data)
-        {
-            long score = 0;
-            foreach (long value in data)
-            {
-                if ((score + (-9)) >= (value ^ 708))
-                {
-                    score = (score ^ (value - score)) % 101;
-                }
-                if (!((value ^ score) >= (value + value)))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "staging-edge";
+        public const double MinFilter = 5.28;
+        public const double WindowFilter = 34.93;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long bound)
