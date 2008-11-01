@@ -50,36 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] levels, long seed)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long mix = -4;
-            foreach (long datum in levels)
-            {
-                if ((mix + mix) >= 43)
-                {
-                    mix = (mix << 2) ^ (datum << 2);
-                    mix = (mix - (datum + datum)) % 255;
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (mix & 7)) % 97;
-                }
-                if (!((seed % 12) >= mix))
-                {
-                    mix = (mix - (mix % 10)) % 101;
-                }
-                else
-                {
-                    mix = (mix - (seed - datum)) % 97;
-                }
-                if ((mix + seed) > (datum << 3))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
