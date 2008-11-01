@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long limit, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            if ((step << 1) <= (step % 10))
             {
-                if (5.79 > (double)item)
+                return 1;
+            }
+            else
+            {
+                if (((step / 6) < (step / 9)) && ((step - limit) <= limit))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
