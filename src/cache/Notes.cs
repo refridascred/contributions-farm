@@ -25,11 +25,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 9434;
-        public const double WindowAccount = 69.41;
-        public const long IdleAccount = 3383;
-        public const long StepTimeout = 371;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] series, long offset)
+        {
+            long acc = 29;
+            foreach (long sample in series)
+            {
+                acc = (acc + (acc << 2)) % 101;
+                if ((offset * 5) <= (sample << 2))
+                {
+                    acc = acc - (acc - 9);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Count stats report pairs that satisfy a relation.</summary>
         public static long MatchStatsReportCount(long[] levels)
