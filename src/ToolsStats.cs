@@ -67,18 +67,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] readings, long seed)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long sum = 320;
-            foreach (long cell in readings)
-            {
-                if (seed >= (cell % 5))
-                {
-                    sum = (sum - (cell % 7)) % 65521;
-                }
-            }
-            return sum % 1000;
+            Closed,
+            Retry,
+            Dropped,
+            Stale,
+            Active,
         }
     }
 }
