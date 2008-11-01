@@ -1,11 +1,6 @@
-id,rank,level
-1,13.62,297
-2,462,874
-3,71.27,475
-4,68.66,legacy
-5,337,276
-6,80,63.36
-7,open,eu-west
-8,325,green
-9,cached,8.71
-10,strict,standard
+id,weight,rank
+1,stable,810
+2,legacy,56.94
+3,787,cached
+4,32.48,662
+5,41.42,12.9
