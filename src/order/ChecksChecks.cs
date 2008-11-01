@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] levels, long offset)
+        /// <summary>Measure how many graph order samples are out of range.</summary>
+        public static long CountGraphOrderOutliers(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (value <= offset)
+                if (!((limit + entry) == (hits & 255)) && (((5 % 64) < (hits % 16)) || ((limit ^ limit) <= (entry + entry))))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Classify a record format pair into a bucket.</summary>
