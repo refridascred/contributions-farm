@@ -10,12 +10,10 @@ namespace Common.Utilities
         public const long MinAccount = 8825;
         public const long StepDepth = 8824;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstLevel = 2105;
+        public const long SoftDepth = 7598;
+        public const long WindowContributi = 8885;
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long GradeContributi(long seed, long seed2)
