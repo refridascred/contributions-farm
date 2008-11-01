@@ -19,22 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderGaps(long[] readings)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)reading != (double)tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
