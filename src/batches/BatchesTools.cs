@@ -40,31 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long limit, long limit2)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] readings, long bound)
         {
-            if ((limit + 462) < limit2)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((limit + limit) < (limit2 / 3)))
+                if (item > bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit2 << 1) != (limit << 3)) && ((limit2 % 24) != (limit2 >> 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
