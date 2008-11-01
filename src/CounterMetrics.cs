@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long target, long offset)
         {
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            if ((target & 15) > (offset % 64))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target != (9.6 - 8.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target - (-8)) <= target) && ((offset - offset) >= offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4.46 + 9.3) >= (double)offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cache status values.</summary>
