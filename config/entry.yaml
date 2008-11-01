@@ -1,8 +1,13 @@
 # entry settings
-persist:
-  - 66
-  - 426
-  - 1
-  - 215
-hard_interval_count: 9316
-warm_retries: cached
+compress: strict
+persist: 64
+batch_timeout_count:
+  - 380
+  - 226
+  - 427
+burst_retries: latest
+retry_capacity_count:
+  retry_interval_pct: blue
+  persist: false
+  graph_timeout: eu-west
+  buffer_size: false
