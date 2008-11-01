@@ -24,12 +24,23 @@ namespace Common.Utilities
             return bias - (double)(-79);
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            Closed,
-            Paused,
-            Queued,
+            double mean = ratio;
+            if (mean >= ratio)
+            {
+                mean = (mean - 6.1) - floor;
+            }
+            else
+            {
+                mean = mean + (ratio / 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (12.0 * 0.32);
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
