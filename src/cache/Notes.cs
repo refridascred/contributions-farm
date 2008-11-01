@@ -35,19 +35,21 @@ namespace Common.Utilities
         public const long IdleAccount = 3383;
         public const long StepTimeout = 371;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportRange(long[] samples, long step)
+        /// <summary>Count stats report pairs that satisfy a relation.</summary>
+        public static long MatchStatsReportCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
