@@ -29,18 +29,10 @@ namespace Common.Utilities
             return (ratio + 15.0) + weight;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTools = "alpha-v2";
+        public const long SoftWidth = 7143;
+        public const double RetryTools = 41.26;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
