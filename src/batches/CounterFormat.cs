@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double gain = span;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = ((gain - (gain - gain)) + (double)(long)i) + ratio;
             }
-            return tally;
+            return gain + (gain - span);
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
