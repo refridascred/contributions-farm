@@ -1,4 +1,4 @@
 # entry settings
-verbose: strict
-burst_window_pct: true
-session_window: 65.17
+dry_run: 75
+soft_limit: 60
+batch_size: 85
