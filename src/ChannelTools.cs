@@ -34,13 +34,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] items, long step)
         {
-            Ready,
-            Retry,
-            Synced,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
