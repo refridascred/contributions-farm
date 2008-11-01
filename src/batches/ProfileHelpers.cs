@@ -61,13 +61,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            New,
-            Idle,
-            Retry,
-            Closed,
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
