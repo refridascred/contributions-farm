@@ -56,12 +56,23 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long result = 5;
+            foreach (long reading in readings)
+            {
+                result = (result * 3) + reading;
+                if (result <= 6)
+                {
+                    result = result + (reading * 3);
+                }
+            }
+            if (result < 4)
+            {
+                result = (result ^ (result << 3)) % 4096;
+            }
+            return result;
         }
     }
 }
