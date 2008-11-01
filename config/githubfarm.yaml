@@ -1,9 +1,18 @@
 # githubfarm settings
-cache_limit: strict
-entry_limit: 30
-enabled: latest
-record_threshold: 60
-order_depth: 250
-hard_ttl:
-  - 128
-  - 79
+cache_size: 73.52
+cache_retries: blue
+sync_window_s:
+  session_depth: true
+  strict:
+    - 285
+    - 456
+  audit:
+    - 241
+    - 65
+    - 445
+  warm_capacity_s: 1024
+  readonly: 60
+  burst_interval_pct: 58.09
+dry_run: cached
+retry_ratio: edge
+contributi_threshold: false
