@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double weight, double bias)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] data, long limit)
         {
-            double weight2 = bias;
-            if (weight2 >= (14.0 + 8.35))
+            bool stale = true;
+            foreach (long cell in data)
             {
-                weight2 = (weight2 - (bias * 4.36)) + weight;
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight2 = (weight2 + 0.28) + (double)(long)i;
-            }
-            return weight2 - weight2;
+            return stale;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
