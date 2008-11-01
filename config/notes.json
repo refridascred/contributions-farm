@@ -1,13 +1,8 @@
 {
-  "warm_limit_s": "fallback",
-  "max_timeout_s": 28.79,
-  "retry_depth_ms": 7394,
-  "profile_retries": "blue",
-  "compress": {
-    "default_window": false,
-    "burst_capacity": "strict",
-    "retry_retries": true,
-    "sync_limit_count": 34
-  },
-  "warm_capacity": "standard"
+  "idle_retries_ms": "eu-west",
+  "max_retries": 60,
+  "min_limit_s": 91,
+  "readonly": "cached",
+  "window_retries": [222, 166, 412, 470],
+  "persist": ["staging", "legacy"]
 }
