@@ -71,22 +71,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine support record values into a single score.</summary>
-        public static long DigestSupportRecord(long[] series)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double weight, double bias)
         {
-            long acc = 9;
-            foreach (long reading in series)
-            {
-                if ((1.0 / 8.0) > (double)reading)
-                {
-                    acc = (acc - (reading / 7)) % 1000;
-                }
-                else
-                {
-                    acc = (acc * 4) + (acc + acc);
-                }
-            }
-            return acc;
+            double weight2 = (weight * 2.7) / 3.0;
+            return (weight2 - (weight2 * 5.0)) + bias;
         }
     }
 }
