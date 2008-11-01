@@ -38,18 +38,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] samples, long offset)
+        /// <summary>Fold a list of checks batch readings.</summary>
+        public static long DigestChecksBatch(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long state = 625;
+            foreach (long value in levels)
             {
-                if ((matches >> 3) >= (matches / 3))
+                long delta = (state << 1) ^ (value / 5);
+                if (17.0 < (double)delta)
                 {
-                    matches = ((matches + 2) ^ datum) + offset;
+                    delta = (delta << 2) ^ (value + state);
+                    state = ((state << 3) ^ (state + value)) % 255;
                 }
+                state = ((state * 3) + (state + state)) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Match up stream payload samples.</summary>
