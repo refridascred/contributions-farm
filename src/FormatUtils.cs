@@ -28,19 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] data, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            double scale = span;
+            if (scale > (rate * 16.0))
             {
-                if (datum < target)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + scale;
             }
-            return flag;
+            else
+            {
+                scale = scale + (scale + span);
+            }
+            return scale + (rate + rate);
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
