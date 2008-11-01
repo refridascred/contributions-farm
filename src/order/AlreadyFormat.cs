@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] readings)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] values)
         {
-            long result = 545;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading - result) != (result % 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result ^ result) % 101;
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
