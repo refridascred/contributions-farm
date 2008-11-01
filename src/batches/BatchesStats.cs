@@ -31,19 +31,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double ratio, double span)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] series, long target)
         {
-            double scale = (double)(304 ^ 12);
-            if (scale >= (double)176)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - span) + ratio;
+                if ((series[i] <= target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (double)976;
-            }
-            return scale - (double)605;
+            return -1;
         }
 
         /// <summary>Describe the command kind values.</summary>
