@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] levels, long floor)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long total = 676;
-            foreach (long value in levels)
-            {
-                if ((floor & 63) == (411 - floor))
-                {
-                    total = ((total << 2) ^ (total + value)) % 97;
-                }
-            }
-            return total % 97;
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
