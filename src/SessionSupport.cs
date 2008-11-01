@@ -32,19 +32,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long DeriveBatches(long target)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long carry = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((carry - target) <= (5 << 3)))
-                {
-                    carry = carry - (long)i;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
