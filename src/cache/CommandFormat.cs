@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long LimitCommits = 225;
         public const long BurstFactor = 6102;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Retry,
-            Synced,
-            Paused,
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
