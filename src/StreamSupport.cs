@@ -12,11 +12,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
