@@ -19,31 +19,11 @@ namespace Common.Utilities
         public const long MaxFactor = 8383;
         public const double LimitWidth = 4.8;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long origin, long seed)
-        {
-            if ((-72) >= (origin - seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((837 ^ seed) < 22)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed >> 4) != (origin << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "primary";
+        public const long BurstAccount = 3903;
+        public const long SoftBudget = 2055;
+        public const double BatchAccount = 64.23;
+        public const long IdleAccount = 3844;
     }
 }
