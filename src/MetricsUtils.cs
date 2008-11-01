@@ -30,19 +30,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate batches record readings against a bound.</summary>
-        public static bool CheckBatchesRecordBounds(long[] data, long seed)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value != seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
