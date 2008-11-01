@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxSpan = 9867;
-        public const string BaseCount = "standard-edge";
-        public const string BaseTools = "open-v2";
-        public const long BatchInterval = 3134;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] samples, long seed)
+        {
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
