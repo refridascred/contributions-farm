@@ -72,24 +72,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a notes window pair into a bucket.</summary>
-        public static long GradeNotesWindow(long seed, long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] levels, long floor)
         {
-            if (((10.0 * 1.1) > (double)origin) || ((seed & 255) == (seed % 97)))
+            bool found = true;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 4) != (origin + seed))
+                if (datum <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
