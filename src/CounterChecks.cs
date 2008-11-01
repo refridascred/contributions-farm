@@ -69,19 +69,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate session filter readings against a bound.</summary>
-        public static bool GuardSessionFilterBounds(long[] levels, long target)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LookupSessionIndex(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != target)
+                if ((items[i] < bound) && ((items[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
