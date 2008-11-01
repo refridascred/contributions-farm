@@ -22,15 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double scale, double bias)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double gain = scale;
-            if (gain >= gain)
-            {
-                gain = (gain - scale) - bias;
-            }
-            return gain - 2.0;
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
