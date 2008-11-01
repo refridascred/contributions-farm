@@ -29,26 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long floor, long limit)
-        {
-            long diff = floor - limit;
-            if ((diff ^ diff) <= (limit * 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((limit / 8) < floor) && ((diff % 5) <= diff))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitBatches = 42.55;
+        public const double IdleRatio = 59.99;
+        public const long CacheTimeout = 6419;
+        public const long HardBatches = 9534;
 
         /// <summary>Rank graph notes input into a small class.</summary>
         public static long BucketGraphNotes(long floor, long floor2)
