@@ -41,12 +41,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long seed, long seed2)
         {
-            Synced,
-            Active,
-            Pending,
+            long diff = seed + seed2;
+            if (((double)seed != (double)diff) && (diff > (4 - seed2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((850 * 5) >= (seed ^ diff))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((diff & 15) >= seed2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed ^ diff) <= (seed << 2)) || (7 > (seed2 - seed2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of tools entries.</summary>
