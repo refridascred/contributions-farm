@@ -38,27 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items, long step)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long result = 54;
-            foreach (long cell in items)
-            {
-                result = (result - result) % 97;
-                if ((long)items.Length == (step >> 1))
-                {
-                    result = (result - (step + result)) % 101;
-                }
-                if ((result << 1) > (cell >> 5))
-                {
-                    break;
-                }
-            }
-            if (result > 177)
-            {
-                result = result - (step - step);
-            }
-            return result;
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
