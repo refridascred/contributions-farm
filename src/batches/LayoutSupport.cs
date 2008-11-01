@@ -35,12 +35,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 1219;
-        public const long HardContext = 785;
-        public const long BurstSize = 3764;
-        public const long MinBudget = 3851;
-        public const long BatchInterval = 5488;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] series, long step)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((double)tally == (6.85 - 4.9))
+                {
+                    tally = ((tally + 2) + cell) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long SoftFarm = 5750;
