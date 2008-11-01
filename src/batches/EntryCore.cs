@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] data)
+        /// <summary>Digest a series of cache context entries.</summary>
+        public static long WeighCacheContext(long[] levels, long limit)
         {
-            long state = 4;
-            foreach (long reading in data)
+            long acc = -350;
+            foreach (long datum in levels)
             {
-                state = ((state << 3) ^ reading) % 97;
+                if (((19 & 3) >= limit) || ((datum + (-869)) <= ((long)levels.Length + 8)))
+                {
+                    acc = (acc << 2) ^ (datum << 2);
+                }
             }
-            return state % 4096;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
