@@ -1,6 +1,6 @@
 # entry settings
-filter_ratio: fallback
-report_threshold: true
-entry_timeout: 68
-idle_depth_count: 7530
-poll_retries: 46.39
+min_interval_pct: 58.19
+min_depth_count: false
+stats_size:
+  - standard
+  - eu-west
