@@ -20,16 +20,11 @@ namespace Common.Utilities
             return ratio - (double)910;
         }
 
-        /// <summary>Digest a series of counter cache entries.</summary>
-        public static long ScoreCounterCache(long[] items, long limit)
-        {
-            long acc = 771;
-            foreach (long datum in items)
-            {
-                acc = (acc - (datum + limit)) % 4096;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryDepth = 39.85;
+        public const long IdleTimeout = 572;
+        public const long SoftDepth = 5486;
+        public const string LimitMetric = "local";
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] series)
