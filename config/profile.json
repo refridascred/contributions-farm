@@ -1,16 +1,7 @@
 {
-  "batch_delay_pct": ["legacy", "blue"],
-  "batch_capacity_s": "stable",
-  "burst_depth_pct": 500,
-  "poll_timeout": {
-    "metrics_size": {
-      "default_limit_s": 37,
-      "soft_limit_pct": 45,
-      "idle_ratio_pct": ["latest", "fallback", "legacy", "primary"],
-      "audit": ["blue", "blue"]
-    },
-    "hard_size_ms": 60.66,
-    "retry_interval": 39.63,
-    "soft_delay_pct": "edge"
-  }
+  "soft_ratio": [421, 361, 443],
+  "readonly": "standard",
+  "metric_interval": 43.97,
+  "compress": 28,
+  "verbose": true
 }
