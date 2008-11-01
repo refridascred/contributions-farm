@@ -20,14 +20,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
-        {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardQueue = 38.13;
+        public const string IdleQueue = "alpha-edge";
+        public const long LimitQueue = 2630;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleRatio = 1885;
