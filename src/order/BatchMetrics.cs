@@ -20,12 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] values, long limit)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
