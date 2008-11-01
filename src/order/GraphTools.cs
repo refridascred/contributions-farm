@@ -28,14 +28,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Done,
-            Queued,
-            Draft,
-            Paused,
-            Closed,
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a metric options.</summary>
