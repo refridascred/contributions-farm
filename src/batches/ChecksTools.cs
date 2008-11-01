@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] data, long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            bool stale = true;
-            foreach (long cell in data)
-            {
-                if (cell >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
