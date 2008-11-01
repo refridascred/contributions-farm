@@ -37,11 +37,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] levels, long bound)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if (((13.0 - 6.57) > (double)cell) && (((cell << 1) <= (count & 31)) && ((cell - count) <= count)))
+                {
+                    count = (count + 2) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes header.</summary>
