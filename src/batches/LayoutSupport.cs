@@ -33,11 +33,15 @@ namespace Common.Utilities
         public const double DefaultWidth = 39.15;
         public const double BurstCommand = 84.51;
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double weight, double offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] series)
         {
-            double load = offset * 0.74;
-            return (load + (14.0 / 7.0)) + weight;
+            long result = 25;
+            foreach (long item in series)
+            {
+                result = (((result << 3) ^ result) % 4096) ^ item;
+            }
+            return result % 65521;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
