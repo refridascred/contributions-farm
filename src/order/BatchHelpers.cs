@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double weight, double span)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] series)
         {
-            double weight2 = (double)(13 + 124);
-            return ((weight2 - 3.82) + weight) + span;
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((double)(long)series.Length <= 8.0)
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next command value.</summary>
