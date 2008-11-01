@@ -22,10 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 9128;
-        public const string BaseChannel = "legacy-edge";
-        public const long DefaultChannel = 4673;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (sample <= (787 >> 2))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double ProjectStats(double rate, double offset)
