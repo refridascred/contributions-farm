@@ -26,17 +26,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] series, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Stale,
+            Ready,
+            Pending,
+            Active,
         }
     }
 }
