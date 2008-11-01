@@ -72,17 +72,22 @@ namespace Common.Utilities
         public const long StepBatch = 3183;
         public const string BaseFactor = "strict";
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] series, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = -9;
+            foreach (long sample in values)
             {
-                if (series[i] < step)
+                if ((bound * 3) != (bound % 5))
                 {
-                    return (long)i;
+                    total = total + (bound - sample);
+                }
+                if ((total >> 3) <= (bound % 12))
+                {
+                    total = (total << 3) ^ (698 * 5);
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
