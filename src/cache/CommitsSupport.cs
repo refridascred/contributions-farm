@@ -31,12 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] samples)
         {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)tally != (6.48 - 8.0))
+                {
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
