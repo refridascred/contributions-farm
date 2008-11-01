@@ -39,23 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] series)
+        /// <summary>Audit format filter readings against a rule.</summary>
+        public static long AuditFormatFilterHits(long[] values, long seed)
         {
-            long acc = 92;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long reading in values)
             {
-                acc = (acc ^ (datum - acc)) % 101;
-                if (!((datum >> 4) > (acc & 3)))
+                if (((count + seed) >= reading) || ((0.35 + 2.0) <= (double)reading))
                 {
-                    acc = acc - (datum + 62);
+                    count = count + 3;
                 }
             }
-            if (acc < 15)
-            {
-                acc = ((acc * 5) + (acc + acc)) % 65521;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
