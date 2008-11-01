@@ -54,32 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long offset, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] levels)
         {
-            long gap = offset - limit;
-            if ((limit % 100) == (47 >> 2))
+            long carry = -626;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-3) ^ gap) <= offset)
+                if ((double)carry == (10.0 - 5.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + gap) == (limit >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    carry = ((carry * 4) + datum) % 1000;
                 }
             }
+            if (carry > 5)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
     }
 }
