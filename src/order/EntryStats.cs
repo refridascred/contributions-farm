@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of filter tools entries.</summary>
-        public static long WeighFilterTools(long[] readings, long bound)
+        /// <summary>Compare every pair of notes report readings.</summary>
+        public static long MatchNotesReportCount(long[] data)
         {
-            long carry = 8;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum < (datum + bound))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry << 3) ^ carry;
-                    continue;
-                }
-                if ((double)datum >= (19.0 / 4.0))
-                {
-                    carry = (carry << 3) ^ 89;
+                    if ((data[i] - data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 1000;
+            return matches;
         }
 
         /// <summary>Accumulate payload samples.</summary>
