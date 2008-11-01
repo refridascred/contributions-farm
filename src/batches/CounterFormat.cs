@@ -19,13 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Dropped,
-            Synced,
-            Retry,
-            Idle,
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
