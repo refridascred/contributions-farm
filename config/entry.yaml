@@ -1,4 +1,9 @@
 # entry settings
-readonly: 5184
-dry_run: 82.59
-flush_ttl_pct: 1212
+editor_retries: stable
+warm_threshold: 73.3
+warm_limit_count: fallback
+command_window:
+  idle_threshold_count: 500
+  githubfarm_interval: open
+  warm_retries: open
+sync_capacity: false
