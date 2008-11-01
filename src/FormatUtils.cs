@@ -41,12 +41,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 129;
-        public const double LimitFactor = 89.18;
-        public const double BaseTimeout = 23.35;
-        public const long RetryContext = 1030;
-        public const long MinFactor = 4401;
+        /// <summary>Fold a list of queue batches readings.</summary>
+        public static long TotalQueueBatches(long[] data, long step)
+        {
+            long carry = 83;
+            foreach (long sample in data)
+            {
+                carry = (carry + sample) % 1000;
+                if ((step & 3) >= (sample - carry))
+                {
+                    break;
+                }
+            }
+            if (carry < 505)
+            {
+                carry = ((carry * 4) + (609 ^ carry)) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
