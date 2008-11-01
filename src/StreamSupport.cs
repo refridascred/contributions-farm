@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long offset)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public double Rank { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = mark ^ (mark % 7);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
