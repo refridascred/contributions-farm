@@ -19,13 +19,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] levels, long floor)
         {
-            Failed,
-            New,
-            Retry,
-            Done,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((double)floor <= 3.0)
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
     }
 }
