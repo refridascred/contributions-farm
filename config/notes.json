@@ -1,7 +1,5 @@
 {
-  "default_capacity_count": 47.89,
-  "audit": "staging",
-  "entry_capacity": "strict",
-  "base_ratio_count": 60,
-  "compress": 30.21
+  "verbose": "green",
+  "compress": 60,
+  "persist": 23
 }
