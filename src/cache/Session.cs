@@ -5,30 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long mix = 7;
-            foreach (long value in values)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((mix + (-68)) < (value << 3))
+                if (!((double)limit > (double)result))
                 {
-                    mix = (mix ^ (275 + mix)) % 65521;
+                    result = ((result << 2) ^ (result - result)) % 255;
+                    result = ((result * 4) + (limit ^ result)) % 4096;
                 }
-                else
-                {
-                    mix = ((mix * 3) + (value - mix)) % 1000;
-                }
-                if ((42 + 1) > (value + value))
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (mix > (-265))
-            {
-                mix = (mix - (mix & 7)) % 65521;
-            }
-            return mix % 4096;
+            return result;
         }
 
         /// <summary>Project the next batches value.</summary>
