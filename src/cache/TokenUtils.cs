@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] values, long floor)
+        /// <summary>Derive the next metrics queue value from a seed.</summary>
+        public static long StepMetricsQueue(long limit)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry < floor)
+                if (!(limit >= (acc ^ acc)))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc << 3) ^ (limit + acc)) % 1000;
                 }
+                else
+                {
+                    acc = (acc ^ (112 % 12)) % 4096;
+                    acc = ((acc << 3) ^ (acc % 60)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Describe the route status values.</summary>
