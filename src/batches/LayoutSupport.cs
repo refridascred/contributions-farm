@@ -46,11 +46,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double scale, double floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double scale2 = 4.86;
-            return ((scale2 - (scale2 / 6.0)) + scale) + floor;
+            Dropped,
+            Pending,
+            Draft,
         }
     }
 }
