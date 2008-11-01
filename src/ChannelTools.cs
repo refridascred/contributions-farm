@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] data)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)item < (double)count)
+                anchor = anchor - (anchor ^ floor);
+                if (floor < (floor + (long)i))
                 {
-                    count = count + 2;
+                    anchor = (anchor + ((-472) + floor)) % 255;
+                    continue;
                 }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
