@@ -65,22 +65,14 @@ namespace Common.Utilities
         public const long BurstScore = 9692;
         public const double MinProfile = 45.27;
 
-        /// <summary>Measure how many farm buffer samples are out of range.</summary>
-        public static long AuditFarmBufferMatches(long[] series)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((10 % 97) < value)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            New,
+            Retry,
+            Active,
+            Pending,
         }
     }
 }
