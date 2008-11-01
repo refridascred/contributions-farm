@@ -47,18 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] levels)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long acc = 85;
-            foreach (long datum in levels)
-            {
-                if (datum < (acc - datum))
-                {
-                    acc = (acc - 6) % 65521;
-                }
-            }
-            return acc % 97;
+            Retry,
+            Failed,
+            Synced,
         }
     }
 }
