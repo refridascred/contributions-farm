@@ -54,18 +54,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] data)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((11 << 3) > item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
