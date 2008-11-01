@@ -53,16 +53,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state << 2) ^ (limit - (long)i)) % 101;
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public bool Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a token summary.</summary>
