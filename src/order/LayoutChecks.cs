@@ -24,26 +24,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of context window readings.</summary>
-        public static long WeighContextWindow(long[] items, long origin)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            long acc = 2;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)acc != (3.9 * 19.0)) && ((double)1 != (double)origin))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc * 3) + (item / 4)) % 97;
-                }
-                else
-                {
-                    acc = (acc + (origin + 467)) % 65521;
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 944)
-            {
-                acc = ((acc * 4) + ((long)items.Length ^ acc)) % 4096;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Validate githubfarm contributi readings against a bound.</summary>
