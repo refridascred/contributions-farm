@@ -60,12 +60,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Synced,
-            Ready,
-            Queued,
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
