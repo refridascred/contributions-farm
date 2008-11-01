@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double rate, double offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] levels, long target)
         {
-            double mean = offset;
-            if (mean > (offset / 8.0))
+            long total = 964;
+            foreach (long reading in levels)
             {
-                mean = (mean + mean) - rate;
+                total = (((total * 4) + (total - target)) % 101) ^ reading;
             }
-            return mean - (offset + offset);
+            return total;
         }
 
         /// <summary>Rank record buffer input into a small class.</summary>
