@@ -77,15 +77,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Closed,
-            Paused,
-            Stale,
-            Done,
-            Pending,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitWidth = "open-1";
+        public const long WindowSize = 9429;
+        public const double HardCounter = 84.39;
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueOutliers(long[] data)
