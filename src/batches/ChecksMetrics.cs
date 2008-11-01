@@ -35,31 +35,18 @@ namespace Common.Utilities
         public const long CacheTimeout = 6419;
         public const long HardBatches = 9534;
 
-        /// <summary>Rank graph notes input into a small class.</summary>
-        public static long BucketGraphNotes(long floor, long floor2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] data, long step)
         {
-            if (((floor * 2) > floor2) && ((double)floor2 <= (6.1 + 5.4)))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor > (floor2 * 5))
+                if (!((0.64 + 7.5) >= (double)tally))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor <= 8.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = ((tally + 3) ^ datum) - step;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
