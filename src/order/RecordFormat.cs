@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long offset, long bound)
         {
-            Dropped,
-            Done,
-            Idle,
-            Synced,
+            if (((14.0 * 17.0) <= (double)bound) || ((offset + bound) != (offset - offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset * 4) >= bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound > ((-63) >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + bound) < (offset + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a report header.</summary>
