@@ -1,32 +1,9 @@
 # entry settings
-dry_run: 100
-max_interval: 41.05
-flush_ratio_pct:
-  base_ttl_pct: blue
-  hard_ttl_count: staging
-  base_window: 84.95
-  cache_limit: 30
-burst_window:
-  idle_ratio_count:
-    - 104
-    - 56
-    - 327
-    - 479
-  base_limit_s:
-    dry_run: 56.07
-    counter_timeout:
-      - 323
-      - 110
-      - 47
-      - 437
-    base_timeout_s: 6105
-    schema_timeout: 60
-    buffer_interval: false
-    audit: 71.76
-  max_depth_s: green
-  burst_interval_count: 1024
-  base_ratio_ms: 19.57
-record_interval: false
-verbose:
-  - 77
-  - 330
+persist: 49.18
+dry_run:
+  audit: strict
+  min_limit_pct: primary
+  idle_threshold_ms: 86.15
+poll_ratio_count: 1645
+audit: 90.28
+max_capacity: green
