@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double bias, double bias2)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] levels)
         {
-            double rate = bias;
-            if (rate >= (bias2 - rate))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (rate - bias);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - 3.65;
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
