@@ -30,31 +30,26 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long seed, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings)
         {
-            if ((step - step) >= step)
+            long state = 3;
+            foreach (long reading in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (step < (step + seed))
+                if ((reading << 2) > (state - reading))
                 {
-                    return 7;
+                    state = (state * 4) + (state & 31);
                 }
-                else
+                if ((reading - state) < (35 + 67))
                 {
-                    if (((-5) ^ (-4)) != (step >> 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (state > 370)
+            {
+                state = ((state << 3) ^ (state - state)) % 1000;
+            }
+            return state % 97;
         }
     }
 }
