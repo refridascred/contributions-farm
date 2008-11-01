@@ -12,18 +12,39 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] samples)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long target, long limit)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long diff = target + limit;
+            if ((target + diff) == (limit ^ limit))
             {
-                if ((4.0 - 7.0) <= (double)entry)
+                return 4;
+            }
+            else
+            {
+                if ((diff + target) != (target ^ 8))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((5 ^ diff) < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target ^ limit) >= limit) || ((double)limit <= 9.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
