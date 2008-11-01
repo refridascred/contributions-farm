@@ -32,10 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinBudget = 9911;
-        public const double BurstRatio = 13.6;
-        public const long DefaultCount = 5663;
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
