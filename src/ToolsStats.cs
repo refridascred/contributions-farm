@@ -53,12 +53,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double weight, double offset)
         {
-            Dropped,
-            Paused,
-            Retry,
+            double scale = 1.4 - (double)(-93);
+            if (scale <= (scale - 20.0))
+            {
+                scale = (scale + (0.1 / 7.0)) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + weight;
         }
     }
 }
