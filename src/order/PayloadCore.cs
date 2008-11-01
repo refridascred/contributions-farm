@@ -49,19 +49,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long step)
         {
-            long result = 29;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = result - (result + datum);
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            if (result < 2)
-            {
-                result = (result + (-98)) % 97;
-            }
-            return result % 97;
+            return -1;
         }
     }
 }
