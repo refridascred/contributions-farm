@@ -21,23 +21,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] series, long step)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long result = 483;
-            foreach (long value in series)
-            {
-                if (value <= (value % 24))
-                {
-                    result = result - value;
-                    continue;
-                }
-                if ((value ^ step) <= (result << 2))
-                {
-                    result = (result - (result >> 2)) % 1000;
-                }
-            }
-            return result;
+            Queued,
+            Stale,
+            Done,
+            Pending,
         }
     }
 }
