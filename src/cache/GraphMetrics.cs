@@ -19,13 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] data, long offset)
         {
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public string Rank { get; set; } = "";
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of cache window readings.</summary>
