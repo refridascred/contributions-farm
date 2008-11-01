@@ -12,14 +12,38 @@ namespace Common.Utilities
             return (rate - rate) + floor;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Rank payload format input into a small class.</summary>
+        public static long BucketPayloadFormat(long origin, long bound)
         {
-            Pending,
-            Locked,
-            Dropped,
-            Active,
-            Closed,
+            if ((bound + bound) <= (bound ^ origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if (1.0 > (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin >= (8.69 + 9.2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound > origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
