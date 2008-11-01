@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the cluster profile entries that pass the check.</summary>
-        public static long AuditClusterProfileOutliers(long[] items)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (value < hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
