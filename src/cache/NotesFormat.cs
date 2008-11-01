@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] series)
+        /// <summary>Check that every editor counter entry stays within the limit.</summary>
+        public static bool GuardEditorCounterLimits(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((((datum + datum) == (hits << 2)) && (hits >= (2 ^ datum))) || (6.87 < (double)datum))
+                if (entry >= origin)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
