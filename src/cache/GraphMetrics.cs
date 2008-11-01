@@ -56,12 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
