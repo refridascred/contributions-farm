@@ -25,11 +25,20 @@ namespace Common.Utilities
         public const double SoftGithubfarm = 68.92;
         public const long BaseGithubfarm = 7704;
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Derive the next filter channel value from a seed.</summary>
+        public static long IterateFilterChannel(long seed)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((mark + mark) != (seed % 60))
+                {
+                    mark = (mark - (seed + mark)) % 4096;
+                }
+                mark = (mark + (seed & 255)) % 255;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
