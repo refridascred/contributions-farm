@@ -1,7 +1,8 @@
 {
-  "record_interval": 28.23,
-  "burst_retries_count": 39.12,
-  "default_timeout": "edge",
-  "hard_depth_pct": [342, 76],
-  "account_window": 10.65
+  "default_threshold_s": 29.32,
+  "poll_delay": "latest",
+  "hard_ratio_s": true,
+  "batch_window": "primary",
+  "retry_size_count": "green",
+  "default_window_s": "open"
 }
