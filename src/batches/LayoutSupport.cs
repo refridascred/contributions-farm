@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] levels)
+        /// <summary>Classify a context batch pair into a bucket.</summary>
+        public static long BucketContextBatch(long floor, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long step = floor + target;
+            if (step < (target / 7))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((floor * 2) == (target - floor)))
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
