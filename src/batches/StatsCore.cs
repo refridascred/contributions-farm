@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] samples, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long anchor = -3;
+            foreach (long reading in readings)
             {
-                if ((entry % 10) <= hits)
-                {
-                    hits = (hits + 2) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = (anchor * 4) + (origin + reading);
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Describe the record level values.</summary>
