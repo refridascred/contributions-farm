@@ -1,9 +1,11 @@
 # support settings
-min_depth_pct: 46.25
-burst_depth_pct: 44.59
-compress:
-  - strict
+idle_ratio_count: false
+base_window_count: eu-west
+base_window_ms: open
+soft_depth: 6936
+enabled: 1346
+entry_ratio:
+  - primary
+  - blue
+  - open
   - staging
-account_ttl: staging
-idle_ttl: 8727
-audit: open
