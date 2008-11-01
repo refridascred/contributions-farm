@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] levels)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long anchor = 27;
+            foreach (long datum in values)
             {
-                if (!((count << 1) <= item))
+                anchor = ((anchor - (limit << 1)) % 97) + datum;
+                if ((2.0 / 4.0) >= (double)limit)
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
