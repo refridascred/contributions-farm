@@ -63,19 +63,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every session metric entry stays within the limit.</summary>
-        public static bool CheckSessionMetricBounds(long[] values, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] series, long step)
         {
-            bool found = true;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (datum <= step)
+                if (entry != step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
