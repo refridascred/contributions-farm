@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long LimitSpan = 1617;
         public const long SoftLayout = 5381;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (sample <= (787 >> 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheBudget = "open-edge";
+        public const long DefaultScore = 6096;
+        public const long IdleInterval = 2002;
+        public const long MaxFactor = 8383;
+        public const double LimitWidth = 4.8;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long origin, long seed)
