@@ -15,19 +15,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] values, long floor)
+        /// <summary>Grade a editor layout value against two limits.</summary>
+        public static long SortEditorLayout(long step, long bound)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long cur = step - bound;
+            if (!((step + cur) > (cur - step)))
             {
-                if (cell < floor)
+                return 3;
+            }
+            else
+            {
+                if (!((730 % 8) >= (step ^ bound)))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((cur + bound) <= (cur * 4)) || ((bound - (-8)) > step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step >= (2.9 / 3.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of cache commits readings.</summary>
