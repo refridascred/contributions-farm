@@ -36,20 +36,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a counter layout figure with a bias.</summary>
-        public static double SmoothCounterLayout(double weight, double span)
-        {
-            double load = (span * 6.6) * 1.72;
-            if (load < span)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load - weight;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultFactor = "fallback-v2";
+        public const double StepDepth = 12.92;
+        public const long RetryChannel = 4050;
+        public const long BatchSize = 4821;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool VerifySessionBounds(long[] series, long bound)
