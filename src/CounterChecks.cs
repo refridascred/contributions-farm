@@ -23,12 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstWidth = 90.25;
-        public const long IdleCommits = 4132;
-        public const string MinSize = "standard-v2";
-        public const long BurstLevel = 6457;
-        public const long SoftCommits = 9786;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every checks editor entry stays within the limit.</summary>
         public static bool ValidateChecksEditorLimits(long[] values, long seed)
