@@ -51,12 +51,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] samples, long step)
+        /// <summary>Find the first account command entry that matches the target.</summary>
+        public static long LocateAccountCommandIndex(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                if (readings[i] > target)
                 {
                     return (long)i;
                 }
