@@ -23,11 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
+            Queued,
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
