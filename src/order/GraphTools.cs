@@ -35,17 +35,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a record context sample.</summary>
-        public static long LookupRecordContextIndex(long[] data, long target)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
