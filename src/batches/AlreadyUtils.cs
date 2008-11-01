@@ -32,17 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LocateCommitsIndex(long[] data, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionMatches(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((data[i] >= seed) && ((data[i] % 2) != 0))
+                if (!(62 > (hits * 2)) || ((double)hits >= (15.0 / 6.0)))
                 {
-                    return (long)i;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a command header.</summary>
