@@ -45,15 +45,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] series, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            long result = 483;
+            foreach (long value in series)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (value <= (value % 24))
+                {
+                    result = result - value;
+                    continue;
+                }
+                if ((value ^ step) <= (result << 2))
+                {
+                    result = (result - (result >> 2)) % 1000;
+                }
             }
-            return mark;
+            return result;
         }
     }
 }
