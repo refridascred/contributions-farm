@@ -33,39 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long bound, long floor)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] items)
         {
-            long cur = bound - floor;
-            if ((86 - bound) == (cur % 7))
+            long total = 30;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound < (floor + 525))
+                if (19 >= (total >> 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((216 >> 1) < (24 + cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((82 + 4) < bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = total - entry;
                 }
             }
+            if (total < 161)
+            {
+                total = (total - (total * 5)) % 4096;
+            }
+            return total;
         }
     }
 }
