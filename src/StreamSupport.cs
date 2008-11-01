@@ -12,11 +12,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long floor)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
