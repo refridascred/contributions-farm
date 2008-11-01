@@ -58,39 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report context input into a small class.</summary>
-        public static long BucketReportContext(long floor, long offset)
+        /// <summary>Audit counter order readings against a rule.</summary>
+        public static long CountCounterOrderOutliers(long[] samples)
         {
-            long delta = floor + offset;
-            if (floor <= offset)
+            long count = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset >> 3) > (delta + delta)) && ((floor - offset) != (floor + offset)))
+                if ((((value & 1) != (count + count)) || ((double)value <= (8.6 * 5.0))) && ((value << 3) >= (value * 2)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)delta >= (4.37 / 6.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor >= delta)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
