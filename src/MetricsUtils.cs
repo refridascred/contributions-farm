@@ -30,13 +30,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Validate batches record readings against a bound.</summary>
+        public static bool CheckBatchesRecordBounds(long[] data, long seed)
         {
-            Retry,
-            New,
-            Done,
-            Synced,
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
