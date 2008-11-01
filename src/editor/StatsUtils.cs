@@ -22,25 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long target, long target2)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] readings)
         {
-            long step = target ^ target2;
-            if (!((90 >> 2) != (step & 63)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target2 - target) >= (target * 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the metrics state values.</summary>
