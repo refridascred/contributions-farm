@@ -23,18 +23,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] data)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)tally > (6.0 * 1.0)) || ((double)item > (0.3 / 4.0)))
+                if (values[i] < step)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
