@@ -64,12 +64,16 @@ namespace Common.Utilities
         public const long SoftCache = 3456;
         public const string IdleCache = "fallback-v2";
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long bound)
         {
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            long state = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                state = (state - (bound % 64)) % 101;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
