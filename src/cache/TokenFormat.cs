@@ -33,11 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string WindowScore = "stable-edge";
-        public const long HardSpan = 4895;
-        public const long MaxDepth = 6906;
-        public const double BurstCount = 25.49;
-        public const long IdleStream = 656;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public string Limit { get; set; } = "";
+            public double Flag { get; set; }
+        }
     }
 }
