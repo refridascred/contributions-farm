@@ -59,11 +59,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 4829;
-        public const long BurstGraph = 388;
-        public const long CacheLevel = 4795;
-        public const long MinGraph = 3455;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 6871;
+        public const long IdleQueue = 5105;
+        public const double MinLevel = 78.07;
+        public const string DefaultBudget = "open-edge";
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
