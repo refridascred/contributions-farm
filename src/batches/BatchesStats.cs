@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((floor + tally) > floor)
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultDepth = 1959;
+        public const long WindowSpan = 747;
+        public const string DefaultSize = "staging-1";
+        public const long WindowSchema = 3069;
+        public const long HardDepth = 7328;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
