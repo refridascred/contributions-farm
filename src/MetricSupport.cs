@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long CacheInterval = 3777;
         public const long BurstWidth = 2892;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] readings, long offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long limit)
         {
-            long carry = 2;
-            foreach (long cell in readings)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    carry = ((carry ^ (long)i2) % 255) + offset;
-                }
-                if (((double)cell < 5.2) || ((14.0 / 6.0) < (double)cell))
-                {
-                    carry = ((carry << 3) ^ (carry / 9)) % 255;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Adjust a farm reading.</summary>
