@@ -24,24 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long step, long bound)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double offset)
         {
-            if (((2.5 / 9.0) >= (double)step) && ((step << 1) == (bound * 2)))
+            double gain = (double)(678 / 9);
+            if (gain <= 3.8)
             {
-                return 6;
+                gain = (gain + gain) - offset;
             }
-            else
-            {
-                if (((step + 40) <= step) || ((step >> 1) != (bound * 3)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return gain - ratio;
         }
 
         /// <summary>Hold a tools entry.</summary>
