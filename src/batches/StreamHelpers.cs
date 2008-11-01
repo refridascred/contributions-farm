@@ -65,12 +65,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] items, long seed)
         {
-            Done,
-            Pending,
-            Queued,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
