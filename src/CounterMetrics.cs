@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long step)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long state = step;
-            for (int i = 0; i < 18; i++)
-            {
-                long tally = ((long)i * 2) + ((long)i ^ state);
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    tally = (((tally * 2) + (state + state)) % 255) - (long)i2;
-                }
-                state = (state - (tally >> 4)) % 255;
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the cache status values.</summary>
