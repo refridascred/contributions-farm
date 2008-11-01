@@ -1,11 +1,6 @@
 {
-  "retry_ttl_ms": "staging",
-  "burst_retries_s": [479, 474, 498, 198],
-  "metric_timeout": ["edge", "local"],
-  "dry_run": {
-    "min_ttl": "open",
-    "base_interval_s": 8552,
-    "dry_run": true,
-    "stream_retries": "primary"
-  }
+  "retry_limit": ["blue", "cached"],
+  "context_timeout": 60,
+  "max_window_ms": false,
+  "base_limit": true
 }
