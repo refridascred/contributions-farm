@@ -22,19 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] values, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long result = 58;
+            foreach (long item in levels)
             {
-                if (sample >= limit)
+                if (!((double)item > (7.2 - 9.26)))
                 {
-                    flag = false;
-                    break;
+                    result = ((result * 5) + item) % 1000;
                 }
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Define record limits and defaults.</summary>
