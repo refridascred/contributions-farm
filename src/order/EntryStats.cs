@@ -36,18 +36,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch stream readings against a rule.</summary>
-        public static long AuditBatchStreamMatches(long[] data)
+        /// <summary>Count already account pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyAccountCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (358 <= hits)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) + value;
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Derive the next graph checks value from a seed.</summary>
