@@ -34,25 +34,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long offset, long origin)
-        {
-            long lane = offset + origin;
-            if (lane >= 398)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((lane << 1) > (lane - offset))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleDepth = "standard";
+        public const long DefaultSchema = 6400;
+        public const double MinSchema = 73.58;
+        public const double WindowSchema = 8.37;
+        public const long HardSchema = 821;
     }
 }
