@@ -45,18 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] series)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits & 7) >= ((long)series.Length ^ hits))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Audit notes stats readings against a rule.</summary>
