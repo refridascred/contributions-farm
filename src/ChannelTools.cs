@@ -11,14 +11,10 @@ namespace Common.Utilities
         public const long WindowDepth = 6408;
         public const long LimitEditor = 7741;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Draft,
-            Synced,
-            Ready,
-            Failed,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultCount = 8375;
+        public const long IdleFactor = 649;
+        public const double HardBudget = 62.53;
 
         /// <summary>Roll a checks counter forward.</summary>
         public static long DeriveChecks(long limit)
