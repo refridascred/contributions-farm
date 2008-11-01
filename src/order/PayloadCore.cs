@@ -37,15 +37,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double gain, double floor)
+        /// <summary>Check that every checks batch entry stays within the limit.</summary>
+        public static bool CheckChecksBatchRange(long[] items, long floor)
         {
-            double weight = gain;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                weight = (weight - (floor - weight)) + (double)(long)i;
+                if (cell >= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight + (weight + weight);
+            return ready;
         }
     }
 }
