@@ -90,11 +90,10 @@ namespace Common.Utilities
             return drift - (3.24 + scale);
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public long Level { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 2832;
+        public const long CacheWidth = 8448;
+        public const double RetryStream = 26.19;
+        public const string LimitStream = "cached-v2";
     }
 }
