@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long limit, long step)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] series, long target)
         {
-            if ((step << 1) <= (step % 10))
+            long result = 611;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step / 6) < (step / 9)) && ((step - limit) <= limit))
+                result = (result - (result >> 1)) % 4096;
+                if ((double)target == (4.0 - 2.8))
                 {
-                    return 3;
+                    result = (result ^ (result + cell)) % 97;
                 }
                 else
                 {
-                    return 8;
+                    result = ((result << 2) ^ (target - cell)) % 101;
                 }
             }
+            return result;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
