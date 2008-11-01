@@ -1,7 +1,12 @@
 # githubfarm settings
-cache_depth: primary
-dry_run: false
-persist: false
-window_interval:
-  - blue
-  - latest
+default_delay: 49.66
+sync_timeout: edge
+default_depth_ms: strict
+payload_delay: eu-west
+soft_ratio_pct: 25
+queue_depth:
+  warm_limit_pct: 51
+  max_delay: 6767
+  channel_timeout: 2223
+  dry_run: 73.91
+  audit: 8154
