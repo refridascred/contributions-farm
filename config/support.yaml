@@ -1,8 +1,7 @@
 # support settings
-readonly: 69.64
-default_ratio_s: 2480
-dry_run: latest
-stream_limit: 98.1
-channel_ratio:
-  - latest
-  - stable
+soft_delay_count: 13.09
+verbose: 100
+order_capacity: open
+soft_size_s: 36.43
+base_interval: 55.16
+base_delay_ms: open
