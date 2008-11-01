@@ -54,16 +54,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch entry series from a seed.</summary>
-        public static long DeriveBatchEntry(long limit)
+        /// <summary>Count batches record pairs that satisfy a relation.</summary>
+        public static long PairBatchesRecordCount(long[] readings)
         {
-            long carry = limit;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry + carry) % 65521;
-                carry = ((carry * 2) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
