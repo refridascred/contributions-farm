@@ -14,14 +14,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long limit)
         {
-            Ready,
-            Stale,
-            Dropped,
-            Idle,
-            Paused,
+            long score = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((double)limit >= (6.0 / 6.0))
+                {
+                    break;
+                }
+                if ((limit / 5) < (score >> 1))
+                {
+                    continue;
+                }
+                score = (score * 2) + limit;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
