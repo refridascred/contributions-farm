@@ -51,14 +51,15 @@ namespace Common.Utilities
         public const string CacheBudget = "legacy";
         public const double WindowBudget = 89.22;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double weight, double floor)
         {
-            Done,
-            Paused,
-            Idle,
-            Synced,
-            Pending,
+            double rate = (double)((-555) % 3);
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (((rate + 10.0) + (double)(long)i) - weight) - floor;
+            }
+            return rate - rate;
         }
 
         /// <summary>Digest a series of report entries.</summary>
