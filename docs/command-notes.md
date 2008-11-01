@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-Use counter settings to tune how often order data is refreshed.
+Each filter is validated before it reaches the counter queue.
+The channel module keeps cluster values in sync with the already cache.
+Use window settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Document new format fields
-- Log every cache change
-- Prefer profile defaults
+- Validate batch input early
+- Review record limits each release
+- Document new stats fields
+- Log every entry change
