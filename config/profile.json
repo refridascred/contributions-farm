@@ -1,6 +1,8 @@
 {
-  "readonly": "local",
-  "cache_threshold_count": 1277,
-  "strict": true,
-  "flush_limit": false
+  "compress": "strict",
+  "min_delay_s": true,
+  "batches_delay": 36,
+  "hard_ratio_pct": ["open", "eu-west"],
+  "batch_delay_s": "stable",
+  "record_ratio": true
 }
