@@ -1,5 +1,6 @@
 {
-  "base_size_s": 71.55,
-  "strict": "open",
-  "min_retries_count": false
+  "soft_ttl_ms": ["edge", "standard"],
+  "verbose": true,
+  "sync_retries_count": "cached",
+  "batch_retries_ms": ["strict", "cached", "standard"]
 }
