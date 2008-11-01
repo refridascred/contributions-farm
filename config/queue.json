@@ -1,6 +1,5 @@
 {
-  "flush_delay_pct": [151, 110],
-  "cache_interval_ms": ["cached", "local", "cached", "strict"],
-  "min_delay": "green",
-  "sync_ratio_pct": "fallback"
+  "soft_ratio_pct": "primary",
+  "sync_delay": 52.92,
+  "cache_threshold": "strict"
 }
