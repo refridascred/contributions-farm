@@ -81,11 +81,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowCount = 547;
-        public const double BaseLayout = 19.92;
-        public const double BurstLayout = 97.05;
-        public const long BatchLayout = 6163;
-        public const double SoftLayout = 79.75;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
