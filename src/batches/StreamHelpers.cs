@@ -78,22 +78,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long bound, long seed)
+        /// <summary>Classify a cache payload pair into a bucket.</summary>
+        public static long ClassifyCachePayload(long limit, long bound)
         {
-            if (!((1.0 / 2.0) >= (double)bound))
+            if (limit < (bound << 3))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (4 < (seed - seed))
+                if ((limit + 524) >= (bound + limit))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    if (75 >= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
