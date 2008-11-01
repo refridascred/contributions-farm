@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const long BaseReport = 2901;
         public const string HardLevel = "legacy";
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] items, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] levels, long step)
         {
             long hits = 0;
-            foreach (long item in items)
+            foreach (long reading in levels)
             {
-                if ((item + item) == ((-57) >> 4))
+                if ((double)hits != (double)step)
                 {
-                    hits = (hits + 3) + floor;
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
