@@ -53,16 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Derive the next account channel value from a seed.</summary>
+        public static long StepAccountChannel(long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            long total = step;
+            for (int i = 0; i < 8; i++)
             {
-                mark = mark + (mark << 2);
-                mark = ((mark * 5) + (long)i) % 1000;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
