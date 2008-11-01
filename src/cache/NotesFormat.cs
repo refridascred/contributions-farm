@@ -46,18 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] levels)
+        /// <summary>Count the queue command entries that pass the check.</summary>
+        public static long AuditQueueCommandGaps(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if ((reading + reading) <= 123)
+                if (!(((item + seed) <= (seed ^ seed)) && ((0 - hits) != (hits & 1))))
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
