@@ -34,11 +34,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 5128;
-        public const long RetryRoute = 1622;
-        public const long HardSize = 7744;
-        public const double StepRoute = 79.52;
-        public const long MaxWidth = 6864;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardFarm = "alpha-1";
+        public const double MaxFarm = 92.58;
+        public const long LimitFarm = 959;
+        public const string BurstRatio = "fallback-v2";
+        public const long DefaultFarm = 2067;
     }
 }
