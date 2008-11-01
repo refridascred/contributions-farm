@@ -13,12 +13,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchCommand = 14.78;
-        public const double SoftCommand = 80.39;
-        public const long IdleDepth = 2882;
-        public const long BatchCount = 5123;
-        public const long SoftRatio = 4795;
+        /// <summary>Fold a list of metric batches readings.</summary>
+        public static long ScoreMetricBatches(long[] data)
+        {
+            long mark = 7;
+            foreach (long item in data)
+            {
+                if ((item - mark) == ((-92) ^ item))
+                {
+                    mark = mark ^ (mark % 24);
+                }
+            }
+            if (mark < 20)
+            {
+                mark = ((mark << 2) ^ (4 - mark)) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Combine token command values into a single score.</summary>
         public static long ScoreTokenCommand(long[] series, long offset)
