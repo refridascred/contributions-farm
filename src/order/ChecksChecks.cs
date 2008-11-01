@@ -55,19 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] series, long seed)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Failed,
+            Stale,
         }
     }
 }
