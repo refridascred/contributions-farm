@@ -1,7 +1,27 @@
 {
-  "burst_ttl": "primary",
-  "burst_depth_s": "fallback",
-  "contributi_ttl": "open",
-  "base_ratio_count": 18.44,
-  "metric_limit": 250
+  "min_interval_count": 7575,
+  "burst_ttl": 500,
+  "soft_ttl_s": 58,
+  "burst_delay": 22.44,
+  "persist": {
+    "metrics_interval": 4645,
+    "retry_ratio": {
+      "compress": 2435,
+      "flush_delay_pct": 3761,
+      "hard_depth_pct": [145, 315],
+      "filter_retries": true
+    },
+    "verbose": 34.24,
+    "sync_ttl_pct": [379, 496],
+    "max_ratio_ms": {
+      "stream_threshold": 46.91,
+      "hard_delay_count": 1024,
+      "batch_ratio_ms": 85.32,
+      "audit": 81.05,
+      "soft_retries": false,
+      "poll_ttl_pct": "green"
+    },
+    "format_ratio": 500
+  },
+  "metric_window": 81
 }
