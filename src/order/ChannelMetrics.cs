@@ -15,18 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many cache metric samples are out of range.</summary>
-        public static long CountCacheMetricMatches(long[] levels, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long carry = -63;
+            foreach (long cell in samples)
             {
-                if ((hits - origin) < hits)
-                {
-                    hits = (hits + 3) - value;
-                }
+                carry = (carry + (cell + seed)) % 4096;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate commits samples.</summary>
