@@ -1,6 +1,15 @@
 {
-  "profile_depth": "fallback",
-  "format_depth": "stable",
-  "base_ttl_s": ["primary", "local"],
-  "retry_limit_count": "latest"
+  "audit": 40.57,
+  "verbose": 8.48,
+  "min_delay_s": [419, 77, 445, 161],
+  "hard_interval_s": {
+    "warm_interval_count": true,
+    "default_interval_ms": 9507,
+    "readonly": 100,
+    "base_limit_ms": 58.79,
+    "min_timeout_count": "legacy",
+    "retry_limit_s": 15.06
+  },
+  "retry_window_s": "cached",
+  "warm_delay_ms": 47
 }
