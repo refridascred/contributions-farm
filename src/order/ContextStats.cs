@@ -40,10 +40,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowLevel = "standard-edge";
-        public const long IdleNotes = 24;
-        public const long WindowWidth = 7742;
-        public const string RetryNotes = "staging-1";
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] levels, long seed)
+        {
+            long sum = 729;
+            foreach (long reading in levels)
+            {
+                if (reading < (sum ^ 412))
+                {
+                    continue;
+                }
+                if ((sum * 4) >= (seed - seed))
+                {
+                    sum = ((sum << 2) ^ (reading & 7)) % 255;
+                }
+            }
+            return sum;
+        }
     }
 }
