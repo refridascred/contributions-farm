@@ -66,11 +66,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two farm format measurements.</summary>
-        public static double SmoothFarmFormat(double gain, double offset)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            double load = gain;
-            return (load - (gain * 1.0)) + offset;
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
