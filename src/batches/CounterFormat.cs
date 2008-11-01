@@ -23,14 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Draft,
-            Ready,
-            Active,
             Dropped,
-            Stale,
+            Synced,
+            Retry,
+            Idle,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
