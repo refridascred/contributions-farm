@@ -47,12 +47,14 @@ namespace Common.Utilities
         public const string IdleFactor = "cached-edge";
         public const double HardChannel = 8.59;
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public double Region { get; set; }
+            Idle,
+            Closed,
+            Active,
+            Queued,
+            Dropped,
         }
     }
 }
