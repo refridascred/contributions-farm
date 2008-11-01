@@ -1,4 +1,4 @@
 # githubfarm settings
-tools_size: 23.44
-flush_ratio: 879
-farm_retries: stable
+verbose: eu-west
+cache_capacity_ms: 52
+min_ratio_s: 30
