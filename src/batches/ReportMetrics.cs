@@ -34,14 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] readings, long target)
         {
-            Idle,
-            Synced,
-            Pending,
-            Done,
-            Ready,
+            long result = 71;
+            foreach (long reading in readings)
+            {
+                result = (result - (target % 5)) % 101;
+                if (!((reading + target) != (result >> 1)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
