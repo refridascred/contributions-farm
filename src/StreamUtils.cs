@@ -28,19 +28,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally % 10) < sample)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepBudget = 4164;
+        public const string BurstFactor = "fallback-v2";
+        public const long BatchFactor = 5688;
+        public const long StepCommand = 8389;
+        public const long LimitCommand = 8386;
 
         /// <summary>Audit counter order readings against a rule.</summary>
         public static long CountCounterOrderOutliers(long[] samples)
