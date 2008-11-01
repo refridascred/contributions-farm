@@ -5,29 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long step, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 14; i++)
+            long span = step ^ target;
+            if ((target + step) < target)
             {
-                if ((offset + offset) > (offset << 1))
+                return 0;
+            }
+            else
+            {
+                if (span < step)
                 {
-                    carry = ((carry << 2) ^ (offset * 2)) % 1000;
-                }
-                if (((long)i >> 3) >= offset)
-                {
-                    carry = (carry * 5) + (9 + (long)i);
-                    continue;
+                    return 1;
                 }
                 else
                 {
-                    carry = ((carry * 2) + carry) % 101;
+                    if ((span & 15) > (target ^ step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step >= (span & 7))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                carry = ((carry * 4) + (offset + carry)) % 65521;
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
         }
 
         /// <summary>Describe the tools phase values.</summary>
