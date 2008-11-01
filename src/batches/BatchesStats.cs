@@ -54,27 +54,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks stats samples.</summary>
-        public static long TallyChecksStats(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] data)
         {
-            long carry = 241;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (!((value & 255) <= carry))
+                if ((cell * 5) < (matches ^ matches))
                 {
-                    carry = carry + (carry + value);
+                    matches = matches + 1;
                 }
-                if (!((8.3 * 16.0) == (double)value))
+                else
                 {
-                    carry = carry + (value / 6);
-                    carry = (carry - (16 >> 4)) % 101;
-                }
-                if ((4.8 * 2.0) != (double)carry)
-                {
-                    carry = ((carry * 5) + value) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return carry % 65521;
+            return matches;
         }
     }
 }
