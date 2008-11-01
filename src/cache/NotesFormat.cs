@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchLevel = 314;
-        public const long IdleBudget = 8693;
-        public const string DefaultDepth = "standard-edge";
-        public const double BaseChecks = 85.16;
-        public const double MaxChecks = 14.25;
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] values)
