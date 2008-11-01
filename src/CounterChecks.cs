@@ -27,17 +27,17 @@ namespace Common.Utilities
         public const long BurstLevel = 6457;
         public const long SoftCommits = 9786;
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] readings, long floor)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                total = (total ^ ((long)i + target)) % 4096;
+                total = total ^ (target ^ (long)i);
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Count the batch session entries that pass the check.</summary>
