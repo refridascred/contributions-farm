@@ -48,12 +48,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double scale, double offset)
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            double mean = (double)(953 + 4);
+            if (mean < 1.64)
+            {
+                mean = (mean - scale) - offset;
+            }
+            return mean - (double)709;
         }
     }
 }
