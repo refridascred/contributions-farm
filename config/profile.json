@@ -1,11 +1,7 @@
 {
-  "warm_ratio": {
-    "warm_size": 95.68,
-    "schema_depth": "latest",
-    "batch_window_s": "fallback",
-    "retry_delay_count": 6.81,
-    "burst_window": "latest"
-  },
-  "strict": ["green", "legacy", "local", "legacy"],
-  "base_depth_count": "standard"
+  "burst_limit": "stable",
+  "persist": "blue",
+  "min_ttl_pct": ["cached", "latest", "edge", "green"],
+  "dry_run": [38, 496, 155, 28],
+  "poll_threshold": "stable"
 }
