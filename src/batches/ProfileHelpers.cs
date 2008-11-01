@@ -25,19 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] values, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long anchor = 784;
-            foreach (long item in values)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) - item;
-                if ((anchor - anchor) < bound)
-                {
-                    anchor = anchor + bound;
-                }
-            }
-            return anchor;
+            Closed,
+            Retry,
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Hold a editor entry.</summary>
