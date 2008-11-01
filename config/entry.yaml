@@ -1,8 +1,5 @@
 # entry settings
-default_timeout:
-  - latest
-  - stable
-  - standard
-hard_delay_count: stable
-strict: true
-retry_limit_pct: true
+batch_limit_pct: 30.32
+payload_interval: true
+profile_delay: 500
+report_ratio: local
