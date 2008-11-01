@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long StepRatio = 1113;
         public const long HardBuffer = 3170;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] samples, long limit)
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a profile entry.</summary>
