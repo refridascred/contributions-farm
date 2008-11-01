@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] items, long offset)
         {
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen <= (seen + seen)) || !(offset <= (22 % 16)))
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
