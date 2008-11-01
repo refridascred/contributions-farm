@@ -51,31 +51,18 @@ namespace Common.Utilities
         public const long BaseFarm = 6854;
         public const double LimitRatio = 9.94;
 
-        /// <summary>Classify a cache payload pair into a bucket.</summary>
-        public static long ClassifyCachePayload(long limit, long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] series, long step)
         {
-            if (limit < (bound << 3))
+            long hits = 0;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + 524) >= (bound + limit))
+                if (item >= (item + hits))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (75 >= limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = (hits + 2) + step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cache level values.</summary>
