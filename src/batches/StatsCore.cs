@@ -36,27 +36,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] levels, long seed)
         {
-            long state = 58;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (0.1 <= (double)state)
+                if (value != seed)
                 {
-                    state = (state * 3) + (state + datum);
-                }
-                state = ((state << 3) ^ (datum << 1)) % 101;
-                if (state < 6)
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (state < 328)
-            {
-                state = (state + (state + 819)) % 255;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Describe the filter status values.</summary>
