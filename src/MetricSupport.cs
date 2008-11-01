@@ -36,15 +36,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            long mark = offset;
+            long sum = floor;
             for (int i = 0; i < 15; i++)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                sum = (sum * 2) + (long)i;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return mark;
+            return sum;
         }
     }
 }
