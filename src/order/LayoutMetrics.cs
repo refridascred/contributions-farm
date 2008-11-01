@@ -20,12 +20,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] data)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue status values.</summary>
