@@ -36,12 +36,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
