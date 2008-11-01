@@ -41,15 +41,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the account already series from a seed.</summary>
-        public static long StepAccountAlready(long offset)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
+            Dropped,
+            Done,
+            Idle,
+            Stale,
         }
     }
 }
