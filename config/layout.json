@@ -1,21 +1,6 @@
 {
-  "window_retries": "fallback",
-  "retry_interval_pct": {
-    "strict": {
-      "min_ttl_count": "eu-west",
-      "stats_limit": ["latest", "legacy"],
-      "support_capacity": true
-    },
-    "cache_timeout": {
-      "audit": [97, 286, 496],
-      "retry_timeout": 84.95,
-      "default_depth_pct": "open"
-    },
-    "soft_timeout_pct": [201, 391],
-    "enabled": 7053
-  },
-  "max_delay_pct": ["standard", "open"],
-  "counter_capacity": "latest",
-  "metric_capacity": 39.04,
-  "sync_window_s": 2863
+  "token_interval": "green",
+  "flush_capacity_ms": "green",
+  "poll_ttl_ms": 60,
+  "poll_timeout_count": "eu-west"
 }
