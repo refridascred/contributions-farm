@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const double MinFormat = 70.31;
         public const string IdleFormat = "stable";
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderGaps(long[] readings)
         {
-            Retry,
-            Synced,
-            Failed,
-            Closed,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading != (double)tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a account reading by value.</summary>
