@@ -44,23 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadLimits(long[] series, long target)
         {
-            long mix = 1;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long value in series)
             {
-                mix = ((mix + (678 << 1)) % 255) - entry;
-                if ((((long)readings.Length - mix) < mix) || ((mix * 5) > (mix - (long)readings.Length)))
+                if (value > target)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (mix > 120)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
