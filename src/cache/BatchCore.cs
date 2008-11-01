@@ -51,13 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Audit support graph readings against a rule.</summary>
+        public static long TallySupportGraphMatches(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Label { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)180 > (double)seen)
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
