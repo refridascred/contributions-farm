@@ -28,13 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Check that every commits order entry stays within the limit.</summary>
+        public static bool VerifyCommitsOrderBounds(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
