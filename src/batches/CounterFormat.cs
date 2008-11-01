@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 9133;
-        public const long HardSize = 5958;
-        public const string BaseSize = "strict-edge";
-        public const double SoftSupport = 91.09;
-        public const long BatchSupport = 7632;
+        /// <summary>Look up the position of a metrics session sample.</summary>
+        public static long LocateMetricsSessionIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
