@@ -13,24 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long origin, long target)
+        /// <summary>Adjust a channel notes reading.</summary>
+        public static double ProjectChannelNotes(double weight, double bias)
         {
-            if (!((double)target < 1.9))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + 2) > 77)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double weight2 = 0.41;
+            return (weight2 + weight) + bias;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
