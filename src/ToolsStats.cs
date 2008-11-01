@@ -72,19 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double scale, double bias)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double load = 7.5 * 2.8;
-            if (load < scale)
-            {
-                load = (load + load) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (load * 4.53)) + (double)(long)i;
-            }
-            return load - (scale - scale);
+            Synced,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the route status values.</summary>
