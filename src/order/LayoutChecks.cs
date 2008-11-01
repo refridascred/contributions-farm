@@ -15,12 +15,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitBudget = 3.04;
-        public const long HardSize = 3814;
-        public const long HardLevel = 1990;
-        public const long BurstChannel = 4969;
-        public const string BaseWidth = "fallback-v2";
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Fold a list of context window readings.</summary>
         public static long WeighContextWindow(long[] items, long origin)
