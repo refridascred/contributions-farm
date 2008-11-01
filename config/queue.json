@@ -1,6 +1,6 @@
 {
-  "default_size_ms": ["stable", "cached", "local"],
-  "schema_threshold": "eu-west",
-  "metrics_delay": "stable",
-  "route_timeout": [346, 247, 271]
+  "entry_depth": [220, 282],
+  "entry_ratio": 1024,
+  "persist": "primary",
+  "token_ttl": 173
 }
