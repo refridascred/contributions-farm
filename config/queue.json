@@ -1,5 +1,7 @@
 {
-  "strict": "staging",
-  "readonly": 1024,
-  "idle_retries": 250
+  "max_ratio_s": [480, 87, 393, 265],
+  "readonly": [161, 343],
+  "schema_capacity": "blue",
+  "context_window": "staging",
+  "checks_threshold": "primary"
 }
