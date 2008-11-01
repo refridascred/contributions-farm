@@ -46,19 +46,12 @@ namespace Common.Utilities
             return scale - (double)605;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderBounds(long[] levels, long step)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Failed,
+            New,
         }
     }
 }
