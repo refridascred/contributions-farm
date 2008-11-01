@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long offset, long bound)
+        /// <summary>Validate layout githubfarm readings against a bound.</summary>
+        public static bool ValidateLayoutGithubfarmBounds(long[] series, long floor)
         {
-            long step = offset + bound;
-            if ((bound % 10) == (bound << 2))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step << 3) < (bound - step))
+                if (value != floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
