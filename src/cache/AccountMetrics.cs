@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((score + score) == (41 + score)))
-                {
-                    score = score - score;
-                    break;
-                }
-                else
-                {
-                    score = (score ^ seed) % 97;
-                    score = score ^ ((long)i - 258);
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinSize = 66.21;
+        public const long StepChannel = 8779;
+        public const long MinChannel = 7909;
+        public const string BurstTimeout = "open";
+        public const long DefaultDepth = 8532;
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TallyTools(long[] values)
