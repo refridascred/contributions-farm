@@ -1,13 +1,6 @@
 # support settings
-notes_window: 60
-dry_run: blue
-min_interval_s: 18
-verbose:
-  soft_limit: false
-  readonly:
-    - 274
-    - 492
-    - 132
-  retry_threshold: 85.3
-strict: false
-session_threshold: 9713
+command_ttl: green
+base_size_pct: false
+retry_delay_pct: 500
+cluster_ratio: true
+readonly: 30
