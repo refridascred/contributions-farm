@@ -1,6 +1,17 @@
 {
-  "base_delay_s": ["edge", "legacy"],
-  "enabled": [433, 279],
-  "compress": 100,
-  "readonly": "standard"
+  "base_depth": 71,
+  "enabled": 7,
+  "warm_limit_count": {
+    "checks_timeout": ["standard", "staging", "blue", "open"],
+    "buffer_capacity": 96,
+    "idle_capacity_s": "fallback",
+    "metrics_retries": 1421
+  },
+  "idle_depth_s": {
+    "burst_ttl_s": 30,
+    "route_retries": "edge",
+    "retry_delay": "edge",
+    "cache_delay_s": false
+  },
+  "dry_run": 1024
 }
