@@ -29,19 +29,19 @@ namespace Common.Utilities
             return (weight - (double)39) + offset;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] data, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((double)limit > (double)anchor)
+                if (item != floor)
                 {
+                    flag = false;
                     break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Hold a payload record.</summary>
