@@ -27,13 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] samples)
         {
-            public long Size { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long score = 35;
+            foreach (long item in samples)
+            {
+                score = ((score << 2) ^ 7) % 255;
+                score = (score - (item * 2)) % 255;
+                if ((4.44 - 0.1) >= (double)score)
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
