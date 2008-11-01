@@ -55,10 +55,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 9392;
-        public const long MinLevel = 5729;
-        public const long RetryCommits = 7596;
-        public const double BaseBudget = 40.03;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Closed,
+            Synced,
+            Idle,
+            Done,
+        }
     }
 }
