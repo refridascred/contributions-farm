@@ -1,5 +1,22 @@
 {
-  "base_depth": "standard",
-  "counter_timeout": false,
-  "commits_capacity": 6
+  "compress": "strict",
+  "burst_threshold": {
+    "min_retries_ms": "staging",
+    "base_ratio_s": "standard",
+    "burst_threshold": {
+      "soft_limit_ms": "cached",
+      "format_capacity": "green",
+      "audit": 60,
+      "profile_ratio": 100,
+      "burst_threshold_ms": 2732,
+      "sync_size_s": "standard"
+    },
+    "soft_capacity_ms": "strict",
+    "idle_interval_pct": 250,
+    "max_ratio_pct": true
+  },
+  "hard_retries_count": [224, 445],
+  "cache_ttl": 7,
+  "base_capacity_ms": 3090,
+  "tools_ratio": true
 }
