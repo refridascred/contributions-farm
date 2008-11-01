@@ -58,22 +58,12 @@ namespace Common.Utilities
         public const long WindowCache = 6155;
         public const long HardTimeout = 7770;
 
-        /// <summary>Audit cache account readings against a rule.</summary>
-        public static long AuditCacheAccountHits(long[] series, long floor)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((floor % 60) == (hits << 3)) || ((item % 12) == (floor << 1)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
