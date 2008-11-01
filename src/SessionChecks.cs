@@ -47,19 +47,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            long acc = 38;
-            foreach (long entry in values)
+            long sum = seed;
+            for (int i = 0; i < 18; i++)
             {
-                acc = (acc ^ (entry / 8)) % 1000;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (acc < 55)
-            {
-                acc = (acc - (long)values.Length) % 101;
-            }
-            return acc % 4096;
+            return sum;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
