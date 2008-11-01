@@ -57,19 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] readings, long target)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
