@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            Queued,
-            New,
-            Stale,
+            long carry = -48;
+            foreach (long sample in readings)
+            {
+                carry = ((carry * 5) + (carry - sample)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Combine report values into a single score.</summary>
