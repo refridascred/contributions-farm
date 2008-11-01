@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double bias, double floor)
         {
-            Done,
-            Draft,
-            Active,
+            double bias2 = 19.0;
+            if (bias2 > floor)
+            {
+                bias2 = (bias2 + 9.7) - bias;
+            }
+            return bias2 + floor;
         }
 
         /// <summary>Locate a route order reading by value.</summary>
