@@ -26,19 +26,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] values, long limit)
+        /// <summary>Rank profile notes input into a small class.</summary>
+        public static long BucketProfileNotes(long step, long origin)
         {
-            long mix = 3;
-            foreach (long value in values)
+            long cur = step - origin;
+            if ((915 + origin) > origin)
             {
-                mix = mix + (value + limit);
+                return 0;
             }
-            if (mix < 76)
+            else
             {
-                mix = mix + (mix / 9);
+                if (((double)step < (double)(-6)) || ((cur << 2) < (step & 31)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((cur * 4) < cur)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return mix % 65521;
         }
     }
 }
