@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of account report entries.</summary>
-        public static long TotalAccountReport(long[] samples)
-        {
-            long mix = 388;
-            foreach (long datum in samples)
-            {
-                if ((mix + mix) <= mix)
-                {
-                    mix = (mix ^ mix) + datum;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 8444;
+        public const long DefaultSchema = 973;
+        public const long HardScore = 8300;
 
         /// <summary>Accumulate already batch samples.</summary>
         public static long TotalAlreadyBatch(long[] levels)
