@@ -1,5 +1,13 @@
 {
-  "flush_capacity": "staging",
-  "idle_ratio_ms": 79,
-  "report_size": [37, 442, 467, 409]
+  "warm_size_ms": "primary",
+  "verbose": "open",
+  "warm_timeout_pct": {
+    "flush_ratio_pct": 44,
+    "stats_interval": 30,
+    "enabled": 2995,
+    "min_size": "fallback",
+    "cache_timeout": "cached"
+  },
+  "strict": "open",
+  "burst_ttl": "staging"
 }
