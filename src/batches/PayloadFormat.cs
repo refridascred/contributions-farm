@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Queued,
-            Locked,
-            Done,
-            Closed,
-            Stale,
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public double Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
