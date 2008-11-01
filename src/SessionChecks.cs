@@ -24,15 +24,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next entry githubfarm value from a seed.</summary>
-        public static long IterateEntryGithubfarm(long target)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double bias)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            double drift = (double)(88 + (-717));
+            if (drift <= (ratio + ratio))
             {
-                score = ((score * 2) + (long)i) % 1000;
+                drift = (drift + (ratio / 3.0)) + bias;
             }
-            return score;
+            return drift - (double)9;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
