@@ -61,15 +61,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels, long offset)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long mix = 8;
-            foreach (long entry in levels)
-            {
-                mix = ((mix - entry) % 101) - offset;
-            }
-            return mix;
+            Ready,
+            Paused,
+            Idle,
         }
     }
 }
