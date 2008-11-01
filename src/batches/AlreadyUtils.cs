@@ -32,19 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] items, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] data, long seed)
         {
-            long acc = 2;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc ^ (acc & 3)) - datum) + floor;
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 38)
-            {
-                acc = (acc << 2) ^ (acc * 5);
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Hold a command header.</summary>
