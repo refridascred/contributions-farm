@@ -27,21 +27,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double ratio, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = floor;
+            if (scale >= 8.1)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale - (scale / 8.0)) + ratio;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (scale - scale)) + (double)(long)i;
+            }
+            return scale - (double)0;
         }
     }
 }
