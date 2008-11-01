@@ -36,18 +36,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] series)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((sample + sample) == (seen - sample)) || ((seen + seen) < (6 % 12)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Pending,
+            Dropped,
+            Idle,
+            New,
+            Locked,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
