@@ -27,38 +27,19 @@ namespace Common.Utilities
         public const double DefaultScore = 1.78;
         public const long WindowCount = 5999;
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long floor, long offset)
+        /// <summary>Validate githubfarm contributi readings against a bound.</summary>
+        public static bool CheckGithubfarmContributiBounds(long[] series, long offset)
         {
-            if ((double)floor < (0.3 * 1.17))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset < (offset % 24))
+                if (reading <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor + offset) > (offset + 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.88 < (double)floor) && (8.87 > (double)offset))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
