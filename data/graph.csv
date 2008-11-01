@@ -1,6 +1,11 @@
-id,count,level,score,region
-1,primary,11.2,blue,41.44
-2,107,latest,51.02,blue
-3,190,staging,87.69,665
-4,blue,865,266,910
-5,45.23,871,781,705
+id,state,count
+1,563,37.31
+2,strict,624
+3,350,296
+4,76.75,92.52
+5,eu-west,strict
+6,15.63,80.35
+7,21.48,green
+8,cached,704
+9,9.45,994
+10,12.66,836
