@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderLimits(long[] levels, long offset)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
