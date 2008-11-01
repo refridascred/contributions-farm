@@ -42,11 +42,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLevel = 1879;
-        public const long WindowLayout = 8242;
-        public const string BaseLayout = "cached";
-        public const long MaxFactor = 1160;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiMatches(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((long)series.Length + floor) >= (734 & 31))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long GradeSession(long target, long target2)
