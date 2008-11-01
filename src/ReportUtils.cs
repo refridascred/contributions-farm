@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Check that every farm counter entry stays within the limit.</summary>
+        public static bool ValidateFarmCounterLimits(long[] samples, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                mark = (mark - mark) % 65521;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (entry <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Fold a list of report readings.</summary>
