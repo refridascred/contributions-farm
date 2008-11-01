@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next context layout value from a seed.</summary>
-        public static long StepContextLayout(long seed)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double rate, double offset)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            double gain = (offset - 3.1) + offset;
+            if (gain <= rate)
             {
-                state = state + (573 ^ state);
-                state = ((state * 4) + (long)i) % 65521;
+                gain = gain - (double)774;
             }
-            return state;
+            return gain - offset;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
