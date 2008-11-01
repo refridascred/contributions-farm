@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double weight, double bias)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            double weight2 = bias;
+            if (weight2 >= (14.0 + 8.35))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = total ^ seed;
-                    total = (total - ((long)i2 + total)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 1000;
+                weight2 = (weight2 - (bias * 4.36)) + weight;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                weight2 = (weight2 + 0.28) + (double)(long)i;
+            }
+            return weight2 - weight2;
         }
 
         /// <summary>Compare every pair of record counter readings.</summary>
