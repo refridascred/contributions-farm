@@ -36,18 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mix = 2;
-            foreach (long reading in readings)
-            {
-                if ((reading + mix) > (mix ^ reading))
-                {
-                    mix = mix + reading;
-                }
-            }
-            return mix;
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
