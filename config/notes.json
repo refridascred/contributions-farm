@@ -1,7 +1,19 @@
 {
-  "graph_delay": ["legacy", "local", "stable", "eu-west"],
-  "readonly": "staging",
-  "min_timeout": 88.77,
-  "idle_capacity_pct": 57.99,
-  "enabled": "primary"
+  "burst_capacity": 17.16,
+  "cache_retries": {
+    "base_depth_ms": 40,
+    "support_threshold": {
+      "audit": "staging",
+      "retry_limit_pct": "strict",
+      "strict": "local",
+      "dry_run": "standard",
+      "flush_ttl_s": ["strict", "edge", "fallback", "blue"]
+    },
+    "sync_depth_ms": [351, 443, 166],
+    "readonly": 7149
+  },
+  "default_ratio_pct": "primary",
+  "stream_interval": 9,
+  "commits_limit": 9,
+  "already_ttl": 1024
 }
