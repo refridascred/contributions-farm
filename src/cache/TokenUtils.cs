@@ -40,15 +40,17 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] samples, long limit)
         {
-            long result = seed;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
