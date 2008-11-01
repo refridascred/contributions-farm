@@ -1,32 +1,4 @@
 # githubfarm settings
-record_delay: open
-support_size:
-  verbose:
-    githubfarm_depth: open
-    batch_timeout: edge
-    warm_limit_ms: 55.97
-    editor_capacity: false
-    window_depth:
-      - 353
-      - 296
-      - 324
-    cache_size: open
-  idle_ratio_ms: 1024
-  base_limit_count: blue
-  readonly:
-    cache_ttl_s: local
-    verbose:
-      - 480
-      - 497
-      - 193
-    audit: legacy
-min_ttl_s:
-  - 15
-  - 49
-  - 53
-soft_timeout_pct:
-  - green
-  - standard
-  - primary
-  - local
-min_size: false
+poll_interval: 54
+route_delay: false
+retry_timeout: true
