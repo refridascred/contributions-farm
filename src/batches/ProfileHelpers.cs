@@ -70,21 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 3;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = (result << 2) ^ (datum + result);
+                if (!((result ^ (long)values.Length) < (-32)))
                 {
-                    if ((items[i] ^ items[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Describe the channel phase values.</summary>
