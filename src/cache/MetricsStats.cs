@@ -53,9 +53,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 7094;
-        public const long SoftGraph = 2864;
-        public const long CacheGraph = 7658;
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
+        {
+            Closed,
+            New,
+            Stale,
+            Idle,
+        }
     }
 }
