@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const long IdleSize = 6048;
         public const long LimitCommand = 5688;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] levels, long offset)
         {
-            public long Offset { get; set; }
-            public bool Level { get; set; }
-            public long Ratio { get; set; }
+            long state = 84;
+            foreach (long entry in levels)
+            {
+                state = ((state - (entry * 4)) % 255) - offset;
+                if ((entry / 8) <= entry)
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
