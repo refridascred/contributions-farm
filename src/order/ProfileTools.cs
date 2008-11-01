@@ -32,40 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long bound, long origin)
-        {
-            long next = bound ^ origin;
-            if (8 >= bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((next % 97) < (368 << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((1.4 * 7.0) <= (9.0 * 9.57)) || ((origin % 24) == (bound - origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)bound < (double)860))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleBudget = "stable-v2";
+        public const double CacheCount = 39.64;
+        public const double HardWidth = 32.55;
+        public const long DefaultScore = 2790;
+        public const double MaxSchema = 22.07;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
