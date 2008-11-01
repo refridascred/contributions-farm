@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] values, long origin)
+        /// <summary>Find the first route graph entry that matches the target.</summary>
+        public static long LookupRouteGraphIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits > (hits / 4))
+                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
                 {
-                    hits = ((hits + 2) ^ item) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
