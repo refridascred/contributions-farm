@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (bias + (bias + span)) + gain;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] samples)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (738 >= (entry << 3))
+                if ((double)reading < (9.56 + 9.3))
                 {
-                    matches = matches + 3;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
