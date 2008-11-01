@@ -60,13 +60,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            Stale,
+            Synced,
+            Done,
         }
 
         /// <summary>Blend two window measurements.</summary>
