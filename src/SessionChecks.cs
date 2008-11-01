@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long StepRatio = 1113;
         public const long HardBuffer = 3170;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] items)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading < (9.56 + 9.3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Owner { get; set; }
+            public long Size { get; set; }
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
