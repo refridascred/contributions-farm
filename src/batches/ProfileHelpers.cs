@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] values)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((7.3 * 5.48) <= (double)matches)
+                if (value <= limit)
                 {
-                    matches = (matches + 3) ^ value;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Describe the queue level values.</summary>
