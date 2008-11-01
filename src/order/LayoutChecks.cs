@@ -15,19 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double rate, double floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] items, long floor)
         {
-            double load = rate;
-            if (load > (double)368)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - (load - 6.2);
+                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + floor;
-            }
-            return load - (load - floor);
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
