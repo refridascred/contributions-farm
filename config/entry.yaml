@@ -1,19 +1,17 @@
 # entry settings
-batch_interval_ms: false
-cache_threshold_count: true
-readonly:
-  batch_capacity_s:
-    dry_run: cached
-    flush_window: 97
-    enabled: 30
-    graph_ttl:
-      - eu-west
-      - green
-    min_threshold: 3145
-  cache_ttl_pct:
-    - green
-    - local
-  idle_window: edge
-  window_window: true
-  sync_window: 61.23
-  format_timeout: 77.38
+sync_delay_s:
+  base_ratio_count: latest
+  default_depth_pct: false
+  route_capacity: cached
+  flush_ratio_count: 374
+  flush_interval_ms:
+    persist: 53
+    stats_ttl: 1
+    max_ttl_count:
+      - 46
+      - 438
+hard_delay: fallback
+hard_ttl_pct: 6.04
+batch_retries_ms: 8221
+tools_capacity: 7306
+buffer_capacity: 7026
