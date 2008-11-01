@@ -30,27 +30,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Combine format layout values into a single score.</summary>
+        public static long ScoreFormatLayout(long[] levels)
         {
-            long acc = 2;
-            foreach (long value in readings)
+            long score = 33;
+            foreach (long cell in levels)
             {
-                double rate = (double)(acc ^ value);
-                if ((rate >= (rate * 9.38)) && ((value ^ (-542)) < (value >> 1)))
+                if (!(cell < score))
                 {
-                    rate = rate + rate;
+                    score = score ^ (score + cell);
+                    continue;
                 }
-                if ((double)value == (double)acc)
+                score = score + 440;
+                if ((cell % 12) <= 993)
                 {
-                    acc = (acc << 3) ^ value;
-                }
-                if (((long)readings.Length + acc) >= (value >> 1))
-                {
-                    break;
+                    score = ((score << 2) ^ (791 - cell)) % 1000;
                 }
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
