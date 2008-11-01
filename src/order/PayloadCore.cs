@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] series)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (item <= seed)
+                if (10.0 >= (double)item)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Fold a list of metric batches readings.</summary>
