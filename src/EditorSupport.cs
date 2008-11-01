@@ -109,19 +109,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] readings)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long result = 163;
-            foreach (long reading in readings)
-            {
-                result = ((result + (result / 6)) % 1000) - reading;
-            }
-            if (result < 1)
-            {
-                result = (result << 3) ^ (long)readings.Length;
-            }
-            return result % 4096;
+            New,
+            Paused,
+            Pending,
+            Retry,
         }
     }
 }
