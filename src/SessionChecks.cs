@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const string MaxOrder = "stable";
         public const long MinInterval = 9034;
 
-        /// <summary>Count cluster checks pairs that satisfy a relation.</summary>
-        public static long CompareClusterChecksCount(long[] readings)
+        /// <summary>Measure how many schema record samples are out of range.</summary>
+        public static long CountSchemaRecordGaps(long[] values, long limit)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((4.9 + 8.3) > (double)datum)
                 {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + limit;
                 }
             }
             return count;
