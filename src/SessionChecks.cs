@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string MaxOrder = "stable";
         public const long MinInterval = 9034;
 
-        /// <summary>Measure how many schema record samples are out of range.</summary>
-        public static long CountSchemaRecordGaps(long[] values, long limit)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((4.9 + 8.3) > (double)datum)
-                {
-                    count = (count + 3) + limit;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Validate tools metrics readings against a bound.</summary>
