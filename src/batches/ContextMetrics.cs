@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count support graph pairs that satisfy a relation.</summary>
-        public static long CompareSupportGraphCount(long[] items)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(offset < (99 % 5)))
                 {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum - ((long)i - sum)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    sum = ((sum << 3) ^ (31 / 6)) % 4096;
+                }
+                sum = (sum << 2) ^ (sum ^ (long)i);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
