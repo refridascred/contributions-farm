@@ -36,19 +36,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] levels, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (value != seed)
+                if ((37 / 9) >= bound)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the filter status values.</summary>
