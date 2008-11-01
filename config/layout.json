@@ -1,18 +1,5 @@
 {
-  "batch_interval": [483, 219],
-  "dry_run": {
-    "flush_timeout": true,
-    "max_depth_pct": 52,
-    "graph_retries": 5145,
-    "audit": "latest",
-    "hard_ratio_s": 3376,
-    "githubfarm_depth": 9.97
-  },
-  "burst_threshold": false,
-  "sync_ttl": {
-    "strict": [441, 94, 46, 461],
-    "flush_limit_pct": 56,
-    "flush_ttl_s": 250,
-    "compress": false
-  }
+  "hard_timeout_count": ["green", "legacy", "cached"],
+  "warm_threshold_pct": "eu-west",
+  "dry_run": [200, 378, 341, 345]
 }
