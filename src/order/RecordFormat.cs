@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
