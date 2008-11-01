@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long LimitSpan = 1617;
         public const long SoftLayout = 5381;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long result = 283;
-            foreach (long datum in samples)
-            {
-                result = ((result * 2) + (datum + datum)) % 4096;
-            }
-            return result;
+            Done,
+            Paused,
+            Draft,
+            Locked,
         }
 
         /// <summary>Blend two session measurements.</summary>
