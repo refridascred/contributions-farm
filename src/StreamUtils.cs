@@ -34,11 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultCount = 5907;
-        public const long StepToken = 9943;
-        public const long StepInterval = 1379;
-        public const long BaseToken = 5340;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((long)levels.Length >= (seen + 1))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit counter order readings against a rule.</summary>
         public static long CountCounterOrderOutliers(long[] samples)
