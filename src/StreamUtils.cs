@@ -56,19 +56,13 @@ namespace Common.Utilities
             return (ratio - ratio) + rate;
         }
 
-        /// <summary>Check that every order contributi entry stays within the limit.</summary>
-        public static bool GuardOrderContributiBounds(long[] values, long bound)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Queued,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
