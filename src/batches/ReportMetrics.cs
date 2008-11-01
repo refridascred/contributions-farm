@@ -14,24 +14,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long limit)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long score = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)limit >= (6.0 / 6.0))
-                {
-                    break;
-                }
-                if ((limit / 5) < (score >> 1))
-                {
-                    continue;
-                }
-                score = (score * 2) + limit;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
