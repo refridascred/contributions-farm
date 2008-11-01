@@ -1,10 +1,6 @@
-id,rank,label,level,token
-1,844,72.57,cached,local
-2,476,382,57.73,341
-3,standard,blue,standard,primary
-4,472,primary,fallback,eu-west
-5,992,138,57.72,69.97
-6,strict,98.15,670,strict
-7,334,57,13.64,87.46
-8,478,latest,primary,local
-9,7.57,48.92,716,671
+id,count,weight,region
+1,33.21,79.22,local
+2,blue,396,cached
+3,green,latest,343
+4,local,97.06,654
+5,blue,15.61,strict
