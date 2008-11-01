@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values, long step)
+        /// <summary>Check that every editor entry entry stays within the limit.</summary>
+        public static bool GuardEditorEntryLimits(long[] items, long offset)
         {
-            long mix = 677;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                mix = ((mix * 3) + datum) - step;
-                if ((datum / 5) != (datum << 2))
+                if (cell != offset)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (mix < 5)
-            {
-                mix = (mix + (mix / 8)) % 97;
-            }
-            return mix % 1000;
+            return flag;
         }
 
         /// <summary>Hold a profile summary.</summary>
