@@ -15,21 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum >= floor)
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Describe the window kind values.</summary>
