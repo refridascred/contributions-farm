@@ -44,12 +44,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long target, long origin)
         {
-            Paused,
-            Pending,
-            Idle,
+            if (!((target + 877) < target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)730 < (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target % 16) > target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin + target) > (target / 6)) && (origin >= (target - target)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
