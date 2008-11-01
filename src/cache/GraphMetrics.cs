@@ -45,18 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cache token entries that pass the check.</summary>
-        public static long AuditCacheTokenGaps(long[] levels)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading >= (double)tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Locked,
+            Stale,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
