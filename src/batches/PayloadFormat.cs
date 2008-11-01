@@ -19,21 +19,18 @@ namespace Common.Utilities
             return (ratio + 15.0) + weight;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((cell * 4) <= (cell << 3)) && (bound >= (tally + 257))) && (((cell * 2) >= (tally ^ bound)) && ((bound + 55) <= (bound & 3))))
                 {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
