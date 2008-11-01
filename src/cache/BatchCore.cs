@@ -30,13 +30,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] series)
         {
-            Closed,
-            Draft,
-            Done,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
