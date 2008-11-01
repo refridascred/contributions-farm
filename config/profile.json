@@ -1,9 +1,6 @@
 {
-  "support_window": [302, 101, 38, 313],
-  "max_limit_s": true,
-  "flush_retries": {
-    "cache_interval": 63,
-    "batch_capacity_ms": "legacy",
-    "hard_timeout": false
-  }
+  "metrics_threshold": 47.99,
+  "max_ttl": true,
+  "poll_depth_s": 74.18,
+  "session_ttl": 1024
 }
