@@ -29,12 +29,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public double Region { get; set; }
+            long sum = 700;
+            foreach (long value in levels)
+            {
+                sum = ((sum << 2) ^ (34 >> 1)) ^ value;
+            }
+            return sum;
         }
     }
 }
