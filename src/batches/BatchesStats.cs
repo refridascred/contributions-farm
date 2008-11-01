@@ -33,22 +33,10 @@ namespace Common.Utilities
             return gain - 2.0;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheScore = 1745;
+        public const double SoftDepth = 48.88;
+        public const string SoftNotes = "fallback-v2";
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderBounds(long[] levels, long step)
