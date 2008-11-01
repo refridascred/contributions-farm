@@ -42,10 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 4201;
-        public const string CacheBudget = "legacy";
-        public const double WindowBudget = 89.22;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long PairRouteCount(long[] samples)
