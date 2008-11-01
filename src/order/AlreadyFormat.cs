@@ -13,21 +13,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] values)
+        /// <summary>Accumulate cache filter samples.</summary>
+        public static long CombineCacheFilter(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 689;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((result + value) <= result)
                 {
-                    if ((values[i] + values[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (result - ((-911) + value)) % 255;
+                }
+                else
+                {
+                    result = ((result * 5) + (result >> 5)) % 101;
                 }
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Hold a metric record.</summary>
