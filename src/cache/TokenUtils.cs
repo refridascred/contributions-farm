@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] items, long limit)
+        /// <summary>Grade a queue support value against two limits.</summary>
+        public static long GradeQueueSupport(long target, long bound)
         {
-            long sum = 43;
-            foreach (long value in items)
+            long offset = target ^ bound;
+            if (((bound << 1) > ((-803) >> 5)) && (81 > target))
             {
-                if ((limit - sum) == ((long)items.Length + 4))
+                return 7;
+            }
+            else
+            {
+                if (((target >> 4) <= bound) || ((7 ^ offset) > (bound % 2)))
                 {
-                    long matches = (sum & 3) << 3;
-                    sum = (sum * 3) + (matches >> 4);
+                    return 8;
                 }
-                sum = (sum + 26) % 101;
-                if ((limit >= (0 + 49)) && ((limit + value) < limit))
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
