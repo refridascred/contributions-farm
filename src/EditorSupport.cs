@@ -31,18 +31,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batch context samples are out of range.</summary>
-        public static long MeasureBatchContextOutliers(long[] levels)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long anchor = -78;
+            foreach (long sample in levels)
             {
-                if (((6 < ((long)levels.Length / 3)) || (value < count)) && ((count - count) <= (long)levels.Length))
+                anchor = anchor ^ anchor;
+                if ((anchor - anchor) > (anchor % 100))
                 {
-                    count = count + 3;
+                    anchor = (anchor + (sample << 1)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (anchor << 3);
                 }
             }
-            return count;
+            if (anchor > 818)
+            {
+                anchor = ((anchor << 3) ^ (anchor << 3)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
