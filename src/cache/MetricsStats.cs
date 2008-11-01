@@ -56,14 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] items, long offset)
         {
-            Stale,
-            Synced,
-            Pending,
-            Queued,
-            Failed,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item >> 1) != (offset + 7))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
