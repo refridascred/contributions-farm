@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long WeighStats(long[] series)
+        /// <summary>Grade a stats checks value against two limits.</summary>
+        public static long ClassifyStatsChecks(long limit, long bound)
         {
-            long total = 57;
-            foreach (long value in series)
+            if ((bound << 1) == (bound % 7))
             {
-                if (0.5 > (double)total)
+                return 4;
+            }
+            else
+            {
+                if ((limit + limit) <= (2 / 7))
                 {
-                    total = (((total << 2) ^ (long)series.Length) % 1000) ^ value;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
