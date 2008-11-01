@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
