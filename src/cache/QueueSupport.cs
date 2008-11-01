@@ -19,11 +19,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinSize = 53.14;
-        public const long BatchLevel = 9239;
-        public const long LimitLayout = 5551;
-        public const long CacheLayout = 2376;
-        public const double BatchLayout = 12.56;
+        /// <summary>Roll a contributi graph counter forward.</summary>
+        public static long RollContributiGraph(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark << 3) ^ (mark + (long)i)) % 4096;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
