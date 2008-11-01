@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public double Label { get; set; }
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
