@@ -1,16 +1,5 @@
 {
-  "enabled": 60,
-  "idle_size_ms": {
-    "base_retries": {
-      "retry_ttl_count": 55.61,
-      "contributi_capacity": "legacy",
-      "base_ratio_ms": 59,
-      "compress": "staging",
-      "route_ratio": 95,
-      "default_depth": false
-    },
-    "readonly": "standard",
-    "burst_size_count": 78.52
-  },
-  "flush_ratio": "staging"
+  "batch_retries": "local",
+  "cache_retries": "strict",
+  "contributi_size": 78
 }
