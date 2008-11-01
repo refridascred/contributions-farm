@@ -40,17 +40,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] readings, long limit)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Closed,
+            Pending,
+            New,
+            Paused,
         }
     }
 }
