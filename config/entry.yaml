@@ -1,9 +1,9 @@
 # entry settings
-persist: 49.18
-dry_run:
-  audit: strict
-  min_limit_pct: primary
-  idle_threshold_ms: 86.15
-poll_ratio_count: 1645
-audit: 90.28
-max_capacity: green
+max_delay:
+  - 290
+  - 335
+  - 14
+githubfarm_retries:
+  - legacy
+  - latest
+stats_capacity: 24.81
