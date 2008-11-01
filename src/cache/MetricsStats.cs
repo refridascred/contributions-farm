@@ -29,13 +29,10 @@ namespace Common.Utilities
             return bias2 + (2.35 * 7.1);
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowBudget = 8715;
+        public const long IdleEditor = 9077;
+        public const long BurstTimeout = 6952;
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
