@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Done,
-            Dropped,
-            Active,
+            public double Flag { get; set; }
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Roll a order counter forward.</summary>
