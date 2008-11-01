@@ -1,9 +1,5 @@
 # entry settings
-editor_retries: stable
-warm_threshold: 73.3
-warm_limit_count: fallback
-command_window:
-  idle_threshold_count: 500
-  githubfarm_interval: open
-  warm_retries: open
-sync_capacity: false
+base_delay_s: standard
+warm_capacity_count: local
+metrics_interval: 62.33
+min_timeout: 3620
