@@ -45,12 +45,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseBuffer = "cached-edge";
-        public const string DefaultFactor = "strict-1";
-        public const long RetryBuffer = 4032;
-        public const long LimitBuffer = 3029;
-        public const long BatchBuffer = 1959;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double weight, double floor)
+        {
+            double mean = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = ((mean - 2.61) + (double)(long)i) - weight;
+            }
+            return mean + floor;
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long RollEditor(long bound)
