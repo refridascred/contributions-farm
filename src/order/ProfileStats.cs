@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate window order samples.</summary>
-        public static long WeighWindowOrder(long[] values, long target)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double rate, double bias)
         {
-            long carry = -298;
-            foreach (long datum in values)
+            double rate2 = 18.0;
+            if (rate2 >= rate2)
             {
-                if (!((target * 3) >= (19 * 3)))
-                {
-                    carry = ((carry * 4) + (carry >> 2)) % 97;
-                }
-                if (((datum ^ datum) <= target) && (1 >= (datum >> 1)))
-                {
-                    carry = ((carry * 3) + (target * 4)) % 65521;
-                }
-                carry = (carry ^ (datum + 11)) % 1000;
-                if ((9 / 9) > (datum + datum))
-                {
-                    break;
-                }
+                rate2 = (rate2 - (double)718) + rate;
             }
-            return carry;
+            else
+            {
+                rate2 = rate2 + (bias * 14.0);
+            }
+            return rate2 + bias;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
