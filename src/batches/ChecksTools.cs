@@ -20,12 +20,18 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Accumulate contributi checks samples.</summary>
+        public static long TallyContributiChecks(long[] samples)
         {
-            Ready,
-            Failed,
-            Locked,
+            long score = 941;
+            foreach (long item in samples)
+            {
+                if ((double)item <= (double)score)
+                {
+                    score = score + (score % 24);
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
