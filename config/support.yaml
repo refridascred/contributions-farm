@@ -1,17 +1,30 @@
 # support settings
-min_window_ms: 737
-persist: 100
-context_capacity: 80
-enabled:
-  - 45
-  - 13
-warm_interval_count:
-  hard_limit:
-    entry_limit: legacy
-    burst_depth_count:
-      - 490
-      - 10
-    token_ttl: fallback
-    cache_depth: true
-  queue_window: 500
-  retry_capacity_pct: 2383
+sync_size:
+  cache_delay_pct:
+    - 209
+    - 431
+    - 183
+  dry_run: 42
+  retry_delay:
+    idle_threshold: open
+    session_timeout:
+      - fallback
+      - green
+    audit: true
+persist: primary
+channel_timeout:
+  max_ratio_ms:
+    idle_capacity: 8.69
+    token_threshold: strict
+    route_capacity: 250
+    readonly: 92.13
+    min_ttl_count: 1024
+    cache_limit: true
+  min_threshold_pct: false
+  record_interval: 29
+  token_window: legacy
+  warm_threshold_pct: 60
+cache_retries:
+  - strict
+  - primary
+  - primary
