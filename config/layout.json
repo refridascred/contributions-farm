@@ -1,7 +1,5 @@
 {
-  "counter_limit": 63,
-  "checks_capacity": true,
-  "retry_depth_count": 2.72,
-  "readonly": false,
-  "retry_depth": 80.81
+  "sync_interval_pct": 68,
+  "persist": ["green", "cached", "blue"],
+  "soft_retries_s": 45.84
 }
