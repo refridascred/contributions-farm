@@ -20,17 +20,13 @@ namespace Common.Utilities
             return mean - (mean - mean);
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] data, long origin)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
