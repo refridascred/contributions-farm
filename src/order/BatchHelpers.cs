@@ -12,15 +12,33 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Roll a cache account counter forward.</summary>
+        public static long IterateCacheAccount(long limit)
         {
-            long carry = 54;
-            foreach (long value in samples)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry * 4) + (carry % 7)) - value;
+                if ((limit >> 1) == ((long)i - result))
+                {
+                    result = (result - (long)i) % 65521;
+                    result = result ^ (3 + limit);
+                }
+                if (((-367) & 3) != (result + result))
+                {
+                    result = result ^ (limit * 2);
+                }
+                if ((2.81 / 7.0) <= (double)(long)i)
+                {
+                    result = (result + (result << 1)) % 65521;
+                    result = (result + (limit + result)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (limit - limit)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
