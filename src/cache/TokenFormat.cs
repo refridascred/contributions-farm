@@ -23,11 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "primary";
-        public const long BurstAccount = 3903;
-        public const long SoftBudget = 2055;
-        public const double BatchAccount = 64.23;
-        public const long IdleAccount = 3844;
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double bias, double offset)
+        {
+            double load = bias;
+            if (load >= bias)
+            {
+                load = load - (bias - offset);
+            }
+            return load - load;
+        }
     }
 }
