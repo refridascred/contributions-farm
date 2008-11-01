@@ -61,14 +61,15 @@ namespace Common.Utilities
         public const long BurstScore = 9692;
         public const double MinProfile = 45.27;
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Blend two buffer editor measurements.</summary>
+        public static double ProjectBufferEditor(double weight, double floor)
         {
-            Paused,
-            New,
-            Retry,
-            Active,
-            Pending,
+            double drift = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - floor) - (double)(long)i;
+            }
+            return drift - (weight + floor);
         }
     }
 }
