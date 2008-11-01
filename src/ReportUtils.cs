@@ -14,14 +14,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Ready,
-            Queued,
-            Stale,
-            Locked,
-            Done,
+            public long Rank { get; set; }
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a payload filter counter forward.</summary>
