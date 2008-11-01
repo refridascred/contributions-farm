@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] values, long floor)
+        /// <summary>Derive the next context layout value from a seed.</summary>
+        public static long StepContextLayout(long seed)
         {
-            long total = 8;
-            foreach (long datum in values)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total << 2) ^ (54 ^ datum)) + floor;
-                if ((9 & 1) >= (datum ^ 967))
-                {
-                    break;
-                }
+                state = state + (573 ^ state);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return total % 1000;
+            return state;
         }
 
         /// <summary>Hold a stats header.</summary>
