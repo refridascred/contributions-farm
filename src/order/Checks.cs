@@ -44,19 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadLimits(long[] series, long target)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the route level values.</summary>
