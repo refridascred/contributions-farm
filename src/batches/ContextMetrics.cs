@@ -39,12 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] levels, long offset)
         {
-            New,
-            Pending,
-            Done,
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a token reading.</summary>
