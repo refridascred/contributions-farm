@@ -1,4 +1,14 @@
 # githubfarm settings
-verbose: eu-west
-cache_capacity_ms: 52
-min_ratio_s: 30
+default_size_count: open
+compress:
+  compress: stable
+  cache_depth:
+    - stable
+    - legacy
+    - cached
+    - strict
+  soft_threshold_s: 100
+  base_capacity_pct: 8208
+  flush_interval_pct: green
+  batch_retries: eu-west
+enabled: 41
