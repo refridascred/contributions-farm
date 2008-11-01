@@ -30,18 +30,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] data, long bound)
+        /// <summary>Count the cluster account entries that pass the check.</summary>
+        public static long MeasureClusterAccountHits(long[] levels)
         {
-            long state = 2;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((item & 31) != (bound + item))
+                if ((double)sample <= (6.7 - 9.7))
                 {
-                    state = (state ^ (bound % 3)) % 4096;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
