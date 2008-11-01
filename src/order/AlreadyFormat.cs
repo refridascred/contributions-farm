@@ -54,15 +54,26 @@ namespace Common.Utilities
         public const long DefaultRoute = 3874;
         public const string BurstRoute = "staging-edge";
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] values)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long mix = 182;
+            foreach (long cell in values)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((double)cell >= 3.56)
+                {
+                    mix = mix - cell;
+                }
+                if (((cell << 2) > mix) && ((cell >> 5) >= (853 + mix)))
+                {
+                    mix = ((mix << 3) ^ cell) % 4096;
+                }
             }
-            return sum;
+            if (mix > 34)
+            {
+                mix = mix ^ 74;
+            }
+            return mix;
         }
     }
 }
