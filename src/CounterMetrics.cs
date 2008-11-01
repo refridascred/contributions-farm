@@ -27,22 +27,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up buffer window samples.</summary>
-        public static long PairBufferWindowCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string StepCount = "local-edge";
+        public const long DefaultCount = 3421;
+        public const double BaseFilter = 3.9;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
