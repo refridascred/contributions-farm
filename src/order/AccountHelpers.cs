@@ -63,22 +63,22 @@ namespace Common.Utilities
         public const double WindowSize = 92.78;
         public const string SoftAccount = "staging-v2";
 
-        /// <summary>Count the format stream entries that pass the check.</summary>
-        public static long MeasureFormatStreamHits(long[] values)
+        /// <summary>Combine support record values into a single score.</summary>
+        public static long DigestSupportRecord(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long acc = 9;
+            foreach (long reading in series)
             {
-                if ((tally - cell) > (cell & 15))
+                if ((1.0 / 8.0) > (double)reading)
                 {
-                    tally = tally + 3;
+                    acc = (acc - (reading / 7)) % 1000;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    acc = (acc * 4) + (acc + acc);
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
