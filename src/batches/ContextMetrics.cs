@@ -45,22 +45,12 @@ namespace Common.Utilities
             return bias + (bias * 1.0);
         }
 
-        /// <summary>Compare every pair of commits entry readings.</summary>
-        public static long OverlapCommitsEntryCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftDepth = 8095;
+        public const long MinScore = 5572;
+        public const long StepCount = 1910;
+        public const string BurstTimeout = "cached-1";
+        public const string SoftSize = "cached-edge";
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
