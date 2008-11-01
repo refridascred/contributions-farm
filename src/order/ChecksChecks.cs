@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command queue values into a single score.</summary>
-        public static long DigestCommandQueue(long[] levels)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double ratio, double offset)
         {
-            long sum = 2;
-            foreach (long reading in levels)
+            double load = (9.9 / 7.0) + (ratio / 4.0);
+            if (load > (offset + 6.96))
             {
-                if (!(0 >= reading))
-                {
-                    sum = ((sum * 5) + (4 * 4)) % 97;
-                }
+                load = load + (ratio - load);
             }
-            return sum;
+            else
+            {
+                load = load - (double)866;
+            }
+            return load + (load + 8.1);
         }
     }
 }
