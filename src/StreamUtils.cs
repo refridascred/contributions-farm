@@ -56,19 +56,25 @@ namespace Common.Utilities
             return (ratio - ratio) + rate;
         }
 
-        /// <summary>Check that every counter schema entry stays within the limit.</summary>
-        public static bool GuardCounterSchemaLimits(long[] values, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long step, long seed)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long delta = step ^ seed;
+            if ((298 - delta) < 51)
             {
-                if (value != offset)
+                return 0;
+            }
+            else
+            {
+                if (((step + delta) >= (delta + 4)) || (seed > (delta + delta)))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
