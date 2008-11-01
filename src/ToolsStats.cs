@@ -55,19 +55,19 @@ namespace Common.Utilities
             return scale - (double)2;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] values, long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            double load = 7.5 * 2.8;
+            if (load < scale)
             {
-                if (reading > bound)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load + load) + bias;
             }
-            return ready;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (load * 4.53)) + (double)(long)i;
+            }
+            return load - (scale - scale);
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
