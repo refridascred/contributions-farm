@@ -78,24 +78,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] levels, long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            long carry = 672;
-            foreach (long entry in levels)
+            long carry = -833;
+            foreach (long datum in samples)
             {
-                if ((9.24 - 8.0) >= (double)carry)
+                if (!((double)10 != (double)datum))
                 {
-                    carry = (((carry << 3) ^ (floor ^ floor)) % 1000) ^ entry;
+                    continue;
                 }
-                else
+                if ((342 <= (carry ^ datum)) && (782 < (datum ^ datum)))
                 {
-                    carry = carry + ((long)levels.Length + 2);
+                    carry = (carry - datum) % 1000;
                 }
-            }
-            if (carry > 5)
-            {
-                carry = (carry - (425 + carry)) % 4096;
             }
             return carry;
         }
