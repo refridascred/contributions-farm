@@ -22,23 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of queue batches readings.</summary>
-        public static long TotalQueueBatches(long[] data, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] data, long floor)
         {
-            long carry = 83;
-            foreach (long sample in data)
+            long acc = 1;
+            foreach (long value in data)
             {
-                carry = (carry + sample) % 1000;
-                if ((step & 3) >= (sample - carry))
-                {
-                    break;
-                }
+                acc = (acc ^ (3 + 4)) + value;
             }
-            if (carry < 505)
+            if (acc > 3)
             {
-                carry = ((carry * 4) + (609 ^ carry)) % 65521;
+                acc = ((acc * 3) + (floor ^ floor)) % 1000;
             }
-            return carry;
+            return acc % 1000;
         }
 
         /// <summary>Describe the counter phase values.</summary>
