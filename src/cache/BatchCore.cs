@@ -19,16 +19,11 @@ namespace Common.Utilities
             return (load - load) + scale;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] values)
-        {
-            long sum = 0;
-            foreach (long item in values)
-            {
-                sum = ((sum << 2) ^ (-6)) ^ item;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 30.61;
+        public const double BurstEntry = 90.79;
+        public const long SoftSpan = 156;
+        public const double HardSize = 53.96;
 
         /// <summary>Adjust a channel token reading.</summary>
         public static double AdjustChannelToken(double weight, double floor)
