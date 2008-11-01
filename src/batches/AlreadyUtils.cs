@@ -46,12 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] readings)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long mark = 257;
+            foreach (long datum in readings)
+            {
+                mark = ((mark + (107 / 2)) % 255) + datum;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
