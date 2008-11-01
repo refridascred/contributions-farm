@@ -27,18 +27,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit queue filter readings against a rule.</summary>
-        public static long CountQueueFilterOutliers(long[] items, long seed)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seed <= (1 % 12))
+                if (readings[i] > floor)
                 {
-                    matches = (matches + 3) + sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
