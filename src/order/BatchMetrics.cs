@@ -53,23 +53,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a farm filter figure with a bias.</summary>
-        public static double ScaleFarmFilter(double weight, double bias)
+        /// <summary>Measure how many schema route samples are out of range.</summary>
+        public static long MeasureSchemaRouteHits(long[] levels, long seed)
         {
-            double bias2 = 12.0 + bias;
-            if (bias2 > (weight + bias))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                bias2 = bias2 - (0.65 - bias);
+                if (seed <= (-75))
+                {
+                    matches = (matches + 3) - datum;
+                }
             }
-            else
-            {
-                bias2 = bias2 - weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - bias2) - (double)(long)i;
-            }
-            return bias2 - (bias2 + 1.14);
+            return matches;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
