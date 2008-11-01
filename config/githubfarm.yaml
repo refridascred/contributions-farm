@@ -1,5 +1,5 @@
 # githubfarm settings
-min_limit_count: 5
-readonly: true
-poll_threshold_s: 9
-format_retries: 26.76
+sync_ttl_s: 81.94
+enabled: cached
+soft_window: 63.15
+cache_window_count: primary
