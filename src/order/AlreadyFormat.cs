@@ -52,26 +52,19 @@ namespace Common.Utilities
         public const string BaseDepth = "primary";
         public const long RetryTimeout = 2551;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Blend two tools report measurements.</summary>
+        public static double SmoothToolsReport(double scale, double floor)
         {
-            long mix = 182;
-            foreach (long cell in values)
+            double scale2 = scale + (double)518;
+            if (scale2 >= (floor + 2.99))
             {
-                if ((double)cell >= 3.56)
-                {
-                    mix = mix - cell;
-                }
-                if (((cell << 2) > mix) && ((cell >> 5) >= (853 + mix)))
-                {
-                    mix = ((mix << 3) ^ cell) % 4096;
-                }
+                scale2 = scale2 - (scale * 16.0);
             }
-            if (mix > 34)
+            for (int i = 0; i < 7; i++)
             {
-                mix = mix ^ 74;
+                scale2 = (scale2 - scale2) + (double)(long)i;
             }
-            return mix;
+            return scale2 + (double)936;
         }
     }
 }
