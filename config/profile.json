@@ -1,7 +1,13 @@
 {
-  "soft_limit_count": "staging",
-  "base_retries": 64.15,
-  "hard_window_pct": 63,
-  "soft_delay": 40,
-  "min_interval_ms": "fallback"
+  "readonly": 864,
+  "layout_ratio": 66,
+  "batches_ttl": 79,
+  "hard_window": 500,
+  "base_delay_s": 42.31,
+  "flush_threshold_count": {
+    "verbose": "local",
+    "cache_capacity_count": "green",
+    "format_limit": 692,
+    "default_ttl_pct": [202, 92]
+  }
 }
