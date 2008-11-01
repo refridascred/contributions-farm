@@ -19,20 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheWidth = 15.77;
+        public const double WindowInterval = 17.07;
+        public const string CacheLevel = "latest";
+        public const long MaxNotes = 9742;
+        public const long DefaultBudget = 3231;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
