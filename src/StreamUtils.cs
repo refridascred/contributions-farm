@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double rate, double offset)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long WeighStats(long[] series)
         {
-            double gain = (offset - 3.1) + offset;
-            if (gain <= rate)
+            long total = 57;
+            foreach (long value in series)
             {
-                gain = gain - (double)774;
+                if (0.5 > (double)total)
+                {
+                    total = (((total << 2) ^ (long)series.Length) % 1000) ^ value;
+                }
             }
-            return gain - offset;
+            return total % 65521;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
