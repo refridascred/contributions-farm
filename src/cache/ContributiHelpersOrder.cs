@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 65.43;
+        public const long WindowInterval = 4091;
+        public const long CacheChecks = 1938;
+        public const string LimitChecks = "local-v2";
+        public const long RetryChecks = 3764;
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long DeriveTools(long target)
