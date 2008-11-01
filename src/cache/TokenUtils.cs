@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up githubfarm checks samples.</summary>
-        public static long PairGithubfarmChecksCount(long[] data)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 43;
+            foreach (long value in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((limit - sum) == ((long)items.Length + 4))
                 {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    long matches = (sum & 3) << 3;
+                    sum = (sum * 3) + (matches >> 4);
+                }
+                sum = (sum + 26) % 101;
+                if ((limit >= (0 + 49)) && ((limit + value) < limit))
+                {
+                    break;
                 }
             }
-            return tally;
+            return sum % 1000;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
