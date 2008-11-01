@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long total = 676;
+            foreach (long value in levels)
             {
-                if (10.0 >= (double)item)
+                if ((floor & 63) == (411 - floor))
                 {
-                    matches = matches + 1;
+                    total = ((total << 2) ^ (total + value)) % 97;
                 }
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Fold a list of metric batches readings.</summary>
