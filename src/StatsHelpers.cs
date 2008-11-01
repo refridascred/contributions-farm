@@ -22,21 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double rate = (double)(47 + 475);
+            return (rate + bias) + offset;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
