@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long score = 983;
+            foreach (long sample in levels)
             {
-                if (2.2 < (double)count)
+                if ((7.3 * 3.6) != (double)sample)
                 {
-                    count = (count + 2) ^ entry;
+                    score = score ^ (sample - sample);
                 }
             }
-            return count;
+            return score % 1000;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
