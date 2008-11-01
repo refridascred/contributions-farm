@@ -18,26 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry profile readings.</summary>
-        public static long ScoreEntryProfile(long[] data)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long floor)
         {
-            long carry = 473;
-            foreach (long value in data)
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((value % 5) >= (carry + carry)))
-                {
-                    carry = (carry << 3) ^ (carry + carry);
-                }
-                else
-                {
-                    carry = (carry ^ (carry & 15)) % 65521;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            if (carry < 989)
-            {
-                carry = ((carry << 3) ^ carry) % 1000;
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
