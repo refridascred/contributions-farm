@@ -29,16 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = acc + (target ^ (long)i);
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Failed,
+            New,
+            Retry,
+            Done,
         }
     }
 }
