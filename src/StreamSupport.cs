@@ -19,14 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] readings, long limit)
         {
-            Idle,
-            Draft,
-            Queued,
-            Dropped,
-            Closed,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the metrics state values.</summary>
