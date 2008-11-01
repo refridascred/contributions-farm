@@ -26,18 +26,10 @@ namespace Common.Utilities
         public const long MaxInterval = 4344;
         public const long StepBudget = 1766;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] values, long origin)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (seen <= (long)values.Length)
-                {
-                    seen = ((seen + 1) ^ cell) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitTimeout = 7004;
+        public const string CacheMetrics = "primary-1";
+        public const string RetryWidth = "staging-1";
+        public const long HardScore = 6694;
     }
 }
