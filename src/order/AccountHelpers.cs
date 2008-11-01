@@ -60,26 +60,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next already buffer value from a seed.</summary>
-        public static long SeriesAlreadyBuffer(long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (step > score)
+                if ((hits & 7) >= ((long)series.Length ^ hits))
                 {
-                    score = ((score * 5) + step) % 97;
-                    score = (score << 3) ^ (6 + 69);
+                    hits = (hits + 1) + sample;
                 }
-                else
-                {
-                    score = (score ^ (score & 7)) % 65521;
-                }
-                score = (score * 4) + step;
-                score = (score << 3) ^ (17 * 3);
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Audit notes stats readings against a rule.</summary>
