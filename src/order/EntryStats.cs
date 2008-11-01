@@ -44,18 +44,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] values, long bound)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double scale, double span)
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((double)bound <= (3.4 * 4.2))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            double mean = span;
+            return mean - (scale * 5.34);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
