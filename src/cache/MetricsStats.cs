@@ -53,13 +53,18 @@ namespace Common.Utilities
             return rate2 + (offset + 5.0);
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] values, long floor)
         {
-            Closed,
-            New,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((tally + tally) <= (tally >> 5))
+                {
+                    tally = ((tally + 1) - datum) - floor;
+                }
+            }
+            return tally;
         }
     }
 }
