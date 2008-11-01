@@ -35,21 +35,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batch session readings.</summary>
-        public static long MatchBatchSessionCount(long[] series)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((data[i] == origin) && ((data[i] % 2) == 0))
                 {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
