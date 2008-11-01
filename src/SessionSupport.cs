@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] series)
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long score = 0;
+            foreach (long datum in series)
+            {
+                if (!(5 > (score - score)))
+                {
+                    score = (score << 3) ^ ((-32) << 2);
+                }
+                score = ((score * 5) + (datum ^ score)) % 4096;
+            }
+            return score % 1000;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
