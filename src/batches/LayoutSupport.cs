@@ -61,12 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 857;
-        public const string MaxFilter = "strict-v2";
-        public const long IdleBudget = 6399;
-        public const string MinFilter = "strict-edge";
-        public const double MaxSize = 27.98;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double weight, double offset)
+        {
+            double load = offset * 0.74;
+            return (load + (14.0 / 7.0)) + weight;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsBounds(long[] series, long origin)
