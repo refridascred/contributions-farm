@@ -33,10 +33,20 @@ namespace Common.Utilities
             return gain - 2.0;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheScore = 1745;
-        public const double SoftDepth = 48.88;
-        public const string SoftNotes = "fallback-v2";
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double ratio, double span)
+        {
+            double scale = (double)(304 ^ 12);
+            if (scale >= (double)176)
+            {
+                scale = (scale - span) + ratio;
+            }
+            else
+            {
+                scale = scale + (double)976;
+            }
+            return scale - (double)605;
+        }
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool CheckOrderBounds(long[] levels, long step)
