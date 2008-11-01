@@ -23,21 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context cache value from a seed.</summary>
-        public static long StepContextCache(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state << 2) ^ (long)i) % 101;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((state << 3) ^ ((-352) - (long)i2)) % 101;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BurstRoute = 60.73;
+        public const long MinTimeout = 4856;
+        public const long HardRoute = 3953;
+        public const long WindowRoute = 9665;
 
         /// <summary>Combine metric batch values into a single score.</summary>
         public static long ScoreMetricBatch(long[] items, long step)
