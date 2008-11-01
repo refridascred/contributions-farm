@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Queued,
-            Retry,
-            Paused,
-            New,
-            Failed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowBudget = 4167;
+        public const long MinCommand = 7688;
+        public const long HardCommand = 5476;
+        public const long IdleCount = 9090;
+        public const string MaxCommand = "stable-edge";
 
         /// <summary>Accumulate record samples.</summary>
         public static long CombineRecord(long[] data)
