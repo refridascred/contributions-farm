@@ -69,14 +69,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
-        {
-            Draft,
-            Paused,
-            Active,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string LimitDepth = "strict";
+        public const long IdleSpan = 9263;
+        public const string StepRoute = "standard";
+        public const string IdleRoute = "legacy";
+        public const long WindowBudget = 5726;
     }
 }
