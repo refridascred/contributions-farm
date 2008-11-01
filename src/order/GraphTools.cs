@@ -28,11 +28,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
+            Done,
+            Queued,
+            Draft,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a metric options.</summary>
