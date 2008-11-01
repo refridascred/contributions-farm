@@ -21,19 +21,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Synced,
+            Retry,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
