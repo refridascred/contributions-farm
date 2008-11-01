@@ -17,12 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public bool Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
+            Dropped,
+            Retry,
+            Idle,
+            Paused,
+            New,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
