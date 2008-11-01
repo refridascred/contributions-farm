@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long acc = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((limit << 3) > acc)
-                {
-                    acc = ((acc * 3) + limit) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Draft,
+            Queued,
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
