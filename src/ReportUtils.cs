@@ -53,11 +53,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] values)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (((seen % 12) > (seen + entry)) && (6.2 > (double)entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
