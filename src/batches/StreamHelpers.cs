@@ -39,22 +39,12 @@ namespace Common.Utilities
         public const double BaseBuffer = 75.8;
         public const string BatchSpan = "strict-edge";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] levels)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((6 / 5) != (tally - tally))
-                {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Pending,
+            Failed,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
