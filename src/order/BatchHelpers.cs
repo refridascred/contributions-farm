@@ -19,12 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 12.23;
-        public const long BatchSpan = 5371;
-        public const double BatchLevel = 29.9;
-        public const string StepInterval = "staging-edge";
-        public const long BatchReport = 6352;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] data)
+        {
+            long acc = 51;
+            foreach (long datum in data)
+            {
+                if (2.7 < (double)acc)
+                {
+                    acc = acc - (datum << 3);
+                }
+                else
+                {
+                    acc = acc - (datum >> 2);
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] items)
