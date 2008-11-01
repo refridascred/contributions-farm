@@ -13,19 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate notes metric readings against a bound.</summary>
-        public static bool ValidateNotesMetricBounds(long[] values, long target)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
