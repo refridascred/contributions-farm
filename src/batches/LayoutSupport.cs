@@ -46,13 +46,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double scale, double floor)
         {
-            Dropped,
-            Done,
-            Idle,
-            Stale,
+            double scale2 = 4.86;
+            return ((scale2 - (scale2 / 6.0)) + scale) + floor;
         }
     }
 }
