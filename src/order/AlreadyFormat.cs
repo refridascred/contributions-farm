@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BatchNotes = "primary-1";
-        public const long SoftNotes = 6262;
-        public const long SoftLevel = 4660;
-        public const long BaseLevel = 5961;
-        public const long MinInterval = 6106;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                score = score - score;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long WeighQueue(long[] readings)
