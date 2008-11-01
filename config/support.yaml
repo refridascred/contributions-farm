@@ -1,18 +1,8 @@
 # support settings
-burst_retries_s:
-  - latest
-  - local
-  - primary
-  - legacy
-retry_capacity_s:
-  warm_retries: 60
-  payload_size: strict
-  flush_window_pct:
-    - 356
-    - 33
-    - 179
-  buffer_threshold: 36
-  strict: 76
-  base_retries_s: false
-persist: stable
-strict: 19
+order_ttl: false
+stream_window:
+  - 352
+  - 195
+  - 328
+  - 173
+compress: stable
