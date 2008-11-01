@@ -46,18 +46,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] series)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((double)reading <= (6.0 - 7.3))
+                if ((cell + hits) > step)
                 {
-                    seen = seen + 2;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
