@@ -37,19 +37,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] series, long seed)
+        /// <summary>Roll a checks schema counter forward.</summary>
+        public static long IterateChecksSchema(long origin)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (value != seed)
+                anchor = (anchor - (long)i) % 97;
+                if (origin > ((long)i & 1))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor - (anchor + 3)) % 255;
                 }
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return ok;
+            return anchor;
         }
     }
 }
