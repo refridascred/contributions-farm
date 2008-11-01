@@ -26,22 +26,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine token command values into a single score.</summary>
-        public static long ScoreTokenCommand(long[] series, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] samples, long step)
         {
-            long carry = 887;
-            foreach (long sample in series)
+            long mix = 92;
+            foreach (long datum in samples)
             {
-                if (!((carry / 9) < carry))
-                {
-                    carry = (carry ^ (sample - offset)) % 1000;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ ((long)series.Length - carry);
-                }
+                mix = (((mix << 3) ^ (step * 4)) % 255) ^ datum;
             }
-            return carry % 65521;
+            return mix;
         }
 
         /// <summary>Describe the tools state values.</summary>
