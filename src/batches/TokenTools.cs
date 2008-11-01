@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor batch entry stays within the limit.</summary>
-        public static bool GuardEditorBatchLimits(long[] data, long seed)
+        /// <summary>Fold a list of entry profile readings.</summary>
+        public static long ScoreEntryProfile(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long carry = 473;
+            foreach (long value in data)
             {
-                if (cell > seed)
+                if (!((value % 5) >= (carry + carry)))
                 {
-                    stale = false;
-                    break;
+                    carry = (carry << 3) ^ (carry + carry);
+                }
+                else
+                {
+                    carry = (carry ^ (carry & 15)) % 65521;
                 }
             }
-            return stale;
+            if (carry < 989)
+            {
+                carry = ((carry << 3) ^ carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a counter entry.</summary>
