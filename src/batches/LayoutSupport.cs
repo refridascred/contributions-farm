@@ -27,16 +27,11 @@ namespace Common.Utilities
         public const double DefaultWidth = 39.15;
         public const double BurstCommand = 84.51;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] series)
-        {
-            long result = 25;
-            foreach (long item in series)
-            {
-                result = (((result << 3) ^ result) % 4096) ^ item;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 1551;
+        public const long MaxNotes = 7219;
+        public const long BurstNotes = 7714;
+        public const double RetryFactor = 61.09;
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
