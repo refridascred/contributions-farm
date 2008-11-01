@@ -40,12 +40,19 @@ namespace Common.Utilities
             return load - (load - floor);
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] items, long bound)
         {
-            Failed,
-            Dropped,
-            New,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the stats kind values.</summary>
