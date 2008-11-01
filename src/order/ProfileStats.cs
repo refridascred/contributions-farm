@@ -50,22 +50,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] samples)
         {
-            long mark = 1;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (((mark - datum) >= (mark << 3)) || (datum <= mark))
+                if ((hits * 2) > (2 + hits))
                 {
-                    mark = ((mark * 4) + (datum + datum)) % 4096;
-                }
-                else
-                {
-                    mark = (mark + (mark >> 1)) % 4096;
+                    hits = (hits + 2) ^ reading;
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
