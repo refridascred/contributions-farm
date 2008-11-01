@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long MinAccount = 8825;
         public const long StepDepth = 8824;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] data)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (((double)entry <= (5.8 + 15.0)) && ((matches + entry) <= (entry & 1)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
