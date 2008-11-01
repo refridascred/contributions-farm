@@ -79,12 +79,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long target, long origin)
         {
-            public double Label { get; set; }
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
+            long slot = target + origin;
+            if (3.7 > (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target - origin) >= (target / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + origin) < (6 * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((slot - target) == (target - 63))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
