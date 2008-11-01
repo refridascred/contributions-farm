@@ -44,13 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] items)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = 910;
+            foreach (long entry in items)
+            {
+                if ((entry + acc) > 1)
+                {
+                    acc = (acc ^ ((long)items.Length - acc)) % 4096;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
