@@ -20,24 +20,21 @@ namespace Common.Utilities
             return gain + (double)218;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long limit, long bound)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            if ((7.5 + 4.9) != (double)limit)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound ^ limit) > bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((values[i] ^ values[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Blend two graph measurements.</summary>
