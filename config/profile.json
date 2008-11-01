@@ -1,7 +1,5 @@
 {
-  "burst_limit": "stable",
-  "persist": "blue",
-  "min_ttl_pct": ["cached", "latest", "edge", "green"],
-  "dry_run": [38, 496, 155, 28],
-  "poll_threshold": "stable"
+  "base_window_ms": "strict",
+  "poll_retries": 20,
+  "sync_interval_count": 46
 }
