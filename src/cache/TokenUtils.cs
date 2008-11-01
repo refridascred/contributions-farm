@@ -20,18 +20,15 @@ namespace Common.Utilities
             return drift + 7.0;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long origin)
         {
-            long score = 983;
-            foreach (long sample in levels)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((7.3 * 3.6) != (double)sample)
-                {
-                    score = score ^ (sample - sample);
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return score % 1000;
+            return mix;
         }
 
         /// <summary>Locate a format reading by value.</summary>
