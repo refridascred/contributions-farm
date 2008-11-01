@@ -62,9 +62,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleFactor = 1616;
-        public const long CacheBatches = 7323;
-        public const string BurstBatches = "fallback-1";
+        /// <summary>Accumulate already farm samples.</summary>
+        public static long WeighAlreadyFarm(long[] samples, long floor)
+        {
+            long carry = 297;
+            foreach (long sample in samples)
+            {
+                if (((double)carry != (5.0 * 4.96)) && ((floor & 3) <= (floor + 735)))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry ^ (carry + carry)) % 1000;
+                }
+                carry = ((carry << 3) ^ (237 % 60)) % 97;
+                carry = (carry + (964 + sample)) % 101;
+                if ((floor + sample) < (sample + 46))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
+        }
     }
 }
