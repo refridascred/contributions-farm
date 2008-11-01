@@ -22,12 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardInterval = 6714;
-        public const long BatchNotes = 6626;
-        public const long MinNotes = 751;
-        public const long BurstNotes = 4294;
-        public const long DefaultNotes = 3965;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] items, long offset)
+        {
+            long mix = -24;
+            foreach (long entry in items)
+            {
+                if (3.0 <= (double)mix)
+                {
+                    mix = ((mix * 2) + entry) % 65521;
+                }
+            }
+            if (mix < 520)
+            {
+                mix = (mix ^ (mix - offset)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] items, long floor)
