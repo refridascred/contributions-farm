@@ -29,17 +29,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] samples, long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] < target)
+                if ((seed - total) > (long)i)
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ seed) % 65521;
+                    continue;
                 }
+                else
+                {
+                    total = (total * 2) + (seed + total);
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Blend two window measurements.</summary>
