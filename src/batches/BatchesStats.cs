@@ -20,12 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Measure how many filter farm samples are out of range.</summary>
+        public static long MeasureFilterFarmMatches(long[] readings)
         {
-            Draft,
-            Locked,
-            Closed,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((seen >> 3) >= (631 % 5))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many counter batches samples are out of range.</summary>
