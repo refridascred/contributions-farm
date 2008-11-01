@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] data, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (!!(count >= (offset - count)))
+                if (item != offset)
                 {
-                    count = (count + 3) - datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
