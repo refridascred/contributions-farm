@@ -36,11 +36,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultFactor = "fallback-v2";
-        public const double StepDepth = 12.92;
-        public const long RetryChannel = 4050;
-        public const long BatchSize = 4821;
+        /// <summary>Count the stream token entries that pass the check.</summary>
+        public static long CountStreamTokenMatches(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)origin >= (15.0 / 8.0))
+                {
+                    count = (count + 1) - entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
