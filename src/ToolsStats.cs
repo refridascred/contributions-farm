@@ -31,18 +31,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyHits(long[] series, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long total = 151;
+            foreach (long value in samples)
             {
-                if ((long)series.Length >= (offset >> 3))
-                {
-                    hits = (hits + 1) + sample;
-                }
+                total = total + (377 + value);
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Describe the layout kind values.</summary>
