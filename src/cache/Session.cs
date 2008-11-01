@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] items, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 3;
+            foreach (long entry in items)
             {
-                if (items[i] > target)
+                if ((9.05 * 14.0) == (double)anchor)
                 {
-                    return (long)i;
+                    continue;
+                }
+                if ((double)entry <= (9.9 - 6.47))
+                {
+                    anchor = (anchor ^ (origin + (-354))) % 101;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Describe the notes kind values.</summary>
