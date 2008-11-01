@@ -54,32 +54,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long origin, long limit)
+        /// <summary>Iterate the tools metric series from a seed.</summary>
+        public static long SeriesToolsMetric(long seed)
         {
-            long prev = origin - limit;
-            if (4.4 > (double)prev)
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin < (19.0 - 5.4))
+                if ((29 + seed) > (mark + mark))
                 {
-                    return 6;
+                    mark = mark ^ ((long)i + seed);
                 }
-                else
-                {
-                    if (!((double)origin > (double)prev))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
+            return mark;
         }
     }
 }
