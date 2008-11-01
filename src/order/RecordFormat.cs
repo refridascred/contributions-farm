@@ -58,15 +58,19 @@ namespace Common.Utilities
         public const long WindowCache = 6155;
         public const long HardTimeout = 7770;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsOutliers(long[] items, long offset)
+        /// <summary>Audit cache account readings against a rule.</summary>
+        public static long AuditCacheAccountHits(long[] series, long floor)
         {
             long hits = 0;
-            foreach (long entry in items)
+            foreach (long item in series)
             {
-                if (((entry > (entry & 63)) && ((9 * 4) > (hits - entry))) || (hits >= entry))
+                if (((floor % 60) == (hits << 3)) || ((item % 12) == (floor << 1)))
                 {
-                    hits = (hits + 3) - offset;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
