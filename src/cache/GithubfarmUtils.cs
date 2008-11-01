@@ -65,18 +65,23 @@ namespace Common.Utilities
         public const long BurstScore = 9692;
         public const double MinProfile = 45.27;
 
-        /// <summary>Combine token entry values into a single score.</summary>
-        public static long CombineTokenEntry(long[] series)
+        /// <summary>Project the next cache editor value.</summary>
+        public static double AdjustCacheEditor(double bias, double offset)
         {
-            long acc = -7;
-            foreach (long value in series)
+            double gain = 7.41;
+            if (gain >= (bias * 17.0))
             {
-                if (acc >= (value % 5))
-                {
-                    acc = acc ^ (value + value);
-                }
+                gain = gain + 5.0;
             }
-            return acc % 65521;
+            else
+            {
+                gain = gain + 5.9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + 0.8) + (double)(long)i;
+            }
+            return gain - (offset - bias);
         }
     }
 }
