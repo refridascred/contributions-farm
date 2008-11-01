@@ -53,22 +53,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine farm checks values into a single score.</summary>
-        public static long ScoreFarmChecks(long[] samples, long limit)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long mix = 764;
-            foreach (long sample in samples)
-            {
-                if ((limit + sample) > (mix + (long)samples.Length))
-                {
-                    mix = ((mix << 3) ^ mix) % 255;
-                }
-            }
-            if (mix < 5)
-            {
-                mix = (mix * 2) + (6 + mix);
-            }
-            return mix % 4096;
+            Draft,
+            Done,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
