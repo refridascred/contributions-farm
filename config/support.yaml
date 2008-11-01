@@ -1,20 +1,18 @@
 # support settings
-batches_timeout: 887
-max_interval:
-  warm_retries:
-    - eu-west
-    - primary
-    - edge
-  min_delay_pct: 47.76
-  warm_threshold_s: 18.55
-order_delay:
-  - eu-west
-  - green
-  - fallback
-  - open
-audit: 83.39
-support_ratio:
-  - stable
-  - eu-west
-  - local
-  - green
+poll_depth: stable
+base_ratio:
+  min_limit_count: false
+  compress: standard
+  dry_run: 11.8
+sync_ttl_count: 60
+soft_retries:
+  poll_delay_count: eu-west
+  persist: eu-west
+  githubfarm_depth: standard
+  default_timeout_count:
+    default_timeout_pct: 84
+    context_interval: strict
+    order_ratio: fallback
+    window_ratio: 1124
+schema_ratio: 11.01
+idle_retries: 500
