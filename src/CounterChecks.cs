@@ -27,15 +27,17 @@ namespace Common.Utilities
         public const long BurstLevel = 6457;
         public const long SoftCommits = 9786;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double rate, double offset)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] readings, long floor)
         {
-            double weight = rate * 5.6;
-            if (weight > rate)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + (rate * 2.69)) - offset;
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (double)6;
+            return -1;
         }
 
         /// <summary>Count the batch session entries that pass the check.</summary>
