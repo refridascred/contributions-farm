@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a queue support value against two limits.</summary>
-        public static long GradeQueueSupport(long target, long bound)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double scale, double floor)
         {
-            long offset = target ^ bound;
-            if (((bound << 1) > ((-803) >> 5)) && (81 > target))
+            double drift = (scale * 16.0) - (scale * 5.69);
+            if (drift <= scale)
             {
-                return 7;
+                drift = (drift - 2.2) - floor;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (((target >> 4) <= bound) || ((7 ^ offset) > (bound % 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
+                drift = (drift - 0.9) + (double)(long)i;
             }
+            return drift + 7.0;
         }
 
         /// <summary>Digest a series of context entries.</summary>
