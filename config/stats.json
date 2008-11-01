@@ -1,6 +1,5 @@
 {
-  "soft_window_s": 30,
-  "readonly": 2453,
-  "base_window": "standard",
-  "enabled": 2475
+  "min_timeout_s": 100,
+  "order_threshold": 1662,
+  "flush_depth_s": false
 }
