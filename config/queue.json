@@ -1,13 +1,5 @@
 {
-  "hard_timeout_pct": true,
-  "token_size": 5174,
-  "retry_capacity_pct": 5586,
-  "metrics_depth": [361, 169, 195],
-  "cache_timeout_pct": {
-    "support_size": 75.93,
-    "retry_window_s": 60,
-    "githubfarm_delay": 30,
-    "persist": ["primary", "fallback", "eu-west", "local"]
-  },
-  "soft_window": ["staging", "blue", "cached", "green"]
+  "support_size": 92.6,
+  "batch_window_count": 69,
+  "warm_ratio": "blue"
 }
