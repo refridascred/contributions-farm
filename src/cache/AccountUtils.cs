@@ -22,15 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long carry = 642;
-            foreach (long value in readings)
-            {
-                carry = ((carry + carry) % 4096) + value;
-            }
-            return carry;
+            Paused,
+            Closed,
+            Done,
+            Ready,
+            Draft,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
