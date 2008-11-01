@@ -21,18 +21,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] data)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally ^ 4) != (tally + item))
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
