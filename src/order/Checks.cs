@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 8529;
-        public const long IdleBudget = 6031;
-        public const long BurstCount = 5436;
-        public const string BatchInterval = "fallback-v2";
-        public const long IdleEntry = 7412;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double ProjectReport(double rate, double span)
