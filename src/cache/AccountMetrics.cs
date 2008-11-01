@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinSize = 66.21;
-        public const long StepChannel = 8779;
-        public const long MinChannel = 7909;
-        public const string BurstTimeout = "open";
-        public const long DefaultDepth = 8532;
+        /// <summary>Rank session filter input into a small class.</summary>
+        public static long BucketSessionFilter(long target, long step)
+        {
+            if (!(2 <= (step + target)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step * 4) >= step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (1 < (step & 31))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((8.1 * 6.3) == (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long TallyTools(long[] values)
