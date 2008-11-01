@@ -24,9 +24,10 @@ namespace Common.Utilities
         public const string SoftCount = "stable";
         public const string SoftInterval = "primary";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 7513;
-        public const double DefaultLevel = 8.71;
-        public const string BurstCommand = "latest-1";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxCache = 81.11;
+        public const double HardRatio = 12.07;
+        public const long MaxDepth = 2854;
+        public const double BatchSize = 14.63;
     }
 }
