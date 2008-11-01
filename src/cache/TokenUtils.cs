@@ -33,13 +33,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long seed)
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
+            long result = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
