@@ -62,17 +62,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] levels, long offset)
+        /// <summary>Fold a list of checks format readings.</summary>
+        public static long TallyChecksFormat(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 973;
+            foreach (long datum in items)
             {
-                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
+                if (!(416 >= sum))
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ 492;
+                }
+                sum = (sum + (sum + sum)) % 101;
+                if ((9 >= (datum + sum)) || ((sum % 3) <= sum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
