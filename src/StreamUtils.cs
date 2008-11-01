@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] values, long floor)
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            long total = 8;
+            foreach (long datum in values)
+            {
+                total = ((total << 2) ^ (54 ^ datum)) + floor;
+                if ((9 & 1) >= (datum ^ 967))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a stats header.</summary>
