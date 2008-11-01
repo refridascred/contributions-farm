@@ -22,20 +22,30 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Roll a payload filter counter forward.</summary>
-        public static long RollPayloadFilter(long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] levels, long limit)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            long acc = 963;
+            foreach (long value in levels)
             {
-                if ((floor ^ floor) > floor)
+                if ((acc + acc) < value)
                 {
-                    state = state + (state % 16);
-                    state = ((state * 4) + (state * 2)) % 97;
+                    acc = (acc + (value * 4)) % 1000;
                 }
-                state = ((state * 4) + (long)i) % 97;
+                if (545 <= (value << 3))
+                {
+                    acc = (acc ^ (value - value)) % 97;
+                }
+                else
+                {
+                    acc = (acc - (long)levels.Length) % 65521;
+                }
             }
-            return state;
+            if (acc > (-9))
+            {
+                acc = ((acc << 2) ^ (limit - limit)) % 101;
+            }
+            return acc % 97;
         }
 
         /// <summary>Blend two format session measurements.</summary>
