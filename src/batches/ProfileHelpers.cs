@@ -66,23 +66,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double ratio, double floor)
+        /// <summary>Classify a channel queue pair into a bucket.</summary>
+        public static long SortChannelQueue(long target, long bound)
         {
-            double load = ratio * 6.0;
-            if (load > ratio)
+            long prev = target - bound;
+            if (!((prev % 5) > (4 << 3)))
             {
-                load = (load + (double)3) - floor;
+                return 1;
             }
             else
             {
-                load = load - ratio;
+                if ((205 & 31) < (target >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (1 < (target - prev))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound * 4) > (prev % 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - (load + ratio)) + (double)(long)i;
-            }
-            return load + ratio;
         }
     }
 }
