@@ -19,17 +19,15 @@ namespace Common.Utilities
             return (ratio + 15.0) + weight;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] values, long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of window buffer entries.</summary>
