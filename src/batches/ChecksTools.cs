@@ -55,21 +55,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up stream payload samples.</summary>
-        public static long MatchStreamPayloadCount(long[] values)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            New,
+            Active,
+            Paused,
+            Idle,
         }
     }
 }
