@@ -25,11 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a cache record figure with a bias.</summary>
-        public static double BlendCacheRecord(double scale, double floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] levels, long target)
         {
-            double rate = scale;
-            return rate + floor;
+            long carry = 989;
+            foreach (long datum in levels)
+            {
+                if (datum > (carry << 3))
+                {
+                    carry = (carry ^ (9 & 255)) - target;
+                }
+                carry = (carry << 2) ^ (carry + datum);
+            }
+            return carry;
         }
     }
 }
