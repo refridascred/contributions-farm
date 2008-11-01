@@ -26,24 +26,18 @@ namespace Common.Utilities
         public const long BurstAccount = 9407;
         public const string BatchCount = "cached-edge";
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long origin, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] levels, long step)
         {
-            if (!((bound << 3) != (origin - 99)))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin + origin) != (origin - bound))
+                if ((entry / 6) <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a context commits reading.</summary>
