@@ -23,12 +23,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Count stats channel pairs that satisfy a relation.</summary>
+        public static long OverlapStatsChannelCount(long[] data)
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the buffer state values.</summary>
