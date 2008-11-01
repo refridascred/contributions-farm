@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            Draft,
-            Done,
-            Closed,
-            Synced,
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Adjust a cache reading.</summary>
