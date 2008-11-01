@@ -25,22 +25,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of cache report readings.</summary>
-        public static long TotalCacheReport(long[] series)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] levels, long offset)
         {
-            long state = 860;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)state != (8.29 / 5.0))
+                if (levels[i] < offset)
                 {
-                    state = state - (sample << 1);
-                }
-                if ((sample + sample) <= sample)
-                {
-                    state = (state - (state * 3)) % 101;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
