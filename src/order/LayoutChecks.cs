@@ -42,18 +42,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] items, long floor)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double gain, double span)
         {
-            long count = 0;
-            foreach (long item in items)
+            double scale = span;
+            if (scale < span)
             {
-                if (!((floor ^ floor) < item))
-                {
-                    count = count + 1;
-                }
+                scale = scale + (double)22;
             }
-            return count;
+            else
+            {
+                scale = scale - (span / 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (gain + gain)) - (double)(long)i;
+            }
+            return scale - (scale - gain);
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
