@@ -50,21 +50,19 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Validate session filter readings against a bound.</summary>
+        public static bool GuardSessionFilterBounds(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value != target)
                 {
-                    if ((samples[i] ^ samples[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
