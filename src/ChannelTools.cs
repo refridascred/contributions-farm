@@ -23,17 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a session context sample.</summary>
-        public static long FindSessionContextIndex(long[] items, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] <= target)
+                if (!((double)matches < (6.85 / 7.0)) || ((matches >> 5) >= reading))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
