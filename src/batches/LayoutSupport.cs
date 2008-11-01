@@ -61,13 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Queued,
-            Done,
-            Paused,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 857;
+        public const string MaxFilter = "strict-v2";
+        public const long IdleBudget = 6399;
+        public const string MinFilter = "strict-edge";
+        public const double MaxSize = 27.98;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandBounds(long[] items, long floor)
