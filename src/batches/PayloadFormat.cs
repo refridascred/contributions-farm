@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] values, long step)
         {
-            Retry,
-            Closed,
-            Failed,
-            Ready,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading & 15) > (reading / 7))
+                {
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
