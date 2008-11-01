@@ -29,12 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxDepth = "latest-1";
-        public const long LimitSpan = 7434;
-        public const long BaseDepth = 2216;
-        public const long BurstChannel = 1970;
-        public const string BatchScore = "staging-v2";
+        /// <summary>Audit schema context readings against a rule.</summary>
+        public static long CountSchemaContextOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((-4) >= (matches - sample))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
