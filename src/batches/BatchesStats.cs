@@ -29,11 +29,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long PairOrderCount(long[] values)
         {
-            public bool Flag { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
