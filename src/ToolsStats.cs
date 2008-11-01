@@ -55,19 +55,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double weight, double offset)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] items)
         {
-            double scale = 1.4 - (double)(-93);
-            if (scale <= (scale - 20.0))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + (0.1 / 7.0)) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + weight;
+            return seen;
         }
     }
 }
