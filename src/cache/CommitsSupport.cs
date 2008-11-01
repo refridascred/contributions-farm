@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double WindowSpan = 94.84;
-        public const double DefaultRatio = 68.71;
-        public const long WindowMetrics = 4762;
-        public const long MinTimeout = 690;
-        public const double MaxCount = 4.44;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Paused,
+            Stale,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
