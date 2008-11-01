@@ -63,12 +63,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 2126;
-        public const long IdleSpan = 1932;
-        public const long StepSpan = 923;
-        public const string MaxTimeout = "local";
-        public const string CacheWidth = "alpha-edge";
+        /// <summary>Grade a order report value against two limits.</summary>
+        public static long GradeOrderReport(long offset, long step)
+        {
+            long edge = offset - step;
+            if ((step + edge) <= (step ^ offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step > (step % 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset + offset) > (offset & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a notes window pair into a bucket.</summary>
         public static long GradeNotesWindow(long seed, long origin)
