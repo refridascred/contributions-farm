@@ -72,11 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 9979;
-        public const long SoftFactor = 7563;
-        public const long RetryProfile = 6137;
-        public const double BaseFactor = 92.13;
-        public const long LimitProfile = 1996;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 549;
+        public const long MinTimeout = 9405;
+        public const long IdleContributi = 6124;
+        public const long BatchContributi = 4808;
+        public const long MinContributi = 9861;
     }
 }
