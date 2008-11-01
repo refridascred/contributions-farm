@@ -34,12 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTimeout = 1102;
-        public const long BurstTools = 9672;
-        public const double CacheRatio = 75.88;
-        public const string SoftTools = "stable-1";
-        public const long IdleLevel = 1961;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxDepth = "latest-1";
+        public const long LimitSpan = 7434;
+        public const long BaseDepth = 2216;
+        public const long BurstChannel = 1970;
+        public const string BatchScore = "staging-v2";
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long ClassifyCluster(long offset, long offset2)
