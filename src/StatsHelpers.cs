@@ -55,13 +55,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Measure how many tools batch samples are out of range.</summary>
+        public static long MeasureToolsBatchGaps(long[] series, long bound)
         {
-            Ready,
-            New,
-            Dropped,
-            Paused,
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum / 2) < datum)
+                {
+                    tally = (tally + 3) + bound;
+                }
+            }
+            return tally;
         }
     }
 }
