@@ -24,15 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long anchor = 7;
-            foreach (long cell in items)
-            {
-                anchor = ((anchor ^ (4 * 3)) % 101) + cell;
-            }
-            return anchor % 4096;
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
