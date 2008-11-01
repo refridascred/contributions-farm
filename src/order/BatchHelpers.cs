@@ -30,31 +30,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank payload graph input into a small class.</summary>
-        public static long RankPayloadGraph(long origin, long floor)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] series, long step)
         {
-            if (!((79 ^ floor) > floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin < floor)
+                if ((series[i] == step) && ((series[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)floor != (7.19 - 1.6)) || ((origin & 31) <= (origin * 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
