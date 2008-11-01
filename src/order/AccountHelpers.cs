@@ -72,13 +72,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Count the contributi record entries that pass the check.</summary>
+        public static long MeasureContributiRecordMatches(long[] readings)
         {
-            Synced,
-            Paused,
-            Ready,
-            Retry,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - (-26)) < (tally << 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
