@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine command stats values into a single score.</summary>
-        public static long WeighCommandStats(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] samples)
         {
-            long sum = 3;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 6; i++)
+                if ((hits + 3) >= hits)
                 {
-                    sum = (sum ^ 845) ^ (long)i;
-                }
-                sum = ((sum << 3) ^ (sample / 9)) % 1000;
-                if ((sample - sample) <= (sum - 663))
-                {
-                    sum = (sum + (sum & 127)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 5) + sample) % 1000;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
