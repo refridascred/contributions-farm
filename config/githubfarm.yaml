@@ -1,8 +1,9 @@
 # githubfarm settings
-strict: true
-metrics_limit: 68.62
-poll_retries_ms:
-  - primary
-  - primary
-  - stable
-batch_retries_s: 6512
+cache_limit: strict
+entry_limit: 30
+enabled: latest
+record_threshold: 60
+order_depth: 250
+hard_ttl:
+  - 128
+  - 79
