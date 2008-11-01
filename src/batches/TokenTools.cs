@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Rank batches payload input into a small class.</summary>
+        public static long SortBatchesPayload(long seed, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            if (seed >= (limit + limit))
             {
-                score = ((score * 2) + (long)i) % 4093;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((limit * 4) <= (limit - seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
