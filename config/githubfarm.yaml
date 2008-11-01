@@ -1,18 +1,12 @@
 # githubfarm settings
-cache_size: 73.52
-cache_retries: blue
-sync_window_s:
-  session_depth: true
-  strict:
-    - 285
-    - 456
-  audit:
-    - 241
-    - 65
-    - 445
-  warm_capacity_s: 1024
-  readonly: 60
-  burst_interval_pct: 58.09
-dry_run: cached
-retry_ratio: edge
-contributi_threshold: false
+batch_depth_s:
+  - 378
+  - 105
+  - 34
+  - 106
+checks_ttl: 250
+command_size:
+  - 487
+  - 122
+  - 28
+min_depth: 5762
