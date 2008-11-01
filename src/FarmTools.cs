@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowSize = "latest-1";
-        public const string BaseCommand = "cached-edge";
-        public const long DefaultCommand = 135;
-        public const long CacheDepth = 8760;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] values, long floor)
+        {
+            long mix = 93;
+            foreach (long reading in values)
+            {
+                mix = (mix + reading) + floor;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
