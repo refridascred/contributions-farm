@@ -25,18 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema contributi samples.</summary>
-        public static long WeighSchemaContributi(long[] readings)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long bound)
         {
-            long result = 1;
-            foreach (long cell in readings)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (((result % 12) > ((long)readings.Length / 3)) || ((double)cell >= (double)result))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    result = ((result * 3) + (result + (long)readings.Length)) % 97;
+                    state = (((state << 3) ^ bound) % 255) - (long)i2;
                 }
+                state = (state + (bound ^ state)) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
