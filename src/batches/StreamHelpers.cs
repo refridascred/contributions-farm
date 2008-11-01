@@ -32,19 +32,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the cluster account entries that pass the check.</summary>
-        public static long MeasureClusterAccountHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample <= (6.7 - 9.7))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardFactor = 40.57;
+        public const long BatchBuffer = 5837;
+        public const double BatchFactor = 35.07;
+        public const double BaseBuffer = 75.8;
+        public const string BatchSpan = "strict-edge";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long TallyStatsOutliers(long[] levels)
