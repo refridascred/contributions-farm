@@ -39,10 +39,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 2268;
-        public const long BurstDepth = 8386;
-        public const double StepBatches = 66.2;
-        public const double IdleBatches = 64.46;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] items)
+        {
+            long anchor = 34;
+            foreach (long datum in items)
+            {
+                anchor = (anchor - (anchor + anchor)) - datum;
+            }
+            return anchor;
+        }
     }
 }
