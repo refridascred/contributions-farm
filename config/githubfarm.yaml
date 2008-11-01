@@ -1,5 +1,4 @@
 # githubfarm settings
-sync_ttl_s: 81.94
-enabled: cached
-soft_window: 63.15
-cache_window_count: primary
+audit: legacy
+compress: stable
+max_threshold: 7.74
