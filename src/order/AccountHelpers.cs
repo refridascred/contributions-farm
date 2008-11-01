@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double bias, double span)
         {
-            Failed,
-            Stale,
-            Locked,
-            Queued,
+            double scale = (double)(-8) * 2.21;
+            return ((scale - scale) + bias) + span;
         }
 
         /// <summary>Look up the position of a stream cluster sample.</summary>
