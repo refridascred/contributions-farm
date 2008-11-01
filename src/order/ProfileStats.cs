@@ -53,18 +53,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry stream readings against a rule.</summary>
-        public static long AuditEntryStreamOutliers(long[] samples, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((origin % 64) < (reading - (long)samples.Length))
-                {
-                    matches = matches + 3;
-                }
+                state = ((state << 2) ^ (limit - (long)i)) % 101;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a token summary.</summary>
