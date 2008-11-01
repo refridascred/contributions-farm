@@ -39,12 +39,18 @@ namespace Common.Utilities
             return bias + (bias - scale);
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionHits(long[] items)
         {
-            Done,
-            Pending,
-            Queued,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((hits / 5) < hits) && (((datum + hits) >= (hits + datum)) && (datum <= (hits + datum))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate checks stats samples.</summary>
