@@ -14,12 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string StepBudget = "open-v2";
-        public const string BatchTimeout = "latest-v2";
-        public const long StepContributi = 351;
-        public const double DefaultContributi = 64.63;
-        public const long SoftContributi = 3328;
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long seed)
