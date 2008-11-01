@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] levels, long target)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long total = 964;
-            foreach (long reading in levels)
-            {
-                total = (((total * 4) + (total - target)) % 101) ^ reading;
-            }
-            return total;
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
