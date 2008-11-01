@@ -33,12 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinTimeout = 89.89;
-        public const string MinBuffer = "standard";
-        public const double RetryWidth = 91.68;
-        public const string StepBuffer = "cached";
-        public const long BatchBuffer = 1750;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long MeasureClusterOutliers(long[] values, long bound)
