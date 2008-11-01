@@ -66,39 +66,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a channel queue pair into a bucket.</summary>
-        public static long SortChannelQueue(long target, long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long prev = target - bound;
-            if (!((prev % 5) > (4 << 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((205 & 31) < (target >> 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (1 < (target - prev))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound * 4) > (prev % 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Ready,
+            Locked,
         }
     }
 }
