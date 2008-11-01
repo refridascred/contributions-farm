@@ -41,18 +41,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportOutliers(long[] data)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (!((((long)data.Length >> 2) == (item % 10)) && ((hits - item) >= (90 % 24))))
+                if (entry < floor)
                 {
-                    hits = hits + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
