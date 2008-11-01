@@ -43,21 +43,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of batch order readings.</summary>
-        public static long PairBatchOrderCount(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell ^ seen) != (cell >> 5))
                 {
-                    if ((items[i] ^ items[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
