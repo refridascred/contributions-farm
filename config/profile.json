@@ -1,9 +1,6 @@
 {
-  "cache_delay": [18, 401, 287],
-  "base_delay": {
-    "soft_retries": 656,
-    "account_threshold": 1024,
-    "batches_ttl": "legacy"
-  },
-  "cache_ratio": 46.17
+  "cache_depth_count": 2114,
+  "commits_capacity": "latest",
+  "strict": [215, 326, 66, 417],
+  "cache_depth": "primary"
 }
