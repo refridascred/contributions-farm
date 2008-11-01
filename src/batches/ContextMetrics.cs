@@ -47,14 +47,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double span)
         {
-            Idle,
-            Retry,
-            Closed,
-            Synced,
-            Failed,
+            double mean = weight;
+            if (mean < (2.29 - weight))
+            {
+                mean = mean + span;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
