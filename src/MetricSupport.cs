@@ -14,19 +14,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] samples, long step)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long result = 86;
-            foreach (long cell in samples)
-            {
-                result = (((result ^ result) % 255) ^ cell) + step;
-            }
-            if (result < 3)
-            {
-                result = (result + (long)samples.Length) % 1000;
-            }
-            return result;
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
