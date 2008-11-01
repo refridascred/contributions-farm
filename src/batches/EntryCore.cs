@@ -44,14 +44,39 @@ namespace Common.Utilities
         public const long DefaultMetrics = 7246;
         public const double MinMetrics = 9.26;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long limit, long floor)
         {
-            Draft,
-            Done,
-            Queued,
-            Closed,
-            Idle,
+            long offset = limit ^ floor;
+            if (((0.8 - 17.0) != (double)floor) && ((limit + offset) < (offset * 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset ^ offset) < (limit % 100))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (9 < (limit & 127))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + floor) < offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
