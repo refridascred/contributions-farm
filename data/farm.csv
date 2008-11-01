@@ -1,9 +1,7 @@
-id,ratio
-1,94.39
-2,eu-west
-3,80.25
-4,873
-5,373
-6,latest
-7,cached
-8,local
+id,score,level,owner
+1,standard,750,373
+2,889,45.6,standard
+3,64.78,120,green
+4,613,438,762
+5,53,321,44.06
+6,29.57,24.41,57.04
