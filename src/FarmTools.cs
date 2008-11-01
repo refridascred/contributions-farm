@@ -30,18 +30,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] data, long floor)
-        {
-            long carry = 56;
-            foreach (long sample in data)
-            {
-                if (4.09 > (double)sample)
-                {
-                    carry = (carry << 3) ^ (floor & 7);
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchGraph = 87.12;
+        public const long HardRatio = 955;
+        public const long SoftSpan = 360;
     }
 }
