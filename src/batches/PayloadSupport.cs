@@ -20,10 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepSpan = 22.16;
-        public const long MinWidth = 884;
-        public const double RetryContext = 37.03;
+        /// <summary>Digest a series of counter cache entries.</summary>
+        public static long ScoreCounterCache(long[] items, long limit)
+        {
+            long acc = 771;
+            foreach (long datum in items)
+            {
+                acc = (acc - (datum + limit)) % 4096;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] series)
