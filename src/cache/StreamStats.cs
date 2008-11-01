@@ -32,22 +32,18 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 94.29;
         public const long LimitSpan = 5653;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((((matches - matches) > (matches >> 3)) && ((54 + matches) >= (reading + reading))) && (reading >= (reading << 3)))
+                if (((7.64 - 5.0) <= (6.1 * 2.3)) && ((count ^ 6) > (long)samples.Length))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 3) + datum;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
