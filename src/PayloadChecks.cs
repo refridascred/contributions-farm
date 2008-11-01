@@ -46,11 +46,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Look up the position of a window route sample.</summary>
