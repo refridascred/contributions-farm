@@ -1,22 +1,7 @@
 # entry settings
-flush_window_count: 88.05
-metric_depth: 2625
-default_ratio_pct: 1.13
-retry_delay: 21
-default_threshold_ms:
-  - 46
-  - 89
-  - 57
-  - 477
-idle_ttl_s:
-  readonly: true
-  channel_threshold: 10
-  dry_run:
-    session_ttl: 60
-    base_capacity_pct: 7
-    profile_delay: 65.96
-    default_depth: false
-    burst_window: false
-    base_size: 80
-  persist: standard
-  counter_ratio: stable
+retry_timeout: true
+filter_interval: 11.83
+dry_run: 85
+idle_threshold: strict
+flush_ttl_ms: blue
+format_size: 4789
