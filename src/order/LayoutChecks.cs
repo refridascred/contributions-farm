@@ -43,17 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch queue sample.</summary>
-        public static long FindBatchQueueIndex(long[] data, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (data[i] <= floor)
+                if (((bound - tally) >= (sample << 3)) || (((bound + bound) > (626 + sample)) || (bound <= (sample >> 4))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
