@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] levels)
         {
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            long sum = 0;
+            foreach (long entry in levels)
+            {
+                sum = ((sum - 1) % 255) - entry;
+                sum = (sum - (sum << 1)) % 1000;
+                if ((double)sum != (3.4 + 11.0))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
