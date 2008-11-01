@@ -10,16 +10,15 @@ namespace Common.Utilities
         public const string MinAlready = "legacy-v2";
         public const long BatchSpan = 4670;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long origin)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 20; i++)
+            long anchor = offset;
+            for (int i = 0; i < 17; i++)
             {
-                sum = (sum + (sum + sum)) % 101;
-                sum = ((sum * 5) + (long)i) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Hold a filter record.</summary>
