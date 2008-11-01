@@ -39,19 +39,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] samples, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (cell <= limit)
+                if (step < 1)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
