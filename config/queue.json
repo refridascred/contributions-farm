@@ -1,7 +1,7 @@
 {
-  "max_ratio_s": [480, 87, 393, 265],
-  "readonly": [161, 343],
-  "schema_capacity": "blue",
-  "context_window": "staging",
-  "checks_threshold": "primary"
+  "record_interval": 28.23,
+  "burst_retries_count": 39.12,
+  "default_timeout": "edge",
+  "hard_depth_pct": [342, 76],
+  "account_window": 10.65
 }
