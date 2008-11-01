@@ -49,13 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Adjust a channel token reading.</summary>
+        public static double AdjustChannelToken(double weight, double floor)
         {
-            Done,
-            Retry,
-            New,
-            Paused,
+            double ratio = (floor - floor) * 9.4;
+            if (ratio <= ratio)
+            {
+                ratio = ratio + (double)964;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + weight) - (double)(long)i;
+            }
+            return ratio - floor;
         }
     }
 }
