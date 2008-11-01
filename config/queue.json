@@ -1,8 +1,10 @@
 {
-  "warm_size_pct": ["eu-west", "open", "stable", "standard"],
-  "command_ttl": "eu-west",
-  "min_retries_s": "blue",
-  "flush_ttl_s": 80,
-  "dry_run": "legacy",
-  "cache_ratio_pct": [209, 277, 124, 241]
+  "readonly": {
+    "account_retries": "open",
+    "poll_ratio_pct": 60,
+    "sync_capacity_count": false,
+    "strict": 5921
+  },
+  "burst_threshold": 68.09,
+  "max_ratio_pct": 500
 }
