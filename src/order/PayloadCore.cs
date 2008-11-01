@@ -20,21 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] samples, long offset)
-        {
-            long result = 30;
-            foreach (long entry in samples)
-            {
-                result = (result - (entry % 24)) % 101;
-                result = (result + (offset & 127)) % 255;
-            }
-            if (result < (-312))
-            {
-                result = (result - (offset - result)) % 65521;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchCommand = 14.78;
+        public const double SoftCommand = 80.39;
+        public const long IdleDepth = 2882;
+        public const long BatchCount = 5123;
+        public const long SoftRatio = 4795;
 
         /// <summary>Combine token command values into a single score.</summary>
         public static long ScoreTokenCommand(long[] series, long offset)
