@@ -20,17 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next already session value from a seed.</summary>
-        public static long SeriesAlreadySession(long floor)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                total = ((total << 3) ^ (floor ^ floor)) % 101;
-                total = (total ^ (floor - floor)) % 1000;
-                total = ((total * 2) + (long)i) % 1000;
+                score = (score ^ (score - score)) % 4096;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
