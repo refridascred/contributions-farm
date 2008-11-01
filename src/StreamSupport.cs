@@ -25,23 +25,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] values, long origin)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long score = -768;
-            foreach (long datum in values)
-            {
-                score = (score ^ (score % 7)) + origin;
-                if ((7 + datum) >= (long)values.Length)
-                {
-                    score = ((score << 2) ^ datum) % 255;
-                }
-                else
-                {
-                    score = ((score * 4) + (score << 2)) % 65521;
-                }
-            }
-            return score;
+            Draft,
+            Synced,
+            Locked,
         }
     }
 }
