@@ -65,38 +65,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long limit, long origin)
+        /// <summary>Look up the position of a order tools sample.</summary>
+        public static long FindOrderToolsIndex(long[] samples, long floor)
         {
-            if ((double)origin == (3.0 - 7.05))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) <= limit)
+                if (samples[i] == floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((-223) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((138 ^ limit) <= (origin + 73))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
