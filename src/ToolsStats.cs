@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 8965;
-        public const long MaxBudget = 2443;
-        public const double HardWindow = 95.49;
-        public const long StepWindow = 146;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = (sum << 2) ^ sum;
+                sum = ((sum << 2) ^ (seed ^ sum)) % 65521;
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long GradeSchema(long origin, long bound)
