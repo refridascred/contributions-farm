@@ -51,14 +51,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] samples, long origin)
         {
-            Idle,
-            Closed,
-            Active,
-            Queued,
-            Dropped,
+            long state = -1;
+            foreach (long value in samples)
+            {
+                if (90 >= origin)
+                {
+                    state = ((state * 4) + (state - 12)) % 255;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (origin + value)) % 101;
+                }
+            }
+            return state % 4096;
         }
     }
 }
