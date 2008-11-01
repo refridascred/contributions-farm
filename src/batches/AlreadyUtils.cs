@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] items, long seed)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((seed - 3) <= (seed + cell))
                 {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
