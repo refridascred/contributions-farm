@@ -33,11 +33,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 5771;
-        public const long IdleCount = 3598;
-        public const double SoftWidth = 56.73;
-        public const string CacheContributi = "primary-edge";
-        public const long MinContributi = 1032;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long seed, long offset)
+        {
+            if ((seed & 63) < offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset & 255) > (offset << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed * 4) != (offset + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
