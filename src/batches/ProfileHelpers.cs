@@ -63,12 +63,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] samples, long bound)
         {
-            Paused,
-            Ready,
-            Locked,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value + value) > matches)
+                {
+                    matches = (matches + 2) + bound;
+                }
+            }
+            return matches;
         }
     }
 }
