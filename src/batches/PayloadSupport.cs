@@ -19,22 +19,17 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] samples)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] data, long offset)
         {
-            long total = 792;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((total - 617) >= value))
+                if (data[i] > offset)
                 {
-                    total = total - (value ^ 6);
+                    return (long)i;
                 }
             }
-            if (total > (-51))
-            {
-                total = ((total << 3) ^ (total - (long)samples.Length)) % 1000;
-            }
-            return total % 65521;
+            return -1;
         }
     }
 }
