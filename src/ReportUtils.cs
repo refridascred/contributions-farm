@@ -20,16 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long state = 28;
-            foreach (long datum in data)
-            {
-                state = (state << 2) ^ (state ^ state);
-                state = (state ^ datum) % 65521;
-            }
-            return state % 97;
+            Ready,
+            Queued,
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Roll a payload filter counter forward.</summary>
