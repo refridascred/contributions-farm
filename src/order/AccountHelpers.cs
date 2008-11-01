@@ -83,13 +83,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Project the next order queue value.</summary>
+        public static double AdjustOrderQueue(double rate, double bias)
         {
-            Draft,
-            Active,
-            Idle,
-            Closed,
+            double scale = rate;
+            if (scale >= (4.0 / 8.0))
+            {
+                scale = scale - (rate / 3.0);
+            }
+            else
+            {
+                scale = scale + (bias + bias);
+            }
+            return scale - (rate - scale);
         }
     }
 }
