@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftLevel = 285;
-        public const long MaxCache = 4721;
-        public const long LimitTimeout = 7968;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Count the support account entries that pass the check.</summary>
         public static long CountSupportAccountHits(long[] series)
