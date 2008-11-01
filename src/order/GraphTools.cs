@@ -34,18 +34,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] items, long bound)
+        /// <summary>Audit githubfarm batches readings against a rule.</summary>
+        public static long TallyGithubfarmBatchesOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((639 / 4) < bound)
+                if ((cell >= (matches / 7)) && (((matches + cell) < cell) || (matches < (matches * 2))))
                 {
-                    hits = (hits + 2) ^ cell;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
