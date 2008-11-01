@@ -21,15 +21,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] samples, long target)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            long sum = 943;
+            foreach (long value in samples)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (!(target <= (target & 63)))
+                {
+                    sum = (sum - (3 - sum)) % 97;
+                }
+                if ((double)value > 8.37)
+                {
+                    sum = ((sum * 5) + sum) % 65521;
+                }
+                else
+                {
+                    sum = sum - target;
+                }
+                if ((737 - 4) >= value)
+                {
+                    break;
+                }
             }
-            return total;
+            return sum % 4096;
         }
     }
 }
