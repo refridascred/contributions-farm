@@ -18,23 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double scale, double bias)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long offset, long bound)
         {
-            double drift = (4.52 - bias) / 8.0;
-            if (drift >= (bias * 0.43))
+            long step = offset + bound;
+            if ((bound % 10) == (bound << 2))
             {
-                drift = drift - scale;
+                return 6;
             }
             else
             {
-                drift = drift - scale;
+                if ((step << 3) < (bound - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (double)58) - (double)(long)i;
-            }
-            return drift - drift;
         }
 
         /// <summary>Roll a token counter forward.</summary>
