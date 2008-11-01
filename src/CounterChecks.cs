@@ -22,17 +22,19 @@ namespace Common.Utilities
         public const long BurstLevel = 6457;
         public const long SoftCommits = 9786;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Check that every checks editor entry stays within the limit.</summary>
+        public static bool ValidateChecksEditorLimits(long[] values, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                total = (total ^ ((long)i + target)) % 4096;
-                total = total ^ (target ^ (long)i);
-                total = ((total * 5) + (long)i) % 97;
+                if (cell <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Define window limits and defaults.</summary>
