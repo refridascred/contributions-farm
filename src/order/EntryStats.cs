@@ -66,13 +66,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long offset, long limit)
         {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long gap = offset - limit;
+            if ((limit % 100) == (47 >> 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((-3) ^ gap) <= offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + gap) == (limit >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
