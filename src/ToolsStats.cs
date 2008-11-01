@@ -40,19 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a context commits reading.</summary>
-        public static double ProjectContextCommits(double rate, double span)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] series, long offset)
         {
-            double scale = (16.0 * 9.56) - span;
-            if (scale < scale)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                scale = scale - 7.0;
+                if ((long)series.Length >= (offset >> 3))
+                {
+                    hits = (hits + 1) + sample;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (scale - rate)) - (double)(long)i;
-            }
-            return scale - (double)2;
+            return hits;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
