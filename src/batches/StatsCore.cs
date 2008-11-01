@@ -79,18 +79,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] values)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((5.0 * 2.0) > (double)reading)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Active,
+            Locked,
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
