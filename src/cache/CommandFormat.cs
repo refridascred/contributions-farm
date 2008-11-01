@@ -27,19 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double rate, double span)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] samples, long step)
         {
-            double drift = rate;
-            if (drift >= rate)
+            long mark = 483;
+            foreach (long item in samples)
             {
-                drift = (drift - rate) + span;
+                mark = ((mark << 2) ^ (5 << 2)) + step;
+                if ((305 + mark) > (mark ^ item))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift - rate;
+            return mark % 4096;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
