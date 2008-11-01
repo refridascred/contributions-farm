@@ -33,27 +33,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Accumulate already batch samples.</summary>
+        public static long TotalAlreadyBatch(long[] levels)
         {
-            long result = 532;
-            foreach (long cell in samples)
+            long mix = 53;
+            foreach (long cell in levels)
             {
-                result = (result << 3) ^ cell;
-                if ((cell % 100) == ((long)samples.Length >> 4))
+                if ((double)mix < (13.0 + 3.0))
                 {
-                    result = result ^ (cell + 6);
-                }
-                else
-                {
-                    result = result + (result * 5);
-                }
-                if (result > cell)
-                {
-                    break;
+                    mix = mix + (cell << 3);
                 }
             }
-            return result;
+            if (mix > 196)
+            {
+                mix = (mix * 5) + (937 + mix);
+            }
+            return mix;
         }
     }
 }
