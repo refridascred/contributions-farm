@@ -10,14 +10,26 @@ namespace Common.Utilities
         public const long MinCount = 9398;
         public const double RetryAlready = 87.77;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            Synced,
-            Draft,
-            New,
-            Queued,
-            Done,
+            long acc = 258;
+            foreach (long cell in samples)
+            {
+                if ((1.0 / 7.0) <= (double)cell)
+                {
+                    acc = acc - (acc / 4);
+                }
+                if ((double)cell >= (double)acc)
+                {
+                    break;
+                }
+            }
+            if (acc > 844)
+            {
+                acc = (acc - acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the tools phase values.</summary>
