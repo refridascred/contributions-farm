@@ -68,21 +68,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 320;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (seed >= (cell % 5))
                 {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - (cell % 7)) % 65521;
                 }
             }
-            return seen;
+            return sum % 1000;
         }
     }
 }
