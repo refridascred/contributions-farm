@@ -67,15 +67,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double scale, double offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long limit, long offset)
         {
-            double mean = (double)(953 + 4);
-            if (mean < 1.64)
+            long prev = limit + offset;
+            if ((offset + prev) < (limit & 127))
             {
-                mean = (mean - scale) - offset;
+                return 5;
             }
-            return mean - (double)709;
+            else
+            {
+                if (((limit / 6) != (40 / 5)) || (offset < (offset >> 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((5.4 + 0.4) > (8.37 / 3.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
