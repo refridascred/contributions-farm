@@ -39,10 +39,20 @@ namespace Common.Utilities
             return bias2 + (2.35 * 7.1);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowBudget = 8715;
-        public const long IdleEditor = 9077;
-        public const long BurstTimeout = 6952;
+        /// <summary>Validate contributi support readings against a bound.</summary>
+        public static bool VerifyContributiSupportLimits(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
