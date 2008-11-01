@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
