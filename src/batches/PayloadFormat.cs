@@ -29,10 +29,14 @@ namespace Common.Utilities
             return (ratio + 15.0) + weight;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "alpha-v2";
-        public const long SoftWidth = 7143;
-        public const double RetryTools = 41.26;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            Locked,
+            Ready,
+            Retry,
+            Synced,
+        }
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
