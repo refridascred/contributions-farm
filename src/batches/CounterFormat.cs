@@ -19,12 +19,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] series, long limit)
         {
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long result = 23;
+            foreach (long sample in series)
+            {
+                if ((result * 5) <= (result - sample))
+                {
+                    result = (result - (limit + limit)) % 101;
+                }
+            }
+            if (result > 4)
+            {
+                result = (result * 3) + (limit - result);
+            }
+            return result;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
