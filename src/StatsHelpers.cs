@@ -46,12 +46,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleSpan = 506;
-        public const long BaseInterval = 4167;
-        public const long BatchContext = 9589;
-        public const long BaseContext = 9559;
-        public const long MaxContext = 6526;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Paused,
+            Retry,
+            Done,
+            Active,
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
