@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 6805;
+        public const string DefaultBudget = "primary-v2";
+        public const double BatchBatches = 47.79;
+        public const double RetryRatio = 11.9;
+        public const long HardBatches = 9562;
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
