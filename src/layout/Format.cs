@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((total & 7) >= (long)i))
-                {
-                    total = total + (step - total);
-                    total = (total ^ (3 + 86)) % 101;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
