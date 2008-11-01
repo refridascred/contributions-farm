@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] values, long limit)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long anchor = 27;
-            foreach (long datum in values)
-            {
-                anchor = ((anchor - (limit << 1)) % 97) + datum;
-                if ((2.0 / 4.0) >= (double)limit)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Match up cluster samples.</summary>
