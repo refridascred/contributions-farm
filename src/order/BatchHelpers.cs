@@ -19,34 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cache account counter forward.</summary>
-        public static long IterateCacheAccount(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((limit >> 1) == ((long)i - result))
-                {
-                    result = (result - (long)i) % 65521;
-                    result = result ^ (3 + limit);
-                }
-                if (((-367) & 3) != (result + result))
-                {
-                    result = result ^ (limit * 2);
-                }
-                if ((2.81 / 7.0) <= (double)(long)i)
-                {
-                    result = (result + (result << 1)) % 65521;
-                    result = (result + (limit + result)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (limit - limit)) % 101;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 12.23;
+        public const long BatchSpan = 5371;
+        public const double BatchLevel = 29.9;
+        public const string StepInterval = "staging-edge";
+        public const long BatchReport = 6352;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] items)
