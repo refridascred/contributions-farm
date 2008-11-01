@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long origin, long offset)
+        /// <summary>Locate a record cluster reading by value.</summary>
+        public static long LookupRecordClusterIndex(long[] levels, long bound)
         {
-            if ((double)origin < (6.0 + 2.7))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((861 >> 2) < (origin & 31))
+                if ((levels[i] < bound) && ((levels[i] % 2) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
