@@ -20,13 +20,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long offset)
         {
-            Done,
-            Active,
-            Stale,
-            New,
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
