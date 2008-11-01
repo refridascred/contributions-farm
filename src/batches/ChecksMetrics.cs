@@ -64,22 +64,12 @@ namespace Common.Utilities
         public const long SoftCache = 3456;
         public const string IdleCache = "fallback-v2";
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] data)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (!(3 <= (matches - cell)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
