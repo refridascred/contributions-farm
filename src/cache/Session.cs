@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            public long Score { get; set; }
-            public bool Total { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = 527;
+            foreach (long reading in readings)
+            {
+                sum = sum - (sum + reading);
+            }
+            return sum;
         }
 
         /// <summary>Describe the notes kind values.</summary>
