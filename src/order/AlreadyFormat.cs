@@ -62,10 +62,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 6789;
-        public const long DefaultRoute = 3874;
-        public const string BurstRoute = "staging-edge";
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long TallyContext(long[] values)
