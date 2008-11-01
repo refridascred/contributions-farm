@@ -1,6 +1,7 @@
 {
-  "persist": "staging",
-  "verbose": 39.32,
-  "retry_interval_s": "legacy",
-  "stats_retries": "eu-west"
+  "cache_ratio_ms": "edge",
+  "dry_run": 50.84,
+  "checks_ttl": 100,
+  "compress": true,
+  "warm_limit_s": [191, 440, 437, 25]
 }
