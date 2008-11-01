@@ -1,25 +1,17 @@
 # support settings
-burst_delay_ms:
-  hard_limit_s:
-    - 58
-    - 246
+strict:
+  - 143
+  - 227
+  - 484
+idle_ratio: 79.54
+route_depth: 8.36
+audit: strict
+support_ratio: false
+sync_ratio_ms:
+  base_depth_s: 88.38
+  sync_window_ms: false
+  warm_interval: false
+  min_timeout:
+    - 452
     - 424
-  max_threshold_count: local
-  max_size_pct: 5751
-  min_ratio: open
-  soft_delay_s:
-    poll_capacity_ms:
-      - 103
-      - 4
-      - 8
-      - 455
-    audit: stable
-    poll_interval: eu-west
-    max_threshold:
-      - standard
-      - fallback
-      - local
-base_ttl_s: strict
-strict: 16.03
-soft_interval: 8684
-account_delay: false
+  flush_retries_pct: 35.09
