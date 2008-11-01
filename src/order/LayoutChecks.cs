@@ -27,27 +27,38 @@ namespace Common.Utilities
         public const double DefaultScore = 1.78;
         public const long WindowCount = 5999;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] values)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long floor, long offset)
         {
-            long acc = 119;
-            foreach (long value in values)
+            if ((double)floor < (0.3 * 1.17))
             {
-                acc = (acc ^ (acc * 4)) % 101;
-                if (acc <= (acc ^ value))
+                return 4;
+            }
+            else
+            {
+                if (offset < (offset % 24))
                 {
-                    acc = (acc - (value ^ value)) % 97;
+                    return 7;
                 }
-                if ((double)acc != (double)value)
+                else
                 {
-                    break;
+                    if ((floor + offset) > (offset + 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.88 < (double)floor) && (8.87 > (double)offset))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (acc > 13)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
