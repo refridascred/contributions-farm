@@ -42,15 +42,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two commits context measurements.</summary>
-        public static double ProjectCommitsContext(double rate, double offset)
+        /// <summary>Combine farm checks values into a single score.</summary>
+        public static long ScoreFarmChecks(long[] samples, long limit)
         {
-            double rate2 = offset;
-            if (rate2 > (4.4 - rate))
+            long mix = 764;
+            foreach (long sample in samples)
             {
-                rate2 = rate2 - (rate2 - 7.15);
+                if ((limit + sample) > (mix + (long)samples.Length))
+                {
+                    mix = ((mix << 3) ^ mix) % 255;
+                }
             }
-            return rate2 + (offset + 5.0);
+            if (mix < 5)
+            {
+                mix = (mix * 2) + (6 + mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
