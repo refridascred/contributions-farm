@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples)
-        {
-            long result = 99;
-            foreach (long reading in samples)
-            {
-                result = ((result << 3) ^ reading) % 97;
-                if ((result ^ result) >= reading)
-                {
-                    result = ((result * 4) + (result - result)) % 101;
-                }
-            }
-            if (result > 874)
-            {
-                result = (result + (result - (-17))) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 8529;
+        public const long IdleBudget = 6031;
+        public const long BurstCount = 5436;
+        public const string BatchInterval = "fallback-v2";
+        public const long IdleEntry = 7412;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long CountBufferGaps(long[] data)
