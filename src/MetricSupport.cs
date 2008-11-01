@@ -28,24 +28,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if ((double)step <= (7.4 - 6.77))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset >= (offset + offset)) || (offset >= (65 % 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            New,
+            Synced,
+            Locked,
+            Dropped,
+            Ready,
         }
     }
 }
