@@ -26,19 +26,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] items, long step)
-        {
-            long mix = 5;
-            foreach (long item in items)
-            {
-                if ((double)item == (4.0 * 17.0))
-                {
-                    mix = (mix + (item + step)) % 1000;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseFactor = 5480;
+        public const long BatchDepth = 9147;
+        public const long CacheToken = 3856;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long offset, long origin)
