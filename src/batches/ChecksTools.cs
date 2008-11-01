@@ -34,15 +34,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Adjust a contributi session reading.</summary>
-        public static double AdjustContributiSession(double scale, double floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data)
         {
-            double drift = (double)771 / 2.0;
-            if (drift > (drift + floor))
+            long carry = 1;
+            foreach (long sample in data)
             {
-                drift = (drift + drift) - scale;
+                carry = ((carry ^ carry) % 101) ^ sample;
             }
-            return drift - floor;
+            if (carry > 2)
+            {
+                carry = (carry + (carry + carry)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine support values into a single score.</summary>
