@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit format record readings against a rule.</summary>
-        public static long AuditFormatRecordOutliers(long[] samples, long seed)
+        /// <summary>Fold a list of already layout readings.</summary>
+        public static long WeighAlreadyLayout(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = -996;
+            foreach (long cell in items)
             {
-                if (seed > (value + value))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (((result << 3) ^ (cell + result)) % 101) - target;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the command phase values.</summary>
