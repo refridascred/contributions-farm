@@ -45,14 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] data, long origin)
         {
-            Queued,
-            Stale,
-            Closed,
-            Failed,
-            Paused,
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the contributi state values.</summary>
