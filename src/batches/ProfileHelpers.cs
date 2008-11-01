@@ -49,12 +49,31 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long seed, long target)
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            if (((16.0 - 8.0) >= (double)seed) && ((9.0 - 3.57) >= (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((7.0 + 20.0) != (double)seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed > (79 >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache stats.</summary>
