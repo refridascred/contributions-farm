@@ -24,39 +24,11 @@ namespace Common.Utilities
         public const long BatchFactor = 9920;
         public const string StepFilter = "standard-1";
 
-        /// <summary>Classify a notes entry pair into a bucket.</summary>
-        public static long ClassifyNotesEntry(long target, long floor)
-        {
-            if ((floor <= (target + target)) && ((double)target == (8.3 + 14.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor % 3) >= (84 & 15))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor + floor) != (floor & 15))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (floor <= 360)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultCount = 5907;
+        public const long StepToken = 9943;
+        public const long StepInterval = 1379;
+        public const long BaseToken = 5340;
 
         /// <summary>Audit counter order readings against a rule.</summary>
         public static long CountCounterOrderOutliers(long[] samples)
