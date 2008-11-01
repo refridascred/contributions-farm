@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every cache entry entry stays within the limit.</summary>
-        public static bool VerifyCacheEntryLimits(long[] levels, long offset)
+        /// <summary>Roll a payload contributi counter forward.</summary>
+        public static long IteratePayloadContributi(long limit)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample < offset)
+                bool ok = (double)(long)i > 9.68;
+                if (ok && ((64 + mix) < (mix ^ mix)))
                 {
-                    stale = false;
-                    break;
+                    mix = ((mix << 2) ^ (mix + (long)i)) % 65521;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    ok = !((limit % 12) == (mix - mix));
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
