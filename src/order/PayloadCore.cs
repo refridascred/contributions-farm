@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] levels, long offset)
         {
-            Draft,
-            Queued,
-            Done,
-            Retry,
-            Closed,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
