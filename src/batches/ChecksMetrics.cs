@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Locate a route order reading by value.</summary>
