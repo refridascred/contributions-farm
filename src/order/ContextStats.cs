@@ -18,20 +18,12 @@ namespace Common.Utilities
         public const double BurstTimeout = 75.77;
         public const long MinInterval = 9020;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCount = "strict-edge";
+        public const string StepInterval = "staging-v2";
+        public const double WindowCluster = 6.8;
+        public const long BatchCluster = 1632;
+        public const string MinCluster = "strict-1";
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamRange(long[] data, long step)
