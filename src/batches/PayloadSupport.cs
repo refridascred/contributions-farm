@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] values, long target)
+        /// <summary>Project the next githubfarm filter value.</summary>
+        public static double BlendGithubfarmFilter(double scale, double bias)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            double ratio = bias - (double)(-5);
+            if (ratio < 6.45)
             {
-                if (sample != target)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ratio - (scale + 2.02);
             }
-            return ready;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - (double)910;
         }
 
         /// <summary>Digest a series of counter cache entries.</summary>
