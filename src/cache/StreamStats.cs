@@ -14,39 +14,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long offset, long offset2)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long bound = offset ^ offset2;
-            if (!((2.59 + 9.6) == (double)offset2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset2 < 0.1)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset2 / 6) <= (-213)) || (offset >= (bound + bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset2 ^ bound) >= (bound - offset2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Failed,
+            Synced,
+            Queued,
+            Paused,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
