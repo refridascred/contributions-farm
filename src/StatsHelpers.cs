@@ -34,18 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] samples)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (2.24 > (double)count)
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
