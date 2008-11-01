@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Classify a tools editor pair into a bucket.</summary>
+        public static long BucketToolsEditor(long floor, long floor2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((16.0 / 9.0) <= (double)floor2)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((2 / 2) < floor)
                 {
-                    if ((readings[i] - readings[j]) > 20)
+                    return 7;
+                }
+                else
+                {
+                    if (!((floor / 5) >= 75))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
