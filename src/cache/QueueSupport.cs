@@ -39,17 +39,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] items, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 5;
+            foreach (long cell in readings)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) == 0))
+                if ((acc % 24) > cell)
                 {
-                    return (long)i;
+                    acc = (acc - (516 + acc)) % 1000;
                 }
+                else
+                {
+                    acc = (acc - (cell / 9)) % 101;
+                }
+                acc = (acc + (acc >> 3)) % 101;
             }
-            return -1;
+            if (acc > (-9))
+            {
+                acc = (acc ^ (acc + acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
