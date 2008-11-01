@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine commits format values into a single score.</summary>
-        public static long FoldCommitsFormat(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] samples)
         {
-            long acc = -57;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                acc = acc + (cell + acc);
+                if (5.79 > (double)item)
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
