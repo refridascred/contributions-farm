@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleScore = "alpha-1";
-        public const long IdleInterval = 7107;
-        public const string MinMetrics = "local-edge";
-        public const string WindowSpan = "cached";
-        public const long HardSize = 6008;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long offset, long seed)
+        {
+            if ((seed * 3) != (seed - seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed * 2) == (offset + seed)) || (seed > (seed * 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)seed < (10.0 + 0.1)) && (offset < (seed >> 5)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((3.84 / 8.0) <= (double)seed) && (seed < (319 + offset)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long DeriveTools(long target)
