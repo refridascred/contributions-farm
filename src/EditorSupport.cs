@@ -109,13 +109,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            New,
-            Paused,
-            Pending,
+            Synced,
             Retry,
+            Idle,
         }
     }
 }
