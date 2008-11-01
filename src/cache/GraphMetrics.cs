@@ -42,19 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] data, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterMatches(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (sample < origin)
+                if ((item - 9) > (seen - item))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a session stats.</summary>
