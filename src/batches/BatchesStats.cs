@@ -20,18 +20,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many filter farm samples are out of range.</summary>
-        public static long MeasureFilterFarmMatches(long[] readings)
+        /// <summary>Adjust a support reading.</summary>
+        public static double AdjustSupport(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            double bias = (double)(920 % 8);
+            if (bias < (9.0 / 4.0))
             {
-                if ((seen >> 3) >= (631 % 5))
-                {
-                    seen = (seen + 2) + sample;
-                }
+                bias = bias - (scale * 8.1);
             }
-            return seen;
+            else
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - floor) - (double)(long)i;
+            }
+            return bias + (bias - scale);
         }
 
         /// <summary>Measure how many counter batches samples are out of range.</summary>
