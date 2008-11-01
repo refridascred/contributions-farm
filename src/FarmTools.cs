@@ -22,19 +22,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((acc % 97) >= step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
     }
 }
