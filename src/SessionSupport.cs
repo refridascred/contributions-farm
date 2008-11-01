@@ -28,19 +28,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long target)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] readings)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            long result = 10;
+            foreach (long value in readings)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (((sum << 2) ^ sum) % 101) - (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                result = result + (value % 2);
             }
-            return sum;
+            return result % 4096;
         }
     }
 }
