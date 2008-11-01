@@ -47,18 +47,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] series, long step)
+        /// <summary>Iterate the command githubfarm series from a seed.</summary>
+        public static long DeriveCommandGithubfarm(long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (item >= (item + hits))
-                {
-                    hits = (hits + 2) + step;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Describe the cache level values.</summary>
