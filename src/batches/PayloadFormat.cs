@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next cluster graph value.</summary>
-        public static double AdjustClusterGraph(double ratio, double span)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double scale, double offset)
         {
-            double drift = (double)(658 >> 1);
-            return (drift - ratio) + span;
+            double drift = (offset / 4.0) - (offset + offset);
+            return (drift + (4.0 - offset)) + scale;
         }
 
         /// <summary>Blend two token measurements.</summary>
