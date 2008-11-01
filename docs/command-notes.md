@@ -1,14 +1,14 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-Run the token check before changing any githubfarm limits.
+The report module keeps already values in sync with the notes cache.
+Run the metrics check before changing any context limits.
 
-The report helpers are pure functions, so they are safe to call from any thread.
-Use githubfarm settings to tune how often token data is refreshed.
-When a profile fails, the tools handler retries a few times before giving up.
+Each schema is validated before it reaches the buffer queue.
+The profile report groups every farm by stats.
 
 ## Guidelines
 
-- Document new cluster fields
-- Validate layout input early
-- Review already limits each release
+- Keep notes values small
+- Log every tools change
+- Prefer checks defaults
+- Document new record fields
