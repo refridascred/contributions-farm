@@ -1,18 +1,7 @@
 {
-  "default_delay_count": {
-    "retry_timeout": true,
-    "editor_retries": "edge",
-    "editor_threshold": 56.92,
-    "entry_capacity": [411, 150]
-  },
-  "hard_depth_ms": false,
-  "audit": ["standard", "primary", "cached"],
-  "soft_limit": {
-    "base_retries_s": 87.35,
-    "idle_retries": 22.55,
-    "poll_delay_pct": 6550,
-    "persist": 12.76,
-    "warm_size_s": false
-  },
-  "burst_retries": 8.83
+  "cache_limit": true,
+  "persist": ["edge", "standard", "edge"],
+  "buffer_interval": "stable",
+  "burst_window": 74,
+  "batch_timeout": "latest"
 }
