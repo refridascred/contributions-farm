@@ -39,18 +39,12 @@ namespace Common.Utilities
             return bias + (bias - scale);
         }
 
-        /// <summary>Measure how many counter batches samples are out of range.</summary>
-        public static long TallyCounterBatchesGaps(long[] readings, long target)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)seen > (double)datum)
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
+            Closed,
+            Done,
+            Failed,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
