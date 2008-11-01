@@ -40,18 +40,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] data, long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((count >> 4) == (seed ^ seed)))
+                if (data[i] < limit)
                 {
-                    count = (count + 2) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
