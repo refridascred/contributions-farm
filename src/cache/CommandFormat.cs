@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long LimitCommits = 225;
         public const long BurstFactor = 6102;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double bias, double offset)
         {
-            public long Count { get; set; }
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            double drift = (bias / 6.0) - bias;
+            if (drift < (bias / 8.0))
+            {
+                drift = (drift + bias) - offset;
+            }
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift + (15.0 - drift);
         }
 
         /// <summary>Hold a tools stats.</summary>
