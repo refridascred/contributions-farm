@@ -34,12 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double weight, double offset)
         {
-            public bool Mode { get; set; }
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            double bias = offset;
+            return (bias - offset) + weight;
         }
     }
 }
