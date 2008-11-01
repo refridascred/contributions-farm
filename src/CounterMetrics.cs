@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long MaxWidth = 1419;
         public const long DefaultTimeout = 464;
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value != floor)
                 {
-                    if ((values[i] - values[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Match up buffer window samples.</summary>
