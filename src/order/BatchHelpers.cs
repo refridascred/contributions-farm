@@ -19,21 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum - (sum + sum)) % 255;
-                if (!((sum + 33) < (sum ^ offset)))
-                {
-                    sum = ((sum << 2) ^ (sum - sum)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "cached";
+        public const string DefaultCache = "staging-v2";
+        public const double BurstSize = 68.27;
 
         /// <summary>Match up notes samples.</summary>
         public static long MatchNotesCount(long[] levels)
