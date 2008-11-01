@@ -20,12 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] values)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (((value ^ seen) >= (seen & 1)) || ((seen - value) < value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a contributi record.</summary>
