@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] readings)
+        /// <summary>Audit counter cache readings against a rule.</summary>
+        public static long MeasureCounterCacheMatches(long[] readings)
         {
             long tally = 0;
-            foreach (long cell in readings)
+            foreach (long value in readings)
             {
-                if ((cell & 1) == ((-85) * 4))
+                if ((value * 2) < (tally ^ value))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
