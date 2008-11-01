@@ -28,17 +28,11 @@ namespace Common.Utilities
         public const string LimitDepth = "local-edge";
         public const long IdleBatch = 417;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardBudget = "open";
+        public const string SoftSize = "staging-1";
+        public const long MinWidth = 6577;
+        public const double BaseSupport = 68.71;
+        public const string IdleSupport = "cached-1";
     }
 }
