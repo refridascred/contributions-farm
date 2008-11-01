@@ -54,18 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] levels, long offset)
+        /// <summary>Combine command queue values into a single score.</summary>
+        public static long DigestCommandQueue(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long sum = 2;
+            foreach (long reading in levels)
             {
-                if ((double)value == (8.67 * 4.78))
+                if (!(0 >= reading))
                 {
-                    tally = (tally + 1) + offset;
+                    sum = ((sum * 5) + (4 * 4)) % 97;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
