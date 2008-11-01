@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheBudget = 6870;
-        public const long BaseSpan = 8351;
-        public const double IdleFactor = 81.04;
-        public const long SoftPayload = 1333;
-        public const string CachePayload = "cached-1";
+        /// <summary>Classify a tools profile pair into a bucket.</summary>
+        public static long ClassifyToolsProfile(long offset, long limit)
+        {
+            if ((limit >> 3) <= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit >> 4) < offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((0.9 - 11.0) <= (6.2 * 16.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long TotalReport(long[] series)
