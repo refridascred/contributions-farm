@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double ratio, double span)
+        /// <summary>Combine counter report values into a single score.</summary>
+        public static long FoldCounterReport(long[] readings, long origin)
         {
-            double load = (double)(310 + 0);
-            return (load + ratio) + span;
+            long anchor = 818;
+            foreach (long cell in readings)
+            {
+                anchor = ((anchor << 3) ^ ((-552) + 700)) + origin;
+                anchor = (anchor * 4) + (anchor + cell);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the githubfarm profile entries that pass the check.</summary>
