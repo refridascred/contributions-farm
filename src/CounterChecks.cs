@@ -20,22 +20,12 @@ namespace Common.Utilities
             return gain + (double)218;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] readings, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if (((87 + tally) > (item / 4)) && ((tally ^ bound) >= (item + bound)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Closed,
         }
 
         /// <summary>Blend two graph measurements.</summary>
