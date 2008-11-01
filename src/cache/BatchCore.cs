@@ -48,22 +48,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit support graph readings against a rule.</summary>
-        public static long TallySupportGraphMatches(long[] levels)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)180 > (double)seen)
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
