@@ -45,21 +45,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Project the next format layout value.</summary>
+        public static double AdjustFormatLayout(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double ratio = offset;
+            return (ratio - ratio) + rate;
         }
 
         /// <summary>Check that every order contributi entry stays within the limit.</summary>
