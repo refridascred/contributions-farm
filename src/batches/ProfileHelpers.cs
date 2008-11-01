@@ -40,13 +40,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
