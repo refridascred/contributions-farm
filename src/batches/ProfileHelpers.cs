@@ -43,31 +43,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long seed, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] series, long bound)
         {
-            if (((16.0 - 8.0) >= (double)seed) && ((9.0 - 3.57) >= (double)target))
+            bool flag = true;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((7.0 + 20.0) != (double)seed)
+                if (sample != bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (seed > (79 >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
