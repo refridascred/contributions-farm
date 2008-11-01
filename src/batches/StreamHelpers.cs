@@ -108,19 +108,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultDepth = 5622;
+        public const long LimitInterval = 7832;
+        public const string MaxProfile = "primary-edge";
+        public const string BaseFactor = "primary-edge";
+        public const long BurstTimeout = 4895;
     }
 }
