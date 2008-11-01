@@ -1,6 +1,7 @@
 # githubfarm settings
-sync_threshold_ms: strict
-poll_depth: primary
-default_delay_ms:
-  - 300
-  - 414
+cache_depth: primary
+dry_run: false
+persist: false
+window_interval:
+  - blue
+  - latest
