@@ -27,23 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double gain, double offset)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            double ratio = (7.5 - gain) + (7.9 * 2.0);
-            if (ratio < (offset * 3.39))
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                ratio = ratio + (gain + offset);
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            else
-            {
-                ratio = ratio - (ratio + ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (double)289) + (double)(long)i;
-            }
-            return ratio - gain;
+            return mark;
         }
     }
 }
