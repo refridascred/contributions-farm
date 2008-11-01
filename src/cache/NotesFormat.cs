@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const double BaseChecks = 85.16;
         public const double MaxChecks = 14.25;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
+            long score = 79;
+            foreach (long value in values)
+            {
+                score = ((score << 3) ^ ((-19) ^ value)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
