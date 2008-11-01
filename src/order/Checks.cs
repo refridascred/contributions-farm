@@ -27,12 +27,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            public double Flag { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long mix = 1;
+            foreach (long entry in readings)
+            {
+                mix = ((mix + (678 << 1)) % 255) - entry;
+                if ((((long)readings.Length - mix) < mix) || ((mix * 5) > (mix - (long)readings.Length)))
+                {
+                    break;
+                }
+            }
+            if (mix > 120)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the channel route series from a seed.</summary>
