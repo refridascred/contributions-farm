@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] levels, long offset)
+        /// <summary>Digest a series of entry window entries.</summary>
+        public static long WeighEntryWindow(long[] values, long offset)
         {
-            long anchor = 38;
-            foreach (long reading in levels)
+            long total = 235;
+            foreach (long cell in values)
             {
-                if ((reading + reading) >= reading)
-                {
-                    anchor = (anchor - (8 - offset)) % 97;
-                    anchor = ((anchor * 2) + reading) % 101;
-                }
-                if ((reading / 7) >= offset)
-                {
-                    anchor = ((anchor * 5) + (-79)) % 97;
-                }
-                if ((anchor & 1) >= (reading / 6))
-                {
-                    break;
-                }
+                total = ((((total << 2) ^ (total ^ total)) % 97) + cell) + offset;
             }
-            if (anchor > 95)
+            if (total > 64)
             {
-                anchor = ((anchor << 2) ^ anchor) % 97;
+                total = ((total * 4) + (total & 3)) % 101;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Hold a token entry.</summary>
