@@ -21,30 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of cache session entries.</summary>
-        public static long DigestCacheSession(long[] series, long seed)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] data)
         {
-            long total = 985;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (!!((double)datum <= (16.0 + 0.3)))
+                if ((tally ^ 4) != (tally + item))
                 {
-                    total = total ^ (0 >> 4);
-                }
-                if ((total / 5) != (datum + seed))
-                {
-                    total = ((total * 4) + (total + 90)) % 4096;
-                }
-                else
-                {
-                    total = ((total * 3) + (total << 3)) % 4096;
-                }
-                if (((seed & 31) >= datum) && ((1 << 3) > seed))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
