@@ -37,19 +37,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ProjectRecord(double gain, double bias)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] values)
         {
-            double ratio = gain - bias;
-            if (ratio < (bias * 7.2))
+            long matches = 0;
+            foreach (long item in values)
             {
-                ratio = ratio + bias;
+                if ((25 % 100) <= item)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (double)(-893)) + (double)(long)i;
-            }
-            return ratio - (ratio + bias);
+            return matches;
         }
     }
 }
