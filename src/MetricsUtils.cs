@@ -59,23 +59,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double gain, double floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double weight = floor / 7.0;
-            if (weight > (double)47)
-            {
-                weight = (weight + floor) - gain;
-            }
-            else
-            {
-                weight = weight + (double)913;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight + floor;
+            Dropped,
+            Queued,
+            Retry,
+            Paused,
+            Synced,
         }
     }
 }
