@@ -60,12 +60,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstBudget = 9374;
-        public const long DefaultRatio = 7597;
-        public const string RetryCache = "legacy-edge";
-        public const long SoftCache = 3456;
-        public const string IdleCache = "fallback-v2";
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long RollEditor(long bound)
