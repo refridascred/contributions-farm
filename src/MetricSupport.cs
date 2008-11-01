@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepTimeout = 3478;
-        public const long CacheInterval = 3777;
-        public const long BurstWidth = 2892;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] values, long origin)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (hits > (hits / 4))
+                {
+                    hits = ((hits + 2) ^ item) - origin;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] levels)
