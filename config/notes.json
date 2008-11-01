@@ -1,7 +1,8 @@
 {
-  "dry_run": true,
-  "retry_ttl_ms": "blue",
-  "verbose": false,
-  "default_size_pct": [56, 241, 465],
-  "idle_ttl": "legacy"
+  "flush_threshold_pct": "stable",
+  "strict": "green",
+  "audit": true,
+  "verbose": ["fallback", "cached"],
+  "retry_retries_count": false,
+  "retry_capacity_s": 22.89
 }
