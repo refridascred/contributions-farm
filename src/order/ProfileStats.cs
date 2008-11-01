@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long RetryWidth = 2363;
         public const double RetryMetrics = 88.75;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] data)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (cell < (cell + cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
