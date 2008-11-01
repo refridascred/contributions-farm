@@ -1,8 +1,13 @@
 # githubfarm settings
-soft_delay_count: blue
-default_timeout_pct: true
-commits_ttl:
+support_delay:
+  - latest
+  - latest
   - standard
-  - blue
-  - edge
-base_window_ms: 1024
+  - fallback
+readonly: strict
+batch_retries_pct:
+  enabled: 500
+  token_limit: open
+  editor_capacity: edge
+  verbose: 100
+  compress: open
