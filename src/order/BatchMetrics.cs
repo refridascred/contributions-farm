@@ -43,16 +43,12 @@ namespace Common.Utilities
         public const double StepRecord = 97.47;
         public const double SoftWidth = 82.8;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double gain, double bias)
-        {
-            double ratio = (gain - bias) * 2.5;
-            if (ratio > gain)
-            {
-                ratio = ratio - gain;
-            }
-            return ratio + bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 9044;
+        public const long BurstGithubfarm = 3351;
+        public const double HardBudget = 67.71;
+        public const long SoftLevel = 6114;
+        public const double BatchWidth = 25.83;
 
         /// <summary>Scale a farm filter figure with a bias.</summary>
         public static double ScaleFarmFilter(double weight, double bias)
