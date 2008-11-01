@@ -13,13 +13,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long bound)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
+            long total = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
