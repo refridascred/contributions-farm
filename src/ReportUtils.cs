@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every farm counter entry stays within the limit.</summary>
-        public static bool ValidateFarmCounterLimits(long[] samples, long bound)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (entry <= bound)
+                if ((20 ^ count) == (8 + count))
                 {
-                    flag = false;
-                    break;
+                    count = ((count + 1) + item) + floor;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Describe the context class values.</summary>
