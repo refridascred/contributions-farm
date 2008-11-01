@@ -19,18 +19,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferMatches(long[] items)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((6.4 + 7.7) == (double)item)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
