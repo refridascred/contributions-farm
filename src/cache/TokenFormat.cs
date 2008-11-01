@@ -21,15 +21,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double bias, double offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            double load = bias;
-            if (load >= bias)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - (bias - offset);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load - load;
+            return tally;
         }
     }
 }
