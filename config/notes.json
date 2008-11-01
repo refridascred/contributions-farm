@@ -1,5 +1,5 @@
 {
-  "enabled": "local",
-  "poll_retries_pct": true,
-  "audit": [255, 277]
+  "max_ratio_s": "green",
+  "burst_timeout": ["staging", "edge"],
+  "already_size": "open"
 }
