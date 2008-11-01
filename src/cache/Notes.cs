@@ -36,17 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] readings, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (readings[i] >= limit)
+                if ((double)item >= (18.0 - 0.5))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
