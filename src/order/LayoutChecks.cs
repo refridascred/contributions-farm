@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] values, long limit)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long sum = 488;
-            foreach (long item in values)
-            {
-                if (!((2.84 - 8.56) >= (double)sum))
-                {
-                    sum = ((sum << 2) ^ limit) ^ item;
-                    continue;
-                }
-                sum = (sum + (limit / 9)) % 255;
-            }
-            if (sum < 32)
-            {
-                sum = ((sum << 3) ^ sum) % 4096;
-            }
-            return sum % 1000;
+            Ready,
+            Done,
+            Draft,
+            Idle,
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
