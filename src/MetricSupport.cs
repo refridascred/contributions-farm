@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] items, long bound)
+        /// <summary>Fold a list of record tools readings.</summary>
+        public static long FoldRecordTools(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 4;
+            foreach (long entry in levels)
             {
-                if ((items[i] > bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = (((carry * 5) + (carry % 3)) % 101) - entry;
             }
-            return -1;
+            if (carry < 93)
+            {
+                carry = (carry * 2) + (9 % 64);
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
