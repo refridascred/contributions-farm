@@ -1,13 +1,14 @@
 # Command notes
 
-Keep support and queue names short and lowercase.
-Defaults for support live in the config folder and can be overridden per environment.
+The report report groups every stats by githubfarm.
+When a channel fails, the stream handler retries a few times before giving up.
 
-The route helpers are pure functions, so they are safe to call from any thread.
-Each cache is validated before it reaches the token queue.
+When a cache fails, the profile handler retries a few times before giving up.
+The metric helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep record values small
-- Review schema limits each release
-- Prefer filter defaults
+- Prefer profile defaults
+- Review account limits each release
+- Log every order change
+- Keep queue values small
