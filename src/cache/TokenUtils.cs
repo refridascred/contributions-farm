@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const string MinAlready = "legacy-v2";
         public const long BatchSpan = 4670;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Check that every farm support entry stays within the limit.</summary>
+        public static bool GuardFarmSupportLimits(long[] series, long floor)
         {
-            New,
-            Closed,
-            Draft,
-            Active,
-            Locked,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a filter record.</summary>
