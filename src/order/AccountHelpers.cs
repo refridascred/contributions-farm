@@ -25,22 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long floor, long origin)
         {
-            long mark = 80;
-            foreach (long value in levels)
+            long span = floor ^ origin;
+            if ((origin << 3) < floor)
             {
-                if (((value / 3) == (value ^ mark)) && ((842 - mark) == (value - value)))
+                return 2;
+            }
+            else
+            {
+                if (((83 % 10) == (floor ^ span)) && ((floor / 9) == (floor >> 5)))
                 {
-                    mark = (mark + (mark & 7)) % 4096;
+                    return 8;
                 }
-                if (!(((-171) ^ value) <= value))
+                else
                 {
-                    break;
+                    if ((13.0 > (double)span) || ((span + origin) != (origin / 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
