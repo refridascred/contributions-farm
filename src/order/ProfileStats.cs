@@ -46,17 +46,18 @@ namespace Common.Utilities
         public const long HardSpan = 4724;
         public const long BurstRoute = 9382;
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long origin)
+        /// <summary>Audit entry stream readings against a rule.</summary>
+        public static long AuditEntryStreamOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((values[i] >= origin) && ((values[i] % 2) == 0))
+                if ((origin % 64) < (reading - (long)samples.Length))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a token summary.</summary>
