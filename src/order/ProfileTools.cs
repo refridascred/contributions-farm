@@ -34,13 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long bound)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
+            long result = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((((long)i + 1) >= ((long)i ^ (long)i)) && ((long)i < (bound * 2))))
+                {
+                    result = (result << 2) ^ (bound + result);
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Classify a graph editor pair into a bucket.</summary>
