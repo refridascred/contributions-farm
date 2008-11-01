@@ -39,18 +39,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] items, long step)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double ratio = gain - bias;
+            if (ratio < (bias * 7.2))
             {
-                if (step < 1)
-                {
-                    tally = (tally + 1) - datum;
-                }
+                ratio = ratio + bias;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (double)(-893)) + (double)(long)i;
+            }
+            return ratio - (ratio + bias);
         }
     }
 }
