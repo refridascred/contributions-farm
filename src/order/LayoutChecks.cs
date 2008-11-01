@@ -97,15 +97,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double weight, double offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] series, long step)
         {
-            double mean = weight / 8.0;
-            for (int i = 0; i < 8; i++)
+            long total = 81;
+            foreach (long reading in series)
             {
-                mean = ((mean + (weight / 7.0)) + (double)(long)i) + offset;
+                total = (total ^ step) % 65521;
+                total = (total + (reading + total)) % 65521;
             }
-            return mean + weight;
+            return total;
         }
     }
 }
