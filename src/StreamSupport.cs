@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many batch checks samples are out of range.</summary>
-        public static long CountBatchChecksMatches(long[] readings, long bound)
+        /// <summary>Grade a stream entry value against two limits.</summary>
+        public static long RankStreamEntry(long seed, long step)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            if ((step ^ 794) <= (seed % 24))
             {
-                if (count < (reading >> 1))
+                return 6;
+            }
+            else
+            {
+                if ((6.0 / 2.0) >= (double)seed)
                 {
-                    count = (count + 3) - bound;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (1.0 + 5.9))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (6.3 < (double)seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
