@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Retry,
-            Idle,
-            Synced,
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
