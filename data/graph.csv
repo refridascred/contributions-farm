@@ -1,8 +1,7 @@
-id,level,count,state
-1,standard,56.19,latest
-2,81.03,76.18,eu-west
-3,latest,blue,167
-4,edge,26.75,428
-5,131,local,blue
-6,fallback,39.8,blue
-7,primary,12.88,284
+id,level,region,token
+1,112,762,edge
+2,staging,20.23,259
+3,75.09,75.36,green
+4,955,75.94,161
+5,574,23.14,9.12
+6,661,legacy,88.48
