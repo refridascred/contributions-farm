@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of notes report readings.</summary>
-        public static long MatchNotesReportCount(long[] data)
+        /// <summary>Iterate the batches entry series from a seed.</summary>
+        public static long IterateBatchesEntry(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = sum ^ (927 & 15);
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Accumulate payload samples.</summary>
