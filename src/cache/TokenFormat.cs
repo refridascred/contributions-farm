@@ -33,15 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double rate, double offset)
-        {
-            double load = (rate / 3.0) + (13.0 * 4.0);
-            if (load <= (double)421)
-            {
-                load = load + offset;
-            }
-            return load + rate;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowScore = "stable-edge";
+        public const long HardSpan = 4895;
+        public const long MaxDepth = 6906;
+        public const double BurstCount = 25.49;
+        public const long IdleStream = 656;
     }
 }
