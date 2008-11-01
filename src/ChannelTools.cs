@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstInterval = 4551;
-        public const string CacheBudget = "legacy";
-        public const long WindowDepth = 6408;
-        public const long LimitEditor = 7741;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long DeriveQueue(long bound)
