@@ -50,10 +50,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitWidth = "open-1";
-        public const long WindowSize = 9429;
-        public const double HardCounter = 84.39;
+        /// <summary>Blend two payload layout measurements.</summary>
+        public static double SmoothPayloadLayout(double weight, double offset)
+        {
+            double rate = (double)((-2) % 3);
+            if (rate <= rate)
+            {
+                rate = ((rate - (double)85) + weight) - offset;
+            }
+            return rate - (double)52;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueOutliers(long[] data)
