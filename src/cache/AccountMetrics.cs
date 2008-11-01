@@ -26,22 +26,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long score = 0;
+            foreach (long entry in values)
             {
-                if (((double)sample != (6.05 / 3.0)) && ((sample / 2) > (321 * 5)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score ^ score) + entry;
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
