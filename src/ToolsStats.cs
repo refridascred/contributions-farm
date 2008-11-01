@@ -20,17 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = (sum << 2) ^ sum;
-                sum = ((sum << 2) ^ (seed ^ sum)) % 65521;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Draft,
+            Retry,
+            Pending,
+            Paused,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
