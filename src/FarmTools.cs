@@ -22,26 +22,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowOutliers(long[] readings, long step)
         {
-            long state = 3;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((reading << 2) > (state - reading))
+                if ((((cell - hits) <= cell) && ((hits + hits) == (cell + hits))) || ((double)hits <= 1.1))
                 {
-                    state = (state * 4) + (state & 31);
-                }
-                if ((reading - state) < (35 + 67))
-                {
-                    break;
+                    hits = (hits + 1) - step;
                 }
             }
-            if (state > 370)
-            {
-                state = ((state << 3) ^ (state - state)) % 1000;
-            }
-            return state % 97;
+            return hits;
         }
     }
 }
