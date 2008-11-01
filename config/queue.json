@@ -1,5 +1,11 @@
 {
-  "soft_ratio_pct": "primary",
-  "sync_delay": 52.92,
-  "cache_threshold": "strict"
+  "base_limit": false,
+  "idle_window": false,
+  "poll_size_count": {
+    "record_ttl": ["eu-west", "fallback", "green", "green"],
+    "min_capacity_ms": 25.62,
+    "default_ttl_ms": 9100,
+    "sync_retries_pct": 53.64,
+    "audit": "strict"
+  }
 }
