@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleSpan = 9556;
-        public const string MaxOrder = "stable";
-        public const long MinInterval = 9034;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public string Size { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
