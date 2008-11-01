@@ -37,19 +37,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] items)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double gain, double floor)
         {
-            long mark = 6;
-            foreach (long value in items)
+            double weight = gain;
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark * 5) + value) % 255;
+                weight = (weight - (floor - weight)) + (double)(long)i;
             }
-            if (mark > 4)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark % 1000;
+            return weight + (weight + weight);
         }
     }
 }
