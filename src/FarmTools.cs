@@ -30,21 +30,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 56;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (4.09 > (double)sample)
                 {
-                    if ((series[i] ^ series[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry << 3) ^ (floor & 7);
                 }
             }
-            return seen;
+            return carry;
         }
     }
 }
