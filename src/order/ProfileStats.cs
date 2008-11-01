@@ -34,11 +34,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleDepth = "standard";
-        public const long DefaultSchema = 6400;
-        public const double MinSchema = 73.58;
-        public const double WindowSchema = 8.37;
-        public const long HardSchema = 821;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] items)
+        {
+            long mark = 1;
+            foreach (long datum in items)
+            {
+                if (((mark - datum) >= (mark << 3)) || (datum <= mark))
+                {
+                    mark = ((mark * 4) + (datum + datum)) % 4096;
+                }
+                else
+                {
+                    mark = (mark + (mark >> 1)) % 4096;
+                }
+            }
+            return mark;
+        }
     }
 }
