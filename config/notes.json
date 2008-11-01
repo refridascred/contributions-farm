@@ -1,6 +1,5 @@
 {
-  "idle_size": "legacy",
-  "burst_ttl_count": true,
-  "poll_capacity": "legacy",
-  "soft_delay_count": false
+  "enabled": "local",
+  "poll_retries_pct": true,
+  "audit": [255, 277]
 }
