@@ -43,18 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountHits(long[] values)
+        /// <summary>Look up the position of a batch queue sample.</summary>
+        public static long FindBatchQueueIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((item * 2) <= (tally ^ tally)))
+                if (data[i] <= floor)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the account mode values.</summary>
