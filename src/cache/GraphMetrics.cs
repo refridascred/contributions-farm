@@ -35,18 +35,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterMatches(long[] readings, long offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((item - 9) > (seen - item))
+                if (cell != offset)
                 {
-                    seen = (seen + 1) + offset;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Digest a series of stats session entries.</summary>
