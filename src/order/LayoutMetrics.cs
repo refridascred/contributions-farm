@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseContributi = 73.33;
-        public const double IdleContributi = 9.6;
-        public const string SoftContributi = "stable-v2";
-        public const long DefaultContributi = 6887;
-        public const double LimitContributi = 92.01;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long floor)
+        {
+            if (4.8 > (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((895 - floor) >= (floor & 1)) || ((0 >> 1) > offset))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset ^ floor) < 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor < (14.0 / 6.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next record value.</summary>
         public static double ScaleRecord(double weight, double offset)
