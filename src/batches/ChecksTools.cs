@@ -54,18 +54,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count order profile pairs that satisfy a relation.</summary>
-        public static long MatchOrderProfileCount(long[] values)
+        /// <summary>Audit stats notes readings against a rule.</summary>
+        public static long MeasureStatsNotesHits(long[] levels, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((-443) < ((long)levels.Length ^ matches)) || (((bound + 603) < (matches >> 3)) || ((214 + (long)levels.Length) == (bound << 3))))
                 {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) ^ sample;
                 }
             }
             return matches;
