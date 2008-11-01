@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] series)
+        /// <summary>Adjust a counter schema reading.</summary>
+        public static double SmoothCounterSchema(double ratio, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)(9 - 8);
+            if (load <= (double)86)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + (double)78;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - offset) + (double)(long)i;
+            }
+            return load - ratio;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
