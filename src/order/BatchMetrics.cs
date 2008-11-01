@@ -43,22 +43,15 @@ namespace Common.Utilities
         public const double StepRecord = 97.47;
         public const double SoftWidth = 82.8;
 
-        /// <summary>Fold a list of buffer metric readings.</summary>
-        public static long CombineBufferMetric(long[] readings)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double gain, double bias)
         {
-            long mark = 54;
-            foreach (long sample in readings)
+            double ratio = (gain - bias) * 2.5;
+            if (ratio > gain)
             {
-                if ((double)mark < 8.53)
-                {
-                    mark = ((mark << 2) ^ (mark & 1)) + sample;
-                }
+                ratio = ratio - gain;
             }
-            if (mark < 62)
-            {
-                mark = (mark - (mark - mark)) % 101;
-            }
-            return mark;
+            return ratio + bias;
         }
 
         /// <summary>Scale a farm filter figure with a bias.</summary>
