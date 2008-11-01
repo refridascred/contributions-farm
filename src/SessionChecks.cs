@@ -56,23 +56,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordHits(long[] levels)
         {
-            long result = 5;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                result = (result * 3) + reading;
-                if (result <= 6)
+                if (reading <= (count + reading))
                 {
-                    result = result + (reading * 3);
+                    count = count + 2;
                 }
             }
-            if (result < 4)
-            {
-                result = (result ^ (result << 3)) % 4096;
-            }
-            return result;
+            return count;
         }
     }
 }
