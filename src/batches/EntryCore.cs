@@ -42,10 +42,17 @@ namespace Common.Utilities
         public const double BurstRatio = 13.6;
         public const long DefaultCount = 5663;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxInterval = 50.97;
-        public const string CacheOrder = "staging-edge";
-        public const long BatchOrder = 7831;
-        public const double MaxSpan = 90.08;
+        /// <summary>Look up the position of a context window sample.</summary>
+        public static long LocateContextWindowIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
