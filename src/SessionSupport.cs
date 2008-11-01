@@ -13,13 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            Locked,
-            Synced,
-            Retry,
-            New,
+            public double Total { get; set; }
+            public bool Size { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
