@@ -10,26 +10,39 @@ namespace Common.Utilities
         public const long MinCount = 9398;
         public const double RetryAlready = 87.77;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long step, long origin)
         {
-            long acc = 258;
-            foreach (long cell in samples)
+            long slot = step - origin;
+            if ((7.0 / 5.0) == (double)step)
             {
-                if ((1.0 / 7.0) <= (double)cell)
+                return 5;
+            }
+            else
+            {
+                if ((origin >> 2) < (slot - (-901)))
                 {
-                    acc = acc - (acc / 4);
+                    return 0;
                 }
-                if ((double)cell >= (double)acc)
+                else
                 {
-                    break;
+                    if ((step < (411 * 4)) && ((11.0 / 2.0) == (double)slot))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step - step) == (step % 8))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (acc > 844)
-            {
-                acc = (acc - acc) % 65521;
-            }
-            return acc;
         }
 
         /// <summary>Describe the tools phase values.</summary>
