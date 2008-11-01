@@ -78,17 +78,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] data, long bound)
+        /// <summary>Roll a metric session counter forward.</summary>
+        public static long RollMetricSession(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (data[i] >= bound)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return (long)i;
+                    long delta = (bound % 60) % 64;
+                    anchor = ((anchor * 5) + ((-934) - delta)) + (long)i2;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Roll a already counter forward.</summary>
