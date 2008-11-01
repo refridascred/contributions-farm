@@ -59,11 +59,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftQueue = "standard-v2";
-        public const long RetryQueue = 460;
-        public const long MinSpan = 9529;
-        public const long StepTimeout = 3013;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Paused,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long CombineBatches(long[] series, long floor)
