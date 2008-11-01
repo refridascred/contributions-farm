@@ -15,13 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
