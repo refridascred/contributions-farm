@@ -25,15 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Pending,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a counter options.</summary>
