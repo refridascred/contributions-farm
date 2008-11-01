@@ -50,14 +50,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Rank graph notes input into a small class.</summary>
+        public static long BucketGraphNotes(long floor, long floor2)
         {
-            New,
-            Synced,
-            Paused,
-            Closed,
-            Pending,
+            if (((floor * 2) > floor2) && ((double)floor2 <= (6.1 + 5.4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor > (floor2 * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor <= 8.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next tools value.</summary>
