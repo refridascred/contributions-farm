@@ -16,17 +16,13 @@ namespace Common.Utilities
             return rate - 7.9;
         }
 
-        /// <summary>Find the first payload metric entry that matches the target.</summary>
-        public static long SeekPayloadMetricIndex(long[] items, long offset)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
