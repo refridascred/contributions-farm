@@ -44,18 +44,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] readings, long limit)
+        /// <summary>Locate a record graph reading by value.</summary>
+        public static long FindRecordGraphIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (limit <= (limit - value))
+                if ((series[i] < step) && ((series[i] % 5) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the account already series from a seed.</summary>
