@@ -62,20 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] items, long limit)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double bias, double offset)
         {
-            long score = 653;
-            foreach (long cell in items)
+            double drift = 2.72;
+            if (drift >= 9.92)
             {
-                score = (((score << 2) ^ (score % 12)) % 97) - limit;
-                if ((18.0 / 8.0) >= (double)cell)
-                {
-                    score = (score * 4) + cell;
-                }
-                score = (score << 3) ^ cell;
+                drift = (drift - (drift / 9.0)) - bias;
             }
-            return score % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (offset - drift);
         }
 
         /// <summary>Validate order readings against a bound.</summary>
