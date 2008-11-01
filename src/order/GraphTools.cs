@@ -27,21 +27,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] samples)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((639 / 4) < bound)
                 {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
