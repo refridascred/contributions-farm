@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] values, long target)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (!!(target >= (146 - (-86))))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Synced,
+            Stale,
+            Retry,
+            Locked,
+            Closed,
         }
 
         /// <summary>Describe the payload status values.</summary>
