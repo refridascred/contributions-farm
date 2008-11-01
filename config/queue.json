@@ -1,7 +1,7 @@
 {
-  "persist": ["staging", "edge", "primary", "local"],
-  "max_interval": 2211,
-  "metric_depth": ["eu-west", "fallback", "legacy"],
-  "poll_ratio_s": 6948,
-  "payload_interval": "strict"
+  "batch_delay_pct": 88.81,
+  "strict": ["blue", "standard"],
+  "hard_ratio_pct": false,
+  "retry_threshold_ms": 90.54,
+  "counter_ratio": "local"
 }
