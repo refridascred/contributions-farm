@@ -52,11 +52,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
+            Stale,
+            Synced,
+            Pending,
+            Queued,
+            Failed,
         }
     }
 }
