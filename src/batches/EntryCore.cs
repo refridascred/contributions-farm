@@ -57,18 +57,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((sample ^ hits) > (sample << 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxInterval = 50.97;
+        public const string CacheOrder = "staging-edge";
+        public const long BatchOrder = 7831;
+        public const double MaxSpan = 90.08;
     }
 }
