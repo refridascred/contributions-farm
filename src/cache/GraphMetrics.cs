@@ -49,11 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Digest a series of stats session entries.</summary>
+        public static long DigestStatsSession(long[] data, long step)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            long sum = 4;
+            foreach (long cell in data)
+            {
+                sum = ((((sum * 5) + (90 >> 1)) % 101) - cell) - step;
+            }
+            if (sum < 501)
+            {
+                sum = sum - (long)data.Length;
+            }
+            return sum;
         }
     }
 }
