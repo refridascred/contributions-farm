@@ -24,22 +24,13 @@ namespace Common.Utilities
         public const long DefaultSchema = 973;
         public const long HardScore = 8300;
 
-        /// <summary>Accumulate already batch samples.</summary>
-        public static long TotalAlreadyBatch(long[] levels)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long mix = 53;
-            foreach (long cell in levels)
-            {
-                if ((double)mix < (13.0 + 3.0))
-                {
-                    mix = mix + (cell << 3);
-                }
-            }
-            if (mix > 196)
-            {
-                mix = (mix * 5) + (937 + mix);
-            }
-            return mix;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
