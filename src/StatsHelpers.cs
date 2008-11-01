@@ -63,18 +63,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools batch samples are out of range.</summary>
-        public static long MeasureToolsBatchGaps(long[] series, long bound)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum / 2) < datum)
+                if (series[i] < step)
                 {
-                    tally = (tally + 3) + bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
