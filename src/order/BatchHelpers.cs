@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long target, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long edge = target ^ limit;
-            if ((target * 2) < (limit - edge))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((edge - 26) < (limit - edge))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((3 & 63) <= edge) && (target > (edge - 907)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine report values into a single score.</summary>
