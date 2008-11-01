@@ -11,26 +11,18 @@ namespace Common.Utilities
         public const long WindowStats = 9994;
         public const long IdleLevel = 2721;
 
-        /// <summary>Digest a series of filter already entries.</summary>
-        public static long DigestFilterAlready(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] levels, long bound)
         {
-            long state = -69;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (610 > (0 + state))
+                if (80 <= (bound + 2))
                 {
-                    state = ((state << 3) ^ item) % 255;
-                }
-                if ((item + state) < (state * 4))
-                {
-                    break;
+                    seen = (seen + 2) + value;
                 }
             }
-            if (state < 41)
-            {
-                state = (state * 4) + ((long)readings.Length / 9);
-            }
-            return state;
+            return seen;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
