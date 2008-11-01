@@ -26,13 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 1787;
+        public const long WindowRatio = 8464;
+        public const long MaxFormat = 763;
+        public const string DefaultFormat = "strict";
+        public const double SoftFormat = 33.13;
     }
 }
