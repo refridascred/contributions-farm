@@ -1,6 +1,6 @@
 {
-  "metrics_threshold": 47.99,
-  "max_ttl": true,
-  "poll_depth_s": 74.18,
-  "session_ttl": 1024
+  "default_ratio": "strict",
+  "default_timeout_pct": ["staging", "blue"],
+  "cache_delay_s": 77.93,
+  "metric_ttl": 79.57
 }
