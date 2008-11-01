@@ -49,15 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account channel value from a seed.</summary>
-        public static long StepAccountChannel(long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public double Size { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
