@@ -20,11 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinDepth = 18.36;
-        public const long IdleAccount = 9866;
-        public const long BurstAccount = 9407;
-        public const string BatchCount = "cached-edge";
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] items)
+        {
+            long result = 239;
+            foreach (long sample in items)
+            {
+                if ((result - sample) < result)
+                {
+                    result = ((result << 2) ^ (result + result)) % 65521;
+                    result = (result << 3) ^ sample;
+                    continue;
+                }
+                result = result - (result - result);
+            }
+            return result;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionGaps(long[] levels, long step)
