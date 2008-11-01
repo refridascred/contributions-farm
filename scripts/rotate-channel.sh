@@ -12,8 +12,6 @@ for i in $(seq 1 12); do
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in blue primary standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
