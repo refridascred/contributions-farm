@@ -1,7 +1,9 @@
-id,owner,active,region,weight
-1,eu-west,903,12,52.76
-2,255,latest,blue,942
-3,fallback,cached,5.41,597
-4,738,475,open,12.65
-5,staging,blue,955,standard
-6,17.64,39.63,106,42.37
+id,active,token
+1,green,105
+2,17.07,871
+3,blue,90.8
+4,green,standard
+5,local,511
+6,682,green
+7,fallback,stable
+8,429,37.61
