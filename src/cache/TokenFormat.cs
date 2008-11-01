@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long LimitSpan = 1617;
         public const long SoftLayout = 5381;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchCount = "latest-1";
-        public const long RetryLayout = 6707;
-        public const string LimitSize = "stable-v2";
-        public const string DefaultWidth = "fallback-edge";
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                long tally = (5 + carry) - ((long)i << 3);
+                if ((2.44 - 6.95) == (double)carry)
+                {
+                    carry = ((carry << 2) ^ (tally % 64)) % 101;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long WeighTools(long[] items)
