@@ -17,14 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] items, long seed)
         {
-            Dropped,
-            Retry,
-            Idle,
-            Paused,
-            New,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
