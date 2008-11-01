@@ -38,10 +38,23 @@ namespace Common.Utilities
             return weight + (double)277;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepWidth = 94.84;
-        public const string BurstDepth = "stable";
-        public const string MaxDepth = "cached-v2";
+        /// <summary>Audit batches report readings against a rule.</summary>
+        public static long CountBatchesReportOutliers(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((7.39 + 10.0) >= (double)count) || ((8.0 * 7.1) >= (double)reading))
+                {
+                    count = (count + 2) + seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long FoldEditor(long[] series)
