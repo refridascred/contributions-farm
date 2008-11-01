@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] data, long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Audit window cluster readings against a rule.</summary>
