@@ -58,11 +58,12 @@ namespace Common.Utilities
         public const long RetryContext = 1030;
         public const long MinFactor = 4401;
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Locate a batches reading by value.</summary>
