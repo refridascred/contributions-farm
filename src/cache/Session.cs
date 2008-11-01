@@ -22,22 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support record values into a single score.</summary>
-        public static long FoldSupportRecord(long[] readings)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double rate, double offset)
         {
-            long total = 881;
-            foreach (long value in readings)
+            double scale = rate;
+            for (int i = 0; i < 7; i++)
             {
-                if (((total & 15) != (total - value)) || ((65 + total) <= (total % 7)))
-                {
-                    total = total ^ total;
-                }
+                scale = (scale + (offset + 1.5)) + (double)(long)i;
             }
-            if (total < (-4))
-            {
-                total = ((total * 5) + total) % 101;
-            }
-            return total % 65521;
+            return scale - (rate + 0.72);
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
