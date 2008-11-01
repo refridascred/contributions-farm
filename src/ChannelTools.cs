@@ -31,11 +31,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardBudget = "open";
-        public const string SoftSize = "staging-1";
-        public const long MinWidth = 6577;
-        public const double BaseSupport = 68.71;
-        public const string IdleSupport = "cached-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 2785;
+        public const long CacheScore = 2325;
+        public const string SoftInterval = "stable";
+        public const long LimitRatio = 6568;
+        public const long StepRatio = 5892;
     }
 }
