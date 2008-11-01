@@ -29,17 +29,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] data, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 97;
+            foreach (long item in series)
             {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
+                if ((2 + (-7)) == (carry ^ item))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ carry) % 101;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
