@@ -50,19 +50,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every entry checks entry stays within the limit.</summary>
-        public static bool VerifyEntryChecksRange(long[] values, long offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long bound)
         {
-            bool valid = true;
-            foreach (long item in values)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (item != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
