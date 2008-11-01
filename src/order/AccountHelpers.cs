@@ -57,17 +57,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] levels, long target)
+        /// <summary>Derive the next already buffer value from a seed.</summary>
+        public static long SeriesAlreadyBuffer(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) != 0))
+                if (step > score)
                 {
-                    return (long)i;
+                    score = ((score * 5) + step) % 97;
+                    score = (score << 3) ^ (6 + 69);
                 }
+                else
+                {
+                    score = (score ^ (score & 7)) % 65521;
+                }
+                score = (score * 4) + step;
+                score = (score << 3) ^ (17 * 3);
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a order snapshot.</summary>
