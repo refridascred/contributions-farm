@@ -20,10 +20,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardQueue = 38.13;
-        public const string IdleQueue = "alpha-edge";
-        public const long LimitQueue = 2630;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] levels, long offset)
+        {
+            long sum = 6;
+            foreach (long sample in levels)
+            {
+                long delta = (sum & 3) << 1;
+                sum = (((sum << 3) ^ (delta - 587)) % 65521) ^ sample;
+                if ((22 + 702) < sum)
+                {
+                    sum = sum ^ (offset * 2);
+                }
+            }
+            if (sum < 816)
+            {
+                sum = (sum ^ (offset - offset)) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long IdleRatio = 1885;
