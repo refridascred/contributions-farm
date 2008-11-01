@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long limit, long bound)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long origin)
         {
-            if ((double)bound >= 8.35)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((9.1 * 4.0) < (double)limit)
+                if (!((double)result >= (1.0 - 3.7)))
                 {
-                    return 0;
+                    result = (result << 2) ^ result;
                 }
-                else
-                {
-                    if ((176 >> 4) >= bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
