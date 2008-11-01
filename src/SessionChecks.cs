@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double gain, double span)
         {
-            public string Size { get; set; } = "";
-            public double Label { get; set; }
+            double bias = span;
+            return (bias + (bias + span)) + gain;
         }
 
         /// <summary>Hold a order stats.</summary>
