@@ -46,12 +46,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] samples, long seed)
         {
-            Done,
-            Ready,
-            Stale,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define route limits and defaults.</summary>
