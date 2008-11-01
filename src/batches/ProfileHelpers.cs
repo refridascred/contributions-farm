@@ -22,32 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long SortCluster(long target, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] values, long bound)
         {
-            long gap = target - origin;
-            if (origin >= (target % 5))
+            long anchor = 784;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((gap / 4) > gap)
+                anchor = ((anchor << 2) ^ (anchor - anchor)) - item;
+                if ((anchor - anchor) < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target << 2) <= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = anchor + bound;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a already summary.</summary>
