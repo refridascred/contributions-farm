@@ -20,17 +20,38 @@ namespace Common.Utilities
             return (weight2 + weight) + bias;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] levels, long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long offset, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((offset + offset) == (8 + bound)) && ((offset + bound) <= bound))
             {
-                if (levels[i] < step)
+                return 7;
+            }
+            else
+            {
+                if (bound < (bound + offset))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset == (9.7 * 9.29)) && ((double)bound < (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound > (2.38 * 6.8))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
