@@ -1,13 +1,6 @@
 {
-  "retry_ratio_s": 2187,
-  "command_delay": true,
-  "contributi_delay": "eu-west",
-  "queue_interval": false,
-  "hard_window_count": {
-    "report_timeout": 60,
-    "burst_retries": 3331,
-    "dry_run": 100,
-    "account_delay": [192, 103, 137],
-    "poll_retries_s": 5160
-  }
+  "default_ttl": 72.05,
+  "commits_limit": 4869,
+  "verbose": [409, 77],
+  "strict": 250
 }
