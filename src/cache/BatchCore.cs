@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate session already samples.</summary>
-        public static long WeighSessionAlready(long[] samples, long floor)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long mark = 6;
-            foreach (long value in samples)
-            {
-                mark = (mark * 5) + value;
-                if ((62 / 6) >= mark)
-                {
-                    mark = mark - (value << 3);
-                }
-            }
-            if (mark > 728)
-            {
-                mark = (mark << 2) ^ floor;
-            }
-            return mark % 97;
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of cache report readings.</summary>
