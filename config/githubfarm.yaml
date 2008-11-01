@@ -1,14 +1,22 @@
 # githubfarm settings
-default_delay_ms: true
-audit: local
-default_limit: 877
-poll_ttl:
-  account_timeout: 31.41
-  poll_retries_pct:
-    verbose: 4246
-    context_timeout: true
-    readonly:
-      - 239
-      - 184
-      - 351
-  min_timeout_s: 30
+dry_run:
+  enabled: 95
+  retry_window_ms: primary
+  min_depth_s: false
+  strict: 11.55
+  hard_window_pct: blue
+base_retries: 9484
+burst_ratio_s:
+  persist:
+    - open
+    - standard
+    - latest
+    - cached
+  idle_timeout: open
+  idle_timeout_s: 94
+  retry_size_count:
+    - 73
+    - 329
+  compress: latest
+hard_retries: 1911
+githubfarm_ratio: 11.8
