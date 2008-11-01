@@ -46,18 +46,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue command entries that pass the check.</summary>
-        public static long AuditQueueCommandGaps(long[] values, long seed)
+        /// <summary>Classify a entry tools pair into a bucket.</summary>
+        public static long GradeEntryTools(long target, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if ((82 << 1) < (target + origin))
             {
-                if (!(((item + seed) <= (seed ^ seed)) && ((0 - hits) != (hits & 1))))
+                return 5;
+            }
+            else
+            {
+                if ((target - 86) > 2)
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin - origin) > origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin + origin) != (origin * 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
