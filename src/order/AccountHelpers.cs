@@ -14,18 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] samples, long step)
+        /// <summary>Compare every pair of session token readings.</summary>
+        public static long PairSessionTokenCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((8.88 + 0.2) == (double)tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = ((tally + 2) + cell) + step;
+                    if ((levels[i] ^ levels[j]) > 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
