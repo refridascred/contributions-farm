@@ -14,13 +14,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Look up the position of a stream cluster sample.</summary>
+        public static long LookupStreamClusterIndex(long[] values, long floor)
         {
-            Synced,
-            Idle,
-            Active,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
