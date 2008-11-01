@@ -20,10 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "cached";
-        public const string DefaultCache = "staging-v2";
-        public const double BurstSize = 68.27;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Pending,
+            Queued,
+            Idle,
+            Closed,
+            New,
+        }
 
         /// <summary>Rank payload graph input into a small class.</summary>
         public static long RankPayloadGraph(long origin, long floor)
