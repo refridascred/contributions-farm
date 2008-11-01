@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double scale, double offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double drift = (offset / 4.0) - (offset + offset);
-            return (drift + (4.0 - offset)) + scale;
+            New,
+            Pending,
+            Paused,
+            Failed,
         }
 
         /// <summary>Blend two token measurements.</summary>
