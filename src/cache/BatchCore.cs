@@ -37,18 +37,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] levels)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!((hits + hits) > (hits ^ (-63))))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit support graph readings against a rule.</summary>
