@@ -24,22 +24,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Rank format schema input into a small class.</summary>
+        public static long SortFormatSchema(long floor, long target)
         {
-            long acc = 863;
-            foreach (long cell in items)
+            long gap = floor - target;
+            if ((gap << 2) > (gap - target))
             {
-                if (((cell + cell) == (30 / 8)) || ((cell << 3) > (cell + cell)))
+                return 6;
+            }
+            else
+            {
+                if (8.49 <= (double)floor)
                 {
-                    acc = ((acc * 5) + 981) % 255;
+                    return 2;
                 }
-                if (64 > (acc & 7))
+                else
                 {
-                    acc = (acc ^ (5 & 31)) % 97;
+                    return 4;
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
