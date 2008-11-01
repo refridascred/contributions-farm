@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] samples, long target)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum < (1.7 * 2.9))
+                {
+                    tally = (tally + 3) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
