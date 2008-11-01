@@ -19,37 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long bound, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long step, long floor)
         {
-            long span = bound + origin;
-            if ((origin - origin) >= (6 + bound))
+            long bound = step + floor;
+            if (bound < (bound - step))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if (bound <= (span + bound))
+                if ((666 < step) && ((double)bound >= 9.3))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if (((origin % 64) > (span - bound)) || (origin <= (bound % 10)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound - origin) == (6 - span))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
