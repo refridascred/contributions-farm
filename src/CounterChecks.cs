@@ -69,18 +69,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "alpha-1";
+        public const long BatchRoute = 7917;
+        public const long SoftRoute = 7028;
+        public const long StepDepth = 8291;
+        public const long BaseCount = 9174;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryScore = 8598;
