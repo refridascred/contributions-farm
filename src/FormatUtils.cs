@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] series)
         {
-            Active,
-            Failed,
-            Retry,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((long)series.Length + hits) != (9 / 3))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order class values.</summary>
