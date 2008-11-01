@@ -29,19 +29,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics commits readings against a bound.</summary>
-        public static bool VerifyMetricsCommitsLimits(long[] items, long step)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < step)
+                if (values[i] < origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
