@@ -27,31 +27,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a token commits pair into a bucket.</summary>
-        public static long BucketTokenCommits(long offset, long floor)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if ((double)floor <= (3.97 / 3.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((-38) <= (floor >> 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((485 + 5) >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Compare every pair of context account readings.</summary>
