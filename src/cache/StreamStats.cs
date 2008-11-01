@@ -14,15 +14,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] levels, long origin)
         {
-            double rate2 = rate;
-            if (rate2 <= rate2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = rate2 + rate;
+                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate2 + bias;
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
