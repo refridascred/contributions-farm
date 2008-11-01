@@ -20,12 +20,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many counter batches samples are out of range.</summary>
+        public static long TallyCounterBatchesGaps(long[] readings, long target)
         {
-            Closed,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)seen > (double)datum)
+                {
+                    seen = (seen + 2) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command kind values.</summary>
