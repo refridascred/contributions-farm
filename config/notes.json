@@ -1,8 +1,5 @@
 {
-  "idle_interval_count": 3504,
-  "retry_delay": 28.67,
-  "idle_timeout_pct": 97.43,
-  "dry_run": ["green", "cached", "fallback", "fallback"],
-  "persist": true,
-  "idle_delay_pct": "strict"
+  "soft_size_s": "fallback",
+  "compress": 421,
+  "batch_threshold_s": [436, 332, 184]
 }
