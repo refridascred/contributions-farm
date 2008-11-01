@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelHits(long[] items)
         {
-            long score = 4;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 12; i++)
+                if (((count ^ count) >= (count / 7)) && (413 >= (23 - count)))
                 {
-                    score = ((score * 3) + (cell / 9)) + (long)i;
-                }
-                if ((50 < (cell << 1)) && ((cell & 3) <= (cell ^ (-25))))
-                {
-                    score = (score ^ cell) % 1000;
+                    count = (count + 1) + value;
                 }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Hold a queue stats.</summary>
