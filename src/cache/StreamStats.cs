@@ -68,21 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream commits readings.</summary>
-        public static long MatchStreamCommitsCount(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = ((anchor * 2) + anchor) % 4096;
+                long step = anchor;
+                if (((step + 32) > bound) && ((double)bound >= 13.0))
                 {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor * 5) + (step + step)) % 65521;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
     }
 }
