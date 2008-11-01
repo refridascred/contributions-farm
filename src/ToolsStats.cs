@@ -75,14 +75,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Closed,
-            Retry,
-            Dropped,
-            Stale,
-            Active,
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
