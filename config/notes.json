@@ -1,9 +1,16 @@
 {
-  "base_size_pct": false,
-  "compress": {
-    "compress": "fallback",
-    "burst_ratio": ["eu-west", "legacy", "latest", "staging"],
-    "enabled": true
+  "base_timeout_s": ["legacy", "fallback", "strict"],
+  "context_size": {
+    "audit": "legacy",
+    "default_window_s": "cached",
+    "compress": {
+      "enabled": "staging",
+      "readonly": true,
+      "dry_run": true,
+      "warm_limit_count": "primary"
+    },
+    "session_timeout": 1024
   },
-  "route_retries": 30.55
+  "verbose": false,
+  "retry_timeout_count": "stable"
 }
