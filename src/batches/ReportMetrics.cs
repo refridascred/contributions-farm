@@ -29,31 +29,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long origin, long bound)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if (((468 % 100) >= (3 + origin)) && ((36 - bound) > bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin >> 4) >= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)916 != (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Token { get; set; }
         }
     }
 }
