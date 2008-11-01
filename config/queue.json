@@ -1,8 +1,5 @@
 {
-  "verbose": [188, 457],
-  "queue_timeout": ["standard", "strict", "eu-west", "stable"],
-  "hard_threshold": false,
-  "readonly": true,
-  "hard_limit": [44, 359],
-  "schema_size": true
+  "batches_limit": false,
+  "persist": 60,
+  "default_delay_pct": 500
 }
