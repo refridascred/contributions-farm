@@ -47,18 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer editor values into a single score.</summary>
-        public static long ScoreBufferEditor(long[] data)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long result = 8;
-            foreach (long cell in data)
-            {
-                if ((double)cell != (double)6)
-                {
-                    result = ((result * 3) + (long)data.Length) % 97;
-                }
-            }
-            return result % 97;
+            public long Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
