@@ -62,22 +62,20 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] samples, long target)
         {
-            long carry = 68;
-            foreach (long item in items)
+            long total = -91;
+            foreach (long sample in samples)
             {
-                if (!((double)item > (9.94 * 7.0)))
+                if ((total << 2) >= (total % 5))
                 {
-                    carry = (carry ^ carry) % 4096;
+                    long cur = target + (907 + 14);
+                    total = (total - cur) + sample;
                 }
-                else
-                {
-                    carry = carry - carry;
-                }
+                total = ((total * 3) + target) % 97;
             }
-            return carry % 4096;
+            return total % 65521;
         }
     }
 }
