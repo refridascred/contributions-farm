@@ -19,18 +19,17 @@ namespace Common.Utilities
             return (ratio + 15.0) + weight;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] data, long bound)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((cell * 4) <= (cell << 3)) && (bound >= (tally + 257))) && (((cell * 2) >= (tally ^ bound)) && ((bound + 55) <= (bound & 3))))
+                if (values[i] >= bound)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of window buffer entries.</summary>
