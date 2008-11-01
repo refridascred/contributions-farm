@@ -1,5 +1,5 @@
 {
-  "batches_limit": false,
-  "persist": 60,
-  "default_delay_pct": 500
+  "min_ttl_count": "eu-west",
+  "flush_threshold_count": "strict",
+  "default_interval": 58.63
 }
