@@ -21,18 +21,15 @@ namespace Common.Utilities
         public const double DefaultContributi = 64.63;
         public const long SoftContributi = 3328;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] samples)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((count ^ reading) <= count)
-                {
-                    count = count + 3;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
     }
 }
