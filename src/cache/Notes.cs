@@ -64,25 +64,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                result = result ^ (seed ^ 541);
-                result = ((result << 3) ^ 0) % 4096;
-                if (((3.0 / 3.0) <= (double)result) && ((20.0 / 8.0) != (double)seed))
+                if (seen <= (value + value))
                 {
-                    result = (result ^ seed) % 101;
+                    seen = seen + 2;
                 }
-                else
-                {
-                    result = (result + (result >> 3)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return seen;
         }
     }
 }
