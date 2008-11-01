@@ -55,19 +55,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCommits = 9392;
+        public const long MinLevel = 5729;
+        public const long RetryCommits = 7596;
+        public const double BaseBudget = 40.03;
     }
 }
