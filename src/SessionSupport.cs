@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 374;
-        public const long HardDepth = 903;
-        public const string StepDepth = "local-edge";
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Failed,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Validate notes metric readings against a bound.</summary>
         public static bool ValidateNotesMetricBounds(long[] values, long target)
