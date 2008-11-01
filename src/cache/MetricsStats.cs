@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long step, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] series)
         {
-            if (!((double)offset == (0.91 - 7.1)))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0 - step) >= (offset & 1))
+                if ((datum - datum) < ((long)series.Length / 7))
                 {
-                    return 0;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
