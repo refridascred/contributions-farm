@@ -28,39 +28,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Rank batch metrics input into a small class.</summary>
-        public static long RankBatchMetrics(long limit, long floor)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double ratio, double span)
         {
-            long prev = limit ^ floor;
-            if ((1.78 - 8.73) != (double)floor)
+            double gain = ratio;
+            if (gain >= (double)39)
             {
-                return 7;
+                gain = gain - (double)46;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (prev >= (45 ^ prev))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((-12) <= limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((prev < (limit % 7)) && ((floor - floor) <= floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                gain = (gain + span) + (double)(long)i;
             }
+            return gain - (ratio * 16.0);
         }
     }
 }
