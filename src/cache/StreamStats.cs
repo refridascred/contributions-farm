@@ -25,20 +25,12 @@ namespace Common.Utilities
             return rate2 + bias;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] readings, long limit)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 4841;
+        public const long RetryBudget = 3182;
+        public const long WindowGithubfarm = 2956;
+        public const double DefaultGithubfarm = 94.29;
+        public const long LimitSpan = 5653;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadOutliers(long[] readings)
