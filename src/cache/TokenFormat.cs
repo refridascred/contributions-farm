@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseLayout = 8292;
-        public const double LimitBudget = 95.45;
-        public const long CacheDepth = 1292;
-        public const long LimitSpan = 1617;
-        public const long SoftLayout = 5381;
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
+        {
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long DeriveCounter(long offset)
