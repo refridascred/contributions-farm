@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] readings, long origin)
         {
-            New,
-            Pending,
-            Paused,
-            Failed,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (seen >= (origin / 4))
+                {
+                    seen = (seen + 3) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two token measurements.</summary>
