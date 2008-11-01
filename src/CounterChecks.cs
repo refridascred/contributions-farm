@@ -38,20 +38,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every checks editor entry stays within the limit.</summary>
-        public static bool ValidateChecksEditorLimits(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in values)
-            {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultDepth = "primary-v2";
+        public const string LimitDepth = "local-1";
+        public const long HardCount = 9515;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long IdleWindow = 4201;
