@@ -20,31 +20,15 @@ namespace Common.Utilities
             return (weight2 + weight) + bias;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long step, long target)
+        /// <summary>Project the next layout already value.</summary>
+        public static double SmoothLayoutAlready(double ratio, double offset)
         {
-            if ((step << 1) >= (404 >> 3))
+            double ratio2 = ratio;
+            if (ratio2 < (double)825)
             {
-                return 1;
+                ratio2 = (ratio2 + (double)941) + offset;
             }
-            else
-            {
-                if ((target + step) >= target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (step >= (step - target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return ratio2 + (ratio / 8.0);
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
