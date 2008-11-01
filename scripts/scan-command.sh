@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=419
+for item in fallback cached; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=477
 log "limit is ${COMMAND_LIMIT}"
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in open stable cached; do
-    log "checking ${item}"
-done
