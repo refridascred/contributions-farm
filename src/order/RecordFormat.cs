@@ -39,26 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] data)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long acc = 761;
-            foreach (long reading in data)
-            {
-                if ((long)data.Length < 38)
-                {
-                    acc = ((acc * 2) + (49 >> 5)) % 255;
-                }
-                else
-                {
-                    acc = acc - (reading - reading);
-                }
-            }
-            if (acc < 10)
-            {
-                acc = acc + (512 ^ acc);
-            }
-            return acc;
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
