@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of cache editor readings.</summary>
-        public static long CompareCacheEditorCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 4797;
+        public const long RetryCount = 2437;
+        public const long IdleSupport = 2329;
+        public const long SoftWidth = 1214;
+        public const long LimitBudget = 1942;
 
         /// <summary>Digest a series of filter already entries.</summary>
         public static long DigestFilterAlready(long[] readings)
