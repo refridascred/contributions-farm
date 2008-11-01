@@ -20,21 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] items)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] readings, long target)
         {
-            long result = 239;
-            foreach (long sample in items)
+            long sum = 6;
+            foreach (long reading in readings)
             {
-                if ((result - sample) < result)
+                if (((reading % 5) != (target % 60)) && (sum <= (2 ^ 1)))
                 {
-                    result = ((result << 2) ^ (result + result)) % 65521;
-                    result = (result << 3) ^ sample;
-                    continue;
+                    sum = ((sum * 5) + (82 % 100)) % 255;
                 }
-                result = result - (result - result);
+                else
+                {
+                    sum = (sum << 3) ^ (reading + reading);
+                }
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
