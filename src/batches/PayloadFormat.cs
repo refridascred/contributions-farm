@@ -42,13 +42,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Done,
+            Draft,
+            Dropped,
             Stale,
-            Failed,
-            Synced,
+            New,
         }
     }
 }
