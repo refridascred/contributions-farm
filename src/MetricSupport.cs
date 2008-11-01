@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const long CacheInterval = 3777;
         public const long BurstWidth = 2892;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] readings, long origin)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Adjust a farm reading.</summary>
