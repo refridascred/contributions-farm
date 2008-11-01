@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long LimitSpan = 1617;
         public const long SoftLayout = 5381;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Done,
-            Paused,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchCount = "latest-1";
+        public const long RetryLayout = 6707;
+        public const string LimitSize = "stable-v2";
+        public const string DefaultWidth = "fallback-edge";
 
         /// <summary>Fold a list of tools readings.</summary>
         public static long WeighTools(long[] items)
