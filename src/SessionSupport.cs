@@ -30,19 +30,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double weight, double offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] samples)
         {
-            double ratio = (offset + offset) - weight;
-            if (ratio < (offset + offset))
+            long mark = 3;
+            foreach (long sample in samples)
             {
-                ratio = ratio - (ratio * 15.0);
+                mark = ((mark << 2) ^ mark) + sample;
             }
-            else
+            if (mark > 13)
             {
-                ratio = ratio - (double)587;
+                mark = (mark - mark) % 101;
             }
-            return ratio + (double)7;
+            return mark;
         }
     }
 }
