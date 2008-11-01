@@ -22,23 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] items, long offset)
-        {
-            long mix = -24;
-            foreach (long entry in items)
-            {
-                if (3.0 <= (double)mix)
-                {
-                    mix = ((mix * 2) + entry) % 65521;
-                }
-            }
-            if (mix < 520)
-            {
-                mix = (mix ^ (mix - offset)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 7251;
+        public const double SoftTimeout = 81.88;
+        public const long DefaultBudget = 4786;
+        public const long IdleStream = 5404;
+        public const string StepStream = "fallback";
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] items, long floor)
