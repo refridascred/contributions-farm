@@ -47,16 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] levels, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                carry = (carry * 3) + (carry % 100);
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((tally << 2) <= (tally % 3))
+                {
+                    tally = ((tally + 1) + entry) - limit;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the route status values.</summary>
