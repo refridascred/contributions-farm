@@ -15,19 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Validate notes metric readings against a bound.</summary>
+        public static bool ValidateNotesMetricBounds(long[] values, long target)
         {
-            long score = 0;
-            foreach (long datum in series)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (!(5 > (score - score)))
+                if (entry <= target)
                 {
-                    score = (score << 3) ^ ((-32) << 2);
+                    flag = false;
+                    break;
                 }
-                score = ((score * 5) + (datum ^ score)) % 4096;
             }
-            return score % 1000;
+            return flag;
         }
 
         /// <summary>Adjust a route reading.</summary>
