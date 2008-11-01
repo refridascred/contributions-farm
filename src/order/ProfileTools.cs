@@ -20,12 +20,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleBudget = "stable-v2";
-        public const double CacheCount = 39.64;
-        public const double HardWidth = 32.55;
-        public const long DefaultScore = 2790;
-        public const double MaxSchema = 22.07;
+        /// <summary>Combine context metric values into a single score.</summary>
+        public static long TallyContextMetric(long[] series)
+        {
+            long anchor = 876;
+            foreach (long reading in series)
+            {
+                anchor = (anchor - (reading * 3)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
