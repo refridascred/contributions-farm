@@ -1,28 +1,22 @@
 # entry settings
-idle_size:
-  default_ttl_s: true
+flush_window_count: 88.05
+metric_depth: 2625
+default_ratio_pct: 1.13
+retry_delay: 21
+default_threshold_ms:
+  - 46
+  - 89
+  - 57
+  - 477
+idle_ttl_s:
+  readonly: true
+  channel_threshold: 10
   dry_run:
-    - standard
-    - local
-    - latest
-    - staging
-  record_ttl: 4826
-  report_depth: strict
-poll_interval_count:
-  - latest
-  - standard
-  - primary
-burst_window_pct: 8121
-idle_timeout_pct:
-  burst_threshold: true
-  audit: 1024
-  sync_retries:
-    poll_threshold: cached
-    verbose: 92.26
-    layout_window: latest
-    soft_capacity_ms: 57.65
-    poll_depth: 9497
-    flush_interval_s: false
-flush_ratio:
-  - 461
-  - 357
+    session_ttl: 60
+    base_capacity_pct: 7
+    profile_delay: 65.96
+    default_depth: false
+    burst_window: false
+    base_size: 80
+  persist: standard
+  counter_ratio: stable
