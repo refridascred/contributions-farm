@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a batch payload pair into a bucket.</summary>
-        public static long BucketBatchPayload(long target, long offset)
-        {
-            if ((double)target == (double)997)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target < (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinTimeout = 79.11;
+        public const string RetryEntry = "local-edge";
+        public const double IdleEntry = 10.13;
+        public const long StepEntry = 6591;
 
         /// <summary>Match up record graph samples.</summary>
         public static long PairRecordGraphCount(long[] series)
