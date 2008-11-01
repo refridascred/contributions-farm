@@ -1,6 +1,8 @@
-id,active,score
-1,70.83,30.83
-2,492,515
-3,24.8,63
-4,910,blue
-5,staging,blue
+id,level,count,state
+1,standard,56.19,latest
+2,81.03,76.18,eu-west
+3,latest,blue,167
+4,edge,26.75,428
+5,131,local,blue
+6,fallback,39.8,blue
+7,primary,12.88,284
