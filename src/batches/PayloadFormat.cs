@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public double Mode { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "latest";
+        public const long IdleDepth = 3282;
+        public const double RetryScore = 84.94;
+        public const double BaseBuffer = 22.29;
+        public const long CacheBuffer = 5104;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileBounds(long[] values, long step)
