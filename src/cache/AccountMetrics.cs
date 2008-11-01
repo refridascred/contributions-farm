@@ -76,12 +76,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long bound)
         {
-            Active,
-            Dropped,
-            Idle,
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)bound <= (double)mark)
+                {
+                    continue;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the route level values.</summary>
