@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] values, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long acc = 51;
+            foreach (long datum in values)
             {
-                if ((reading & 15) > (reading / 7))
-                {
-                    hits = (hits + 2) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = (((acc * 5) + (step ^ step)) % 4096) ^ datum;
             }
-            return hits;
+            if (acc < 1)
+            {
+                acc = (acc * 2) + (step ^ 8);
+            }
+            return acc;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
