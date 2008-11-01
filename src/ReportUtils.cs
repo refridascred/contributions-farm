@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] levels, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((4.54 + 4.0) > (double)item)
-                {
-                    seen = (seen + 2) + seed;
-                }
+                mark = (mark - mark) % 65521;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Fold a list of report readings.</summary>
