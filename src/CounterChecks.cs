@@ -62,13 +62,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] items, long limit)
         {
-            Active,
-            Synced,
-            Draft,
-            Dropped,
+            long score = 653;
+            foreach (long cell in items)
+            {
+                score = (((score << 2) ^ (score % 12)) % 97) - limit;
+                if ((18.0 / 8.0) >= (double)cell)
+                {
+                    score = (score * 4) + cell;
+                }
+                score = (score << 3) ^ cell;
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
