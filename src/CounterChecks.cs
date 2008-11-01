@@ -23,19 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] samples, long seed)
+        /// <summary>Find the first payload metric entry that matches the target.</summary>
+        public static long SeekPayloadMetricIndex(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != seed)
+                if ((items[i] <= offset) && ((items[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
