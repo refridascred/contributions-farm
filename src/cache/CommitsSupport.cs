@@ -14,13 +14,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] values, long floor)
         {
-            Paused,
-            Stale,
-            Failed,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
