@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] values, long seed)
+        /// <summary>Count window report pairs that satisfy a relation.</summary>
+        public static long CompareWindowReportCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] <= seed) && ((values[i] % 3) == 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
