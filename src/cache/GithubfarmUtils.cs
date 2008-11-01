@@ -11,23 +11,11 @@ namespace Common.Utilities
         public const long RetryMetric = 8534;
         public const long WindowLevel = 22;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((3.2 * 5.9) == (double)item)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 9275;
+        public const long DefaultCounter = 4906;
+        public const string BaseCounter = "strict-1";
+        public const string BurstCounter = "fallback-1";
 
         /// <summary>Blend two order cluster measurements.</summary>
         public static double SmoothOrderCluster(double bias, double offset)
