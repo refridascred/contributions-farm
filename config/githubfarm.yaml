@@ -1,4 +1,6 @@
 # githubfarm settings
-route_ttl: standard
-strict: 75.01
-base_window_s: primary
+sync_threshold_ms: strict
+poll_depth: primary
+default_delay_ms:
+  - 300
+  - 414
