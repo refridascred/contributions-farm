@@ -1,19 +1,6 @@
 {
-  "burst_capacity": 17.16,
-  "cache_retries": {
-    "base_depth_ms": 40,
-    "support_threshold": {
-      "audit": "staging",
-      "retry_limit_pct": "strict",
-      "strict": "local",
-      "dry_run": "standard",
-      "flush_ttl_s": ["strict", "edge", "fallback", "blue"]
-    },
-    "sync_depth_ms": [351, 443, 166],
-    "readonly": 7149
-  },
-  "default_ratio_pct": "primary",
-  "stream_interval": 9,
-  "commits_limit": 9,
-  "already_ttl": 1024
+  "idle_size": "legacy",
+  "burst_ttl_count": true,
+  "poll_capacity": "legacy",
+  "soft_delay_count": false
 }
