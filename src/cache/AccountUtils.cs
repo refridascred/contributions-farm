@@ -10,15 +10,26 @@ namespace Common.Utilities
         public const long SoftRoute = 455;
         public const double WindowScore = 34.56;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            long state = 270;
+            foreach (long cell in levels)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((((long)levels.Length % 16) != (state + cell)) && ((8.03 + 7.2) <= (double)state))
+                {
+                    state = (state ^ (57 ^ state)) % 4096;
+                }
+                if (!(((-9) ^ 9) <= cell))
+                {
+                    state = ((state * 2) + (state * 3)) % 65521;
+                }
             }
-            return carry;
+            if (state > 234)
+            {
+                state = state - (state >> 1);
+            }
+            return state % 4096;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
