@@ -22,12 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyLimits(long[] samples, long step)
         {
-            Retry,
-            Failed,
-            Synced,
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
