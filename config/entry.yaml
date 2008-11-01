@@ -1,5 +1,28 @@
 # entry settings
-batch_limit_pct: 30.32
-payload_interval: true
-profile_delay: 500
-report_ratio: local
+idle_size:
+  default_ttl_s: true
+  dry_run:
+    - standard
+    - local
+    - latest
+    - staging
+  record_ttl: 4826
+  report_depth: strict
+poll_interval_count:
+  - latest
+  - standard
+  - primary
+burst_window_pct: 8121
+idle_timeout_pct:
+  burst_threshold: true
+  audit: 1024
+  sync_retries:
+    poll_threshold: cached
+    verbose: 92.26
+    layout_window: latest
+    soft_capacity_ms: 57.65
+    poll_depth: 9497
+    flush_interval_s: false
+flush_ratio:
+  - 461
+  - 357
