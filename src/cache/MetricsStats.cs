@@ -10,21 +10,23 @@ namespace Common.Utilities
         public const long RetryFactor = 7942;
         public const long WindowLevel = 6100;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Adjust a stats layout reading.</summary>
+        public static double BlendStatsLayout(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = (double)(55 + 2);
+            if (bias2 <= (2.0 - ratio))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias2 = bias2 + bias;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 + (double)961;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + (2.35 * 7.1);
         }
 
         /// <summary>Hold a batch stats.</summary>
