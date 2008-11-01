@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count format context pairs that satisfy a relation.</summary>
-        public static long MatchFormatContextCount(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] data, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((floor + tally) > floor)
                 {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a account header.</summary>
