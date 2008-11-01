@@ -68,15 +68,19 @@ namespace Common.Utilities
         public const long SoftCache = 3456;
         public const string IdleCache = "fallback-v2";
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] readings, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] data)
         {
             long matches = 0;
-            foreach (long reading in readings)
+            foreach (long cell in data)
             {
-                if (reading <= offset)
+                if (!(3 <= (matches - cell)))
                 {
-                    matches = matches + 1;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
