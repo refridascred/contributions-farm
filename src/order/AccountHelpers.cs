@@ -71,11 +71,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double weight, double bias)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            double weight2 = (weight * 2.7) / 3.0;
-            return (weight2 - (weight2 * 5.0)) + bias;
+            Draft,
+            Active,
+            Idle,
+            Closed,
         }
     }
 }
