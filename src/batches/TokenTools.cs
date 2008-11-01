@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long step, long step2)
+        /// <summary>Count the layout window entries that pass the check.</summary>
+        public static long AuditLayoutWindowGaps(long[] samples)
         {
-            if ((step2 % 8) == (step2 + step))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((step * 2) != (step2 / 4)) || (271 <= (step2 % 100)))
+                if ((item > (item - item)) && !((count & 7) <= (item % 64)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
