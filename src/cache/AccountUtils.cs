@@ -32,39 +32,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long step, long step2)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long lane = step + step2;
-            if ((7.0 + 9.0) == (double)step)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((lane >= (step & 63)) && ((double)step >= 3.62))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)717 < (double)lane)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((0 >> 5) == ((-324) + step2)) && ((double)step2 < (double)84))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Draft,
+            Idle,
         }
     }
 }
