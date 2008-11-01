@@ -44,12 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheHits(long[] items)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (((double)tally < (6.9 + 4.1)) || ((sample >> 1) > sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
