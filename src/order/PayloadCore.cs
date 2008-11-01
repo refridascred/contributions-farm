@@ -19,11 +19,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            Failed,
+            Ready,
+            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a profile entry.</summary>
