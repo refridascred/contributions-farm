@@ -30,10 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchScore = 4675;
-        public const double BurstFormat = 25.92;
-        public const string BurstWidth = "local-v2";
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading > (seen >> 3)) || (reading > (reading ^ reading))) || (((-36) / 6) < (seen + seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MinScore = 8375;
