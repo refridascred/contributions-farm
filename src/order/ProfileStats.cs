@@ -59,11 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
