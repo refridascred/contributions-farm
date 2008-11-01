@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 4797;
-        public const long RetryCount = 2437;
-        public const long IdleSupport = 2329;
-        public const long SoftWidth = 1214;
-        public const long LimitBudget = 1942;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheRatio = 6272;
+        public const long BurstStats = 8543;
+        public const long WindowStats = 9994;
+        public const long IdleLevel = 2721;
 
         /// <summary>Digest a series of filter already entries.</summary>
         public static long DigestFilterAlready(long[] readings)
