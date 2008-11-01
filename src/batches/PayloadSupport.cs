@@ -25,11 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryDepth = 39.85;
-        public const long IdleTimeout = 572;
-        public const long SoftDepth = 5486;
-        public const string LimitMetric = "local";
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = mark ^ (limit >> 1);
+                mark = (mark - limit) % 4096;
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long PairLayoutCount(long[] series)
