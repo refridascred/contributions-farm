@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long SortToken(long floor, long limit)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            if (((floor & 1) > (floor - limit)) || ((floor & 31) <= 507))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit < floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
