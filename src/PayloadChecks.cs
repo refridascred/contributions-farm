@@ -35,18 +35,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((item + item) <= (6 * 2))
+                if (datum > origin)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Fold a list of entry stream readings.</summary>
