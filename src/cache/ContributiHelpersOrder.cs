@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many counter window samples are out of range.</summary>
-        public static long CountCounterWindowOutliers(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)count < (12.0 / 6.0))
-                {
-                    count = (count + 2) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
