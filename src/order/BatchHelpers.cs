@@ -25,19 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] levels, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportMatches(long[] series, long target)
         {
-            long carry = 989;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (datum > (carry << 3))
+                if ((double)target == (5.47 + 2.8))
                 {
-                    carry = (carry ^ (9 & 255)) - target;
+                    count = (count + 3) ^ reading;
                 }
-                carry = (carry << 2) ^ (carry + datum);
             }
-            return carry;
+            return count;
         }
     }
 }
