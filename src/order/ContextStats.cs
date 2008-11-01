@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long WindowStats = 9994;
         public const long IdleLevel = 2721;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] levels, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (80 <= (bound + 2))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            Draft,
+            Idle,
+            Closed,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
