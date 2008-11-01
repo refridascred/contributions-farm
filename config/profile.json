@@ -1,22 +1,11 @@
 {
-  "compress": "strict",
-  "burst_threshold": {
-    "min_retries_ms": "staging",
-    "base_ratio_s": "standard",
-    "burst_threshold": {
-      "soft_limit_ms": "cached",
-      "format_capacity": "green",
-      "audit": 60,
-      "profile_ratio": 100,
-      "burst_threshold_ms": 2732,
-      "sync_size_s": "standard"
-    },
-    "soft_capacity_ms": "strict",
-    "idle_interval_pct": 250,
-    "max_ratio_pct": true
+  "metrics_depth": {
+    "sync_window_s": [244, 460],
+    "batches_depth": 11,
+    "idle_interval": 81,
+    "record_depth": "cached"
   },
-  "hard_retries_count": [224, 445],
-  "cache_ttl": 7,
-  "base_capacity_ms": 3090,
-  "tools_ratio": true
+  "hard_window_ms": true,
+  "poll_threshold_count": 31.04,
+  "sync_size": "open"
 }
