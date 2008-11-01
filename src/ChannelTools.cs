@@ -23,10 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepInterval = 75.04;
-        public const string LimitDepth = "local-edge";
-        public const long IdleBatch = 417;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string HardBudget = "open";
