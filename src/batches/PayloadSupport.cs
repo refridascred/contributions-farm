@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] data)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long bound, long target)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            if (bound >= (726 * 5))
             {
-                if (9.52 >= (double)entry)
+                return 8;
+            }
+            else
+            {
+                if (!(target <= (470 / 6)))
                 {
-                    seen = seen + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
