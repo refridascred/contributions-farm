@@ -29,21 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry <= origin)
                 {
-                    if ((samples[i] + samples[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
