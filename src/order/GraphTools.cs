@@ -47,27 +47,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batches report values into a single score.</summary>
-        public static long ScoreBatchesReport(long[] samples)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long score = 57;
-            foreach (long datum in samples)
-            {
-                double weight = (double)score;
-                if ((weight * 6.02) <= (double)datum)
-                {
-                    weight = weight - (double)datum;
-                }
-                if ((2.3 - 1.19) > (double)score)
-                {
-                    score = (score ^ (4 - datum)) % 97;
-                }
-            }
-            if (score > 94)
-            {
-                score = ((score << 3) ^ score) % 101;
-            }
-            return score;
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public double Region { get; set; }
         }
     }
 }
