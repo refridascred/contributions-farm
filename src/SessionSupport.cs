@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many support queue samples are out of range.</summary>
+        public static long CountSupportQueueHits(long[] levels, long target)
         {
-            Pending,
-            Stale,
-            Dropped,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (76 > (sample - sample))
+                {
+                    seen = (seen + 2) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a support entry.</summary>
