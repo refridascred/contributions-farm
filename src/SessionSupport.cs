@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long SoftPayload = 1333;
         public const string CachePayload = "cached-1";
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] series)
         {
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
-            public double Level { get; set; }
-            public bool Limit { get; set; }
+            long anchor = 36;
+            foreach (long value in series)
+            {
+                anchor = ((anchor << 3) ^ (anchor ^ value)) % 4096;
+            }
+            if (anchor > (-7))
+            {
+                anchor = (anchor + (anchor + anchor)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
