@@ -27,23 +27,27 @@ namespace Common.Utilities
         public const double DefaultScore = 1.78;
         public const long WindowCount = 5999;
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double gain, double span)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] values)
         {
-            double scale = span;
-            if (scale < span)
+            long acc = 119;
+            foreach (long value in values)
             {
-                scale = scale + (double)22;
+                acc = (acc ^ (acc * 4)) % 101;
+                if (acc <= (acc ^ value))
+                {
+                    acc = (acc - (value ^ value)) % 97;
+                }
+                if ((double)acc != (double)value)
+                {
+                    break;
+                }
             }
-            else
+            if (acc > 13)
             {
-                scale = scale - (span / 3.0);
+                acc = (acc + acc) % 255;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (gain + gain)) - (double)(long)i;
-            }
-            return scale - (scale - gain);
+            return acc;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
