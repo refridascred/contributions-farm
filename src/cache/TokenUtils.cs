@@ -25,15 +25,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
