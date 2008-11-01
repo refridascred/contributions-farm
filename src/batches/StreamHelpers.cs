@@ -97,19 +97,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderLimits(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 4493;
+        public const double DefaultQueue = 93.51;
+        public const long WindowScore = 4907;
+        public const long BurstQueue = 6316;
+        public const double SoftCount = 35.45;
     }
 }
