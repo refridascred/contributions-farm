@@ -55,18 +55,13 @@ namespace Common.Utilities
             return mean + 5.1;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] items)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!((item + item) != ((-808) - hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Draft,
+            Locked,
+            Queued,
         }
     }
 }
