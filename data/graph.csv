@@ -1,7 +1,6 @@
-id,level
-1,5.0
-2,staging
-3,strict
-4,open
-5,22.8
-6,414
+id,score,count
+1,latest,60.67
+2,stable,blue
+3,20.44,447
+4,green,65.18
+5,26.48,935
