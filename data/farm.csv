@@ -1,8 +1,9 @@
-id,ratio,state,token,rank
-1,454,standard,95.79,57.17
-2,staging,105,standard,990
-3,326,strict,standard,standard
-4,standard,fallback,17.32,524
-5,1.55,9.21,7.02,primary
-6,32.81,89,450,legacy
-7,784,18.22,493,green
+id,ratio
+1,94.39
+2,eu-west
+3,80.25
+4,873
+5,373
+6,latest
+7,cached
+8,local
