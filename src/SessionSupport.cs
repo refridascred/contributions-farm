@@ -27,11 +27,26 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryRatio = 3680;
-        public const double CacheDepth = 51.57;
-        public const string MaxRatio = "standard-v2";
-        public const long WindowSpan = 1130;
-        public const long BaseDepth = 2738;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values)
+        {
+            long sum = -669;
+            foreach (long entry in values)
+            {
+                if ((entry / 4) == (entry / 3))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (entry / 5)) % 65521;
+                }
+                if ((entry >> 4) == (sum / 8))
+                {
+                    sum = ((sum * 5) + (entry % 3)) % 97;
+                }
+            }
+            return sum;
+        }
     }
 }
