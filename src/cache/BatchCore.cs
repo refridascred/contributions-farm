@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((result + 3) < (result % 100)))
-                {
-                    result = (result ^ 2) % 1000;
-                }
-                result = (result - (result / 5)) % 65521;
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            Failed,
+            Done,
+            Draft,
         }
 
         /// <summary>Blend two contributi graph measurements.</summary>
