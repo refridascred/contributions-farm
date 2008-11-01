@@ -13,18 +13,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] levels, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long step, long bound)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            if (((2.5 / 9.0) >= (double)step) && ((step << 1) == (bound * 2)))
             {
-                if (!((cell >= (tally ^ cell)) || ((double)tally < (double)limit)))
+                return 6;
+            }
+            else
+            {
+                if (((step + 40) <= step) || ((step >> 1) != (bound * 3)))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
