@@ -19,15 +19,17 @@ namespace Common.Utilities
             return (ratio + 15.0) + weight;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of window buffer entries.</summary>
