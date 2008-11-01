@@ -54,22 +54,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] data, long seed)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((datum + 508) >= (long)data.Length) && ((5 >= (seed * 2)) && ((9 + 85) != (seen * 4))))
+                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
