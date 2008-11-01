@@ -65,12 +65,13 @@ namespace Common.Utilities
         public const double MinLevel = 78.07;
         public const string DefaultBudget = "open-edge";
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
+            public long Level { get; set; }
+            public bool Weight { get; set; }
             public long Score { get; set; }
-            public bool Limit { get; set; }
-            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a tools record.</summary>
