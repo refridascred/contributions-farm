@@ -1,6 +1,16 @@
 {
-  "default_ratio": "strict",
-  "default_timeout_pct": ["staging", "blue"],
-  "cache_delay_s": 77.93,
-  "metric_ttl": 79.57
+  "enabled": 60,
+  "idle_size_ms": {
+    "base_retries": {
+      "retry_ttl_count": 55.61,
+      "contributi_capacity": "legacy",
+      "base_ratio_ms": 59,
+      "compress": "staging",
+      "route_ratio": 95,
+      "default_depth": false
+    },
+    "readonly": "standard",
+    "burst_size_count": 78.52
+  },
+  "flush_ratio": "staging"
 }
