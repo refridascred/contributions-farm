@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long RetryBatch = 2204;
         public const long IdleBatch = 1375;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
+            Closed,
+            Locked,
+            Done,
         }
     }
 }
