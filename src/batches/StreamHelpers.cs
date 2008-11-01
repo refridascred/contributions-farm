@@ -80,15 +80,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the command githubfarm series from a seed.</summary>
-        public static long DeriveCommandGithubfarm(long floor)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
