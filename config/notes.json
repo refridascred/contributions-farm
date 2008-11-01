@@ -1,5 +1,6 @@
 {
-  "max_ratio_s": "green",
-  "burst_timeout": ["staging", "edge"],
-  "already_size": "open"
+  "soft_interval_ms": "primary",
+  "warm_size": "strict",
+  "readonly": [233, 128],
+  "profile_threshold": "open"
 }
