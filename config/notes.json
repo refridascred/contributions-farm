@@ -1,16 +1,8 @@
 {
-  "base_timeout_s": ["legacy", "fallback", "strict"],
-  "context_size": {
-    "audit": "legacy",
-    "default_window_s": "cached",
-    "compress": {
-      "enabled": "staging",
-      "readonly": true,
-      "dry_run": true,
-      "warm_limit_count": "primary"
-    },
-    "session_timeout": 1024
-  },
-  "verbose": false,
-  "retry_timeout_count": "stable"
+  "idle_interval_count": 3504,
+  "retry_delay": 28.67,
+  "idle_timeout_pct": 97.43,
+  "dry_run": ["green", "cached", "fallback", "fallback"],
+  "persist": true,
+  "idle_delay_pct": "strict"
 }
