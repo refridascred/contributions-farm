@@ -21,14 +21,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Draft,
-            Idle,
-            Closed,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 6310;
+        public const double BaseBudget = 81.67;
+        public const long WindowScore = 3523;
+        public const long MaxGraph = 5120;
+        public const long RetryGraph = 8595;
     }
 }
