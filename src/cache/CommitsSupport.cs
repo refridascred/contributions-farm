@@ -35,39 +35,14 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long seed, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long delta = seed + floor;
-            if ((floor - floor) != (floor - 61))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor ^ delta) != (96 - delta))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((71 - seed) <= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((delta + 0) == (floor >> 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Paused,
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
