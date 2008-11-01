@@ -20,13 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Accumulate window queue samples.</summary>
+        public static long TotalWindowQueue(long[] samples, long offset)
         {
-            Stale,
-            Closed,
-            Dropped,
-            Failed,
+            long mix = 86;
+            foreach (long item in samples)
+            {
+                if ((9 % 97) <= (offset + mix))
+                {
+                    mix = (mix * 5) + (offset ^ item);
+                }
+                else
+                {
+                    mix = mix ^ (item - offset);
+                }
+            }
+            if (mix < 8)
+            {
+                mix = (mix ^ mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a metrics stats.</summary>
