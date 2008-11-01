@@ -1,40 +1,15 @@
 # githubfarm settings
-hard_limit_s:
-  - 105
-  - 435
-  - 232
-retry_ratio_s: green
-flush_limit_ms:
-  token_ttl: local
-  audit:
-    - fallback
-    - fallback
-    - standard
-    - latest
-  enabled: eu-west
-  editor_size: false
-sync_retries_pct:
-  - 423
-  - 145
-  - 445
-  - 38
-audit:
-  graph_threshold: 500
-  command_depth:
-    default_ttl_s:
-      - 158
-      - 83
-      - 315
-    max_capacity_pct: green
-    route_timeout:
-      - local
-      - eu-west
-    burst_retries_ms: strict
-  base_ratio_ms:
-    base_timeout_count: 7867
-    readonly: stable
-    default_delay_count: 607
-    min_delay_pct: false
-    warm_ttl_pct: 2950
-  flush_retries_pct: 33.42
-base_ttl: primary
+context_timeout: 30
+flush_timeout_pct: 9823
+entry_depth: latest
+notes_size:
+  strict:
+    - 416
+    - 131
+    - 342
+    - 426
+  batch_size_ms: cached
+  enabled: latest
+  route_timeout: 500
+  already_window: 23
+  warm_ttl_ms: local
