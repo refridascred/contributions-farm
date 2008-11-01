@@ -1,7 +1,5 @@
 # support settings
-soft_delay_count: 13.09
-verbose: 100
-order_capacity: open
-soft_size_s: 36.43
-base_interval: 55.16
-base_delay_ms: open
+sync_capacity_ms: 62.62
+audit: 8.21
+cache_interval_pct: 60
+stats_timeout: 81
