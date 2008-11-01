@@ -19,22 +19,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Fold a list of metric batches readings.</summary>
-        public static long ScoreMetricBatches(long[] data)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long mark = 7;
-            foreach (long item in data)
-            {
-                if ((item - mark) == ((-92) ^ item))
-                {
-                    mark = mark ^ (mark % 24);
-                }
-            }
-            if (mark < 20)
-            {
-                mark = ((mark << 2) ^ (4 - mark)) % 101;
-            }
-            return mark;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine token command values into a single score.</summary>
