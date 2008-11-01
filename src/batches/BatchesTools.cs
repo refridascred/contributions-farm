@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long target)
         {
-            Failed,
-            Dropped,
-            Ready,
+            long mix = target;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
