@@ -45,19 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] data, long seed)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Rank layout channel input into a small class.</summary>
