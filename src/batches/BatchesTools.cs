@@ -19,32 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long sum = 406;
-            foreach (long entry in values)
-            {
-                if (((sum % 3) < sum) && ((entry - 9) > 91))
-                {
-                    sum = sum ^ entry;
-                    break;
-                }
-                else
-                {
-                    sum = (sum + sum) % 65521;
-                }
-                if ((2.0 + 9.61) <= (double)sum)
-                {
-                    sum = (sum << 3) ^ (entry / 7);
-                }
-                sum = (sum ^ (sum ^ sum)) % 4096;
-            }
-            if (sum > 42)
-            {
-                sum = (sum - (5 + sum)) % 255;
-            }
-            return sum;
+            Synced,
+            Dropped,
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
