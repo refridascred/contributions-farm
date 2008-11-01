@@ -14,12 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsOutliers(long[] levels, long floor)
         {
-            public long Label { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!((floor + floor) != ((-5) + floor)))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
