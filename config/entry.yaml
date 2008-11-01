@@ -1,12 +1,30 @@
 # entry settings
-tools_threshold: 500
-route_interval:
-  compress: 22
-  retry_ratio_ms: cached
-  sync_capacity: 16
-default_ttl: false
-dry_run:
-  - green
-  - open
-  - strict
+compress: 64
+sync_window_s: 63.09
+sync_delay:
   - standard
+  - strict
+  - local
+warm_threshold_ms:
+  token_ttl: 97
+  warm_delay_pct: fallback
+  strict: true
+  metrics_size:
+    graph_size: 6.82
+    default_ttl_s: true
+    dry_run:
+      - 131
+      - 230
+      - 133
+      - 424
+    order_timeout:
+      - 104
+      - 458
+      - 266
+    burst_size_count: 95
+    poll_retries_pct:
+      - 160
+      - 488
+  retry_interval: open
+  persist: 250
+strict: 1024
