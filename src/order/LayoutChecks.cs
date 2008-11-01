@@ -15,18 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitBudget = 3.04;
+        public const long HardSize = 3814;
+        public const long HardLevel = 1990;
+        public const long BurstChannel = 4969;
+        public const string BaseWidth = "fallback-v2";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long WindowFilter = 1642;
