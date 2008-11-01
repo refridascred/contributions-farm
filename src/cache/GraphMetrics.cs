@@ -82,15 +82,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] levels)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] items)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            foreach (long item in items)
             {
-                if (tally <= (reading + reading))
+                if ((tally ^ item) < tally)
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
