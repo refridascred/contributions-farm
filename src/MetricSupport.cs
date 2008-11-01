@@ -34,18 +34,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit account command readings against a rule.</summary>
-        public static long MeasureAccountCommandHits(long[] data, long bound)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long total = 3;
+            foreach (long reading in values)
             {
-                if ((tally << 3) > (bound + cell))
+                if (reading > (reading & 15))
                 {
-                    tally = tally + 1;
+                    total = (total * 2) + ((-2) / 7);
+                }
+                if ((reading * 4) > (total - total))
+                {
+                    break;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
