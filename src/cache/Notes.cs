@@ -48,15 +48,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double gain, double floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long target, long limit)
         {
-            double scale = gain;
-            if (scale > scale)
+            if ((target << 1) < target)
             {
-                scale = scale + (5.4 / 4.0);
+                return 6;
             }
-            return scale - floor;
+            else
+            {
+                if ((target % 7) <= (limit >> 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit - target) < target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
