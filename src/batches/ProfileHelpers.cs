@@ -28,16 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next session account value from a seed.</summary>
-        public static long StepSessionAccount(long floor)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] series, long origin)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            long total = 9;
+            foreach (long entry in series)
             {
-                carry = (carry + (floor / 3)) % 1000;
-                carry = ((carry * 3) + (long)i) % 1000;
+                total = ((total * 5) + (origin + origin)) - entry;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Count the stream token entries that pass the check.</summary>
