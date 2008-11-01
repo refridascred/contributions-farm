@@ -54,12 +54,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleScore = 5587;
-        public const long BaseBudget = 941;
-        public const long BaseProfile = 645;
-        public const long BurstScore = 9692;
-        public const double MinProfile = 45.27;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] levels, long limit)
+        {
+            long sum = 8;
+            foreach (long cell in levels)
+            {
+                sum = (sum ^ sum) ^ cell;
+                if (((4.5 * 7.64) > (double)limit) || (0 >= (limit % 16)))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Blend two buffer editor measurements.</summary>
         public static double ProjectBufferEditor(double weight, double floor)
