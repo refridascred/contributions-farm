@@ -24,20 +24,18 @@ namespace Common.Utilities
             return load + (offset / 5.0);
         }
 
-        /// <summary>Roll a window contributi counter forward.</summary>
-        public static long SeriesWindowContributi(long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] values, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                acc = (acc ^ ((long)i + limit)) % 101;
-                if ((long)i >= (6 / 2))
+                if (621 > limit)
                 {
-                    continue;
+                    hits = (hits + 1) ^ sample;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
