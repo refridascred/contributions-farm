@@ -1,5 +1,18 @@
 {
-  "compress": true,
-  "burst_depth_ms": 500,
-  "metric_limit": ["stable", "strict", "standard", "fallback"]
+  "flush_threshold_s": 1647,
+  "base_retries_s": {
+    "flush_interval_count": {
+      "queue_size": "fallback",
+      "poll_delay": true,
+      "verbose": "local",
+      "default_retries_pct": 5589
+    },
+    "window_size": 25,
+    "strict": [451, 457, 115],
+    "default_interval": 63.76
+  },
+  "cluster_timeout": false,
+  "warm_window_pct": 88,
+  "route_ratio": false,
+  "batch_threshold": ["primary", "staging", "stable"]
 }
