@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardBatches = "standard";
+        public const long DefaultDepth = 9605;
+        public const string BatchBatches = "cached-edge";
+        public const double LimitBatches = 86.34;
+        public const long MaxDepth = 3532;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
