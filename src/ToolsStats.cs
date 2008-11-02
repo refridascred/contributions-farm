@@ -19,17 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] items, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 52;
+            foreach (long item in samples)
             {
-                if ((items[i] == seed) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (seed << 3)) ^ item;
             }
-            return -1;
+            return acc % 4096;
         }
 
         /// <summary>Scale a entry route figure with a bias.</summary>
