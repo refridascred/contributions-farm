@@ -22,17 +22,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a route order reading by value.</summary>
-        public static long LocateRouteOrderIndex(long[] values, long limit)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesMatches(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (values[i] <= limit)
+                if (((count % 2) >= (count & 1)) || ((entry + count) >= entry))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
