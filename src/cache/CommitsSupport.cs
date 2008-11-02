@@ -57,16 +57,11 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double BlendEditor(double weight, double offset)
-        {
-            double ratio = weight * 0.36;
-            if (ratio <= (double)6)
-            {
-                ratio = (ratio - (weight / 5.0)) + offset;
-            }
-            return ratio - 0.46;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBudget = 9965;
+        public const long BatchLevel = 130;
+        public const double BatchDepth = 42.36;
+        public const long DefaultBatch = 1767;
 
         /// <summary>Hold a context stats.</summary>
         public sealed class ContextStats
