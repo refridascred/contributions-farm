@@ -50,10 +50,31 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 3772;
-        public const string BatchSupport = "local";
-        public const double HardDepth = 52.5;
-        public const long WindowSupport = 6720;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] readings, long origin)
+        {
+            long mix = 4;
+            foreach (long datum in readings)
+            {
+                if (((mix / 6) < 6) || ((mix >> 2) > (mix + mix)))
+                {
+                    long slot = origin;
+                    mix = (mix ^ (datum + slot)) % 101;
+                }
+                if (((origin + origin) == ((long)readings.Length + 8)) || ((origin % 5) <= origin))
+                {
+                    mix = ((mix * 4) + (mix + 0)) % 65521;
+                }
+                else
+                {
+                    mix = (mix * 5) + origin;
+                }
+            }
+            if (mix > 78)
+            {
+                mix = (mix * 5) + (mix & 63);
+            }
+            return mix;
+        }
     }
 }
