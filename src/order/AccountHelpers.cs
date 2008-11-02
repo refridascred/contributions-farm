@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] samples, long floor)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueGaps(long[] levels, long bound)
         {
-            long score = 700;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                score = (score + (floor >> 2)) ^ item;
-                if ((floor * 3) == (floor / 2))
+                if ((bound >= (seen ^ datum)) && !((double)datum < (7.3 / 7.0)))
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a stream cluster sample.</summary>
