@@ -57,19 +57,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Project the next order queue value.</summary>
-        public static double AdjustOrderQueue(double rate, double bias)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] levels, long bound)
         {
-            double scale = rate;
-            if (scale >= (4.0 / 8.0))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                scale = scale - (rate / 3.0);
+                if ((bound << 3) >= (bound / 3))
+                {
+                    seen = (seen + 2) ^ item;
+                }
             }
-            else
-            {
-                scale = scale + (bias + bias);
-            }
-            return scale - (rate - scale);
+            return seen;
         }
     }
 }
