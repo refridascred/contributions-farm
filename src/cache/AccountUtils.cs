@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (scale2 - (scale2 + scale)) + offset;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 24; i++)
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = (((acc << 2) ^ (acc * 2)) % 65521) ^ (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
