@@ -44,19 +44,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of batch metric entries.</summary>
-        public static long ScoreBatchMetric(long[] values, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long seed, long floor)
         {
-            long anchor = 342;
-            foreach (long entry in values)
+            if (seed >= (854 + 5))
             {
-                anchor = ((anchor << 2) ^ (1 - step)) % 255;
-                if (((anchor >> 3) <= step) || ((entry << 2) < (anchor + 6)))
+                return 5;
+            }
+            else
+            {
+                if ((floor <= (floor - seed)) || ((double)floor > (double)6))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((seed + seed) >= (floor ^ floor)) && ((double)floor <= (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
