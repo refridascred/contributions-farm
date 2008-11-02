@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardSize = "fallback-v2";
-        public const long BaseFactor = 8548;
-        public const double LimitFarm = 39.64;
-        public const long DefaultFarm = 3967;
-        public const string MaxWidth = "stable-v2";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowRatio = 8844;
+        public const string BatchCluster = "strict";
+        public const double RetryScore = 93.84;
+        public const long MinInterval = 7854;
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
