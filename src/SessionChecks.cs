@@ -16,10 +16,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 3767;
-        public const long WindowChecks = 828;
-        public const long DefaultChecks = 8352;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Closed,
+            New,
+            Done,
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
