@@ -43,19 +43,17 @@ namespace Common.Utilities
         public const long IdleBudget = 1327;
         public const double SoftTimeout = 42.93;
 
-        /// <summary>Validate commits checks readings against a bound.</summary>
-        public static bool ValidateCommitsChecksLimits(long[] items, long origin)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading < origin)
+                if ((items[i] >= floor) && ((items[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
