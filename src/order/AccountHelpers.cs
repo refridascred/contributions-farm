@@ -94,20 +94,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long limit)
         {
-            long result = -288;
-            foreach (long cell in samples)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (7 >= result)
-                {
-                    result = ((result << 3) ^ (cell + cell)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (820 * 5)) % 255;
-                }
+                result = ((result * 4) + (long)i) % 4093;
             }
             return result;
         }
