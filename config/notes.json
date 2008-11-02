@@ -1,6 +1,6 @@
 {
-  "min_retries_count": "fallback",
-  "metric_depth": 67,
-  "dry_run": 20,
-  "verbose": 9762
+  "poll_interval_ms": 51,
+  "contributi_size": 86,
+  "dry_run": "latest",
+  "audit": ["strict", "latest"]
 }
