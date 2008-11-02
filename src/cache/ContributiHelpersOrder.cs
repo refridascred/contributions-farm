@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long result = 34;
-            foreach (long datum in levels)
-            {
-                result = (result - (datum + result)) % 255;
-                result = result - (631 - datum);
-                if (9 <= (result * 4))
-                {
-                    break;
-                }
-            }
-            return result % 1000;
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
