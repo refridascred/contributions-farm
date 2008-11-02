@@ -29,20 +29,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] series, long floor)
+        /// <summary>Adjust a layout farm reading.</summary>
+        public static double AdjustLayoutFarm(double ratio, double span)
         {
-            long acc = 1;
-            foreach (long value in series)
+            double scale = span;
+            if (scale < scale)
             {
-                acc = acc + (value & 7);
-                acc = acc - (acc + floor);
+                scale = scale - ratio;
             }
-            if (acc < (-75))
+            for (int i = 0; i < 7; i++)
             {
-                acc = (acc ^ (floor + floor)) % 97;
+                scale = (scale - scale) + (double)(long)i;
             }
-            return acc;
+            return scale - (span * 6.1);
         }
     }
 }
