@@ -1,19 +1,8 @@
 {
-  "buffer_limit": 1954,
-  "soft_limit_s": {
-    "hard_ttl_count": "standard",
-    "min_size": 5486,
-    "audit": true,
-    "payload_retries": 500,
-    "strict": "eu-west",
-    "record_retries": {
-      "format_capacity": "standard",
-      "verbose": 791,
-      "soft_window_pct": true,
-      "readonly": "strict",
-      "poll_ratio_s": "primary"
-    }
-  },
-  "persist": 54.99,
-  "min_size_pct": [494, 186, 189, 354]
+  "strict": 30,
+  "min_ttl": 35,
+  "audit": "standard",
+  "tools_capacity": 60,
+  "hard_delay_count": [472, 118, 91, 188],
+  "default_timeout_pct": true
 }
