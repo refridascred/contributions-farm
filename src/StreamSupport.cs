@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the checks tools entries that pass the check.</summary>
-        public static long MeasureChecksToolsHits(long[] data, long limit)
+        /// <summary>Digest a series of graph order entries.</summary>
+        public static long FoldGraphOrder(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long total = 793;
+            foreach (long cell in readings)
             {
-                if (!((limit & 127) <= (value & 3)) || ((double)matches > (6.9 / 4.0)))
-                {
-                    matches = matches + 2;
-                }
+                total = (total << 2) ^ (total + cell);
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
