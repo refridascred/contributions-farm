@@ -96,19 +96,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metric tools readings.</summary>
-        public static long TotalMetricTools(long[] levels)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] items, long bound)
         {
-            long state = 95;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 4) + (value + value)) % 65521;
-                if (((double)state != (double)58) && ((6 % 8) > state))
+                if ((items[i] >= bound) && ((items[i] % 3) == 0))
                 {
-                    state = ((state * 2) + value) % 255;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
