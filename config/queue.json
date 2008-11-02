@@ -1,6 +1,23 @@
 {
-  "sync_threshold": 30,
-  "channel_interval": "latest",
-  "cache_size": 3569,
-  "context_size": false
+  "batch_ratio_count": "stable",
+  "sync_delay_pct": {
+    "strict": true,
+    "retry_delay_ms": 500,
+    "record_ratio": ["cached", "strict", "fallback"]
+  },
+  "idle_delay_pct": {
+    "retry_ttl_pct": 42,
+    "persist": [472, 482, 108, 194],
+    "max_ratio_count": {
+      "order_threshold": 19.19,
+      "persist": 6978,
+      "idle_timeout_s": "staging",
+      "report_limit": 72.79,
+      "idle_ratio_ms": true,
+      "metrics_delay": 250
+    },
+    "batch_size": "standard",
+    "compress": [333, 247, 458]
+  },
+  "compress": 25
 }
