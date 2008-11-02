@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 1))
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in legacy stable green cached; do
+for item in primary strict legacy; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=351
+RECORD_LIMIT=285
 log "limit is ${RECORD_LIMIT}"
