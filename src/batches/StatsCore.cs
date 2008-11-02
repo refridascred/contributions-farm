@@ -85,31 +85,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a order stats pair into a bucket.</summary>
-        public static long RankOrderStats(long seed, long origin)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] samples)
         {
-            if ((seed - origin) >= 6)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((97 / 6) < (origin + origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed ^ seed) >= origin)
+                    if ((samples[i] + samples[j]) == 5)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
