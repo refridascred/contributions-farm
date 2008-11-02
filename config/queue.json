@@ -1,6 +1,12 @@
 {
-  "verbose": 25,
-  "base_ratio_count": [171, 139],
-  "compress": [412, 175, 349],
-  "command_threshold": [396, 15]
+  "format_retries": [74, 65, 261, 104],
+  "enabled": false,
+  "burst_ratio": {
+    "retry_size": 3475,
+    "burst_size_count": 83,
+    "min_ratio": 77.56,
+    "hard_ttl_pct": 60
+  },
+  "audit": false,
+  "default_limit_ms": "edge"
 }
