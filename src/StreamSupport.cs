@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 17;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)entry < (1.4 * 1.26)) && (entry < (mix + mix)))
                 {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix + (entry ^ mix)) % 1000) + limit;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Count the commits report entries that pass the check.</summary>
