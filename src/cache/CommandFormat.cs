@@ -24,22 +24,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] items, long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long total = 4;
-            foreach (long cell in items)
-            {
-                if (((long)items.Length - total) <= (total / 4))
-                {
-                    total = (((total * 4) + (limit + total)) % 97) + cell;
-                }
-                if ((total * 2) <= (limit & 7))
-                {
-                    break;
-                }
-            }
-            return total;
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
