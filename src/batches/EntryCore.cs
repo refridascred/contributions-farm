@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits metric samples.</summary>
-        public static long OverlapCommitsMetricCount(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading < seed)
                 {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a profile header.</summary>
