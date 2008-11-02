@@ -25,17 +25,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] readings, long offset)
+        /// <summary>Digest a series of channel cache entries.</summary>
+        public static long TotalChannelCache(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 6;
+            foreach (long cell in items)
             {
-                if (readings[i] == offset)
+                if (!((double)acc >= (double)cell))
                 {
-                    return (long)i;
+                    acc = (acc + (seed / 4)) % 97;
+                }
+                else
+                {
+                    acc = (acc - acc) % 255;
+                }
+                if (836 >= (cell ^ cell))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > (-25))
+            {
+                acc = (acc * 4) + (seed % 60);
+            }
+            return acc;
         }
 
         /// <summary>Describe the stream phase values.</summary>
