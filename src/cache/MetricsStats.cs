@@ -63,21 +63,18 @@ namespace Common.Utilities
         public const string CacheEntry = "latest-1";
         public const long IdleEntry = 253;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((seen >> 4) < 6)
                 {
-                    if ((samples[i] + samples[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 1) + item;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
