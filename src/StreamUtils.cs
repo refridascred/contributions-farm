@@ -65,19 +65,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] values, long offset)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long origin)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum != offset)
+                if (0.4 > (double)(long)i)
                 {
-                    stale = false;
-                    break;
+                    mix = (mix << 3) ^ (origin + 66);
+                    mix = mix + (810 + mix);
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return stale;
+            return mix;
         }
     }
 }
