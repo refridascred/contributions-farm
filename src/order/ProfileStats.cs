@@ -22,18 +22,31 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] series)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long target, long step)
         {
-            long hits = 0;
-            foreach (long value in series)
+            if (((double)step > 5.68) || ((target - target) != (step % 2)))
             {
-                if (((long)series.Length + value) > hits)
+                return 1;
+            }
+            else
+            {
+                if ((step + step) > (step + 93))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (!((target + 641) == (target - step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
