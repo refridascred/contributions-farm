@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmLimits(long[] items, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] items, long target)
         {
-            bool found = true;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (sample < limit)
+                if (reading < target)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
