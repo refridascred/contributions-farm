@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] levels, long limit)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] levels, long offset)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                if (levels[i] < offset)
                 {
                     return (long)i;
                 }
