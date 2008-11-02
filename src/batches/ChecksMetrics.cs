@@ -22,18 +22,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesMatches(long[] values)
+        /// <summary>Match up route token samples.</summary>
+        public static long PairRouteTokenCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count % 2) >= (count & 1)) || ((entry + count) >= entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the schema state values.</summary>
