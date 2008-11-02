@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ratio + (rate + ratio);
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            Locked,
-            Queued,
             Active,
+            Done,
+            New,
         }
     }
 }
