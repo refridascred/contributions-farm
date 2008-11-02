@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] items, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] items, long offset)
         {
-            long sum = 43;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((71 % 64) == (item ^ offset))
+                if (!((value % 64) <= offset) && (value < (matches ^ value)))
                 {
-                    sum = ((sum * 5) + (sum + offset)) % 97;
+                    matches = matches + 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a batch record.</summary>
