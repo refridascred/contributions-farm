@@ -38,20 +38,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long limit)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long origin, long origin2)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            long diff = origin + origin2;
+            if ((double)origin >= (0.66 + 4.49))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    long delta = mark - limit;
-                    mark = ((mark * 2) + delta) + (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (!((diff >> 1) == (diff & 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
