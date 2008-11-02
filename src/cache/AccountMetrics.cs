@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the filter entry entries that pass the check.</summary>
-        public static long AuditFilterEntryOutliers(long[] samples)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((hits & 255) != (7 & 7))
+                if (item >= bound)
                 {
-                    hits = (hits + 1) - sample;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit format filter readings against a rule.</summary>
