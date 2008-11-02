@@ -55,10 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 8283;
-        public const long DefaultAlready = 8875;
-        public const double BurstLevel = 89.69;
-        public const long StepAlready = 7912;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
