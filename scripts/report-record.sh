@@ -7,10 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for i in $(seq 1 3); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-RECORD_LIMIT=377
+for item in legacy stable green cached; do
+    log "checking ${item}"
+done
+
+RECORD_LIMIT=351
 log "limit is ${RECORD_LIMIT}"
