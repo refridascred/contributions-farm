@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((15.0 * 3.0) <= (double)entry)
                 {
-                    if ((data[i] ^ data[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
