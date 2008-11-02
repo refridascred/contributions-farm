@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] data, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long offset)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (value != target)
+                if (((long)i / 8) > offset)
                 {
-                    ok = false;
-                    break;
+                    sum = (sum - (sum * 2)) % 4096;
                 }
+                sum = ((sum * 2) + (sum + 3)) % 101;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Fold a list of format readings.</summary>
