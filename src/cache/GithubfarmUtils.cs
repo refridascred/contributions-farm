@@ -13,11 +13,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepDepth = "staging-1";
-        public const double CacheDepth = 4.0;
-        public const long DefaultMetrics = 7361;
-        public const long BaseMetrics = 6397;
+        /// <summary>Combine layout payload values into a single score.</summary>
+        public static long ScoreLayoutPayload(long[] samples, long origin)
+        {
+            long mark = 8;
+            foreach (long sample in samples)
+            {
+                mark = ((mark ^ (mark * 4)) % 255) + origin;
+                mark = ((mark << 3) ^ sample) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] levels, long limit)
