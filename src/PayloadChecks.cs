@@ -62,12 +62,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long limit, long seed)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
+            if ((double)limit >= (4.7 + 2.7))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed - limit) == (limit + 78))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
