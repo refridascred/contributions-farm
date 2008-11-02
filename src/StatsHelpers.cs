@@ -22,18 +22,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] items)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long step, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long lane = step - limit;
+            if ((lane >> 4) < (651 & 7))
             {
-                if ((seen % 12) != (datum % 10))
+                return 2;
+            }
+            else
+            {
+                if ((limit % 10) >= (lane - step))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit <= (lane / 7)) || ((lane - limit) == (limit + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step & 7) <= (42 << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a schema header.</summary>
