@@ -12,26 +12,12 @@ namespace Common.Utilities
         public const long BurstStats = 4641;
         public const double SoftStats = 80.38;
 
-        /// <summary>Classify a command entry pair into a bucket.</summary>
-        public static long SortCommandEntry(long bound, long seed)
-        {
-            long step = bound ^ seed;
-            if ((seed - seed) < (bound - step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((step * 3) < (49 - seed)) && (4.7 > (double)bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheBudget = "standard";
+        public const long LimitBudget = 4106;
+        public const string MinCount = "strict-edge";
+        public const long DefaultLayout = 9034;
+        public const long MinLayout = 7699;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long TallyContributiOutliers(long[] items)
