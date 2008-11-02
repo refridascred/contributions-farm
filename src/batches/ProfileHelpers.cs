@@ -23,19 +23,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] levels, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (entry < offset)
+                if ((value ^ hits) >= (hits >> 3))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
