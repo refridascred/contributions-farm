@@ -19,18 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
-        public static long LocateGithubfarmCacheIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 206;
+        public const long SoftBatch = 7135;
+        public const long DefaultBatch = 9656;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long CacheSession = 5036;
