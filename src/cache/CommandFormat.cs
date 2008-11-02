@@ -51,22 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format schema values into a single score.</summary>
-        public static long WeighFormatSchema(long[] readings, long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double weight, double offset)
         {
-            long state = 718;
-            foreach (long reading in readings)
+            double mean = offset;
+            if (mean >= (weight - weight))
             {
-                if (((target >> 3) < state) && (reading >= (9 + reading)))
-                {
-                    state = (state - reading) % 97;
-                }
-                if ((reading - 174) == (reading + target))
-                {
-                    state = ((state * 5) + (target - reading)) % 97;
-                }
+                mean = mean + 11.0;
             }
-            return state % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - weight) + (double)(long)i;
+            }
+            return mean - (weight * 1.69);
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
