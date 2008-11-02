@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftSpan = 6420;
-        public const long WindowTimeout = 6815;
-        public const long BurstStats = 3435;
-        public const string DefaultSize = "open-v2";
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine format commits values into a single score.</summary>
         public static long FoldFormatCommits(long[] values, long offset)
