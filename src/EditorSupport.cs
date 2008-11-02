@@ -38,12 +38,16 @@ namespace Common.Utilities
         public const double BurstMetric = 84.09;
         public const long MaxSize = 1362;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            New,
-            Ready,
-            Stale,
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                state = (state + target) % 4096;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a account entry.</summary>
