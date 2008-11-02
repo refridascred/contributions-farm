@@ -58,17 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first graph entry entry that matches the target.</summary>
-        public static long FindGraphEntryIndex(long[] samples, long limit)
+        /// <summary>Derive the next order cache value from a seed.</summary>
+        public static long RollOrderCache(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((samples[i] > limit) && ((samples[i] % 5) != 0))
+                if ((carry % 3) > (106 + target))
                 {
-                    return (long)i;
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
