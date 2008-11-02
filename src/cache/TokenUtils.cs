@@ -24,20 +24,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] items, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] series, long seed)
         {
-            long state = 88;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                state = (((state - (state << 1)) % 4096) ^ entry) - seed;
-                state = (state + (state * 4)) % 65521;
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (state > 83)
-            {
-                state = (state + 43) % 65521;
-            }
-            return state % 1000;
+            return flag;
         }
     }
 }
