@@ -19,21 +19,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] readings)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (sample >= (sample - sample))
                 {
-                    if ((readings[i] ^ readings[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
