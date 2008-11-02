@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the window order series from a seed.</summary>
-        public static long DeriveWindowOrder(long limit)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((limit - limit) <= (mix << 2))
-                {
-                    break;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public bool Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next already value.</summary>
