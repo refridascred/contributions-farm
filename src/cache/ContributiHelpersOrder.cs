@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Look up the position of a record route sample.</summary>
+        public static long LookupRecordRouteIndex(long[] values, long origin)
         {
-            Ready,
-            Paused,
-            Failed,
-            Active,
-            Dropped,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
