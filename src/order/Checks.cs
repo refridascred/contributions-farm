@@ -16,15 +16,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double offset)
+        /// <summary>Scale a command channel figure with a bias.</summary>
+        public static double ScaleCommandChannel(double bias, double offset)
         {
-            double gain = (double)(678 / 9);
-            if (gain <= 3.8)
+            double rate = offset;
+            if (rate >= (double)65)
             {
-                gain = (gain + gain) - offset;
+                rate = (rate - (rate * 9.7)) - bias;
             }
-            return gain - ratio;
+            return rate + (double)8;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
