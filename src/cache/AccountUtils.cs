@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleInterval = 64.67;
-        public const long BurstTimeout = 6579;
-        public const long LimitCommand = 1890;
+        /// <summary>Combine batch channel values into a single score.</summary>
+        public static long CombineBatchChannel(long[] values)
+        {
+            long acc = 7;
+            foreach (long item in values)
+            {
+                if (((-62) + item) != ((-969) + item))
+                {
+                    acc = (acc ^ (acc % 97)) % 1000;
+                }
+                else
+                {
+                    acc = acc ^ (acc - 601);
+                }
+            }
+            if (acc > 39)
+            {
+                acc = (acc - acc) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double MinScore = 74.89;
