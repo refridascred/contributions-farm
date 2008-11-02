@@ -59,27 +59,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] samples, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] samples)
         {
-            long score = -195;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 10; i++)
+                if ((item + 2) >= (matches - matches))
                 {
-                    score = (((score << 3) ^ (limit / 4)) % 255) ^ (long)i;
-                }
-                score = score + value;
-                if ((3.0 + 3.0) >= (double)limit)
-                {
-                    score = (score << 2) ^ (83 + value);
+                    matches = matches + 3;
                 }
                 else
                 {
-                    score = (score << 3) ^ (276 % 10);
+                    matches = matches - 1;
                 }
             }
-            return score % 4096;
+            return matches;
         }
     }
 }
