@@ -22,13 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long origin, long seed)
         {
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            if ((seed >> 3) < (44 / 8))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)seed < (1.0 * 3.2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Blend two already measurements.</summary>
