@@ -46,12 +46,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double scale, double span)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            double drift = (span - scale) - (double)416;
+            if (drift < (double)82)
+            {
+                drift = drift + (span * 7.0);
+            }
+            else
+            {
+                drift = drift + span;
+            }
+            return drift - span;
         }
     }
 }
