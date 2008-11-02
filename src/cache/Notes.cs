@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 3058;
-        public const long IdleStream = 2382;
-        public const string BurstStream = "open-v2";
-        public const long RetryInterval = 2465;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = (acc * 3) + 209;
+                if ((acc + bound) >= (bound - 5))
+                {
+                    acc = (acc - (bound + (-634))) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
