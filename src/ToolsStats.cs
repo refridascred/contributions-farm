@@ -63,13 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] items, long seed)
         {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
