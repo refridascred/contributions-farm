@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Idle,
-            Active,
-            Stale,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 913;
+        public const string WindowFactor = "primary";
+        public const double WindowDepth = 33.5;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BurstCount = 6584;
