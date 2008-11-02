@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const double IdleSize = 78.57;
         public const long BatchCommand = 3787;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (reading < (reading / 4))
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "cached-v2";
+        public const string WindowRoute = "primary-1";
+        public const long IdleBudget = 1574;
+        public const string BurstSize = "legacy-1";
+        public const long SoftScore = 6477;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
