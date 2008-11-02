@@ -93,21 +93,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((carry - 870) == (carry ^ offset))
                 {
-                    if ((items[i] ^ items[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    carry = (carry - 74) % 101;
                 }
+                else
+                {
+                    carry = (carry + (offset & 255)) % 1000;
+                    carry = (carry ^ carry) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
     }
 }
