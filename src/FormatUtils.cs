@@ -75,10 +75,19 @@ namespace Common.Utilities
             return ratio2 - 1.34;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardBudget = 7166;
-        public const long MinScore = 1806;
-        public const string HardSession = "staging-v2";
-        public const long StepLevel = 8356;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] data, long step)
+        {
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
