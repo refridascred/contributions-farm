@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] levels, long origin)
+        /// <summary>Validate checks cluster readings against a bound.</summary>
+        public static bool ValidateChecksClusterBounds(long[] series, long target)
         {
-            long state = 1;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long value in series)
             {
-                state = (state * 4) + (origin * 3);
-                if (sample > origin)
+                if (value != target)
                 {
-                    state = ((state * 5) + 8) % 65521;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Grade a token notes value against two limits.</summary>
