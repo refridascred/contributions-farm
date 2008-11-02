@@ -59,10 +59,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFactor = 6458;
-        public const long WindowFilter = 9919;
-        public const string BurstSize = "staging-edge";
-        public const long IdleScore = 8842;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] series, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((matches << 3) == (seed + 58))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
+        }
     }
 }
