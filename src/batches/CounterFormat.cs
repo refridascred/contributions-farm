@@ -27,12 +27,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long offset, long limit)
         {
-            Active,
-            Locked,
-            Retry,
+            long slot = offset - limit;
+            if ((slot + 297) > (limit ^ offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset - offset) <= (offset + slot))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(slot <= (limit * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((slot * 4) > offset) && ((double)limit > 3.6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
