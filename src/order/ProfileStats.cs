@@ -36,15 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the batches cache series from a seed.</summary>
-        public static long StepBatchesCache(long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] samples, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if ((double)entry <= (double)offset)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
