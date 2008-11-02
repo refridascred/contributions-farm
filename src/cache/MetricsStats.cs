@@ -25,23 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Roll a editor record counter forward.</summary>
+        public static long DeriveEditorRecord(long bound)
         {
-            long sum = 3;
-            foreach (long entry in series)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    sum = (sum + (sum ^ (long)series.Length)) ^ (long)i;
-                }
-                sum = ((sum << 2) ^ (sum ^ 408)) % 255;
-                if ((entry >= (sum * 3)) && ((double)entry >= (14.0 / 5.0)))
-                {
-                    sum = (sum * 4) + (sum >> 4);
-                }
+                anchor = (anchor ^ bound) % 97;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return sum % 65521;
+            return anchor;
         }
 
         /// <summary>Grade a profile window value against two limits.</summary>
