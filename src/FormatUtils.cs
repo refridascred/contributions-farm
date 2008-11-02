@@ -21,18 +21,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] values)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((tally ^ reading) < (tally + reading))
+                if ((double)sample >= (5.0 * 4.9))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 1) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
