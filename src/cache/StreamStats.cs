@@ -14,13 +14,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] values)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public double Token { get; set; }
+            long score = 558;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = (score ^ (916 & 63)) - (long)i;
+                }
+                if ((double)cell >= (3.85 / 8.0))
+                {
+                    score = (score << 3) ^ 452;
+                    continue;
+                }
+                score = ((score * 3) + (29 & 15)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
