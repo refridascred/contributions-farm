@@ -32,14 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
-        {
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetrySize = 5062;
+        public const double WindowRoute = 62.98;
+        public const long RetryBudget = 2729;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TotalBatches(long[] items, long target)
