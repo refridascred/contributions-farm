@@ -20,19 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] levels, long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] data, long floor)
         {
-            long result = 11;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result * 5) + (reading << 2);
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            if (result < (-5))
-            {
-                result = ((result * 3) + (result + step)) % 4096;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Digest a series of editor tools entries.</summary>
