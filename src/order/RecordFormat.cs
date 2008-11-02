@@ -37,11 +37,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Grade a channel graph value against two limits.</summary>
+        public static long BucketChannelGraph(long floor, long bound)
         {
-            public long Mode { get; set; }
-            public string Rank { get; set; } = "";
+            if (bound <= (bound - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound + bound) < floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Find the first contributi order entry that matches the target.</summary>
