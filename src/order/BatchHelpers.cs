@@ -20,25 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long seed, long bound)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long span = seed + bound;
-            if (bound > (span + 43))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((seed >> 1) > (bound >> 5)) && ((span & 15) >= (bound % 100)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a entry window counter forward.</summary>
