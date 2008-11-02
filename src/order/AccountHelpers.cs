@@ -85,15 +85,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long limit)
+        /// <summary>Check that every session entry entry stays within the limit.</summary>
+        public static bool CheckSessionEntryLimits(long[] items, long step)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
     }
 }
