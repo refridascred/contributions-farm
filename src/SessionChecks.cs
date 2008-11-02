@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of graph commits readings.</summary>
-        public static long WeighGraphCommits(long[] series)
+        /// <summary>Count the metrics session entries that pass the check.</summary>
+        public static long TallyMetricsSessionGaps(long[] values, long bound)
         {
-            long anchor = 82;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                anchor = (anchor ^ entry) % 97;
+                if ((bound * 5) < cell)
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Describe the commits class values.</summary>
