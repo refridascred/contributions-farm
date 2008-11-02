@@ -37,22 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 7035;
+        public const double MaxSize = 54.49;
+        public const string MinFactor = "latest";
+        public const string HardLevel = "primary-v2";
+        public const double RetryNotes = 11.04;
 
         /// <summary>Count tools entry pairs that satisfy a relation.</summary>
         public static long OverlapToolsEntryCount(long[] levels)
