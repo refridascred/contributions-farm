@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long target, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] items, long step)
         {
-            if (((target + offset) <= (target >> 4)) && ((offset / 9) < (target / 7)))
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((14.0 * 7.0) <= (double)target)
+                if ((step + step) < (tally + value))
                 {
-                    return 5;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (((-42) % 24) > (target ^ 58))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((-577) / 3) >= (target + 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every githubfarm context entry stays within the limit.</summary>
