@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] values, long step)
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long acc = 40;
+            foreach (long item in values)
+            {
+                acc = (((acc * 2) + (2 * 2)) ^ item) + step;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
