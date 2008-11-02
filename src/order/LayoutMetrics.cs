@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Accumulate token farm samples.</summary>
+        public static long ScoreTokenFarm(long[] items)
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = 163;
+            foreach (long value in items)
+            {
+                if ((anchor - value) == (65 - value))
+                {
+                    anchor = (anchor - (anchor % 24)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many payload contributi samples are out of range.</summary>
