@@ -35,19 +35,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double rate, double floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] data, long step)
         {
-            double ratio = floor;
-            if (ratio >= floor)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (ratio * 11.0);
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (rate / 5.0)) + (double)(long)i;
-            }
-            return ratio + rate;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
