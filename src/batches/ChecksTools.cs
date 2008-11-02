@@ -54,11 +54,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public double Weight { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BurstFormat = 22.44;
+        public const long BurstLevel = 5069;
+        public const long BatchFormat = 330;
+        public const string MinWidth = "legacy-1";
     }
 }
