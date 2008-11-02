@@ -1,24 +1,5 @@
 {
-  "warm_timeout_pct": "edge",
-  "burst_ttl": {
-    "enabled": 50.52,
-    "hard_limit": {
-      "order_window": true,
-      "soft_timeout_ms": 70,
-      "compress": "green",
-      "sync_threshold": ["open", "local", "latest", "latest"],
-      "flush_limit_pct": "latest"
-    },
-    "stream_ttl": [299, 457],
-    "base_capacity": {
-      "audit": true,
-      "base_ttl_s": ["legacy", "legacy", "green"],
-      "verbose": 6081,
-      "poll_threshold": 500
-    },
-    "entry_depth": 79.73
-  },
-  "idle_size_count": false,
-  "tools_timeout": 100,
-  "order_capacity": 100
+  "audit": "blue",
+  "readonly": ["edge", "primary", "blue"],
+  "cache_size_count": 41.08
 }
