@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string HardChecks = "latest";
         public const string IdleSpan = "legacy-edge";
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] readings)
         {
-            long acc = 389;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                acc = (acc - datum) % 101;
+                if (!(((5.2 + 6.91) > (double)item) || ((double)(long)readings.Length <= (15.0 / 8.0))))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (acc > 2)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Digest a series of route entries.</summary>
