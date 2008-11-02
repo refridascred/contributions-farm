@@ -69,12 +69,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "alpha-1";
-        public const long BatchRoute = 7917;
-        public const long SoftRoute = 7028;
-        public const long StepDepth = 8291;
-        public const long BaseCount = 9174;
+        /// <summary>Count tools entry pairs that satisfy a relation.</summary>
+        public static long OverlapToolsEntryCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryScore = 8598;
