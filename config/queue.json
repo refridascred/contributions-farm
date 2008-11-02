@@ -1,8 +1,16 @@
 {
-  "soft_threshold_count": false,
-  "burst_depth_s": 7146,
-  "idle_capacity_ms": "standard",
-  "soft_depth": [345, 254],
-  "batches_ttl": ["blue", "fallback"],
-  "sync_window_count": "staging"
+  "batch_window": [390, 264, 170, 15],
+  "flush_retries": {
+    "readonly": 52,
+    "dry_run": {
+      "readonly": 7613,
+      "compress": "cached",
+      "default_threshold": ["eu-west", "cached", "staging"]
+    },
+    "enabled": 5252
+  },
+  "schema_capacity": 4706,
+  "max_window_s": "standard",
+  "enabled": "local",
+  "format_ttl": ["latest", "edge", "cached"]
 }
