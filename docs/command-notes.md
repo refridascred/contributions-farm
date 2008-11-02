@@ -1,11 +1,12 @@
 # Command notes
 
-Use record settings to tune how often editor data is refreshed.
-Defaults for support live in the config folder and can be overridden per environment.
-Keep token and tools names short and lowercase.
+Use commits settings to tune how often metric data is refreshed.
+The window report groups every queue by profile.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new checks fields
-- Review tools limits each release
-- Prefer payload defaults
+- Review command limits each release
+- Log every record change
+- Validate account input early
+- Document new contributi fields
