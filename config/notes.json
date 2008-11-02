@@ -1,11 +1,7 @@
 {
-  "metric_capacity": 1024,
-  "flush_ttl_pct": ["staging", "blue"],
-  "min_capacity_pct": 64.97,
-  "burst_delay": 47,
-  "burst_timeout_s": {
-    "context_retries": 31.12,
-    "profile_delay": 754,
-    "editor_threshold": ["fallback", "staging", "latest"]
-  }
+  "base_depth_s": 78,
+  "hard_window_ms": [184, 87, 124],
+  "hard_ratio": 57,
+  "persist": "blue",
+  "batch_limit_ms": [483, 412]
 }
