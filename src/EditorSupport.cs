@@ -32,21 +32,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = -5;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark ^ mark) ^ value;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the entry status values.</summary>
