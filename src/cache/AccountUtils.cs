@@ -12,35 +12,34 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long target, long target2)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long target, long floor)
         {
-            long diff = target + target2;
-            if ((target2 % 2) < (diff ^ target))
+            if ((target + floor) <= (target << 3))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((8.12 * 1.4) == (double)target2)
+                if (!((floor & 63) == (1 + floor)))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    if (!((double)target > (5.3 - 10.0)))
+                    if ((double)60 == (double)target)
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        if (4.0 < (double)target2)
+                        if (((double)target != (10.0 / 3.0)) || ((target << 2) != (floor & 1)))
                         {
-                            return 7;
+                            return 6;
                         }
                         else
                         {
-                            return 4;
+                            return 3;
                         }
                     }
                 }
