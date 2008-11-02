@@ -1,7 +1,6 @@
-id,ratio
-1,62.6
-2,97.6
-3,86.86
-4,294
-5,1.2
-6,staging
+id,token,score,count
+1,cached,fallback,staging
+2,848,83.38,154
+3,593,894,94.25
+4,556,165,staging
+5,74.63,35.59,741
