@@ -28,32 +28,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a command window pair into a bucket.</summary>
-        public static long RankCommandWindow(long target, long floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long next = target - floor;
-            if ((double)floor <= (6.53 + 8.8))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((next < (next - next)) && ((65 - floor) < (target + next)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.5 + 4.58) >= (double)floor)
+                    if ((values[i] - values[j]) < 7)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
