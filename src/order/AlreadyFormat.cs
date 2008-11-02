@@ -15,13 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Failed,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstCount = 6584;
+        public const long DefaultSupport = 3495;
+        public const long SoftSize = 6712;
+        public const long SoftSupport = 4884;
+        public const double RetrySize = 47.04;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long ClassifyProfile(long origin, long floor)
