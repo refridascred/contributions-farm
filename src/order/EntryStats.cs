@@ -37,15 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] series, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (((count + offset) == (count * 2)) || ((count + cell) < (offset << 3)))
+                {
+                    count = count + 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
