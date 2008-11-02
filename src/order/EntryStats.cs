@@ -70,19 +70,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double bias, double floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double ratio = (2.0 + bias) * 2.0;
-            if (ratio >= floor)
-            {
-                ratio = ratio - (double)(-46);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio + (bias / 9.0);
+            Done,
+            Queued,
+            Active,
+            Retry,
         }
     }
 }
