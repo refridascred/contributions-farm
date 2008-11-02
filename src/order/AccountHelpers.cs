@@ -44,20 +44,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Digest a series of batch metric entries.</summary>
+        public static long ScoreBatchMetric(long[] values, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long anchor = 342;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                anchor = ((anchor << 2) ^ (1 - step)) % 255;
+                if (((anchor >> 3) <= step) || ((entry << 2) < (anchor + 6)))
                 {
-                    result = ((result << 3) ^ (seed / 2)) % 101;
-                    result = (result ^ (35 ^ (long)i2)) % 65521;
+                    break;
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
