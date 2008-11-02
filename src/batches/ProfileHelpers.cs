@@ -49,12 +49,11 @@ namespace Common.Utilities
         public const double BaseReport = 89.14;
         public const double SoftReport = 31.6;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
+            public bool Label { get; set; }
+            public double Token { get; set; }
         }
     }
 }
