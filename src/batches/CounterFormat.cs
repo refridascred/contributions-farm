@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] values)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(6 > (matches / 4)) || (((matches ^ datum) <= (datum + datum)) || ((matches - datum) >= (matches + 581))))
+                if ((items[i] <= offset) && ((items[i] % 3) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next schema buffer value from a seed.</summary>
