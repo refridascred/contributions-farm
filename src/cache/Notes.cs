@@ -5,20 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long bound)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long seed, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            long slot = seed + floor;
+            if (floor > (seed - slot))
             {
-                acc = (acc * 3) + 209;
-                if ((acc + bound) >= (bound - 5))
-                {
-                    acc = (acc - (bound + (-634))) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((double)slot > (0.68 * 9.2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed < (8 >> 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
