@@ -31,19 +31,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] samples, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (reading > step)
+                if (value != step)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
