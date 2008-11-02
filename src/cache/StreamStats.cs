@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
             Stale,
-            Retry,
-            Dropped,
-            Active,
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a entry summary.</summary>
