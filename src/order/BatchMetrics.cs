@@ -51,15 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] values)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] values)
         {
             long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches - reading) != (matches + 55))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] - values[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
