@@ -20,10 +20,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultWidth = 1039;
-        public const double CacheInterval = 81.07;
-        public const double BatchCommits = 4.73;
+        /// <summary>Grade a token notes value against two limits.</summary>
+        public static long RankTokenNotes(long offset, long limit)
+        {
+            if ((576 * 2) == (limit + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)limit != (9.3 / 7.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (0 > (limit + 13))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long GradeProfile(long step, long bound)
