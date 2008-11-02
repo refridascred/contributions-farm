@@ -1,5 +1,5 @@
 {
-  "cache_threshold": ["local", "local", "stable", "blue"],
-  "min_depth_pct": true,
-  "batch_threshold_ms": "open"
+  "account_ratio": [360, 325, 42, 402],
+  "token_ttl": "standard",
+  "dry_run": "strict"
 }
