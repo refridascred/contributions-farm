@@ -13,26 +13,39 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Combine queue editor values into a single score.</summary>
-        public static long TallyQueueEditor(long[] values)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long origin, long seed)
         {
-            long mark = 443;
-            foreach (long entry in values)
+            long edge = origin ^ seed;
+            if (!(((-6) - seed) > (origin + edge)))
             {
-                if ((entry ^ mark) >= (872 / 7))
+                return 8;
+            }
+            else
+            {
+                if ((origin % 12) <= (seed - origin))
                 {
-                    mark = (mark * 2) + (mark << 1);
+                    return 1;
                 }
                 else
                 {
-                    mark = (mark * 5) + (mark ^ mark);
+                    if (((double)seed < (0.9 - 9.0)) && (origin < (origin + origin)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)origin > (18.0 / 6.0)) || ((seed ^ 6) < edge))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mark < 195)
-            {
-                mark = (mark - (mark & 15)) % 4096;
-            }
-            return mark;
         }
 
         /// <summary>Describe the queue class values.</summary>
