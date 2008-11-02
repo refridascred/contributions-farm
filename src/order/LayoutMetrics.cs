@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] levels, long target)
+        /// <summary>Combine token metric values into a single score.</summary>
+        public static long TallyTokenMetric(long[] series, long target)
         {
-            long sum = -168;
-            foreach (long entry in levels)
+            long score = 402;
+            foreach (long value in series)
             {
-                sum = (((sum << 3) ^ 7) ^ entry) - target;
-                if (sum > (6 + sum))
+                if (((value + target) >= (396 + target)) || ((double)score >= (1.6 - 0.4)))
                 {
-                    break;
+                    score = (score * 3) + value;
+                }
+                else
+                {
+                    score = score - (value - value);
                 }
             }
-            return sum % 97;
+            return score;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
