@@ -66,13 +66,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] levels, long origin)
         {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Mode { get; set; }
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
