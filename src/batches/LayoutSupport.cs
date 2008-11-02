@@ -27,19 +27,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((seen << 1) >= limit)
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitScore = 64.86;
+        public const double LimitSpan = 43.71;
+        public const double DefaultInterval = 34.24;
+        public const double BurstFormat = 78.84;
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
