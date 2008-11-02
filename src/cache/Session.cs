@@ -40,13 +40,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordGaps(long[] data)
         {
-            public bool Limit { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((8 << 2) < (entry + tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a notes record.</summary>
