@@ -1,7 +1,6 @@
-id,state,ratio,owner
-1,latest,local,blue
-2,legacy,64.23,753
-3,239,509,eu-west
-4,713,blue,83.72
-5,340,41.21,116
-6,primary,478,71.38
+id,ratio,active
+1,10.21,local
+2,89.95,42.38
+3,430,51.86
+4,local,local
+5,930,open
