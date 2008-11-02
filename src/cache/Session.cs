@@ -32,13 +32,22 @@ namespace Common.Utilities
             return scale - (rate + 0.72);
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            Queued,
-            Dropped,
-            Stale,
-            Done,
+            long carry = 4;
+            foreach (long entry in levels)
+            {
+                if (((621 << 3) >= (carry - entry)) || ((80 - entry) >= entry))
+                {
+                    carry = carry ^ (carry >> 5);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (entry - entry)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
