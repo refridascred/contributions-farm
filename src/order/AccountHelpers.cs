@@ -51,14 +51,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long limit, long offset)
         {
-            Active,
-            Retry,
-            Closed,
-            Idle,
-            Draft,
+            if ((11 * 4) >= (limit & 63))
+            {
+                return 3;
+            }
+            else
+            {
+                if (248 <= (offset + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit % 3) != (offset >> 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((0.9 / 3.0) != (double)offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools summary.</summary>
