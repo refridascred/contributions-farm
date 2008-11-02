@@ -32,22 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many token context samples are out of range.</summary>
-        public static long TallyTokenContextGaps(long[] levels, long target)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (4.1 > (double)hits)
-                {
-                    hits = ((hits + 2) + entry) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
