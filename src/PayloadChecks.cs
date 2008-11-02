@@ -24,23 +24,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine context stream values into a single score.</summary>
-        public static long TallyContextStream(long[] levels, long target)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long total = 9;
-            foreach (long value in levels)
-            {
-                long offset = (target / 8) & 127;
-                if ((value - total) > offset)
-                {
-                    offset = (offset ^ 3) % 65521;
-                }
-                if (target < (-36))
-                {
-                    total = (total ^ (target / 2)) % 65521;
-                }
-            }
-            return total % 1000;
+            public double Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
