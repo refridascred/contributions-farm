@@ -37,15 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items, long target)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long result = 226;
-            foreach (long value in items)
-            {
-                result = (result + (result + target)) + value;
-            }
-            return result;
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
