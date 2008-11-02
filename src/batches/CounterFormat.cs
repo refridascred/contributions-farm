@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] values)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((((seen * 4) < (sample * 3)) && (56 < sample)) && (((seen - sample) <= 27) || ((7 % 24) <= sample)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a profile options.</summary>
