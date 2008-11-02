@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardCount = "staging-1";
-        public const double MaxGraph = 96.97;
-        public const string WindowRatio = "cached-v2";
-        public const long RetryTimeout = 9258;
-        public const long MaxFactor = 515;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSupport = "strict-1";
+        public const long MaxLevel = 274;
+        public const long BaseSupport = 5562;
+        public const long WindowSupport = 377;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
