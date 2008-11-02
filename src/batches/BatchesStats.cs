@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double weight, double offset)
         {
-            public string Size { get; set; } = "";
-            public bool Owner { get; set; }
+            double weight2 = weight;
+            if (weight2 < (weight / 4.0))
+            {
+                weight2 = weight2 + (double)939;
+            }
+            return weight2 + offset;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
