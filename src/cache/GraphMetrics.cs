@@ -34,19 +34,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double scale, double floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long limit)
         {
-            double drift = scale;
-            if (drift >= (scale - floor))
+            long result = limit;
+            for (int i = 0; i < 23; i++)
             {
-                drift = drift + (drift + 4.52);
+                if (!((double)limit <= (7.16 - 3.1)))
+                {
+                    result = result - (limit << 3);
+                }
+                if ((12.0 * 5.27) > (double)result)
+                {
+                    result = ((result * 2) + limit) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (double)5) + (double)(long)i;
-            }
-            return drift - (8.5 * 5.3);
+            return result;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
