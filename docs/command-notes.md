@@ -1,10 +1,11 @@
 # Command notes
 
-Run the stream check before changing any record limits.
-Defaults for support live in the config folder and can be overridden per environment.
+A context that stays idle for too long is moved to the tools list.
+Defaults for tools live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new cache fields
-- Prefer stream defaults
-- Validate entry input early
+- Review graph limits each release
+- Validate already input early
+- Prefer format defaults
+- Document new record fields
