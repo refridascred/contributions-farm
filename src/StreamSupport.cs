@@ -31,18 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] series, long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long mix = 972;
-            foreach (long reading in series)
-            {
-                if ((7 ^ mix) <= reading)
-                {
-                    mix = ((mix ^ (mix >> 1)) % 1000) - origin;
-                }
-            }
-            return mix % 65521;
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
