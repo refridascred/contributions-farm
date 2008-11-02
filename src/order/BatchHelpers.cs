@@ -47,11 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 4147;
-        public const long LimitSize = 5712;
-        public const long BurstAccount = 3747;
-        public const long MinCount = 9037;
-        public const double RetryAccount = 90.02;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
