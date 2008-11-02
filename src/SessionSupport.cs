@@ -18,18 +18,12 @@ namespace Common.Utilities
         public const long SoftBatch = 7135;
         public const long DefaultBatch = 9656;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] series, long offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (4 >= (offset - 9))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
+            Retry,
+            Failed,
+            Dropped,
         }
     }
 }
