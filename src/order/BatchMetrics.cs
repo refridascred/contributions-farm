@@ -63,22 +63,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes queue entries that pass the check.</summary>
-        public static long AuditNotesQueueOutliers(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((-17) % 10) >= (datum - origin)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 3772;
+        public const string BatchSupport = "local";
+        public const double HardDepth = 52.5;
+        public const long WindowSupport = 6720;
     }
 }
