@@ -1,8 +1,24 @@
 # entry settings
-filter_timeout: eu-west
-hard_size_count: 4648
-enabled: fallback
-burst_timeout: 250
-burst_ttl_count:
-  - 486
-  - 105
+enabled:
+  verbose: false
+  cache_window: 100
+  hard_size:
+    - 454
+    - 439
+  dry_run: 7158
+  layout_threshold: 9858
+sync_threshold_ms: staging
+batch_ratio_s:
+  - latest
+  - blue
+  - fallback
+burst_depth_s: blue
+batch_retries_s:
+  - latest
+  - local
+graph_window:
+  base_delay_ms: green
+  retry_delay_ms: eu-west
+  channel_ratio: 1024
+  base_delay: true
+  base_size: 2.32
