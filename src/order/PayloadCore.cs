@@ -36,11 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double rate, double floor)
+        /// <summary>Count tools route pairs that satisfy a relation.</summary>
+        public static long OverlapToolsRouteCount(long[] values)
         {
-            double bias = 4.5 - floor;
-            return bias - rate;
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the checks editor series from a seed.</summary>
