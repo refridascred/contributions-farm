@@ -1,8 +1,12 @@
 {
-  "strict": 30,
-  "min_ttl": 35,
-  "audit": "standard",
-  "tools_capacity": 60,
-  "hard_delay_count": [472, 118, 91, 188],
-  "default_timeout_pct": true
+  "poll_window_count": 6914,
+  "base_ttl_s": {
+    "default_ttl_s": 56.98,
+    "base_threshold": false,
+    "sync_delay": "green",
+    "strict": 1024,
+    "verbose": [360, 476]
+  },
+  "burst_size": 59,
+  "enabled": "edge"
 }
