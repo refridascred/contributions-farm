@@ -56,18 +56,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] values, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((double)datum <= (double)217)
+                if (!!((12 - value) == (value ^ value)))
                 {
-                    count = (count + 3) + bound;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
