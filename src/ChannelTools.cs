@@ -38,23 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] readings)
         {
-            long anchor = 746;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                anchor = anchor - (entry + entry);
-                if ((entry << 1) >= anchor)
+                if ((item & 1) > tally)
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = ((anchor * 5) + anchor) % 101;
-            }
-            return anchor;
+            return tally;
         }
     }
 }
