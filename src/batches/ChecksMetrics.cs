@@ -61,19 +61,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order cache value from a seed.</summary>
-        public static long RollOrderCache(long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] series, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((carry % 3) > (106 + target))
+                if ((double)bound <= (8.1 + 5.8))
                 {
-                    continue;
+                    matches = (matches + 1) + cell;
                 }
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Blend two metric measurements.</summary>
