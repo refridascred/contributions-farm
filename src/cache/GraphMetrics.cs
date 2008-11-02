@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
+            Active,
+            Synced,
+            Dropped,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a token header.</summary>
