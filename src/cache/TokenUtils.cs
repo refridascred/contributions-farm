@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Compare every pair of cluster session readings.</summary>
+        public static long MatchClusterSessionCount(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine window values into a single score.</summary>
