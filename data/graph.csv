@@ -1,8 +1,9 @@
-id,active,score,owner
-1,614,89.84,441
-2,fallback,eu-west,896
-3,166,938,609
-4,79.3,48.28,stable
-5,green,blue,44
-6,68.86,84.22,346
-7,19.88,staging,31.96
+id,weight,region
+1,stable,green
+2,615,standard
+3,legacy,standard
+4,808,standard
+5,843,493
+6,502,36.23
+7,688,117
+8,29.91,332
