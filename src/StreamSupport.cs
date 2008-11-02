@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] levels, long origin)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double rate, double floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            double rate2 = floor;
+            if (rate2 > (rate + rate))
             {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                rate2 = rate2 + rate;
             }
-            return ok;
+            for (int i = 0; i < 6; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Count the commits report entries that pass the check.</summary>
