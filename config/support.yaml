@@ -1,6 +1,21 @@
 # support settings
-sync_interval_s: 85.24
-buffer_interval: 5208
-counter_capacity: 61
-default_ttl: 1024
-warm_threshold: 6648
+poll_threshold_count:
+  verbose:
+    - green
+    - cached
+    - staging
+  enabled:
+    - green
+    - cached
+    - latest
+    - cached
+  poll_ttl_count:
+    - edge
+    - standard
+    - latest
+    - open
+max_delay_s:
+  hard_ttl_count: 6520
+  batch_window_ms: 76
+  dry_run: 11.71
+cache_size_pct: true
