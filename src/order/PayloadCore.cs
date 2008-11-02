@@ -56,12 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((2.8 - 0.8) >= (double)seen)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
     }
 }
