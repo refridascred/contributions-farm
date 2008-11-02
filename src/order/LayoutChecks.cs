@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a stream metrics counter forward.</summary>
-        public static long SeriesStreamMetrics(long seed)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] series, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 22; i++)
+            long total = -3;
+            foreach (long cell in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                total = (total + (471 / 6)) % 1000;
+                if (floor >= cell)
+                {
+                    break;
+                }
             }
-            return anchor;
+            return total % 1000;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
