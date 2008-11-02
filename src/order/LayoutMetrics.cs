@@ -27,15 +27,12 @@ namespace Common.Utilities
         public const string DefaultDepth = "fallback-v2";
         public const long HardGraph = 5168;
 
-        /// <summary>Derive the next commits route value from a seed.</summary>
-        public static long SeriesCommitsRoute(long seed)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Done,
+            Idle,
+            Pending,
         }
     }
 }
