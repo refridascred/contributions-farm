@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] items)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)reading > (1.0 + 19.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
