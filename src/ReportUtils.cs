@@ -23,24 +23,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long seed, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] values, long limit)
         {
-            if ((seed / 4) > (seed ^ target))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target >> 3) > (target + target))
+                if (datum > limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a commits record.</summary>
