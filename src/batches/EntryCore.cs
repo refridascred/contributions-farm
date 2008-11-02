@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long score = 2;
+            foreach (long item in values)
             {
-                if (!((item + seen) > (item + 67)))
+                score = score - (3 / 4);
+                if ((score * 4) >= (item + bound))
                 {
-                    seen = seen + 3;
+                    score = (score ^ (bound * 2)) % 4096;
+                }
+                else
+                {
+                    score = score + (item * 5);
                 }
             }
-            return seen;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of format readings.</summary>
