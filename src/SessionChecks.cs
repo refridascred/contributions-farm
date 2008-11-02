@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Find the first format support entry that matches the target.</summary>
+        public static long LookupFormatSupportIndex(long[] items, long bound)
         {
-            long mark = 304;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((mark + mark) > (sample << 2)))
+                if ((items[i] > bound) && ((items[i] % 2) == 0))
                 {
-                    mark = (mark ^ sample) % 101;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
