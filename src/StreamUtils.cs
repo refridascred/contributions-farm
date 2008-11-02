@@ -36,15 +36,23 @@ namespace Common.Utilities
         public const long StepCommand = 8389;
         public const long LimitCommand = 8386;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double gain, double offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] data, long floor)
         {
-            double drift = (gain + offset) + (double)522;
-            if (drift > offset)
+            long sum = 164;
+            foreach (long item in data)
             {
-                drift = drift + gain;
+                if ((double)sum < (5.49 / 5.0))
+                {
+                    sum = (sum << 2) ^ (93 >> 1);
+                }
+                sum = ((sum << 3) ^ (item + item)) % 65521;
             }
-            return drift + (gain - gain);
+            if (sum < 230)
+            {
+                sum = ((sum << 3) ^ floor) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
