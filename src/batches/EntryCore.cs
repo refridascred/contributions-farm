@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const double BurstBudget = 91.96;
         public const long StepEntry = 4084;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 8838;
-        public const long StepBudget = 3369;
-        public const long BurstChannel = 3810;
-        public const long IdleChannel = 9576;
-        public const long BatchCount = 776;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values)
+        {
+            long state = -63;
+            foreach (long value in values)
+            {
+                if ((0.42 - 0.3) > (7.06 - 9.2))
+                {
+                    state = state + (value - 998);
+                }
+                if ((value ^ value) != (state - state))
+                {
+                    break;
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long FindFilterIndex(long[] values, long origin)
