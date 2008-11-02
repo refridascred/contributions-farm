@@ -34,10 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 2057;
-        public const long IdleToken = 6135;
-        public const long SoftDepth = 2537;
-        public const double SoftWidth = 32.21;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item >> 1) >= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
