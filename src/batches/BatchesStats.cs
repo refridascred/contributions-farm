@@ -30,18 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] items)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long score = 0;
+            foreach (long sample in samples)
             {
-                if (((hits / 5) < hits) && (((datum + hits) >= (hits + datum)) && (datum <= (hits + datum))))
+                if ((score + 5) != (sample << 1))
                 {
-                    hits = hits + 1;
+                    score = (score + (score / 6)) % 97;
+                }
+                else
+                {
+                    score = ((score * 4) + (sample + score)) % 101;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
