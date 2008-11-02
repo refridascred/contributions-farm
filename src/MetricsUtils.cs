@@ -39,16 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] levels)
-        {
-            long state = 0;
-            foreach (long item in levels)
-            {
-                state = (state + ((long)levels.Length ^ item)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstDepth = 2187;
+        public const double MaxSize = 13.06;
+        public const long BaseAlready = 3784;
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
