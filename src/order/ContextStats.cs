@@ -23,12 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Combine order tools values into a single score.</summary>
+        public static long WeighOrderTools(long[] levels)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Count { get; set; }
+            long result = 5;
+            foreach (long item in levels)
+            {
+                result = (((result << 2) ^ (result ^ result)) % 4096) ^ item;
+            }
+            if (result < 7)
+            {
+                result = (result - result) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
