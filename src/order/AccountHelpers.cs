@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Synced,
-            Done,
-            Queued,
-            Paused,
-            Active,
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
