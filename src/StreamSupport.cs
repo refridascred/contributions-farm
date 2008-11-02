@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of githubfarm metrics readings.</summary>
-        public static long TallyGithubfarmMetrics(long[] series)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] levels, long origin)
         {
-            long sum = 18;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                sum = (sum << 2) ^ 64;
-                for (int i = 0; i < 3; i++)
+                if (sample >= origin)
                 {
-                    sum = (sum + (sum % 97)) - (long)i;
-                }
-                if ((double)sample == (double)921)
-                {
-                    sum = sum ^ ((long)series.Length + 573);
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return ok;
         }
 
         /// <summary>Count the commits report entries that pass the check.</summary>
