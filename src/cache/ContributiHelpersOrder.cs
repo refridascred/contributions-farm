@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine payload route values into a single score.</summary>
-        public static long WeighPayloadRoute(long[] samples, long bound)
+        /// <summary>Match up metrics route samples.</summary>
+        public static long MatchMetricsRouteCount(long[] readings)
         {
-            long total = 3;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total + (item >> 4)) - bound;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Combine context values into a single score.</summary>
