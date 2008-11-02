@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long acc = 99;
-            foreach (long item in series)
-            {
-                if ((double)acc >= (19.0 - 4.0))
-                {
-                    acc = (acc ^ item) % 101;
-                }
-            }
-            return acc;
+            Idle,
+            Closed,
+            Done,
+            Stale,
+            Queued,
         }
 
         /// <summary>Define session limits and defaults.</summary>
