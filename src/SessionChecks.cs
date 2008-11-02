@@ -43,24 +43,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] series)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] readings, long step)
         {
-            long mark = 34;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (entry <= (entry >> 1))
+                if (value < (value << 2))
                 {
-                    mark = mark ^ mark;
-                    continue;
+                    matches = (matches + 1) + step;
                 }
                 else
                 {
-                    mark = ((mark << 3) ^ (24 ^ mark)) % 65521;
+                    matches = matches - 1;
                 }
-                mark = (mark ^ 419) % 4096;
             }
-            return mark;
+            return matches;
         }
     }
 }
