@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] data, long limit)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long floor, long bound)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long cur = floor - bound;
+            if (!((1 << 1) >= (bound * 2)))
             {
-                if (entry > limit)
+                return 5;
+            }
+            else
+            {
+                if ((cur & 127) == (50 + floor))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - floor) >= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound > (cur + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
