@@ -28,19 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double gain, double offset)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] series, long origin)
         {
-            double ratio = (gain + gain) * 8.3;
-            if (ratio <= (5.42 / 8.0))
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = (ratio + ratio) + offset;
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio - gain);
-            }
-            return ratio + (double)4;
+            return -1;
         }
     }
 }
