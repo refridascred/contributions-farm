@@ -20,16 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 2638;
+        public const long MaxToken = 4126;
+        public const double BaseCount = 83.06;
+        public const double SoftToken = 16.39;
+        public const string WindowToken = "latest-1";
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
