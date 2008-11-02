@@ -1,10 +1,12 @@
 # Metric notes
 
-The buffer module keeps route values in sync with the channel cache.
-When a queue fails, the order handler retries a few times before giving up.
+Each stats is validated before it reaches the contributi queue.
+The cache module keeps layout values in sync with the cluster cache.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new stream fields
-- Prefer booking defaults
-- Review batch limits each release
+- Log every graph change
+- Keep profile values small
+- Document new account fields
+- Review layout limits each release
