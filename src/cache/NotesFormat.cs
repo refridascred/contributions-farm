@@ -28,11 +28,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Digest a series of githubfarm route entries.</summary>
+        public static long DigestGithubfarmRoute(long[] levels, long target)
         {
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
+            long state = 446;
+            foreach (long datum in levels)
+            {
+                if ((double)datum < (2.8 / 6.0))
+                {
+                    state = (state ^ (state * 5)) + target;
+                }
+            }
+            return state;
         }
     }
 }
