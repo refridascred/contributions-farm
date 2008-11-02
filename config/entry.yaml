@@ -1,5 +1,14 @@
 # entry settings
-context_size: false
-default_timeout_pct: standard
-base_interval_ms: true
-default_threshold_count: 0.08
+min_threshold_pct: true
+flush_interval:
+  - 452
+  - 201
+filter_interval: cached
+enabled: true
+checks_delay: standard
+idle_capacity:
+  persist: staging
+  hard_size_s: 388
+  idle_retries: false
+  verbose: 71
+  counter_size: 500
