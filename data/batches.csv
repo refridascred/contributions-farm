@@ -1,9 +1,7 @@
-id,score,ratio,weight
-1,77.8,55.82,55.57
-2,50.14,standard,302
-3,26,77.76,71.92
-4,85.92,17.94,480
-5,496,749,885
-6,26.78,94.67,staging
-7,433,blue,4.12
-8,43.24,25.84,24.99
+id,rank,weight,active
+1,230,green,565
+2,92.07,59.52,57.0
+3,67.69,143,standard
+4,staging,512,370
+5,cached,local,latest
+6,76.67,cached,legacy
