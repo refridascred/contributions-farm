@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long bound)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                sum = ((sum * 2) + (long)i) % 101;
+                mix = (mix - (floor / 7)) % 97;
+                if (((long)i ^ (long)i) < 6)
+                {
+                    mix = mix ^ floor;
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Locate a route order reading by value.</summary>
