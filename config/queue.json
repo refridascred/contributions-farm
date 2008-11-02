@@ -1,8 +1,8 @@
 {
-  "strict": 95.34,
-  "farm_depth": 39.85,
-  "stats_capacity": 10.95,
-  "burst_threshold": 79.04,
-  "soft_capacity_ms": true,
-  "hard_retries_pct": "staging"
+  "poll_threshold_pct": 8363,
+  "dry_run": false,
+  "hard_window_s": 100,
+  "base_size_ms": "stable",
+  "session_limit": 50.62,
+  "schema_interval": false
 }
