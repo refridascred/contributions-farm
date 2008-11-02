@@ -13,18 +13,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] levels, long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long slot = seed - seed2;
+            if ((3 / 3) == (seed2 ^ seed2))
             {
-                if ((entry & 63) < entry)
+                return 3;
+            }
+            else
+            {
+                if (((1.92 * 5.94) > (double)seed2) && ((6 + slot) <= (4 >> 3)))
                 {
-                    tally = (tally + 1) - limit;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + slot) < (slot % 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit editor batches readings against a rule.</summary>
