@@ -1,6 +1,8 @@
 # githubfarm settings
-retry_ttl_ms: 14
-base_size: open
-verbose: local
-retry_limit: 90.48
-default_threshold_s: false
+session_delay:
+  - 120
+  - 9
+githubfarm_ttl:
+  - 256
+  - 354
+cluster_window: 500
