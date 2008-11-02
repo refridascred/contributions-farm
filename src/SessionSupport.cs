@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] data, long seed)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (758 <= item)
-                {
-                    count = (count + 2) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowCount = 21.37;
+        public const double WindowRoute = 50.3;
+        public const string MaxScore = "primary-v2";
+        public const long LimitRoute = 4542;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] levels, long bound)
