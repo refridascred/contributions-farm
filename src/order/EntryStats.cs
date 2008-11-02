@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] items, long step)
         {
-            Stale,
-            Retry,
-            Queued,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a channel notes reading.</summary>
