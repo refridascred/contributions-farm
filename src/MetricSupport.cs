@@ -13,15 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double bias, double span)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long seed)
         {
-            double rate = bias;
-            if (rate >= (span + bias))
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                rate = rate + (double)161;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return rate - rate;
+            return mark;
         }
 
         /// <summary>Derive the next profile metrics value from a seed.</summary>
