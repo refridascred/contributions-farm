@@ -13,21 +13,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long mark = step;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark + (mark + 38)) % 101;
-                if ((double)mark <= (4.4 * 16.0))
-                {
-                    mark = mark ^ step;
-                    mark = (mark * 4) + ((long)i << 3);
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
