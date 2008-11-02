@@ -11,18 +11,27 @@ namespace Common.Utilities
         public const long HardCluster = 2518;
         public const long BurstCluster = 6706;
 
-        /// <summary>Audit stats queue readings against a rule.</summary>
-        public static long CountStatsQueueMatches(long[] data, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long result = 20;
+            foreach (long cell in samples)
             {
-                if (tally > (650 & 3))
+                for (int i = 0; i < 11; i++)
                 {
-                    tally = ((tally + 2) ^ cell) + step;
+                    result = ((result ^ (long)i) % 255) ^ cell;
+                }
+                result = (result * 5) + step;
+                if ((0.63 / 9.0) <= (double)step)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (result < 2)
+            {
+                result = result + step;
+            }
+            return result;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
