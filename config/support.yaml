@@ -1,18 +1,10 @@
 # support settings
-burst_capacity_s:
-  - open
-  - green
-  - staging
-poll_limit_ms: staging
-max_size:
-  - 242
-  - 448
-  - 18
-  - 465
-session_threshold: 7.62
-commits_size:
-  support_size: open
-  burst_interval_pct: legacy
-  sync_limit_s: 9051
-  base_limit_pct: stable
-  audit: 90.7
+compress: true
+cache_timeout_pct: blue
+batch_retries_ms: 38.25
+flush_ttl_s:
+  warm_delay: latest
+  cache_timeout: 100
+  batch_window_s: local
+  flush_timeout: 250
+  hard_limit: standard
