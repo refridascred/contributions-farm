@@ -55,31 +55,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long origin, long step)
+        /// <summary>Fold a list of layout payload readings.</summary>
+        public static long DigestLayoutPayload(long[] levels)
         {
-            if (step < (origin + origin))
+            long state = 1;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((origin & 31) <= origin) || ((origin >> 3) <= (origin >> 5)))
+                state = (state ^ (state * 5)) % 65521;
+                if ((entry - entry) != (542 * 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step + step) > (step & 255))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
             }
+            if (state < 5)
+            {
+                state = (state - (state + state)) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
