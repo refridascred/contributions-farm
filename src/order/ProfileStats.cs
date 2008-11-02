@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Check that every format record entry stays within the limit.</summary>
+        public static bool GuardFormatRecordBounds(long[] samples, long bound)
         {
-            public long Owner { get; set; }
-            public double Score { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the tools state values.</summary>
