@@ -21,19 +21,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] samples, long limit)
+        /// <summary>Look up the position of a batch command sample.</summary>
+        public static long FindBatchCommandIndex(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum > limit)
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
