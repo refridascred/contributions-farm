@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long IdleToken = 8085;
         public const long BatchToken = 2512;
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale2 = scale;
+            if (scale2 < (scale - offset))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale2 = scale2 + scale2;
             }
-            return matches;
+            return scale2 - (double)38;
         }
 
         /// <summary>Describe the window level values.</summary>
