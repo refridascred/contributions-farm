@@ -38,21 +38,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BatchRoute = 40.02;
+        public const string HardRoute = "latest-edge";
+        public const long MinBudget = 3500;
+        public const long DefaultRatio = 9288;
+        public const long SoftRoute = 8700;
     }
 }
