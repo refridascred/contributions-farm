@@ -32,19 +32,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] readings, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (item <= target)
+                if ((7.1 / 9.0) <= (double)tally)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 3) + datum) - floor;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Adjust a cluster report reading.</summary>
