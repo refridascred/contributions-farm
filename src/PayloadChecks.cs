@@ -25,22 +25,17 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] values)
+        /// <summary>Locate a entry session reading by value.</summary>
+        public static long LocateEntrySessionIndex(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)matches != (16.0 - 9.0))
+                if ((series[i] >= bound) && ((series[i] % 5) == 0))
                 {
-                    matches = (matches + 2) - value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
