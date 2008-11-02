@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const double BaseMetric = 0.72;
         public const long HardTimeout = 6535;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] levels, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally << 2) <= (tally % 3))
-                {
-                    tally = ((tally + 1) + entry) - limit;
-                }
-            }
-            return tally;
+            New,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
