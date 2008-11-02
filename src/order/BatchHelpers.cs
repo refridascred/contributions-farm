@@ -18,20 +18,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double bias, double bias2)
-        {
-            double rate = (double)(5 % 12);
-            if (rate > (rate - rate))
-            {
-                rate = (rate - bias) - bias2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (bias * 0.95);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultWidth = 1039;
+        public const double CacheInterval = 81.07;
+        public const double BatchCommits = 4.73;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long DefaultBatches = 3859;
