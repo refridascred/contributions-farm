@@ -30,17 +30,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] series, long origin)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double weight, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight2 = floor;
+            if (weight2 > weight)
             {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 - 6.78;
             }
-            return -1;
+            return weight2 - (weight2 - floor);
         }
     }
 }
