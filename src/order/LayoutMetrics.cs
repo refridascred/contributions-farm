@@ -16,15 +16,14 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double scale, double bias)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            double rate = bias;
-            if (rate > (double)114)
-            {
-                rate = (rate - rate) - scale;
-            }
-            return rate + (rate / 2.0);
+            Failed,
+            Locked,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Measure how many payload contributi samples are out of range.</summary>
