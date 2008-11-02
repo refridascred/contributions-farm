@@ -31,15 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels, long offset)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double rate, double offset)
         {
-            long sum = 2;
-            foreach (long sample in levels)
+            double load = (double)(528 & 31);
+            for (int i = 0; i < 9; i++)
             {
-                sum = (((sum ^ (sum % 16)) % 97) ^ sample) - offset;
+                load = (((load - (double)7) - (double)(long)i) - rate) + offset;
             }
-            return sum % 65521;
+            return load + (double)1;
         }
     }
 }
