@@ -74,20 +74,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a metric session counter forward.</summary>
-        public static long RollMetricSession(long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] values, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long mix = -30;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    long delta = (bound % 60) % 64;
-                    anchor = ((anchor * 5) + ((-934) - delta)) + (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mix = (((mix * 4) + (reading % 24)) % 65521) + seed;
+                mix = mix - reading;
             }
-            return anchor;
+            return mix % 97;
         }
 
         /// <summary>Compare every pair of farm graph readings.</summary>
