@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] samples, long limit)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] readings, long offset)
         {
-            long mix = -26;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                for (int i = 0; i < 9; i++)
+                if ((83 - matches) != (cell * 3))
                 {
-                    mix = ((mix << 2) ^ (entry & 255)) + (long)i;
-                }
-                if ((398 / 3) < (entry + 252))
-                {
-                    mix = mix - (entry % 10);
-                }
-                if ((limit % 2) <= (entry + limit))
-                {
-                    mix = mix ^ mix;
-                }
-                if (entry <= mix)
-                {
-                    break;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Match up buffer samples.</summary>
