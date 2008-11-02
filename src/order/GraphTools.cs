@@ -31,19 +31,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] readings, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Ready,
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Grade a command metrics value against two limits.</summary>
