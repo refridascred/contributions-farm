@@ -1,6 +1,7 @@
-id,ratio,state
-1,87.48,922
-2,latest,794
-3,staging,11.45
-4,651,19.29
-5,primary,156
+id,rank
+1,latest
+2,stable
+3,strict
+4,cached
+5,788
+6,staging
