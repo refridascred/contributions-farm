@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] levels, long target)
         {
-            if (4.8 > (double)floor)
+            long sum = -168;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (((895 - floor) >= (floor & 1)) || ((0 >> 1) > offset))
+                sum = (((sum << 3) ^ 7) ^ entry) - target;
+                if (sum > (6 + sum))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset ^ floor) < 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)floor < (14.0 / 6.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    break;
                 }
             }
+            return sum % 97;
         }
 
         /// <summary>Project the next record value.</summary>
