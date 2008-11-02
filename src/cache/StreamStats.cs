@@ -39,15 +39,9 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] items)
-        {
-            long anchor = 34;
-            foreach (long datum in items)
-            {
-                anchor = (anchor - (anchor + anchor)) - datum;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 1212;
+        public const double BaseFactor = 89.68;
+        public const string CacheRecord = "fallback-edge";
     }
 }
