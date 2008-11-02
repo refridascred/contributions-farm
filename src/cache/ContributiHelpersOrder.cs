@@ -20,22 +20,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long bound, long origin)
         {
-            long result = 6;
-            foreach (long value in data)
+            long bound2 = bound + origin;
+            if ((origin + origin) > 144)
             {
-                if ((double)result < (3.4 / 3.0))
+                return 8;
+            }
+            else
+            {
+                if ((bound ^ 845) <= (origin >> 2))
                 {
-                    result = (result + result) % 1000;
+                    return 5;
                 }
                 else
                 {
-                    result = (result ^ (value + result)) % 101;
+                    if ((origin + bound2) < (47 & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Check that every window counter entry stays within the limit.</summary>
