@@ -1,22 +1,5 @@
 {
-  "enabled": [41, 427, 173],
-  "idle_delay_ms": 76,
-  "default_delay_count": "primary",
-  "metric_interval": {
-    "default_window_ms": 9040,
-    "idle_capacity_count": 8320,
-    "cache_ratio_ms": {
-      "sync_ttl": "strict",
-      "idle_ttl_count": 3915,
-      "metrics_ratio": 56.78,
-      "cache_depth_pct": "green"
-    },
-    "warm_retries": 76.18,
-    "hard_limit_ms": {
-      "base_delay_pct": 47.16,
-      "compress": "strict",
-      "commits_delay": "edge"
-    }
-  },
-  "min_ratio": [409, 373, 193, 474]
+  "editor_timeout": 4973,
+  "readonly": "fallback",
+  "default_limit_s": "staging"
 }
