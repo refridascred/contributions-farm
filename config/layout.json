@@ -1,5 +1,8 @@
 {
-  "warm_delay_count": 22,
-  "warm_window_s": 56,
-  "cache_threshold": 7.85
+  "min_retries_ms": "edge",
+  "strict": ["open", "fallback", "primary"],
+  "window_delay": 42,
+  "idle_ratio": 37.71,
+  "retry_limit": false,
+  "default_delay_count": 8.44
 }
