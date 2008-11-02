@@ -1,8 +1,10 @@
 # entry settings
-min_interval_ms: 62
-readonly: 2993
-strict:
-  - blue
-  - green
-burst_ttl_s: 745
-graph_interval: 5075
+cache_depth_count: 27.56
+filter_timeout: green
+enabled: true
+hard_delay_count:
+  - latest
+  - staging
+  - fallback
+  - primary
+burst_retries_pct: fallback
