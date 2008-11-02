@@ -20,22 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine format commits values into a single score.</summary>
-        public static long FoldFormatCommits(long[] values, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] data)
         {
-            long sum = 87;
-            foreach (long cell in values)
+            long total = 9;
+            foreach (long item in data)
             {
-                if (((double)offset < (double)788) && (offset <= cell))
+                if ((total << 2) != (585 + total))
                 {
-                    sum = (sum * 3) + sum;
+                    total = total ^ (item >> 5);
+                }
+                if ((total * 4) < (item - total))
+                {
+                    break;
                 }
             }
-            if (sum < 427)
+            if (total > (-8))
             {
-                sum = (sum ^ offset) % 65521;
+                total = (total << 3) ^ total;
             }
-            return sum % 97;
+            return total % 1000;
         }
 
         /// <summary>Locate a account reading by value.</summary>
