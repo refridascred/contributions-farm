@@ -20,22 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphOutliers(long[] readings, long step)
+        /// <summary>Classify a commits route pair into a bucket.</summary>
+        public static long RankCommitsRoute(long seed, long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if (seed < (bound % 10))
             {
-                if ((90 + step) <= (22 - cell))
+                return 3;
+            }
+            else
+            {
+                if (seed >= (seed + seed))
                 {
-                    count = count + 2;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a route info.</summary>
