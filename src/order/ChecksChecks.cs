@@ -21,18 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] series, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (((tally * 2) != (5 >> 5)) && ((reading & 7) < (6 + 381)))
+                if (!((datum % 100) > (datum % 12)))
                 {
-                    tally = (tally + 1) + seed;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Adjust a session reading.</summary>
