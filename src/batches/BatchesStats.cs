@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] samples)
+        /// <summary>Measure how many entry route samples are out of range.</summary>
+        public static long MeasureEntryRouteGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (((double)tally >= (7.44 * 2.35)) && ((1.8 - 4.0) <= (double)tally))
+                if (69 <= (count + count))
                 {
-                    tally = (tally + 3) + item;
+                    count = (count + 1) + cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
