@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 9835;
-        public const long WindowCount = 1013;
-        public const double MaxStream = 85.46;
-        public const long WindowScore = 1840;
-        public const string DefaultSpan = "strict-edge";
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Done,
+            New,
+            Failed,
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TotalRoute(long[] levels, long step)
