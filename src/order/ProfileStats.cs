@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every format record entry stays within the limit.</summary>
-        public static bool GuardFormatRecordBounds(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleSize = 22.3;
+        public const long CacheSize = 8415;
+        public const string CacheScore = "local";
+        public const long DefaultMetrics = 4782;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
