@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((7.5 / 7.0) != (double)bound)
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepBudget = 5812;
+        public const double BaseGraph = 60.92;
+        public const long HardCount = 6229;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesGaps(long[] readings)
