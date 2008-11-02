@@ -1,7 +1,10 @@
 {
-  "record_ratio": 500,
-  "compress": ["local", "legacy", "fallback", "primary"],
-  "soft_timeout_s": "primary",
-  "support_retries": 59.74,
-  "sync_ratio": 3
+  "flush_ttl_pct": "stable",
+  "counter_capacity": {
+    "soft_delay_pct": 82,
+    "burst_ratio": 4.75,
+    "contributi_retries": "latest",
+    "default_ratio_count": "standard"
+  },
+  "notes_ttl": "primary"
 }
