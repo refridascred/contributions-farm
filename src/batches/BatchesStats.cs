@@ -16,18 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many entry route samples are out of range.</summary>
-        public static long MeasureEntryRouteGaps(long[] items)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (69 <= (count + count))
-                {
-                    count = (count + 1) + cell;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate batches samples.</summary>
