@@ -20,31 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long target, long offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            if ((offset + offset) > 323)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target >= (3.74 * 3.94))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset % 5) == (target / 6))
+                    if ((levels[i] + levels[j]) > 11)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
