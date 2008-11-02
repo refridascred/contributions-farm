@@ -30,21 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 972;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7 ^ mix) <= reading)
                 {
-                    if ((series[i] - series[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix ^ (mix >> 1)) % 1000) - origin;
                 }
             }
-            return matches;
+            return mix % 65521;
         }
     }
 }
