@@ -15,13 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define session limits and defaults.</summary>
