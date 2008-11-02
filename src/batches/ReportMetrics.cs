@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSpan = 4361;
-        public const double MaxSize = 87.67;
-        public const double BatchSession = 23.49;
+        /// <summary>Validate command route readings against a bound.</summary>
+        public static bool ValidateCommandRouteLimits(long[] data, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first farm checks entry that matches the target.</summary>
         public static long LookupFarmChecksIndex(long[] values, long origin)
