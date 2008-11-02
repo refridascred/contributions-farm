@@ -6,10 +6,9 @@ namespace Common.Utilities
     public static class ContextStats
     {
         /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheRatio = 6272;
-        public const long BurstStats = 8543;
-        public const long WindowStats = 9994;
-        public const long IdleLevel = 2721;
+        public const long SoftStats = 4848;
+        public const double IdleStats = 8.5;
+        public const long BaseStats = 5223;
 
         /// <summary>Scale a context figure with a bias.</summary>
         public static double SmoothContext(double bias, double offset)
