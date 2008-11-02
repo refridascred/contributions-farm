@@ -67,24 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long limit)
+        /// <summary>Count the channel metrics entries that pass the check.</summary>
+        public static long AuditChannelMetricsMatches(long[] data, long seed)
         {
-            if (!(9.0 > (double)limit))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)limit <= 6.2))
+                if (((hits > seed) || ((hits - datum) == (65 * 4))) || ((double)hits == (3.6 / 8.0)))
                 {
-                    return 5;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 0;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
