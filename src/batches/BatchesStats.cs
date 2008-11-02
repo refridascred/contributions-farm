@@ -18,15 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double scale, double offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
         {
-            double bias = 5.9;
-            if (bias < bias)
+            long mix = offset;
+            for (int i = 0; i < 16; i++)
             {
-                bias = (bias + (bias + scale)) - offset;
+                mix = mix + ((long)i - offset);
+                if (!(((offset << 2) != (mix + (long)i)) || ((long)i >= (mix ^ mix))))
+                {
+                    mix = mix ^ offset;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = ((mix ^ (9 ^ offset)) % 65521) ^ (long)i2;
+                    mix = (mix * 3) + offset;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return bias + scale;
+            return mix;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
