@@ -1,11 +1,10 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the githubfarm list.
-Defaults for already live in the config folder and can be overridden per environment.
-Keep batches and order names short and lowercase.
+The record report groups every account by farm.
+Defaults for order live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer batches defaults
-- Validate context input early
-- Review entry limits each release
+- Document new report fields
+- Log every payload change
+- Review stream limits each release
