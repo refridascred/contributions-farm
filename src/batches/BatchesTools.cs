@@ -20,12 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 2638;
-        public const long MaxToken = 4126;
-        public const double BaseCount = 83.06;
-        public const double SoftToken = 16.39;
-        public const string WindowToken = "latest-1";
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc << 2) ^ step) % 101;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
