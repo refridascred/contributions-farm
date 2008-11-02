@@ -26,18 +26,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] values)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + entry) >= hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a batch stats.</summary>
