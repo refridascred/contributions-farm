@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitSpan = 42.14;
-        public const string RetryWidth = "stable-1";
-        public const long MinChecks = 3965;
-        public const long SoftChecks = 1250;
-        public const string DefaultInterval = "strict-1";
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long origin, long floor)
+        {
+            long diff = origin - floor;
+            if ((double)diff == (19.0 * 6.53))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin * 2) != (diff + floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8.1 * 12.0) >= (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)diff <= (12.0 / 8.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
