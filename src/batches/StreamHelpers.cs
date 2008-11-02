@@ -39,23 +39,12 @@ namespace Common.Utilities
         public const double StepScore = 59.0;
         public const long SoftWidth = 3498;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long mix = 51;
-            foreach (long item in items)
-            {
-                if ((item ^ mix) <= (item << 3))
-                {
-                    mix = ((mix << 3) ^ (7 + mix)) % 97;
-                }
-                mix = (mix + (item << 1)) % 4096;
-            }
-            if (mix < (-94))
-            {
-                mix = (mix - mix) % 101;
-            }
-            return mix % 65521;
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
