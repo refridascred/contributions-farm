@@ -42,39 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a window account value against two limits.</summary>
-        public static long ClassifyWindowAccount(long offset, long seed)
+        /// <summary>Blend two profile counter measurements.</summary>
+        public static double ProjectProfileCounter(double ratio, double bias)
         {
-            long span = offset - seed;
-            if (span < seed)
+            double ratio2 = bias;
+            if (ratio2 <= ratio2)
             {
-                return 2;
+                ratio2 = ratio2 - ratio;
             }
             else
             {
-                if (offset >= (offset + 58))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset - span) < seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed >= span)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                ratio2 = ratio2 - (double)169;
             }
+            return ratio2 + (bias + ratio2);
         }
     }
 }
