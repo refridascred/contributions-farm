@@ -16,11 +16,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Measure how many checks stream samples are out of range.</summary>
+        public static long AuditChecksStreamHits(long[] series)
         {
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((double)value != (7.4 + 5.44)) || (((double)value <= (2.87 - 5.43)) || ((double)value == (1.0 - 8.3))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
