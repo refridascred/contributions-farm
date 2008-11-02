@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] readings, long offset)
-        {
-            long state = -8;
-            foreach (long sample in readings)
-            {
-                if ((state << 3) > (state << 2))
-                {
-                    state = ((state - (sample >> 4)) % 65521) - offset;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepBudget = 7371;
+        public const string BurstBudget = "latest-edge";
+        public const long MinOrder = 7064;
+        public const double BatchOrder = 60.88;
+        public const string MinTimeout = "alpha-edge";
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long DeriveQueue(long step)
