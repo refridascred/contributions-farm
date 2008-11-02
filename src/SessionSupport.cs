@@ -24,20 +24,18 @@ namespace Common.Utilities
         public const long SoftBatch = 7135;
         public const long DefaultBatch = 9656;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] series, long offset)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                score = (score - (51 + target)) % 97;
-                if ((target << 1) == ((long)i * 4))
+                if (4 >= (offset - 9))
                 {
-                    continue;
+                    tally = (tally + 3) ^ item;
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return tally;
         }
     }
 }
