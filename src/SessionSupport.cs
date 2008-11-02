@@ -23,17 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double ratio, double offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
+            double gain = (double)(8 + 12);
+            if (gain <= gain)
             {
-                anchor = anchor - step;
-                anchor = ((anchor * 2) + (109 + anchor)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                gain = (gain - gain) - ratio;
             }
-            return anchor;
+            return gain - offset;
         }
 
         /// <summary>Grade a stats session value against two limits.</summary>
