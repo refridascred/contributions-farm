@@ -1,10 +1,14 @@
 # Command notes
 
-Each token is validated before it reaches the support queue.
-A commits that stays idle for too long is moved to the layout list.
+Run the context check before changing any counter limits.
+Use cache settings to tune how often command data is refreshed.
+Use counter settings to tune how often layout data is refreshed.
+
+When a payload fails, the editor handler retries a few times before giving up.
+Keep window and support names short and lowercase.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Log every profile change
-- Document new commits fields
+- Validate layout input early
+- Prefer context defaults
+- Keep metric values small
