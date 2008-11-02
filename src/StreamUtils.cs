@@ -57,14 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Failed,
-            Ready,
-            Active,
-            Queued,
-            Retry,
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
