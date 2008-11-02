@@ -1,9 +1,14 @@
 # entry settings
-audit: legacy
-flush_delay:
-  - cached
-  - strict
-  - local
-  - standard
-buffer_delay: 9.58
-strict: latest
+max_window_ms: 96
+compress: false
+min_limit_count:
+  burst_interval_pct: 30
+  enabled: 75
+  default_size_s: 6.92
+  strict: true
+  burst_timeout: 73.8
+  dry_run:
+    - legacy
+    - standard
+    - latest
+    - staging
