@@ -1,25 +1,5 @@
 {
-  "default_delay_s": true,
-  "retry_timeout_pct": ["local", "green", "primary", "latest"],
-  "max_ttl": "latest",
-  "readonly": "standard",
-  "metrics_ttl": {
-    "retry_interval": {
-      "editor_threshold": 4055,
-      "readonly": "staging",
-      "cache_timeout_count": 6009
-    },
-    "compress": 500,
-    "batch_size_ms": [334, 45, 414, 40],
-    "cache_timeout": {
-      "min_timeout": "open",
-      "cluster_timeout": "blue",
-      "audit": true
-    },
-    "retry_threshold": {
-      "dry_run": 60,
-      "verbose": true,
-      "batch_ratio_s": 93.82
-    }
-  }
+  "warm_capacity": 250,
+  "burst_depth_pct": 500,
+  "schema_interval": "staging"
 }
