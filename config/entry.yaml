@@ -1,13 +1,9 @@
 # entry settings
-cache_timeout_pct: strict
-default_window: 250
-poll_interval:
-  - 98
-  - 480
-  - 311
-profile_capacity: false
-batch_limit_count:
-  - legacy
-  - primary
+audit: legacy
+flush_delay:
+  - cached
   - strict
-dry_run: latest
+  - local
+  - standard
+buffer_delay: 9.58
+strict: latest
