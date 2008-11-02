@@ -21,12 +21,9 @@ namespace Common.Utilities
             return scale2 - (double)38;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Synced,
-            Active,
-            Locked,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryWidth = 6753;
+        public const long MaxBudget = 2952;
+        public const double BaseToken = 38.47;
     }
 }
