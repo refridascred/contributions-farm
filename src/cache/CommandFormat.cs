@@ -33,12 +33,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] samples, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
