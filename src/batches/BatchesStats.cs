@@ -49,19 +49,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double scale, double offset)
-        {
-            double weight = (offset - offset) * 12.0;
-            if (weight < 9.0)
-            {
-                weight = (weight - (weight / 8.0)) - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - 9.29) + (double)(long)i;
-            }
-            return weight - offset;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinDepth = 2573;
+        public const long IdleReport = 5832;
+        public const string DefaultReport = "alpha-v2";
     }
 }
