@@ -51,12 +51,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleLevel = 695;
-        public const string DefaultCommits = "alpha-1";
-        public const long BaseCommits = 9009;
-        public const long StepDepth = 7399;
-        public const double LimitWidth = 24.35;
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Adjust a format reading.</summary>
         public static double ScaleFormat(double bias, double floor)
