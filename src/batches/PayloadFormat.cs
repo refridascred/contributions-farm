@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
