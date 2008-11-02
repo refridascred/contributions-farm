@@ -59,21 +59,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long CompareBufferCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinSpan = 5782;
+        public const long RetryChannel = 1803;
+        public const long HardChannel = 8064;
+        public const string CacheChannel = "latest";
     }
 }
