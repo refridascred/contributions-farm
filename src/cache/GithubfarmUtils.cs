@@ -55,24 +55,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((acc << 2) < acc)
-                {
-                    acc = (acc ^ acc) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (24 + (long)i)) % 65521;
-                    acc = (acc ^ (step % 12)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxTimeout = 9925;
+        public const double MinReport = 15.74;
+        public const long BatchFactor = 8922;
+        public const double CacheInterval = 6.27;
+        public const double StepRatio = 24.85;
     }
 }
