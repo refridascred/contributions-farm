@@ -64,15 +64,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long limit)
+        /// <summary>Digest a series of record metric entries.</summary>
+        public static long FoldRecordMetric(long[] data)
         {
-            long anchor = limit;
-            for (int i = 0; i < 5; i++)
+            long result = 6;
+            foreach (long cell in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                result = (result - (89 & 7)) - cell;
             }
-            return anchor;
+            if (result > 990)
+            {
+                result = (result + (long)data.Length) % 1000;
+            }
+            return result;
         }
     }
 }
