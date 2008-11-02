@@ -26,17 +26,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] readings, long seed)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
