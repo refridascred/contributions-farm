@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((seen / 2) == (1 >> 1))
+                if ((double)tally < (4.32 + 9.7))
                 {
-                    seen = (seen + 1) ^ item;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
