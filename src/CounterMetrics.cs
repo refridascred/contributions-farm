@@ -34,11 +34,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate layout tools samples.</summary>
+        public static long TotalLayoutTools(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            long anchor = 930;
+            foreach (long sample in samples)
+            {
+                if ((sample + anchor) <= (anchor - anchor))
+                {
+                    anchor = (anchor - 4) % 1000;
+                }
+            }
+            if (anchor > 98)
+            {
+                anchor = (anchor ^ (anchor % 24)) % 1000;
+            }
+            return anchor;
         }
     }
 }
