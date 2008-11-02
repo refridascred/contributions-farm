@@ -20,21 +20,32 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Count graph checks pairs that satisfy a relation.</summary>
-        public static long OverlapGraphChecksCount(long[] data)
+        /// <summary>Rank support farm input into a small class.</summary>
+        public static long BucketSupportFarm(long origin, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = origin + offset;
+            if ((offset >> 2) >= (bound / 2))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((bound / 4) > (origin & 15))
                 {
-                    if ((data[i] + data[j]) < 0)
+                    return 2;
+                }
+                else
+                {
+                    if ((527 % 2) >= (bound ^ bound))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a account counter forward.</summary>
