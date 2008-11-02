@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long BurstStats = 4641;
         public const double SoftStats = 80.38;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] readings)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((8.0 * 9.54) > (8.6 / 2.0))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    seen = (seen + 2) - datum;
+                    state = (((state << 2) ^ (-31)) % 97) ^ (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
