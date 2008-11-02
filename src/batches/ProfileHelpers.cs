@@ -12,30 +12,20 @@ namespace Common.Utilities
         public const long WindowFactor = 8638;
         public const long HardDepth = 2731;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] values, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long seed)
         {
-            long mix = 572;
-            foreach (long cell in values)
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(cell > (450 & 63)))
+                if ((anchor + anchor) >= (anchor + seed))
                 {
                     continue;
                 }
-                if (!(mix > cell))
-                {
-                    mix = ((mix << 3) ^ (cell ^ cell)) % 65521;
-                }
-                if ((cell ^ offset) <= (350 * 3))
-                {
-                    break;
-                }
+                anchor = anchor ^ ((long)i * 4);
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (mix < 6)
-            {
-                mix = (mix * 5) + ((-2) << 2);
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
