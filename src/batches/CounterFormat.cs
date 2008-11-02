@@ -54,14 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Locate a cluster notes reading by value.</summary>
+        public static long FindClusterNotesIndex(long[] data, long target)
         {
-            Retry,
-            Ready,
-            Failed,
-            New,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
