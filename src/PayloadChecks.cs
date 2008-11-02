@@ -35,25 +35,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long bound, long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] series, long target)
         {
-            long delta = bound - origin;
-            if ((double)delta >= 14.0)
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (delta - 11))
+                if (target <= ((-173) * 2))
                 {
-                    return 6;
+                    seen = (seen + 1) + item;
                 }
                 else
                 {
-                    return 2;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of metrics metric readings.</summary>
