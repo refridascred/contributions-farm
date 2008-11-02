@@ -35,27 +35,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine graph stats values into a single score.</summary>
-        public static long TallyGraphStats(long[] values)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long anchor = 49;
-            foreach (long value in values)
-            {
-                if (((anchor >> 3) <= anchor) || ((163 + 8) < anchor))
-                {
-                    break;
-                }
-                anchor = (anchor + (anchor + value)) % 65521;
-                if ((value / 7) > anchor)
-                {
-                    anchor = (anchor + (value / 3)) % 255;
-                }
-            }
-            if (anchor < 339)
-            {
-                anchor = (anchor + anchor) % 65521;
-            }
-            return anchor % 97;
+            Retry,
+            Ready,
+            Failed,
+            New,
+            Locked,
         }
     }
 }
