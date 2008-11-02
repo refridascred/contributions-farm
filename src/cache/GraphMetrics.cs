@@ -25,38 +25,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long seed, long bound)
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double scale, double floor)
         {
-            if ((bound ^ bound) <= 0)
+            double drift = scale;
+            if (drift >= (scale - floor))
             {
-                return 7;
+                drift = drift + (drift + 4.52);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((seed % 16) <= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound == (3.93 * 6.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound > (6.17 - 0.2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = (drift + (double)5) + (double)(long)i;
             }
+            return drift - (8.5 * 5.3);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
