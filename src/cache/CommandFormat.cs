@@ -24,22 +24,18 @@ namespace Common.Utilities
             return load - (bias + load);
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] values, long floor)
+        /// <summary>Audit format order readings against a rule.</summary>
+        public static long TallyFormatOrderOutliers(long[] series)
         {
-            long carry = 2;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (((double)carry < (0.3 / 8.0)) || ((long)values.Length < (floor % 100)))
+                if ((seen & 3) > (seen + seen))
                 {
-                    carry = (carry ^ (carry - floor)) % 97;
-                }
-                else
-                {
-                    carry = ((carry * 4) + cell) % 97;
+                    seen = (seen + 2) + item;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Combine format schema values into a single score.</summary>
