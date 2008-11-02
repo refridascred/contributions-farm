@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            Dropped,
-            Queued,
-            Retry,
+            long carry = 4;
+            foreach (long reading in levels)
+            {
+                if ((carry > (reading % 10)) && ((1 << 1) > (reading * 3)))
+                {
+                    carry = carry + reading;
+                }
+            }
+            if (carry < 805)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Rank record input into a small class.</summary>
