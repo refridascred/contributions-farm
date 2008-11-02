@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long WindowStats = 9994;
         public const long IdleLevel = 2721;
 
-        /// <summary>Validate commits cache readings against a bound.</summary>
-        public static bool CheckCommitsCacheBounds(long[] items, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double bias, double offset)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            double bias2 = (double)(-8) + bias;
+            if (bias2 > (double)1)
             {
-                if (datum < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                bias2 = bias2 - 1.4;
             }
-            return ready;
+            else
+            {
+                bias2 = bias2 + offset;
+            }
+            return bias2 + (offset + 2.9);
         }
 
         /// <summary>Combine order tools values into a single score.</summary>
