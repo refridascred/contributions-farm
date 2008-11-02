@@ -25,11 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long bound, long offset)
         {
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
+            if ((7.4 > (double)offset) && ((double)bound < 3.87))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + bound) == (offset / 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate token cache readings against a bound.</summary>
