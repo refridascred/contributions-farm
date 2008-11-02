@@ -1,9 +1,8 @@
 # entry settings
-tools_size:
-  enabled: 100
-  verbose: 500
-  strict: 78
-  audit: 171
-filter_ttl: 96.72
-retry_timeout_count: false
-base_threshold_count: 9
+min_interval_ms: 62
+readonly: 2993
+strict:
+  - blue
+  - green
+burst_ttl_s: 745
+graph_interval: 5075
