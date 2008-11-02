@@ -31,11 +31,19 @@ namespace Common.Utilities
             return rate - 5.28;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchFactor = 67.59;
-        public const long BurstBudget = 5315;
-        public const long BurstInterval = 8315;
-        public const string RetryWindow = "fallback-v2";
-        public const double MinWindow = 91.15;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] items, long step)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
