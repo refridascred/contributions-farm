@@ -53,18 +53,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] items, long offset)
+        /// <summary>Classify a format metric pair into a bucket.</summary>
+        public static long RankFormatMetric(long step, long bound)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long edge = step - bound;
+            if (((edge & 63) != (3 + step)) && (2.0 < (double)edge))
             {
-                if ((long)items.Length >= (offset - entry))
+                return 5;
+            }
+            else
+            {
+                if (!((edge % 60) > step))
                 {
-                    matches = matches + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
