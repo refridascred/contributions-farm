@@ -92,11 +92,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowCount = 30.95;
-        public const long BatchLayout = 744;
-        public const double HardSpan = 35.83;
-        public const long WindowWidth = 4844;
-        public const long WindowScore = 8081;
+        /// <summary>Roll a metric farm counter forward.</summary>
+        public static long RollMetricFarm(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 5) + floor) % 1000;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
