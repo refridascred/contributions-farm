@@ -20,21 +20,18 @@ namespace Common.Utilities
         public const string DefaultInterval = "local-v2";
         public const long BurstSpan = 7254;
 
-        /// <summary>Compare every pair of cluster already readings.</summary>
-        public static long CompareClusterAlreadyCount(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((datum % 24) >= (datum - 573))
                 {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every order entry entry stays within the limit.</summary>
