@@ -74,15 +74,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] data, long offset)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long sum = 66;
-            foreach (long cell in data)
-            {
-                sum = (((sum << 3) ^ (offset & 31)) % 1000) - cell;
-            }
-            return sum % 65521;
+            public bool Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
