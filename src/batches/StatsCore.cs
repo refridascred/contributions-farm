@@ -41,22 +41,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] values, long bound)
+        /// <summary>Look up the position of a route record sample.</summary>
+        public static long FindRouteRecordIndex(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((37 / 9) >= bound)
+                if (series[i] <= origin)
                 {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the filter status values.</summary>
