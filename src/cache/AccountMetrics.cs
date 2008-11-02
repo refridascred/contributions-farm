@@ -74,25 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] items, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] data, long step)
         {
-            long acc = 99;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 3; i++)
+                if ((double)849 != (double)step)
                 {
-                    acc = (((acc ^ (acc >> 2)) % 97) - (long)i) + floor;
-                    acc = ((acc * 4) + 7) % 4096;
+                    seen = (seen + 2) - item;
                 }
-                acc = ((acc * 3) + (value + 283)) % 65521;
-                acc = ((acc * 3) + (96 + 97)) % 1000;
             }
-            if (acc < 904)
-            {
-                acc = (acc << 2) ^ (acc + 956);
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Hold a record record.</summary>
