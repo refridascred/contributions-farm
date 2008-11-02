@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine graph farm values into a single score.</summary>
-        public static long TallyGraphFarm(long[] levels, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] samples)
         {
-            long result = 632;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                result = result - (limit + reading);
-                if (!((result + limit) <= (reading ^ 0)))
+                if ((double)reading < (double)649)
                 {
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
