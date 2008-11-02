@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] series, long offset)
         {
-            Closed,
-            Dropped,
-            Synced,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((item + 9) <= offset)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
