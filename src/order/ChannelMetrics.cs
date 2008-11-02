@@ -33,22 +33,11 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] data, long step)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long acc = 621;
-            foreach (long sample in data)
-            {
-                if ((double)step <= (8.41 * 4.97))
-                {
-                    acc = ((acc * 2) + (sample / 8)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (step / 8)) % 255;
-                }
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
