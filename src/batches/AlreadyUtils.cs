@@ -29,17 +29,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] series, long bound)
+        /// <summary>Count the commits payload entries that pass the check.</summary>
+        public static long CountCommitsPayloadMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (series[i] < bound)
+                if (tally >= 8)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of context account readings.</summary>
