@@ -32,13 +32,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long seed, long origin)
         {
-            Pending,
-            Ready,
-            Retry,
-            Synced,
+            long offset = seed - origin;
+            if (seed > (origin - origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed > (0.59 * 3.2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed <= (11.0 + 0.23))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset & 3) <= (offset ^ seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
