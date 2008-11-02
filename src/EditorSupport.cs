@@ -70,10 +70,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchWidth = 2873;
-        public const double HardContext = 92.89;
-        public const long WindowDepth = 7136;
-        public const long DefaultContext = 5116;
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
+        {
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
