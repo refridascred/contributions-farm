@@ -1,6 +1,7 @@
 {
-  "githubfarm_retries": 67.53,
-  "idle_threshold_count": "latest",
-  "min_limit": true,
-  "retry_depth_count": 30
+  "verbose": 23.61,
+  "persist": "standard",
+  "base_interval": "blue",
+  "route_retries": "fallback",
+  "poll_delay_pct": "strict"
 }
