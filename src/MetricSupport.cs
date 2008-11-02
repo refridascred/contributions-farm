@@ -35,22 +35,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] data, long bound)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (6.5 < (double)matches)
-                {
-                    matches = ((matches + 1) + sample) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
