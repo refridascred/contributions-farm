@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxCount = 9025;
-        public const long BatchReport = 4243;
-        public const double WindowReport = 59.16;
-        public const long SoftFactor = 3323;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] values)
+        {
+            long result = 37;
+            foreach (long datum in values)
+            {
+                result = ((result * 5) + (datum & 3)) % 101;
+            }
+            if (result < 32)
+            {
+                result = result ^ result;
+            }
+            return result;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricMatches(long[] samples, long seed)
