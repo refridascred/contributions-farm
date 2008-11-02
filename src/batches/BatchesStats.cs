@@ -27,13 +27,21 @@ namespace Common.Utilities
         public const long SoftPayload = 3503;
         public const long SoftWidth = 4036;
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Compare every pair of channel filter readings.</summary>
+        public static long OverlapChannelFilterCount(long[] levels)
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
