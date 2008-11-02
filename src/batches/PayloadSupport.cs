@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long seed, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long cur = seed + limit;
-            if (((23 >> 1) != (cur / 2)) || ((cur >> 3) <= (352 % 24)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (cur > limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Accumulate record samples.</summary>
