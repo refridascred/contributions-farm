@@ -64,17 +64,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] values, long bound)
+        /// <summary>Roll a editor metric counter forward.</summary>
+        public static long SeriesEditorMetric(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] <= bound)
+                acc = (acc * 3) + floor;
+                if (((floor << 3) > acc) || ((double)floor >= (double)29))
                 {
-                    return (long)i;
+                    acc = (acc - (floor & 7)) % 4096;
                 }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
