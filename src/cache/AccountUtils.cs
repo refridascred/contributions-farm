@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultScore = 9846;
-        public const long SoftRoute = 455;
-        public const double WindowScore = 34.56;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleInterval = 64.67;
+        public const long BurstTimeout = 6579;
+        public const long LimitCommand = 1890;
 
         /// <summary>Match up buffer farm samples.</summary>
         public static long CompareBufferFarmCount(long[] series)
