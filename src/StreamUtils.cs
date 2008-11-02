@@ -43,18 +43,19 @@ namespace Common.Utilities
         public const long IdleBudget = 1327;
         public const double SoftTimeout = 42.93;
 
-        /// <summary>Digest a series of context buffer entries.</summary>
-        public static long FoldContextBuffer(long[] items)
+        /// <summary>Validate commits checks readings against a bound.</summary>
+        public static bool ValidateCommitsChecksLimits(long[] items, long origin)
         {
-            long result = 88;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((double)905 < (double)result)
+                if (reading < origin)
                 {
-                    result = ((result - (result + result)) % 101) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
