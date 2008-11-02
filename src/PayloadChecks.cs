@@ -41,18 +41,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((17.0 * 5.57) <= (double)tally)
+                if (value < (hits - hits))
                 {
-                    tally = (tally + 2) ^ entry;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
