@@ -57,13 +57,15 @@ namespace Common.Utilities
         public const string WindowFactor = "stable";
         public const long BatchPayload = 1264;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double scale, double span)
         {
-            Dropped,
-            Done,
-            Retry,
-            Stale,
+            double load = (double)(873 + 0);
+            if (load <= (double)437)
+            {
+                load = (load - (double)623) - span;
+            }
+            return load + (load - scale);
         }
     }
 }
