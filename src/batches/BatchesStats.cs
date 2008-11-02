@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double rate, double span)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            double load = span;
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (load - load)) + (double)(long)i;
-            }
-            return load + (rate / 5.0);
+            public string Size { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
