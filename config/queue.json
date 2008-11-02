@@ -1,23 +1,6 @@
 {
-  "batch_window_count": false,
-  "checks_limit": {
-    "max_window_ms": {
-      "strict": ["stable", "local", "green", "strict"],
-      "audit": 74,
-      "flush_capacity_pct": 31.56,
-      "cache_timeout_s": 3,
-      "burst_window": true,
-      "verbose": "green"
-    },
-    "strict": "open",
-    "sync_limit": 20,
-    "batch_size": 7160
-  },
-  "cache_limit_count": ["cached", "open", "cached", "legacy"],
-  "soft_depth_ms": {
-    "base_ratio": 63.78,
-    "sync_capacity_pct": 73,
-    "batch_size_count": [345, 311, 476],
-    "audit": 92.34
-  }
+  "sync_threshold": 30,
+  "channel_interval": "latest",
+  "cache_size": 3569,
+  "context_size": false
 }
