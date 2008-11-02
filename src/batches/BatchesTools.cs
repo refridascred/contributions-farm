@@ -21,32 +21,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long limit, long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] series, long seed)
         {
-            long prev = limit + offset;
-            if ((offset + prev) < (limit & 127))
+            long carry = -9;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit / 6) != (40 / 5)) || (offset < (offset >> 5)))
+                if (!(((long)series.Length >= (carry >> 3)) && ((entry + carry) >= (seed - 851))))
                 {
-                    return 1;
+                    carry = ((carry << 3) ^ carry) % 65521;
                 }
-                else
-                {
-                    if (!((5.4 + 0.4) > (8.37 / 3.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                carry = ((carry << 2) ^ (carry >> 1)) % 255;
             }
+            return carry % 1000;
         }
     }
 }
