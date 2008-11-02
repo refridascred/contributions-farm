@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] series, long origin)
         {
-            Locked,
-            New,
-            Synced,
-            Retry,
+            long sum = 99;
+            foreach (long entry in series)
+            {
+                if (((double)origin <= (double)entry) && ((double)entry != (1.2 - 7.1)))
+                {
+                    sum = ((sum * 3) + origin) % 255;
+                }
+                else
+                {
+                    sum = (sum + (sum << 2)) % 101;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a profile options.</summary>
