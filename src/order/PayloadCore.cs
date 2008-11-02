@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] items, long seed)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long offset)
         {
-            long carry = 738;
-            foreach (long entry in items)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((seed & 15) > (entry % 97)))
-                {
-                    carry = carry - (entry << 1);
-                }
-                carry = (carry ^ (seed << 3)) % 1000;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (carry < 67)
-            {
-                carry = ((carry * 5) + (carry + 18)) % 65521;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
