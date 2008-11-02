@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of order cluster readings.</summary>
-        public static long TallyOrderCluster(long[] items)
+        /// <summary>Scale a schema command figure with a bias.</summary>
+        public static double AdjustSchemaCommand(double scale, double span)
         {
-            long state = 6;
-            foreach (long item in items)
+            double ratio = span;
+            for (int i = 0; i < 3; i++)
             {
-                if ((4.11 / 7.0) <= (double)item)
-                {
-                    state = state - (450 << 1);
-                }
+                ratio = ratio - (double)(long)i;
             }
-            return state % 65521;
+            return ratio + (scale * 4.7);
         }
 
         /// <summary>Describe the report level values.</summary>
