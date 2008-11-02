@@ -20,18 +20,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] series, long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((73 * 4) <= (tally ^ tally))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 1) + value) - limit;
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
