@@ -14,22 +14,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 5) + (seed << 2)) % 101;
-                bool found = (seed ^ 73) == ((long)i & 255);
-                if (found)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc - (long)i) % 97;
-                    continue;
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Validate contributi checks readings against a bound.</summary>
