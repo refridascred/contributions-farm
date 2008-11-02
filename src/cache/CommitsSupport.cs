@@ -27,13 +27,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            Locked,
+            Ready,
+            Active,
+            Draft,
         }
 
         /// <summary>Project the next checks value.</summary>
