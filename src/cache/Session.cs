@@ -52,19 +52,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ProjectCluster(double weight, double bias)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] samples, long seed)
         {
-            double scale = weight;
-            if (scale < (double)575)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                scale = (scale - scale) - bias;
+                if (item <= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale - (double)96;
-            }
-            return scale - 6.3;
+            return flag;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
