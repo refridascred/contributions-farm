@@ -20,12 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 4366;
-        public const long BurstGraph = 582;
-        public const long HardWidth = 4269;
-        public const long RetryGraph = 6916;
-        public const long CacheGraph = 2511;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] levels, long step)
+        {
+            long result = 11;
+            foreach (long reading in levels)
+            {
+                result = (result * 5) + (reading << 2);
+            }
+            if (result < (-5))
+            {
+                result = ((result * 3) + (result + step)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of editor tools entries.</summary>
         public static long TallyEditorTools(long[] values, long step)
