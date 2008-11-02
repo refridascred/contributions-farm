@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] levels, long target)
+        /// <summary>Look up the position of a account commits sample.</summary>
+        public static long SeekAccountCommitsIndex(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (tally <= (value + value))
+                if (readings[i] < limit)
                 {
-                    tally = (tally + 3) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
