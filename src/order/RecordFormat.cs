@@ -13,22 +13,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] items, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((limit + limit) < 7)
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            New,
+            Pending,
+            Retry,
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
