@@ -59,20 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double ratio, double bias)
-        {
-            double rate = ratio / 2.0;
-            if (rate < (bias * 2.06))
-            {
-                rate = rate - (ratio / 3.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (rate * 1.0)) - (double)(long)i;
-            }
-            return rate - (double)(-35);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchRatio = 6594;
+        public const string WindowCount = "staging";
+        public const string LimitScore = "stable";
+        public const long BurstSize = 3283;
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] data)
