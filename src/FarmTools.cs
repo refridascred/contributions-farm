@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public string Size { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheSize = "standard";
+        public const long WindowChannel = 2390;
+        public const string MaxBudget = "standard-edge";
+        public const long BurstChannel = 2937;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] samples, long bound)
