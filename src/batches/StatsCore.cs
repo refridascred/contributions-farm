@@ -72,16 +72,31 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Classify a order stats pair into a bucket.</summary>
+        public static long RankOrderStats(long seed, long origin)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            if ((seed - origin) >= 6)
             {
-                result = result - step;
-                result = ((result * 2) + (long)i) % 65521;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((97 / 6) < (origin + origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed ^ seed) >= origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
