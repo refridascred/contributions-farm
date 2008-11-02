@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxCount = 9025;
+        public const long BatchReport = 4243;
+        public const double WindowReport = 59.16;
+        public const long SoftFactor = 3323;
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long AuditMetricMatches(long[] samples, long seed)
