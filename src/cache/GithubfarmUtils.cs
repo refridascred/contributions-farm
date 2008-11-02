@@ -13,40 +13,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long bound, long target)
-        {
-            long lane = bound + target;
-            if ((double)bound == (double)lane)
-            {
-                return 1;
-            }
-            else
-            {
-                if (target < bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)lane < (4.33 * 4.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) != (target * 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepDepth = "staging-1";
+        public const double CacheDepth = 4.0;
+        public const long DefaultMetrics = 7361;
+        public const long BaseMetrics = 6397;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long ScoreEntry(long[] levels, long limit)
