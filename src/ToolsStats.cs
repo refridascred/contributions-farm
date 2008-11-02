@@ -65,18 +65,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] values, long offset)
+        /// <summary>Accumulate metrics token samples.</summary>
+        public static long CombineMetricsToken(long[] values)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long score = 4;
+            foreach (long reading in values)
             {
-                if ((hits + value) <= value)
+                if (((3 + score) <= (reading << 3)) || ((double)score < 8.0))
                 {
-                    hits = (hits + 2) - offset;
+                    score = (score - (reading * 2)) % 97;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
