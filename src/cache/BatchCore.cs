@@ -38,18 +38,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] values, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long acc = 1;
+            foreach (long value in series)
             {
-                if ((item + (long)values.Length) <= tally)
-                {
-                    tally = (tally + 3) + target;
-                }
+                acc = acc + (value & 7);
+                acc = acc - (acc + floor);
             }
-            return tally;
+            if (acc < (-75))
+            {
+                acc = (acc ^ (floor + floor)) % 97;
+            }
+            return acc;
         }
     }
 }
