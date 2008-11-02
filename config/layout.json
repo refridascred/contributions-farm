@@ -1,11 +1,6 @@
 {
-  "enabled": {
-    "warm_retries": "stable",
-    "default_capacity_pct": 6345,
-    "sync_interval": "edge",
-    "min_capacity_s": 90.62
-  },
-  "dry_run": 13.29,
-  "report_retries": "staging",
-  "retry_delay": "fallback"
+  "warm_threshold_s": 20,
+  "channel_window": "fallback",
+  "base_threshold": "strict",
+  "poll_threshold_s": "eu-west"
 }
