@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Match up metrics editor samples.</summary>
+        public static long CompareMetricsEditorCount(long[] data)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
