@@ -30,17 +30,19 @@ namespace Common.Utilities
         public const long MaxPayload = 953;
         public const double StepWidth = 62.52;
 
-        /// <summary>Derive the next githubfarm filter value from a seed.</summary>
-        public static long DeriveGithubfarmFilter(long step)
+        /// <summary>Validate schema graph readings against a bound.</summary>
+        public static bool VerifySchemaGraphBounds(long[] items, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                mix = ((mix * 5) + (step - step)) % 4096;
-                mix = (mix ^ mix) % 101;
-                mix = ((mix * 5) + (long)i) % 1000;
+                if (cell >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
     }
 }
