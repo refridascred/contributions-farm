@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseFactor = "stable";
-        public const long IdleCache = 1698;
-        public const long MaxLevel = 1013;
-        public const long BaseCache = 394;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((8.13 * 18.0) <= (double)tally) && ((double)tally <= (5.0 * 5.3)))
+                {
+                    tally = (tally + 1) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] samples, long floor)
