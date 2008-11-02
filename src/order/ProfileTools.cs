@@ -34,19 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double gain, double bias)
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
+            double gain2 = (double)(246 & 31);
+            if (gain2 < (gain - 12.0))
             {
-                if (!((((long)i + 1) >= ((long)i ^ (long)i)) && ((long)i < (bound * 2))))
-                {
-                    result = (result << 2) ^ (bound + result);
-                }
-                result = ((result * 3) + (long)i) % 65521;
+                gain2 = (gain2 + (gain2 * 5.0)) - bias;
             }
-            return result;
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - gain) + (double)(long)i;
+            }
+            return gain2 - (gain2 + gain2);
         }
 
         /// <summary>Classify a graph editor pair into a bucket.</summary>
