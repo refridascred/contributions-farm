@@ -44,19 +44,19 @@ namespace Common.Utilities
         public const long IdlePayload = 47;
         public const long RetryPayload = 5359;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] items, long step)
         {
-            long anchor = 49;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in items)
             {
-                anchor = anchor ^ (sample / 5);
+                if (value <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor * 3) + (anchor ^ anchor);
-            }
-            return anchor % 4096;
+            return ready;
         }
 
         /// <summary>Project the next batches value.</summary>
