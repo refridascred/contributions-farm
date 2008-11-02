@@ -36,10 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 3337;
-        public const long MaxFilter = 9428;
-        public const double BaseSize = 9.08;
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Draft,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] data)
