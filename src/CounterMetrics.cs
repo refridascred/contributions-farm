@@ -50,32 +50,25 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Classify a command batch pair into a bucket.</summary>
-        public static long ClassifyCommandBatch(long offset, long limit)
+        /// <summary>Roll a farm buffer counter forward.</summary>
+        public static long SeriesFarmBuffer(long target)
         {
-            long offset2 = offset + limit;
-            if ((limit * 4) == (limit % 7))
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset2 != (6.0 / 2.0))
+                result = (result << 2) ^ (result >> 1);
+                if (((double)(long)i <= (20.0 - 1.8)) && ((9.96 / 5.0) > (double)(long)i))
                 {
-                    return 7;
+                    result = (result - (-72)) % 101;
                 }
-                else
+                if ((double)(long)i == (15.0 / 7.0))
                 {
-                    if ((offset + 6) > (offset2 - offset2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    result = result ^ (result + result);
+                    result = (result + (912 - target)) % 97;
                 }
+                result = ((result * 3) + (long)i) % 65521;
             }
+            return result;
         }
     }
 }
