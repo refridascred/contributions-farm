@@ -20,11 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 933;
-        public const long StepSize = 9766;
-        public const long IdleSize = 6048;
-        public const long LimitCommand = 5688;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
