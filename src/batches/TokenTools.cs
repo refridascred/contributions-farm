@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] data, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
