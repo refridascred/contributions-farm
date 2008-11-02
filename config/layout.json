@@ -1,12 +1,11 @@
 {
-  "poll_delay": {
-    "enabled": 5555,
-    "compress": 42.13,
-    "cluster_limit": "latest",
-    "retry_timeout": 38
+  "flush_timeout_ms": "fallback",
+  "filter_depth": 60,
+  "soft_limit_count": "eu-west",
+  "flush_capacity": {
+    "entry_threshold": [104, 414, 181, 13],
+    "base_capacity_ms": [292, 337, 329, 349],
+    "min_delay_s": 36.2
   },
-  "compress": "stable",
-  "batches_ttl": 30,
-  "base_timeout_s": "strict",
-  "soft_ratio": 250
+  "warm_ttl_pct": 30
 }
