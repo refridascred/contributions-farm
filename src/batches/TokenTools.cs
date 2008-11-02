@@ -42,13 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            Active,
+            Pending,
+            Locked,
         }
     }
 }
