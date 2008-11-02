@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of format session entries.</summary>
-        public static long CombineFormatSession(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] samples)
         {
-            long total = 8;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                total = total - datum;
-                if ((datum + datum) <= (421 / 3))
+                if (tally > (item - tally))
                 {
-                    total = ((total << 3) ^ datum) % 97;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    total = total ^ datum;
+                    tally = tally - 1;
                 }
             }
-            if (total < 412)
-            {
-                total = total + (total / 3);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
