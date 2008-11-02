@@ -66,19 +66,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] samples, long seed)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Done,
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
