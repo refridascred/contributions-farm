@@ -20,21 +20,17 @@ namespace Common.Utilities
         public const long BatchOrder = 4136;
         public const long SoftWidth = 6194;
 
-        /// <summary>Match up queue support samples.</summary>
-        public static long OverlapQueueSupportCount(long[] series)
+        /// <summary>Find the first queue record entry that matches the target.</summary>
+        public static long SeekQueueRecordIndex(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
                 {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
