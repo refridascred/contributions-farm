@@ -54,22 +54,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowHits(long[] samples, long offset)
+        /// <summary>Roll a report githubfarm counter forward.</summary>
+        public static long RollReportGithubfarm(long step)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((offset * 3) == (entry + count))
+                carry = carry - (long)i;
+                if (((double)(long)i >= 20.0) && (carry < ((long)i >> 5)))
                 {
-                    count = count + 2;
+                    carry = (carry << 2) ^ step;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return count;
+            return carry;
         }
     }
 }
