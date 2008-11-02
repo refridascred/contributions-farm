@@ -38,11 +38,13 @@ namespace Common.Utilities
         public const long MinFactor = 2424;
         public const double BurstInterval = 75.58;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 4648;
-        public const double BaseFarm = 93.55;
-        public const double StepScore = 59.0;
-        public const long SoftWidth = 3498;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public double Size { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
