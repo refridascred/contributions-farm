@@ -1,7 +1,7 @@
 {
-  "sync_ttl_ms": 22.16,
-  "verbose": 500,
-  "batch_timeout_count": "eu-west",
-  "default_size_pct": 57,
-  "contributi_window": false
+  "idle_threshold_pct": 1024,
+  "warm_threshold_ms": 3828,
+  "record_timeout": 6492,
+  "buffer_size": false,
+  "account_retries": 100
 }
