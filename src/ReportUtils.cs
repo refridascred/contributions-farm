@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryInterval = 1980;
-        public const double RetryTimeout = 20.29;
-        public const long RetrySpan = 2601;
-        public const long BatchScore = 5500;
-        public const long BatchInterval = 5616;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long seed)
