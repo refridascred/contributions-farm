@@ -26,21 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] values)
-        {
-            long total = 845;
-            foreach (long cell in values)
-            {
-                total = (total - (total + cell)) % 255;
-                total = ((total << 2) ^ (cell & 15)) % 101;
-                if (((cell / 6) != (total << 3)) || ((cell + cell) == (cell << 3)))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 2212;
+        public const string BaseSize = "latest";
+        public const long SoftDepth = 3538;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterLimits(long[] data, long bound)
