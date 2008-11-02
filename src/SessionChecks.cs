@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first format support entry that matches the target.</summary>
-        public static long LookupFormatSupportIndex(long[] items, long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] items, long bound)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] > bound) && ((items[i] % 2) == 0))
+                if ((items[i] <= bound) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
