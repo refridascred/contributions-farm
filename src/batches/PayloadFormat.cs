@@ -53,11 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double WindowSchema = 74.55;
-        public const long DefaultSchema = 4253;
-        public const long MinDepth = 9191;
-        public const long RetrySchema = 5705;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Active,
+            Failed,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamMatches(long[] data, long offset)
