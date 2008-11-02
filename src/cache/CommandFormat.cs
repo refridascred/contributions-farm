@@ -24,17 +24,22 @@ namespace Common.Utilities
             return load - (bias + load);
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] readings, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 2;
+            foreach (long cell in values)
             {
-                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                if (((double)carry < (0.3 / 8.0)) || ((long)values.Length < (floor % 100)))
                 {
-                    return (long)i;
+                    carry = (carry ^ (carry - floor)) % 97;
+                }
+                else
+                {
+                    carry = ((carry * 4) + cell) % 97;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Combine format schema values into a single score.</summary>
