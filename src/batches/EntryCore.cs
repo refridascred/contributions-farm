@@ -42,20 +42,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long floor)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((floor >> 5) < floor) || ((floor + (long)i) <= (score + (long)i)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = score ^ 79;
-                    break;
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
