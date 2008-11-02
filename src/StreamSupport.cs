@@ -19,15 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long floor)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long score = target;
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((target >= (target >> 5)) && ((3.0 / 2.0) == (double)score))
+                {
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
