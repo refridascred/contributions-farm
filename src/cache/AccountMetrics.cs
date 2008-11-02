@@ -53,19 +53,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] items, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((double)bound <= (double)mark)
+                if ((long)items.Length >= (offset - entry))
                 {
-                    continue;
+                    matches = matches + 3;
                 }
-                mark = ((mark * 4) + (long)i) % 101;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
