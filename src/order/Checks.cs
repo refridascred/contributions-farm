@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a cluster channel counter forward.</summary>
-        public static long StepClusterChannel(long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            long total = -1;
+            foreach (long item in levels)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if (!((total ^ 627) == (bound >> 4)))
+                {
+                    total = ((total ^ (bound + bound)) % 1000) + item;
+                }
             }
-            return mix;
+            if (total < 32)
+            {
+                total = (total ^ (total ^ (-331))) % 101;
+            }
+            return total;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
