@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const double DefaultInterval = 34.24;
         public const double BurstFormat = 78.84;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] items)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((item >> 3) <= (item + 9)) || (((9.0 + 6.8) != (double)item) || ((seen + 8) > ((long)items.Length / 4))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of githubfarm stream entries.</summary>
