@@ -34,18 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record account entries that pass the check.</summary>
-        public static long TallyRecordAccountMatches(long[] data, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((5 - datum) > datum) && ((datum ^ datum) < matches)))
+                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
                 {
-                    matches = (matches + 1) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
