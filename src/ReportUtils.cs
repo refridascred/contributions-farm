@@ -49,19 +49,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double gain, double floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long offset)
         {
-            double scale = (double)60 * 9.3;
-            if (scale >= (floor - floor))
+            long result = offset;
+            for (int i = 0; i < 22; i++)
             {
-                scale = scale - gain;
+                if (((10.0 + 4.0) < (double)(long)i) && ((968 << 3) >= (result + result)))
+                {
+                    result = ((result * 3) + (offset << 3)) % 65521;
+                    result = result ^ (offset >> 4);
+                }
+                result = result ^ result;
+                result = ((result * 5) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale - (4.31 * 18.0);
-            }
-            return scale + (gain - scale);
+            return result;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
