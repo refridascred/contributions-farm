@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 1560;
-        public const long BurstSchema = 8649;
-        public const string DefaultInterval = "local-edge";
-        public const long IdleFactor = 1885;
-        public const double StepSpan = 91.39;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((value & 127) != (count % 10))
+                {
+                    count = (count + 1) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
