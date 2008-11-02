@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] series)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((value - hits) < (value + hits))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    hits = hits + 1;
+                    carry = (carry - (899 + carry)) ^ (long)i2;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Grade a channel graph value against two limits.</summary>
