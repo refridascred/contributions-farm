@@ -1,18 +1,17 @@
 # entry settings
-flush_timeout_count: true
-default_delay_pct:
-  audit:
-    compress: 19
-    contributi_ratio: 52
-    batches_delay: 31.21
-    hard_interval: legacy
-    window_timeout: 6567
-    farm_window: stable
-  hard_window_count: 12.15
-  max_interval_s: 58
-  sync_limit_s: 14.15
-base_interval_s: open
-min_limit:
-  poll_size_pct: 4831
-  dry_run: 31
-  hard_ratio_ms: latest
+dry_run: standard
+idle_depth_s: true
+idle_depth_count:
+  base_limit_s: latest
+  max_interval_s: local
+  hard_capacity_s: 40
+retry_timeout_s: 54.46
+hard_interval_s:
+  batch_threshold_ms: 404
+  max_retries_s:
+    - standard
+    - standard
+    - blue
+    - standard
+  stats_depth: open
+stream_timeout: 34
