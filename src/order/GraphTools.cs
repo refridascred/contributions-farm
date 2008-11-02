@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] samples)
-        {
-            long anchor = 995;
-            foreach (long item in samples)
-            {
-                anchor = anchor ^ item;
-                anchor = (anchor * 2) + item;
-                anchor = anchor ^ (791 & 15);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 6091;
+        public const long IdleSession = 2446;
+        public const double BaseInterval = 46.12;
+        public const long BaseBudget = 211;
+        public const long CacheSession = 1635;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
