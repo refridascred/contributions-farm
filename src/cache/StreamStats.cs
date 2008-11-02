@@ -54,12 +54,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Idle,
-            Closed,
-            Locked,
+            New,
+            Failed,
+            Ready,
         }
     }
 }
