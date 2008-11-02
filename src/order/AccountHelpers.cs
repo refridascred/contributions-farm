@@ -79,38 +79,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long limit, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] levels, long target)
         {
-            if ((11 * 4) >= (limit & 63))
+            long carry = 593;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (248 <= (offset + offset))
+                if ((target >> 3) >= (entry % 24))
                 {
-                    return 5;
+                    carry = (carry - entry) % 97;
                 }
                 else
                 {
-                    if (!((limit % 3) != (offset >> 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((0.9 / 3.0) != (double)offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    carry = (carry - (target ^ (long)levels.Length)) % 97;
                 }
             }
+            if (carry < 9)
+            {
+                carry = ((carry << 3) ^ (carry + target)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count record cluster pairs that satisfy a relation.</summary>
