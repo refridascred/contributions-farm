@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the stream window series from a seed.</summary>
-        public static long StepStreamWindow(long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] samples, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix << 2) ^ mix) % 255;
-                mix = ((mix * 3) + (step + mix)) % 1000;
-                mix = ((mix * 2) + (long)i) % 97;
+                if (!((cell - cell) > 72) && ((origin ^ cell) > cell))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a checks summary.</summary>
