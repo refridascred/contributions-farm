@@ -1,17 +1,8 @@
 {
-  "support_limit": "strict",
-  "hard_capacity": {
-    "channel_interval": {
-      "flush_limit": [116, 353, 334],
-      "batches_limit": "legacy",
-      "sync_threshold": 1024
-    },
-    "readonly": 250,
-    "channel_window": {
-      "warm_ttl_ms": "edge",
-      "burst_threshold": ["blue", "strict", "cached"],
-      "schema_timeout": 65
-    }
-  },
-  "min_timeout_s": 78
+  "cluster_timeout": "stable",
+  "metric_ratio": 85,
+  "warm_capacity": [33, 391, 195, 309],
+  "compress": "cached",
+  "persist": 86,
+  "retry_capacity_s": ["cached", "strict"]
 }
