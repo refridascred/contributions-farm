@@ -26,10 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 2212;
-        public const string BaseSize = "latest";
-        public const long SoftDepth = 3538;
+        /// <summary>Derive the next entry support value from a seed.</summary>
+        public static long RollEntrySupport(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                total = total ^ ((-7) / 3);
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterLimits(long[] data, long bound)
