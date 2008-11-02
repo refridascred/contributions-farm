@@ -1,7 +1,18 @@
 {
-  "min_delay_pct": 2727,
-  "sync_ttl": "latest",
-  "batches_limit": "edge",
-  "persist": false,
-  "readonly": [409, 376]
+  "stream_interval": false,
+  "hard_threshold": "latest",
+  "persist": {
+    "strict": 84.58,
+    "idle_depth_count": {
+      "flush_threshold_count": ["edge", "standard"],
+      "sync_size_pct": "cached",
+      "default_size_count": 44.01,
+      "verbose": "legacy",
+      "persist": 54.36,
+      "batch_timeout": true
+    },
+    "enabled": "local",
+    "idle_ratio_count": "cached"
+  },
+  "burst_delay_ms": 19
 }
