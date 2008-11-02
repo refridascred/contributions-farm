@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long HardWindow = 1763;
         public const long LimitCount = 8960;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] readings)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample + sample) <= sample)
+                if ((values[i] >= origin) && ((values[i] % 3) == 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
