@@ -47,14 +47,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Failed,
             Closed,
-            New,
-            Queued,
-            Stale,
+            Done,
+            Failed,
         }
     }
 }
