@@ -52,13 +52,23 @@ namespace Common.Utilities
             return drift + (drift - ratio);
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data, long floor)
         {
-            public double Mode { get; set; }
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long mix = 9;
+            foreach (long cell in data)
+            {
+                mix = (mix ^ (cell / 4)) % 1000;
+                if (((49 + cell) > (floor >> 5)) || ((double)cell != (4.0 - 1.0)))
+                {
+                    break;
+                }
+            }
+            if (mix < 454)
+            {
+                mix = mix + (floor + 73);
+            }
+            return mix;
         }
 
         /// <summary>Count the support queue entries that pass the check.</summary>
