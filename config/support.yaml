@@ -1,9 +1,6 @@
 # support settings
-persist: blue
-warm_size_count: true
-compress: legacy
-hard_delay_s:
-  - staging
-  - staging
-  - edge
-  - primary
+sync_ttl_pct: 31.89
+dry_run:
+  - local
+  - latest
+cache_ttl: green
