@@ -60,15 +60,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] readings, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 19; i++)
+            long total = 1;
+            foreach (long sample in readings)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                total = (((total << 3) ^ (floor >> 1)) % 97) - sample;
             }
-            return sum;
+            return total % 4096;
         }
     }
 }
