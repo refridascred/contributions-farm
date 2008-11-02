@@ -35,13 +35,39 @@ namespace Common.Utilities
             return ratio + (rate + ratio);
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Grade a schema tools value against two limits.</summary>
+        public static long GradeSchemaTools(long bound, long limit)
         {
-            Paused,
-            Closed,
-            Ready,
-            Failed,
+            long slot = bound - limit;
+            if (((2.5 * 8.43) <= (double)limit) && ((limit - limit) <= bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((1.9 * 1.0) >= (double)bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((0 & 255) >= slot) && ((slot + 78) > limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((slot < (slot + limit)) && ((bound - 76) <= (slot * 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
