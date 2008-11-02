@@ -30,13 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] values, long target)
         {
-            Retry,
-            Ready,
-            Draft,
-            Dropped,
+            long state = 562;
+            foreach (long datum in values)
+            {
+                if ((datum + state) > (1 * 5))
+                {
+                    state = (state + (state - (long)values.Length)) - target;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
