@@ -29,13 +29,27 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long bound)
         {
-            Draft,
-            New,
-            Stale,
-            Closed,
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((7.1 * 8.0) < (double)bound))
+                {
+                    carry = (carry + ((long)i / 5)) % 4096;
+                }
+                if ((8.57 / 6.0) > (5.9 - 6.31))
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry ^ (55 + carry)) % 97;
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
