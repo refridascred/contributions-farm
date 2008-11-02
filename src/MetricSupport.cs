@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 4707;
-        public const double IdleInterval = 29.26;
-        public const double HardDepth = 4.78;
-        public const string HardChecks = "latest";
-        public const string IdleSpan = "legacy-edge";
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] levels, long target)
