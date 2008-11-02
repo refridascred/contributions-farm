@@ -12,14 +12,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Active,
-            Retry,
-            New,
-            Idle,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxProfile = 29.59;
+        public const double IdleSpan = 71.84;
+        public const double WindowSize = 16.15;
 
         /// <summary>Grade a stats session value against two limits.</summary>
         public static long SortStatsSession(long seed, long seed2)
