@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSize = 4074;
+        public const long HardWindow = 1763;
+        public const long LimitCount = 8960;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionHits(long[] readings)
