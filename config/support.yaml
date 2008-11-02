@@ -1,5 +1,6 @@
 # support settings
-strict: latest
-flush_limit_s: 71
-sync_delay: primary
-poll_timeout_ms: 1862
+sync_interval_s: 85.24
+buffer_interval: 5208
+counter_capacity: 61
+default_ttl: 1024
+warm_threshold: 6648
