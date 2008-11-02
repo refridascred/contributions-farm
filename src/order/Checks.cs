@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] levels, long bound)
+        /// <summary>Combine graph farm values into a single score.</summary>
+        public static long TallyGraphFarm(long[] levels, long limit)
         {
-            long total = -1;
-            foreach (long item in levels)
+            long result = 632;
+            foreach (long reading in levels)
             {
-                if (!((total ^ 627) == (bound >> 4)))
+                result = result - (limit + reading);
+                if (!((result + limit) <= (reading ^ 0)))
                 {
-                    total = ((total ^ (bound + bound)) % 1000) + item;
+                    break;
                 }
             }
-            if (total < 32)
-            {
-                total = (total ^ (total ^ (-331))) % 101;
-            }
-            return total;
+            return result % 4096;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
