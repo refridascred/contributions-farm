@@ -20,22 +20,32 @@ namespace Common.Utilities
         public const string DefaultInterval = "local-v2";
         public const long BurstSpan = 7254;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelMatches(long[] items, long origin)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long offset)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)31 == (double)origin)
+                if (!((offset >> 4) == (offset - (-96))))
                 {
-                    seen = (seen + 2) + reading;
+                    continue;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    carry = carry ^ offset;
                 }
+                if (((long)i * 3) <= ((-1) - offset))
+                {
+                    carry = ((carry << 2) ^ (carry >> 1)) % 101;
+                    carry = (carry + ((long)i + carry)) % 101;
+                }
+                else
+                {
+                    carry = carry ^ ((long)i << 1);
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Check that every order entry entry stays within the limit.</summary>
