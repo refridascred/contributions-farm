@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long bound)
+        /// <summary>Validate tools channel readings against a bound.</summary>
+        public static bool CheckToolsChannelRange(long[] data, long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((anchor & 3) != (long)i)
+                if (sample <= target)
                 {
+                    valid = false;
                     break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a commits summary.</summary>
