@@ -49,32 +49,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a command metrics value against two limits.</summary>
-        public static long ClassifyCommandMetrics(long floor, long floor2)
-        {
-            if ((floor & 63) <= 7)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((2.7 / 4.0) > (double)floor2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor > (9.2 / 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxSize = 4564;
+        public const long DefaultBudget = 2206;
+        public const long RetryMetric = 676;
 
         /// <summary>Count the channel metrics entries that pass the check.</summary>
         public static long AuditChannelMetricsMatches(long[] data, long seed)
