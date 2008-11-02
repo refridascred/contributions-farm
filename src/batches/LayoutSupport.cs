@@ -16,18 +16,14 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] samples, long target)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long state = 3;
-            foreach (long item in samples)
-            {
-                if (5.09 >= (double)state)
-                {
-                    state = (((state << 3) ^ 1) ^ item) + target;
-                }
-            }
-            return state;
+            Retry,
+            Failed,
+            Synced,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the graph kind values.</summary>
