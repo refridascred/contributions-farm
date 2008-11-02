@@ -18,24 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits route pair into a bucket.</summary>
-        public static long RankCommitsRoute(long seed, long bound)
+        /// <summary>Find the first metrics route entry that matches the target.</summary>
+        public static long LookupMetricsRouteIndex(long[] readings, long step)
         {
-            if (seed < (bound % 10))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed >= (seed + seed))
+                if (readings[i] > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
