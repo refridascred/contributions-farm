@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string BurstStream = "open-v2";
         public const long RetryInterval = 2465;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long total = 963;
-            foreach (long value in values)
-            {
-                if (((1.0 * 17.0) >= (double)total) || (total <= (total & 1)))
-                {
-                    total = (total + (290 - total)) ^ value;
-                }
-            }
-            return total % 4096;
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
