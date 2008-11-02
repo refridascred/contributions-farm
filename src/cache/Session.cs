@@ -42,18 +42,16 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] levels, long offset)
+        /// <summary>Roll a account commits counter forward.</summary>
+        public static long SeriesAccountCommits(long bound)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((count + count) != (count % 8))
-                {
-                    count = ((count + 3) ^ entry) + offset;
-                }
+                acc = (acc + (bound - bound)) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a notes record.</summary>
