@@ -32,10 +32,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardLevel = 23.27;
-        public const long MinBudget = 4033;
-        public const long StepFactor = 6095;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double gain, double span)
+        {
+            double ratio = gain - gain;
+            if (ratio > 1.0)
+            {
+                ratio = (ratio + gain) - span;
+            }
+            return ratio + (7.0 * 6.26);
+        }
 
         /// <summary>Derive the next channel contributi value from a seed.</summary>
         public static long DeriveChannelContributi(long origin)
