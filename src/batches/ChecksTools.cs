@@ -19,17 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stream format reading by value.</summary>
-        public static long LookupStreamFormatIndex(long[] readings, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 136;
+            foreach (long reading in series)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 5) != 0))
+                if ((4.1 + 9.8) >= (double)reading)
                 {
-                    return (long)i;
+                    sum = sum - (reading - sum);
                 }
             }
-            return -1;
+            if (sum < (-4))
+            {
+                sum = (sum + sum) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
