@@ -39,31 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account route value against two limits.</summary>
-        public static long SortAccountRoute(long floor, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmLimits(long[] items, long limit)
         {
-            if (((double)floor >= 6.48) || ((3.9 + 2.42) != (double)step))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - 86) != (floor + step))
+                if (sample < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)290 < (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
