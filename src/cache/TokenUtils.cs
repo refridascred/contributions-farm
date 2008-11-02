@@ -5,14 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long target, long floor)
         {
-            Ready,
-            Idle,
-            New,
-            Active,
-            Synced,
+            long cur = target + floor;
+            if ((cur - cur) <= (cur + cur))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((607 + target) < cur)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
