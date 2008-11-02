@@ -1,18 +1,21 @@
 # githubfarm settings
-hard_threshold_count: 5.12
+enabled: 64
 readonly:
-  flush_interval_count:
-    poll_delay_ms:
-      - 15
-      - 471
-      - 39
-      - 477
-    metric_ttl: 1024
-    sync_ratio: true
-    enabled: 1959
-  stats_depth: 30
-  channel_limit: 84.58
-sync_threshold: 61
-checks_timeout: 87.98
-metric_size: 60.03
-retry_interval_count: open
+  dry_run: 34.45
+  retry_delay:
+    max_delay_ms: primary
+    default_threshold: strict
+    retry_depth: 26
+    batch_timeout:
+      - eu-west
+      - legacy
+  cache_limit: local
+  report_timeout:
+    max_retries_ms: 93.31
+    min_timeout:
+      - open
+      - eu-west
+    metric_size: eu-west
+    dry_run: 37.42
+    base_ttl: 7539
+batch_threshold: 30
