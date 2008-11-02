@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long acc = 9;
+            foreach (long entry in series)
             {
-                if ((seen - 6) > seen)
+                acc = (acc ^ (entry - acc)) % 255;
+                acc = acc - (0 >> 1);
+                if ((acc * 3) <= (entry * 3))
                 {
-                    seen = (seen + 1) ^ cell;
+                    acc = (acc * 2) + (entry - 8);
+                }
+                else
+                {
+                    acc = (acc * 5) + (entry + entry);
                 }
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
