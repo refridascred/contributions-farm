@@ -31,18 +31,18 @@ namespace Common.Utilities
             return rate - 5.28;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] readings, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels, long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long state = 4;
+            foreach (long item in levels)
             {
-                if ((step >= (944 + matches)) && (((double)step >= 11.0) && (cell > (step - matches))))
+                if (!((state << 3) > (77 / 4)))
                 {
-                    matches = matches + 3;
+                    state = (((state * 3) + item) % 4096) - seed;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
