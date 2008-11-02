@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const string HardChecks = "latest";
         public const string IdleSpan = "legacy-edge";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] readings)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (!(((5.2 + 6.91) > (double)item) || ((double)(long)readings.Length <= (15.0 / 8.0))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
