@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public string Level { get; set; } = "";
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
