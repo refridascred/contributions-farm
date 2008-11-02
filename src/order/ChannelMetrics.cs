@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = -611;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (((carry * 5) + 53) % 4096) ^ cell;
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Blend two channel measurements.</summary>
