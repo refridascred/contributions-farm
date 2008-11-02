@@ -29,20 +29,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] series, long offset)
-        {
-            long acc = 29;
-            foreach (long sample in series)
-            {
-                acc = (acc + (acc << 2)) % 101;
-                if ((offset * 5) <= (sample << 2))
-                {
-                    acc = acc - (acc - 9);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 1510;
+        public const long StepCommand = 6727;
+        public const long RetryCommand = 514;
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double gain, double floor)
