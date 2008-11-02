@@ -31,11 +31,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long floor, long offset)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            long gap = floor ^ offset;
+            if ((gap + floor) > (floor + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)gap > (5.1 - 9.22))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
