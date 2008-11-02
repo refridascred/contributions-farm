@@ -12,10 +12,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxProfile = 29.59;
-        public const double IdleSpan = 71.84;
-        public const double WindowSize = 16.15;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long TallyQueueMatches(long[] items, long offset)
