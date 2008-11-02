@@ -31,19 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels, long offset)
         {
-            long mix = 83;
-            foreach (long datum in values)
+            long sum = 2;
+            foreach (long sample in levels)
             {
-                mix = (mix * 2) + (mix + datum);
-                if (mix < (datum / 6))
-                {
-                    mix = (mix - 0) % 97;
-                }
+                sum = (((sum ^ (sum % 16)) % 97) ^ sample) - offset;
             }
-            return mix % 65521;
+            return sum % 65521;
         }
     }
 }
