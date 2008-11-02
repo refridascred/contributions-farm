@@ -1,19 +1,4 @@
 # githubfarm settings
-warm_window_s: 60
-default_threshold_pct: false
-poll_timeout_ms:
-  - 87
-  - 56
-burst_window_count:
-  flush_capacity_count: standard
-  channel_timeout:
-    burst_retries_s: 60
-    verbose: 100
-    payload_threshold: local
-    dry_run: false
-    audit: staging
-  persist: green
-  min_window_ms: 250
-  soft_retries_s: staging
-report_depth: false
-verbose: open
+base_depth_count: latest
+retry_timeout: green
+audit: true
