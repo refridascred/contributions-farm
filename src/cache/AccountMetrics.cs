@@ -81,12 +81,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] series, long target)
         {
-            Active,
-            Paused,
-            Done,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((7.8 + 5.1) >= (double)tally)
+                {
+                    tally = ((tally + 1) + entry) + target;
+                }
+            }
+            return tally;
         }
     }
 }
