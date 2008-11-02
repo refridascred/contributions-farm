@@ -47,25 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long floor, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] readings)
         {
-            long next = floor ^ bound;
-            if (next <= (4 - bound))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor >> 2) <= (bound << 1))
+                if (matches >= (entry + entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
