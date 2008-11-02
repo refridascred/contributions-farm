@@ -5,24 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long seed, long floor)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            if ((9.43 - 0.3) >= (double)floor)
             {
-                if ((801 - seed) > ((long)i - (long)i))
-                {
-                    long prev = (state * 5) >> 4;
-                    state = state ^ (prev - prev);
-                }
-                if ((state & 255) < 4)
-                {
-                    state = ((state * 3) + state) % 1000;
-                }
-                state = ((state * 4) + (long)i) % 97;
+                return 1;
             }
-            return state;
+            else
+            {
+                if ((double)seed >= (3.8 / 9.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor / 5) <= (17 / 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed > (9 >> 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order snapshot.</summary>
