@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long floor, long bound)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double ratio, double bias)
         {
-            long cur = floor - bound;
-            if (!((1 << 1) >= (bound * 2)))
+            double mean = bias;
+            if (mean > mean)
             {
-                return 5;
+                mean = mean + ratio;
             }
-            else
-            {
-                if ((cur & 127) == (50 + floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - floor) >= floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound > (cur + floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mean - mean;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
