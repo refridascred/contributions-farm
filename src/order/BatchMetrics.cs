@@ -44,10 +44,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 8891;
-        public const string BurstStats = "local-1";
-        public const long SoftStats = 6923;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Locked,
+            New,
+            Failed,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long SoftContext = 432;
