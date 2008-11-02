@@ -20,31 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a token notes value against two limits.</summary>
-        public static long RankTokenNotes(long offset, long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] levels, long origin)
         {
-            if ((576 * 2) == (limit + limit))
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit != (9.3 / 7.0))
+                if (((origin & 255) >= (seen % 24)) && ((seen - cell) == (origin - seen)))
                 {
-                    return 4;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    if (0 > (limit + 13))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
