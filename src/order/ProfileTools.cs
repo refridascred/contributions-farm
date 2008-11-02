@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long seed, long offset)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double scale, double span)
         {
-            long next = seed + offset;
-            if (!(seed > (offset % 24)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((12.0 + 5.0) > (6.8 / 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed ^ next) > ((-939) - 899)) && ((seed % 7) < (offset ^ next)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((-664) / 5) <= (next * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double drift = scale + (double)319;
+            return (drift - (scale + scale)) + span;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
