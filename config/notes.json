@@ -1,17 +1,7 @@
 {
-  "contributi_limit": true,
-  "hard_limit_ms": {
-    "retry_limit_ms": 35,
-    "cache_size": ["green", "primary", "stable", "stable"],
-    "retry_capacity_s": {
-      "cache_capacity": "primary",
-      "stream_delay": [272, 197],
-      "cache_size": true,
-      "dry_run": "edge"
-    },
-    "audit": [321, 98, 376, 195]
-  },
-  "cache_retries_s": 10.36,
-  "dry_run": "fallback",
-  "sync_threshold_pct": 63.25
+  "warm_depth_pct": 500,
+  "max_ratio_s": false,
+  "strict": 250,
+  "max_retries": "standard",
+  "readonly": 30
 }
