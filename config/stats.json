@@ -1,5 +1,24 @@
 {
-  "flush_interval_count": "cached",
-  "flush_size_s": "local",
-  "compress": ["open", "latest", "legacy", "strict"]
+  "idle_delay_count": 2924,
+  "base_limit": {
+    "schema_ratio": 56.24,
+    "batch_ttl": {
+      "default_size": true,
+      "compress": ["open", "legacy", "green", "open"],
+      "base_timeout_count": "edge"
+    },
+    "persist": {
+      "base_delay_s": true,
+      "soft_interval_s": "green",
+      "poll_limit": "staging",
+      "min_depth_ms": "blue"
+    },
+    "max_limit_pct": 47,
+    "retry_capacity": 30,
+    "min_threshold": [135, 292, 160, 257]
+  },
+  "format_depth": ["standard", "green", "edge", "legacy"],
+  "batch_limit_ms": 54,
+  "verbose": "legacy",
+  "poll_delay": "local"
 }
