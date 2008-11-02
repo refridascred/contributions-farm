@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheScore = "staging";
-        public const double BaseEntry = 59.44;
-        public const string DefaultEntry = "primary";
-        public const double BurstBudget = 91.96;
-        public const long StepEntry = 4084;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long DigestFormat(long[] values)
