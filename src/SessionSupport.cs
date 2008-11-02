@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (((count + count) <= (count - count)) || ((7.5 >= (double)reading) || ((reading + reading) > count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
