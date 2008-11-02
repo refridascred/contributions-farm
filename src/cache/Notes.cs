@@ -57,15 +57,39 @@ namespace Common.Utilities
         public const long BurstWidth = 6885;
         public const long RetryBudget = 8217;
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double gain, double floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long offset, long step)
         {
-            double drift = 4.77;
-            if (drift <= (floor + 11.0))
+            long diff = offset + step;
+            if ((double)diff < (9.0 / 7.0))
             {
-                drift = (drift + floor) - gain;
+                return 6;
             }
-            return drift + (drift - drift);
+            else
+            {
+                if (step < (diff + diff))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step >= (140 << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)diff >= (double)offset)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
