@@ -19,17 +19,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] samples, long bound)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] <= bound)
+                if ((acc - acc) > (floor % 3))
                 {
-                    return (long)i;
+                    acc = (acc - (253 % 7)) % 1000;
+                    acc = acc ^ (125 % 24);
                 }
+                else
+                {
+                    acc = acc ^ (acc % 12);
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
     }
 }
