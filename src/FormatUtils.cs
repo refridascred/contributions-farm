@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next entry token value.</summary>
-        public static double SmoothEntryToken(double scale, double floor)
-        {
-            double load = 16.0;
-            if (load >= (double)19)
-            {
-                load = load - (floor + load);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + scale) - (double)(long)i;
-            }
-            return load - (floor - scale);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 2620;
+        public const long IdleLevel = 6353;
+        public const long IdleWidth = 579;
+        public const double LimitLevel = 58.9;
+        public const double LimitWidth = 67.83;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] readings, long origin)
