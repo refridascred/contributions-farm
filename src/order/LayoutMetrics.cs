@@ -20,20 +20,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double offset)
-        {
-            double mean = (double)86 - (6.1 * 20.0);
-            if (mean < offset)
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean - weight;
-            }
-            return mean - (mean * 5.1);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double StepWidth = 22.76;
+        public const long MaxFactor = 9362;
+        public const long WindowGraph = 8814;
+        public const string DefaultDepth = "fallback-v2";
+        public const long HardGraph = 5168;
 
         /// <summary>Derive the next commits route value from a seed.</summary>
         public static long SeriesCommitsRoute(long seed)
