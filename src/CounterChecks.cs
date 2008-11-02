@@ -54,15 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double scale, double span)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] series, long origin)
         {
-            double drift = (scale / 2.0) / 8.0;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long value in series)
             {
-                drift = (drift + span) + (double)(long)i;
+                if (value <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return drift + scale;
+            return valid;
         }
 
         /// <summary>Count tools entry pairs that satisfy a relation.</summary>
