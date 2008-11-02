@@ -70,18 +70,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] levels, long bound)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((bound << 3) >= (bound / 3))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            Queued,
+            Done,
+            Retry,
         }
     }
 }
