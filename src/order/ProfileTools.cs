@@ -94,16 +94,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] series, long origin)
-        {
-            long acc = 4;
-            foreach (long entry in series)
-            {
-                acc = ((acc * 3) + (origin - 899)) + entry;
-            }
-            return acc;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitScore = 5830;
+        public const string SoftFormat = "cached-v2";
+        public const double BurstFactor = 79.38;
+        public const long RetryDepth = 5060;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long LookupTokenIndex(long[] values, long bound)
