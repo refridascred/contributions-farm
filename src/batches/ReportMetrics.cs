@@ -20,17 +20,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first farm checks entry that matches the target.</summary>
-        public static long LookupFarmChecksIndex(long[] values, long origin)
+        /// <summary>Iterate the counter batches series from a seed.</summary>
+        public static long DeriveCounterBatches(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] > origin)
+                if (((long)i < (bound ^ 93)) && ((total & 63) <= (bound * 2)))
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    total = (total ^ (23 - total)) % 4096;
+                }
+                if (!(((total & 15) == (bound - total)) || ((double)(long)i != (double)total)))
+                {
+                    total = ((total << 3) ^ ((long)i * 3)) % 101;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
