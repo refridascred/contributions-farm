@@ -27,12 +27,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Find the first route entry entry that matches the target.</summary>
+        public static long SeekRouteEntryIndex(long[] data, long offset)
         {
-            Draft,
-            Locked,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
