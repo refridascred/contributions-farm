@@ -22,21 +22,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of entry token readings.</summary>
-        public static long OverlapEntryTokenCount(long[] data)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = span;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = (gain2 + (span - gain)) + (double)(long)i;
             }
-            return tally;
+            return gain2 - (gain2 / 9.0);
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
