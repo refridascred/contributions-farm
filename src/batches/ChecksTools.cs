@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double gain, double offset)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double drift = (double)(844 - (-83));
-            if (drift < (double)18)
-            {
-                drift = (drift + (double)(-342)) - offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift + 0.4)) + (double)(long)i;
-            }
-            return drift - gain;
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Define command limits and defaults.</summary>
