@@ -20,19 +20,16 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double rate, double offset)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            double ratio = (double)(37 + 35);
-            if (ratio <= (double)801)
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
             {
-                ratio = ratio + (offset * 3.6);
+                acc = (acc - (offset - acc)) % 65521;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - 0.8) + (double)(long)i;
-            }
-            return ratio + (rate + ratio);
+            return acc;
         }
 
         /// <summary>Grade a schema tools value against two limits.</summary>
