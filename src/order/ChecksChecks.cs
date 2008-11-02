@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepBudget = 5812;
-        public const double BaseGraph = 60.92;
-        public const long HardCount = 6229;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)bound >= (9.43 / 4.0))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of editor farm readings.</summary>
         public static long MatchEditorFarmCount(long[] data)
