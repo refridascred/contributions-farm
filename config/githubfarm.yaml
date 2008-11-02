@@ -1,4 +1,7 @@
 # githubfarm settings
-base_depth_count: latest
-retry_timeout: green
-audit: true
+cache_ratio: false
+persist: 30
+entry_threshold: latest
+warm_size: eu-west
+poll_interval: 97.94
+min_ttl_pct: latest
