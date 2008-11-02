@@ -10,12 +10,32 @@ namespace Common.Utilities
         public const string WindowFactor = "primary";
         public const double WindowDepth = 33.5;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstCount = 6584;
-        public const long DefaultSupport = 3495;
-        public const long SoftSize = 6712;
-        public const long SoftSupport = 4884;
-        public const double RetrySize = 47.04;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long target, long offset)
+        {
+            if ((offset + offset) > 323)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)target >= (3.74 * 3.94))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset % 5) == (target / 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long DigestSchema(long[] items, long target)
