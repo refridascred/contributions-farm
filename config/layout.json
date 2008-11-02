@@ -1,8 +1,6 @@
 {
-  "max_threshold_s": "standard",
-  "verbose": true,
-  "batch_retries": 69.3,
-  "default_depth_s": "local",
-  "enabled": 500,
-  "flush_depth": 30
+  "githubfarm_retries": 67.53,
+  "idle_threshold_count": "latest",
+  "min_limit": true,
+  "retry_depth_count": 30
 }
