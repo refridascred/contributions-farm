@@ -20,10 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitCount = 2125;
-        public const long RetryMetric = 3662;
-        public const long StepMetric = 1764;
+        /// <summary>Match up metrics already samples.</summary>
+        public static long CompareMetricsAlreadyCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinSpan = 5293;
