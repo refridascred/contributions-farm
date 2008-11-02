@@ -43,9 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BaseInterval = "stable-edge";
-        public const string IdleSize = "strict-1";
-        public const string DefaultChecks = "primary-v2";
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public string Score { get; set; } = "";
+        }
     }
 }
