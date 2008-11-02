@@ -41,10 +41,20 @@ namespace Common.Utilities
             return scale + gain;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 504;
-        public const string MinSession = "legacy-1";
-        public const long SoftRatio = 2920;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double MaxTimeout = 62.09;
