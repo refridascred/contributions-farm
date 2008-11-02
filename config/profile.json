@@ -1,7 +1,14 @@
 {
-  "support_capacity": 75.89,
-  "metrics_interval": 45,
-  "burst_retries_ms": 10,
-  "payload_interval": true,
-  "compress": true
+  "order_timeout": 20.12,
+  "metric_retries": 30,
+  "command_timeout": true,
+  "strict": false,
+  "poll_interval_s": {
+    "entry_interval": [143, 412, 407],
+    "audit": "primary",
+    "default_depth": "standard",
+    "verbose": true,
+    "contributi_ttl": "edge"
+  },
+  "verbose": 4477
 }
