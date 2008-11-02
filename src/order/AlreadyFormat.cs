@@ -43,21 +43,10 @@ namespace Common.Utilities
             return ratio + (7.0 * 6.26);
         }
 
-        /// <summary>Derive the next channel contributi value from a seed.</summary>
-        public static long DeriveChannelContributi(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    result = ((result - result) % 1000) ^ (long)i2;
-                }
-                result = ((result << 3) ^ ((long)i + (long)i)) % 4096;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWidth = 20.17;
+        public const string DefaultWindow = "staging-1";
+        public const string BaseInterval = "open";
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmOutliers(long[] series, long seed)
