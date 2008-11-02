@@ -23,22 +23,31 @@ namespace Common.Utilities
         public const double StepAlready = 95.62;
         public const long BurstWidth = 4133;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Classify a notes commits pair into a bucket.</summary>
+        public static long GradeNotesCommits(long target, long offset)
         {
-            long carry = 4;
-            foreach (long entry in levels)
+            if (13.0 >= (double)offset)
             {
-                if (((621 << 3) >= (carry - entry)) || ((80 - entry) >= entry))
+                return 6;
+            }
+            else
+            {
+                if ((offset <= (target % 8)) || (target <= (target + offset)))
                 {
-                    carry = carry ^ (carry >> 5);
+                    return 4;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (entry - entry)) % 97;
+                    if (((0.35 + 4.0) > (double)offset) || ((target & 15) > (offset / 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a notes record.</summary>
