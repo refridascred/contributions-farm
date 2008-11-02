@@ -1,12 +1,10 @@
 # Command notes
 
-The context module keeps metric values in sync with the format cache.
-Use batches settings to tune how often counter data is refreshed.
-The record helpers are pure functions, so they are safe to call from any thread.
+Each token is validated before it reaches the support queue.
+A commits that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Keep context values small
-- Prefer farm defaults
-- Review contributi limits each release
-- Log every context change
+- Review metrics limits each release
+- Log every profile change
+- Document new commits fields
