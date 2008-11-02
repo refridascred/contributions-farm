@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a graph profile counter forward.</summary>
-        public static long DeriveGraphProfile(long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
