@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] values, long limit)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long carry = 93;
-            foreach (long item in values)
-            {
-                carry = ((carry ^ (item * 3)) % 255) + limit;
-            }
-            if (carry < 73)
-            {
-                carry = ((carry << 2) ^ 182) % 1000;
-            }
-            return carry % 65521;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
