@@ -11,19 +11,32 @@ namespace Common.Utilities
         public const string WindowFactor = "strict-1";
         public const double LimitCount = 62.97;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long step)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long target, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
+            long gap = target - origin;
+            if ((gap * 3) >= target)
             {
-                if ((double)step >= (double)mix)
-                {
-                    mix = mix - ((long)i ^ step);
-                }
-                mix = ((mix * 2) + (long)i) % 101;
+                return 4;
             }
-            return mix;
+            else
+            {
+                if ((gap - origin) >= (gap - gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((origin % 24) != (0 % 100)) || ((double)gap > 3.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
