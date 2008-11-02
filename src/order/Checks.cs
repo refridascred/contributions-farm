@@ -33,12 +33,21 @@ namespace Common.Utilities
         public const string WindowGraph = "latest-edge";
         public const double StepGraph = 92.5;
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] series)
         {
-            Paused,
-            Draft,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
