@@ -1,21 +1,12 @@
 # support settings
-poll_threshold_count:
-  verbose:
+flush_threshold: latest
+enabled: local
+cache_window_ms: primary
+burst_retries:
+  token_retries:
     - green
-    - cached
-    - staging
-  enabled:
-    - green
-    - cached
-    - latest
-    - cached
-  poll_ttl_count:
-    - edge
+    - local
     - standard
-    - latest
-    - open
-max_delay_s:
-  hard_ttl_count: 6520
-  batch_window_ms: 76
-  dry_run: 11.71
-cache_size_pct: true
+    - eu-west
+  flush_capacity_pct: 37.01
+  burst_ratio_ms: cached
