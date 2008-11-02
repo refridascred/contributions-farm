@@ -1,6 +1,9 @@
 # support settings
-sync_ttl_pct: 31.89
-dry_run:
-  - local
-  - latest
-cache_ttl: green
+cache_timeout: 88.77
+cache_limit_count: standard
+audit: 94
+poll_capacity_count:
+  - 371
+  - 201
+  - 398
+  - 139
