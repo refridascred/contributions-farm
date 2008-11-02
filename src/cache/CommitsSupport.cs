@@ -71,31 +71,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long origin, long floor)
-        {
-            if ((origin ^ 9) <= origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (75 <= (floor - 255))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((origin + floor) != (origin / 8)) || ((floor & 127) <= (55 & 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinRatio = 65.17;
+        public const long StepRatio = 7445;
+        public const double DefaultLevel = 69.18;
     }
 }
