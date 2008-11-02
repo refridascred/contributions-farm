@@ -41,21 +41,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((17.0 * 5.57) <= (double)tally)
                 {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
