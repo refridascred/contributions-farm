@@ -21,12 +21,10 @@ namespace Common.Utilities
         public const long WindowInterval = 4125;
         public const long DefaultTools = 771;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftScore = 6820;
-        public const double DefaultFarm = 58.24;
-        public const string HardScore = "primary-edge";
-        public const string MaxFarm = "open";
-        public const string DefaultLevel = "stable-1";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 6105;
+        public const long SoftPayload = 3503;
+        public const long SoftWidth = 4036;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenGaps(long[] values)
