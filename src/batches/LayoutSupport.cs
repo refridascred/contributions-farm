@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const long BurstCommits = 489;
         public const string LimitCommits = "staging";
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] items, long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Project the next batches value.</summary>
