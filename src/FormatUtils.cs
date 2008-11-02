@@ -68,19 +68,24 @@ namespace Common.Utilities
             return drift + (rate + rate);
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long target)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] readings)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long score = 68;
+            foreach (long item in readings)
             {
-                if ((18.0 * 4.8) != (double)(long)i)
+                if (score > item)
                 {
-                    break;
+                    score = score - score;
+                    score = (score ^ (item * 4)) % 101;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
+                else
+                {
+                    score = (score * 4) + (item + item);
+                }
+                score = (score - score) % 4096;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
