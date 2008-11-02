@@ -48,14 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] values)
         {
-            Dropped,
-            Queued,
-            Retry,
-            Paused,
-            Synced,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (2.0 < (double)matches)
+                {
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
