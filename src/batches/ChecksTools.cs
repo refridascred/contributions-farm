@@ -21,20 +21,10 @@ namespace Common.Utilities
         public const double IdleSize = 78.57;
         public const long BatchCommand = 3787;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data)
-        {
-            long carry = 1;
-            foreach (long sample in data)
-            {
-                carry = ((carry ^ carry) % 101) ^ sample;
-            }
-            if (carry > 2)
-            {
-                carry = (carry + (carry + carry)) % 1000;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 1402;
+        public const long HardDepth = 4275;
+        public const long LimitAccount = 8272;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterOutliers(long[] samples, long limit)
