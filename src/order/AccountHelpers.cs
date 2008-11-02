@@ -15,38 +15,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long seed, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] values, long floor)
         {
-            if ((floor + seed) > (floor % 100))
+            long mark = 270;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((2.11 + 5.7) != (double)seed)
+                if ((mark + 204) > (floor % 100))
                 {
-                    return 8;
+                    mark = ((mark ^ (mark * 2)) % 101) + value;
                 }
                 else
                 {
-                    if (((-177) << 3) >= (floor >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (738 <= (floor & 7))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mark = (mark ^ (163 ^ (-523))) % 255;
+                }
+                if (floor <= (mark & 255))
+                {
+                    break;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Hold a schema entry.</summary>
