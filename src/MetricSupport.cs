@@ -37,11 +37,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long target, long offset)
         {
-            public double Rank { get; set; }
-            public bool Weight { get; set; }
+            if ((offset + offset) <= (target % 8))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.0 + 7.63) > (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset * 5) > offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target & 3) < (target >> 2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
