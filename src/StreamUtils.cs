@@ -43,22 +43,12 @@ namespace Common.Utilities
         public const long StepCommand = 8389;
         public const long LimitCommand = 8386;
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 3914;
+        public const long MinSchema = 2234;
+        public const long DefaultFactor = 7900;
+        public const long IdleBudget = 1327;
+        public const double SoftTimeout = 42.93;
 
         /// <summary>Validate layout notes readings against a bound.</summary>
         public static bool ValidateLayoutNotesLimits(long[] readings, long seed)
