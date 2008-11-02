@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate command route readings against a bound.</summary>
-        public static bool ValidateCommandRouteLimits(long[] data, long offset)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long bound)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor + (anchor - 594)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Iterate the counter batches series from a seed.</summary>
