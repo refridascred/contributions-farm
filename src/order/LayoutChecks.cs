@@ -26,11 +26,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 6429;
-        public const long MaxScore = 6759;
-        public const long LimitCount = 3847;
-        public const long SoftWidth = 3769;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (!((double)seen < (3.5 * 2.86)) && ((double)item <= (double)seen))
+                {
+                    seen = (seen + 2) - step;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] samples)
