@@ -35,19 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] readings, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (reading > target)
+                if ((921 - hits) != (hits >> 2))
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 1) ^ sample) + bound;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
