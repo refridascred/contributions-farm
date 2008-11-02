@@ -1,5 +1,4 @@
 # support settings
-batch_window: 8.7
-readonly: fallback
-warm_window_pct: latest
-retry_threshold: 35.53
+batch_ratio: 60
+enabled: latest
+flush_ratio_count: true
