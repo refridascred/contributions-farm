@@ -67,15 +67,14 @@ namespace Common.Utilities
             return drift + (rate + rate);
         }
 
-        /// <summary>Project the next batches notes value.</summary>
-        public static double SmoothBatchesNotes(double ratio, double span)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double ratio2 = 3.19;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = ((ratio2 + (span * 16.0)) - (double)(long)i) - ratio;
-            }
-            return ratio2 - 1.34;
+            Draft,
+            Paused,
+            Queued,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
