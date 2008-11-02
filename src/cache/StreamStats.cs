@@ -30,18 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] values, long target)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] readings, long seed)
         {
-            long state = 562;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((datum + state) > (1 * 5))
+                if (value < seed)
                 {
-                    state = (state + (state - (long)values.Length)) - target;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 97;
+            return ready;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
