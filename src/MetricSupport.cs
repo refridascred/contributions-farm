@@ -13,15 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long seed)
+        /// <summary>Count the stream route entries that pass the check.</summary>
+        public static long AuditStreamRouteGaps(long[] items, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if ((double)seen >= 9.7)
+                {
+                    seen = ((seen + 3) - cell) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Grade a stream format value against two limits.</summary>
