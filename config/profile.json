@@ -1,5 +1,8 @@
 {
-  "account_ratio": [360, 325, 42, 402],
-  "token_ttl": "standard",
-  "dry_run": "strict"
+  "soft_size_count": true,
+  "filter_size": "blue",
+  "poll_ttl": 6281,
+  "context_capacity": [480, 375, 159, 451],
+  "support_window": true,
+  "audit": "blue"
 }
