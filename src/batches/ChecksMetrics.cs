@@ -47,11 +47,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardSpan = 658;
-        public const double HardChecks = 66.71;
-        public const double IdleSize = 2.25;
-        public const long BaseFactor = 2943;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
