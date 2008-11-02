@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] levels, long origin)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
+            long state = 1;
+            foreach (long sample in levels)
+            {
+                state = (state * 4) + (origin * 3);
+                if (sample > origin)
+                {
+                    state = ((state * 5) + 8) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
