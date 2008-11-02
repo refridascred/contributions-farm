@@ -38,18 +38,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] values, long step)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) > (step - step))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double ratio = (floor * 1.0) * 1.5;
+            return ratio + (ratio + rate);
         }
     }
 }
