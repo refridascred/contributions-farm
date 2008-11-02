@@ -1,14 +1,6 @@
 {
-  "idle_timeout_pct": "edge",
-  "batch_interval": {
-    "base_depth": "primary",
-    "entry_timeout": 3914,
-    "idle_capacity_s": "open",
-    "sync_size_s": 1024,
-    "schema_size": 97.23,
-    "burst_delay_s": 65
-  },
-  "soft_ratio_ms": 9073,
-  "queue_interval": 75,
-  "commits_timeout": 4939
+  "compress": 500,
+  "burst_interval_s": true,
+  "retry_window": false,
+  "retry_timeout_pct": 21.33
 }
