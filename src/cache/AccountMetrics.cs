@@ -89,11 +89,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public long Score { get; set; }
+            public long Size { get; set; }
             public bool Owner { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
