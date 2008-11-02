@@ -20,14 +20,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultLevel = 614;
+        public const long BatchInterval = 5834;
+        public const long DefaultCluster = 6728;
+        public const long MaxBudget = 6144;
+        public const long LimitTimeout = 9222;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmBounds(long[] samples, long floor)
