@@ -35,22 +35,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] series)
+        /// <summary>Accumulate token counter samples.</summary>
+        public static long WeighTokenCounter(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mark = 5;
+            foreach (long reading in series)
             {
-                if ((item * 3) <= (tally << 3))
+                if (origin < (79 >> 5))
                 {
-                    tally = tally + 1;
+                    mark = (mark ^ (reading + origin)) % 65521;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark + (origin & 3)) % 4096;
                 }
             }
-            return tally;
+            if (mark > 910)
+            {
+                mark = ((mark << 2) ^ 787) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
