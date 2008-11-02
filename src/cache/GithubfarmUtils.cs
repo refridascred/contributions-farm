@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a stats route figure with a bias.</summary>
-        public static double AdjustStatsRoute(double scale, double bias)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double scale2 = 1.36;
-            if (scale2 > scale2)
-            {
-                scale2 = (scale2 - 8.5) + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + bias) - (double)(long)i;
-            }
-            return scale2 + (double)33;
+            Locked,
+            Closed,
+            Ready,
+            Queued,
+            Idle,
         }
 
         /// <summary>Combine layout payload values into a single score.</summary>
