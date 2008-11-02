@@ -36,11 +36,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            Idle,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
