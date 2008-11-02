@@ -1,25 +1,8 @@
 {
-  "default_window_count": {
-    "soft_depth_count": ["green", "open", "edge"],
-    "warm_threshold_pct": [58, 326],
-    "queue_ratio": ["strict", "primary", "strict", "staging"],
-    "min_capacity_count": false,
-    "stats_ratio": [269, 294, 92]
-  },
-  "order_ttl": 37,
-  "batches_interval": {
-    "base_window_count": 88.11,
-    "cluster_depth": [11, 286],
-    "commits_depth": 43.22,
-    "enabled": 250,
-    "sync_window_ms": {
-      "hard_capacity_ms": "staging",
-      "flush_depth": 90.97,
-      "cache_delay_ms": "cached"
-    },
-    "hard_threshold_s": [154, 17, 135, 173]
-  },
-  "sync_threshold_pct": true,
-  "default_threshold_pct": "cached",
-  "readonly": 21
+  "compress": "blue",
+  "min_depth_ms": [113, 202],
+  "dry_run": true,
+  "strict": [117, 71, 131],
+  "contributi_interval": 1024,
+  "soft_retries_pct": 5903
 }
