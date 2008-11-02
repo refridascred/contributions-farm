@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double weight, double offset)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double gain, double span)
         {
-            double rate = weight;
-            if (rate >= 3.5)
+            double drift = (double)(-563) - (gain - span);
+            if (drift >= 6.7)
             {
-                rate = rate + 1.0;
+                drift = drift - (0.05 + span);
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                rate = (rate - (offset * 13.0)) + (double)(long)i;
+                drift = drift + (gain + 12.0);
             }
-            return rate - offset;
+            return drift - span;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
