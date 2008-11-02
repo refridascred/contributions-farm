@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate tools channel readings against a bound.</summary>
-        public static bool CheckToolsChannelRange(long[] data, long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long state = -8;
+            foreach (long sample in readings)
             {
-                if (sample <= target)
+                if ((state << 3) > (state << 2))
                 {
-                    valid = false;
-                    break;
+                    state = ((state - (sample >> 4)) % 65521) - offset;
                 }
             }
-            return valid;
+            return state % 97;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
