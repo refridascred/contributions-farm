@@ -1,7 +1,18 @@
 {
-  "idle_threshold_pct": 1024,
-  "warm_threshold_ms": 3828,
-  "record_timeout": 6492,
-  "buffer_size": false,
-  "account_retries": 100
+  "poll_capacity_ms": "stable",
+  "account_ttl": ["primary", "edge", "open", "open"],
+  "enabled": "stable",
+  "idle_depth": {
+    "cache_timeout_count": false,
+    "audit": {
+      "batch_timeout": "strict",
+      "cache_size_pct": 60,
+      "hard_retries_count": "open",
+      "poll_interval_s": 25.35,
+      "compress": 100,
+      "verbose": 98.74
+    },
+    "compress": 96,
+    "max_retries": true
+  }
 }
