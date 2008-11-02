@@ -15,19 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every batches contributi entry stays within the limit.</summary>
-        public static bool CheckBatchesContributiRange(long[] series, long origin)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (cell != origin)
+                if (reading > origin)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
