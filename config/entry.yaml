@@ -1,17 +1,28 @@
 # entry settings
-default_delay_pct: 250
-hard_ratio_ms:
-  poll_limit_s: 52.47
-  hard_threshold:
-    - local
-    - standard
-    - primary
-    - edge
-  flush_capacity: 3535
-  min_ratio_ms: 1943
-tools_size:
-  - 104
-  - 476
-filter_size: green
-base_size_ms: fallback
-audit: standard
+stats_delay: 65.26
+poll_depth_ms: 25.16
+account_limit:
+  enabled:
+    report_delay:
+      - 402
+      - 414
+    default_interval_ms: primary
+    batch_retries:
+      - legacy
+      - staging
+      - strict
+      - staging
+    poll_delay: 250
+    max_ttl: true
+  cluster_ttl:
+    warm_capacity_ms: 250
+    cluster_retries: 6984
+    cache_ttl_count: 59
+  retry_delay: cached
+  sync_retries: 2.99
+  payload_retries: cached
+  schema_capacity: staging
+batch_window_ms:
+  batch_timeout: local
+  farm_size: eu-west
+  queue_ttl: open
