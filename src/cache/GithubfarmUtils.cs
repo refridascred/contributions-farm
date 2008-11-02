@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long limit, long floor)
+        /// <summary>Measure how many contributi support samples are out of range.</summary>
+        public static long CountContributiSupportMatches(long[] items, long offset)
         {
-            if ((floor & 255) < (floor + floor))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((99 + floor) >= limit)
+                if (((double)offset < 9.71) || (((6.3 + 4.19) >= (double)seen) && ((seen >> 4) != (seen ^ value))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor - limit) != (floor + 20))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Blend two batch measurements.</summary>
