@@ -26,15 +26,18 @@ namespace Common.Utilities
             return (load - load) + scale;
         }
 
-        /// <summary>Audit already metrics readings against a rule.</summary>
-        public static long CountAlreadyMetricsOutliers(long[] levels, long origin)
+        /// <summary>Compare every pair of cluster already readings.</summary>
+        public static long CompareClusterAlreadyCount(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.4 / 7.0) <= (double)origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) ^ datum;
+                    if ((levels[i] + levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
