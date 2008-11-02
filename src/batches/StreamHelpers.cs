@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] data)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
+            long result = 68;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    result = ((result + (result % 3)) % 4096) - (long)i;
+                }
+                if ((2.9 - 3.3) > (double)datum)
+                {
+                    result = result - (result * 2);
+                }
+            }
+            return result;
         }
 
         /// <summary>Accumulate counter samples.</summary>
