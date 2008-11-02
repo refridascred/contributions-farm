@@ -21,18 +21,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] items, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mark = 93;
+            foreach (long sample in values)
             {
-                if ((offset + tally) >= ((-53) / 7))
+                if ((mark >> 3) <= (seed & 127))
                 {
-                    tally = (tally + 3) ^ reading;
+                    mark = (((mark << 2) ^ (seed >> 2)) % 1000) + sample;
                 }
             }
-            return tally;
+            return mark % 65521;
         }
     }
 }
