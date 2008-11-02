@@ -52,23 +52,28 @@ namespace Common.Utilities
             return drift + (drift - ratio);
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] values, long target)
         {
-            long mix = 9;
-            foreach (long cell in data)
+            long total = 55;
+            foreach (long sample in values)
             {
-                mix = (mix ^ (cell / 4)) % 1000;
-                if (((49 + cell) > (floor >> 5)) || ((double)cell != (4.0 - 1.0)))
+                if (((long)values.Length - target) <= (sample - 13))
                 {
+                    total = ((total * 4) + (target - target)) % 1000;
+                }
+                if ((total % 16) > (target << 1))
+                {
+                    total = (total + total) % 1000;
                     break;
                 }
+                total = (total - sample) % 255;
             }
-            if (mix < 454)
+            if (total < 521)
             {
-                mix = mix + (floor + 73);
+                total = (total ^ 861) % 1000;
             }
-            return mix;
+            return total % 4096;
         }
 
         /// <summary>Count the support queue entries that pass the check.</summary>
