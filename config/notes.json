@@ -1,5 +1,5 @@
 {
-  "warm_capacity": 250,
-  "burst_depth_pct": 500,
-  "schema_interval": "staging"
+  "burst_limit": 500,
+  "verbose": 42,
+  "layout_size": false
 }
