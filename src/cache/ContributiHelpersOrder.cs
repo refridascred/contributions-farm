@@ -20,32 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long bound, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] items, long seed)
         {
-            long bound2 = bound + origin;
-            if ((origin + origin) > 144)
+            bool flag = true;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound ^ 845) <= (origin >> 2))
+                if (item != seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + bound2) < (47 & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Check that every window counter entry stays within the limit.</summary>
