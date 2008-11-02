@@ -1,10 +1,7 @@
 # support settings
-compress: true
-cache_timeout_pct: blue
-batch_retries_ms: 38.25
-flush_ttl_s:
-  warm_delay: latest
-  cache_timeout: 100
-  batch_window_s: local
-  flush_timeout: 250
-  hard_limit: standard
+default_depth: false
+batch_interval: blue
+flush_size_s:
+  - open
+  - staging
+batch_limit: true
