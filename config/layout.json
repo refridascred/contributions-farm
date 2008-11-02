@@ -1,5 +1,8 @@
 {
-  "metric_depth": 6.59,
-  "warm_timeout_ms": "local",
-  "buffer_threshold": 13.98
+  "max_timeout": false,
+  "editor_retries": false,
+  "cache_size_ms": 41.61,
+  "compress": true,
+  "already_ratio": true,
+  "max_threshold": [347, 287]
 }
