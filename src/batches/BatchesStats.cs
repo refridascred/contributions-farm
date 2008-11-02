@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long origin, long offset)
+        /// <summary>Find the first layout context entry that matches the target.</summary>
+        public static long FindLayoutContextIndex(long[] data, long limit)
         {
-            if (((offset % 64) < offset) || ((origin + origin) <= (origin & 15)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin > (4 << 3))
+                if ((data[i] > limit) && ((data[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin / 5) <= (origin % 7))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((origin - offset) <= offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up session samples.</summary>
