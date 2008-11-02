@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a stats checks value against two limits.</summary>
-        public static long ClassifyStatsChecks(long limit, long bound)
+        /// <summary>Find the first schema channel entry that matches the target.</summary>
+        public static long LocateSchemaChannelIndex(long[] items, long offset)
         {
-            if ((bound << 1) == (bound % 7))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit) <= (2 / 7))
+                if ((items[i] == offset) && ((items[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
