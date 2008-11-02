@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const long BurstTimeout = 6579;
         public const long LimitCommand = 1890;
 
-        /// <summary>Match up buffer farm samples.</summary>
-        public static long CompareBufferFarmCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinScore = 74.89;
+        public const long MinStream = 9372;
+        public const long CacheBudget = 6509;
+        public const double HardStream = 28.18;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] readings, long offset)
