@@ -24,18 +24,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the farm counter entries that pass the check.</summary>
-        public static long AuditFarmCounterMatches(long[] items, long offset)
+        /// <summary>Rank tools commits input into a small class.</summary>
+        public static long RankToolsCommits(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if (((double)seed > (double)origin) || ((origin + origin) == (origin / 2)))
             {
-                if ((7.8 / 2.0) == (double)offset)
+                return 5;
+            }
+            else
+            {
+                if (((574 >> 1) > (origin >> 5)) && ((7.3 + 3.0) == (double)origin))
                 {
-                    seen = (seen + 3) - datum;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
