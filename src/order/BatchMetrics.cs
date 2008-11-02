@@ -41,15 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double bias, double offset)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            double load = bias;
-            if (load < offset)
-            {
-                load = load + bias;
-            }
-            return load + load;
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public double Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
