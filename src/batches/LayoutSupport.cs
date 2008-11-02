@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] values, long target)
-        {
-            long mark = 572;
-            foreach (long item in values)
-            {
-                mark = ((((mark * 5) + (long)values.Length) % 65521) - item) + target;
-            }
-            if (mark < (-37))
-            {
-                mark = mark - 796;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitCount = 2125;
+        public const long RetryMetric = 3662;
+        public const long StepMetric = 1764;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long MinSpan = 5293;
