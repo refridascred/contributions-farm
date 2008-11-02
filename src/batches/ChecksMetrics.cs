@@ -52,17 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] series, long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = ratio;
+            if (drift > span)
             {
-                if ((series[i] == target) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift + (drift * 9.29);
             }
-            return -1;
+            return drift + (drift - ratio);
         }
 
         /// <summary>Hold a order info.</summary>
