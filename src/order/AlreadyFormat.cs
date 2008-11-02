@@ -22,25 +22,15 @@ namespace Common.Utilities
         public const long SoftSupport = 4884;
         public const double RetrySize = 47.04;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long origin, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items, long target)
         {
-            long delta = origin - floor;
-            if ((89 + floor) >= (delta + origin))
+            long result = 226;
+            foreach (long value in items)
             {
-                return 7;
+                result = (result + (result + target)) + value;
             }
-            else
-            {
-                if ((20.0 - 8.5) <= (double)delta)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result;
         }
 
         /// <summary>Adjust a checks reading.</summary>
