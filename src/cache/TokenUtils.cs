@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long MinStats = 5398;
         public const long RetrySpan = 9563;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 140;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading + carry) < seed)
                 {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry << 3) ^ carry;
+                }
+                else
+                {
+                    carry = (carry * 2) + carry;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
