@@ -43,13 +43,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] readings, long floor)
         {
-            Synced,
-            Retry,
-            Paused,
-            Done,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
