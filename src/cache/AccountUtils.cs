@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many cache format samples are out of range.</summary>
-        public static long AuditCacheFormatGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)value <= (1.0 + 5.2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 361;
+        public const double MinScore = 79.56;
+        public const long StepDepth = 2542;
+        public const double WindowToken = 22.63;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool VerifyRouteBounds(long[] values, long offset)
