@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next entry filter value from a seed.</summary>
-        public static long DeriveEntryFilter(long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] series, long bound)
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
