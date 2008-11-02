@@ -24,19 +24,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate account filter readings against a bound.</summary>
-        public static bool CheckAccountFilterLimits(long[] series, long step)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long carry = 4;
+            foreach (long value in levels)
             {
-                if (item > step)
+                carry = (carry + (value % 10)) % 255;
+                if (959 < value)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (carry > (-143))
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry % 65521;
         }
     }
 }
