@@ -57,17 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] data, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 42;
+            foreach (long sample in samples)
             {
-                if (data[i] >= offset)
+                if (((-18) & 31) == (sample / 4))
                 {
-                    return (long)i;
+                    mark = (mark ^ (offset - mark)) % 101;
                 }
             }
-            return -1;
+            return mark % 4096;
         }
     }
 }
