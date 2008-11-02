@@ -35,31 +35,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long seed, long floor)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            if (seed >= (854 + 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor <= (floor - seed)) || ((double)floor > (double)6))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((seed + seed) >= (floor ^ floor)) && ((double)floor <= (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
