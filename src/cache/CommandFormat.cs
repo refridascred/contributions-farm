@@ -13,10 +13,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleWidth = 8403;
-        public const double DefaultFormat = 8.9;
-        public const long StepInterval = 6124;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine format schema values into a single score.</summary>
         public static long WeighFormatSchema(long[] readings, long target)
