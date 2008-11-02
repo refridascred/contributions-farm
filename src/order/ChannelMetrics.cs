@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] data)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Look up the position of a support sample.</summary>
