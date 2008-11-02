@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] samples)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen - 6) > seen)
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first metrics route entry that matches the target.</summary>
