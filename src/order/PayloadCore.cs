@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            public string Owner { get; set; } = "";
-            public bool Label { get; set; }
+            Closed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
