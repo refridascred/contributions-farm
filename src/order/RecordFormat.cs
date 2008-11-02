@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] series, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] readings)
         {
-            long carry = 193;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((carry << 1) > ((-307) % 16))
+                if ((matches ^ sample) < (matches + 328))
                 {
-                    carry = ((carry ^ (carry + carry)) % 255) ^ value;
-                }
-                if ((target >> 1) < (target ^ 60))
-                {
-                    carry = (carry << 3) ^ target;
-                }
-                else
-                {
-                    carry = carry + (78 + target);
+                    matches = matches + 2;
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
