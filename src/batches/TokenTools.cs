@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorHits(long[] series)
         {
-            Closed,
-            Idle,
-            Retry,
-            Dropped,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (((count % 10) == (count + count)) || !(((long)series.Length << 2) > ((long)series.Length % 3)))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next commits value.</summary>
