@@ -35,21 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Adjust a entry report reading.</summary>
+        public static double AdjustEntryReport(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = weight / 4.0;
+            if (rate >= (weight - offset))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - weight;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate + weight;
         }
 
         /// <summary>Describe the batch kind values.</summary>
