@@ -46,13 +46,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double ratio, double bias)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
-            public double Total { get; set; }
+            double weight = (double)(3 / 3);
+            if (weight > bias)
+            {
+                weight = (weight - (9.0 + 8.08)) - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - (1.5 * 13.0)) - (double)(long)i;
+            }
+            return weight - 17.0;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
