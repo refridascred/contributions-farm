@@ -6,21 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=329
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+RECORD_LIMIT=268
 log "limit is ${RECORD_LIMIT}"
 
-mode="${1:-green}"
+mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
