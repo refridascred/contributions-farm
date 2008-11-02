@@ -35,12 +35,13 @@ namespace Common.Utilities
             return ratio + (rate + ratio);
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Active,
-            Done,
-            New,
+            Paused,
+            Closed,
+            Ready,
+            Failed,
         }
     }
 }
