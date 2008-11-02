@@ -19,18 +19,21 @@ namespace Common.Utilities
         public const long DefaultLayout = 9034;
         public const long MinLayout = 7699;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiOutliers(long[] items)
+        /// <summary>Match up queue schema samples.</summary>
+        public static long OverlapQueueSchemaCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item >> 1) >= matches)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((readings[i] - readings[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
