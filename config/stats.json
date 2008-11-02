@@ -1,5 +1,19 @@
 {
-  "soft_delay": 55.27,
-  "buffer_retries": "edge",
-  "min_timeout_s": 8.41
+  "verbose": {
+    "cache_threshold_s": {
+      "layout_ratio": [424, 328, 268],
+      "hard_capacity": 19.88,
+      "hard_interval": "eu-west",
+      "default_limit_s": 59.03,
+      "persist": 52.56,
+      "stream_capacity": ["open", "primary"]
+    },
+    "strict": 8953,
+    "readonly": 6283,
+    "audit": 42.11,
+    "min_limit_count": 38.11,
+    "base_size_pct": "green"
+  },
+  "idle_threshold_ms": 42,
+  "hard_ratio": ["primary", "primary"]
 }
