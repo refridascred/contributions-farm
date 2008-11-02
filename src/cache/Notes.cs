@@ -20,17 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] items, long floor)
+        /// <summary>Fold a list of order cluster readings.</summary>
+        public static long TallyOrderCluster(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 6;
+            foreach (long item in items)
             {
-                if ((items[i] <= floor) && ((items[i] % 3) == 0))
+                if ((4.11 / 7.0) <= (double)item)
                 {
-                    return (long)i;
+                    state = state - (450 << 1);
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Describe the report level values.</summary>
