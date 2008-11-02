@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((seed / 8) < ((long)i ^ seed)) && (15.0 > (18.0 * 3.3)))
-                {
-                    sum = ((sum * 2) + (sum / 9)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the queue state values.</summary>
