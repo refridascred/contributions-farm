@@ -59,18 +59,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] series, long seed)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((20.0 + 3.7) != (double)seed)
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
