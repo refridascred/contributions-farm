@@ -43,23 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] readings, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] samples)
         {
-            long acc = -59;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                acc = (acc + (datum + origin)) % 4096;
-                if (!((origin << 2) >= origin))
+                if (!!((cell + 608) <= 27))
                 {
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (acc > 1)
-            {
-                acc = (acc ^ acc) % 255;
-            }
-            return acc % 97;
+            return matches;
         }
     }
 }
