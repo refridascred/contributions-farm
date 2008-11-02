@@ -42,22 +42,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 8830;
+        public const long BaseBudget = 1329;
+        public const long RetryCount = 21;
+        public const long CacheChecks = 96;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenMatches(long[] values)
