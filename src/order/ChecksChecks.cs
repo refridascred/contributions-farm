@@ -21,12 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate notes editor samples.</summary>
+        public static long TotalNotesEditor(long[] samples)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            long mark = 772;
+            foreach (long entry in samples)
+            {
+                if ((entry >= 982) || ((mark - mark) <= entry))
+                {
+                    mark = ((mark * 2) + (entry + entry)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Adjust a session reading.</summary>
