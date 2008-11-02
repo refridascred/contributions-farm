@@ -20,39 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long step, long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] items)
         {
-            long lane = step - limit;
-            if ((lane >> 4) < (651 & 7))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit % 10) >= (lane - step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit <= (lane / 7)) || ((lane - limit) == (limit + step)))
+                    if ((items[i] ^ items[j]) != 3)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step & 7) <= (42 << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Fold a list of layout payload readings.</summary>
