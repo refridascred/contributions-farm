@@ -23,13 +23,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long limit, long limit2)
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            if (((limit * 4) == (limit2 - 758)) || ((274 - limit2) >= limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit2 >= (limit2 + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of editor entries.</summary>
