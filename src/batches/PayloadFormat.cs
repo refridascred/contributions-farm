@@ -19,38 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long floor, long bound)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            if ((bound - bound) >= (floor % 12))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)bound > 16.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((floor % 100) < bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)floor != (3.5 + 1.11))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
