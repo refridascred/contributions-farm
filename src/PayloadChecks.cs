@@ -68,21 +68,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up cache graph samples.</summary>
-        public static long OverlapCacheGraphCount(long[] levels)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
