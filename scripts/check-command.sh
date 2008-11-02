@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+for item in cached legacy eu-west; do
+    log "checking ${item}"
+done
+
+mode="${1:-cached}"
 case "${mode}" in
-    primary)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,6 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-for item in fallback stable latest eu-west; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=373
+log "limit is ${COMMAND_LIMIT}"
