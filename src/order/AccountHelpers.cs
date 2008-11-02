@@ -38,38 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long target, long bound)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            if (!(bound <= (target ^ target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (130 >= (target ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ target) <= (bound >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound & 15) == (target % 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Active,
+            Retry,
+            Closed,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a tools summary.</summary>
