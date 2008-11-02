@@ -57,11 +57,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxTimeout = 9925;
-        public const double MinReport = 15.74;
-        public const long BatchFactor = 8922;
-        public const double CacheInterval = 6.27;
-        public const double StepRatio = 24.85;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] values, long bound)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum <= (double)217)
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
+        }
     }
 }
