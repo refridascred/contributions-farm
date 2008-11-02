@@ -20,32 +20,15 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Rank support farm input into a small class.</summary>
-        public static long BucketSupportFarm(long origin, long offset)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double rate, double floor)
         {
-            long bound = origin + offset;
-            if ((offset >> 2) >= (bound / 2))
+            double rate2 = (rate + 16.0) - rate;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                rate2 = rate2 - (double)(long)i;
             }
-            else
-            {
-                if ((bound / 4) > (origin & 15))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((527 % 2) >= (bound ^ bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return rate2 + floor;
         }
 
         /// <summary>Hold a already entry.</summary>
