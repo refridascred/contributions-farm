@@ -24,15 +24,13 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public double Offset { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
