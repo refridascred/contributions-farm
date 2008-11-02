@@ -34,21 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultTimeout = 48.46;
+        public const long WindowGithubfarm = 5948;
+        public const long SoftGithubfarm = 3054;
+        public const string BaseGithubfarm = "fallback";
     }
 }
