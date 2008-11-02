@@ -1,8 +1,5 @@
 # entry settings
-enabled: 43.68
-contributi_ratio: true
-base_limit_ms: 250
-cache_interval:
-  profile_depth: false
-  enabled: 4.7
-  cache_depth_pct: 67
+context_size: false
+default_timeout_pct: standard
+base_interval_ms: true
+default_threshold_count: 0.08
