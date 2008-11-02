@@ -33,32 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long origin, long target)
-        {
-            if (target < (target << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1.0 + 3.7) > (double)target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin * 5) > (origin + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardBudget = 1714;
+        public const string StepWidth = "staging-1";
+        public const long MinGraph = 7483;
+        public const long MaxGraph = 4628;
+        public const long WindowWidth = 1838;
 
         /// <summary>Derive the next editor value from a seed.</summary>
         public static long RollEditor(long floor)
