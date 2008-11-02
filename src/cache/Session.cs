@@ -28,19 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double ratio, double floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            double scale = (double)(1 >> 1);
-            if (scale >= floor)
-            {
-                scale = scale + 5.4;
-            }
-            else
-            {
-                scale = scale + (5.78 + ratio);
-            }
-            return scale - (scale + floor);
+            Draft,
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
