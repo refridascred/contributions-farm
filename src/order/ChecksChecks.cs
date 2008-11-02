@@ -44,18 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks commits readings against a rule.</summary>
-        public static long TallyChecksCommitsOutliers(long[] series)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value + value) > (matches * 4))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Synced,
+            Active,
+            Locked,
         }
     }
 }
