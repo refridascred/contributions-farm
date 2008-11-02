@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] series, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)limit > (double)result))
+                if (series[i] < bound)
                 {
-                    result = ((result << 2) ^ (result - result)) % 255;
-                    result = ((result * 4) + (limit ^ result)) % 4096;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
