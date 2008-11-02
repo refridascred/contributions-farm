@@ -44,17 +44,11 @@ namespace Common.Utilities
         public const double BaseReport = 89.14;
         public const double SoftReport = 31.6;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] levels, long seed)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
