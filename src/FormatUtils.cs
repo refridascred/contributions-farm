@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] readings, long offset)
+        /// <summary>Derive the next checks editor value from a seed.</summary>
+        public static long StepChecksEditor(long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((offset ^ (-572)) <= (reading & 1))
+                if (!((step >> 4) == (long)i))
                 {
-                    matches = matches + 3;
+                    state = (state - (state + step)) % 101;
                 }
+                state = state - (step * 5);
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define context limits and defaults.</summary>
