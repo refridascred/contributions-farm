@@ -58,21 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools entry pairs that satisfy a relation.</summary>
-        public static long OverlapToolsEntryCount(long[] levels)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a channel options.</summary>
