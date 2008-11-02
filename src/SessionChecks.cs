@@ -16,18 +16,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] series, long step)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if ((double)step != (7.1 / 2.0))
+                if (value <= origin)
                 {
-                    matches = (matches + 2) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Grade a support stats value against two limits.</summary>
