@@ -62,11 +62,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFactor = 6458;
+        public const long WindowFilter = 9919;
+        public const string BurstSize = "staging-edge";
+        public const long IdleScore = 8842;
     }
 }
