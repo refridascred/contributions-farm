@@ -53,32 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long floor, long seed)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long bound = floor ^ seed;
-            if ((double)bound > (2.3 / 3.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0.4 / 7.0) == (double)bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((3.2 - 9.2) != (double)bound) || (seed < bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Idle,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the format phase values.</summary>
