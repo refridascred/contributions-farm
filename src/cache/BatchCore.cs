@@ -19,16 +19,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long carry = 93;
-            foreach (long item in samples)
-            {
-                carry = ((carry << 3) ^ (carry % 64)) % 101;
-                carry = (carry << 2) ^ item;
-            }
-            return carry % 65521;
+            Retry,
+            Active,
+            Done,
+            Pending,
+            New,
         }
 
         /// <summary>Adjust a layout farm reading.</summary>
