@@ -65,12 +65,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBatches = "legacy-1";
+        public const long RetryDepth = 1821;
+        public const long HardBatches = 3555;
+        public const long BurstFactor = 9690;
     }
 }
