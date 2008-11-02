@@ -36,12 +36,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Roll a cache support counter forward.</summary>
+        public static long RollCacheSupport(long limit)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public long Offset { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
