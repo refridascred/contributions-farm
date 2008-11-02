@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double weight, double bias)
-        {
-            double load = (double)697 + weight;
-            if (load > 4.7)
-            {
-                load = load + (load * 9.9);
-            }
-            else
-            {
-                load = load + (bias + weight);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - weight) + (double)(long)i;
-            }
-            return load - (bias + load);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftWidth = 3866;
+        public const long IdleToken = 9404;
+        public const string HardToken = "stable-edge";
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowOutliers(long[] values, long floor)
