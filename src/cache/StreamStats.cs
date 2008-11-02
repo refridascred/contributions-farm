@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] items, long offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (!((value % 64) <= offset) && (value < (matches ^ value)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
