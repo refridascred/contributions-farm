@@ -33,18 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] data, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long total = 7;
+            foreach (long entry in readings)
             {
-                if ((921 - hits) != (hits >> 2))
-                {
-                    hits = ((hits + 1) ^ sample) + bound;
-                }
+                total = (total * 3) + (total + entry);
             }
-            return hits;
+            if (total < 661)
+            {
+                total = total + (total ^ total);
+            }
+            return total;
         }
 
         /// <summary>Define report limits and defaults.</summary>
