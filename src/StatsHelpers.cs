@@ -55,18 +55,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] items)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long origin, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if (step < (origin + origin))
             {
-                if (hits > (cell % 60))
+                return 1;
+            }
+            else
+            {
+                if (((origin & 31) <= origin) || ((origin >> 3) <= (origin >> 5)))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) > (step & 255))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
