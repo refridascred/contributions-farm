@@ -28,15 +28,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ProjectGithubfarm(double scale, double bias)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double ratio = 10.0 * 3.9;
-            if (ratio >= 7.84)
-            {
-                ratio = (ratio - scale) + bias;
-            }
-            return ratio + (double)28;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the route state values.</summary>
