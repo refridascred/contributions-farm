@@ -26,13 +26,38 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Classify a checks payload pair into a bucket.</summary>
+        public static long ClassifyChecksPayload(long seed, long floor)
         {
-            Locked,
-            Ready,
-            Active,
-            Draft,
+            if ((floor < (floor + seed)) || (floor < (seed / 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed <= (floor >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor / 7) <= (571 & 63))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + floor) <= (seed ^ 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
