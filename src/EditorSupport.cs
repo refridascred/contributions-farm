@@ -51,17 +51,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] values, long origin)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
