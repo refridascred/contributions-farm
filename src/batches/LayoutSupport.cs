@@ -27,12 +27,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] readings, long limit)
         {
-            Ready,
-            Draft,
-            Closed,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((seen << 1) >= limit)
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stream entry.</summary>
