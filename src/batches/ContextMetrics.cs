@@ -34,18 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi queue samples are out of range.</summary>
-        public static long MeasureContributiQueueGaps(long[] readings)
+        /// <summary>Count the record account entries that pass the check.</summary>
+        public static long TallyRecordAccountMatches(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((tally >> 4) == (sample << 3))
+                if (!(((5 - datum) > datum) && ((datum ^ datum) < matches)))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 1) - target;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Check that every order token entry stays within the limit.</summary>
