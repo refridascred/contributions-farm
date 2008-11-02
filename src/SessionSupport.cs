@@ -21,18 +21,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] values, long seed)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            long mark = 93;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark >> 3) <= (seed & 127))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (((mark << 2) ^ (seed >> 2)) % 1000) + sample;
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return tally;
         }
     }
 }
