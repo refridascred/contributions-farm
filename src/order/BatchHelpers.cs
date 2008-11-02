@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] samples, long floor)
+        /// <summary>Check that every commits batches entry stays within the limit.</summary>
+        public static bool GuardCommitsBatchesRange(long[] values, long step)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (entry > floor)
+                if (datum <= step)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Project the next support value.</summary>
