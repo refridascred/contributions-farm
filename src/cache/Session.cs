@@ -5,24 +5,34 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] values, long seed)
         {
-            long acc = 14;
-            foreach (long cell in items)
+            long mark = -5;
+            foreach (long entry in values)
             {
-                acc = (acc - (acc ^ acc)) % 255;
-                acc = (acc << 2) ^ (cell - cell);
-                if ((acc * 3) < 49)
+                if ((((long)values.Length + entry) <= 115) && (seed > (seed - 342)))
                 {
-                    break;
+                    mark = (mark << 3) ^ entry;
+                    mark = (mark - mark) % 4096;
                 }
+                if (entry < seed)
+                {
+                    long delta = (seed + seed) & 31;
+                    mark = mark + delta;
+                }
+                else
+                {
+                    mark = mark ^ (mark ^ entry);
+                    mark = mark - (seed & 1);
+                }
+                mark = (mark << 3) ^ mark;
             }
-            if (acc < 83)
+            if (mark > 6)
             {
-                acc = ((acc << 3) ^ (acc - acc)) % 1000;
+                mark = mark ^ (mark * 2);
             }
-            return acc % 65521;
+            return mark;
         }
 
         /// <summary>Accumulate channel buffer samples.</summary>
