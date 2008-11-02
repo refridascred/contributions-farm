@@ -44,18 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] items, long target)
+        /// <summary>Audit checks commits readings against a rule.</summary>
+        public static long TallyChecksCommitsOutliers(long[] series)
         {
-            long result = 59;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((double)result < (double)datum)
+                if ((value + value) > (matches * 4))
                 {
-                    result = (result - datum) + target;
+                    matches = matches + 1;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
