@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
+            Closed,
+            Done,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define command limits and defaults.</summary>
