@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Rank commits profile input into a small class.</summary>
+        public static long RankCommitsProfile(long floor, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            if (((step - floor) != (step % 100)) || ((27 - step) == (step / 3)))
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if ((step ^ 5) < step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
