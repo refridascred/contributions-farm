@@ -49,11 +49,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseWidth = 6677;
-        public const long SoftFactor = 6742;
-        public const long BurstLevel = 6778;
-        public const double CacheInterval = 69.39;
-        public const long BurstSession = 5086;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string RetryCluster = "legacy-edge";
+        public const double LimitCluster = 90.74;
+        public const long RetrySpan = 2689;
     }
 }
