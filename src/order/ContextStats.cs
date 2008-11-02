@@ -50,39 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a farm channel pair into a bucket.</summary>
-        public static long GradeFarmChannel(long offset, long offset2)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long delta = offset ^ offset2;
-            if (((delta ^ offset) < (offset2 << 1)) && ((double)offset > (11.0 / 6.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (delta > 64)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((49 + offset2) > (offset2 - delta)) && ((1.91 - 12.0) < (double)offset2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(delta <= offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Stale,
+            Ready,
         }
     }
 }
