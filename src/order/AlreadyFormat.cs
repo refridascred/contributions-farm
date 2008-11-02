@@ -22,21 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit report readings against a rule.</summary>
