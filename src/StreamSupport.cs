@@ -42,19 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long acc = 16;
-            foreach (long item in levels)
-            {
-                acc = (acc + (acc / 8)) % 255;
-                if ((double)item != (14.0 / 8.0))
-                {
-                    acc = ((acc << 3) ^ acc) % 4096;
-                }
-            }
-            return acc % 4096;
+            Done,
+            Stale,
+            Dropped,
+            Paused,
         }
     }
 }
