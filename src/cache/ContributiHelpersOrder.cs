@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long target)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            long mark = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
