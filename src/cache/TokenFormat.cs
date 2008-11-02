@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] values, long offset)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double AdjustCommits(double gain, double offset)
         {
-            long mix = -63;
-            foreach (long entry in values)
+            double ratio = offset;
+            if (ratio > ratio)
             {
-                mix = mix ^ (offset - (long)values.Length);
-                if ((17.0 - 7.77) == (double)offset)
-                {
-                    mix = (mix + (entry ^ offset)) % 1000;
-                }
-                if (27 > (entry + mix))
-                {
-                    break;
-                }
+                ratio = ratio + ratio;
             }
-            return mix;
+            else
+            {
+                ratio = ratio - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (ratio - gain)) - (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Describe the cache state values.</summary>
