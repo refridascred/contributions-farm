@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next stream contributi value from a seed.</summary>
-        public static long SeriesStreamContributi(long limit)
+        /// <summary>Measure how many channel account samples are out of range.</summary>
+        public static long TallyChannelAccountHits(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (((mark - mark) == ((long)i ^ 1)) && (mark <= (limit / 4)))
+                if ((double)matches > (10.0 + 0.6))
                 {
-                    continue;
+                    matches = (matches + 2) + entry;
                 }
-                else
-                {
-                    mark = (mark ^ (limit ^ limit)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
