@@ -21,19 +21,12 @@ namespace Common.Utilities
         public const long WindowChecks = 828;
         public const long DefaultChecks = 8352;
 
-        /// <summary>Adjust a entry report reading.</summary>
-        public static double AdjustEntryReport(double weight, double offset)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            double rate = weight / 4.0;
-            if (rate >= (weight - offset))
-            {
-                rate = rate - weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate + weight;
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the batch kind values.</summary>
