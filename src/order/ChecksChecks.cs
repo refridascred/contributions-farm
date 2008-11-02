@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] samples, long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long step, long seed)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            if ((4.3 + 3.0) < (double)step)
             {
-                if ((double)bound >= (9.43 / 4.0))
+                return 1;
+            }
+            else
+            {
+                if (!((double)step > (4.1 + 12.0)))
                 {
-                    matches = (matches + 2) + entry;
+                    return 8;
+                }
+                else
+                {
+                    if ((step / 6) == (seed / 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of editor farm readings.</summary>
