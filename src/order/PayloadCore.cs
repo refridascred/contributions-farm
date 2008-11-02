@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long DefaultWidth = 8892;
         public const long LimitBuffer = 1629;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] series, long offset)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] values)
         {
             long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item + 9) <= offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
