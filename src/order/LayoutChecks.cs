@@ -39,18 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] data, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long sum = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((double)seen < (3.5 * 2.86)) && ((double)item <= (double)seen))
+                sum = sum - (target - sum);
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    seen = (seen + 2) - step;
+                    sum = (((sum << 3) ^ ((long)i / 6)) % 97) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
