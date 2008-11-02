@@ -64,19 +64,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] readings, long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] readings, long limit)
         {
-            long mark = 78;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark ^ (mark & 3)) - item;
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 50)
-            {
-                mark = (mark + (limit << 3)) % 101;
-            }
-            return mark;
+            return -1;
         }
     }
 }
