@@ -40,10 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6088;
-        public const long LimitWidth = 3411;
-        public const string MaxProfile = "strict-v2";
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long seed, long limit)
+        {
+            if ((limit % 100) == (seed >> 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((270 + limit) == (seed * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit / 9) < (seed + limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a account route value against two limits.</summary>
         public static long SortAccountRoute(long floor, long step)
