@@ -20,15 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long seed)
+        /// <summary>Locate a queue channel reading by value.</summary>
+        public static long LocateQueueChannelIndex(long[] data, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the farm class values.</summary>
