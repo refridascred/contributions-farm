@@ -1,15 +1,18 @@
 # entry settings
-sync_delay: 75
-poll_timeout: 500
-readonly:
-  - 444
-  - 80
-  - 239
-counter_ttl:
-  - 398
-  - 319
-  - 121
-  - 165
-commits_delay:
-  - green
-  - primary
+flush_timeout_count: true
+default_delay_pct:
+  audit:
+    compress: 19
+    contributi_ratio: 52
+    batches_delay: 31.21
+    hard_interval: legacy
+    window_timeout: 6567
+    farm_window: stable
+  hard_window_count: 12.15
+  max_interval_s: 58
+  sync_limit_s: 14.15
+base_interval_s: open
+min_limit:
+  poll_size_pct: 4831
+  dry_run: 31
+  hard_ratio_ms: latest
