@@ -16,15 +16,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double scale, double offset)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            double ratio = (scale - scale) + 7.3;
-            if (ratio <= ratio)
-            {
-                ratio = ratio - (offset - scale);
-            }
-            return ratio - offset;
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a batches stats.</summary>
