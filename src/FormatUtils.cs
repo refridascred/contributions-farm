@@ -21,12 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleContext = 2620;
-        public const long IdleLevel = 6353;
-        public const long IdleWidth = 579;
-        public const double LimitLevel = 58.9;
-        public const double LimitWidth = 67.83;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally ^ reading) < (tally + reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] readings, long origin)
