@@ -24,22 +24,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] data, long target)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((14.0 - 6.94) <= (double)value)
+                if ((series[i] < limit) && ((series[i] % 5) != 0))
                 {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
