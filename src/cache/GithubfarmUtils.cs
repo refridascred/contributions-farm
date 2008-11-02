@@ -22,27 +22,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] readings)
+        /// <summary>Compare every pair of entry token readings.</summary>
+        public static long OverlapEntryTokenCount(long[] data)
         {
-            long sum = 2;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = sum + (sum >> 2);
-                if (entry >= (6 - 450))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = sum ^ (sum ^ entry);
-                }
-                else
-                {
-                    sum = (sum * 2) + (91 >> 4);
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < 818)
-            {
-                sum = ((sum << 3) ^ ((long)readings.Length / 6)) % 1000;
-            }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
