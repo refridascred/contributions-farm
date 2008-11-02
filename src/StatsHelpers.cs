@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit payload command readings against a rule.</summary>
-        public static long TallyPayloadCommandHits(long[] values)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (!((seen << 1) > (cell - 375)))
+                if ((double)matches != (double)bound)
                 {
-                    seen = seen + 2;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Audit entry stream readings against a rule.</summary>
