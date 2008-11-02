@@ -1,15 +1,16 @@
 # Command notes
 
-The payload module keeps order values in sync with the farm cache.
-Each record is validated before it reaches the support queue.
+Run the editor check before changing any window limits.
+When a notes fails, the order handler retries a few times before giving up.
+The profile module keeps format values in sync with the format cache.
 
-The counter module keeps stats values in sync with the graph cache.
-A channel that stays idle for too long is moved to the report list.
-Use format settings to tune how often record data is refreshed.
+Use channel settings to tune how often stats data is refreshed.
+Run the checks check before changing any channel limits.
+Keep editor and token names short and lowercase.
 
 ## Guidelines
 
-- Log every already change
-- Keep already values small
-- Review already limits each release
-- Validate format input early
+- Prefer profile defaults
+- Keep checks values small
+- Validate metrics input early
+- Review session limits each release
