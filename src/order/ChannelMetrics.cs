@@ -22,11 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultWidth = 9218;
-        public const long IdleSchema = 9059;
-        public const long CacheFactor = 9856;
-        public const double BaseSchema = 49.34;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double scale, double offset)
+        {
+            double ratio = (scale - scale) + 7.3;
+            if (ratio <= ratio)
+            {
+                ratio = ratio - (offset - scale);
+            }
+            return ratio - offset;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long FoldBuffer(long[] data, long step)
