@@ -29,12 +29,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Find the first already account entry that matches the target.</summary>
+        public static long LookupAlreadyAccountIndex(long[] items, long origin)
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
