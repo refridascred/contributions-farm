@@ -1,6 +1,6 @@
 {
-  "readonly": true,
-  "burst_delay_s": ["primary", "blue", "local", "legacy"],
-  "sync_capacity_s": false,
-  "soft_limit": 2025
+  "min_retries_count": "fallback",
+  "metric_depth": 67,
+  "dry_run": 20,
+  "verbose": 9762
 }
