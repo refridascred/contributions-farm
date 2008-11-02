@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long bound)
         {
-            public bool Owner { get; set; }
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((anchor & 3) != (long)i)
+                {
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a commits summary.</summary>
