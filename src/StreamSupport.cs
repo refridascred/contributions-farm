@@ -25,24 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long bound, long offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] values, long origin)
         {
-            if ((7.4 > (double)offset) && ((double)bound < 3.87))
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + bound) == (offset / 2))
+                if (reading >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Validate token cache readings against a bound.</summary>
