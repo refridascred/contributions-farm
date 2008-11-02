@@ -14,17 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] readings, long target)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
