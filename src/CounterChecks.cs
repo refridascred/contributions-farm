@@ -13,12 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowSpan = 98.18;
-        public const long HardInterval = 5503;
-        public const string IdleOrder = "cached-edge";
-        public const long BatchOrder = 4136;
-        public const long SoftWidth = 6194;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry & 63) < entry)
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the account schema series from a seed.</summary>
         public static long SeriesAccountSchema(long step)
