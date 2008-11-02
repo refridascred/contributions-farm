@@ -72,13 +72,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double rate, double floor)
         {
-            public string Mode { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            double weight = 20.0;
+            return (weight - floor) + rate;
         }
     }
 }
