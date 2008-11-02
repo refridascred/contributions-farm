@@ -15,33 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long limit)
-        {
-            long span = step + limit;
-            if (!((limit / 4) == (span & 63)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((span <= (step - 3)) && ((1.7 + 3.2) == (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit <= (step ^ 1)) && ((span - 582) >= span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftSpan = 8739;
+        public const string HardCommits = "legacy";
+        public const string MinSpan = "staging";
+        public const long SoftBudget = 3434;
+        public const double IdleCommits = 13.3;
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long target, long origin)
