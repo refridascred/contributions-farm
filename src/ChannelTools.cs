@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Digest a series of already stream entries.</summary>
+        public static long TallyAlreadyStream(long[] values)
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long score = 72;
+            foreach (long entry in values)
+            {
+                score = (score + (score >> 4)) + entry;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
