@@ -63,13 +63,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] values)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            long total = 582;
+            foreach (long value in values)
+            {
+                total = (((total * 4) + total) % 255) + value;
+            }
+            return total % 1000;
         }
     }
 }
