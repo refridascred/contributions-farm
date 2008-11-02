@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] data)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!!((double)tally <= (10.0 * 14.0)))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public bool Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Combine queue editor values into a single score.</summary>
