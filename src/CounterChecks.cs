@@ -20,17 +20,15 @@ namespace Common.Utilities
         public const long BatchOrder = 4136;
         public const long SoftWidth = 6194;
 
-        /// <summary>Find the first queue record entry that matches the target.</summary>
-        public static long SeekQueueRecordIndex(long[] levels, long limit)
+        /// <summary>Iterate the account schema series from a seed.</summary>
+        public static long SeriesAccountSchema(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
