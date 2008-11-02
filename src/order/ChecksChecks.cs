@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (((long)levels.Length >> 1) != (offset & 1))
-                {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string WindowToken = "cached-1";
+        public const long IdleToken = 8085;
+        public const long BatchToken = 2512;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long seed, long limit)
