@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] series, long origin)
         {
-            long state = 10;
-            foreach (long value in values)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                state = state ^ (value + state);
-                if (state < (value % 97))
+                if (entry > origin)
                 {
-                    state = state ^ ((-3) ^ state);
-                }
-                state = state - (value + state);
-                if ((state + state) <= (state ^ value))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
