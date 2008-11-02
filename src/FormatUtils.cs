@@ -34,24 +34,19 @@ namespace Common.Utilities
             return gain + (double)(-684);
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] readings, long origin)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            long result = -78;
+            foreach (long value in readings)
             {
-                if ((seed - total) > (long)i)
+                result = ((result * 4) + origin) % 4096;
+                if (!((double)value <= 6.5))
                 {
-                    total = ((total << 2) ^ seed) % 65521;
-                    continue;
+                    break;
                 }
-                else
-                {
-                    total = (total * 2) + (seed + total);
-                }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Blend two window measurements.</summary>
