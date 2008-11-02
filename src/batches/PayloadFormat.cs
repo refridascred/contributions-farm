@@ -53,18 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample + count) >= count)
                 {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 1;
                 }
             }
             return count;
