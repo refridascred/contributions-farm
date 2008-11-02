@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] series, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long carry = 193;
+            foreach (long value in series)
             {
-                total = total ^ 91;
-                total = ((total * 5) + (long)i) % 101;
+                if ((carry << 1) > ((-307) % 16))
+                {
+                    carry = ((carry ^ (carry + carry)) % 255) ^ value;
+                }
+                if ((target >> 1) < (target ^ 60))
+                {
+                    carry = (carry << 3) ^ target;
+                }
+                else
+                {
+                    carry = carry + (78 + target);
+                }
             }
-            return total;
+            return carry % 97;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
