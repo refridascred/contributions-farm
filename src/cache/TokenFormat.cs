@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double AdjustCommits(double gain, double offset)
+        /// <summary>Grade a payload route value against two limits.</summary>
+        public static long GradePayloadRoute(long offset, long bound)
         {
-            double ratio = offset;
-            if (ratio > ratio)
+            long next = offset + bound;
+            if (((double)12 < (double)offset) || (1 < (offset + next)))
             {
-                ratio = ratio + ratio;
+                return 6;
             }
             else
             {
-                ratio = ratio - gain;
+                if ((6.8 / 3.0) == (double)next)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound > (offset << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)next == (8.3 + 2.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (ratio - gain)) - (double)(long)i;
-            }
-            return ratio - offset;
         }
 
         /// <summary>Describe the cache state values.</summary>
