@@ -1,7 +1,12 @@
 {
-  "base_depth_s": 78,
-  "hard_window_ms": [184, 87, 124],
-  "hard_ratio": 57,
-  "persist": "blue",
-  "batch_limit_ms": [483, 412]
+  "burst_ratio": 30,
+  "retry_interval": 3381,
+  "warm_limit_count": 7556,
+  "strict": {
+    "sync_size_ms": 22,
+    "entry_limit": "cached",
+    "command_capacity": "standard",
+    "default_window": "open"
+  },
+  "session_retries": false
 }
