@@ -32,16 +32,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] values)
-        {
-            long mark = -5;
-            foreach (long value in values)
-            {
-                mark = (mark ^ mark) ^ value;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleMetric = 84.68;
+        public const double WindowWidth = 35.66;
+        public const double BurstMetric = 84.09;
+        public const long MaxSize = 1362;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
