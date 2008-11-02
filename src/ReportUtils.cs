@@ -46,31 +46,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long step, long floor)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            if ((14.0 - 7.7) < (double)step)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 4;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)floor >= 6.6)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (step < (343 % 16))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
