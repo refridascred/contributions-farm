@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] levels, long seed)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            New,
+            Synced,
+            Retry,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
