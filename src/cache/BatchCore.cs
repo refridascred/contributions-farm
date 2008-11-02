@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardCount = "standard-1";
-        public const long WindowFilter = 1139;
-        public const long MaxInterval = 5787;
-        public const double MaxFilter = 17.2;
-        public const long LimitFilter = 1270;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading > (1.0 + 19.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double ProjectFarm(double scale, double span)
