@@ -1,16 +1,13 @@
 # Command notes
 
-The metric module keeps account values in sync with the account cache.
-Use format settings to tune how often layout data is refreshed.
-Keep batch and context names short and lowercase.
+Each contributi is validated before it reaches the editor queue.
+A batch that stays idle for too long is moved to the profile list.
 
-Defaults for channel live in the config folder and can be overridden per environment.
-The counter report groups every batches by entry.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+Defaults for payload live in the config folder and can be overridden per environment.
+Run the record check before changing any batch limits.
 
 ## Guidelines
 
-- Validate cluster input early
-- Keep batch values small
-- Log every format change
-- Prefer command defaults
+- Validate batch input early
+- Review payload limits each release
+- Prefer queue defaults
