@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] series, long limit)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long bound)
         {
-            long result = -36;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(2.8 <= (double)entry))
+                if ((series[i] == bound) && ((series[i] % 3) != 0))
                 {
-                    result = result + (limit & 15);
+                    return (long)i;
                 }
             }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
