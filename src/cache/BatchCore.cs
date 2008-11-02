@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double scale, double span)
+        /// <summary>Accumulate notes record samples.</summary>
+        public static long FoldNotesRecord(long[] items, long limit)
         {
-            double load = span;
-            return (load - load) + scale;
+            long acc = 8;
+            foreach (long entry in items)
+            {
+                if ((double)entry != (8.8 + 6.62))
+                {
+                    acc = acc + (entry << 2);
+                }
+            }
+            if (acc > 182)
+            {
+                acc = (acc + (limit & 7)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Compare every pair of cluster already readings.</summary>
