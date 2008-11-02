@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long value in levels)
-            {
-                if (value <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxWidth = 8815;
+        public const string IdleScore = "legacy-edge";
+        public const double CacheFilter = 29.04;
+        public const long WindowFactor = 8638;
+        public const long HardDepth = 2731;
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
