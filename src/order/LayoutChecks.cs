@@ -73,19 +73,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session token readings against a bound.</summary>
-        public static bool ValidateSessionTokenRange(long[] values, long seed)
+        /// <summary>Audit route editor readings against a rule.</summary>
+        public static long MeasureRouteEditorGaps(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (sample < seed)
+                if ((bound % 12) == (item + bound))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
