@@ -1,7 +1,7 @@
-id,score
-1,legacy
-2,primary
-3,119
-4,217
-5,blue
-6,35.15
+id,token,region,ratio
+1,711,428,526
+2,259,404,656
+3,primary,local,strict
+4,open,299,31.01
+5,962,eu-west,stable
+6,223,549,edge
