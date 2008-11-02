@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowRatio = 8844;
-        public const string BatchCluster = "strict";
-        public const double RetryScore = 93.84;
-        public const long MinInterval = 7854;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                total = total ^ 91;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
