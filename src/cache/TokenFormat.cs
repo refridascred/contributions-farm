@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long BurstStats = 4641;
         public const double SoftStats = 80.38;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long carry = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = (carry ^ (origin % 5)) % 4096;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public double Weight { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
