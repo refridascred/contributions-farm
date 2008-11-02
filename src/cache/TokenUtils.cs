@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long target, long floor)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long cur = target + floor;
-            if ((cur - cur) <= (cur + cur))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((607 + target) < cur)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
