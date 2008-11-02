@@ -24,18 +24,31 @@ namespace Common.Utilities
             return load - (bias + load);
         }
 
-        /// <summary>Audit format order readings against a rule.</summary>
-        public static long TallyFormatOrderOutliers(long[] series)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long offset, long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if ((92 ^ limit) > limit)
             {
-                if ((seen & 3) > (seen + seen))
+                return 8;
+            }
+            else
+            {
+                if ((7.0 / 6.0) != (double)limit)
                 {
-                    seen = (seen + 2) + item;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit ^ limit) == (offset / 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine format schema values into a single score.</summary>
