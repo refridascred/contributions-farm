@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string IdleCounter = "cached-v2";
-        public const long IdleInterval = 965;
-        public const long StepCounter = 1116;
-        public const long MaxCounter = 4752;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchCount = 2069;
+        public const string CacheScore = "open-1";
+        public const string LimitMetrics = "fallback-v2";
+        public const long MaxMetrics = 227;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
