@@ -1,8 +1,13 @@
 {
-  "max_ratio_ms": 24.61,
-  "audit": "cached",
-  "sync_ttl": ["primary", "edge", "local"],
-  "persist": 2039,
-  "soft_limit_s": 500,
-  "burst_delay_pct": "staging"
+  "compress": [294, 125],
+  "default_depth_ms": "eu-west",
+  "readonly": true,
+  "context_retries": false,
+  "warm_ratio_count": {
+    "persist": 22,
+    "retry_limit_count": 18,
+    "dry_run": 42,
+    "githubfarm_ttl": 58.84,
+    "metrics_ratio": 6.53
+  }
 }
