@@ -23,25 +23,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine profile channel values into a single score.</summary>
-        public static long ScoreProfileChannel(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long step)
         {
-            long anchor = 31;
-            foreach (long cell in samples)
+            long anchor = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = ((anchor * 2) + cell) ^ (long)i;
-                    anchor = ((anchor * 4) + (anchor + 991)) % 97;
-                }
-                if ((2.64 - 6.0) < (double)anchor)
-                {
-                    anchor = anchor + (anchor ^ (long)samples.Length);
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = (anchor * 5) + (61 % 97);
+                anchor = anchor - step;
+                anchor = ((anchor * 2) + (109 + anchor)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
             return anchor;
         }
