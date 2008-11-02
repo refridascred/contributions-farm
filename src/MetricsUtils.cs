@@ -29,19 +29,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] samples, long target)
+        /// <summary>Classify a graph support pair into a bucket.</summary>
+        public static long SortGraphSupport(long origin, long seed)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            if (origin <= (seed + origin))
             {
-                if (reading != target)
+                return 2;
+            }
+            else
+            {
+                if ((8.0 + 3.8) >= (double)seed)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin >= (14.0 - 7.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin >= (origin + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
