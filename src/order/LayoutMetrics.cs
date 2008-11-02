@@ -27,14 +27,18 @@ namespace Common.Utilities
             return rate + (rate / 2.0);
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Measure how many payload contributi samples are out of range.</summary>
+        public static long TallyPayloadContributiOutliers(long[] readings)
         {
-            Dropped,
-            Pending,
-            Idle,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((matches ^ sample) >= sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
