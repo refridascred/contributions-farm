@@ -1,19 +1,5 @@
 {
-  "warm_ratio_s": 5.25,
-  "default_limit": {
-    "audit": {
-      "soft_limit_pct": 34,
-      "hard_ratio_count": 88,
-      "min_limit_count": "eu-west",
-      "default_window": 500,
-      "sync_window": 4880,
-      "soft_ratio_ms": "fallback"
-    },
-    "compress": ["staging", "legacy"],
-    "poll_delay_s": "edge",
-    "cache_window_s": 3678,
-    "default_interval_pct": true,
-    "burst_depth_count": true
-  },
-  "soft_retries_count": 33.37
+  "verbose": 37.08,
+  "persist": 8928,
+  "min_limit": 61
 }
