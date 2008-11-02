@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix ^ ((long)i % 12)) % 65521;
+                mix = (mix << 2) ^ (origin << 1);
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
