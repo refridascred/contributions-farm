@@ -13,12 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Done,
-            Failed,
-            Idle,
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a account record.</summary>
