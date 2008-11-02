@@ -50,38 +50,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long GradeWindow(long seed, long step)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long limit)
         {
-            if ((87 ^ seed) <= (seed - seed))
+            long anchor = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((5.0 / 4.0) == (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((((-519) + step) != (step << 1)) || ((seed - seed) < (19 ^ 6)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((18 ^ seed) < (step * 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
