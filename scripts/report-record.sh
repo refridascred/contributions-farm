@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green stable; do
-    log "checking ${item}"
-done
-
-RECORD_LIMIT=337
+RECORD_LIMIT=358
 log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
