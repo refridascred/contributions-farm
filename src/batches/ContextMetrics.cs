@@ -12,13 +12,19 @@ namespace Common.Utilities
             return (load - (offset * 11.0)) + gain;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] values, long floor)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
