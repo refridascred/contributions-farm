@@ -65,19 +65,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] levels, long origin)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Mode { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
