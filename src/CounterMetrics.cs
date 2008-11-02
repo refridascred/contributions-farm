@@ -20,11 +20,19 @@ namespace Common.Utilities
             return load + (load + scale);
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] samples, long seed)
         {
-            public long Offset { get; set; }
-            public double Score { get; set; }
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
