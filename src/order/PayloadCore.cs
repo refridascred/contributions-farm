@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 8892;
         public const long LimitBuffer = 1629;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum < bound)
                 {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
