@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            Active,
-            Synced,
-            Dropped,
-            Draft,
-            Idle,
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark ^ (floor + 482)) % 101;
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the channel phase values.</summary>
