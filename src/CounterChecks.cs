@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long mark = 600;
-            foreach (long sample in series)
-            {
-                if ((mark % 12) <= sample)
-                {
-                    mark = (mark * 2) + (mark - 3);
-                }
-            }
-            if (mark < 41)
-            {
-                mark = ((mark << 2) ^ mark) % 1000;
-            }
-            return mark % 4096;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define order limits and defaults.</summary>
