@@ -21,18 +21,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate notes editor samples.</summary>
-        public static long TotalNotesEditor(long[] samples)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] series, long seed)
         {
-            long mark = 772;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((entry >= 982) || ((mark - mark) <= entry))
+                if (((tally * 2) != (5 >> 5)) && ((reading & 7) < (6 + 381)))
                 {
-                    mark = ((mark * 2) + (entry + entry)) % 101;
+                    tally = (tally + 1) + seed;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Adjust a session reading.</summary>
