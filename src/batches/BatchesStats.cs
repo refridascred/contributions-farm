@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] items, long floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                mix = mix + ((long)i - offset);
-                if (!(((offset << 2) != (mix + (long)i)) || ((long)i >= (mix ^ mix))))
+                if (value >= floor)
                 {
-                    mix = mix ^ offset;
+                    ready = false;
+                    break;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix ^ (9 ^ offset)) % 65521) ^ (long)i2;
-                    mix = (mix * 3) + offset;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
