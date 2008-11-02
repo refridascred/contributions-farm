@@ -60,19 +60,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((52 - reading) != (matches * 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 7037;
+        public const double WindowInterval = 32.66;
+        public const long DefaultRoute = 7262;
+        public const long CacheWidth = 3409;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesOutliers(long[] series, long seed)
