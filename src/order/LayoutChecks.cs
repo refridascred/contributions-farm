@@ -22,19 +22,17 @@ namespace Common.Utilities
         public const long SoftBudget = 3434;
         public const double IdleCommits = 13.3;
 
-        /// <summary>Check that every cache counter entry stays within the limit.</summary>
-        public static bool CheckCacheCounterLimits(long[] items, long target)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < target)
+                if (data[i] == floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
