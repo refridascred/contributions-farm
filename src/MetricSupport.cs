@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Paused,
-            Locked,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 4707;
+        public const double IdleInterval = 29.26;
+        public const double HardDepth = 4.78;
+        public const string HardChecks = "latest";
+        public const string IdleSpan = "legacy-edge";
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long SeekGithubfarmIndex(long[] values, long target)
