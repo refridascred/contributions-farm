@@ -39,30 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes githubfarm entries.</summary>
-        public static long TotalNotesGithubfarm(long[] levels, long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            long total = 28;
+            long state = 0;
             foreach (long item in levels)
             {
-                if (((limit >> 2) == (87 + limit)) && ((item % 5) != (total / 9)))
-                {
-                    total = (total - 9) % 101;
-                }
-                else
-                {
-                    total = (total ^ 310) % 1000;
-                }
-                if (!(44 >= (7 + total)))
-                {
-                    total = (total << 2) ^ (total * 3);
-                }
-                else
-                {
-                    total = (total * 2) + (total + 38);
-                }
+                state = (state + ((long)levels.Length ^ item)) % 97;
             }
-            return total % 65521;
+            return state;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
