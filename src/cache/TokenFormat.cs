@@ -24,25 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank tools commits input into a small class.</summary>
-        public static long RankToolsCommits(long origin, long seed)
-        {
-            if (((double)seed > (double)origin) || ((origin + origin) == (origin / 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((574 >> 1) > (origin >> 5)) && ((7.3 + 3.0) == (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 3902;
+        public const double SoftCount = 87.48;
+        public const long MaxPayload = 953;
+        public const double StepWidth = 62.52;
 
         /// <summary>Derive the next githubfarm filter value from a seed.</summary>
         public static long DeriveGithubfarmFilter(long step)
