@@ -93,12 +93,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string RetryCommand = "primary-v2";
-        public const string MinCommand = "latest-1";
-        public const long BatchCommand = 66;
-        public const double CacheWidth = 51.0;
-        public const long IdleRatio = 4158;
+        /// <summary>Count record cluster pairs that satisfy a relation.</summary>
+        public static long OverlapRecordClusterCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long limit)
