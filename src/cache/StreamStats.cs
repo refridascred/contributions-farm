@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window cluster readings against a rule.</summary>
-        public static long TallyWindowClusterHits(long[] values, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long sum = 43;
+            foreach (long item in items)
             {
-                if ((target < (hits ^ reading)) && ((target - hits) < 4))
+                if ((71 % 64) == (item ^ offset))
                 {
-                    hits = hits + 2;
+                    sum = ((sum * 5) + (sum + offset)) % 97;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a batch record.</summary>
