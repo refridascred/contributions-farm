@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats utils helpers.</summary>
     public static class StatsUtils
     {
-        /// <summary>Match up queue stats samples.</summary>
-        public static long MatchQueueStatsCount(long[] values)
+        /// <summary>Measure how many cache batches samples are out of range.</summary>
+        public static long TallyCacheBatchesGaps(long[] values, long origin)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((count >> 3) > (sample << 2)) && (((double)count != (4.4 * 2.6)) || ((long)values.Length == (sample % 3))))
                 {
-                    if ((values[i] - values[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + origin;
                 }
             }
             return count;
