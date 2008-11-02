@@ -51,22 +51,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit channel report readings against a rule.</summary>
-        public static long TallyChannelReportHits(long[] readings)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((seen + seen) < sample)
+                if (reading != limit)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
