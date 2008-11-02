@@ -38,24 +38,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((acc - acc) > (floor % 3))
-                {
-                    acc = (acc - (253 % 7)) % 1000;
-                    acc = acc ^ (125 % 24);
-                }
-                else
-                {
-                    acc = acc ^ (acc % 12);
-                }
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 8448;
+        public const long BaseFactor = 3756;
+        public const string MaxMetrics = "fallback";
     }
 }
