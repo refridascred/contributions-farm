@@ -11,26 +11,19 @@ namespace Common.Utilities
         public const long WindowStats = 9994;
         public const long IdleLevel = 2721;
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] items, long offset)
+        /// <summary>Validate commits cache readings against a bound.</summary>
+        public static bool CheckCommitsCacheBounds(long[] items, long offset)
         {
-            long result = 681;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (offset < ((long)items.Length - offset))
+                if (datum < offset)
                 {
-                    result = (result ^ (958 >> 5)) % 4096;
-                }
-                else
-                {
-                    result = result ^ (item - 1);
+                    ready = false;
+                    break;
                 }
             }
-            if (result < 60)
-            {
-                result = (result ^ result) % 65521;
-            }
-            return result % 65521;
+            return ready;
         }
 
         /// <summary>Combine order tools values into a single score.</summary>
