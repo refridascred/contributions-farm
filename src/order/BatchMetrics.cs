@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const double BaseQueue = 19.38;
         public const double BatchInterval = 0.3;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] series)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long sum = 2;
-            foreach (long datum in series)
-            {
-                if (((8.4 / 2.0) > (double)sum) || (((long)series.Length + sum) == (datum >> 1)))
-                {
-                    sum = (sum - (datum * 5)) % 101;
-                }
-            }
-            if (sum > 69)
-            {
-                sum = (sum + sum) % 65521;
-            }
-            return sum % 97;
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the session state values.</summary>
