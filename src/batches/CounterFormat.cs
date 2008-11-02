@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] series, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] values)
         {
-            long sum = 99;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (((double)origin <= (double)entry) && ((double)entry != (1.2 - 7.1)))
+                if ((((seen * 4) < (sample * 3)) && (56 < sample)) && (((seen - sample) <= 27) || ((7 % 24) <= sample)))
                 {
-                    sum = ((sum * 3) + origin) % 255;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    sum = (sum + (sum << 2)) % 101;
+                    seen = seen - 1;
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Hold a profile options.</summary>
