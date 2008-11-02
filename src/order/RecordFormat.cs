@@ -31,33 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] samples, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (datum > limit)
                 {
-                    mix = (((mix * 5) + (limit >> 4)) % 1000) - (long)i2;
-                    mix = ((mix << 2) ^ (limit + limit)) % 4096;
+                    stale = false;
+                    break;
                 }
-                if (!(((6.2 + 6.79) == (double)mix) && (mix >= (limit + limit))))
-                {
-                    mix = (mix + (long)i) % 255;
-                }
-                if ((mix ^ mix) <= ((long)i + (-19)))
-                {
-                    mix = (mix * 3) + (limit >> 4);
-                }
-                else
-                {
-                    mix = (mix ^ (limit / 2)) % 101;
-                    mix = ((mix * 2) + (mix * 4)) % 101;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define route limits and defaults.</summary>
