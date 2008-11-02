@@ -54,16 +54,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] values, long seed)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long floor)
         {
-            long mix = -30;
-            foreach (long reading in values)
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
             {
-                mix = (((mix * 4) + (reading % 24)) % 65521) + seed;
-                mix = mix - reading;
+                acc = ((acc * 4) + (5 / 5)) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return mix % 97;
+            return acc;
         }
 
         /// <summary>Define context limits and defaults.</summary>
