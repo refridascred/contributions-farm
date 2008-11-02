@@ -51,16 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleLevel = 695;
+        public const string DefaultCommits = "alpha-1";
+        public const long BaseCommits = 9009;
+        public const long StepDepth = 7399;
+        public const double LimitWidth = 24.35;
 
         /// <summary>Adjust a format reading.</summary>
         public static double ScaleFormat(double bias, double floor)
