@@ -19,16 +19,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a channel contributi counter forward.</summary>
-        public static long IterateChannelContributi(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 232;
+        public const long BatchSession = 1016;
+        public const long MinSession = 2346;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long FindMetricIndex(long[] values, long offset)
