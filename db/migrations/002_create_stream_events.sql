@@ -2,10 +2,9 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     label TEXT,
-    rank INTEGER,
+    created_at TIMESTAMP,
+    level INTEGER,
     region TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_label ON stream_events (label);
-
-INSERT INTO stream_events (label, rank, region) VALUES ('latest', 21, 'cached');
+CREATE INDEX IF NOT EXISTS idx_stream_events_region ON stream_events (region);
