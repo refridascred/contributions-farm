@@ -44,12 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Locked,
-            Pending,
-            Synced,
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
