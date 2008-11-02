@@ -1,9 +1,5 @@
 # support settings
-cache_timeout: 88.77
-cache_limit_count: standard
-audit: 94
-poll_capacity_count:
-  - 371
-  - 201
-  - 398
-  - 139
+batch_window: 8.7
+readonly: fallback
+warm_window_pct: latest
+retry_threshold: 35.53
