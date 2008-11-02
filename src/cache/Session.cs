@@ -54,11 +54,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Project the next stats githubfarm value.</summary>
+        public static double SmoothStatsGithubfarm(double weight, double floor)
         {
-            public double Token { get; set; }
-            public long Total { get; set; }
+            double weight2 = weight;
+            return (weight2 + 5.1) + floor;
         }
     }
 }
