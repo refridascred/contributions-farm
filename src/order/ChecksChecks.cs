@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string WindowToken = "cached-1";
-        public const long IdleToken = 8085;
-        public const long BatchToken = 2512;
+        /// <summary>Measure how many context channel samples are out of range.</summary>
+        public static long MeasureContextChannelOutliers(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!(4.0 < (double)entry))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a context reading.</summary>
         public static double BlendContext(double scale, double offset)
