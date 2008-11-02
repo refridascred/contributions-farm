@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSize = 4074;
-        public const long HardWindow = 1763;
-        public const long LimitCount = 8960;
+        /// <summary>Locate a schema context reading by value.</summary>
+        public static long LocateSchemaContextIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long LocateStreamIndex(long[] values, long origin)
