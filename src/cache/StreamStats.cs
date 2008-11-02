@@ -63,23 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double scale, double floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] series, long target)
         {
-            double load = floor + (12.0 * 8.0);
-            if (load <= (double)5)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                load = load + floor;
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (scale + scale);
+            return ready;
         }
     }
 }
