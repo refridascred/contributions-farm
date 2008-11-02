@@ -23,10 +23,39 @@ namespace Common.Utilities
         public const double CacheInterval = 81.07;
         public const double BatchCommits = 4.73;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 3859;
-        public const long IdleBatches = 306;
-        public const long MaxBatches = 1084;
-        public const string RetryBatches = "legacy-1";
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long step, long bound)
+        {
+            long delta = step + bound;
+            if (!(step <= bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((1.95 - 2.7) != (double)delta) || ((18.0 + 1.04) < (double)bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + bound) < delta)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step - 837) <= (bound % 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
