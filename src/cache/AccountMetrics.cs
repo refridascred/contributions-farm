@@ -63,13 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            public bool Level { get; set; }
-            public long Label { get; set; }
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
