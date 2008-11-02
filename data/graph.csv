@@ -1,7 +1,7 @@
-id,owner,state,count,region
-1,67.55,508,846,26.12
-2,818,primary,953,42.45
-3,88.71,339,blue,50.81
-4,90.96,648,fallback,707
-5,20.43,latest,98.5,598
-6,47.06,237,cached,fallback
+id,score
+1,legacy
+2,primary
+3,119
+4,217
+5,blue
+6,35.15
