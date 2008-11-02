@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up metrics editor samples.</summary>
-        public static long CompareMetricsEditorCount(long[] data)
+        /// <summary>Accumulate stream stats samples.</summary>
+        public static long WeighStreamStats(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 374;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = ((mix + mix) % 101) ^ cell;
             }
-            return count;
+            if (mix < 8)
+            {
+                mix = mix - (offset >> 5);
+            }
+            return mix;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
