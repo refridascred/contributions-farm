@@ -34,13 +34,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] values, long limit)
         {
-            public double Region { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public double Weight { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two notes measurements.</summary>
