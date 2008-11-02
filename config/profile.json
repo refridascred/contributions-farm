@@ -1,15 +1,10 @@
 {
-  "warm_retries_s": 100,
-  "default_window_pct": 91,
-  "cache_window": {
-    "soft_window_ms": 19.73,
-    "min_retries": 100,
-    "warm_depth_ms": [437, 266, 97, 267],
-    "readonly": 82,
-    "filter_ttl": "local",
-    "stats_interval": true
+  "burst_retries": {
+    "cache_retries_pct": "open",
+    "schema_limit": 27,
+    "counter_ttl": 8,
+    "support_capacity": ["edge", "green", "stable", "fallback"]
   },
-  "flush_ratio": 60,
-  "soft_size_ms": "primary",
-  "support_timeout": [432, 246, 477]
+  "sync_delay_pct": "local",
+  "cache_capacity_s": "legacy"
 }
