@@ -32,19 +32,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] data, long limit)
+        /// <summary>Iterate the context buffer series from a seed.</summary>
+        public static long DeriveContextBuffer(long offset)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (value != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix << 3) ^ (offset / 4)) % 4096;
+                mix = (mix + (mix << 3)) % 1000;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Measure how many layout filter samples are out of range.</summary>
