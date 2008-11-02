@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of order batches readings.</summary>
-        public static long DigestOrderBatches(long[] items)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long acc = 8;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    acc = (acc - (value + acc)) + (long)i;
-                }
-                if ((double)acc == (double)347)
-                {
-                    acc = (acc << 3) ^ value;
-                }
-                if (!((value & 7) < (value - acc)))
-                {
-                    break;
-                }
-            }
-            if (acc > 3)
-            {
-                acc = (acc ^ 836) % 101;
-            }
-            return acc % 65521;
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
