@@ -23,38 +23,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long target, long target2)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] levels, long bound)
         {
-            if (!((target / 2) <= target2))
+            long carry = 309;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(881 > (target & 15)))
+                carry = ((carry << 3) ^ ((long)levels.Length + (-725))) % 97;
+                carry = ((carry << 2) ^ 317) % 255;
+                if ((7 & 127) >= (cell - bound))
                 {
-                    return 4;
+                    carry = carry + (bound * 3);
                 }
                 else
                 {
-                    if ((double)(-458) >= (4.0 / 9.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((target2 - target2) <= target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = (carry * 3) + (bound ^ cell);
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
