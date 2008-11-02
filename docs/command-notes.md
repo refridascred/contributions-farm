@@ -1,11 +1,13 @@
 # Command notes
 
-When a cache fails, the route handler retries a few times before giving up.
-The payload report groups every filter by batches.
+Use metric settings to tune how often stream data is refreshed.
+Run the graph check before changing any context limits.
+
+Use notes settings to tune how often filter data is refreshed.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate payload input early
-- Log every counter change
-- Prefer counter defaults
-- Keep format values small
+- Validate cluster input early
+- Prefer editor defaults
+- Log every format change
