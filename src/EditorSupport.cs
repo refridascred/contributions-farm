@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double bias, double floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] values, long target)
         {
-            double scale = (double)178 + (floor * 17.0);
-            if (scale <= (scale / 5.0))
+            bool flag = true;
+            foreach (long item in values)
             {
-                scale = scale - bias;
+                if (item != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale - 16.0;
+            return flag;
         }
 
         /// <summary>Match up graph samples.</summary>
