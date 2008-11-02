@@ -27,10 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitTimeout = 7004;
-        public const string CacheMetrics = "primary-1";
-        public const string RetryWidth = "staging-1";
-        public const long HardScore = 6694;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Active,
+            Locked,
+            Retry,
+        }
     }
 }
