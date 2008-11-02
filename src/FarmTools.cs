@@ -42,38 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long bound, long offset)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            if (((1.4 - 4.89) != (double)bound) || ((6.0 * 4.35) <= (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (4 <= (bound / 7))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((0 + bound) < (bound << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset + offset) <= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
     }
 }
