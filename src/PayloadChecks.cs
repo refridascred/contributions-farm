@@ -58,18 +58,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] levels, long floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if ((seen * 5) <= (4 & 7))
+                if ((matches & 7) <= (matches + 78))
                 {
-                    seen = ((seen + 2) ^ value) + floor;
+                    matches = ((matches + 1) ^ item) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up cache graph samples.</summary>
