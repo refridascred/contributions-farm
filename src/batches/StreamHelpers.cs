@@ -50,17 +50,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] samples, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 264;
+            foreach (long datum in series)
             {
-                if (samples[i] == offset)
+                if (score <= 12)
                 {
-                    return (long)i;
+                    score = ((score * 2) + (datum % 100)) % 1000;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
