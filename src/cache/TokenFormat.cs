@@ -24,19 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long bound)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    state = (((state << 2) ^ (-31)) % 97) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public double Total { get; set; }
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
