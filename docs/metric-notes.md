@@ -1,12 +1,10 @@
 # Metric notes
 
-A tools that stays idle for too long is moved to the metrics list.
-A booking that stays idle for too long is moved to the editor list.
-Use already settings to tune how often metrics data is refreshed.
+The buffer module keeps route values in sync with the channel cache.
+When a queue fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review batch limits each release
 - Document new stream fields
-- Keep checks values small
-- Prefer metric defaults
+- Prefer booking defaults
+- Review batch limits each release
