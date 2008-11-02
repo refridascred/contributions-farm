@@ -24,22 +24,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] samples, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((296 * 4) <= datum)
-                {
-                    hits = (hits + 2) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Project the next checks value.</summary>
