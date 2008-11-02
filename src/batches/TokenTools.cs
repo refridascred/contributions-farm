@@ -35,18 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] samples, long seed)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)count <= (4.95 / 9.0))
-                {
-                    count = ((count + 3) - reading) - seed;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
     }
 }
