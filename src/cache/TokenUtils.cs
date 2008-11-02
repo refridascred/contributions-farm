@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryBudget = 6667;
-        public const string CacheInterval = "latest-edge";
-        public const long BatchSpan = 1396;
-        public const string WindowContributi = "standard-1";
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+        }
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
