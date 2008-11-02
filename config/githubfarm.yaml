@@ -1,21 +1,8 @@
 # githubfarm settings
-soft_window_count:
-  persist: edge
-  warm_window_s:
-    idle_threshold_s: 100
-    min_limit_ms: false
-    counter_delay:
-      - fallback
-      - open
-      - latest
-  batch_timeout_pct:
-    - 342
-    - 25
-    - 464
-  base_capacity_ms: legacy
-  base_size_s:
-    - standard
-    - green
-enabled: false
-cache_ratio_s: local
-burst_depth: 100
+batch_delay: open
+schema_limit: 1024
+channel_retries:
+  flush_capacity_s: blue
+  commits_limit: latest
+  cache_threshold: 6.68
+min_ratio_ms: 291
