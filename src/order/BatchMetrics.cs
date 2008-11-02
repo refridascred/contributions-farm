@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Draft,
-            Active,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string WindowRatio = "legacy-edge";
+        public const long StepLayout = 9238;
+        public const long RetryLayout = 9699;
+        public const double WindowFactor = 37.67;
+        public const long IdleTimeout = 1107;
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] samples)
