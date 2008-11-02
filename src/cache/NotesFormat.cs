@@ -22,13 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
-        {
-            Paused,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MinSize = 66.86;
+        public const long MinMetric = 60;
+        public const long BurstLevel = 8536;
+        public const string MaxMetric = "strict-v2";
 
         /// <summary>Digest a series of githubfarm route entries.</summary>
         public static long DigestGithubfarmRoute(long[] levels, long target)
