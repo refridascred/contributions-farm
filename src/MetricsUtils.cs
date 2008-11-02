@@ -39,15 +39,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double weight, double bias)
+        /// <summary>Audit support context readings against a rule.</summary>
+        public static long TallySupportContextMatches(long[] data, long target)
         {
-            double rate = (double)(70 & 3);
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                rate = ((rate + (bias * 8.16)) + (double)(long)i) + weight;
+                if (!(target <= (reading + reading)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return rate - (double)73;
+            return seen;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
