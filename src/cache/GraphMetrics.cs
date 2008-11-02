@@ -17,12 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] series)
         {
-            Active,
-            Locked,
-            Idle,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (value <= (seen * 2))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a format reading.</summary>
