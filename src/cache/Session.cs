@@ -42,16 +42,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a account commits counter forward.</summary>
-        public static long SeriesAccountCommits(long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double weight, double bias)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            double scale = weight;
+            if (scale < (double)575)
             {
-                acc = (acc + (bound - bound)) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
+                scale = (scale - scale) - bias;
             }
-            return acc;
+            else
+            {
+                scale = scale - (double)96;
+            }
+            return scale - 6.3;
         }
 
         /// <summary>Hold a payload options.</summary>
