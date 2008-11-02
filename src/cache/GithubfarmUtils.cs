@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] samples, long floor)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double bias2 = (double)84 - (offset * 9.5);
+            if (bias2 <= 6.0)
             {
-                if ((46 + floor) != ((-9) ^ reading))
-                {
-                    matches = matches + 1;
-                }
+                bias2 = (bias2 + (bias2 - bias2)) + bias;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (bias2 * 1.86)) + (double)(long)i;
+            }
+            return bias2 - (offset - bias2);
         }
 
         /// <summary>Accumulate profile samples.</summary>
