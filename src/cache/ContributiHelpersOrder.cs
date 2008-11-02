@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Audit support metric readings against a rule.</summary>
+        public static long AuditSupportMetricHits(long[] levels, long offset)
         {
-            long sum = -46;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (((sample / 6) > (sum % 2)) && ((sum + sum) != (44 + 17)))
+                if ((cell - offset) <= (offset + offset))
                 {
-                    sum = (sum ^ (51 << 2)) % 4096;
+                    matches = matches + 1;
                 }
             }
-            if (sum > 4)
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Accumulate token counter samples.</summary>
