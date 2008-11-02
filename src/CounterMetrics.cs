@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 442;
-        public const long CacheSize = 8353;
-        public const long BaseNotes = 9574;
-        public const long IdleNotes = 1787;
-        public const long BaseSpan = 7989;
+        /// <summary>Blend two queue stream measurements.</summary>
+        public static double BlendQueueStream(double bias, double bias2)
+        {
+            double bias3 = bias;
+            if (bias3 > bias2)
+            {
+                bias3 = bias3 - (double)86;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias3 = (bias3 + (bias3 + bias2)) + (double)(long)i;
+            }
+            return bias3 + bias;
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
