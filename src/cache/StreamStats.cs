@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long bound, long origin)
         {
-            New,
-            Ready,
-            Closed,
-            Synced,
+            if ((75 & 31) <= bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin ^ bound) != (750 % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the tools class values.</summary>
