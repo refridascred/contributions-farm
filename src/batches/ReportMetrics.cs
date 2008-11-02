@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsHits(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (cell > floor)
+                if ((value / 5) < target)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Hold a batch entry.</summary>
