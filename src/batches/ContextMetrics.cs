@@ -50,19 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue counter samples.</summary>
-        public static long ScoreQueueCounter(long[] series, long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long carry = 9;
-            foreach (long sample in series)
-            {
-                carry = (carry + offset) - sample;
-            }
-            if (carry > (-1))
-            {
-                carry = carry + (47 + 0);
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
