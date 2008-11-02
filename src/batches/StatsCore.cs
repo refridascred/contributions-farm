@@ -74,15 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Active,
-            Locked,
-            Ready,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheCount = 6971;
+        public const double LimitBuffer = 35.92;
+        public const double SoftBuffer = 29.75;
+        public const long SoftFactor = 7996;
+        public const long WindowBuffer = 5054;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long DeriveRecord(long step)
