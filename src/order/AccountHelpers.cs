@@ -25,32 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long floor, long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] readings, long offset)
         {
-            long span = floor ^ origin;
-            if ((origin << 3) < floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((83 % 10) == (floor ^ span)) && ((floor / 9) == (floor >> 5)))
+                if (readings[i] == offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((13.0 > (double)span) || ((span + origin) != (origin / 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a command reading by value.</summary>
