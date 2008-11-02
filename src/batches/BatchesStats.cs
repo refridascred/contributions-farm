@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double weight, double offset)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double weight2 = weight;
-            if (weight2 < (weight / 4.0))
-            {
-                weight2 = weight2 + (double)939;
-            }
-            return weight2 + offset;
+            New,
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
