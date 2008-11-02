@@ -1,19 +1,6 @@
 {
-  "burst_ttl_count": {
-    "soft_capacity_s": "eu-west",
-    "entry_window": {
-      "min_limit_ms": "legacy",
-      "entry_interval": ["fallback", "primary", "fallback", "edge"],
-      "warm_depth_s": 69.0,
-      "contributi_depth": 51,
-      "context_limit": 88,
-      "max_delay_count": false
-    },
-    "dry_run": "eu-west",
-    "readonly": "cached",
-    "flush_limit_ms": false
-  },
-  "compress": 56.7,
-  "hard_capacity_ms": true,
-  "base_depth_ms": [315, 207]
+  "command_retries": 7454,
+  "strict": 24.14,
+  "metrics_ttl": 41.19,
+  "warm_limit": "primary"
 }
