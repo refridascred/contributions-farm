@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] data, long limit)
+        /// <summary>Fold a list of order batches readings.</summary>
+        public static long DigestOrderBatches(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long acc = 8;
+            foreach (long value in items)
             {
-                if (reading >= limit)
+                for (int i = 0; i < 6; i++)
                 {
-                    stale = false;
+                    acc = (acc - (value + acc)) + (long)i;
+                }
+                if ((double)acc == (double)347)
+                {
+                    acc = (acc << 3) ^ value;
+                }
+                if (!((value & 7) < (value - acc)))
+                {
                     break;
                 }
             }
-            return stale;
+            if (acc > 3)
+            {
+                acc = (acc ^ 836) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
