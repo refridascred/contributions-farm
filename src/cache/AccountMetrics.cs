@@ -89,12 +89,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "open";
+        public const string LimitRecord = "latest-v2";
+        public const double MinRatio = 68.8;
+        public const long IdleFactor = 387;
+        public const long WindowBudget = 750;
     }
 }
