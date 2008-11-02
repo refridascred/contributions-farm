@@ -53,30 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long seed, long target)
+        /// <summary>Rank report profile input into a small class.</summary>
+        public static long GradeReportProfile(long target, long origin)
         {
-            long slot = seed + target;
-            if ((slot % 10) <= (slot ^ 598))
+            if ((double)target == (1.5 * 3.2))
             {
                 return 6;
             }
             else
             {
-                if (((target + seed) < (47 << 3)) || ((seed - slot) <= (seed + seed)))
+                if ((target & 1) <= target)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((seed ^ slot) > (slot + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 5;
                 }
             }
         }
