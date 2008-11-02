@@ -35,17 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a record notes reading by value.</summary>
-        public static long LocateRecordNotesIndex(long[] data, long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Closed,
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Adjust a already reading.</summary>
