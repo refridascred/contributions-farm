@@ -48,19 +48,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order token entry stays within the limit.</summary>
-        public static bool GuardOrderTokenRange(long[] samples, long target)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum != target)
+                if ((items[i] <= limit) && ((items[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
