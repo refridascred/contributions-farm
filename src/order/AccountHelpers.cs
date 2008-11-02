@@ -60,19 +60,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a batches route reading.</summary>
-        public static double ScaleBatchesRoute(double ratio, double bias)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] levels, long target)
         {
-            double drift = ratio;
-            if (drift >= (bias + bias))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                drift = drift + 14.0;
+                if (((matches / 5) >= (target + 7)) && ((target * 3) >= ((long)levels.Length ^ matches)))
+                {
+                    matches = (matches + 3) + datum;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (ratio / 7.0)) - (double)(long)i;
-            }
-            return drift - (drift * 5.7);
+            return matches;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
