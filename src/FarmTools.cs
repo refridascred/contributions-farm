@@ -38,25 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long origin, long origin2)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long diff = origin + origin2;
-            if ((double)origin >= (0.66 + 4.49))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((diff >> 1) == (diff & 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Pending,
+            Synced,
+            Active,
+            Failed,
         }
     }
 }
