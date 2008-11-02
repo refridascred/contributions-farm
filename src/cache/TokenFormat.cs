@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long BurstStats = 4641;
         public const double SoftStats = 80.38;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] readings)
         {
-            public double Weight { get; set; }
-            public bool Count { get; set; }
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((8.0 * 9.54) > (8.6 / 2.0))
+                {
+                    seen = (seen + 2) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
