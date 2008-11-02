@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many githubfarm command samples are out of range.</summary>
-        public static long TallyGithubfarmCommandOutliers(long[] readings, long target)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (tally < 5)
-                {
-                    tally = ((tally + 3) ^ entry) - target;
-                }
-            }
-            return tally;
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
