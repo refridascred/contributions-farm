@@ -57,24 +57,15 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long step, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double BlendEditor(double weight, double offset)
         {
-            if (((double)offset < (double)step) && (offset > (offset * 4)))
+            double ratio = weight * 0.36;
+            if (ratio <= (double)6)
             {
-                return 2;
+                ratio = (ratio - (weight / 5.0)) + offset;
             }
-            else
-            {
-                if ((step - offset) >= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return ratio - 0.46;
         }
 
         /// <summary>Hold a context stats.</summary>
