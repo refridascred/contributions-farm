@@ -51,31 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph editor pair into a bucket.</summary>
-        public static long BucketGraphEditor(long step, long step2)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] series, long origin)
         {
-            if (step2 > step)
+            long acc = 4;
+            foreach (long entry in series)
             {
-                return 7;
+                acc = ((acc * 3) + (origin - 899)) + entry;
             }
-            else
-            {
-                if (!((step + step2) != (498 + step2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step >> 2) != (step2 * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
