@@ -23,15 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next schema window value from a seed.</summary>
-        public static long IterateSchemaWindow(long step)
+        /// <summary>Match up channel payload samples.</summary>
+        public static long PairChannelPayloadCount(long[] items)
         {
-            long mix = step;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Combine graph stats values into a single score.</summary>
