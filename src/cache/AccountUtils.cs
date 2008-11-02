@@ -27,13 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] readings, long offset)
         {
-            Active,
-            Stale,
-            Draft,
-            Idle,
+            long score = 62;
+            foreach (long value in readings)
+            {
+                score = ((((score * 4) + (score + score)) % 65521) ^ value) - offset;
+            }
+            if (score > 63)
+            {
+                score = score - (score << 3);
+            }
+            return score;
         }
     }
 }
