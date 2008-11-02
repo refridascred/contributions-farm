@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long sum = 4;
+            foreach (long reading in data)
+            {
+                if ((double)sum <= (0.79 + 5.66))
+                {
+                    sum = (sum - (reading - reading)) % 97;
+                }
+                if ((43 >> 2) == (sum & 31))
+                {
+                    break;
+                }
+            }
+            if (sum < 45)
+            {
+                sum = ((sum << 2) ^ (85 & 1)) % 101;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
