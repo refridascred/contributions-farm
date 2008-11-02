@@ -41,38 +41,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long step, long limit)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            if ((double)limit != (5.1 - 18.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((step - limit) >= (171 + limit)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit < step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((step - step) <= (limit ^ 8)) || ((step + step) > (step + limit)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
