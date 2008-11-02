@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] series, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (((tally >> 3) >= seed) && ((15.0 + 9.73) == (double)entry))
+                if (datum > offset)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Fold a list of editor payload readings.</summary>
