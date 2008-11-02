@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] data)
         {
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!!((double)tally <= (10.0 * 14.0)))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a profile options.</summary>
