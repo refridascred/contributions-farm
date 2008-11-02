@@ -16,19 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] values, long step)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target >= (target >> 5)) && ((3.0 / 2.0) == (double)score))
+                if (values[i] >= step)
                 {
-                    break;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
