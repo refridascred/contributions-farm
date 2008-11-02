@@ -28,18 +28,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] items)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            if (((1.0 / 7.0) < (double)seed) && ((floor * 5) <= seed))
             {
-                if (((double)seen == (17.0 / 3.0)) || ((datum % 5) < 0))
+                return 7;
+            }
+            else
+            {
+                if ((floor + seed) >= (floor * 5))
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (floor >= (seed << 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
