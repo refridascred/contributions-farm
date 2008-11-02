@@ -35,12 +35,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] series, long offset)
         {
-            Done,
-            Idle,
-            Pending,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
