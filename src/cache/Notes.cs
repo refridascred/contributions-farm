@@ -42,40 +42,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long offset, long step)
-        {
-            long diff = offset + step;
-            if ((double)diff < (9.0 / 7.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step < (diff + diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step >= (140 << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)diff >= (double)offset)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 8122;
+        public const long StepDepth = 3480;
+        public const long HardTools = 727;
+        public const long WindowTools = 5126;
+        public const long MaxWidth = 8848;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long ClassifyProfile(long target, long limit)
