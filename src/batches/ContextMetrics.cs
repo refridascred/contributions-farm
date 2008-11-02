@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double ratio, double bias)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double gain, double offset)
         {
-            double scale = bias - (ratio + 6.2);
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (8.52 / 5.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            double load = (double)809 + (double)3;
+            return (load - (offset * 11.0)) + gain;
         }
 
         /// <summary>Hold a schema entry.</summary>
