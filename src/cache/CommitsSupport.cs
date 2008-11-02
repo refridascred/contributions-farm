@@ -27,19 +27,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] samples)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] series)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)tally != (6.48 - 8.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] - series[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
