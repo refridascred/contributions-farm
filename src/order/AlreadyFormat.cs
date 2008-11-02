@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public double Region { get; set; }
-            public bool Level { get; set; }
-            public double Mode { get; set; }
+            Idle,
+            Active,
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Describe the already class values.</summary>
