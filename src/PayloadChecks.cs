@@ -41,12 +41,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 3869;
-        public const long DefaultDepth = 1514;
-        public const long DefaultCount = 7415;
-        public const long CacheChannel = 4793;
-        public const long BaseDepth = 3370;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesGaps(long[] series, long limit)
