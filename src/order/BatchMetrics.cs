@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Retry,
+            Draft,
+            Active,
             Synced,
-            New,
-            Stale,
+            Pending,
         }
 
         /// <summary>Match up support samples.</summary>
