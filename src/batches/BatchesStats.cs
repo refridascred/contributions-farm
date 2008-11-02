@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] items, long floor)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
