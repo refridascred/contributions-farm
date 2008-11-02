@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] items, long bound)
+        /// <summary>Validate layout context readings against a bound.</summary>
+        public static bool VerifyLayoutContextRange(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long item in samples)
             {
-                if (datum != bound)
+                if (item <= target)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Roll a channel contributi counter forward.</summary>
