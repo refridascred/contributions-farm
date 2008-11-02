@@ -16,14 +16,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Draft,
-            Pending,
-            Paused,
-            Idle,
-            Failed,
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many payload contributi samples are out of range.</summary>
