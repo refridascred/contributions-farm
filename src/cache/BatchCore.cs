@@ -19,14 +19,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            Idle,
-            Locked,
-            Draft,
-            Queued,
-            Failed,
+            long carry = 93;
+            foreach (long item in samples)
+            {
+                carry = ((carry << 3) ^ (carry % 64)) % 101;
+                carry = (carry << 2) ^ item;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Adjust a layout farm reading.</summary>
