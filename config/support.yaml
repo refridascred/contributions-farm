@@ -1,21 +1,17 @@
 # support settings
-strict:
-  dry_run: true
-  flush_retries_s: 30
-  strict: false
-  flush_delay_ms: 13.15
-  buffer_threshold:
-    batch_interval: true
-    cache_retries_pct: staging
-    warm_depth_count: green
-    context_size: 49.82
-  format_ttl:
-    - blue
-    - blue
-    - staging
-    - blue
-session_capacity: fallback
-sync_capacity_ms: 68.44
-buffer_ratio:
-  - staging
-  - primary
+base_capacity_count:
+  - 417
+  - 258
+  - 382
+  - 316
+filter_size: false
+report_timeout: blue
+readonly:
+  - cached
+  - stable
+hard_limit_pct:
+  idle_retries_s: legacy
+  enabled: local
+  token_timeout: edge
+  poll_size_count: 86
+metrics_limit: eu-west
