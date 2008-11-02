@@ -44,26 +44,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] levels, long target)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long seed)
         {
-            long carry = 593;
-            foreach (long entry in levels)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((target >> 3) >= (entry % 24))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    carry = (carry - entry) % 97;
+                    result = ((result << 3) ^ (seed / 2)) % 101;
+                    result = (result ^ (35 ^ (long)i2)) % 65521;
                 }
-                else
-                {
-                    carry = (carry - (target ^ (long)levels.Length)) % 97;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            if (carry < 9)
-            {
-                carry = ((carry << 3) ^ (carry + target)) % 1000;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Adjust a batches route reading.</summary>
