@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next checks editor value from a seed.</summary>
-        public static long StepChecksEditor(long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long target, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            long lane = target - offset;
+            if (!((double)lane == (double)81))
             {
-                if (!((step >> 4) == (long)i))
-                {
-                    state = (state - (state + step)) % 101;
-                }
-                state = state - (step * 5);
-                state = ((state * 2) + (long)i) % 65521;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((double)lane <= 18.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
