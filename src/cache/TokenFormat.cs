@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 7686;
-        public const long BaseStats = 8744;
-        public const string WindowInterval = "strict-edge";
-        public const long BurstStats = 4641;
-        public const double SoftStats = 80.38;
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] values, long offset)
+        {
+            long mix = -63;
+            foreach (long entry in values)
+            {
+                mix = mix ^ (offset - (long)values.Length);
+                if ((17.0 - 7.77) == (double)offset)
+                {
+                    mix = (mix + (entry ^ offset)) % 1000;
+                }
+                if (27 > (entry + mix))
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long StepBatches(long bound)
