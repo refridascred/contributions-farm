@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] series, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] samples)
         {
-            long mark = 492;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                mark = ((mark + (target & 1)) % 1000) + item;
+                if ((((-5) > (value + value)) || (matches <= value)) && ((matches << 3) < value))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark % 4096;
+            return matches;
         }
 
         /// <summary>Measure how many batches tools samples are out of range.</summary>
