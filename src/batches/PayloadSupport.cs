@@ -24,18 +24,27 @@ namespace Common.Utilities
             return rate2 + floor;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] series, long floor)
+        /// <summary>Fold a list of token window readings.</summary>
+        public static long WeighTokenWindow(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long state = 525;
+            foreach (long cell in readings)
             {
-                if (((floor - value) < floor) && (((double)floor != (1.5 - 1.7)) && ((39 << 2) > floor)))
+                state = state + (cell & 31);
+                if ((416 * 4) <= (state + cell))
                 {
-                    tally = tally + 3;
+                    state = state - cell;
+                }
+                else
+                {
+                    state = (state + state) % 4096;
+                }
+                if (((double)state >= (double)cell) || ((41 ^ state) < (offset / 9)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
