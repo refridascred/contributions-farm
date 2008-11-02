@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] levels, long limit)
+        /// <summary>Fold a list of editor already readings.</summary>
+        public static long DigestEditorAlready(long[] data, long target)
         {
-            long state = -8;
-            foreach (long cell in levels)
+            long total = -973;
+            foreach (long cell in data)
             {
-                state = ((state + (state * 5)) % 255) ^ cell;
-                if (!(2 < (limit * 4)))
-                {
-                    state = (state << 3) ^ limit;
-                }
+                total = ((total + (target + total)) % 1000) - cell;
             }
-            return state % 1000;
+            if (total > 563)
+            {
+                total = total + (total >> 2);
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
