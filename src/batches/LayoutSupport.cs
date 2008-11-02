@@ -20,21 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count batches graph pairs that satisfy a relation.</summary>
-        public static long MatchBatchesGraphCount(long[] items)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 479;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((sample + anchor) >= (anchor + sample)))
                 {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + (sample - anchor)) % 4096;
                 }
             }
-            return matches;
+            if (anchor > 6)
+            {
+                anchor = (anchor - (anchor + anchor)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
