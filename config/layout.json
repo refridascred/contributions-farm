@@ -1,8 +1,12 @@
 {
-  "cache_timeout": false,
-  "default_ttl_ms": "fallback",
-  "enabled": 60,
-  "profile_threshold": [483, 437, 216, 440],
-  "schema_retries": ["stable", "blue"],
-  "idle_limit_ms": 75.68
+  "poll_delay": {
+    "enabled": 5555,
+    "compress": 42.13,
+    "cluster_limit": "latest",
+    "retry_timeout": 38
+  },
+  "compress": "stable",
+  "batches_ttl": 30,
+  "base_timeout_s": "strict",
+  "soft_ratio": 250
 }
