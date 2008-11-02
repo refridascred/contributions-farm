@@ -32,17 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] series, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((series[i] > target) && ((series[i] % 3) == 0))
+                if (datum <= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
