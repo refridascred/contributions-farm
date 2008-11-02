@@ -22,21 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count order notes pairs that satisfy a relation.</summary>
-        public static long OverlapOrderNotesCount(long[] readings)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Digest a series of githubfarm route entries.</summary>
