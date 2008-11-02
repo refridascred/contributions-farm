@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchScore = 8302;
-        public const double BurstFarm = 67.85;
-        public const string MinScore = "standard-v2";
+        /// <summary>Roll a graph profile counter forward.</summary>
+        public static long DeriveGraphProfile(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] items, long offset)
