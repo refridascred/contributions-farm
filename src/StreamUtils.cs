@@ -29,21 +29,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of counter contributi readings.</summary>
-        public static long MatchCounterContributiCount(long[] items)
+        /// <summary>Grade a farm context value against two limits.</summary>
+        public static long GradeFarmContext(long bound, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound2 = bound + origin;
+            if ((origin + 43) < (bound2 >> 3))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((bound + origin) >= bound)
                 {
-                    if ((items[i] - items[j]) < 17)
+                    return 6;
+                }
+                else
+                {
+                    if ((91 - bound) < (125 - bound))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
