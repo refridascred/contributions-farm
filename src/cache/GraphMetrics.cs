@@ -28,23 +28,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double scale, double bias)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double mean = scale;
-            if (mean > 6.0)
-            {
-                mean = mean + (20.0 * 5.0);
-            }
-            else
-            {
-                mean = mean + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - 7.4) - (double)(long)i;
-            }
-            return mean - (bias + mean);
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
