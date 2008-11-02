@@ -12,26 +12,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] values, long floor)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] values, long bound)
         {
-            long mark = 270;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((mark + 204) > (floor % 100))
+                if (datum <= bound)
                 {
-                    mark = ((mark ^ (mark * 2)) % 101) + value;
-                }
-                else
-                {
-                    mark = (mark ^ (163 ^ (-523))) % 255;
-                }
-                if (floor <= (mark & 255))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return mark % 65521;
+            return valid;
         }
 
         /// <summary>Describe the cluster state values.</summary>
