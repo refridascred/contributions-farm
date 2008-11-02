@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double gain, double offset)
         {
-            Closed,
-            Done,
-            Stale,
-            Draft,
+            double drift = (double)(844 - (-83));
+            if (drift < (double)18)
+            {
+                drift = (drift + (double)(-342)) - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift + 0.4)) + (double)(long)i;
+            }
+            return drift - gain;
         }
 
         /// <summary>Define command limits and defaults.</summary>
