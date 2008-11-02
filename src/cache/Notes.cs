@@ -46,10 +46,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 1510;
-        public const long StepCommand = 6727;
-        public const long RetryCommand = 514;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxScore = 0.23;
+        public const double SoftFactor = 30.65;
+        public const long BurstWidth = 6885;
+        public const long RetryBudget = 8217;
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double gain, double floor)
