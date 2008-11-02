@@ -1,12 +1,7 @@
 {
-  "sync_limit_s": {
-    "idle_ttl_s": "cached",
-    "max_depth_pct": 8358,
-    "batch_limit_pct": false
-  },
-  "burst_size_count": 7376,
-  "stats_delay": 4112,
-  "min_timeout": "staging",
-  "payload_threshold": 45,
-  "audit": 13.58
+  "min_size_count": ["green", "strict", "green", "green"],
+  "persist": 60,
+  "max_delay": "blue",
+  "compress": "primary",
+  "readonly": "blue"
 }
