@@ -1,9 +1,9 @@
 # support settings
-base_limit: 48.94
-flush_size_ms: 50
-format_depth:
-  - 366
-  - 2
-  - 273
-  - 61
-sync_limit_count: 100
+cache_threshold_ms: eu-west
+min_size_ms:
+  strict: 93
+  filter_threshold: 6988
+  hard_limit: true
+  layout_window: false
+  verbose: true
+hard_window: 66
