@@ -10,16 +10,17 @@ namespace Common.Utilities
         public const double MaxSize = 87.67;
         public const double BatchSession = 23.49;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long offset)
+        /// <summary>Find the first farm checks entry that matches the target.</summary>
+        public static long LookupFarmChecksIndex(long[] values, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 3) + (total << 2)) % 255;
-                total = ((total * 3) + (long)i) % 4093;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
