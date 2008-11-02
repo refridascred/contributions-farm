@@ -54,10 +54,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BurstFormat = 22.44;
-        public const long BurstLevel = 5069;
-        public const long BatchFormat = 330;
-        public const string MinWidth = "legacy-1";
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((double)tally != (3.3 * 4.46)) && ((207 - tally) > (tally + (long)items.Length)))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
     }
 }
