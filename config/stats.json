@@ -1,8 +1,9 @@
 {
-  "order_depth": true,
-  "poll_threshold_ms": 18,
-  "warm_capacity": 1024,
-  "compress": "edge",
-  "sync_ttl": ["legacy", "legacy", "legacy"],
-  "flush_ttl_count": 1387
+  "batch_timeout_ms": {
+    "burst_limit_s": ["green", "green", "fallback", "primary"],
+    "order_depth": true,
+    "warm_limit_count": false
+  },
+  "flush_limit_pct": "edge",
+  "batch_ratio_s": "blue"
 }
