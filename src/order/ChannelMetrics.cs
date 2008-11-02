@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a contributi stats value against two limits.</summary>
-        public static long GradeContributiStats(long step, long step2)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            if (((79 + step2) <= step2) && ((step + step2) <= (step2 % 7)))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((11.0 * 0.84) < (double)step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    if ((levels[i] + levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
