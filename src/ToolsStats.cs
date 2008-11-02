@@ -53,17 +53,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a commits cache sample.</summary>
-        public static long FindCommitsCacheIndex(long[] levels, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 839;
+            foreach (long item in series)
             {
-                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score ^ (370 % 5)) % 101) + item;
+                score = score ^ (score & 7);
             }
-            return -1;
+            if (score < 47)
+            {
+                score = score + (offset + (-71));
+            }
+            return score;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
