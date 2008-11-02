@@ -13,15 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double weight, double bias)
         {
-            long mark = 105;
-            foreach (long reading in data)
+            double rate = 9.19;
+            if (rate >= (double)855)
             {
-                mark = ((mark << 2) ^ (reading + reading)) % 255;
+                rate = (rate - (bias + rate)) - weight;
             }
-            return mark;
+            return rate + (double)602;
         }
 
         /// <summary>Hold a window entry.</summary>
