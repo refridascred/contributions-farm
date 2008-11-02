@@ -24,16 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long seed)
+        /// <summary>Project the next support filter value.</summary>
+        public static double ScaleSupportFilter(double gain, double span)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            double gain2 = gain;
+            if (gain2 > 4.8)
             {
-                state = ((state * 5) + state) % 97;
-                state = ((state * 4) + (long)i) % 101;
+                gain2 = (gain2 + gain2) + span;
             }
-            return state;
+            return gain2 + gain2;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
