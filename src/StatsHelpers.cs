@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry stream readings against a rule.</summary>
-        public static long TallyEntryStreamOutliers(long[] readings, long limit)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((limit + (-1)) > (tally + cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
