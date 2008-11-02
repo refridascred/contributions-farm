@@ -32,19 +32,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally & 255) > tally)
-                {
-                    tally = (tally + 3) - entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double HardLevel = 23.27;
+        public const long MinBudget = 4033;
+        public const long StepFactor = 6095;
 
         /// <summary>Derive the next channel contributi value from a seed.</summary>
         public static long DeriveChannelContributi(long origin)
