@@ -20,16 +20,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long seed, long bound)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            long span = seed + bound;
+            if (bound > (span + 43))
             {
-                sum = sum - (sum + 2);
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if (((seed >> 1) > (bound >> 5)) && ((span & 15) >= (bound % 100)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Roll a entry window counter forward.</summary>
