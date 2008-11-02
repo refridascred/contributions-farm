@@ -62,14 +62,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxCount = 21.67;
+        public const double LimitSchema = 54.46;
+        public const long DefaultSchema = 1368;
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
