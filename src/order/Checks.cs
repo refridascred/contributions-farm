@@ -77,19 +77,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record metric entries.</summary>
-        public static long FoldRecordMetric(long[] data)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long seed)
         {
-            long result = 6;
-            foreach (long cell in data)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result - (89 & 7)) - cell;
+                mix = mix + (-204);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            if (result > 990)
-            {
-                result = (result + (long)data.Length) % 1000;
-            }
-            return result;
+            return mix;
         }
     }
 }
