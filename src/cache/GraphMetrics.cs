@@ -59,22 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] data)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double rate = ratio / 2.0;
+            if (rate < (bias * 2.06))
             {
-                if (!((count <= (count & 255)) && ((reading ^ 4) == (6 >> 1))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate - (ratio / 3.0);
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (rate * 1.0)) - (double)(long)i;
+            }
+            return rate - (double)(-35);
         }
 
         /// <summary>Match up buffer samples.</summary>
