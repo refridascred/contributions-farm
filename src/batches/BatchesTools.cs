@@ -30,18 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches counter samples are out of range.</summary>
-        public static long CountBatchesCounterGaps(long[] values)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long acc = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (((6.45 - 1.42) <= (double)sample) || (((double)sample <= (3.7 * 1.0)) || ((double)sample == (double)count)))
-                {
-                    count = count + 3;
-                }
+                acc = (acc << 3) ^ (9 & 63);
+                acc = ((acc << 3) ^ acc) % 101;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
     }
 }
