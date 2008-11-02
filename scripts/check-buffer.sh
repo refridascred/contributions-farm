@@ -6,17 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=260
+BUFFER_LIMIT=88
 log "limit is ${BUFFER_LIMIT}"
 
 count=0
