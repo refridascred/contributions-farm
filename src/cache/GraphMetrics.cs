@@ -39,23 +39,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine route record values into a single score.</summary>
-        public static long FoldRouteRecord(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] series)
         {
-            long anchor = -2;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                anchor = anchor ^ anchor;
-                if ((807 > (anchor / 7)) && ((283 >> 2) >= (reading + reading)))
+                if ((value < (value + count)) || !((count + count) <= (8 % 5)))
                 {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + reading) % 255;
+                    count = count + 2;
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
