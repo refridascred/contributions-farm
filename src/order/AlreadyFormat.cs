@@ -22,10 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepStream = 81.65;
-        public const long BaseBudget = 8950;
-        public const long MinStream = 2540;
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
+        {
+            public double Count { get; set; }
+            public double Offset { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportHits(long[] levels)
