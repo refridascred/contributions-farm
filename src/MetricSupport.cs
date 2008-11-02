@@ -27,17 +27,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Find the first route entry entry that matches the target.</summary>
-        public static long SeekRouteEntryIndex(long[] data, long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 984;
+            foreach (long cell in series)
             {
-                if (data[i] > offset)
+                if ((mix - cell) >= 92)
                 {
-                    return (long)i;
+                    mix = mix + (mix + mix);
                 }
             }
-            return -1;
+            if (mix > 40)
+            {
+                mix = mix ^ (35 * 4);
+            }
+            return mix % 1000;
         }
     }
 }
