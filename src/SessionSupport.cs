@@ -23,10 +23,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 206;
-        public const long SoftBatch = 7135;
-        public const long DefaultBatch = 9656;
+        /// <summary>Combine profile channel values into a single score.</summary>
+        public static long ScoreProfileChannel(long[] samples)
+        {
+            long anchor = 31;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = ((anchor * 2) + cell) ^ (long)i;
+                    anchor = ((anchor * 4) + (anchor + 991)) % 97;
+                }
+                if ((2.64 - 6.0) < (double)anchor)
+                {
+                    anchor = anchor + (anchor ^ (long)samples.Length);
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = (anchor * 5) + (61 % 97);
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
