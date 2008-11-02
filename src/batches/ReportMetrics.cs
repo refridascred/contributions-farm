@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] data, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long floor)
         {
-            long state = -10;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (cell > floor)
                 {
-                    state = ((state + (state + step)) % 101) + (long)i2;
-                    state = state - (item - 79);
-                }
-                state = (state - state) % 65521;
-                if ((step + step) < state)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return state % 97;
+            return stale;
         }
 
         /// <summary>Fold a list of support queue readings.</summary>
