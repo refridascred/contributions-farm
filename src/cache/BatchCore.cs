@@ -31,10 +31,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 7791;
-        public const long DefaultRatio = 6815;
-        public const long DefaultScore = 7501;
-        public const long StepLayout = 7928;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item + (long)values.Length) <= tally)
+                {
+                    tally = (tally + 3) + target;
+                }
+            }
+            return tally;
+        }
     }
 }
