@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long GradeWindow(long origin, long offset)
         {
-            New,
-            Closed,
-            Draft,
-            Ready,
+            if (((offset % 64) < offset) || ((origin + origin) <= (origin & 15)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin > (4 << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin / 5) <= (origin % 7))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((origin - offset) <= offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up session samples.</summary>
