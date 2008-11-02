@@ -39,17 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] samples, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (samples[i] == step)
+                if ((tally & 255) > tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) - entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
