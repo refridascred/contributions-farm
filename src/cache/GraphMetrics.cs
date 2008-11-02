@@ -51,12 +51,13 @@ namespace Common.Utilities
             return drift - (8.5 * 5.3);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string DefaultCommits = "alpha-1";
-        public const long RetryCommits = 5169;
-        public const string BaseCommits = "alpha-1";
-        public const string BurstCommits = "latest";
-        public const long StepCount = 8569;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] data)
