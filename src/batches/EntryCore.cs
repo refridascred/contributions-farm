@@ -31,17 +31,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] values, long origin)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (values[i] < origin)
+                if (matches < (matches / 4))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
