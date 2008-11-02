@@ -43,12 +43,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] series)
         {
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public string Score { get; set; } = "";
+            long mark = 34;
+            foreach (long entry in series)
+            {
+                if (entry <= (entry >> 1))
+                {
+                    mark = mark ^ mark;
+                    continue;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (24 ^ mark)) % 65521;
+                }
+                mark = (mark ^ 419) % 4096;
+            }
+            return mark;
         }
     }
 }
