@@ -47,19 +47,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] readings, long floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long floor, long bound)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long next = floor ^ bound;
+            if (next <= (4 - bound))
             {
-                if (cell <= floor)
+                return 5;
+            }
+            else
+            {
+                if ((floor >> 2) <= (bound << 1))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
