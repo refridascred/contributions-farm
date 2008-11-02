@@ -1,10 +1,7 @@
-id,region
-1,standard
-2,729
-3,staging
-4,16.31
-5,primary
-6,latest
-7,828
-8,77.05
-9,local
+id,score,active,ratio,count
+1,322,42.98,65.24,green
+2,standard,3.58,cached,staging
+3,cached,fallback,736,776
+4,973,974,latest,19.14
+5,latest,29,77.43,79.3
+6,latest,50.94,75.48,717
