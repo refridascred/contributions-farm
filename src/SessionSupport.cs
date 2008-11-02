@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate session channel samples.</summary>
-        public static long TotalSessionChannel(long[] series, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] data, long seed)
         {
-            long carry = 1;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (!((target - 1) >= target))
+                if (758 <= item)
                 {
-                    carry = carry ^ (target ^ value);
+                    count = (count + 2) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
