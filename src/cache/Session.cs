@@ -33,22 +33,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] data)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((8 << 2) < (entry + tally))
+                if ((count + count) != (count % 8))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 3) ^ entry) + offset;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a notes record.</summary>
