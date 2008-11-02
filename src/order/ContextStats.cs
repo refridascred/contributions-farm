@@ -23,13 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long seed)
         {
-            Failed,
-            Ready,
-            Stale,
-            Draft,
+            long result = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Match up graph contributi samples.</summary>
