@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] samples, long floor)
+        /// <summary>Audit schema tools readings against a rule.</summary>
+        public static long MeasureSchemaToolsOutliers(long[] samples, long step)
         {
-            long total = 26;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((double)total != (9.5 / 3.0))
+                if ((9.3 * 13.0) > (double)value)
                 {
-                    total = ((total ^ (long)samples.Length) - item) + floor;
+                    tally = (tally + 3) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
