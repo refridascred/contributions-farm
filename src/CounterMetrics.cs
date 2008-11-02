@@ -34,15 +34,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a cache support counter forward.</summary>
-        public static long RollCacheSupport(long limit)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
