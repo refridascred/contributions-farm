@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west standard cached; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=389
+log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
 done
-log "ran ${count} rounds"
+log "total ${total}"
