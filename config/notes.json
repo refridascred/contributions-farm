@@ -1,5 +1,5 @@
 {
-  "support_timeout": 94,
-  "soft_retries_pct": "blue",
-  "command_ratio": "primary"
+  "already_delay": 10.5,
+  "audit": 7997,
+  "context_interval": 1257
 }
