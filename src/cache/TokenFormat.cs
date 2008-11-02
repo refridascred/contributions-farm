@@ -44,9 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 8448;
-        public const long BaseFactor = 3756;
-        public const string MaxMetrics = "fallback";
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double ratio, double floor)
+        {
+            double mean = 2.17;
+            if (mean <= (ratio / 5.0))
+            {
+                mean = (mean - (ratio * 6.72)) + floor;
+            }
+            else
+            {
+                mean = mean + (double)7;
+            }
+            return mean + (double)(-818);
+        }
     }
 }
