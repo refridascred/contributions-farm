@@ -43,19 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double scale, double span)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] values)
         {
-            double drift = (span - scale) - (double)416;
-            if (drift < (double)82)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                drift = drift + (span * 7.0);
+                if ((datum - datum) < seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift - span;
+            return seen;
         }
     }
 }
