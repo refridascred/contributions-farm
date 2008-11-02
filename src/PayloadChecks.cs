@@ -37,22 +37,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowHits(long[] series, long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long bound, long origin)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long delta = bound - origin;
+            if ((double)delta >= 14.0)
             {
-                if (!((target ^ (long)series.Length) <= target))
+                return 7;
+            }
+            else
+            {
+                if (bound >= (delta - 11))
                 {
-                    tally = (tally + 3) - reading;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Fold a list of metrics metric readings.</summary>
