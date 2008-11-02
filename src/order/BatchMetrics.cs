@@ -44,10 +44,10 @@ namespace Common.Utilities
         public const string BurstStats = "local-1";
         public const long SoftStats = 6923;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "standard-1";
-        public const double BurstCache = 78.71;
-        public const long BaseCache = 2285;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 432;
+        public const string StepInterval = "alpha-1";
+        public const string WindowContext = "strict";
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long CountSessionOutliers(long[] values, long step)
