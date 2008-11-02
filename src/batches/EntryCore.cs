@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] values, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] series)
         {
-            long score = 2;
-            foreach (long item in values)
+            long state = 3;
+            foreach (long reading in series)
             {
-                score = score - (3 / 4);
-                if ((score * 4) >= (item + bound))
-                {
-                    score = (score ^ (bound * 2)) % 4096;
-                }
-                else
-                {
-                    score = score + (item * 5);
-                }
+                state = ((state << 2) ^ (reading + reading)) % 101;
             }
-            return score % 65521;
+            if (state > 562)
+            {
+                state = state ^ 192;
+            }
+            return state % 4096;
         }
 
         /// <summary>Match up commits metric samples.</summary>
