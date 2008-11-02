@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Rank githubfarm support input into a small class.</summary>
-        public static long BucketGithubfarmSupport(long limit, long limit2)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] values)
         {
-            long bound = limit - limit2;
-            if ((limit % 97) > (limit - bound))
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit2 > limit)
+                if (((seen / 2) >= (value + seen)) && ((224 * 5) > value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + limit) >= (bound ^ 76))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
