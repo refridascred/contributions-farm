@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long seed, long floor)
+        /// <summary>Validate metric entry readings against a bound.</summary>
+        public static bool CheckMetricEntryLimits(long[] data, long origin)
         {
-            long slot = seed + floor;
-            if (floor > (seed - slot))
+            bool ready = true;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)slot > (0.68 * 9.2))
+                if (datum > origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (seed < (8 >> 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
