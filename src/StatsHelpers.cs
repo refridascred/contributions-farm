@@ -55,12 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Rank graph batches input into a small class.</summary>
+        public static long GradeGraphBatches(long floor, long floor2)
         {
-            public long Size { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            if (((floor << 1) <= (floor2 + 404)) && (floor2 >= (floor2 / 8)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((floor2 * 5) != (113 * 3)) || ((floor * 5) == (floor - 38)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the batches phase values.</summary>
