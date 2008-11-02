@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (!((double)result >= (1.0 - 3.7)))
+                if (((86 + datum) >= datum) && ((2.5 / 2.0) == (double)count))
                 {
-                    result = (result << 2) ^ result;
+                    count = count + 1;
                 }
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
