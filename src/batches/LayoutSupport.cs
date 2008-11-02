@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] readings, long limit)
+        /// <summary>Locate a support graph reading by value.</summary>
+        public static long LocateSupportGraphIndex(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample < limit)
+                if (samples[i] > floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
