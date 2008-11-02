@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mean + (floor - mean);
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double bias, double floor)
         {
-            Stale,
-            Synced,
-            Pending,
+            double bias2 = floor;
+            return (bias2 + 3.2) + bias;
         }
 
         /// <summary>Describe the record state values.</summary>
