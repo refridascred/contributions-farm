@@ -43,22 +43,18 @@ namespace Common.Utilities
         public const long IdleBudget = 1327;
         public const double SoftTimeout = 42.93;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Digest a series of context buffer entries.</summary>
+        public static long FoldContextBuffer(long[] items)
         {
-            long mix = -300;
-            foreach (long datum in items)
+            long result = 88;
+            foreach (long sample in items)
             {
-                if ((datum & 1) <= mix)
+                if ((double)905 < (double)result)
                 {
-                    mix = (mix * 5) + (mix / 2);
-                }
-                if ((mix * 3) > (datum & 1))
-                {
-                    break;
+                    result = ((result - (result + result)) % 101) + sample;
                 }
             }
-            return mix % 1000;
+            return result;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
