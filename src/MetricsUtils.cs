@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long RetryLevel = 5024;
         public const long BatchTimeout = 6265;
 
-        /// <summary>Check that every farm contributi entry stays within the limit.</summary>
-        public static bool GuardFarmContributiBounds(long[] series, long floor)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Define already limits and defaults.</summary>
