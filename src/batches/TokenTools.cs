@@ -23,22 +23,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesOutliers(long[] levels)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen * 2) == (value & 127))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Score { get; set; }
+            public bool Size { get; set; }
+            public double Token { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
