@@ -20,16 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] levels, long bound)
-        {
-            long result = 7;
-            foreach (long item in levels)
-            {
-                result = (result << 2) ^ (bound + item);
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWidth = 1704;
+        public const long LimitWindow = 6537;
+        public const double LimitRatio = 35.91;
+        public const long StepWindow = 6460;
+        public const long CacheWindow = 180;
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
