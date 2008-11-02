@@ -38,17 +38,20 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] readings, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if (readings[i] < origin)
+                if (((floor >> 5) < floor) || ((floor + (long)i) <= (score + (long)i)))
                 {
-                    return (long)i;
+                    score = score ^ 79;
+                    break;
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Project the next window value.</summary>
