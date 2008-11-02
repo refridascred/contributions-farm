@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 53.12;
-        public const string BurstCount = "open";
-        public const long MinBudget = 3660;
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long floor, long offset)
+        {
+            long next = floor + offset;
+            if (!((double)next == (double)661))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((offset >> 5) < (offset ^ offset)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset < (530 - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a editor record counter forward.</summary>
         public static long DeriveEditorRecord(long bound)
