@@ -30,19 +30,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] readings, long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long target, long target2)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            if (!((target / 2) <= target2))
             {
-                if (value < seed)
+                return 2;
+            }
+            else
+            {
+                if (!(881 > (target & 15)))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)(-458) >= (4.0 / 9.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((target2 - target2) <= target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
