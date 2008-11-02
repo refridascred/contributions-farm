@@ -1,18 +1,11 @@
 # entry settings
-soft_interval: standard
-editor_depth: 11.23
-counter_retries: eu-west
-farm_timeout:
-  min_limit: 4449
-  readonly: latest
-  flush_retries: 500
-batch_ratio_s:
-  commits_window: 16.49
-  hard_timeout_s: strict
-  sync_window_s: strict
-  soft_ttl_ms:
-    - 331
-    - 270
-    - 142
-    - 149
-hard_depth_s: 28
+githubfarm_size:
+  batch_ratio: blue
+  idle_interval_ms: false
+  default_size: true
+  burst_threshold_ms: standard
+readonly: staging
+audit: open
+min_timeout_pct: eu-west
+idle_retries: edge
+burst_timeout_count: true
