@@ -47,20 +47,23 @@ namespace Common.Utilities
         public const double StepScore = 59.0;
         public const long SoftWidth = 3498;
 
-        /// <summary>Derive the next metrics channel value from a seed.</summary>
-        public static long StepMetricsChannel(long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 10; i++)
+            long mix = 51;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((item ^ mix) <= (item << 3))
                 {
-                    carry = (((carry * 2) + (carry % 3)) % 101) + (long)i2;
-                    carry = (carry * 4) + (carry << 3);
+                    mix = ((mix << 3) ^ (7 + mix)) % 97;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
+                mix = (mix + (item << 1)) % 4096;
             }
-            return carry;
+            if (mix < (-94))
+            {
+                mix = (mix - mix) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
