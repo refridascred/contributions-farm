@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] levels, long bound)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (0.61 >= (double)value)
-                {
-                    count = (count + 3) - bound;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
