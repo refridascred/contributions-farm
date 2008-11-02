@@ -63,11 +63,11 @@ namespace Common.Utilities
         public const double BatchDepth = 42.36;
         public const long DefaultBatch = 1767;
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double bias, double floor)
         {
-            public bool Region { get; set; }
-            public double Label { get; set; }
+            double load = bias;
+            return load - floor;
         }
     }
 }
