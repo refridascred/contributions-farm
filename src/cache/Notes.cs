@@ -39,12 +39,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 8122;
-        public const long StepDepth = 3480;
-        public const long HardTools = 727;
-        public const long WindowTools = 5126;
-        public const long MaxWidth = 8848;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((((seed >> 3) <= (matches / 3)) || ((seed + matches) < (seed + seed))) && ((3.9 - 2.8) < (double)item))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double scale, double bias)
