@@ -53,18 +53,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] data)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long floor, long seed)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long bound = floor ^ seed;
+            if ((double)bound > (2.3 / 3.0))
             {
-                if ((sample + count) >= count)
+                return 1;
+            }
+            else
+            {
+                if ((0.4 / 7.0) == (double)bound)
                 {
-                    count = count + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (((3.2 - 9.2) != (double)bound) || (seed < bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the format phase values.</summary>
