@@ -39,15 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two buffer editor measurements.</summary>
-        public static double ProjectBufferEditor(double weight, double floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] data, long limit)
         {
-            double drift = weight;
-            for (int i = 0; i < 2; i++)
+            long result = 6;
+            foreach (long sample in data)
             {
-                drift = (drift - floor) - (double)(long)i;
+                if ((result ^ limit) >= (103 % 7))
+                {
+                    result = ((result << 3) ^ (sample >> 4)) % 101;
+                }
             }
-            return drift - (weight + floor);
+            return result;
         }
     }
 }
