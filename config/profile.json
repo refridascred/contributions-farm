@@ -1,5 +1,15 @@
 {
-  "farm_interval": false,
-  "graph_delay": ["green", "legacy", "fallback"],
-  "account_window": [280, 254, 486, 207]
+  "warm_retries_s": 100,
+  "default_window_pct": 91,
+  "cache_window": {
+    "soft_window_ms": 19.73,
+    "min_retries": 100,
+    "warm_depth_ms": [437, 266, 97, 267],
+    "readonly": 82,
+    "filter_ttl": "local",
+    "stats_interval": true
+  },
+  "flush_ratio": 60,
+  "soft_size_ms": "primary",
+  "support_timeout": [432, 246, 477]
 }
