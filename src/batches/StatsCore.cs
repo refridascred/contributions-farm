@@ -46,17 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route record sample.</summary>
-        public static long FindRouteRecordIndex(long[] series, long origin)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the filter status values.</summary>
