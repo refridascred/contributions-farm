@@ -31,12 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 7035;
-        public const double MaxSize = 54.49;
-        public const string MinFactor = "latest";
-        public const string HardLevel = "primary-v2";
-        public const double RetryNotes = 11.04;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheSize = "latest-edge";
+        public const long RetryWidth = 5517;
+        public const long WindowToken = 3934;
+        public const long HardBudget = 92;
+        public const double MinToken = 45.66;
 
         /// <summary>Count tools entry pairs that satisfy a relation.</summary>
         public static long OverlapToolsEntryCount(long[] levels)
