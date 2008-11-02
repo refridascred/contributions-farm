@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] series, long bound)
+        /// <summary>Audit payload command readings against a rule.</summary>
+        public static long TallyPayloadCommandHits(long[] values)
         {
-            long state = 2;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                state = (state - (bound + datum)) % 4096;
-                if ((datum / 8) <= bound)
+                if (!((seen << 1) > (cell - 375)))
                 {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Match up payload samples.</summary>
