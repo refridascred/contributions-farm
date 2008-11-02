@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Queued,
-            New,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryInterval = 1980;
+        public const double RetryTimeout = 20.29;
+        public const long RetrySpan = 2601;
+        public const long BatchScore = 5500;
+        public const long BatchInterval = 5616;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long seed)
