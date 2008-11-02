@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] series, long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = span;
+            for (int i = 0; i < 2; i++)
             {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
+                load = (load - (load - load)) + (double)(long)i;
             }
-            return -1;
+            return load + (rate / 5.0);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
