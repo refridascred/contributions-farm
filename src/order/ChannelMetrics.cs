@@ -40,23 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor checks readings.</summary>
-        public static long WeighEditorChecks(long[] levels)
-        {
-            long acc = 1;
-            foreach (long entry in levels)
-            {
-                if ((acc + entry) < (entry ^ acc))
-                {
-                    acc = (acc - (acc << 2)) % 65521;
-                }
-            }
-            if (acc > 71)
-            {
-                acc = ((acc * 4) + (acc ^ acc)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultWidth = 9218;
+        public const long IdleSchema = 9059;
+        public const long CacheFactor = 9856;
+        public const double BaseSchema = 49.34;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileBounds(long[] levels, long limit)
