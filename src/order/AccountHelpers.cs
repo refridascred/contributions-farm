@@ -66,21 +66,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count record cluster pairs that satisfy a relation.</summary>
-        public static long OverlapRecordClusterCount(long[] values)
+        /// <summary>Adjust a batches route reading.</summary>
+        public static double ScaleBatchesRoute(double ratio, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = ratio;
+            if (drift >= (bias + bias))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + 14.0;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (ratio / 7.0)) - (double)(long)i;
+            }
+            return drift - (drift * 5.7);
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
