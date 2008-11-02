@@ -39,19 +39,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double ratio, double offset)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double weight = (double)(18 << 1);
-            if (weight < (ratio - offset))
-            {
-                weight = weight - offset;
-            }
-            else
-            {
-                weight = weight + (offset * 11.0);
-            }
-            return weight + weight;
+            Idle,
+            Synced,
+            Dropped,
+            Pending,
         }
     }
 }
