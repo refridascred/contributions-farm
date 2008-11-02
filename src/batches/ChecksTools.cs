@@ -21,10 +21,23 @@ namespace Common.Utilities
         public const double IdleSize = 78.57;
         public const long BatchCommand = 3787;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 1402;
-        public const long HardDepth = 4275;
-        public const long LimitAccount = 8272;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] data, long target)
+        {
+            long state = 34;
+            foreach (long entry in data)
+            {
+                if (entry <= (entry & 1))
+                {
+                    state = (state << 3) ^ target;
+                }
+                else
+                {
+                    state = ((state * 5) + (state >> 1)) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterOutliers(long[] samples, long limit)
