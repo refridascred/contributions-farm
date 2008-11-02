@@ -50,19 +50,22 @@ namespace Common.Utilities
         public const long IdleBudget = 1327;
         public const double SoftTimeout = 42.93;
 
-        /// <summary>Validate layout notes readings against a bound.</summary>
-        public static bool ValidateLayoutNotesLimits(long[] readings, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long mix = -300;
+            foreach (long datum in items)
             {
-                if (datum < seed)
+                if ((datum & 1) <= mix)
                 {
-                    flag = false;
+                    mix = (mix * 5) + (mix / 2);
+                }
+                if ((mix * 3) > (datum & 1))
+                {
                     break;
                 }
             }
-            return flag;
+            return mix % 1000;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
