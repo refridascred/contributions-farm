@@ -47,13 +47,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Measure how many layout filter samples are out of range.</summary>
+        public static long AuditLayoutFilterGaps(long[] levels)
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen / 7) <= sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
