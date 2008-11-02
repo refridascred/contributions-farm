@@ -52,15 +52,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batches tools readings.</summary>
-        public static long CombineBatchesTools(long[] levels)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] series, long step)
         {
-            long mix = 75;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (((mix << 3) ^ (75 - mix)) % 4096) + value;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
     }
 }
