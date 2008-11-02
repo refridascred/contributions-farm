@@ -22,17 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LookupProfileIndex(long[] levels, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 58;
+            foreach (long entry in levels)
             {
-                if (levels[i] < offset)
+                if (1 > (sum - sum))
                 {
-                    return (long)i;
+                    sum = ((sum - sum) % 1000) ^ entry;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
