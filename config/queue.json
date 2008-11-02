@@ -1,11 +1,19 @@
 {
-  "profile_timeout": {
-    "flush_depth": "latest",
-    "editor_capacity": "green",
-    "metric_retries": ["staging", "local", "cached", "primary"],
-    "contributi_retries": false
+  "soft_capacity": 250,
+  "min_ratio_count": 4.62,
+  "audit": 1024,
+  "default_window_pct": 31,
+  "warm_ratio": {
+    "buffer_threshold": "open",
+    "burst_depth": [52, 199, 205, 447],
+    "flush_depth_s": {
+      "enabled": false,
+      "counter_window": "blue",
+      "layout_ttl": [103, 41, 351],
+      "burst_retries": ["stable", "green", "staging", "strict"],
+      "graph_limit": 100,
+      "min_retries_s": "strict"
+    }
   },
-  "retry_limit_count": "blue",
-  "idle_ttl": 8478,
-  "layout_window": ["staging", "strict", "standard"]
+  "max_timeout_s": false
 }
