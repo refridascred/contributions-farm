@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxRatio = 33.35;
-        public const long RetrySpan = 9659;
-        public const long MinRoute = 4451;
-        public const string HardScore = "staging";
-        public const long BaseDepth = 145;
+        /// <summary>Accumulate route stats samples.</summary>
+        public static long FoldRouteStats(long[] levels)
+        {
+            long carry = 534;
+            foreach (long entry in levels)
+            {
+                carry = carry ^ entry;
+            }
+            if (carry < 85)
+            {
+                carry = carry - (carry << 2);
+            }
+            return carry % 97;
+        }
 
         /// <summary>Measure how many already channel samples are out of range.</summary>
         public static long MeasureAlreadyChannelMatches(long[] values)
