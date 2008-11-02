@@ -32,31 +32,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long origin, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] readings)
         {
-            if (((origin ^ 23) < origin) || (target <= origin))
+            long total = 2;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 31) < origin)
+                if ((total < reading) || ((total & 31) >= total))
                 {
-                    return 1;
+                    total = ((total << 3) ^ total) % 101;
                 }
                 else
                 {
-                    if (!((double)origin > (2.61 - 11.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    total = total - (total * 4);
+                    total = total - (total % 64);
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    total = ((total * 3) + (reading - 484)) + (long)i;
+                }
+                if (reading > (reading >> 5))
+                {
+                    total = (total + (total & 3)) % 4096;
+                }
+                if ((double)total <= 15.0)
+                {
+                    break;
                 }
             }
+            if (total > 888)
+            {
+                total = (total ^ (total - total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
