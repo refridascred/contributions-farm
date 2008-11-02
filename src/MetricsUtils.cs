@@ -37,12 +37,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 4999;
-        public const long StepLevel = 6448;
-        public const long RetryInterval = 7270;
-        public const double BaseMetric = 0.72;
-        public const long HardTimeout = 6535;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Dropped,
+            Paused,
+            Pending,
+            New,
+            Failed,
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool CheckBatchLimits(long[] samples, long target)
