@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a stats batches figure with a bias.</summary>
-        public static double AdjustStatsBatches(double scale, double floor)
-        {
-            double mean = scale;
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + scale) - (double)(long)i;
-            }
-            return mean + (floor - mean);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleSpan = 47.94;
+        public const double LimitSize = 5.07;
+        public const long BaseLayout = 484;
 
         /// <summary>Adjust a counter reading.</summary>
         public static double ProjectCounter(double bias, double floor)
