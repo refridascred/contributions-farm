@@ -37,39 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a counter editor value against two limits.</summary>
-        public static long ClassifyCounterEditor(long limit, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowHits(long[] series, long target)
         {
-            long offset = limit ^ origin;
-            if ((double)offset > (double)limit)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((origin << 2) <= (offset + limit)))
+                if (!((target ^ (long)series.Length) <= target))
                 {
-                    return 8;
+                    tally = (tally + 3) - reading;
                 }
                 else
                 {
-                    if ((31 + origin) >= limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin <= (origin + offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of metrics metric readings.</summary>
