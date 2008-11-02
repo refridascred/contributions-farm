@@ -46,12 +46,14 @@ namespace Common.Utilities
         public const long StepCommand = 8389;
         public const long LimitCommand = 8386;
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public bool Score { get; set; }
+            Paused,
+            Stale,
+            Retry,
+            Pending,
+            Closed,
         }
 
         /// <summary>Describe the batches kind values.</summary>
