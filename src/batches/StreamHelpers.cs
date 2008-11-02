@@ -34,14 +34,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
-        {
-            New,
-            Stale,
-            Idle,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 4648;
+        public const double BaseFarm = 93.55;
+        public const double StepScore = 59.0;
+        public const long SoftWidth = 3498;
 
         /// <summary>Rank support counter input into a small class.</summary>
         public static long RankSupportCounter(long seed, long floor)
