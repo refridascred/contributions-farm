@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] series)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long state = 3;
-            foreach (long reading in series)
-            {
-                state = ((state << 2) ^ (reading + reading)) % 101;
-            }
-            if (state > 562)
-            {
-                state = state ^ 192;
-            }
-            return state % 4096;
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Match up commits metric samples.</summary>
