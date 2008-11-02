@@ -20,13 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long seed)
         {
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Region { get; set; }
+            long result = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Describe the farm class values.</summary>
