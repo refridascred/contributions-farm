@@ -36,12 +36,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Idle,
-            Dropped,
-            Stale,
+            Pending,
+            Paused,
+            Synced,
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
