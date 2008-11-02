@@ -1,14 +1,6 @@
 {
-  "cache_interval_count": 94.05,
-  "flush_limit_pct": {
-    "notes_ratio": 9395,
-    "poll_depth": 16,
-    "compress": 250,
-    "sync_ttl_ms": [346, 268, 393],
-    "readonly": [177, 494]
-  },
-  "max_ttl": ["staging", "legacy"],
-  "retry_delay_s": false,
-  "flush_ttl": 7690,
-  "dry_run": "cached"
+  "sync_size_count": ["legacy", "eu-west", "latest", "local"],
+  "default_interval": false,
+  "max_size": "edge",
+  "contributi_size": "open"
 }
