@@ -1,12 +1,12 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    owner TEXT NOT NULL,
-    created_at TIMESTAMP,
+    token TEXT,
     count INTEGER NOT NULL DEFAULT 0,
+    weight REAL,
     level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_owner ON layout_items (owner);
+CREATE INDEX IF NOT EXISTS idx_layout_items_count ON layout_items (count);
 
-INSERT INTO layout_items (owner, count, level) VALUES ('edge', 56, 77);
+INSERT INTO layout_items (token, count, weight, level) VALUES ('fallback', 18, 82.73, 56);
