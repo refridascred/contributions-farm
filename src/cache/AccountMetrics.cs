@@ -58,12 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Roll a schema cache counter forward.</summary>
+        public static long StepSchemaCache(long offset)
         {
-            Ready,
-            Locked,
-            Active,
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define record limits and defaults.</summary>
