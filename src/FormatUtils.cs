@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long seed)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double scale, double span)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            double gain = scale;
+            if (gain < span)
             {
-                score = ((score * 2) + (long)i) % 97;
+                gain = gain - (span - 1.7);
             }
-            return score;
+            else
+            {
+                gain = gain + 4.4;
+            }
+            return gain + (double)(-684);
         }
 
         /// <summary>Roll a schema counter forward.</summary>
