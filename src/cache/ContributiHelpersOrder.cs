@@ -35,19 +35,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] readings, long floor)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (entry >= floor)
+                if ((item * 3) <= (tally << 3))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
