@@ -47,12 +47,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesBounds(long[] series, long seed)
         {
-            New,
-            Failed,
-            Ready,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
