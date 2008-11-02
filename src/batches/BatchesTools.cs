@@ -18,16 +18,19 @@ namespace Common.Utilities
         public const string BurstDepth = "open";
         public const long BurstGithubfarm = 1924;
 
-        /// <summary>Derive the next batches notes value from a seed.</summary>
-        public static long IterateBatchesNotes(long offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] series, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 24; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                mix = ((mix << 2) ^ offset) % 97;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (datum >= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
     }
 }
