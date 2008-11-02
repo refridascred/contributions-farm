@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double scale, double floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double drift = (scale * 16.0) - (scale * 5.69);
-            if (drift <= scale)
-            {
-                drift = (drift - 2.2) - floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - 0.9) + (double)(long)i;
-            }
-            return drift + 7.0;
+            Ready,
+            Idle,
+            New,
+            Active,
+            Synced,
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
