@@ -43,22 +43,21 @@ namespace Common.Utilities
         public const long StepCommand = 8389;
         public const long LimitCommand = 8386;
 
-        /// <summary>Measure how many editor support samples are out of range.</summary>
-        public static long AuditEditorSupportGaps(long[] samples, long seed)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed + 25) >= (6 ^ (long)samples.Length))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate layout notes readings against a bound.</summary>
