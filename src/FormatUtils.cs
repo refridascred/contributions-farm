@@ -26,22 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] data, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long result = 918;
+            foreach (long value in series)
             {
-                if ((double)sample >= (5.0 * 4.9))
+                if (!((9.0 * 4.4) > (double)value))
                 {
-                    seen = (seen + 1) - seed;
+                    result = result + (value ^ result);
+                    result = (result << 2) ^ (value + value);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = result ^ (result & 31);
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
