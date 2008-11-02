@@ -1,20 +1,18 @@
 # githubfarm settings
-idle_ratio_s:
-  soft_capacity: true
-  warm_ratio_s: 21.89
-  base_retries_count: 100
-  flush_delay_pct: true
-flush_interval_s: 8529
-order_ttl: 89.02
-soft_capacity_pct: cached
-profile_delay:
-  layout_depth:
-    - 291
-    - 191
-    - 381
-  idle_window: 54
-  burst_interval_count: 1024
-  filter_depth: legacy
-  max_ratio_count: blue
-  burst_ratio_pct: local
-tools_depth: latest
+hard_threshold_count: 5.12
+readonly:
+  flush_interval_count:
+    poll_delay_ms:
+      - 15
+      - 471
+      - 39
+      - 477
+    metric_ttl: 1024
+    sync_ratio: true
+    enabled: 1959
+  stats_depth: 30
+  channel_limit: 84.58
+sync_threshold: 61
+checks_timeout: 87.98
+metric_size: 60.03
+retry_interval_count: open
