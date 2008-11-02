@@ -1,10 +1,12 @@
 # entry settings
-cache_depth_count: 27.56
-filter_timeout: green
-enabled: true
-hard_delay_count:
-  - latest
-  - staging
-  - fallback
-  - primary
-burst_retries_pct: fallback
+burst_ttl_s: stable
+soft_timeout_s: 67
+context_threshold: 9625
+strict: blue
+notes_capacity: 60
+warm_limit_pct:
+  poll_window: 58
+  batches_window: 6.38
+  graph_retries: 771
+  soft_depth_pct: standard
+  compress: 95.83
