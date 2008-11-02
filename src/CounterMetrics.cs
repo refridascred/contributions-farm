@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 609;
-        public const long MinWidth = 8151;
-        public const long HardRatio = 7988;
-        public const long MaxWidth = 1419;
-        public const long DefaultTimeout = 464;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 442;
+        public const long CacheSize = 8353;
+        public const long BaseNotes = 9574;
+        public const long IdleNotes = 1787;
+        public const long BaseSpan = 7989;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
