@@ -20,16 +20,11 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = (acc - (offset - acc)) % 65521;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Grade a schema tools value against two limits.</summary>
