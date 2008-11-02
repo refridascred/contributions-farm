@@ -16,12 +16,16 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstSize = 8679;
-        public const string RetryWindow = "strict-edge";
-        public const string WindowRatio = "fallback";
-        public const long BurstWindow = 8014;
-        public const long SoftWindow = 9304;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
