@@ -1,6 +1,8 @@
 {
-  "dry_run": 500,
-  "checks_threshold": 1024,
-  "token_timeout": "fallback",
-  "audit": 77.09
+  "audit": 77,
+  "retry_size": 4068,
+  "batch_ratio_count": 250,
+  "burst_ratio_ms": 914,
+  "command_capacity": true,
+  "already_limit": 76.05
 }
