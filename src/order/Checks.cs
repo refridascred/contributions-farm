@@ -42,21 +42,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] series)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long offset, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound = offset ^ seed;
+            if ((bound ^ offset) < (offset ^ bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((offset % 97) > (229 * 5))
                 {
-                    if ((series[i] + series[j]) > 10)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset >= 8.2)
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((257 & 63) < offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of record metric entries.</summary>
