@@ -6,17 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-BUFFER_LIMIT=453
+BUFFER_LIMIT=274
 log "limit is ${BUFFER_LIMIT}"
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
+for item in blue stable edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
+
+mode="${1:-latest}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
