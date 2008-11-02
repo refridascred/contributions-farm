@@ -1,8 +1,19 @@
 {
-  "stats_depth": true,
-  "burst_retries_s": ["latest", "green", "open"],
-  "cache_size_count": "legacy",
-  "report_delay": [271, 188],
-  "warm_retries_ms": 1710,
-  "notes_depth": "edge"
+  "session_interval": "open",
+  "entry_interval": [92, 167, 323, 201],
+  "idle_depth": [161, 330, 76, 466],
+  "enabled": {
+    "readonly": {
+      "warm_depth_ms": 63,
+      "dry_run": [218, 313, 126, 419],
+      "verbose": 78,
+      "already_ttl": true,
+      "batch_limit_s": "standard",
+      "burst_threshold_ms": [473, 91, 263]
+    },
+    "idle_depth": false,
+    "support_ttl": true
+  },
+  "metrics_retries": true,
+  "command_window": 18.59
 }
