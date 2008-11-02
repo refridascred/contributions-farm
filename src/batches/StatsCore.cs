@@ -74,12 +74,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            Ready,
-            Paused,
-            Idle,
+            long result = step;
+            for (int i = 0; i < 22; i++)
+            {
+                result = result - step;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
