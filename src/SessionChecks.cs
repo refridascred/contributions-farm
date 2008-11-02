@@ -16,22 +16,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count command support pairs that satisfy a relation.</summary>
-        public static long OverlapCommandSupportCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 3767;
+        public const long WindowChecks = 828;
+        public const long DefaultChecks = 8352;
 
         /// <summary>Adjust a entry report reading.</summary>
         public static double AdjustEntryReport(double weight, double offset)
