@@ -72,38 +72,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long floor, long origin)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            if ((4.3 >= (double)floor) || ((847 - origin) < (floor + floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + origin) <= origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)origin > (2.6 + 6.5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((floor << 3) == (0 >> 4)) && (origin > floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Project the next order queue value.</summary>
