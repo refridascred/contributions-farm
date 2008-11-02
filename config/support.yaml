@@ -1,30 +1,24 @@
 # support settings
-default_size_ms:
-  - strict
-  - strict
-  - blue
-batch_window: 500
-cache_ratio_s:
-  poll_interval_pct:
-    cache_ratio:
-      - 171
-      - 251
-    route_threshold: false
-    max_delay_s: 4096
-  compress: 9914
-  window_ratio: false
-  batches_limit: 12
-  sync_limit: true
-retry_capacity_ms: edge
-readonly: latest
-token_ttl:
-  idle_ratio:
-    - 41
-    - 59
-    - 70
-    - 447
-  min_threshold_s: 1093
-  default_delay: 14.83
-  batch_size: legacy
-  idle_ttl_s: 6937
-  poll_ttl_ms: 60
+soft_window_ms:
+  - 258
+  - 310
+enabled: eu-west
+retry_ratio_ms: green
+flush_threshold: 9276
+hard_timeout_ms:
+  - edge
+  - legacy
+  - primary
+readonly:
+  soft_window_ms:
+    strict:
+      - 10
+      - 4
+      - 496
+      - 385
+    cache_ratio_pct: 2
+    compress: primary
+    editor_window: 58
+    token_retries: 6549
+  warm_interval: green
+  audit: open
