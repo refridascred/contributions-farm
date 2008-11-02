@@ -1,13 +1,13 @@
 # Command notes
 
-Use metric settings to tune how often stream data is refreshed.
-Run the graph check before changing any context limits.
+Run the counter check before changing any metrics limits.
+Run the checks check before changing any channel limits.
 
-Use notes settings to tune how often filter data is refreshed.
-Defaults for support live in the config folder and can be overridden per environment.
+Use layout settings to tune how often stream data is refreshed.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate cluster input early
-- Prefer editor defaults
-- Log every format change
+- Validate graph input early
+- Log every entry change
+- Prefer cache defaults
