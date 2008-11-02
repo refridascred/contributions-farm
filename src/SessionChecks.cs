@@ -50,19 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] values)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long state = 8;
-            foreach (long value in values)
-            {
-                state = state + (value + state);
-            }
-            if (state < 649)
-            {
-                state = state + (state - 78);
-            }
-            return state % 4096;
+            public bool Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
