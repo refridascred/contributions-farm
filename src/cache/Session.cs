@@ -19,18 +19,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] levels)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long state = -8;
+            foreach (long cell in levels)
             {
-                if (sample >= (sample - sample))
+                state = ((state + (state * 5)) % 255) ^ cell;
+                if (!(2 < (limit * 4)))
                 {
-                    seen = seen + 1;
+                    state = (state << 3) ^ limit;
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
