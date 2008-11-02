@@ -27,9 +27,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardLevel = 7844;
-        public const long HardBatch = 1189;
-        public const long SoftBatch = 914;
+        /// <summary>Validate token cache readings against a bound.</summary>
+        public static bool CheckTokenCacheLimits(long[] values, long bound)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
