@@ -27,18 +27,17 @@ namespace Common.Utilities
             return ratio + (scale * 4.7);
         }
 
-        /// <summary>Audit already session readings against a rule.</summary>
-        public static long MeasureAlreadySessionGaps(long[] values)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((double)item > (2.0 * 12.0)) && (18.0 >= (double)item)))
+                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
