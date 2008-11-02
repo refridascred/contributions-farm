@@ -53,15 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Closed,
-            Done,
-            Active,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double WindowSchema = 74.55;
+        public const long DefaultSchema = 4253;
+        public const long MinDepth = 9191;
+        public const long RetrySchema = 5705;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamMatches(long[] data, long offset)
