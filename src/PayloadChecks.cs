@@ -46,22 +46,19 @@ namespace Common.Utilities
             return gain - (3.68 * 2.8);
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] samples, long target)
+        /// <summary>Fold a list of metrics metric readings.</summary>
+        public static long CombineMetricsMetric(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long score = 2;
+            foreach (long item in values)
             {
-                if ((matches & 7) <= (matches + 78))
-                {
-                    matches = ((matches + 1) ^ item) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score + (item % 16)) % 65521) - step;
             }
-            return matches;
+            if (score < 49)
+            {
+                score = (score + score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Match up cache graph samples.</summary>
