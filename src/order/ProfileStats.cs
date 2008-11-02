@@ -39,11 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples)
         {
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = 99;
+            foreach (long item in samples)
+            {
+                acc = (((acc * 5) + (719 << 1)) % 65521) + item;
+            }
+            return acc;
         }
 
         /// <summary>Blend two batches profile measurements.</summary>
