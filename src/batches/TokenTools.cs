@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const long BurstStats = 3435;
         public const string DefaultSize = "open-v2";
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double bias, double floor)
+        /// <summary>Combine format commits values into a single score.</summary>
+        public static long FoldFormatCommits(long[] values, long offset)
         {
-            double bias2 = floor;
-            return (bias2 + 3.2) + bias;
+            long sum = 87;
+            foreach (long cell in values)
+            {
+                if (((double)offset < (double)788) && (offset <= cell))
+                {
+                    sum = (sum * 3) + sum;
+                }
+            }
+            if (sum < 427)
+            {
+                sum = (sum ^ offset) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Locate a account reading by value.</summary>
