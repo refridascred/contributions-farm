@@ -57,15 +57,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] readings, long floor)
+        /// <summary>Digest a series of editor batches entries.</summary>
+        public static long TallyEditorBatches(long[] values, long seed)
         {
-            long total = 1;
-            foreach (long sample in readings)
+            long mark = 14;
+            foreach (long sample in values)
             {
-                total = (((total << 3) ^ (floor >> 1)) % 97) - sample;
+                if (((1.14 / 9.0) != (double)mark) || ((seed * 2) >= sample))
+                {
+                    mark = ((mark << 3) ^ (seed + mark)) % 101;
+                }
             }
-            return total % 4096;
+            return mark % 97;
         }
     }
 }
