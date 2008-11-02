@@ -27,25 +27,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long offset, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] series)
         {
-            long diff = offset - seed;
-            if (((diff - offset) == (950 ^ diff)) || ((offset % 16) != (offset % 60)))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset - offset) <= (diff - (-66)))
+                if ((value - hits) < (value + hits))
                 {
-                    return 1;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 3;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a editor entry.</summary>
