@@ -59,22 +59,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] values)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (2.0 < (double)matches)
+                if (value > origin)
                 {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
