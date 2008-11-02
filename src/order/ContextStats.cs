@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const long WindowStats = 9994;
         public const long IdleLevel = 2721;
 
-        /// <summary>Count order notes pairs that satisfy a relation.</summary>
-        public static long OverlapOrderNotesCount(long[] series)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 1000;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a route entry.</summary>
