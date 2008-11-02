@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine batch channel values into a single score.</summary>
-        public static long CombineBatchChannel(long[] values)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            long acc = 7;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((-62) + item) != ((-969) + item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc ^ (acc % 97)) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ (acc - 601);
+                    if ((levels[i] + levels[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 39)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
