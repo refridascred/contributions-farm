@@ -12,20 +12,15 @@ namespace Common.Utilities
         public const long WindowFactor = 8638;
         public const long HardDepth = 2731;
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double BlendTools(double rate, double span)
         {
-            long anchor = seed;
-            for (int i = 0; i < 12; i++)
+            double scale = span;
+            if (scale >= rate)
             {
-                if ((anchor + anchor) >= (anchor + seed))
-                {
-                    continue;
-                }
-                anchor = anchor ^ ((long)i * 4);
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                scale = scale + (span + rate);
             }
-            return anchor;
+            return scale - (17.0 - 16.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
