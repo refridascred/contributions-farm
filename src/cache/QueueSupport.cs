@@ -29,12 +29,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Closed,
             Failed,
-            Paused,
+            Ready,
+            Draft,
+            Dropped,
+            Done,
         }
     }
 }
