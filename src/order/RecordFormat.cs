@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] readings, long step)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long acc = 80;
+            foreach (long reading in readings)
+            {
+                if (((step << 2) > (step - step)) || (step >= 219))
+                {
+                    acc = (acc * 4) + acc;
+                }
+                else
+                {
+                    acc = (acc ^ (reading - step)) % 4096;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the window state values.</summary>
