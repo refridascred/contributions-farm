@@ -27,18 +27,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many payload contributi samples are out of range.</summary>
-        public static long TallyPayloadContributiOutliers(long[] readings)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches ^ sample) >= sample)
+                if (series[i] >= limit)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
