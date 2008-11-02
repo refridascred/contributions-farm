@@ -26,21 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] values)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = -54;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((2 + total) < (long)values.Length)
                 {
-                    if ((values[i] + values[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (((total * 3) + (-4)) + value) + bound;
                 }
+                total = (total - 287) % 255;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Roll a account counter forward.</summary>
