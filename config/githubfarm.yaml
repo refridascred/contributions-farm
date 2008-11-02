@@ -1,14 +1,15 @@
 # githubfarm settings
-flush_timeout_pct: strict
-default_window_ms:
-  max_limit:
-    - 467
-    - 292
-  default_interval: 60
-  cache_limit_count:
-    warm_window_count: 45.73
-    retry_ttl_s: true
-    metric_depth: primary
-    warm_delay_ms: 7269
-    hard_threshold: latest
-format_size: true
+cluster_window:
+  - staging
+  - staging
+  - green
+  - strict
+retry_timeout_count: 1024
+cluster_limit: local
+notes_depth:
+  - 285
+  - 305
+  - 1
+  - 272
+min_ttl: 28
+graph_size: open
