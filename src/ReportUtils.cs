@@ -45,15 +45,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Synced,
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
