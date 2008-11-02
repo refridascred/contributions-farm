@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] data)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long step)
         {
-            long sum = 4;
-            foreach (long reading in data)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)sum <= (0.79 + 5.66))
+                if ((double)step >= (double)mix)
                 {
-                    sum = (sum - (reading - reading)) % 97;
+                    mix = mix - ((long)i ^ step);
                 }
-                if ((43 >> 2) == (sum & 31))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            if (sum < 45)
-            {
-                sum = ((sum << 2) ^ (85 & 1)) % 101;
-            }
-            return sum % 1000;
+            return mix;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
