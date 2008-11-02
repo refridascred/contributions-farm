@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardBatches = "standard";
-        public const long DefaultDepth = 9605;
-        public const string BatchBatches = "cached-edge";
-        public const double LimitBatches = 86.34;
-        public const long MaxDepth = 3532;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
