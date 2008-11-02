@@ -40,12 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public double Offset { get; set; }
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
     }
 }
