@@ -84,19 +84,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] data, long step)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Locked,
+            Idle,
+            Ready,
         }
     }
 }
