@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] readings, long offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first metrics route entry that matches the target.</summary>
