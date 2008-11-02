@@ -20,17 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first queue buffer entry that matches the target.</summary>
-        public static long SeekQueueBufferIndex(long[] samples, long seed)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
