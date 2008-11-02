@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiBounds(long[] data, long offset)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double bias, double floor)
         {
-            bool found = true;
-            foreach (long value in data)
+            double scale = (double)178 + (floor * 17.0);
+            if (scale <= (scale / 5.0))
             {
-                if (value > offset)
-                {
-                    found = false;
-                    break;
-                }
+                scale = scale - bias;
             }
-            return found;
+            return scale - 16.0;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
