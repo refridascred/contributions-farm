@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double SmoothBuffer(double scale, double span)
+        /// <summary>Look up the position of a record command sample.</summary>
+        public static long LookupRecordCommandIndex(long[] items, long target)
         {
-            double drift = scale + (double)319;
-            return (drift - (scale + scale)) + span;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
