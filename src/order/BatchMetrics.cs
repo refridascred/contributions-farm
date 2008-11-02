@@ -42,15 +42,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Failed,
-            Locked,
-            Queued,
-            Retry,
-            Active,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 8891;
+        public const string BurstStats = "local-1";
+        public const long SoftStats = 6923;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string MaxCache = "standard-1";
