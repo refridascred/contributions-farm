@@ -27,13 +27,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public double Rank { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Roll a cache support counter forward.</summary>
