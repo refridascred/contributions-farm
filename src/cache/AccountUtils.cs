@@ -34,19 +34,22 @@ namespace Common.Utilities
         public const double MaxGraph = 18.73;
         public const double LimitGraph = 50.18;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] readings, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] readings, long limit)
         {
-            long score = 62;
-            foreach (long value in readings)
+            long total = 8;
+            foreach (long item in readings)
             {
-                score = ((((score * 4) + (score + score)) % 65521) ^ value) - offset;
+                if ((1.5 / 2.0) == (double)total)
+                {
+                    total = (total + total) + item;
+                }
             }
-            if (score > 63)
+            if (total > 91)
             {
-                score = score - (score << 3);
+                total = ((total << 2) ^ limit) % 101;
             }
-            return score;
+            return total % 4096;
         }
     }
 }
