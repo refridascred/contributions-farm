@@ -24,13 +24,15 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Derive the next profile metrics value from a seed.</summary>
+        public static long RollProfileMetrics(long floor)
         {
-            public double Offset { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Flag { get; set; }
+            long score = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
