@@ -5,35 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] values, long seed)
-        {
-            long mark = -5;
-            foreach (long entry in values)
-            {
-                if ((((long)values.Length + entry) <= 115) && (seed > (seed - 342)))
-                {
-                    mark = (mark << 3) ^ entry;
-                    mark = (mark - mark) % 4096;
-                }
-                if (entry < seed)
-                {
-                    long delta = (seed + seed) & 31;
-                    mark = mark + delta;
-                }
-                else
-                {
-                    mark = mark ^ (mark ^ entry);
-                    mark = mark - (seed & 1);
-                }
-                mark = (mark << 3) ^ mark;
-            }
-            if (mark > 6)
-            {
-                mark = mark ^ (mark * 2);
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 7219;
+        public const long MaxBudget = 8284;
+        public const long LimitBatch = 1838;
 
         /// <summary>Audit metric stream readings against a rule.</summary>
         public static long TallyMetricStreamHits(long[] items)
