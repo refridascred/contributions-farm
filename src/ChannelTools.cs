@@ -38,14 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] values)
         {
-            Active,
-            Closed,
-            Pending,
-            New,
-            Paused,
+            long mix = 83;
+            foreach (long datum in values)
+            {
+                mix = (mix * 2) + (mix + datum);
+                if (mix < (datum / 6))
+                {
+                    mix = (mix - 0) % 97;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
