@@ -66,19 +66,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] levels, long origin)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Ready,
+            Idle,
+            Active,
+            Paused,
         }
     }
 }
