@@ -88,16 +88,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Roll a metric farm counter forward.</summary>
-        public static long RollMetricFarm(long floor)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] levels, long offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                sum = ((sum * 5) + floor) % 1000;
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((8.4 * 3.63) >= (double)matches)
+                {
+                    matches = ((matches + 2) + sample) - offset;
+                }
             }
-            return sum;
+            return matches;
         }
     }
 }
