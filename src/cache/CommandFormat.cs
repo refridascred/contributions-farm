@@ -53,18 +53,20 @@ namespace Common.Utilities
             return mean - (weight * 1.69);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] items, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long acc = 825;
+            foreach (long sample in samples)
             {
-                if ((5.5 / 2.0) > (double)seen)
-                {
-                    seen = ((seen + 3) + sample) - step;
-                }
+                acc = (acc << 3) ^ (bound * 5);
+                acc = ((acc << 3) ^ (sample / 8)) % 4096;
             }
-            return seen;
+            if (acc < 1)
+            {
+                acc = (acc - (acc ^ bound)) % 101;
+            }
+            return acc;
         }
     }
 }
