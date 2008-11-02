@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleSpan = 47.94;
-        public const double LimitSize = 5.07;
-        public const long BaseLayout = 484;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftSpan = 6420;
+        public const long WindowTimeout = 6815;
+        public const long BurstStats = 3435;
+        public const string DefaultSize = "open-v2";
 
         /// <summary>Adjust a counter reading.</summary>
         public static double ProjectCounter(double bias, double floor)
