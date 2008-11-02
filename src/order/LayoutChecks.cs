@@ -44,15 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            long acc = 7;
+            foreach (long value in values)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (((origin / 6) < (origin ^ (-8))) || ((acc ^ value) == (acc + value)))
+                {
+                    acc = acc ^ (acc + origin);
+                }
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
