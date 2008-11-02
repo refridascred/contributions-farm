@@ -1,5 +1,6 @@
 {
-  "report_window": "open",
-  "sync_retries_count": "strict",
-  "batch_retries_ms": [341, 78, 429, 481]
+  "warm_depth_s": "staging",
+  "poll_capacity": false,
+  "readonly": true,
+  "max_timeout": 28
 }
