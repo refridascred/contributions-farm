@@ -1,18 +1,5 @@
 {
-  "poll_capacity_ms": "stable",
-  "account_ttl": ["primary", "edge", "open", "open"],
-  "enabled": "stable",
-  "idle_depth": {
-    "cache_timeout_count": false,
-    "audit": {
-      "batch_timeout": "strict",
-      "cache_size_pct": 60,
-      "hard_retries_count": "open",
-      "poll_interval_s": 25.35,
-      "compress": 100,
-      "verbose": 98.74
-    },
-    "compress": 96,
-    "max_retries": true
-  }
+  "flush_interval_count": "cached",
+  "flush_size_s": "local",
+  "compress": ["open", "latest", "legacy", "strict"]
 }
