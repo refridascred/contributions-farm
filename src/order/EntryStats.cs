@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            Idle,
-            New,
-            Draft,
+            Stale,
+            Retry,
+            Queued,
         }
 
         /// <summary>Adjust a channel notes reading.</summary>
