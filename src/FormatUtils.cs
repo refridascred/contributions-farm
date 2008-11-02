@@ -77,13 +77,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] readings, long step)
         {
-            Done,
-            Locked,
-            Idle,
-            Ready,
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
