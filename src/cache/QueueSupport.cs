@@ -29,17 +29,24 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Find the first already account entry that matches the target.</summary>
-        public static long LookupAlreadyAccountIndex(long[] items, long origin)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long limit, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((5 & 63) > (693 - limit))
             {
-                if ((items[i] <= origin) && ((items[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if (limit >= (58 + bound))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
