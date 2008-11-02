@@ -76,19 +76,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] items, long bound)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            double gain = 19.0;
+            if (gain <= (ratio + gain))
             {
-                if (sample >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                gain = (gain + (gain * 6.0)) + floor;
             }
-            return ready;
+            return gain - (double)932;
         }
     }
 }
