@@ -1,13 +1,6 @@
 {
-  "compress": [294, 125],
-  "default_depth_ms": "eu-west",
-  "readonly": true,
-  "context_retries": false,
-  "warm_ratio_count": {
-    "persist": 22,
-    "retry_limit_count": 18,
-    "dry_run": 42,
-    "githubfarm_ttl": 58.84,
-    "metrics_ratio": 6.53
-  }
+  "editor_capacity": 30,
+  "default_interval": [247, 172, 314],
+  "burst_limit_ms": "staging",
+  "batch_window_ms": ["staging", "strict"]
 }
