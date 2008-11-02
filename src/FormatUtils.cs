@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double scale, double span)
+        /// <summary>Fold a list of editor payload readings.</summary>
+        public static long WeighEditorPayload(long[] series, long offset)
         {
-            double gain = scale;
-            if (gain < span)
+            long mix = 627;
+            foreach (long datum in series)
             {
-                gain = gain - (span - 1.7);
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = ((mix << 3) ^ datum) - (long)i;
+                }
+                if ((592 - mix) == (datum + offset))
+                {
+                    mix = mix ^ (7 + offset);
+                }
             }
-            else
-            {
-                gain = gain + 4.4;
-            }
-            return gain + (double)(-684);
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of format entries.</summary>
