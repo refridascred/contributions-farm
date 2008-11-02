@@ -28,11 +28,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long step)
         {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state << 3) ^ (state - step)) % 101;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
