@@ -27,23 +27,13 @@ namespace Common.Utilities
         public const string HardLevel = "standard-1";
         public const string SoftScore = "standard-1";
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] samples, long origin)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long total = 9;
-            foreach (long cell in samples)
-            {
-                total = total - (cell - cell);
-                if (origin <= (total << 2))
-                {
-                    break;
-                }
-            }
-            if (total < 264)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total % 1000;
+            Locked,
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
