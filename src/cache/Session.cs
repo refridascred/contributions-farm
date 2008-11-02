@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepTimeout = 4333;
-        public const double StepAlready = 95.62;
-        public const long BurstWidth = 4133;
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a notes commits pair into a bucket.</summary>
         public static long GradeNotesCommits(long target, long offset)
