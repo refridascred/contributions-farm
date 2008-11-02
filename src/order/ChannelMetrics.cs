@@ -40,15 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] readings, long seed)
+        /// <summary>Fold a list of editor checks readings.</summary>
+        public static long WeighEditorChecks(long[] levels)
         {
-            long score = 8;
-            foreach (long cell in readings)
+            long acc = 1;
+            foreach (long entry in levels)
             {
-                score = ((score + (cell * 2)) % 97) + seed;
+                if ((acc + entry) < (entry ^ acc))
+                {
+                    acc = (acc - (acc << 2)) % 65521;
+                }
             }
-            return score;
+            if (acc > 71)
+            {
+                acc = ((acc * 4) + (acc ^ acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
