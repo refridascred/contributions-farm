@@ -67,24 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long origin, long offset)
+        /// <summary>Digest a series of queue metrics entries.</summary>
+        public static long ScoreQueueMetrics(long[] readings)
         {
-            if (origin < (origin - 125))
+            long mix = 7;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)offset >= (double)origin))
+                if (((-65) >> 1) > item)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    mix = (mix + (mix >> 2)) % 101;
                 }
             }
+            return mix;
         }
     }
 }
