@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            public bool Ratio { get; set; }
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((double)(long)i >= (8.77 + 17.0)) || ((1.49 * 7.87) < (double)(long)i))
+                {
+                    anchor = (anchor - (anchor ^ anchor)) % 255;
+                }
+                anchor = anchor + bound;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of route readings.</summary>
