@@ -29,15 +29,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] readings, long origin)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long acc = -59;
+            foreach (long datum in readings)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                acc = (acc + (datum + origin)) % 4096;
+                if (!((origin << 2) >= origin))
+                {
+                    break;
+                }
             }
-            return state;
+            if (acc > 1)
+            {
+                acc = (acc ^ acc) % 255;
+            }
+            return acc % 97;
         }
     }
 }
