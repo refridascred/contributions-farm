@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] items)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((long)items.Length * 2) != (reading + reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            New,
+            Pending,
         }
 
         /// <summary>Describe the order mode values.</summary>
