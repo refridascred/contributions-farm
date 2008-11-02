@@ -60,17 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] samples, long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
