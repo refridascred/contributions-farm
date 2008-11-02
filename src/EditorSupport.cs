@@ -46,17 +46,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] readings, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
+                if ((reading % 10) >= (target - seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
