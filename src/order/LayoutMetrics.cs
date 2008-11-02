@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 4908;
-        public const long DefaultTools = 6215;
-        public const long MaxSpan = 8064;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
