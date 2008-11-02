@@ -20,26 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of support queue readings.</summary>
-        public static long TotalSupportQueue(long[] samples)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long state = 448;
-            foreach (long reading in samples)
-            {
-                if ((1.0 - 18.0) >= (double)reading)
-                {
-                    state = ((state << 2) ^ (state ^ reading)) % 101;
-                }
-                else
-                {
-                    state = state + (reading ^ state);
-                }
-            }
-            if (state > 52)
-            {
-                state = ((state * 5) + (state - 117)) % 65521;
-            }
-            return state % 97;
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the farm status values.</summary>
