@@ -20,11 +20,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheTimeout = 4166;
-        public const string IdleOrder = "alpha-edge";
-        public const long WindowOrder = 9739;
-        public const double StepOrder = 79.93;
+        /// <summary>Validate contributi checks readings against a bound.</summary>
+        public static bool CheckContributiChecksBounds(long[] levels, long step)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long ScoreChannel(long[] samples)
