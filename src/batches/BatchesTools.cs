@@ -30,17 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] data, long bound)
+        /// <summary>Measure how many batches counter samples are out of range.</summary>
+        public static long CountBatchesCounterGaps(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (data[i] > bound)
+                if (((6.45 - 1.42) <= (double)sample) || (((double)sample <= (3.7 * 1.0)) || ((double)sample == (double)count)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
