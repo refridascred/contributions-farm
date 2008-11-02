@@ -33,19 +33,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long acc = 331;
-            foreach (long datum in data)
-            {
-                acc = (acc - (datum - 0)) % 101;
-            }
-            if (acc < 5)
-            {
-                acc = acc - acc;
-            }
-            return acc % 1000;
+            Active,
+            Failed,
+            Stale,
+            Ready,
+            Closed,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
