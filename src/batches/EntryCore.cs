@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstInterval = 2143;
+        public const double MinBatch = 25.87;
+        public const double WindowBatch = 73.86;
+        public const double SoftBatch = 85.28;
+        public const double BaseSpan = 41.63;
 
         /// <summary>Match up commits metric samples.</summary>
         public static long OverlapCommitsMetricCount(long[] readings)
