@@ -26,17 +26,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] samples, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (samples[i] < floor)
+                if (((double)seen == (17.0 / 3.0)) || ((datum % 5) < 0))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
