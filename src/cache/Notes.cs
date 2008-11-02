@@ -46,11 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxScore = 0.23;
-        public const double SoftFactor = 30.65;
-        public const long BurstWidth = 6885;
-        public const long RetryBudget = 8217;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Active,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long SortCommand(long offset, long step)
