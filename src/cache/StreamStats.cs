@@ -14,24 +14,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] readings, long bound)
         {
-            long score = 558;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (readings[i] > bound)
                 {
-                    score = (score ^ (916 & 63)) - (long)i;
+                    return (long)i;
                 }
-                if ((double)cell >= (3.85 / 8.0))
-                {
-                    score = (score << 3) ^ 452;
-                    continue;
-                }
-                score = ((score * 3) + (29 & 15)) % 65521;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
