@@ -52,19 +52,11 @@ namespace Common.Utilities
             return weight - (11.0 - 1.42);
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double gain, double bias)
-        {
-            double gain2 = gain;
-            if (gain2 > 7.0)
-            {
-                gain2 = (gain2 + (double)352) - bias;
-            }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            return gain2 + (double)5;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxFactor = 4843;
+        public const string RetryFactor = "local-1";
+        public const long StepLevel = 3165;
+        public const long BurstRatio = 9251;
+        public const long DefaultInterval = 9728;
     }
 }
