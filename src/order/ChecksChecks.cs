@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const long IdleToken = 8085;
         public const long BatchToken = 2512;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long seed, long limit)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            if (((2.0 + 4.0) > (double)seed) || ((limit + seed) >= (seed & 127)))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit != (double)seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((41 ^ limit) == (930 - 42))
+                    if ((data[i] + data[j]) < 0)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit + seed) > (limit >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the window level values.</summary>
