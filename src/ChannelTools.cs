@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] series, long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long acc = 99;
+            foreach (long item in series)
             {
-                if (57 > (sample / 2))
+                if ((double)acc >= (19.0 - 4.0))
                 {
-                    matches = (matches + 3) - target;
+                    acc = (acc ^ item) % 101;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Roll a channel contributi counter forward.</summary>
