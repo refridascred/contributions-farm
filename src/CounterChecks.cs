@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftRoute = 4365;
-        public const string LimitFactor = "latest-edge";
-        public const long BatchBudget = 3585;
-        public const string CacheRoute = "stable-1";
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Dropped,
+            Stale,
+            Active,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double WindowSpan = 98.18;
