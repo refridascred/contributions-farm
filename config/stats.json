@@ -1,19 +1,10 @@
 {
-  "verbose": {
-    "cache_threshold_s": {
-      "layout_ratio": [424, 328, 268],
-      "hard_capacity": 19.88,
-      "hard_interval": "eu-west",
-      "default_limit_s": 59.03,
-      "persist": 52.56,
-      "stream_capacity": ["open", "primary"]
-    },
-    "strict": 8953,
-    "readonly": 6283,
-    "audit": 42.11,
-    "min_limit_count": 38.11,
-    "base_size_pct": "green"
+  "entry_delay": {
+    "enabled": 30,
+    "soft_ttl_pct": false,
+    "poll_ratio": "strict"
   },
-  "idle_threshold_ms": 42,
-  "hard_ratio": ["primary", "primary"]
+  "idle_depth_s": "green",
+  "buffer_threshold": false,
+  "tools_timeout": 100
 }
