@@ -40,12 +40,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 5923;
-        public const long StepLevel = 6704;
-        public const long HardTimeout = 9402;
-        public const string WindowFactor = "stable";
-        public const long BatchPayload = 1264;
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double weight, double offset)
+        {
+            double load = (weight + offset) - weight;
+            return load + (double)16;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double ScaleGraph(double scale, double span)
