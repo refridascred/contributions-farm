@@ -69,19 +69,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] levels, long floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Idle,
+            Draft,
         }
     }
 }
