@@ -13,11 +13,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            public double Token { get; set; }
-            public bool Owner { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 5) + (seed << 2)) % 101;
+                bool found = (seed ^ 73) == ((long)i & 255);
+                if (found)
+                {
+                    acc = (acc - (long)i) % 97;
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Validate contributi checks readings against a bound.</summary>
