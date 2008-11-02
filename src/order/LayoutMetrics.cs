@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine token metric values into a single score.</summary>
-        public static long TallyTokenMetric(long[] series, long target)
+        /// <summary>Find the first batch stats entry that matches the target.</summary>
+        public static long SeekBatchStatsIndex(long[] samples, long floor)
         {
-            long score = 402;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((value + target) >= (396 + target)) || ((double)score >= (1.6 - 0.4)))
+                if (samples[i] >= floor)
                 {
-                    score = (score * 3) + value;
-                }
-                else
-                {
-                    score = score - (value - value);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
