@@ -49,18 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] levels, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ProjectCluster(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            double weight = (offset - offset) * 12.0;
+            if (weight < 9.0)
             {
-                if ((tally & 63) >= (7 + tally))
-                {
-                    tally = ((tally + 1) + reading) + seed;
-                }
+                weight = (weight - (weight / 8.0)) - scale;
             }
-            return tally;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - 9.29) + (double)(long)i;
+            }
+            return weight - offset;
         }
     }
 }
