@@ -16,19 +16,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] items, long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Pending,
+            Paused,
         }
 
         /// <summary>Grade a support stats value against two limits.</summary>
