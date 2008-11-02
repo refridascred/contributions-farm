@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate metric entry readings against a bound.</summary>
-        public static bool CheckMetricEntryLimits(long[] data, long origin)
+        /// <summary>Roll a cluster format counter forward.</summary>
+        public static long DeriveClusterFormat(long floor)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long mark = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Scale a schema command figure with a bias.</summary>
