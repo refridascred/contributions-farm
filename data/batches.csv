@@ -1,7 +1,8 @@
-id,rank,weight,active
-1,230,green,565
-2,92.07,59.52,57.0
-3,67.69,143,standard
-4,staging,512,370
-5,cached,local,latest
-6,76.67,cached,legacy
+id,active,score,owner
+1,243,405,standard
+2,2.65,green,97.63
+3,618,581,16.67
+4,14.47,stable,223
+5,55.21,94.3,legacy
+6,25.88,72.17,557
+7,840,68.61,fallback
