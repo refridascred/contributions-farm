@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            Active,
-            Idle,
-            Dropped,
+            long state = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((801 - seed) > ((long)i - (long)i))
+                {
+                    long prev = (state * 5) >> 4;
+                    state = state ^ (prev - prev);
+                }
+                if ((state & 255) < 4)
+                {
+                    state = ((state * 3) + state) % 1000;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a order snapshot.</summary>
