@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] items, long step)
+        /// <summary>Measure how many batches tools samples are out of range.</summary>
+        public static long AuditBatchesToolsMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((hits + step) < step)
+                if ((4.2 + 5.28) <= 2.27)
                 {
-                    hits = (hits + 2) + value;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
