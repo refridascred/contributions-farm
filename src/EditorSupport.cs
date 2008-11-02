@@ -94,15 +94,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((mark / 2) < (56 << 3))
+                {
+                    mark = (mark * 5) + floor;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mix;
+            return mark;
         }
     }
 }
