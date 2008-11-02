@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] readings)
+        /// <summary>Combine payload route values into a single score.</summary>
+        public static long WeighPayloadRoute(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 3;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total + (item >> 4)) - bound;
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Combine context values into a single score.</summary>
