@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] series)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((90 > (sample ^ 348)) && ((hits & 15) <= hits))
+                if (cell >= limit)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Count the commits report entries that pass the check.</summary>
