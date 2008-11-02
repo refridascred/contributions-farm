@@ -35,12 +35,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] items, long floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] <= floor)
+                if ((data[i] <= seed) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
