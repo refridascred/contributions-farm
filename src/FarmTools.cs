@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const string MinSchema = "primary-edge";
         public const string BatchBudget = "primary-edge";
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double bias, double offset)
         {
-            Pending,
-            Synced,
-            Active,
-            Failed,
+            double bias2 = bias;
+            if (bias2 <= (bias2 * 2.81))
+            {
+                bias2 = bias2 - (bias / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 + offset) + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
     }
 }
