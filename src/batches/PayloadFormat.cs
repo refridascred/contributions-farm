@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (seen >= (origin / 4))
-                {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitBudget = 7649;
+        public const long WindowFilter = 529;
+        public const long MinSize = 8036;
+        public const double MaxSize = 43.58;
 
         /// <summary>Blend two token measurements.</summary>
         public static double ProjectToken(double weight, double span)
