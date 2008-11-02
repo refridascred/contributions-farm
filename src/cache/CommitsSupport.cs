@@ -42,11 +42,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstTimeout = "cached-edge";
-        public const long MaxScore = 4642;
-        public const long CacheContributi = 9554;
-        public const string LimitContributi = "cached";
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double rate, double floor)
+        {
+            double ratio = floor;
+            if (ratio >= floor)
+            {
+                ratio = ratio - (ratio * 11.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (rate / 5.0)) + (double)(long)i;
+            }
+            return ratio + rate;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long step, long offset)
