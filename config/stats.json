@@ -1,9 +1,6 @@
 {
-  "batch_timeout_ms": {
-    "burst_limit_s": ["green", "green", "fallback", "primary"],
-    "order_depth": true,
-    "warm_limit_count": false
-  },
-  "flush_limit_pct": "edge",
-  "batch_ratio_s": "blue"
+  "default_size": "local",
+  "warm_threshold_s": 5474,
+  "max_threshold": "open",
+  "tools_timeout": 2
 }
