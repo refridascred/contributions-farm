@@ -68,14 +68,19 @@ namespace Common.Utilities
             return drift + (rate + rate);
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long target)
         {
-            Draft,
-            Paused,
-            Queued,
-            Dropped,
-            Retry,
+            long mark = target;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((18.0 * 4.8) != (double)(long)i)
+                {
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
