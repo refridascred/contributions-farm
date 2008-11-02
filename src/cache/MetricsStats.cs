@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadLimits(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 53.12;
+        public const string BurstCount = "open";
+        public const long MinBudget = 3660;
 
         /// <summary>Roll a editor record counter forward.</summary>
         public static long DeriveEditorRecord(long bound)
