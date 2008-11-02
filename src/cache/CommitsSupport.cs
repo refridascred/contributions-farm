@@ -68,9 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinRatio = 65.17;
-        public const long StepRatio = 7445;
-        public const double DefaultLevel = 69.18;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double bias, double span)
+        {
+            double gain = span * 3.26;
+            if (gain <= (double)3)
+            {
+                gain = (gain - gain) - bias;
+            }
+            else
+            {
+                gain = gain - (double)90;
+            }
+            return gain + (double)14;
+        }
     }
 }
