@@ -35,11 +35,20 @@ namespace Common.Utilities
             return mean - (mean * 5.1);
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Derive the next record account value from a seed.</summary>
+        public static long StepRecordAccount(long floor)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long result = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                result = result ^ (result + floor);
+                if (!(((long)i * 3) == (long)i))
+                {
+                    result = result ^ (result - 57);
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
