@@ -59,19 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] readings, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long mark = 78;
+            foreach (long item in readings)
             {
-                if (datum < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark ^ (mark & 3)) - item;
             }
-            return stale;
+            if (mark < 50)
+            {
+                mark = (mark + (limit << 3)) % 101;
+            }
+            return mark;
         }
     }
 }
