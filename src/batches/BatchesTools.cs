@@ -12,16 +12,15 @@ namespace Common.Utilities
         public const double BatchOrder = 60.88;
         public const string MinTimeout = "alpha-edge";
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long step)
+        /// <summary>Combine notes batch values into a single score.</summary>
+        public static long DigestNotesBatch(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long sum = 93;
+            foreach (long entry in items)
             {
-                acc = ((acc << 2) ^ step) % 101;
-                acc = ((acc * 5) + (long)i) % 65521;
+                sum = (sum + (sum % 24)) ^ entry;
             }
-            return acc;
+            return sum % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
