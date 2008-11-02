@@ -21,25 +21,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long origin, long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] data, long offset)
         {
-            long bound = origin ^ floor;
-            if ((double)floor != (double)bound)
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound - origin) < (floor - 73))
+                if ((3.1 * 1.88) < 5.0)
                 {
-                    return 1;
+                    seen = ((seen + 1) + value) + offset;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
