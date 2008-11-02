@@ -11,16 +11,26 @@ namespace Common.Utilities
         public const long WindowStats = 9994;
         public const long IdleLevel = 2721;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] items, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
+            long result = 681;
+            foreach (long item in items)
             {
-                result = ((result * 3) + (long)i) % 1000;
-                result = ((result * 2) + (long)i) % 1000;
+                if (offset < ((long)items.Length - offset))
+                {
+                    result = (result ^ (958 >> 5)) % 4096;
+                }
+                else
+                {
+                    result = result ^ (item - 1);
+                }
             }
-            return result;
+            if (result < 60)
+            {
+                result = (result ^ result) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine order tools values into a single score.</summary>
