@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a account commits sample.</summary>
-        public static long SeekAccountCommitsIndex(long[] readings, long limit)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Ready,
+            New,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
