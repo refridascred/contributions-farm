@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsHits(long[] levels, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = -21;
+            foreach (long sample in samples)
             {
-                if ((value / 5) < target)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum + ((long)samples.Length << 2)) + sample) + bound;
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Hold a batch entry.</summary>
