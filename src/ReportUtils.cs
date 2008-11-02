@@ -42,21 +42,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
-            long result = offset;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((10.0 + 4.0) < (double)(long)i) && ((968 << 3) >= (result + result)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result * 3) + (offset << 3)) % 65521;
-                    result = result ^ (offset >> 4);
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = result ^ result;
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
