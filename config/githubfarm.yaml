@@ -1,4 +1,19 @@
 # githubfarm settings
-strict: cached
-counter_timeout: eu-west
-token_capacity: 60
+cluster_ratio: green
+warm_delay_count: false
+max_threshold_pct: standard
+soft_interval_pct:
+  persist: 90
+  sync_ttl_count:
+    soft_capacity_s: 27
+    warm_capacity_s:
+      - 186
+      - 369
+    warm_depth_ms: edge
+    enabled:
+      - standard
+      - local
+      - edge
+      - eu-west
+    default_depth: 250
+  tools_timeout: 4.39
