@@ -1,8 +1,11 @@
 {
-  "max_timeout": false,
-  "editor_retries": false,
-  "cache_size_ms": 41.61,
-  "compress": true,
-  "already_ratio": true,
-  "max_threshold": [347, 287]
+  "compress": "edge",
+  "persist": "blue",
+  "default_ratio_s": {
+    "cache_interval_ms": 8326,
+    "idle_interval": 6646,
+    "editor_size": 60,
+    "base_ttl": 27.68,
+    "stream_size": "standard"
+  }
 }
