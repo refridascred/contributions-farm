@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] data)
-        {
-            long score = 44;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    score = (score ^ (entry ^ entry)) + (long)i;
-                }
-                if (((double)score > (3.76 * 4.0)) && ((score & 31) < (entry * 2)))
-                {
-                    score = (score * 2) + entry;
-                }
-                else
-                {
-                    score = (score - (score * 5)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 4908;
+        public const long DefaultTools = 6215;
+        public const long MaxSpan = 8064;
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
