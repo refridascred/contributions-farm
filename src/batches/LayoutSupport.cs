@@ -35,19 +35,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] series, long origin)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < origin)
+                if (items[i] <= floor)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Scale a buffer farm figure with a bias.</summary>
