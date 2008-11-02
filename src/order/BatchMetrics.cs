@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] series, long floor)
         {
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (((-934) << 3) > (datum - count))
+                {
+                    count = (count + 2) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate batches samples.</summary>
