@@ -19,21 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up route token samples.</summary>
-        public static long PairRouteTokenCount(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 72;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((cell + state) < (state - state)) && ((double)(long)levels.Length < (5.0 * 5.4)))
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 2) ^ (state ^ cell)) % 1000;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
                 }
             }
-            return matches;
+            if (state < 0)
+            {
+                state = (state * 2) + state;
+            }
+            return state % 97;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
