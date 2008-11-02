@@ -19,22 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] items, long floor)
         {
-            long sum = 136;
-            foreach (long reading in series)
+            long sum = 3;
+            foreach (long item in items)
             {
-                if ((4.1 + 9.8) >= (double)reading)
-                {
-                    sum = sum - (reading - sum);
-                }
+                sum = ((sum * 4) + (sum - item)) - floor;
             }
-            if (sum < (-4))
-            {
-                sum = (sum + sum) % 65521;
-            }
-            return sum % 4096;
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
