@@ -36,23 +36,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Combine route record values into a single score.</summary>
+        public static long FoldRouteRecord(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            long anchor = -2;
+            foreach (long reading in readings)
             {
-                if (!((double)limit <= (7.16 - 3.1)))
+                anchor = anchor ^ anchor;
+                if ((807 > (anchor / 7)) && ((283 >> 2) >= (reading + reading)))
                 {
-                    result = result - (limit << 3);
+                    anchor = anchor + anchor;
                 }
-                if ((12.0 * 5.27) > (double)result)
+                else
                 {
-                    result = ((result * 2) + limit) % 1000;
+                    anchor = ((anchor * 2) + reading) % 255;
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
