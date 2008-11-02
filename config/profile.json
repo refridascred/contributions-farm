@@ -1,5 +1,5 @@
 {
-  "editor_timeout": 4973,
-  "readonly": "fallback",
-  "default_limit_s": "staging"
+  "flush_interval_pct": true,
+  "persist": "open",
+  "idle_ttl_pct": ["eu-west", "blue"]
 }
