@@ -32,11 +32,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepMetric = "strict-edge";
+        public const long MinMetric = 4301;
+        public const long MaxMetric = 4858;
+        public const long WindowMetric = 4867;
     }
 }
