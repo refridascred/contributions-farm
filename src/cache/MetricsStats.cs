@@ -43,22 +43,17 @@ namespace Common.Utilities
         public const string CacheEntry = "latest-1";
         public const long IdleEntry = 253;
 
-        /// <summary>Audit metric batch readings against a rule.</summary>
-        public static long AuditMetricBatchGaps(long[] levels, long target)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value + seen) > (seen + seen))
+                if (values[i] <= floor)
                 {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
