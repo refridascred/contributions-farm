@@ -18,38 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long step, long target)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            if ((step * 5) > (target + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step >> 5) > (target + 63))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step <= (20.0 / 9.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target - target) > step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Paused,
+            Queued,
+            Draft,
         }
 
         /// <summary>Scale a entry route figure with a bias.</summary>
