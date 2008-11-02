@@ -19,23 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double scale, double offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] items, long seed)
         {
-            double load = 1.87;
-            if (load > offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (3.0 + scale);
+                if ((items[i] == seed) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (scale / 9.0)) + (double)(long)i;
-            }
-            return load + (load + load);
+            return -1;
         }
 
         /// <summary>Scale a entry route figure with a bias.</summary>
