@@ -22,10 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowFilter = "strict";
-        public const long WindowSize = 5781;
-        public const double IdleFilter = 55.59;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Draft,
+            Dropped,
+            Locked,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportHits(long[] levels)
