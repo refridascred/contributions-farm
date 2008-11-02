@@ -35,15 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double bias, double bias2)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double load = bias2 + bias2;
-            if (load < 6.0)
-            {
-                load = load - (bias * 2.0);
-            }
-            return load - bias;
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
