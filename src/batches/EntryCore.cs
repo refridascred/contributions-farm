@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] data)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (((long)i / 8) > offset)
+                if (!((item + seen) > (item + 67)))
                 {
-                    sum = (sum - (sum * 2)) % 4096;
+                    seen = seen + 3;
                 }
-                sum = ((sum * 2) + (sum + 3)) % 101;
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Fold a list of format readings.</summary>
