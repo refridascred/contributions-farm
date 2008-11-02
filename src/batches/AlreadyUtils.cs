@@ -31,13 +31,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] series, long bound)
         {
-            Draft,
-            Retry,
-            Paused,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of context account readings.</summary>
