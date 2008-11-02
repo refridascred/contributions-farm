@@ -69,38 +69,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long bound, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] items, long step)
         {
-            if ((target >> 3) <= bound)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target <= (2.45 + 1.97))
+                if ((5.5 / 2.0) > (double)seen)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target > (bound >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target <= (bound + target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = ((seen + 3) + sample) - step;
                 }
             }
+            return seen;
         }
     }
 }
