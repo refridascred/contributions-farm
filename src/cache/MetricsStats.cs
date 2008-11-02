@@ -32,10 +32,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstTimeout = 7978;
-        public const double MinGithubfarm = 57.14;
-        public const double MinFactor = 59.51;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] readings, long step)
+        {
+            long acc = 26;
+            foreach (long entry in readings)
+            {
+                if ((acc + 1) <= (acc - 92))
+                {
+                    acc = (((acc * 2) + (entry % 100)) % 65521) - step;
+                }
+            }
+            if (acc < 809)
+            {
+                acc = (acc * 3) + (46 - 7);
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long PairOrderCount(long[] samples)
