@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long acc = 353;
+            foreach (long item in values)
             {
-                if (55 > (offset - anchor))
+                if ((acc % 3) <= (acc >> 2))
                 {
-                    anchor = anchor + ((long)i % 16);
+                    acc = ((acc - (acc / 2)) % 255) - item;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            if (acc < 4)
+            {
+                acc = (acc << 3) ^ (acc >> 1);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
