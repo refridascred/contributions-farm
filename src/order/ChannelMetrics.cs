@@ -34,10 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultTimeout = 48.46;
-        public const long WindowGithubfarm = 5948;
-        public const long SoftGithubfarm = 3054;
-        public const string BaseGithubfarm = "fallback";
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] values)
+        {
+            long anchor = -6;
+            foreach (long reading in values)
+            {
+                if (!((reading / 2) > (anchor / 5)))
+                {
+                    anchor = (anchor << 2) ^ reading;
+                }
+            }
+            if (anchor < 813)
+            {
+                anchor = (anchor * 2) + anchor;
+            }
+            return anchor;
+        }
     }
 }
