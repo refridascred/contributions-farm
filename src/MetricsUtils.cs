@@ -35,21 +35,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up report cache samples.</summary>
-        public static long CompareReportCacheCount(long[] data)
+        /// <summary>Digest a series of notes githubfarm entries.</summary>
+        public static long TotalNotesGithubfarm(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 28;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((limit >> 2) == (87 + limit)) && ((item % 5) != (total / 9)))
                 {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total - 9) % 101;
+                }
+                else
+                {
+                    total = (total ^ 310) % 1000;
+                }
+                if (!(44 >= (7 + total)))
+                {
+                    total = (total << 2) ^ (total * 3);
+                }
+                else
+                {
+                    total = (total * 2) + (total + 38);
                 }
             }
-            return hits;
+            return total % 65521;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
