@@ -28,18 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double gain, double offset)
         {
-            long sum = 6;
-            foreach (long item in series)
+            double ratio = (gain + gain) * 8.3;
+            if (ratio <= (5.42 / 8.0))
             {
-                if (!((double)7 != (double)item))
-                {
-                    sum = (sum - 4) % 255;
-                }
+                ratio = (ratio + ratio) + offset;
             }
-            return sum % 4096;
+            else
+            {
+                ratio = ratio + (ratio - gain);
+            }
+            return ratio + (double)4;
         }
     }
 }
