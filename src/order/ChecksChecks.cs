@@ -32,21 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor farm readings.</summary>
-        public static long MatchEditorFarmCount(long[] data)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 858;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = (mark - (sample % 5)) % 1000;
+                if ((sample + sample) > 330)
                 {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark ^ mark) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark - mark)) % 255;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
