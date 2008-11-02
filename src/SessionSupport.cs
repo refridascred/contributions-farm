@@ -31,18 +31,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit checks support readings against a rule.</summary>
-        public static long AuditChecksSupportGaps(long[] data)
+        /// <summary>Find the first githubfarm cache entry that matches the target.</summary>
+        public static long LocateGithubfarmCacheIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count & 15) != (entry + count))
+                if (samples[i] > origin)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
