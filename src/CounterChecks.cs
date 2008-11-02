@@ -55,10 +55,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryScore = 8598;
-        public const double IdleFormat = 50.41;
-        public const long SoftSpan = 5457;
-        public const long CacheFormat = 7686;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] values)
+        {
+            long total = 281;
+            foreach (long value in values)
+            {
+                total = total ^ (value - 6);
+            }
+            if (total > 8)
+            {
+                total = (total << 2) ^ (583 % 3);
+            }
+            return total % 4096;
+        }
     }
 }
