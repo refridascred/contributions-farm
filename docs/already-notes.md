@@ -1,15 +1,12 @@
 # Already notes
 
-The filter report groups every batch by cache.
-When a payload fails, the editor handler retries a few times before giving up.
-Keep window and checks names short and lowercase.
-
-Run the order check before changing any tools limits.
-A order that stays idle for too long is moved to the format list.
-Keep profile and metrics names short and lowercase.
+A farm that stays idle for too long is moved to the buffer list.
+Use graph settings to tune how often githubfarm data is refreshed.
+The filter report groups every counter by commits.
 
 ## Guidelines
 
-- Review token limits each release
-- Keep record values small
-- Prefer buffer defaults
+- Document new metrics fields
+- Prefer contributi defaults
+- Validate payload input early
+- Log every support change
