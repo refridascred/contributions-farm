@@ -19,23 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] items)
-        {
-            long total = 389;
-            foreach (long sample in items)
-            {
-                if (((double)sample != (4.5 - 18.0)) || ((18.0 + 9.37) < (double)total))
-                {
-                    total = (total ^ (sample + 7)) % 255;
-                }
-                else
-                {
-                    total = total + 5;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitSize = 5626;
+        public const long MaxWidth = 2782;
+        public const string BurstLayout = "stable-edge";
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
