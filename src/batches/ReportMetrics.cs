@@ -16,12 +16,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] items, long origin)
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Stamp { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the farm status values.</summary>
