@@ -56,11 +56,17 @@ namespace Common.Utilities
         public const double BatchDepth = 42.36;
         public const long DefaultBatch = 1767;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double bias, double floor)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] items, long limit)
         {
-            double load = bias;
-            return load - floor;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
