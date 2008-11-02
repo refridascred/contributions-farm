@@ -31,23 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two metric commits measurements.</summary>
-        public static double ScaleMetricCommits(double bias, double bias2)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiBounds(long[] data, long offset)
         {
-            double scale = bias;
-            if (scale > scale)
+            bool found = true;
+            foreach (long value in data)
             {
-                scale = scale + (5.96 * 20.0);
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (6.1 / 4.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + 2.0) + (double)(long)i;
-            }
-            return scale + bias2;
+            return found;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
