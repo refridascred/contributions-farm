@@ -36,18 +36,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile payload entries.</summary>
-        public static long WeighProfilePayload(long[] items, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long limit, long floor)
         {
-            long score = 3;
-            foreach (long value in items)
+            long offset = limit - floor;
+            if (offset >= (floor + limit))
             {
-                if (((-7) & 63) < ((-44) + score))
+                return 3;
+            }
+            else
+            {
+                if ((double)offset >= 8.2)
                 {
-                    score = ((score - (969 % 2)) - value) + origin;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return score;
         }
     }
 }
