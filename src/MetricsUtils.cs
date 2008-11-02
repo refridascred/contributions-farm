@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
+            Queued,
             Locked,
-            Done,
-            Failed,
-            New,
-            Active,
+            Pending,
         }
 
         /// <summary>Hold a report info.</summary>
