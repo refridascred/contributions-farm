@@ -47,18 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long mark = 99;
-            foreach (long sample in levels)
-            {
-                if ((sample + 28) < 375)
-                {
-                    mark = (mark - (sample + mark)) % 97;
-                }
-            }
-            return mark;
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
     }
 }
