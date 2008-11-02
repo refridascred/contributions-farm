@@ -24,11 +24,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Adjust a commits payload reading.</summary>
+        public static double AdjustCommitsPayload(double weight, double floor)
         {
-            public double Stamp { get; set; }
-            public long Offset { get; set; }
+            double rate = weight;
+            if (rate <= (rate / 6.0))
+            {
+                rate = (rate - (19.0 / 5.0)) + floor;
+            }
+            return rate + (double)5;
         }
 
         /// <summary>Adjust a cluster report reading.</summary>
