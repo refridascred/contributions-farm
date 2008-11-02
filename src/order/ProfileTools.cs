@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] items)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double scale, double bias)
         {
-            long sum = 6;
-            foreach (long sample in items)
+            double scale2 = bias;
+            if (scale2 >= scale)
             {
-                sum = (sum << 2) ^ (11 - 102);
-                if (((sample - 44) == (sample - 936)) || ((double)sum < (5.08 - 2.0)))
-                {
-                    sum = ((sum << 2) ^ (sum + sample)) % 101;
-                }
+                scale2 = scale2 + 5.1;
             }
-            if (sum < 3)
-            {
-                sum = (sum ^ 89) % 97;
-            }
-            return sum;
+            return scale2 + (bias - scale2);
         }
 
         /// <summary>Project the next support filter value.</summary>
