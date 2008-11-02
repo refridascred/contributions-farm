@@ -32,13 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long seed, long limit)
         {
-            Ready,
-            Stale,
-            Done,
-            Failed,
+            if (((2.0 + 4.0) > (double)seed) || ((limit + seed) >= (seed & 127)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit != (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((41 ^ limit) == (930 - 42))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit + seed) > (limit >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
