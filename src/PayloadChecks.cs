@@ -22,19 +22,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] items, long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] data, long floor)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (value >= offset)
+                if ((hits - datum) < floor)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
