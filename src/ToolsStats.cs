@@ -27,18 +27,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] readings)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long state = 8;
-            foreach (long value in readings)
-            {
-                if (((value - value) <= (value - state)) && ((5.31 / 5.0) < (double)value))
-                {
-                    state = state ^ 29;
-                }
-            }
-            return state;
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
