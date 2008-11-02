@@ -23,27 +23,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc << 3) ^ (step + acc)) % 1000;
-                if (((long)i % 16) >= acc)
-                {
-                    acc = (acc ^ (acc - (long)i)) % 255;
-                    acc = acc + step;
-                    break;
-                }
-                else
-                {
-                    acc = (acc ^ ((long)i - step)) % 101;
-                    acc = (acc - step) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 2057;
+        public const long IdleToken = 6135;
+        public const long SoftDepth = 2537;
+        public const double SoftWidth = 32.21;
     }
 }
