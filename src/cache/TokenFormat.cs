@@ -24,13 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the farm counter entries that pass the check.</summary>
+        public static long AuditFarmCounterMatches(long[] items, long offset)
         {
-            public double Total { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((7.8 / 2.0) == (double)offset)
+                {
+                    seen = (seen + 3) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
