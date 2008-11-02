@@ -35,19 +35,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] samples)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long step, long floor)
         {
-            long state = -952;
-            foreach (long entry in samples)
+            if ((14.0 - 7.7) < (double)step)
             {
-                state = state - (entry + state);
-                if ((state < (state << 1)) || ((double)11 <= (double)entry))
+                return 4;
+            }
+            else
+            {
+                if ((double)floor >= 6.6)
                 {
-                    state = state + entry;
+                    return 3;
+                }
+                else
+                {
+                    if (step < (343 % 16))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
