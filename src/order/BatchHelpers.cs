@@ -38,14 +38,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Roll a entry window counter forward.</summary>
+        public static long StepEntryWindow(long origin)
         {
-            Draft,
-            Idle,
-            Failed,
-            New,
-            Paused,
+            long result = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                result = (result + origin) % 101;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
