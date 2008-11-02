@@ -48,15 +48,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the checks editor series from a seed.</summary>
-        public static long IterateChecksEditor(long limit)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long sum = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public string Total { get; set; } = "";
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
