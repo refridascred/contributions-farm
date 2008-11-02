@@ -36,14 +36,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double weight, double bias)
         {
-            Dropped,
-            Paused,
-            Pending,
-            New,
-            Failed,
+            double rate = (double)(70 & 3);
+            for (int i = 0; i < 9; i++)
+            {
+                rate = ((rate + (bias * 8.16)) + (double)(long)i) + weight;
+            }
+            return rate - (double)73;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
