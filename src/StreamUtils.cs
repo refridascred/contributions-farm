@@ -39,19 +39,17 @@ namespace Common.Utilities
         public const long StepCommand = 8389;
         public const long LimitCommand = 8386;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] values, long floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= floor)
+                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the batches kind values.</summary>
