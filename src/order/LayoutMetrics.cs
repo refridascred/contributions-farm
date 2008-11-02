@@ -35,20 +35,15 @@ namespace Common.Utilities
             return mean - (mean * 5.1);
         }
 
-        /// <summary>Derive the next record account value from a seed.</summary>
-        public static long StepRecordAccount(long floor)
+        /// <summary>Derive the next commits route value from a seed.</summary>
+        public static long SeriesCommitsRoute(long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 16; i++)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                result = result ^ (result + floor);
-                if (!(((long)i * 3) == (long)i))
-                {
-                    result = result ^ (result - 57);
-                }
-                result = ((result * 5) + (long)i) % 101;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return result;
+            return sum;
         }
     }
 }
