@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (result <= (step + (long)i))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result - result) % 4096;
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (!((3 + step) != ((long)i + (long)i)))
-                {
-                    result = ((result << 3) ^ (long)i) % 1000;
-                }
-                if (result > (0 ^ (long)i))
-                {
-                    result = (result ^ ((long)i & 31)) % 65521;
-                }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the tools state values.</summary>
