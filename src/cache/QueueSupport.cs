@@ -29,24 +29,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long limit, long bound)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            if ((5 & 63) > (693 - limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if (limit >= (58 + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Closed,
+            Failed,
+            Paused,
         }
     }
 }
