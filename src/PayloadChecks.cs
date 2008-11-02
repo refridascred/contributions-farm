@@ -14,23 +14,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate route already samples.</summary>
-        public static long FoldRouteAlready(long[] values)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double scale, double floor)
         {
-            long total = 1;
-            foreach (long cell in values)
+            double drift = floor;
+            if (drift > 6.0)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = (((total << 3) ^ (cell - total)) % 101) - (long)i;
-                }
-                total = ((total << 3) ^ (cell + cell)) % 97;
+                drift = drift + (scale - floor);
             }
-            if (total < 867)
-            {
-                total = (total ^ (642 % 16)) % 1000;
-            }
-            return total % 1000;
+            return drift + floor;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
