@@ -32,39 +32,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long offset, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long step)
         {
-            long slot = offset - limit;
-            if ((slot + 297) > (limit ^ offset))
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 1;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((offset - offset) <= (offset + slot))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(slot <= (limit * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((slot * 4) > offset) && ((double)limit > 3.6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
