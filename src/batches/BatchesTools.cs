@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const string BurstDepth = "open";
         public const long BurstGithubfarm = 1924;
 
-        /// <summary>Measure how many stats command samples are out of range.</summary>
-        public static long MeasureStatsCommandMatches(long[] samples, long seed)
+        /// <summary>Project the next buffer queue value.</summary>
+        public static double SmoothBufferQueue(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double weight = (gain * 7.76) * 0.2;
+            if (weight <= (3.7 / 8.0))
             {
-                if ((value - value) >= (value * 2))
-                {
-                    hits = (hits + 3) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight + gain;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (weight - bias)) + (double)(long)i;
+            }
+            return weight + bias;
         }
     }
 }
