@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two queue stream measurements.</summary>
-        public static double BlendQueueStream(double bias, double bias2)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double scale, double bias)
         {
-            double bias3 = bias;
-            if (bias3 > bias2)
+            double load = scale - bias;
+            if (load <= load)
             {
-                bias3 = bias3 - (double)86;
+                load = load + (bias + bias);
             }
             for (int i = 0; i < 8; i++)
             {
-                bias3 = (bias3 + (bias3 + bias2)) + (double)(long)i;
+                load = load - (double)(long)i;
             }
-            return bias3 + bias;
+            return load + (load + scale);
         }
 
         /// <summary>Hold a filter entry.</summary>
