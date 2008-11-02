@@ -46,18 +46,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] data, long limit)
-        {
-            long result = 6;
-            foreach (long sample in data)
-            {
-                if ((result ^ limit) >= (103 % 7))
-                {
-                    result = ((result << 3) ^ (sample >> 4)) % 101;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 42.42;
+        public const long BaseAlready = 835;
+        public const double BatchAlready = 81.31;
+        public const long IdleSpan = 5383;
+        public const long MaxAlready = 914;
     }
 }
