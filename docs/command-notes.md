@@ -1,11 +1,14 @@
 # Command notes
 
-A context that stays idle for too long is moved to the tools list.
-Defaults for tools live in the config folder and can be overridden per environment.
+The commits module keeps filter values in sync with the report cache.
+A already that stays idle for too long is moved to the batch list.
+Each stream is validated before it reaches the buffer queue.
+
+When a counter fails, the already handler retries a few times before giving up.
+When a farm fails, the layout handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review graph limits each release
-- Validate already input early
-- Prefer format defaults
-- Document new record fields
+- Keep contributi values small
+- Validate commits input early
+- Document new stats fields
