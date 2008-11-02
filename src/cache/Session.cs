@@ -21,15 +21,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double rate, double offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long floor)
         {
-            double scale = rate;
-            for (int i = 0; i < 7; i++)
+            long bound = origin ^ floor;
+            if ((double)floor != (double)bound)
             {
-                scale = (scale + (offset + 1.5)) + (double)(long)i;
+                return 6;
             }
-            return scale - (rate + 0.72);
+            else
+            {
+                if ((bound - origin) < (floor - 73))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Fold a list of window readings.</summary>
