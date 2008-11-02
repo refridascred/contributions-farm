@@ -27,15 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the account schema series from a seed.</summary>
-        public static long SeriesAccountSchema(long step)
+        /// <summary>Audit editor batches readings against a rule.</summary>
+        public static long MeasureEditorBatchesHits(long[] readings, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                if ((15.0 * 2.6) == (double)floor)
+                {
+                    hits = (hits + 1) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
