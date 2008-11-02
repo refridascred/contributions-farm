@@ -1,14 +1,20 @@
 {
-  "order_timeout": 20.12,
-  "metric_retries": 30,
-  "command_timeout": true,
-  "strict": false,
-  "poll_interval_s": {
-    "entry_interval": [143, 412, 407],
-    "audit": "primary",
-    "default_depth": "standard",
-    "verbose": true,
-    "contributi_ttl": "edge"
+  "retry_ttl": 7120,
+  "flush_capacity_count": 3,
+  "profile_threshold": "cached",
+  "warm_window_pct": false,
+  "strict": {
+    "retry_window_count": 50.88,
+    "readonly": true,
+    "filter_depth": {
+      "persist": 30,
+      "contributi_ttl": 4969,
+      "max_ttl": "stable",
+      "hard_window": "strict",
+      "max_retries": "legacy",
+      "max_delay_pct": 4602
+    },
+    "channel_interval": 13.06
   },
-  "verbose": 4477
+  "retry_window": "cached"
 }
