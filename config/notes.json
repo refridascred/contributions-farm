@@ -1,7 +1,5 @@
 {
-  "warm_depth_pct": 500,
-  "max_ratio_s": false,
-  "strict": 250,
-  "max_retries": "standard",
-  "readonly": 30
+  "batch_ttl": 4342,
+  "enabled": 30,
+  "max_limit": false
 }
