@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long limit, long origin)
-        {
-            if ((2.5 + 0.8) >= (double)origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit < (origin + 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin + limit) < (limit - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstRoute = "latest-1";
+        public const long MaxRoute = 7694;
+        public const long SoftTimeout = 7753;
+        public const double IdleDepth = 70.82;
+        public const string CacheRoute = "strict-edge";
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
