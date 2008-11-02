@@ -20,22 +20,22 @@ namespace Common.Utilities
         public const string DefaultInterval = "local-v2";
         public const long BurstSpan = 7254;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelMatches(long[] items, long origin)
         {
-            long carry = 80;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((double)carry <= (10.0 - 7.76)) && ((double)carry >= (16.0 + 2.71)))
+                if ((double)31 == (double)origin)
                 {
-                    carry = (((carry << 3) ^ (355 & 1)) % 101) ^ value;
+                    seen = (seen + 2) + reading;
                 }
                 else
                 {
-                    carry = (carry ^ 47) % 4096;
+                    seen = seen - 1;
                 }
             }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Check that every order entry entry stays within the limit.</summary>
