@@ -33,19 +33,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every session channel entry stays within the limit.</summary>
-        public static bool VerifySessionChannelRange(long[] samples, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (value < offset)
+                if (sample <= target)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
     }
 }
