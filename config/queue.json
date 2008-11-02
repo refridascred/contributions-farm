@@ -1,7 +1,6 @@
 {
-  "soft_limit_pct": 510,
-  "persist": 7639,
-  "format_retries": "open",
-  "context_depth": "standard",
-  "verbose": "local"
+  "checks_ttl": 99,
+  "min_capacity": 1024,
+  "strict": [344, 136, 404, 153],
+  "batch_window_s": "fallback"
 }
