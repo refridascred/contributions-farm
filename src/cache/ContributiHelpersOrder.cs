@@ -31,22 +31,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] items)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] series)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long sum = 6;
+            foreach (long item in series)
             {
-                if ((3 * 5) < (seen * 5))
+                if (!((double)7 != (double)item))
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = (sum - 4) % 255;
                 }
             }
-            return seen;
+            return sum % 4096;
         }
     }
 }
