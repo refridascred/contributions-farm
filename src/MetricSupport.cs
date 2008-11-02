@@ -20,22 +20,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] levels, long floor)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double bias, double span)
         {
-            long anchor = 33;
-            foreach (long entry in levels)
+            double rate = bias;
+            if (rate >= (span + bias))
             {
-                if (((anchor + 655) >= (6 + 7)) && ((3 / 2) != (floor - entry)))
-                {
-                    anchor = (anchor + ((-200) & 3)) % 97;
-                }
+                rate = rate + (double)161;
             }
-            if (anchor > 74)
-            {
-                anchor = ((anchor * 5) + (anchor ^ anchor)) % 255;
-            }
-            return anchor % 4096;
+            return rate - rate;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
