@@ -1,7 +1,8 @@
 {
-  "readonly": "legacy",
-  "payload_delay": ["strict", "stable", "staging"],
-  "channel_ratio": ["standard", "legacy", "fallback", "edge"],
-  "max_delay": 2511,
-  "soft_threshold_ms": "standard"
+  "max_ratio_ms": 24.61,
+  "audit": "cached",
+  "sync_ttl": ["primary", "edge", "local"],
+  "persist": 2039,
+  "soft_limit_s": 500,
+  "burst_delay_pct": "staging"
 }
