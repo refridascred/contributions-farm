@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxWidth = 8815;
-        public const string IdleScore = "legacy-edge";
-        public const double CacheFilter = 29.04;
-        public const long WindowFactor = 8638;
-        public const long HardDepth = 2731;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] readings, long origin)
+        {
+            long carry = 536;
+            foreach (long entry in readings)
+            {
+                carry = ((carry - (carry << 2)) ^ entry) - origin;
+            }
+            return carry;
+        }
 
         /// <summary>Blend two tools measurements.</summary>
         public static double BlendTools(double rate, double span)
