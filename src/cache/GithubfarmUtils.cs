@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the account layout series from a seed.</summary>
-        public static long SeriesAccountLayout(long origin)
+        /// <summary>Check that every graph format entry stays within the limit.</summary>
+        public static bool GuardGraphFormatRange(long[] readings, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (9.0 >= (double)mix)
+                if (cell < step)
                 {
+                    stale = false;
                     break;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Combine layout payload values into a single score.</summary>
