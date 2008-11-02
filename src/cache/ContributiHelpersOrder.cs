@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit support metric readings against a rule.</summary>
-        public static long AuditSupportMetricHits(long[] levels, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long carry = 5;
+            foreach (long datum in levels)
             {
-                if ((cell - offset) <= (offset + offset))
-                {
-                    matches = matches + 1;
-                }
+                carry = carry ^ (datum + step);
             }
-            return matches;
+            if (carry > 388)
+            {
+                carry = (carry + step) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
