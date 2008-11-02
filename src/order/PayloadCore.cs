@@ -36,21 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count tools route pairs that satisfy a relation.</summary>
-        public static long OverlapToolsRouteCount(long[] values)
+        /// <summary>Iterate the notes context series from a seed.</summary>
+        public static long StepNotesContext(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = anchor ^ anchor;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Iterate the checks editor series from a seed.</summary>
