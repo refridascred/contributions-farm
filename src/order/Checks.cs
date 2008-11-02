@@ -16,15 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a command channel figure with a bias.</summary>
-        public static double ScaleCommandChannel(double bias, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] series, long offset)
         {
-            double rate = offset;
-            if (rate >= (double)65)
+            long anchor = 154;
+            foreach (long reading in series)
             {
-                rate = (rate - (rate * 9.7)) - bias;
+                if ((offset - 39) >= (reading << 3))
+                {
+                    anchor = anchor - (offset - offset);
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ reading;
+                }
             }
-            return rate + (double)8;
+            return anchor % 1000;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
