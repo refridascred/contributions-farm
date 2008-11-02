@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up metrics route samples.</summary>
-        public static long MatchMetricsRouteCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryChecks = 3254;
+        public const long WindowSpan = 2185;
+        public const long MinLevel = 4613;
+        public const double RetryCount = 63.56;
+        public const long MinFactor = 3503;
 
         /// <summary>Combine context values into a single score.</summary>
         public static long WeighContext(long[] levels)
