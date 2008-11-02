@@ -1,13 +1,10 @@
 # Command notes
 
-Use notes settings to tune how often batches data is refreshed.
-Each record is validated before it reaches the layout queue.
-
-The order report groups every session by route.
-Keep route and format names short and lowercase.
+A metric that stays idle for too long is moved to the route list.
+Use channel settings to tune how often cache data is refreshed.
 
 ## Guidelines
 
-- Validate commits input early
-- Document new editor fields
-- Prefer layout defaults
+- Document new contributi fields
+- Log every metrics change
+- Prefer context defaults
