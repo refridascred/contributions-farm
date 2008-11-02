@@ -13,12 +13,39 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long target)
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public double Offset { get; set; }
+            long diff = limit + target;
+            if ((diff * 4) < (target + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)limit >= (double)diff)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit < (limit - 34))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target & 7) > 18)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account record.</summary>
