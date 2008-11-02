@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] series)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (value <= (seen * 2))
+                if (55 > (seed >> 3))
                 {
-                    seen = seen + 2;
+                    carry = ((carry << 3) ^ (carry - carry)) % 255;
+                    carry = carry ^ (long)i;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Adjust a format reading.</summary>
