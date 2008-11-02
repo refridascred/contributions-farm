@@ -1,6 +1,5 @@
 {
-  "warm_threshold_s": 20,
-  "channel_window": "fallback",
-  "base_threshold": "strict",
-  "poll_threshold_s": "eu-west"
+  "max_retries_pct": ["standard", "strict"],
+  "max_delay_count": 75,
+  "retry_retries": 9.55
 }
