@@ -44,15 +44,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 24; i++)
+            long anchor = -706;
+            foreach (long cell in samples)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                anchor = ((anchor << 2) ^ (cell - anchor)) % 255;
             }
-            return mark;
+            if (anchor > 475)
+            {
+                anchor = anchor - (anchor + 0);
+            }
+            return anchor % 65521;
         }
     }
 }
