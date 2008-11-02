@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long MinSize = 8036;
         public const double MaxSize = 43.58;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double weight, double span)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] samples, long floor)
         {
-            double ratio = (span + span) / 9.0;
-            return (ratio + 15.0) + weight;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
