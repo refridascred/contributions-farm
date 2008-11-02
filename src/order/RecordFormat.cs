@@ -38,17 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context buffer series from a seed.</summary>
-        public static long DeriveContextBuffer(long offset)
+        /// <summary>Compare every pair of contributi tools readings.</summary>
+        public static long PairContributiToolsCount(long[] series)
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix << 3) ^ (offset / 4)) % 4096;
-                mix = (mix + (mix << 3)) % 1000;
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Measure how many layout filter samples are out of range.</summary>
