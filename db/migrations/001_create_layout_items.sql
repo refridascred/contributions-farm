@@ -2,10 +2,12 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
+    weight REAL,
     state TEXT NOT NULL DEFAULT 'new',
-    created_at TIMESTAMP,
-    ratio REAL,
-    weight REAL
+    label TEXT,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
+CREATE INDEX IF NOT EXISTS idx_layout_items_label ON layout_items (label);
+
+INSERT INTO layout_items (owner, weight, state, label, token) VALUES ('strict', 91.74, 'fallback', 'staging', 'local');
