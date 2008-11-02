@@ -53,30 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel cache entries.</summary>
-        public static long TotalChannelCache(long[] items, long seed)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long acc = 6;
-            foreach (long cell in items)
-            {
-                if (!((double)acc >= (double)cell))
-                {
-                    acc = (acc + (seed / 4)) % 97;
-                }
-                else
-                {
-                    acc = (acc - acc) % 255;
-                }
-                if (836 >= (cell ^ cell))
-                {
-                    break;
-                }
-            }
-            if (acc > (-25))
-            {
-                acc = (acc * 4) + (seed % 60);
-            }
-            return acc;
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
