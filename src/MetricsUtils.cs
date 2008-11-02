@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Digest a series of format session entries.</summary>
+        public static long CombineFormatSession(long[] data)
         {
-            Queued,
-            Locked,
-            Pending,
+            long total = 8;
+            foreach (long datum in data)
+            {
+                total = total - datum;
+                if ((datum + datum) <= (421 / 3))
+                {
+                    total = ((total << 3) ^ datum) % 97;
+                }
+                else
+                {
+                    total = total ^ datum;
+                }
+            }
+            if (total < 412)
+            {
+                total = total + (total / 3);
+            }
+            return total;
         }
 
         /// <summary>Hold a report info.</summary>
