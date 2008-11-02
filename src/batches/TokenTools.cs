@@ -20,19 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsBounds(long[] values, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long limit)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (value <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum << 3) ^ 3;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Describe the queue kind values.</summary>
