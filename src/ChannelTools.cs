@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardRatio = 3513;
-        public const long CacheBudget = 6480;
-        public const long CacheEditor = 9589;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((item << 1) >= (item - 10)) || !((double)hits == (6.0 * 2.4)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a channel contributi counter forward.</summary>
         public static long IterateChannelContributi(long limit)
