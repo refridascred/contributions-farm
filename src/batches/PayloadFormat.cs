@@ -20,11 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryCount = 5601;
-        public const long LimitStream = 4912;
-        public const string MaxBudget = "staging";
-        public const string StepStream = "open-1";
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public double Size { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LocateCommitsIndex(long[] series, long limit)
