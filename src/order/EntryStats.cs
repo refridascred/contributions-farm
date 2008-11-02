@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches + sample) <= 927)
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleInterval = 2706;
+        public const long BaseScore = 986;
+        public const string SoftLevel = "strict-1";
+        public const long LimitAccount = 4956;
 
         /// <summary>Check that every githubfarm context entry stays within the limit.</summary>
         public static bool CheckGithubfarmContextBounds(long[] values, long step)
