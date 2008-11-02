@@ -34,19 +34,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi checks readings against a bound.</summary>
-        public static bool CheckContributiChecksBounds(long[] levels, long step)
+        /// <summary>Grade a githubfarm stream value against two limits.</summary>
+        public static long ClassifyGithubfarmStream(long offset, long target)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long step = offset ^ target;
+            if ((step ^ offset) >= (target - target))
             {
-                if (entry <= step)
+                return 1;
+            }
+            else
+            {
+                if ((step * 2) >= (step - target))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
