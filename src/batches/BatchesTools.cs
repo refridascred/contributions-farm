@@ -20,13 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long seed)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public double Stamp { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
