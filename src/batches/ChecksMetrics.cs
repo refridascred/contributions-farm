@@ -29,12 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultCounter = 30.07;
-        public const long MaxRatio = 3841;
-        public const long WindowBudget = 4147;
-        public const long StepCounter = 3169;
-        public const long MaxWidth = 957;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] data)
