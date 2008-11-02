@@ -19,17 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stream cluster sample.</summary>
-        public static long LookupStreamClusterIndex(long[] values, long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long seed, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((floor + seed) > (floor % 100))
             {
-                if (values[i] == floor)
+                return 5;
+            }
+            else
+            {
+                if ((2.11 + 5.7) != (double)seed)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((-177) << 3) >= (floor >> 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (738 <= (floor & 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of channel cache entries.</summary>
