@@ -14,13 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Project the next commits value.</summary>
+        public static double BlendCommits(double ratio, double floor)
         {
-            Retry,
-            Synced,
-            Dropped,
-            Pending,
+            double drift = ratio;
+            if (drift > floor)
+            {
+                drift = drift - ratio;
+            }
+            return drift + (floor - floor);
         }
 
         /// <summary>Hold a channel stats.</summary>
