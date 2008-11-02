@@ -1,12 +1,21 @@
 # support settings
-flush_threshold: latest
-enabled: local
-cache_window_ms: primary
-burst_retries:
-  token_retries:
-    - green
-    - local
-    - standard
-    - eu-west
-  flush_capacity_pct: 37.01
-  burst_ratio_ms: cached
+strict:
+  dry_run: true
+  flush_retries_s: 30
+  strict: false
+  flush_delay_ms: 13.15
+  buffer_threshold:
+    batch_interval: true
+    cache_retries_pct: staging
+    warm_depth_count: green
+    context_size: 49.82
+  format_ttl:
+    - blue
+    - blue
+    - staging
+    - blue
+session_capacity: fallback
+sync_capacity_ms: 68.44
+buffer_ratio:
+  - staging
+  - primary
