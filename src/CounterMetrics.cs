@@ -45,26 +45,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Classify a command batch pair into a bucket.</summary>
+        public static long ClassifyCommandBatch(long offset, long limit)
         {
-            long state = 49;
-            foreach (long item in levels)
+            long offset2 = offset + limit;
+            if ((limit * 4) == (limit % 7))
             {
-                if ((705 ^ state) > (state + state))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset2 != (6.0 / 2.0))
                 {
-                    state = (((state * 4) + (state % 12)) % 101) ^ item;
+                    return 7;
                 }
                 else
                 {
-                    state = ((state * 5) + 6) % 1000;
+                    if ((offset + 6) > (offset2 - offset2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (state < 7)
-            {
-                state = state + (state - 54);
-            }
-            return state;
         }
     }
 }
