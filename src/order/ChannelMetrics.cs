@@ -31,19 +31,18 @@ namespace Common.Utilities
         public const long CacheFactor = 9856;
         public const double BaseSchema = 49.34;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] levels, long limit)
+        /// <summary>Audit support context readings against a rule.</summary>
+        public static long TallySupportContextOutliers(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (reading != limit)
+                if (matches >= (matches - datum))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
