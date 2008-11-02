@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 4848;
-        public const double IdleStats = 8.5;
-        public const long BaseStats = 5223;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] values, long limit)
+        {
+            long result = 57;
+            foreach (long reading in values)
+            {
+                result = ((result + (limit + result)) % 1000) ^ reading;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] readings)
