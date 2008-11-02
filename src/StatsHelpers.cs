@@ -55,24 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph batches input into a small class.</summary>
-        public static long GradeGraphBatches(long floor, long floor2)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double AdjustStats(double gain, double offset)
         {
-            if (((floor << 1) <= (floor2 + 404)) && (floor2 >= (floor2 / 8)))
+            double load = gain + offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
+                load = (load - 2.0) - (double)(long)i;
             }
-            else
-            {
-                if (((floor2 * 5) != (113 * 3)) || ((floor * 5) == (floor - 38)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return load + offset;
         }
 
         /// <summary>Describe the batches phase values.</summary>
