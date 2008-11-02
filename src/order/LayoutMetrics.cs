@@ -20,19 +20,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine commits window values into a single score.</summary>
-        public static long ScoreCommitsWindow(long[] samples, long floor)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] values, long seed)
         {
-            long score = 1;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score + floor) % 4096) + sample;
+                if (values[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 494)
-            {
-                score = ((score << 3) ^ (61 + floor)) % 97;
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
