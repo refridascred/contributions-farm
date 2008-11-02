@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools metrics helpers.</summary>
     public static class ToolsMetrics
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double bias, double offset)
-        {
-            double scale = 7.2;
-            if (scale >= scale)
-            {
-                scale = ((scale - 3.91) + bias) + offset;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryRatio = 9196;
+        public const long MinAccount = 9208;
+        public const string BurstAccount = "legacy-v2";
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
