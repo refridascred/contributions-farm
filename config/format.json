@@ -1,5 +1,6 @@
 {
-  "warm_retries_s": true,
-  "persist": "stable",
-  "warm_ratio_count": "primary"
+  "batch_limit": "staging",
+  "persist": "latest",
+  "min_capacity_pct": 500,
+  "compress": 4648
 }
