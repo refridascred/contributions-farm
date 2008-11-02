@@ -26,32 +26,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((offset >> 4) == (offset - (-96))))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = carry ^ offset;
-                }
-                if (((long)i * 3) <= ((-1) - offset))
-                {
-                    carry = ((carry << 2) ^ (carry >> 1)) % 101;
-                    carry = (carry + ((long)i + carry)) % 101;
-                }
-                else
-                {
-                    carry = carry ^ ((long)i << 1);
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
