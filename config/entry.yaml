@@ -1,6 +1,13 @@
 # entry settings
-session_ttl: 53.99
-retry_threshold: local
-default_window_count: staging
-metrics_ttl: false
-strict: stable
+max_window_s: primary
+editor_window:
+  farm_ratio: legacy
+  retry_ttl: 1.2
+  enabled: staging
+  commits_capacity: 8113
+  sync_limit_pct: 70
+  flush_capacity_count: false
+retry_retries_ms: cached
+hard_ttl_s: 9115
+tools_size: 90
+warm_limit: 71.07
