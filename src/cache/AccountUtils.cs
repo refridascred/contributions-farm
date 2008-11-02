@@ -13,23 +13,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double gain, double offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long target, long target2)
         {
-            double load = (double)7 * 4.3;
-            if (load <= 7.7)
+            long diff = target + target2;
+            if ((target2 % 2) < (diff ^ target))
             {
-                load = load + offset;
+                return 8;
             }
             else
             {
-                load = load - gain;
+                if ((8.12 * 1.4) == (double)target2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)target > (5.3 - 10.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (4.0 < (double)target2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (load * 4.2)) - (double)(long)i;
-            }
-            return load + (gain / 9.0);
         }
 
         /// <summary>Hold a stats record.</summary>
