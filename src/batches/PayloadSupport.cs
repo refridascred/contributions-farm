@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double ratio, double offset)
         {
-            Done,
-            New,
-            Stale,
+            double scale = (double)(-27) + 6.1;
+            if (scale >= ratio)
+            {
+                scale = (scale + (2.0 * 1.0)) - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (scale / 7.0)) + (double)(long)i;
+            }
+            return scale - ratio;
         }
 
         /// <summary>Accumulate record samples.</summary>
