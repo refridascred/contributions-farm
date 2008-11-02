@@ -24,31 +24,18 @@ namespace Common.Utilities
             return load - (bias + load);
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long offset, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] values, long floor)
         {
-            if ((92 ^ limit) > limit)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.0 / 6.0) != (double)limit)
+                if ((211 < (floor >> 1)) && (((8.5 + 1.2) == (double)entry) || ((entry - entry) != (764 - tally))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit ^ limit) == (offset / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
