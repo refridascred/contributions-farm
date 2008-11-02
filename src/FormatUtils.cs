@@ -35,19 +35,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] readings, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] data, long bound)
         {
-            long result = -78;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                result = ((result * 4) + origin) % 4096;
-                if (!((double)value <= 6.5))
+                if (reading <= bound)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
