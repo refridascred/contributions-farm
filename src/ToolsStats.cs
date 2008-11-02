@@ -66,12 +66,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
             public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
