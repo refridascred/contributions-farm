@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long MaxWidth = 1419;
         public const long DefaultTimeout = 464;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] readings, long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Audit queue notes readings against a rule.</summary>
