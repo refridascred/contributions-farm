@@ -32,11 +32,13 @@ namespace Common.Utilities
             return scale - (rate + 0.72);
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            Queued,
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
