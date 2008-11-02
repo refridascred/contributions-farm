@@ -24,15 +24,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Match up farm stats samples.</summary>
+        public static long OverlapFarmStatsCount(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
