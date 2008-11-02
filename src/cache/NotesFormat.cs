@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long BurstLevel = 8536;
         public const string MaxMetric = "strict-v2";
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] readings, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (value >= offset)
+                if (value <= offset)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
