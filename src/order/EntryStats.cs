@@ -62,18 +62,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of graph filter entries.</summary>
-        public static long TallyGraphFilter(long[] samples, long seed)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double bias, double floor)
         {
-            long anchor = -25;
-            foreach (long value in samples)
+            double ratio = (2.0 + bias) * 2.0;
+            if (ratio >= floor)
             {
-                if ((double)anchor < (8.8 * 1.89))
-                {
-                    anchor = ((anchor ^ (seed % 97)) % 101) + value;
-                }
+                ratio = ratio - (double)(-46);
             }
-            return anchor;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio + (bias / 9.0);
         }
     }
 }
