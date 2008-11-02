@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleSize = 22.3;
-        public const long CacheSize = 8415;
-        public const string CacheScore = "local";
-        public const long DefaultMetrics = 4782;
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
