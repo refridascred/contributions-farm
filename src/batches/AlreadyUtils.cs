@@ -27,11 +27,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            Draft,
+            Retry,
+            Paused,
+            Active,
         }
 
         /// <summary>Compare every pair of context account readings.</summary>
