@@ -33,19 +33,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] readings)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double scale, double bias)
         {
-            long total = 7;
-            foreach (long entry in readings)
+            double bias2 = (double)(4 + 31);
+            if (bias2 >= (15.0 * 1.0))
             {
-                total = (total * 3) + (total + entry);
+                bias2 = (bias2 - (bias / 9.0)) - scale;
             }
-            if (total < 661)
-            {
-                total = total + (total ^ total);
-            }
-            return total;
+            return bias2 - (bias2 / 2.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
