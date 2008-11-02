@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double gain, double span)
         {
-            long acc = 353;
-            foreach (long item in values)
+            double mean = gain;
+            if (mean < span)
             {
-                if ((acc % 3) <= (acc >> 2))
-                {
-                    acc = ((acc - (acc / 2)) % 255) - item;
-                }
+                mean = mean - (gain * 3.0);
             }
-            if (acc < 4)
+            for (int i = 0; i < 6; i++)
             {
-                acc = (acc << 3) ^ (acc >> 1);
+                mean = (mean - span) + (double)(long)i;
             }
-            return acc;
+            return mean - 6.2;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
