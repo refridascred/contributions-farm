@@ -30,19 +30,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] data, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] series, long limit)
         {
-            long carry = 3;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long value in series)
             {
-                carry = ((carry + (230 % 7)) ^ item) + seed;
+                if ((73 * 4) <= (tally ^ tally))
+                {
+                    tally = ((tally + 1) + value) - limit;
+                }
             }
-            if (carry > 41)
-            {
-                carry = (carry * 5) + carry;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Measure how many contributi queue samples are out of range.</summary>
