@@ -25,23 +25,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] samples)
-        {
-            long score = 0;
-            foreach (long sample in samples)
-            {
-                if ((score + 5) != (sample << 1))
-                {
-                    score = (score + (score / 6)) % 97;
-                }
-                else
-                {
-                    score = ((score * 4) + (sample + score)) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftScore = 6820;
+        public const double DefaultFarm = 58.24;
+        public const string HardScore = "primary-edge";
+        public const string MaxFarm = "open";
+        public const string DefaultLevel = "stable-1";
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long CountTokenGaps(long[] values)
