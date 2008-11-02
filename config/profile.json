@@ -1,8 +1,19 @@
 {
-  "warm_ttl_count": [213, 437],
-  "warm_depth_ms": "standard",
-  "report_ttl": "eu-west",
-  "soft_window_count": 25,
-  "payload_threshold": 502,
-  "strict": 73.64
+  "persist": "local",
+  "min_window_pct": {
+    "verbose": 87,
+    "idle_window": 1405,
+    "burst_ttl": "local",
+    "max_ttl_ms": "green",
+    "farm_limit": 31.94,
+    "hard_delay": 58
+  },
+  "dry_run": "latest",
+  "entry_timeout": {
+    "dry_run": 30,
+    "soft_threshold_count": 16.68,
+    "enabled": 1024
+  },
+  "hard_ttl_s": [166, 18, 276],
+  "poll_threshold": 35.81
 }
