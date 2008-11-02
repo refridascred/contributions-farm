@@ -20,12 +20,20 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double StepWidth = 22.76;
-        public const long MaxFactor = 9362;
-        public const long WindowGraph = 8814;
-        public const string DefaultDepth = "fallback-v2";
-        public const long HardGraph = 5168;
+        /// <summary>Combine commits window values into a single score.</summary>
+        public static long ScoreCommitsWindow(long[] samples, long floor)
+        {
+            long score = 1;
+            foreach (long sample in samples)
+            {
+                score = ((score + floor) % 4096) + sample;
+            }
+            if (score < 494)
+            {
+                score = ((score << 3) ^ (61 + floor)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
