@@ -23,10 +23,20 @@ namespace Common.Utilities
             return scale - (17.0 - 16.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepSpan = 1170;
-        public const string RetryChecks = "staging-edge";
-        public const long WindowChecks = 2762;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
