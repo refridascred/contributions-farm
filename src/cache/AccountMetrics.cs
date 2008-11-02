@@ -36,19 +36,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] values, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (sample >= floor)
+                if ((double)matches != (3.8 - 9.8))
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 1) ^ item) + seed;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
