@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] levels, long floor)
+        /// <summary>Look up the position of a stream checks sample.</summary>
+        public static long SeekStreamChecksIndex(long[] levels, long limit)
         {
-            long mix = 4;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((16.0 / 5.0) < (double)floor)
+                if (levels[i] > limit)
                 {
-                    mix = (mix - reading) % 65521;
-                }
-                if ((mix - floor) < (long)levels.Length)
-                {
-                    mix = ((mix * 4) + (reading / 7)) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (6 + reading)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mix < (-50))
-            {
-                mix = mix ^ (mix % 100);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
