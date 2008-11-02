@@ -44,19 +44,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double ratio, double floor)
+        /// <summary>Derive the next githubfarm filter value from a seed.</summary>
+        public static long DeriveGithubfarmFilter(long step)
         {
-            double mean = 2.17;
-            if (mean <= (ratio / 5.0))
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                mean = (mean - (ratio * 6.72)) + floor;
+                mix = ((mix * 5) + (step - step)) % 4096;
+                mix = (mix ^ mix) % 101;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean + (double)7;
-            }
-            return mean + (double)(-818);
+            return mix;
         }
     }
 }
