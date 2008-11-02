@@ -1,6 +1,10 @@
 # githubfarm settings
-cache_threshold: 15.38
-retry_window: 10
-batch_ttl: false
-retry_depth_count: 22
-audit: local
+warm_limit_s: open
+flush_depth:
+  - 250
+  - 382
+  - 10
+  - 241
+idle_retries: 5995
+min_size_pct: false
+filter_retries: 88.49
