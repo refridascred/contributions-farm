@@ -33,21 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count format filter pairs that satisfy a relation.</summary>
-        public static long MatchFormatFilterCount(long[] items)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading > target)
                 {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
