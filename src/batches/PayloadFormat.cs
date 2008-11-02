@@ -53,13 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Idle,
-            Locked,
-            Dropped,
-            Draft,
+            Closed,
+            Done,
+            Active,
+            Synced,
+            Retry,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
