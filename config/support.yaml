@@ -1,4 +1,17 @@
 # support settings
-batch_ratio: 60
-enabled: latest
-flush_ratio_count: true
+poll_retries_ms: 100
+persist: 62
+base_depth_pct: 5.62
+window_ttl:
+  record_capacity: fallback
+  compress: false
+  idle_interval_count: 97.66
+  audit: 7697
+  hard_delay:
+    - local
+    - legacy
+    - standard
+    - edge
+  max_delay: false
+retry_window_ms: standard
+base_limit_s: staging
