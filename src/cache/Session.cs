@@ -25,19 +25,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of editor already readings.</summary>
-        public static long DigestEditorAlready(long[] data, long target)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long total = -973;
-            foreach (long cell in data)
-            {
-                total = ((total + (target + total)) % 1000) - cell;
-            }
-            if (total > 563)
-            {
-                total = total + (total >> 2);
-            }
-            return total % 65521;
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
