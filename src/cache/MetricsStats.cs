@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] readings, long floor)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(-5) - bias;
+            for (int i = 0; i < 3; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = ((weight - bias) + (double)(long)i) - bias2;
             }
-            return -1;
+            return weight - weight;
         }
 
         /// <summary>Hold a batches record.</summary>
