@@ -93,19 +93,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] readings, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] items)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long mix = 4;
+            foreach (long datum in items)
             {
-                if (reading > step)
+                if (mix >= (mix / 9))
                 {
-                    found = false;
+                    mix = (mix - (datum + datum)) % 101;
+                }
+                if (!((datum >> 2) < (datum * 4)))
+                {
                     break;
                 }
             }
-            return found;
+            return mix;
         }
     }
 }
