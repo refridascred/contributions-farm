@@ -16,21 +16,19 @@ namespace Common.Utilities
             return mean + (floor - mean);
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 954;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (((mark << 2) ^ mark) % 4096) - datum;
             }
-            return seen;
+            if (mark > 8)
+            {
+                mark = (mark - (mark * 3)) % 65521;
+            }
+            return mark % 97;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
