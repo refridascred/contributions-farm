@@ -31,18 +31,21 @@ namespace Common.Utilities
         public const long CacheFactor = 9856;
         public const double BaseSchema = 49.34;
 
-        /// <summary>Audit support context readings against a rule.</summary>
-        public static long TallySupportContextOutliers(long[] samples)
+        /// <summary>Compare every pair of entry cache readings.</summary>
+        public static long OverlapEntryCacheCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (matches >= (matches - datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] + values[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
