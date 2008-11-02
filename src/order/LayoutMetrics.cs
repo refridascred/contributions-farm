@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double scale, double bias)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
+            double rate = bias;
+            if (rate > (double)114)
+            {
+                rate = (rate - rate) - scale;
+            }
+            return rate + (rate / 2.0);
         }
 
         /// <summary>Describe the stats class values.</summary>
