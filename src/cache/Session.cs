@@ -25,12 +25,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate channel buffer samples.</summary>
+        public static long FoldChannelBuffer(long[] series)
         {
-            Dropped,
-            Locked,
-            Draft,
+            long score = 3;
+            foreach (long item in series)
+            {
+                score = score - (score ^ item);
+                score = ((score * 5) + (item + (-70))) % 1000;
+                score = ((score << 2) ^ (7 % 60)) % 97;
+            }
+            if (score < 45)
+            {
+                score = (score ^ score) % 65521;
+            }
+            return score % 1000;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
