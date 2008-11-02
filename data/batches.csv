@@ -1,7 +1,10 @@
-id,rank,state,token
-1,39.07,42.14,52.26
-2,cached,748,46.28
-3,stable,289,499
-4,cached,cached,fallback
-5,eu-west,standard,legacy
-6,13.4,edge,strict
+id,score,ratio
+1,960,latest
+2,green,413
+3,583,44
+4,593,76.32
+5,803,802
+6,open,50.34
+7,legacy,fallback
+8,52.92,blue
+9,559,910
