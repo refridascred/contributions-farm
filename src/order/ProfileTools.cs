@@ -24,31 +24,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long seed, long limit)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long seed)
         {
-            if ((limit % 100) == (seed >> 1))
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 7;
+                state = ((state * 5) + state) % 97;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((270 + limit) == (seed * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit / 9) < (seed + limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
