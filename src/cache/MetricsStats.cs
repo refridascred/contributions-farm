@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long seed, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] series, long target)
         {
-            if ((double)limit == (4.42 / 6.0))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit < 3.75)
+                if (entry <= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Roll a editor record counter forward.</summary>
