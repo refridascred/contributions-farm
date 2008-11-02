@@ -69,16 +69,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] items, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                state = (state - (bound % 64)) % 101;
-                state = ((state * 3) + (long)i) % 4093;
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
     }
 }
