@@ -12,10 +12,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinSize = 68.62;
-        public const string WindowAccount = "open-v2";
-        public const string BaseAccount = "latest-v2";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "alpha-edge";
+        public const long BurstSize = 622;
+        public const long BatchGithubfarm = 5558;
+        public const long RetryGithubfarm = 1353;
+        public const long LimitTimeout = 6451;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] data)
