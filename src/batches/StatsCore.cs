@@ -54,23 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] values, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long anchor = 4;
-            foreach (long value in values)
-            {
-                anchor = ((anchor * 4) + (anchor * 4)) % 1000;
-                if ((double)anchor == (6.0 - 5.0))
-                {
-                    anchor = (anchor << 2) ^ (anchor % 3);
-                }
-                if (((target - (-206)) == (anchor << 2)) && ((anchor & 31) >= (value % 97)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Closed,
+            Active,
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a filter header.</summary>
