@@ -23,11 +23,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long origin, long floor)
         {
-            public double Weight { get; set; }
-            public long Total { get; set; }
+            long delta = origin - floor;
+            if ((89 + floor) >= (delta + origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((20.0 - 8.5) <= (double)delta)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Adjust a checks reading.</summary>
