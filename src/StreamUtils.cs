@@ -25,11 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double gain, double floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long target)
         {
-            double scale = gain * 3.2;
-            return (scale + (gain * 6.18)) + floor;
+            long state = target;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
