@@ -42,17 +42,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] data, long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up payload samples.</summary>
