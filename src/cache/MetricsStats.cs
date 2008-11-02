@@ -18,16 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor record counter forward.</summary>
-        public static long DeriveEditorRecord(long bound)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = (anchor ^ bound) % 97;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Grade a profile window value against two limits.</summary>
