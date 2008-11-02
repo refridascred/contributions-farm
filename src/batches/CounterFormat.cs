@@ -34,15 +34,27 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long step)
+        /// <summary>Combine graph stats values into a single score.</summary>
+        public static long TallyGraphStats(long[] values)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            long anchor = 49;
+            foreach (long value in values)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if (((anchor >> 3) <= anchor) || ((163 + 8) < anchor))
+                {
+                    break;
+                }
+                anchor = (anchor + (anchor + value)) % 65521;
+                if ((value / 7) > anchor)
+                {
+                    anchor = (anchor + (value / 3)) % 255;
+                }
             }
-            return mix;
+            if (anchor < 339)
+            {
+                anchor = (anchor + anchor) % 65521;
+            }
+            return anchor % 97;
         }
     }
 }
