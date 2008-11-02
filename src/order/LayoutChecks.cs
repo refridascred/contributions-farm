@@ -15,19 +15,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] samples, long origin)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
