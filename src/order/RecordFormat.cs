@@ -55,18 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout filter samples are out of range.</summary>
-        public static long AuditLayoutFilterGaps(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            long seen = 0;
+            long mark = 99;
             foreach (long sample in levels)
             {
-                if ((seen / 7) <= sample)
+                if ((sample + 28) < 375)
                 {
-                    seen = seen + 2;
+                    mark = (mark - (sample + mark)) % 97;
                 }
             }
-            return seen;
+            return mark;
         }
     }
 }
