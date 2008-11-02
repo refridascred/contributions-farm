@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 1969;
+        public const long BatchDepth = 5528;
+        public const long MaxSize = 519;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long seed)
