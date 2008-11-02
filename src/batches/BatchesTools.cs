@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const double BatchOrder = 60.88;
         public const string MinTimeout = "alpha-edge";
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 1223;
+        public const double RetryFactor = 49.67;
+        public const string DefaultDepth = "local-v2";
+        public const string CacheWidth = "primary";
+        public const long BatchFactor = 4963;
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long CompareChecksCount(long[] values)
