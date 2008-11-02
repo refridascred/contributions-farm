@@ -1,8 +1,5 @@
 {
-  "entry_size": 14.45,
-  "persist": 60,
-  "checks_threshold": 43.23,
-  "warm_threshold_s": 61,
-  "burst_limit_pct": 100,
-  "editor_retries": 40
+  "soft_delay": 55.27,
+  "buffer_retries": "edge",
+  "min_timeout_s": 8.41
 }
