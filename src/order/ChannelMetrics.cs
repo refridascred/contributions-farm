@@ -31,21 +31,22 @@ namespace Common.Utilities
         public const long CacheFactor = 9856;
         public const double BaseSchema = 49.34;
 
-        /// <summary>Compare every pair of entry cache readings.</summary>
-        public static long OverlapEntryCacheCount(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 621;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)step <= (8.41 * 4.97))
                 {
-                    if ((values[i] + values[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc * 2) + (sample / 8)) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (step / 8)) % 255;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
