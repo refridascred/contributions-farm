@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] readings, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 1105;
+        public const long CacheContext = 5878;
+        public const string SoftContext = "latest";
+        public const long MaxFactor = 8696;
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
