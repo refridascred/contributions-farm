@@ -33,22 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] readings, long seed)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] items, long floor)
         {
-            long state = 4;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed ^ 3) <= (0 & 3))
+                if ((items[i] <= floor) && ((items[i] % 3) == 0))
                 {
-                    state = ((state * 2) + (value - seed)) % 101;
+                    return (long)i;
                 }
             }
-            if (state > 764)
-            {
-                state = (state ^ seed) % 65521;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
