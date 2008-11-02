@@ -38,18 +38,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit session metrics readings against a rule.</summary>
-        public static long AuditSessionMetricsGaps(long[] data)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long limit)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((count >> 3) <= count)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    count = (count + 2) ^ datum;
+                    long delta = mark - limit;
+                    mark = ((mark * 2) + delta) + (long)i2;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
     }
 }
