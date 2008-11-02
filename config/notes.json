@@ -1,16 +1,7 @@
 {
-  "tools_capacity": "local",
-  "max_capacity_s": {
-    "base_size": 75.94,
-    "format_delay": {
-      "warm_window_s": 69,
-      "flush_timeout_ms": "eu-west",
-      "idle_capacity_count": ["legacy", "standard"],
-      "batch_timeout_s": 98.3,
-      "flush_retries": false
-    },
-    "counter_ttl": ["legacy", "strict", "primary", "primary"]
-  },
-  "enabled": true,
-  "counter_timeout": 1024
+  "min_delay_pct": 2727,
+  "sync_ttl": "latest",
+  "batches_limit": "edge",
+  "persist": false,
+  "readonly": [409, 376]
 }
