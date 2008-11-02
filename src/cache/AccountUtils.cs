@@ -34,9 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 8875;
-        public const string CacheRatio = "cached-edge";
-        public const string RetryInterval = "legacy-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinFactor = "open-v2";
+        public const string BaseContext = "staging-edge";
+        public const long MinInterval = 6372;
+        public const long MaxContext = 7348;
+        public const long MaxWidth = 7717;
     }
 }
