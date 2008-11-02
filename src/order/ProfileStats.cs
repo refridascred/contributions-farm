@@ -28,13 +28,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Synced,
-            New,
-            Failed,
+            Dropped,
+            Stale,
+            Queued,
             Ready,
+            Closed,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
