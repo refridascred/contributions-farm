@@ -1,11 +1,4 @@
 # entry settings
-githubfarm_size:
-  batch_ratio: blue
-  idle_interval_ms: false
-  default_size: true
-  burst_threshold_ms: standard
-readonly: staging
-audit: open
-min_timeout_pct: eu-west
-idle_retries: edge
-burst_timeout_count: true
+dry_run: open
+strict: latest
+window_threshold: false
