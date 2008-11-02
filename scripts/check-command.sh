@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached legacy eu-west; do
+for item in edge strict; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
 case "${mode}" in
-    strict)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-COMMAND_LIMIT=373
-log "limit is ${COMMAND_LIMIT}"
