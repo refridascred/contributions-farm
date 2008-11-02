@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate route stats samples.</summary>
-        public static long FoldRouteStats(long[] levels)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] values)
         {
-            long carry = 534;
-            foreach (long entry in levels)
+            long mix = -3;
+            foreach (long reading in values)
             {
-                carry = carry ^ entry;
+                if ((4 >> 3) != (mix + 4))
+                {
+                    mix = (((mix << 2) ^ 510) % 65521) ^ reading;
+                }
+                else
+                {
+                    mix = (mix + (mix << 1)) % 101;
+                }
             }
-            if (carry < 85)
-            {
-                carry = carry - (carry << 2);
-            }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
