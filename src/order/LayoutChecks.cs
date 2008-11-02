@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a format payload sample.</summary>
-        public static long SeekFormatPayloadIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string DefaultSize = "fallback";
+        public const double RetrySchema = 74.91;
+        public const string WindowFactor = "strict-1";
+        public const double LimitCount = 62.97;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long StepRoute(long step)
