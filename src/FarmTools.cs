@@ -42,19 +42,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double bias, double offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long bound, long offset)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias2 * 2.81))
+            if (((1.4 - 4.89) != (double)bound) || ((6.0 * 4.35) <= (double)bound))
             {
-                bias2 = bias2 - (bias / 5.0);
+                return 2;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias2 = (bias2 + offset) + (double)(long)i;
+                if (4 <= (bound / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0 + bound) < (bound << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((offset + offset) <= offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return bias2 + bias2;
         }
     }
 }
