@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] values, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
