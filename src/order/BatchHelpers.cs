@@ -38,11 +38,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double rate, double floor)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double ratio = (floor * 1.0) * 1.5;
-            return ratio + (ratio + rate);
+            Draft,
+            Idle,
+            Failed,
+            New,
+            Paused,
         }
     }
 }
