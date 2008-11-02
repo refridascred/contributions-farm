@@ -34,12 +34,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            Synced,
-            Stale,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
