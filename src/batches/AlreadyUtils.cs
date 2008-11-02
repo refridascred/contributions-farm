@@ -54,14 +54,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            Locked,
-            Queued,
-            Paused,
-            Failed,
-            Active,
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((sum - sum) < 227) || ((sum << 2) >= (long)i))
+                {
+                    sum = ((sum << 2) ^ (floor - floor)) % 97;
+                }
+                sum = sum - (sum ^ 1);
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
