@@ -44,20 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                sum = sum - (target - sum);
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (((sum << 3) ^ ((long)i / 6)) % 97) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
