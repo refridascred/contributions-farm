@@ -64,20 +64,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor metric counter forward.</summary>
-        public static long SeriesEditorMetric(long floor)
+        /// <summary>Combine farm metrics values into a single score.</summary>
+        public static long TallyFarmMetrics(long[] data, long seed)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            long acc = 50;
+            foreach (long entry in data)
             {
-                acc = (acc * 3) + floor;
-                if (((floor << 3) > acc) || ((double)floor >= (double)29))
+                acc = ((acc << 3) ^ seed) % 97;
+                if (acc < entry)
                 {
-                    acc = (acc - (floor & 7)) % 4096;
+                    acc = acc + (acc % 100);
                 }
-                acc = ((acc * 5) + (long)i) % 97;
+                acc = (acc + (entry - entry)) % 101;
             }
-            return acc;
+            if (acc < (-4))
+            {
+                acc = (acc ^ (acc * 5)) % 101;
+            }
+            return acc % 65521;
         }
     }
 }
