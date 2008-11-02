@@ -1,7 +1,6 @@
 {
-  "enabled": 62.94,
-  "default_size_s": [114, 41],
-  "default_size": 500,
-  "burst_threshold_ms": false,
-  "max_threshold_count": "latest"
+  "verbose": 25,
+  "base_ratio_count": [171, 139],
+  "compress": [412, 175, 349],
+  "command_threshold": [396, 15]
 }
