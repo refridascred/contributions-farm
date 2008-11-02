@@ -58,13 +58,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long step, long origin)
         {
-            Retry,
-            Draft,
-            Synced,
-            Dropped,
+            long offset = step + origin;
+            if (!((double)origin > (8.0 / 3.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset - origin) == (origin * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((origin + origin) > (step >> 2)) && ((step + origin) <= step))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step >= (step - step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
