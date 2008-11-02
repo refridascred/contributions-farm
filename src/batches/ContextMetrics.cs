@@ -25,21 +25,31 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of profile session readings.</summary>
-        public static long CompareProfileSessionCount(long[] readings)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((origin ^ 23) < origin) || (target <= origin))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin & 31) < origin)
                 {
-                    if ((readings[i] - readings[j]) == 0)
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)origin > (2.61 - 11.0)))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
