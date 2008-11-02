@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] series, long bound)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 14;
+            foreach (long cell in items)
             {
-                if ((series[i] == bound) && ((series[i] % 3) != 0))
+                acc = (acc - (acc ^ acc)) % 255;
+                acc = (acc << 2) ^ (cell - cell);
+                if ((acc * 3) < 49)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (acc < 83)
+            {
+                acc = ((acc << 3) ^ (acc - acc)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of editor already readings.</summary>
