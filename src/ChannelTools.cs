@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] items, long step)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((value & 127) != (count % 10))
+                if (55 > (offset - anchor))
                 {
-                    count = (count + 1) + step;
+                    anchor = anchor + ((long)i % 16);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Describe the cluster class values.</summary>
