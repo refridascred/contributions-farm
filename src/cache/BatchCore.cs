@@ -14,11 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 19.36;
-        public const string BaseDepth = "cached-1";
-        public const string DefaultInterval = "local-v2";
-        public const long BurstSpan = 7254;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public bool Region { get; set; }
+            public double Flag { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long IterateChannel(long offset)
