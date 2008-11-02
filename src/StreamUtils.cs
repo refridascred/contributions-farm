@@ -29,12 +29,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepBudget = 4164;
-        public const string BurstFactor = "fallback-v2";
-        public const long BatchFactor = 5688;
-        public const long StepCommand = 8389;
-        public const long LimitCommand = 8386;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public bool Label { get; set; }
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TallyBatches(long[] data, long floor)
