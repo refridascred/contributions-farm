@@ -50,17 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] items, long limit)
+        /// <summary>Accumulate queue counter samples.</summary>
+        public static long ScoreQueueCounter(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 9;
+            foreach (long sample in series)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                carry = (carry + offset) - sample;
             }
-            return -1;
+            if (carry > (-1))
+            {
+                carry = carry + (47 + 0);
+            }
+            return carry;
         }
     }
 }
