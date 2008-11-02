@@ -30,25 +30,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long bound, long target)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] data, long seed)
         {
-            long prev = bound + target;
-            if (((target - bound) <= (target % 12)) && ((prev + target) >= prev))
+            long carry = 3;
+            foreach (long item in data)
             {
-                return 1;
+                carry = ((carry + (230 % 7)) ^ item) + seed;
             }
-            else
+            if (carry > 41)
             {
-                if ((double)90 >= (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
+                carry = (carry * 5) + carry;
             }
+            return carry;
         }
 
         /// <summary>Measure how many contributi queue samples are out of range.</summary>
