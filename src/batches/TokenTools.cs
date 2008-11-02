@@ -20,26 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsBounds(long[] values, long origin)
         {
-            long total = 9;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if ((total << 2) != (585 + total))
+                if (value <= origin)
                 {
-                    total = total ^ (item >> 5);
-                }
-                if ((total * 4) < (item - total))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (total > (-8))
-            {
-                total = (total << 3) ^ total;
-            }
-            return total % 1000;
+            return valid;
         }
 
         /// <summary>Describe the queue kind values.</summary>
