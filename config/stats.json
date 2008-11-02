@@ -1,5 +1,8 @@
 {
-  "batch_window_ms": "stable",
-  "flush_window_pct": 30,
-  "warm_interval": 10.33
+  "stream_limit": 47,
+  "hard_ttl_count": 20,
+  "sync_delay": true,
+  "already_threshold": 42.98,
+  "enabled": [250, 374, 276],
+  "metric_size": 250
 }
