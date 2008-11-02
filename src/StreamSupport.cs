@@ -38,13 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            Done,
-            Stale,
-            Dropped,
-            Paused,
+            Locked,
+            Queued,
+            Active,
         }
     }
 }
