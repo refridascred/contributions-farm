@@ -20,11 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] items)
         {
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (count >= (count * 2))
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate session samples.</summary>
