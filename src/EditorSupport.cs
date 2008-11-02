@@ -81,21 +81,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Compare every pair of farm graph readings.</summary>
-        public static long OverlapFarmGraphCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 8291;
+        public const long RetryLevel = 5104;
+        public const double MinDepth = 7.26;
+        public const long BaseDepth = 8257;
     }
 }
