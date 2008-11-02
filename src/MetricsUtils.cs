@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long RetryLevel = 5024;
         public const long BatchTimeout = 6265;
 
-        /// <summary>Audit support context readings against a rule.</summary>
-        public static long TallySupportContextMatches(long[] data, long target)
+        /// <summary>Check that every farm contributi entry stays within the limit.</summary>
+        public static bool GuardFarmContributiBounds(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (!(target <= (reading + reading)))
+                if (value >= floor)
                 {
-                    seen = seen + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define already limits and defaults.</summary>
