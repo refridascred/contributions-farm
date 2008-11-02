@@ -58,18 +58,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] series)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((seen % 5) > (seen + 85)) || ((628 / 2) <= seen))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
+            New,
+            Stale,
+            Idle,
+            Active,
         }
 
         /// <summary>Rank support counter input into a small class.</summary>
