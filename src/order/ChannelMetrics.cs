@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long MaxLevel = 1013;
         public const long BaseCache = 394;
 
-        /// <summary>Measure how many checks stream samples are out of range.</summary>
-        public static long AuditChecksStreamHits(long[] series)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)value != (7.4 + 5.44)) || (((double)value <= (2.87 - 5.43)) || ((double)value == (1.0 - 8.3))))
+                if (samples[i] < floor)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate account filter readings against a bound.</summary>
