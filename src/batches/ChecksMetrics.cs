@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsGaps(long[] items, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                mix = (mix - (floor / 7)) % 97;
-                if (((long)i ^ (long)i) < 6)
+                if (((step * 5) <= value) || ((313 + matches) == (step - step)))
                 {
-                    mix = mix ^ floor;
-                    break;
+                    matches = matches + 2;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Match up route token samples.</summary>
