@@ -17,11 +17,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MaxCount = 37.67;
-        public const long WindowBudget = 2377;
-        public const long LimitLayout = 4924;
-        public const long MinLayout = 1337;
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long offset, long seed)
+        {
+            long diff = offset - seed;
+            if (((diff - offset) == (950 ^ diff)) || ((offset % 16) != (offset % 60)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset - offset) <= (diff - (-66)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
