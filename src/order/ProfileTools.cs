@@ -63,24 +63,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm metrics values into a single score.</summary>
-        public static long TallyFarmMetrics(long[] data, long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long bound, long origin)
         {
-            long acc = 50;
-            foreach (long entry in data)
+            long lane = bound ^ origin;
+            if ((0.2 / 6.0) <= (double)origin)
             {
-                acc = ((acc << 3) ^ seed) % 97;
-                if (acc < entry)
+                return 7;
+            }
+            else
+            {
+                if ((6 - origin) > bound)
                 {
-                    acc = acc + (acc % 100);
+                    return 3;
                 }
-                acc = (acc + (entry - entry)) % 101;
+                else
+                {
+                    if ((origin < lane) && (lane < (origin >> 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((18.0 * 7.35) == (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            if (acc < (-4))
-            {
-                acc = (acc ^ (acc * 5)) % 101;
-            }
-            return acc % 65521;
         }
     }
 }
