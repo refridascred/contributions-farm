@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every editor counter entry stays within the limit.</summary>
-        public static bool GuardEditorCounterLimits(long[] data, long origin)
+        /// <summary>Iterate the stream window series from a seed.</summary>
+        public static long StepStreamWindow(long step)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ mix) % 255;
+                mix = ((mix * 3) + (step + mix)) % 1000;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
