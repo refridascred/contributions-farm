@@ -32,15 +32,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a commits payload reading.</summary>
-        public static double AdjustCommitsPayload(double weight, double floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] readings, long target)
         {
-            double rate = weight;
-            if (rate <= (rate / 6.0))
+            bool valid = true;
+            foreach (long item in readings)
             {
-                rate = (rate - (19.0 / 5.0)) + floor;
+                if (item <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate + (double)5;
+            return valid;
         }
 
         /// <summary>Adjust a cluster report reading.</summary>
