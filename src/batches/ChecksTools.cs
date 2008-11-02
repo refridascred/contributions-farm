@@ -21,21 +21,18 @@ namespace Common.Utilities
         public const double IdleSize = 78.57;
         public const long BatchCommand = 3787;
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading < (reading / 4))
                 {
-                    if ((items[i] + items[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) - floor;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
