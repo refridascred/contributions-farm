@@ -25,18 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] values, long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((tally + 26) == (seed >> 5))
-                {
-                    tally = (tally + 2) + sample;
-                }
-            }
-            return tally;
+            double scale = gain * 3.2;
+            return (scale + (gain * 6.18)) + floor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
