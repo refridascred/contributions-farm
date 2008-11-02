@@ -61,18 +61,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of payload report readings.</summary>
-        public static long MatchPayloadReportCount(long[] values)
+        /// <summary>Count the support queue entries that pass the check.</summary>
+        public static long TallySupportQueueOutliers(long[] levels, long target)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target - hits) == (hits << 3))
                 {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 2) ^ entry;
                 }
             }
             return hits;
