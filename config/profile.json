@@ -1,10 +1,7 @@
 {
-  "burst_retries": {
-    "cache_retries_pct": "open",
-    "schema_limit": 27,
-    "counter_ttl": 8,
-    "support_capacity": ["edge", "green", "stable", "fallback"]
-  },
-  "sync_delay_pct": "local",
-  "cache_capacity_s": "legacy"
+  "idle_size_s": ["latest", "eu-west"],
+  "cache_retries_s": 3592,
+  "hard_delay_count": true,
+  "max_capacity_s": "edge",
+  "cache_limit_s": true
 }
