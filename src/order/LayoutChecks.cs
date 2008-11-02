@@ -15,12 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftSpan = 8739;
-        public const string HardCommits = "legacy";
-        public const string MinSpan = "staging";
-        public const long SoftBudget = 3434;
-        public const double IdleCommits = 13.3;
+        /// <summary>Check that every batches contributi entry stays within the limit.</summary>
+        public static bool CheckBatchesContributiRange(long[] series, long origin)
+        {
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long LocateAccountIndex(long[] data, long floor)
