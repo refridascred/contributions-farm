@@ -21,23 +21,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((3.1 * 1.88) < 5.0)
-                {
-                    seen = ((seen + 1) + value) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepTimeout = 4333;
+        public const double StepAlready = 95.62;
+        public const long BurstWidth = 4133;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long ScoreWindow(long[] levels)
