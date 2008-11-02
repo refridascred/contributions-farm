@@ -32,18 +32,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] levels, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((7.1 / 9.0) <= (double)tally)
+                if (value >= offset)
                 {
-                    tally = ((tally + 3) + datum) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Grade a counter editor value against two limits.</summary>
