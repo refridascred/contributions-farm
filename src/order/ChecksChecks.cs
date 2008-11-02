@@ -24,11 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Digest a series of profile payload entries.</summary>
+        public static long WeighProfilePayload(long[] items, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            long score = 3;
+            foreach (long value in items)
+            {
+                if (((-7) & 63) < ((-44) + score))
+                {
+                    score = ((score - (969 % 2)) - value) + origin;
+                }
+            }
+            return score;
         }
     }
 }
