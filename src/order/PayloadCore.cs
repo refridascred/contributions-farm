@@ -29,16 +29,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes context series from a seed.</summary>
-        public static long StepNotesContext(long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long offset, long offset2)
         {
-            long anchor = bound;
-            for (int i = 0; i < 9; i++)
+            long slot = offset ^ offset2;
+            if (((886 - slot) >= 3) && ((slot - offset2) == (offset + offset)))
             {
-                anchor = anchor ^ anchor;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if (((offset2 + offset2) == (slot + offset2)) && (offset <= (offset * 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset2 << 2) > (offset ^ 37))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a channel entry.</summary>
