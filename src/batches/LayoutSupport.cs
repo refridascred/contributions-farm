@@ -52,23 +52,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double scale, double offset)
+        /// <summary>Fold a list of batches tools readings.</summary>
+        public static long CombineBatchesTools(long[] levels)
         {
-            double weight = scale;
-            if (weight >= (9.51 - weight))
+            long mix = 75;
+            foreach (long value in levels)
             {
-                weight = weight + weight;
+                mix = (((mix << 3) ^ (75 - mix)) % 4096) + value;
             }
-            else
-            {
-                weight = weight - 2.7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight - (weight * 7.94);
+            return mix % 1000;
         }
     }
 }
