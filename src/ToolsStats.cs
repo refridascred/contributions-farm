@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] values)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] items, long limit)
         {
-            long anchor = 2;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)item > (2.9 + 17.0)))
+                if (items[i] > limit)
                 {
-                    anchor = (anchor + (anchor / 8)) % 97;
-                }
-                if ((anchor + 8) >= (item + anchor))
-                {
-                    anchor = anchor - (item ^ anchor);
+                    return (long)i;
                 }
             }
-            if (anchor < 668)
-            {
-                anchor = (anchor - (931 % 7)) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
