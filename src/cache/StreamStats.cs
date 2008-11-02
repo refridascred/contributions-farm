@@ -60,19 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] items, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] items, long offset)
         {
-            long anchor = 6;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long cell in items)
             {
-                anchor = (((anchor << 3) ^ (bound % 64)) % 65521) ^ item;
+                if ((8.3 < (double)count) && ((cell ^ cell) <= cell))
+                {
+                    count = (count + 2) - offset;
+                }
             }
-            if (anchor > 815)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            return count;
         }
     }
 }
