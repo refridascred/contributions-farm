@@ -54,20 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report githubfarm counter forward.</summary>
-        public static long RollReportGithubfarm(long step)
+        /// <summary>Check that every order entry entry stays within the limit.</summary>
+        public static bool CheckOrderEntryRange(long[] readings, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                carry = carry - (long)i;
-                if (((double)(long)i >= 20.0) && (carry < ((long)i >> 5)))
+                if (reading < floor)
                 {
-                    carry = (carry << 2) ^ step;
+                    valid = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return valid;
         }
     }
 }
