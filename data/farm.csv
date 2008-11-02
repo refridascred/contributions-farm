@@ -1,6 +1,8 @@
-id,rank,weight,owner,label
-1,787,eu-west,544,577
-2,30.37,open,72.32,300
-3,staging,70.53,45.17,321
-4,40.34,408,676,primary
-5,eu-west,eu-west,legacy,standard
+id,score,weight
+1,primary,local
+2,792,833
+3,strict,72.54
+4,839,staging
+5,green,1.54
+6,staging,60.34
+7,stable,fallback
