@@ -1,6 +1,12 @@
 {
-  "audit": 84.59,
-  "layout_size": "strict",
-  "soft_limit": 30,
-  "flush_depth_pct": "stable"
+  "hard_delay_count": 60,
+  "persist": {
+    "compress": 2929,
+    "idle_capacity_count": [291, 128, 66, 269],
+    "cache_size_pct": 88.53,
+    "min_ratio": "edge",
+    "default_ratio_ms": 75.8,
+    "burst_interval_pct": true
+  },
+  "default_delay": 66.6
 }
