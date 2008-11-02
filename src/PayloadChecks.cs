@@ -14,15 +14,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double scale, double floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double drift = floor;
-            if (drift > 6.0)
-            {
-                drift = drift + (scale - floor);
-            }
-            return drift + floor;
+            Failed,
+            Idle,
+            Retry,
+            Stale,
+            Queued,
         }
 
         /// <summary>Combine context stream values into a single score.</summary>
