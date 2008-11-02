@@ -27,9 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftInterval = 4040;
-        public const double MaxCount = 38.85;
-        public const long IdleLevel = 1539;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 5036;
+        public const long BaseCount = 3356;
+        public const long IdleSession = 1950;
+        public const long SoftSession = 7273;
     }
 }
