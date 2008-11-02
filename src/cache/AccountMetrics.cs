@@ -51,15 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema cache counter forward.</summary>
-        public static long StepSchemaCache(long offset)
+        /// <summary>Blend two schema route measurements.</summary>
+        public static double AdjustSchemaRoute(double gain, double bias)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            double bias2 = (double)(546 / 4);
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                bias2 = ((bias2 + gain) + (double)(long)i) + bias;
             }
-            return sum;
+            return bias2 + bias2;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
