@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double SoftCommand = 58.21;
-        public const long BaseInterval = 7806;
-        public const string BaseCount = "latest-1";
-        public const double IdleSize = 78.57;
-        public const long BatchCommand = 3787;
+        /// <summary>Locate a stream format reading by value.</summary>
+        public static long LookupStreamFormatIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string DefaultRoute = "cached-v2";
