@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a channel notes reading.</summary>
-        public static double ProjectChannelNotes(double weight, double bias)
+        /// <summary>Check that every githubfarm context entry stays within the limit.</summary>
+        public static bool CheckGithubfarmContextBounds(long[] values, long step)
         {
-            double weight2 = 0.41;
-            return (weight2 + weight) + bias;
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of graph route readings.</summary>
