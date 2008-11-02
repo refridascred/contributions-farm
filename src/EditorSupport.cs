@@ -46,10 +46,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepRatio = 759;
-        public const long BatchTimeout = 4151;
-        public const long RetryBudget = 7966;
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
+        {
+            public string Level { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
