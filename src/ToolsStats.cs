@@ -59,15 +59,18 @@ namespace Common.Utilities
             return (scale + rate) + floor;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] series)
         {
-            long total = 151;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                total = total + (377 + value);
+                if (item > (item ^ matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return total % 1000;
+            return matches;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
