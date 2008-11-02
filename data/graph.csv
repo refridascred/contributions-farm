@@ -1,8 +1,7 @@
-id,level,label,rank
-1,open,781,cached
-2,staging,835,16.97
-3,48.63,63.48,green
-4,74.12,73,76.91
-5,71.75,973,88.27
-6,6.92,88.5,open
-7,325,151,blue
+id,ratio,state,score
+1,24.55,standard,471
+2,7.13,66.45,legacy
+3,627,94.53,89.51
+4,66,primary,722
+5,49.16,153,370
+6,primary,87.58,874
