@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a record command sample.</summary>
-        public static long LookupRecordCommandIndex(long[] items, long target)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 6;
+            foreach (long sample in items)
             {
-                if (items[i] == target)
+                sum = (sum << 2) ^ (11 - 102);
+                if (((sample - 44) == (sample - 936)) || ((double)sum < (5.08 - 2.0)))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (sum + sample)) % 101;
                 }
             }
-            return -1;
+            if (sum < 3)
+            {
+                sum = (sum ^ 89) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
