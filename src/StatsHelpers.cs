@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] items)
+        /// <summary>Audit entry stream readings against a rule.</summary>
+        public static long TallyEntryStreamOutliers(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((limit + (-1)) > (tally + cell))
                 {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
