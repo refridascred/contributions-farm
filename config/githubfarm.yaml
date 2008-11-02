@@ -1,5 +1,6 @@
 # githubfarm settings
-audit: standard
-flush_threshold_s: 4104
-window_window: blue
-verbose: 30.91
+cache_threshold: 15.38
+retry_window: 10
+batch_ttl: false
+retry_depth_count: 22
+audit: local
