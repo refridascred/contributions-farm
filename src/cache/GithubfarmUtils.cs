@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double ScaleCluster(double gain, double floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] series)
         {
-            double scale = (double)84 - (floor / 9.0);
-            if (scale >= (double)12)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                scale = (scale + (double)78) - gain;
+                if (!((hits < (hits + sample)) || (0.5 >= (double)sample)))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                scale = scale - floor;
-            }
-            return scale - (floor / 6.0);
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
