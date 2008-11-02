@@ -48,18 +48,15 @@ namespace Common.Utilities
         public const string DefaultWindow = "staging-1";
         public const string BaseInterval = "open";
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] series, long seed)
+        /// <summary>Scale a schema route figure with a bias.</summary>
+        public static double AdjustSchemaRoute(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            double drift = gain;
+            if (drift < offset)
             {
-                if ((matches << 3) == (seed + 58))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
+                drift = drift + (gain + 0.5);
             }
-            return matches;
+            return drift + (4.0 + drift);
         }
     }
 }
