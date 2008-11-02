@@ -37,23 +37,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of layout payload readings.</summary>
-        public static long DigestLayoutPayload(long[] levels)
+        /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
+        public static long LookupCacheGithubfarmIndex(long[] readings, long seed)
         {
-            long state = 1;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state ^ (state * 5)) % 65521;
-                if ((entry - entry) != (542 * 3))
+                if (readings[i] == seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state < 5)
-            {
-                state = (state - (state + state)) % 97;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
