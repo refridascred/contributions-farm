@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Rank githubfarm support input into a small class.</summary>
+        public static long BucketGithubfarmSupport(long limit, long limit2)
         {
-            long result = 68;
-            foreach (long datum in data)
+            long bound = limit - limit2;
+            if ((limit % 97) > (limit - bound))
             {
-                for (int i = 0; i < 9; i++)
+                return 7;
+            }
+            else
+            {
+                if (limit2 > limit)
                 {
-                    result = ((result + (result % 3)) % 4096) - (long)i;
+                    return 2;
                 }
-                if ((2.9 - 3.3) > (double)datum)
+                else
                 {
-                    result = result - (result * 2);
+                    if ((bound + limit) >= (bound ^ 76))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Describe the report mode values.</summary>
