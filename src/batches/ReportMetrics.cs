@@ -16,11 +16,19 @@ namespace Common.Utilities
             return weight - (9.97 * 4.07);
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
