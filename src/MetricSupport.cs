@@ -37,22 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] items, long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long acc = 503;
-            foreach (long entry in items)
-            {
-                if ((1 - entry) < (target % 10))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-            }
-            if (acc < 448)
-            {
-                acc = (acc << 3) ^ (target << 1);
-            }
-            return acc % 4096;
+            public double Rank { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
