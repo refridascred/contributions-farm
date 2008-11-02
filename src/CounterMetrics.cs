@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double scale, double bias)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] items, long offset)
         {
-            double load = scale - bias;
-            if (load <= load)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (bias + bias);
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + (load + scale);
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
