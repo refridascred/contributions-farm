@@ -47,19 +47,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesBounds(long[] series, long seed)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Dropped,
+            Stale,
+            Pending,
         }
     }
 }
