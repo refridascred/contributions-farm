@@ -31,17 +31,22 @@ namespace Common.Utilities
             return rate - 5.28;
         }
 
-        /// <summary>Locate a metrics cluster reading by value.</summary>
-        public static long LocateMetricsClusterIndex(long[] series, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (series[i] < bound)
+                if (!(((seen & 255) <= (618 & 31)) || ((reading - seen) != (reading - reading))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
