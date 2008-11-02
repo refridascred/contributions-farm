@@ -31,14 +31,24 @@ namespace Common.Utilities
             return rate - (double)97;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long bound, long seed)
         {
-            Locked,
-            Synced,
-            Retry,
-            Pending,
-            Dropped,
+            if (seed > bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((5.9 + 4.96) <= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Look up the position of a route record sample.</summary>
