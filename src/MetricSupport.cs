@@ -24,15 +24,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next profile metrics value from a seed.</summary>
-        public static long RollProfileMetrics(long floor)
+        /// <summary>Grade a stream format value against two limits.</summary>
+        public static long GradeStreamFormat(long bound, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            if (((4 - 83) == (bound * 5)) && ((limit * 5) < (70 / 9)))
             {
-                score = ((score * 4) + (long)i) % 97;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (97 >= (limit << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((71 + limit) >= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
