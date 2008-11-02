@@ -51,14 +51,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepRatio = 759;
+        public const long BatchTimeout = 4151;
+        public const long RetryBudget = 7966;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
