@@ -58,16 +58,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] values, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 4) + (5 / 5)) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
+                if (values[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
