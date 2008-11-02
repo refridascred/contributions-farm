@@ -26,38 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long target, long origin)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            if (((double)origin > (6.5 / 3.0)) && ((target + 239) == (829 ^ 149)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target & 3) > (764 + target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin >= 9.9)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(origin < 59))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Ready,
+            Draft,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
