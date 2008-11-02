@@ -1,14 +1,5 @@
 {
-  "idle_capacity_pct": "stable",
-  "min_size_s": {
-    "command_capacity": true,
-    "support_interval": "strict",
-    "dry_run": 83.66,
-    "base_depth_count": 4381,
-    "enabled": 54,
-    "retry_limit_s": true
-  },
-  "checks_timeout": true,
-  "sync_limit_count": [351, 191, 218, 420],
-  "base_ttl": true
+  "cache_threshold": ["local", "local", "stable", "blue"],
+  "min_depth_pct": true,
+  "batch_threshold_ms": "open"
 }
