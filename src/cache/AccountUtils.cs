@@ -21,22 +21,19 @@ namespace Common.Utilities
         public const double MaxGraph = 18.73;
         public const double LimitGraph = 50.18;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] readings, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] series, long floor)
         {
-            long total = 8;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if ((1.5 / 2.0) == (double)total)
+                if (value <= floor)
                 {
-                    total = (total + total) + item;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 91)
-            {
-                total = ((total << 2) ^ limit) % 101;
-            }
-            return total % 4096;
+            return valid;
         }
     }
 }
