@@ -14,38 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long bound, long step)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            if (step < (step - step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((548 + bound) > 90)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + step) > (step ^ 56))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((step + step) <= (bound - step)) && (step < (step % 12)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Done,
+            Retry,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the already kind values.</summary>
