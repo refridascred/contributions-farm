@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseSize = 2187;
-        public const long BurstCount = 7761;
-        public const string RetryRatio = "local-edge";
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] data)
+        {
+            long result = 84;
+            foreach (long cell in data)
+            {
+                result = result + cell;
+            }
+            return result;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BaseRoute = 8116;
