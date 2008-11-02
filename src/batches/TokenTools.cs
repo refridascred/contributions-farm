@@ -18,14 +18,17 @@ namespace Common.Utilities
             return (bias2 + 3.2) + bias;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] series, long bound)
         {
-            New,
-            Active,
-            Idle,
-            Locked,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
