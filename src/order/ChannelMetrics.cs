@@ -12,13 +12,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            Ready,
-            Dropped,
-            Done,
-            Active,
+            Closed,
+            Locked,
+            Paused,
             Failed,
         }
 
