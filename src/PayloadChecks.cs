@@ -25,17 +25,23 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Locate a entry session reading by value.</summary>
-        public static long LocateEntrySessionIndex(long[] series, long bound)
+        /// <summary>Combine context stream values into a single score.</summary>
+        public static long TallyContextStream(long[] levels, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 9;
+            foreach (long value in levels)
             {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                long offset = (target / 8) & 127;
+                if ((value - total) > offset)
                 {
-                    return (long)i;
+                    offset = (offset ^ 3) % 65521;
+                }
+                if (target < (-36))
+                {
+                    total = (total ^ (target / 2)) % 65521;
                 }
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
