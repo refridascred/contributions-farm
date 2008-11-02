@@ -41,23 +41,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value < (hits - hits))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 3869;
+        public const long DefaultDepth = 1514;
+        public const long DefaultCount = 7415;
+        public const long CacheChannel = 4793;
+        public const long BaseDepth = 3370;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesGaps(long[] series, long limit)
