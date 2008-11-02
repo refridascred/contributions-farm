@@ -22,39 +22,19 @@ namespace Common.Utilities
         public const long SoftBudget = 3434;
         public const double IdleCommits = 13.3;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long origin)
+        /// <summary>Check that every cache counter entry stays within the limit.</summary>
+        public static bool CheckCacheCounterLimits(long[] items, long target)
         {
-            long offset = target ^ origin;
-            if ((target * 2) > (target + target))
+            bool ok = true;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((38 ^ target) != (offset + target))
+                if (entry < target)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin ^ origin) >= (origin & 255))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target << 3) >= (origin >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
