@@ -1,5 +1,6 @@
 {
-  "flush_interval_pct": true,
-  "persist": "open",
-  "idle_ttl_pct": ["eu-west", "blue"]
+  "poll_threshold_count": 2448,
+  "persist": "eu-west",
+  "hard_capacity_ms": 5147,
+  "retry_size": "fallback"
 }
