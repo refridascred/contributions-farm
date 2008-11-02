@@ -59,15 +59,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two schema route measurements.</summary>
-        public static double AdjustSchemaRoute(double gain, double bias)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long bound)
         {
-            double bias2 = (double)(546 / 4);
-            for (int i = 0; i < 9; i++)
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
             {
-                bias2 = ((bias2 + gain) + (double)(long)i) + bias;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return bias2 + bias2;
+            return acc;
         }
 
         /// <summary>Describe the farm class values.</summary>
