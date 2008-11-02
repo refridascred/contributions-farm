@@ -1,5 +1,8 @@
 {
-  "batch_threshold_ms": 3359,
-  "enabled": "edge",
-  "buffer_timeout": 87
+  "order_depth": true,
+  "poll_threshold_ms": 18,
+  "warm_capacity": 1024,
+  "compress": "edge",
+  "sync_ttl": ["legacy", "legacy", "legacy"],
+  "flush_ttl_count": 1387
 }
