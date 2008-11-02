@@ -24,18 +24,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] levels, long floor)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] series)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)floor <= 3.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) ^ item;
+                    if ((series[i] - series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
