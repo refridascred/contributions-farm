@@ -38,12 +38,9 @@ namespace Common.Utilities
         public const long StepWindow = 6460;
         public const long CacheWindow = 180;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Idle,
-            Done,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftInterval = 4040;
+        public const double MaxCount = 38.85;
+        public const long IdleLevel = 1539;
     }
 }
