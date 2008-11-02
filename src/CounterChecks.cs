@@ -62,19 +62,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long total = 281;
-            foreach (long value in values)
-            {
-                total = total ^ (value - 6);
-            }
-            if (total > 8)
-            {
-                total = (total << 2) ^ (583 % 3);
-            }
-            return total % 4096;
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
