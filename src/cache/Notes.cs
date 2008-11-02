@@ -33,17 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                total = total + (seed * 3);
-                total = (total * 3) + (total - seed);
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Dropped,
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Define session limits and defaults.</summary>
