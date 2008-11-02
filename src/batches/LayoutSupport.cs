@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a support graph reading by value.</summary>
-        public static long LocateSupportGraphIndex(long[] samples, long floor)
+        /// <summary>Fold a list of tools batch readings.</summary>
+        public static long TotalToolsBatch(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 314;
+            foreach (long entry in levels)
             {
-                if (samples[i] > floor)
+                if ((19.0 / 7.0) >= (double)state)
                 {
-                    return (long)i;
+                    state = ((state * 3) + (-8)) ^ entry;
                 }
+                state = state + (3 - state);
             }
-            return -1;
+            if (state > 763)
+            {
+                state = (state + (6 + seed)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
