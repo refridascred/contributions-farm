@@ -30,26 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token counter samples.</summary>
-        public static long WeighTokenCounter(long[] series, long origin)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] levels, long seed)
         {
-            long mark = 5;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (origin < (79 >> 5))
+                if (levels[i] == seed)
                 {
-                    mark = (mark ^ (reading + origin)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (origin & 3)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mark > 910)
-            {
-                mark = ((mark << 2) ^ 787) % 1000;
-            }
-            return mark % 97;
+            return -1;
         }
     }
 }
