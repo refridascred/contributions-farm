@@ -67,19 +67,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] data, long step)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum != step)
+                result = result + (result & 7);
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    valid = false;
-                    break;
+                    result = (((result << 2) ^ (long)i) % 255) ^ (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return valid;
+            return result;
         }
     }
 }
