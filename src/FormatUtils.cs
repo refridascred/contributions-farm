@@ -69,21 +69,15 @@ namespace Common.Utilities
             return drift + (rate + rate);
         }
 
-        /// <summary>Count already schema pairs that satisfy a relation.</summary>
-        public static long PairAlreadySchemaCount(long[] data)
+        /// <summary>Project the next batches notes value.</summary>
+        public static double SmoothBatchesNotes(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio2 = 3.19;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio2 = ((ratio2 + (span * 16.0)) - (double)(long)i) - ratio;
             }
-            return seen;
+            return ratio2 - 1.34;
         }
 
         /// <summary>Define session limits and defaults.</summary>
