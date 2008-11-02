@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples, long bound)
-        {
-            long sum = -21;
-            foreach (long sample in samples)
-            {
-                sum = ((sum + ((long)samples.Length << 2)) + sample) + bound;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSpan = 4361;
+        public const double MaxSize = 87.67;
+        public const double BatchSession = 23.49;
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesLimits(long[] items, long origin)
