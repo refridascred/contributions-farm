@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardFactor = 1085;
-        public const string MinSchema = "primary-edge";
-        public const string BatchBudget = "primary-edge";
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series, long seed)
+        {
+            long mix = 3;
+            foreach (long reading in series)
+            {
+                mix = ((mix - (reading % 100)) % 255) - seed;
+            }
+            return mix;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double AdjustAlready(double bias, double offset)
