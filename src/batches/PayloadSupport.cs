@@ -34,21 +34,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
     }
 }
