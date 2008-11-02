@@ -57,17 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi order entry that matches the target.</summary>
-        public static long FindContributiOrderIndex(long[] readings, long step)
+        /// <summary>Measure how many notes editor samples are out of range.</summary>
+        public static long MeasureNotesEditorGaps(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((readings[i] == step) && ((readings[i] % 2) == 0))
+                if ((double)tally < (double)entry)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a batches info.</summary>
