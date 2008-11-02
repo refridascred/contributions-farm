@@ -19,18 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches session entries that pass the check.</summary>
-        public static long MeasureBatchesSessionGaps(long[] series)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((615 >> 5) >= item)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
