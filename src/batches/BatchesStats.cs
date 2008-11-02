@@ -31,31 +31,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long seed, long limit)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long target)
         {
-            if ((double)246 < (double)seed)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed << 1) <= (limit - seed)) || (limit < 52))
+                state = (state ^ state) % 255;
+                if ((9.0 - 6.9) > (double)state)
                 {
-                    return 4;
+                    state = (state - (state + state)) % 65521;
                 }
-                else
-                {
-                    if (limit >= (22 - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
+            return state;
         }
 
         /// <summary>Compare every pair of channel filter readings.</summary>
