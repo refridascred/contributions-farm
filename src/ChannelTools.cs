@@ -30,15 +30,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double rate, double offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long floor, long step)
         {
-            double load = (double)(528 & 31);
-            for (int i = 0; i < 9; i++)
+            if (209 <= floor)
             {
-                load = (((load - (double)7) - (double)(long)i) - rate) + offset;
+                return 1;
             }
-            return load + (double)1;
+            else
+            {
+                if (((-63) - floor) != (step ^ floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
