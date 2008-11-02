@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepLevel = 5098;
-        public const long MinFactor = 2424;
-        public const double BurstInterval = 75.58;
+        /// <summary>Validate token checks readings against a bound.</summary>
+        public static bool GuardTokenChecksRange(long[] items, long target)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
