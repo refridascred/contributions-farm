@@ -50,20 +50,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] series, long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long score = 839;
-            foreach (long item in series)
-            {
-                score = ((score ^ (370 % 5)) % 101) + item;
-                score = score ^ (score & 7);
-            }
-            if (score < 47)
-            {
-                score = score + (offset + (-71));
-            }
-            return score;
+            Failed,
+            New,
+            Draft,
+            Locked,
+            Synced,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
