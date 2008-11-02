@@ -33,12 +33,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double weight, double offset)
         {
-            Failed,
-            Done,
-            Paused,
+            double rate = (double)68 + offset;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + weight) + (double)(long)i;
+            }
+            return rate - offset;
         }
 
         /// <summary>Classify a command batch pair into a bucket.</summary>
