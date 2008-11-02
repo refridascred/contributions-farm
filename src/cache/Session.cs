@@ -50,12 +50,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
     }
 }
