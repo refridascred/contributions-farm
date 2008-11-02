@@ -26,18 +26,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] data, long step)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long target, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if (((double)origin > (6.5 / 3.0)) && ((target + 239) == (829 ^ 149)))
             {
-                if ((cell % 24) >= (44 - 6))
+                return 6;
+            }
+            else
+            {
+                if ((target & 3) > (764 + target))
                 {
-                    seen = (seen + 2) + step;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin >= 9.9)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(origin < 59))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a format reading by value.</summary>
