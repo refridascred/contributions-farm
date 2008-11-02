@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double scale, double bias)
-        {
-            double scale2 = bias;
-            if (scale2 >= scale)
-            {
-                scale2 = scale2 + 5.1;
-            }
-            return scale2 + (bias - scale2);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 5041;
+        public const long MaxRecord = 9066;
+        public const double IdleCount = 20.18;
 
         /// <summary>Project the next support filter value.</summary>
         public static double ScaleSupportFilter(double gain, double span)
