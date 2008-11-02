@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const double BatchOrder = 60.88;
         public const string MinTimeout = "alpha-edge";
 
-        /// <summary>Combine notes batch values into a single score.</summary>
-        public static long DigestNotesBatch(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportBounds(long[] levels, long offset)
         {
-            long sum = 93;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                sum = (sum + (sum % 24)) ^ entry;
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum % 1000;
+            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
