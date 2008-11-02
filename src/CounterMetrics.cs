@@ -34,22 +34,26 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate layout tools samples.</summary>
-        public static long TotalLayoutTools(long[] samples)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            long anchor = 930;
-            foreach (long sample in samples)
+            long state = 49;
+            foreach (long item in levels)
             {
-                if ((sample + anchor) <= (anchor - anchor))
+                if ((705 ^ state) > (state + state))
                 {
-                    anchor = (anchor - 4) % 1000;
+                    state = (((state * 4) + (state % 12)) % 101) ^ item;
+                }
+                else
+                {
+                    state = ((state * 5) + 6) % 1000;
                 }
             }
-            if (anchor > 98)
+            if (state < 7)
             {
-                anchor = (anchor ^ (anchor % 24)) % 1000;
+                state = state + (state - 54);
             }
-            return anchor;
+            return state;
         }
     }
 }
