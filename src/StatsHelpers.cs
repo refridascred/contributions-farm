@@ -55,15 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double AdjustStats(double gain, double offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] items)
         {
-            double load = gain + offset;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                load = (load - 2.0) - (double)(long)i;
+                if (hits > (cell % 60))
+                {
+                    hits = hits + 2;
+                }
             }
-            return load + offset;
+            return hits;
         }
 
         /// <summary>Compare every pair of metrics counter readings.</summary>
