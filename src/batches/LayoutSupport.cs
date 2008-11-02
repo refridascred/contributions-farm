@@ -35,18 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinSpan = 5293;
+        public const double WindowPayload = 70.95;
+        public const long IdlePayload = 47;
+        public const long RetryPayload = 5359;
 
         /// <summary>Fold a list of window readings.</summary>
         public static long WeighWindow(long[] values)
