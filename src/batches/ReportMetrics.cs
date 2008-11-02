@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double ratio, double span)
+        /// <summary>Check that every contributi stream entry stays within the limit.</summary>
+        public static bool GuardContributiStreamRange(long[] series, long bound)
         {
-            double weight = span;
-            for (int i = 0; i < 2; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                weight = ((weight + (weight * 1.12)) - (double)(long)i) + ratio;
+                if (entry < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight - (9.97 * 4.07);
+            return ready;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
