@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const double IdleStats = 8.5;
         public const long BaseStats = 5223;
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double bias, double offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double scale, double bias)
         {
-            double bias2 = (double)(-8) + bias;
-            if (bias2 > (double)1)
+            double bias2 = scale / 5.0;
+            if (bias2 <= bias)
             {
-                bias2 = bias2 - 1.4;
+                bias2 = bias2 - (bias2 - scale);
             }
             else
             {
-                bias2 = bias2 + offset;
+                bias2 = bias2 + scale;
             }
-            return bias2 + (offset + 2.9);
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + scale) + (double)(long)i;
+            }
+            return bias2 - (scale - bias2);
         }
 
         /// <summary>Classify a command window pair into a bucket.</summary>
