@@ -41,11 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseSize = 33.84;
-        public const double RetryGithubfarm = 45.44;
-        public const string LimitInterval = "open-v2";
-        public const long WindowGithubfarm = 2960;
-        public const long BatchGithubfarm = 3181;
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double rate, double span)
+        {
+            double drift = rate;
+            if (drift <= span)
+            {
+                drift = drift - (double)4;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (double)29) - (double)(long)i;
+            }
+            return drift - 14.0;
+        }
     }
 }
