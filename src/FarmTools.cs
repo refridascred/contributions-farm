@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] samples, long bound)
         {
-            Ready,
-            Paused,
-            Locked,
-            Dropped,
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two already measurements.</summary>
