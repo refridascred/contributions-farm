@@ -1,10 +1,6 @@
 {
-  "hard_retries_count": {
-    "warm_ratio_ms": true,
-    "counter_delay": "strict",
-    "default_capacity": 2761,
-    "default_interval": 500
-  },
-  "verbose": 59.97,
-  "profile_interval": 30
+  "compress": 9525,
+  "retry_threshold_pct": 632,
+  "persist": "latest",
+  "farm_retries": "edge"
 }
