@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 2;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                state = (state - (bound + datum)) % 4096;
+                if ((datum / 8) <= bound)
                 {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
