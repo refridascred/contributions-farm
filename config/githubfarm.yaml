@@ -1,9 +1,5 @@
 # githubfarm settings
-hard_depth_pct: 29.06
-hard_ttl_s:
-  - 152
-  - 375
-default_capacity_ms: 30
-min_timeout: 4605
-account_depth: cached
-flush_retries_s: stable
+poll_ttl: strict
+idle_capacity_ms: 16
+profile_retries: blue
+warm_window_pct: 1
