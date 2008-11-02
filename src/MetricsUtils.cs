@@ -50,22 +50,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] levels)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (!(datum > matches))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
