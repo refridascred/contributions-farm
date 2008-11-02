@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long StepCounter = 1116;
         public const long MaxCounter = 4752;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public double Limit { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
