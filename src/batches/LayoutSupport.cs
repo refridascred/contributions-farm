@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Count the metric payload entries that pass the check.</summary>
+        public static long MeasureMetricPayloadOutliers(long[] data)
         {
-            long anchor = 479;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!((sample + anchor) >= (anchor + sample)))
+                if ((item ^ hits) <= item)
                 {
-                    anchor = (anchor + (sample - anchor)) % 4096;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor - (anchor + anchor)) % 101;
-            }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
