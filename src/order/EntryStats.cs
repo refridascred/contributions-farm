@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleInterval = 2706;
-        public const long BaseScore = 986;
-        public const string SoftLevel = "strict-1";
-        public const long LimitAccount = 4956;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long target, long offset)
+        {
+            if (((target + offset) <= (target >> 4)) && ((offset / 9) < (target / 7)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((14.0 * 7.0) <= (double)target)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((-42) % 24) > (target ^ 58))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((-577) / 3) >= (target + 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every githubfarm context entry stays within the limit.</summary>
         public static bool CheckGithubfarmContextBounds(long[] values, long step)
