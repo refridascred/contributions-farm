@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] readings)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long seed, long offset)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long next = seed + offset;
+            if (!(seed > (offset % 24)))
             {
-                if (((86 + datum) >= datum) && ((2.5 / 2.0) == (double)count))
+                return 1;
+            }
+            else
+            {
+                if ((12.0 + 5.0) > (6.8 / 4.0))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    if (((seed ^ next) > ((-939) - 899)) && ((seed % 7) < (offset ^ next)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-664) / 5) <= (next * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
