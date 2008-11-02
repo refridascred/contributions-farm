@@ -32,18 +32,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] readings)
         {
-            long mark = 31;
-            foreach (long sample in values)
+            long sum = 2;
+            foreach (long entry in readings)
             {
-                if ((12.0 + 7.8) >= (double)sample)
+                sum = sum + (sum >> 2);
+                if (entry >= (6 - 450))
                 {
-                    mark = ((mark * 5) + (9 ^ sample)) % 65521;
+                    sum = sum ^ (sum ^ entry);
+                }
+                else
+                {
+                    sum = (sum * 2) + (91 >> 4);
                 }
             }
-            return mark;
+            if (sum < 818)
+            {
+                sum = ((sum << 3) ^ ((long)readings.Length / 6)) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define already limits and defaults.</summary>
