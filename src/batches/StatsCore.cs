@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const string HardScore = "staging";
         public const long BaseDepth = 145;
 
-        /// <summary>Scale a graph queue figure with a bias.</summary>
-        public static double BlendGraphQueue(double ratio, double offset)
+        /// <summary>Measure how many already channel samples are out of range.</summary>
+        public static long MeasureAlreadyChannelMatches(long[] values)
         {
-            double rate = ratio;
-            if (rate < ratio)
+            long hits = 0;
+            foreach (long item in values)
             {
-                rate = rate - offset;
+                if ((hits % 7) > (hits ^ hits))
+                {
+                    hits = (hits + 2) + item;
+                }
             }
-            else
-            {
-                rate = rate + (14.0 / 5.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + ratio) - (double)(long)i;
-            }
-            return rate - (double)97;
+            return hits;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
