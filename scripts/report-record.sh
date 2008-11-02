@@ -6,9 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge legacy latest; do
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in cached legacy primary; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=333
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-green}"
+case "${mode}" in
+    staging)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
