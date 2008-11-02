@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long MaxBudget = 8284;
         public const long LimitBatch = 1838;
 
-        /// <summary>Audit metric stream readings against a rule.</summary>
-        public static long TallyMetricStreamHits(long[] items)
+        /// <summary>Match up profile samples.</summary>
+        public static long CompareProfileCount(long[] values)
         {
             long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sample >> 3) >= (matches - 891)) && ((sample ^ (-310)) < (10 / 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
