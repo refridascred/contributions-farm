@@ -21,12 +21,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public bool Rank { get; set; }
+            long total = seed;
+            for (int i = 0; i < 12; i++)
+            {
+                total = total + (seed * 3);
+                total = (total * 3) + (total - seed);
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define command limits and defaults.</summary>
