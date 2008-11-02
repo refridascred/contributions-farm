@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultScore = 982;
-        public const long WindowQueue = 288;
-        public const long RetryQueue = 3956;
-        public const double BaseQueue = 19.38;
-        public const double BatchInterval = 0.3;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Retry,
+            Synced,
+            New,
+            Stale,
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] samples)
