@@ -31,15 +31,17 @@ namespace Common.Utilities
             return rate2 + floor;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] samples, long target)
+        /// <summary>Look up the position of a metrics route sample.</summary>
+        public static long LocateMetricsRouteIndex(long[] values, long origin)
         {
-            long mark = -59;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark + (mark - target)) % 97) ^ entry;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 65521;
+            return -1;
         }
     }
 }
