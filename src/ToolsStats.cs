@@ -19,14 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double scale, double offset)
         {
-            Done,
-            Dropped,
-            Paused,
-            Queued,
-            Draft,
+            double load = 1.87;
+            if (load > offset)
+            {
+                load = load + (3.0 + scale);
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (scale / 9.0)) + (double)(long)i;
+            }
+            return load + (load + load);
         }
 
         /// <summary>Scale a entry route figure with a bias.</summary>
