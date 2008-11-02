@@ -47,18 +47,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] readings)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            double scale = (double)60 * 9.3;
+            if (scale >= (floor - floor))
             {
-                if (matches >= (entry + entry))
-                {
-                    matches = matches + 2;
-                }
+                scale = scale - gain;
             }
-            return matches;
+            else
+            {
+                scale = scale - (4.31 * 18.0);
+            }
+            return scale + (gain - scale);
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
