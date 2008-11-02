@@ -13,13 +13,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long offset)
         {
-            Paused,
-            Dropped,
-            Ready,
-            Draft,
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry + (carry >> 1)) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
