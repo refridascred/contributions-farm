@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double gain, double offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long floor)
         {
-            double load = (double)809 + (double)3;
-            return (load - (offset * 11.0)) + gain;
+            long score = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                score = ((score * 5) + (40 + floor)) % 65521;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
