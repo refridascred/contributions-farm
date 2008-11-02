@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public double Flag { get; set; }
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
