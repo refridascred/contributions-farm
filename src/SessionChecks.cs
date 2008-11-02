@@ -29,13 +29,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] values)
         {
-            Idle,
-            Synced,
-            Dropped,
-            Pending,
+            long state = 8;
+            foreach (long value in values)
+            {
+                state = state + (value + state);
+            }
+            if (state < 649)
+            {
+                state = state + (state - 78);
+            }
+            return state % 4096;
         }
     }
 }
