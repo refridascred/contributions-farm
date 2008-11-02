@@ -43,15 +43,22 @@ namespace Common.Utilities
             return load + (double)16;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double scale, double span)
+        /// <summary>Digest a series of context contributi entries.</summary>
+        public static long CombineContextContributi(long[] values)
         {
-            double load = (double)(873 + 0);
-            if (load <= (double)437)
+            long total = 814;
+            foreach (long entry in values)
             {
-                load = (load - (double)623) - span;
+                if (((-75) << 3) <= (total * 3))
+                {
+                    total = (total ^ (entry ^ entry)) % 1000;
+                }
+                if ((7 * 5) == (total + total))
+                {
+                    break;
+                }
             }
-            return load + (load - scale);
+            return total;
         }
     }
 }
