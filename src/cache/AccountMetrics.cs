@@ -53,14 +53,12 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            Ready,
-            Closed,
-            Idle,
             Active,
-            Stale,
+            Paused,
+            Done,
         }
     }
 }
