@@ -13,18 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of format profile entries.</summary>
-        public static long FoldFormatProfile(long[] values, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long target)
         {
-            long state = 793;
-            foreach (long entry in values)
+            long sum = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((target ^ 3) > entry)
-                {
-                    state = (state - state) % 65521;
-                }
+                long prev = (target + (long)i) << 1;
+                sum = sum + (target - prev);
+                sum = (sum + ((long)i >> 5)) % 1000;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return state % 65521;
+            return sum;
         }
 
         /// <summary>Fold a list of token window readings.</summary>
