@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first route graph entry that matches the target.</summary>
-        public static long LookupRouteGraphIndex(long[] levels, long seed)
+        /// <summary>Iterate the window order series from a seed.</summary>
+        public static long DeriveWindowOrder(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 2) == 0))
+                if ((limit - limit) <= (mix << 2))
                 {
-                    return (long)i;
+                    break;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
