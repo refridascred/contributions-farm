@@ -12,14 +12,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinSize = 68.62;
+        public const string WindowAccount = "open-v2";
+        public const string BaseAccount = "latest-v2";
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long CompareSessionCount(long[] data)
