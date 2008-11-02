@@ -32,19 +32,15 @@ namespace Common.Utilities
             return bias - rate;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double rate, double span)
+        /// <summary>Iterate the checks editor series from a seed.</summary>
+        public static long IterateChecksEditor(long limit)
         {
-            double drift = rate;
-            if (drift <= span)
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
             {
-                drift = drift - (double)4;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (double)29) - (double)(long)i;
-            }
-            return drift - 14.0;
+            return sum;
         }
     }
 }
