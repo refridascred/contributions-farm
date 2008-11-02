@@ -26,21 +26,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of graph route readings.</summary>
-        public static long OverlapGraphRouteCount(long[] readings)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry + entry) >= hits)
                 {
-                    if ((readings[i] ^ readings[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a batch stats.</summary>
