@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long mix = -3;
-            foreach (long reading in values)
-            {
-                if ((4 >> 3) != (mix + 4))
-                {
-                    mix = (((mix << 2) ^ 510) % 65521) ^ reading;
-                }
-                else
-                {
-                    mix = (mix + (mix << 1)) % 101;
-                }
-            }
-            return mix;
+            Dropped,
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
