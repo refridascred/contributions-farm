@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double bias, double floor)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double ratio, double floor)
         {
-            double weight = (double)(59 << 2);
-            if (weight > 13.0)
+            double ratio2 = ratio / 9.0;
+            if (ratio2 <= ratio2)
             {
-                weight = (weight + (floor * 12.0)) - bias;
+                ratio2 = (ratio2 + ratio2) - floor;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                weight = weight - (floor * 6.0);
+                ratio2 = (ratio2 - 2.71) + (double)(long)i;
             }
-            return weight + (weight + floor);
+            return ratio2 + ratio;
         }
 
         /// <summary>Describe the batches mode values.</summary>
