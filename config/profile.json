@@ -1,9 +1,7 @@
 {
-  "profile_timeout": {
-    "min_limit_ms": false,
-    "strict": 8223,
-    "filter_size": ["stable", "stable", "latest", "open"]
-  },
-  "farm_limit": 75,
-  "min_retries": "edge"
+  "support_capacity": 75.89,
+  "metrics_interval": 45,
+  "burst_retries_ms": 10,
+  "payload_interval": true,
+  "compress": true
 }
