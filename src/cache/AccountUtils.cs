@@ -26,19 +26,9 @@ namespace Common.Utilities
         public const double MaxGraph = 18.73;
         public const double LimitGraph = 50.18;
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] series, long floor)
-        {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 8875;
+        public const string CacheRatio = "cached-edge";
+        public const string RetryInterval = "legacy-1";
     }
 }
