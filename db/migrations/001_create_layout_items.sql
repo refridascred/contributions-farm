@@ -2,9 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    level INTEGER,
     state TEXT NOT NULL DEFAULT 'new',
-    label TEXT
+    created_at TIMESTAMP,
+    ratio REAL,
+    weight REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
+CREATE INDEX IF NOT EXISTS idx_layout_items_created_at ON layout_items (created_at);
