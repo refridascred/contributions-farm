@@ -25,38 +25,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Grade a profile window value against two limits.</summary>
-        public static long RankProfileWindow(long seed, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double bias)
         {
-            if ((seed ^ seed) != (seed - seed))
+            double weight2 = (double)(1 & 7);
+            if (weight2 < bias)
             {
-                return 1;
+                weight2 = weight2 + (9.5 - weight);
             }
-            else
-            {
-                if ((double)seed != (15.0 + 9.2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit + limit) < seed) || ((seed - seed) > (limit - limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed + (-47)) > (limit & 63))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return weight2 - (bias - 0.36);
         }
 
         /// <summary>Define entry limits and defaults.</summary>
