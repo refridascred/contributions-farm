@@ -74,22 +74,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] values, long bound)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long state = 677;
+            foreach (long item in samples)
             {
-                if (((2 + bound) >= (tally ^ bound)) && ((tally + item) != (tally + tally)))
+                if ((item >> 2) == (state ^ state))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = (state + (-542)) % 255;
                 }
             }
-            return tally;
+            return state % 4096;
         }
 
         /// <summary>Roll a metric farm counter forward.</summary>
