@@ -60,13 +60,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
+            public double Count { get; set; }
             public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
     }
 }
