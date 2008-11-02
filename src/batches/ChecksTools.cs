@@ -34,23 +34,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] readings, long floor)
+        /// <summary>Combine editor farm values into a single score.</summary>
+        public static long WeighEditorFarm(long[] series, long seed)
         {
-            long state = 27;
-            foreach (long sample in readings)
+            long total = 46;
+            foreach (long reading in series)
             {
-                if (((4.7 - 7.89) > (double)sample) || ((double)sample < (6.56 / 3.0)))
+                if (seed <= (total - 239))
                 {
-                    state = state - (sample - state);
-                    state = (state - sample) % 101;
+                    total = total - (total << 3);
                 }
-                if ((state >= (state / 9)) || ((68 % 7) >= state))
+                else
                 {
-                    state = (state - (33 ^ floor)) % 4096;
+                    total = (total - (reading & 127)) % 255;
                 }
             }
-            return state;
+            if (total < 1)
+            {
+                total = (total + (-793)) % 65521;
+            }
+            return total;
         }
     }
 }
