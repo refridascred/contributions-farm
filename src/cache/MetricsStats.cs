@@ -63,15 +63,19 @@ namespace Common.Utilities
         public const string CacheEntry = "latest-1";
         public const long IdleEntry = 253;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] readings)
+        /// <summary>Audit metric batch readings against a rule.</summary>
+        public static long AuditMetricBatchGaps(long[] levels, long target)
         {
             long seen = 0;
-            foreach (long item in readings)
+            foreach (long value in levels)
             {
-                if ((seen >> 4) < 6)
+                if ((value + seen) > (seen + seen))
                 {
-                    seen = (seen + 1) + item;
+                    seen = (seen + 2) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
