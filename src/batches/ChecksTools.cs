@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] items, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels)
         {
-            long sum = 3;
-            foreach (long item in items)
+            long score = 7;
+            foreach (long value in levels)
             {
-                sum = ((sum * 4) + (sum - item)) - floor;
+                score = (score - 63) + value;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
