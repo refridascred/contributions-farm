@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string BatchRatio = "local";
         public const string LimitSupport = "fallback-v2";
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] samples)
-        {
-            long mix = 735;
-            foreach (long entry in samples)
-            {
-                if ((entry >> 3) != (mix - mix))
-                {
-                    mix = (mix ^ (entry / 6)) % 65521;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 8811;
+        public const long StepSize = 5105;
+        public const long MaxDepth = 5127;
+        public const string BurstDepth = "open";
+        public const long BurstGithubfarm = 1924;
 
         /// <summary>Iterate the batch series from a seed.</summary>
         public static long DeriveBatch(long offset)
