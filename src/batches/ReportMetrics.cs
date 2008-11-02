@@ -31,12 +31,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            Failed,
+            Closed,
+            New,
+            Queued,
+            Stale,
         }
     }
 }
