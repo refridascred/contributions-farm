@@ -37,38 +37,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long target, long offset)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            if ((offset + offset) <= (target % 8))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.0 + 7.63) > (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset * 5) > offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target & 3) < (target >> 2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Paused,
         }
     }
 }
