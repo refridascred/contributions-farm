@@ -40,30 +40,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] samples, long origin)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long score = 29;
-            foreach (long datum in samples)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    score = ((score << 3) ^ (origin - datum)) + (long)i;
-                }
-                if (2.2 > (double)datum)
-                {
-                    score = (score + (score / 9)) % 4096;
-                }
-                if ((24 << 2) >= score)
-                {
-                    break;
-                }
-            }
-            if (score < 436)
-            {
-                score = (score + origin) % 255;
-            }
-            return score;
+            Failed,
+            Locked,
+            Queued,
+            Retry,
+            Active,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
