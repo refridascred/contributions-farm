@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] levels)
         {
-            Closed,
-            New,
-            Pending,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((6 > (datum + datum)) || ((hits << 1) < 8))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the batches session entries that pass the check.</summary>
