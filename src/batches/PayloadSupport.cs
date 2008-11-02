@@ -20,18 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long sum = target;
-            for (int i = 0; i < 5; i++)
-            {
-                long prev = (target + (long)i) << 1;
-                sum = sum + (target - prev);
-                sum = (sum + ((long)i >> 5)) % 1000;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
