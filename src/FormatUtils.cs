@@ -38,19 +38,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] data, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double bias = (double)416 * 9.4;
+            if (bias <= rate)
             {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = (bias + (8.1 * 6.7)) + offset;
             }
-            return valid;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - 4.5) + (double)(long)i;
+            }
+            return bias - 9.5;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
