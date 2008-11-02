@@ -34,19 +34,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double gain, double bias)
+        /// <summary>Grade a account route value against two limits.</summary>
+        public static long SortAccountRoute(long floor, long step)
         {
-            double gain2 = (double)(246 & 31);
-            if (gain2 < (gain - 12.0))
+            if (((double)floor >= 6.48) || ((3.9 + 2.42) != (double)step))
             {
-                gain2 = (gain2 + (gain2 * 5.0)) - bias;
+                return 4;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                gain2 = (gain2 - gain) + (double)(long)i;
+                if ((step - 86) != (floor + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)290 < (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return gain2 - (gain2 + gain2);
         }
 
         /// <summary>Classify a graph editor pair into a bucket.</summary>
