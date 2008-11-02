@@ -14,21 +14,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long seed, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed / 4) > (seed ^ target))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((target >> 3) > (target + target))
                 {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Validate contributi checks readings against a bound.</summary>
