@@ -69,13 +69,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsGaps(long[] values, long bound)
         {
-            public string Level { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((2 + bound) >= (tally ^ bound)) && ((tally + item) != (tally + tally)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
