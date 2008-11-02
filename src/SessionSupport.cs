@@ -37,12 +37,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            Idle,
+            Done,
+            Paused,
         }
     }
 }
