@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Done,
-            New,
+            Ready,
+            Paused,
             Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Fold a list of route readings.</summary>
