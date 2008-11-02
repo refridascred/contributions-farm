@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] series, long limit)
+        /// <summary>Count the support editor entries that pass the check.</summary>
+        public static long AuditSupportEditorOutliers(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (entry > limit)
+                if ((double)entry > (double)count)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) - target;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
