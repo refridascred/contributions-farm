@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public bool Weight { get; set; }
-            public double Offset { get; set; }
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Project the next already value.</summary>
