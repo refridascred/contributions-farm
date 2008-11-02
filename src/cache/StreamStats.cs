@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] items, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 5;
+            foreach (long cell in values)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                total = ((total + 68) % 255) + cell;
             }
-            return -1;
+            return total % 1000;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
