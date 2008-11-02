@@ -22,13 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public double Count { get; set; }
-            public double Offset { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowFilter = "strict";
+        public const long WindowSize = 5781;
+        public const double IdleFilter = 55.59;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportHits(long[] levels)
