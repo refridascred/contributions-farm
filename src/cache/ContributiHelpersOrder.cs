@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)(long)i >= (8.77 + 17.0)) || ((1.49 * 7.87) < (double)(long)i))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor - (anchor ^ anchor)) % 255;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = anchor + bound;
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
