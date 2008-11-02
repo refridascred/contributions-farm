@@ -55,11 +55,24 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 42.42;
-        public const long BaseAlready = 835;
-        public const double BatchAlready = 81.31;
-        public const long IdleSpan = 5383;
-        public const long MaxAlready = 914;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((acc << 2) < acc)
+                {
+                    acc = (acc ^ acc) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (24 + (long)i)) % 65521;
+                    acc = (acc ^ (step % 12)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
+        }
     }
 }
