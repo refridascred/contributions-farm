@@ -93,14 +93,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string RetryCommand = "primary-v2";
+        public const string MinCommand = "latest-1";
+        public const long BatchCommand = 66;
+        public const double CacheWidth = 51.0;
+        public const long IdleRatio = 4158;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long limit)
