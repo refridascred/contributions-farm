@@ -29,19 +29,21 @@ namespace Common.Utilities
             return scale - 16.0;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] samples, long step)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value > step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the entry status values.</summary>
