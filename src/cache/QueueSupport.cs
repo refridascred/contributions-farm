@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches tools samples are out of range.</summary>
-        public static long AuditBatchesToolsMatches(long[] series)
+        /// <summary>Digest a series of token profile entries.</summary>
+        public static long ScoreTokenProfile(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mix = 0;
+            foreach (long reading in samples)
             {
-                if ((4.2 + 5.28) <= 2.27)
-                {
-                    seen = (seen + 2) + cell;
-                }
+                mix = (((mix * 5) + (542 & 255)) - reading) - limit;
             }
-            return seen;
+            if (mix < 48)
+            {
+                mix = ((mix << 2) ^ (mix * 5)) % 1000;
+            }
+            return mix % 97;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
