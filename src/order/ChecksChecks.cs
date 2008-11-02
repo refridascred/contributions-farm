@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long step, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] levels, long offset)
         {
-            if ((4.3 + 3.0) < (double)step)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)step > (4.1 + 12.0)))
+                if (((long)levels.Length >> 1) != (offset & 1))
                 {
-                    return 8;
+                    tally = (tally + 2) + reading;
                 }
                 else
                 {
-                    if ((step / 6) == (seed / 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
