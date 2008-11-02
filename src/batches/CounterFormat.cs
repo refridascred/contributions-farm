@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Measure how many queue metrics samples are out of range.</summary>
+        public static long CountQueueMetricsHits(long[] levels)
         {
-            public double Token { get; set; }
-            public bool Weight { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (seen <= reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
