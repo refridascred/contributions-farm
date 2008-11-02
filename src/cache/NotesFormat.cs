@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MinSize = 66.86;
-        public const long MinMetric = 60;
-        public const long BurstLevel = 8536;
-        public const string MaxMetric = "strict-v2";
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool ValidateGraphBounds(long[] series, long offset)
