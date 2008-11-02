@@ -62,11 +62,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "open";
-        public const string LimitRecord = "latest-v2";
-        public const double MinRatio = 68.8;
-        public const long IdleFactor = 387;
-        public const long WindowBudget = 750;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
