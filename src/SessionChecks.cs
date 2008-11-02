@@ -16,12 +16,29 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Roll a queue route counter forward.</summary>
+        public static long SeriesQueueRoute(long step)
         {
-            Active,
-            Pending,
-            Paused,
+            long sum = step;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = sum + (sum - step);
+                    sum = (sum - ((long)i2 + sum)) % 97;
+                }
+                if ((double)step >= (5.86 + 0.5))
+                {
+                    sum = sum - step;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (11 >> 4)) % 101;
+                }
+                sum = (sum * 2) + (sum >> 2);
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Grade a support stats value against two limits.</summary>
