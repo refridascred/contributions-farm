@@ -39,13 +39,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] items, long origin)
         {
-            public double Owner { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)hits != (0.8 - 7.37))
+                {
+                    hits = ((hits + 3) ^ reading) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define report limits and defaults.</summary>
