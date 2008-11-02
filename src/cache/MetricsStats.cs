@@ -85,22 +85,21 @@ namespace Common.Utilities
         public const string CacheEntry = "latest-1";
         public const long IdleEntry = 253;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] samples, long seed)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((76 + count) >= (datum + datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] + samples[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
