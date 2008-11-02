@@ -31,19 +31,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] values, long step)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Active,
+            Idle,
+            Locked,
+            Closed,
         }
     }
 }
