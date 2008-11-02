@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] items, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] series)
         {
-            long mix = 17;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((double)entry < (1.4 * 1.26)) && (entry < (mix + mix)))
+                if ((90 > (sample ^ 348)) && ((hits & 15) <= hits))
                 {
-                    mix = ((mix + (entry ^ mix)) % 1000) + limit;
+                    hits = hits + 2;
                 }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Count the commits report entries that pass the check.</summary>
