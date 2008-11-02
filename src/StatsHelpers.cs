@@ -74,13 +74,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long origin, long step)
         {
-            New,
-            Dropped,
-            Synced,
-            Active,
+            long next = origin - step;
+            if ((222 + origin) <= step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((next & 127) != (8 % 60))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin & 127) <= next)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)origin >= 18.0))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
