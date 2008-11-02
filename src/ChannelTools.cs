@@ -30,24 +30,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long floor, long step)
+        /// <summary>Accumulate metrics contributi samples.</summary>
+        public static long FoldMetricsContributi(long[] readings, long origin)
         {
-            if (209 <= floor)
+            long anchor = -624;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-63) - floor) != (step ^ floor))
+                if ((anchor * 4) == (origin * 3))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    anchor = (anchor << 2) ^ (datum ^ origin);
                 }
             }
+            if (anchor < 1)
+            {
+                anchor = ((anchor * 5) + 30) % 1000;
+            }
+            return anchor;
         }
     }
 }
