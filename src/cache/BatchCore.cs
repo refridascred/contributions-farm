@@ -48,19 +48,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every order entry entry stays within the limit.</summary>
-        public static bool CheckOrderEntryRange(long[] readings, long floor)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
