@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardSize = "open-edge";
-        public const double HardWindow = 46.28;
-        public const double StepScore = 54.35;
-        public const long MaxInterval = 412;
-        public const double BatchRatio = 4.41;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
