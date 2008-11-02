@@ -1,6 +1,10 @@
-id,label,region,owner
-1,local,225,latest
-2,521,36.57,staging
-3,48.6,staging,14.45
-4,latest,125,green
-5,608,311,green
+id,region,weight,level
+1,standard,898,36.41
+2,55.05,36.34,38.46
+3,399,853,872
+4,cached,latest,standard
+5,14.79,39,91.57
+6,1.25,356,36.57
+7,open,24.26,strict
+8,27.84,486,15.14
+9,45.39,563,95.06
