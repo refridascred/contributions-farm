@@ -1,9 +1,25 @@
 # support settings
-cache_threshold_ms: eu-west
-min_size_ms:
-  strict: 93
-  filter_threshold: 6988
-  hard_limit: true
-  layout_window: false
-  verbose: true
-hard_window: 66
+idle_interval_count:
+  - eu-west
+  - blue
+max_ttl: standard
+retry_threshold_ms:
+  - 216
+  - 27
+idle_retries_count: false
+format_delay:
+  warm_capacity_count:
+    cache_size_pct: blue
+    base_window_s: 78.41
+    stats_timeout: 58
+    burst_size_ms: false
+    contributi_retries: 2767
+  base_ttl: 25
+  soft_ttl_s: 7102
+  strict:
+    burst_ratio: false
+    poll_delay_count: primary
+    dry_run: 60
+    verbose: legacy
+    poll_capacity_count: edge
+  metric_delay: strict
