@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public double Label { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 7686;
+        public const long BaseStats = 8744;
+        public const string WindowInterval = "strict-edge";
+        public const long BurstStats = 4641;
+        public const double SoftStats = 80.38;
 
         /// <summary>Classify a command entry pair into a bucket.</summary>
         public static long SortCommandEntry(long bound, long seed)
