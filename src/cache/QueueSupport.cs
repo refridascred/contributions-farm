@@ -38,39 +38,21 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long bound, long offset)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
-            long diff = bound ^ offset;
-            if (((diff << 1) <= (diff + bound)) || ((14.0 + 7.9) < (double)diff))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((37 >> 4) > (offset + diff))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((9.9 * 14.0) >= (double)diff) || ((double)offset <= (0.94 * 0.39)))
+                    if ((readings[i] + readings[j]) < 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((diff << 1) >= bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
