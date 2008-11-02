@@ -35,18 +35,11 @@ namespace Common.Utilities
         public const string RetryChecks = "staging-edge";
         public const long WindowChecks = 2762;
 
-        /// <summary>Count the stream token entries that pass the check.</summary>
-        public static long CountStreamTokenMatches(long[] values, long origin)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((double)origin >= (15.0 / 8.0))
-                {
-                    count = (count + 1) - entry;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
