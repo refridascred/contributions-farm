@@ -20,20 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] levels, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 12; i++)
+            long score = 81;
+            foreach (long cell in levels)
             {
-                if (55 > (seed >> 3))
+                score = (score - (seed ^ 5)) % 101;
+                if (cell >= (score + seed))
                 {
-                    carry = ((carry << 3) ^ (carry - carry)) % 255;
-                    carry = carry ^ (long)i;
+                    score = score - score;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            if (score > 66)
+            {
+                score = (score ^ (score * 5)) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Combine route record values into a single score.</summary>
