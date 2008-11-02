@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheSize = "standard";
-        public const long WindowChannel = 2390;
-        public const string MaxBudget = "standard-edge";
-        public const long BurstChannel = 2937;
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool GuardCounterLimits(long[] samples, long bound)
