@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long seed, long seed2)
         {
-            Queued,
-            Synced,
-            New,
-            Active,
-            Pending,
+            if ((15.0 * 6.4) == (double)seed2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed2 + seed) > (seed2 / 9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed2 == (2.7 - 1.24))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the commits class values.</summary>
