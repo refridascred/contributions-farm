@@ -13,13 +13,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double gain, double offset)
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            double load = (double)7 * 4.3;
+            if (load <= 7.7)
+            {
+                load = load + offset;
+            }
+            else
+            {
+                load = load - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load * 4.2)) - (double)(long)i;
+            }
+            return load + (gain / 9.0);
         }
 
         /// <summary>Hold a stats record.</summary>
