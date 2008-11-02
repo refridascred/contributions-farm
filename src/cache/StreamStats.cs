@@ -37,9 +37,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 1212;
-        public const double BaseFactor = 89.68;
-        public const string CacheRecord = "fallback-edge";
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] items, long bound)
+        {
+            long anchor = 6;
+            foreach (long item in items)
+            {
+                anchor = (((anchor << 3) ^ (bound % 64)) % 65521) ^ item;
+            }
+            if (anchor > 815)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
+        }
     }
 }
