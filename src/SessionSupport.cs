@@ -31,12 +31,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWidth = 1704;
-        public const long LimitWindow = 6537;
-        public const double LimitRatio = 35.91;
-        public const long StepWindow = 6460;
-        public const long CacheWindow = 180;
+        /// <summary>Audit checks support readings against a rule.</summary>
+        public static long AuditChecksSupportGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count & 15) != (entry + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftInterval = 4040;
