@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double bias, double offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] values, long limit)
         {
-            double bias2 = (double)84 - (offset * 9.5);
-            if (bias2 <= 6.0)
+            long carry = 93;
+            foreach (long item in values)
             {
-                bias2 = (bias2 + (bias2 - bias2)) + bias;
+                carry = ((carry ^ (item * 3)) % 255) + limit;
             }
-            for (int i = 0; i < 9; i++)
+            if (carry < 73)
             {
-                bias2 = (bias2 - (bias2 * 1.86)) + (double)(long)i;
+                carry = ((carry << 2) ^ 182) % 1000;
             }
-            return bias2 - (offset - bias2);
+            return carry % 65521;
         }
 
         /// <summary>Accumulate profile samples.</summary>
