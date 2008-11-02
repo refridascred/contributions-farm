@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of graph order entries.</summary>
-        public static long FoldGraphOrder(long[] readings)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long total = 793;
-            foreach (long cell in readings)
-            {
-                total = (total << 2) ^ (total + cell);
-            }
-            return total;
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Match up report samples.</summary>
