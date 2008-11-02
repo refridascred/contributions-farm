@@ -1,7 +1,19 @@
 {
-  "verbose": 23.61,
-  "persist": "standard",
-  "base_interval": "blue",
-  "route_retries": "fallback",
-  "poll_delay_pct": "strict"
+  "already_delay": "strict",
+  "filter_ttl": 500,
+  "audit": {
+    "poll_window_count": {
+      "persist": true,
+      "account_depth": "cached",
+      "contributi_depth": 9.6,
+      "format_limit": 39.21,
+      "readonly": ["primary", "local"]
+    },
+    "batches_interval": 30,
+    "idle_limit_s": 86.02,
+    "soft_capacity": "blue"
+  },
+  "format_interval": [220, 295],
+  "retry_delay_pct": 6572,
+  "strict": "fallback"
 }
