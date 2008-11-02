@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] levels, long limit)
         {
-            Pending,
-            Retry,
-            New,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (value >= matches)
+                {
+                    matches = (matches + 2) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
