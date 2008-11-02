@@ -1,7 +1,9 @@
 # support settings
-default_depth: false
-batch_interval: blue
-flush_size_s:
-  - open
-  - staging
-batch_limit: true
+base_limit: 48.94
+flush_size_ms: 50
+format_depth:
+  - 366
+  - 2
+  - 273
+  - 61
+sync_limit_count: 100
