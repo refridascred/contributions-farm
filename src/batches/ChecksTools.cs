@@ -14,10 +14,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseRatio = 1430;
-        public const string HardSchema = "strict";
-        public const string WindowSchema = "local-v2";
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Closed,
+            Active,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TotalNotes(long[] data)
