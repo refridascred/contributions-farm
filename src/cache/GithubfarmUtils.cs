@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] levels, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long sum = 8;
-            foreach (long cell in levels)
+            long mark = 31;
+            foreach (long sample in values)
             {
-                sum = (sum ^ sum) ^ cell;
-                if (((4.5 * 7.64) > (double)limit) || (0 >= (limit % 16)))
+                if ((12.0 + 7.8) >= (double)sample)
                 {
-                    break;
+                    mark = ((mark * 5) + (9 ^ sample)) % 65521;
                 }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Fold a list of route readings.</summary>
