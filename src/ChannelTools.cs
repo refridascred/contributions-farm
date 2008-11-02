@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of already stream entries.</summary>
-        public static long TallyAlreadyStream(long[] values)
-        {
-            long score = 72;
-            foreach (long entry in values)
-            {
-                score = (score + (score >> 4)) + entry;
-            }
-            return score % 97;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 1560;
+        public const long BurstSchema = 8649;
+        public const string DefaultInterval = "local-edge";
+        public const long IdleFactor = 1885;
+        public const double StepSpan = 91.39;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
