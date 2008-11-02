@@ -23,18 +23,18 @@ namespace Common.Utilities
         public const long HardOrder = 5222;
         public const long MaxDepth = 8600;
 
-        /// <summary>Count the profile order entries that pass the check.</summary>
-        public static long AuditProfileOrderGaps(long[] series, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((datum + (long)series.Length) <= seed)
+                if ((hits < (reading / 5)) && ((double)reading != (5.7 - 5.0)))
                 {
-                    tally = tally + 1;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Match up entry samples.</summary>
