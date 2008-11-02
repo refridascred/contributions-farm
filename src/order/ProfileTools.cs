@@ -55,39 +55,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long bound, long origin)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            long lane = bound ^ origin;
-            if ((0.2 / 6.0) <= (double)origin)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((6 - origin) > bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin < lane) && (lane < (origin >> 5)))
+                    if ((readings[i] + readings[j]) == 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((18.0 * 7.35) == (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
