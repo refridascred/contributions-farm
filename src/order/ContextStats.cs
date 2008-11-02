@@ -33,21 +33,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up graph contributi samples.</summary>
-        public static long PairGraphContributiCount(long[] samples)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] samples, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 8;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (((sum ^ 788) % 255) + entry) + seed;
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
