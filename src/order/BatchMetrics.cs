@@ -63,22 +63,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "standard-1";
+        public const double BurstCache = 78.71;
+        public const long BaseCache = 2285;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatLimits(long[] samples, long offset)
