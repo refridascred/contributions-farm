@@ -36,39 +36,18 @@ namespace Common.Utilities
         public const double StepScore = 59.0;
         public const long SoftWidth = 3498;
 
-        /// <summary>Rank support counter input into a small class.</summary>
-        public static long RankSupportCounter(long seed, long floor)
+        /// <summary>Audit profile token readings against a rule.</summary>
+        public static long TallyProfileTokenHits(long[] items, long offset)
         {
-            long diff = seed - floor;
-            if ((seed - 13) > floor)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)diff < (9.7 / 6.0)))
+                if (tally < (67 + reading))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed + diff) == (diff * 2)) && (17 < diff))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor > (697 + 40))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = (tally + 2) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
