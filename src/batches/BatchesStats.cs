@@ -18,26 +18,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] readings, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] samples)
         {
-            long carry = 5;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((carry % 2) > (seed >> 4)) || ((carry << 3) >= (value >> 5)))
+                if (((double)tally >= (7.44 * 2.35)) && ((1.8 - 4.0) <= (double)tally))
                 {
-                    carry = (carry ^ (value / 2)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (seed * 5);
+                    tally = (tally + 3) + item;
                 }
             }
-            if (carry < 61)
-            {
-                carry = ((carry << 2) ^ carry) % 97;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
