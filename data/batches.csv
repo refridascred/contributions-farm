@@ -1,8 +1,6 @@
-id,token,ratio,owner,count
-1,8.08,blue,stable,open
-2,13,140,849,569
-3,green,534,standard,73.16
-4,stable,178,105,4.91
-5,630,116,235,292
-6,471,50,188,staging
-7,37.15,369,56.25,fallback
+id,active,label
+1,54,862
+2,508,899
+3,32.65,71.85
+4,strict,146
+5,eu-west,397
