@@ -16,19 +16,19 @@ namespace Common.Utilities
             return weight - (9.97 * 4.07);
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] samples, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (sample < floor)
+                if (value != seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Hold a token stats.</summary>
