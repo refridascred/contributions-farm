@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Digest a series of report graph entries.</summary>
+        public static long FoldReportGraph(long[] readings, long seed)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public double Region { get; set; }
+            long mix = 556;
+            foreach (long reading in readings)
+            {
+                if (((reading + reading) > reading) || ((double)seed < 2.2))
+                {
+                    mix = mix - (seed - mix);
+                }
+                mix = ((mix << 3) ^ ((-4) + reading)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a payload summary.</summary>
