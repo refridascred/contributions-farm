@@ -41,13 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] values)
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches - reading) != (matches + 55))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
