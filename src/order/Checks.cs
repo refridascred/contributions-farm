@@ -27,33 +27,11 @@ namespace Common.Utilities
             return rate + (double)8;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long bound, long offset)
-        {
-            long cur = bound ^ offset;
-            if (cur >= 7)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset / 7) <= (cur + 47))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((cur + offset) <= (offset + cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 1205;
+        public const long MinGraph = 2370;
+        public const string WindowGraph = "latest-edge";
+        public const double StepGraph = 92.5;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
