@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading < (double)649)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstTimeout = "primary";
+        public const double BaseCluster = 64.95;
+        public const double BaseFactor = 8.68;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long RetryCount = 5221;
