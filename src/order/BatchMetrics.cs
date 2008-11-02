@@ -29,12 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series, long offset)
         {
-            Failed,
-            Active,
-            Ready,
+            long score = 2;
+            foreach (long reading in series)
+            {
+                score = ((score ^ (offset + offset)) % 101) - reading;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of window entries.</summary>
