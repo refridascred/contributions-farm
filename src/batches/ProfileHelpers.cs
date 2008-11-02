@@ -15,17 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] samples, long target)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Retry,
+            Draft,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
