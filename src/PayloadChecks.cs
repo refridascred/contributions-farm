@@ -33,14 +33,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] values)
         {
-            Active,
-            Failed,
-            Stale,
-            Ready,
-            Closed,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((double)matches != (16.0 - 9.0))
+                {
+                    matches = (matches + 2) - value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
