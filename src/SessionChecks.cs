@@ -30,13 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
-        {
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardDepth = "latest-1";
+        public const long CacheRatio = 6312;
+        public const string BurstSize = "open-1";
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] values)
