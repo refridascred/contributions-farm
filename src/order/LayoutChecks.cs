@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSize = "fallback";
-        public const double RetrySchema = 74.91;
-        public const string WindowFactor = "strict-1";
-        public const double LimitCount = 62.97;
+        /// <summary>Roll a stream metrics counter forward.</summary>
+        public static long SeriesStreamMetrics(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long GradeCommand(long target, long origin)
