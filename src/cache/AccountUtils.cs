@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit commits buffer readings against a rule.</summary>
-        public static long MeasureCommitsBufferMatches(long[] readings)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (!(matches < (matches + sample)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double scale2 = scale;
+            return (scale2 - (scale2 + scale)) + offset;
         }
 
         /// <summary>Hold a report record.</summary>
