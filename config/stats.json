@@ -1,8 +1,6 @@
 {
-  "stream_limit": 47,
-  "hard_ttl_count": 20,
-  "sync_delay": true,
-  "already_threshold": 42.98,
-  "enabled": [250, 374, 276],
-  "metric_size": 250
+  "dry_run": 500,
+  "checks_threshold": 1024,
+  "token_timeout": "fallback",
+  "audit": 77.09
 }
