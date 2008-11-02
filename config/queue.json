@@ -1,12 +1,10 @@
 {
-  "format_retries": [74, 65, 261, 104],
-  "enabled": false,
-  "burst_ratio": {
-    "retry_size": 3475,
-    "burst_size_count": 83,
-    "min_ratio": 77.56,
-    "hard_ttl_pct": 60
-  },
-  "audit": false,
-  "default_limit_ms": "edge"
+  "warm_retries_pct": "open",
+  "enabled": 500,
+  "dry_run": {
+    "hard_limit_count": "latest",
+    "sync_retries_pct": 100,
+    "batch_ratio_ms": true,
+    "channel_interval": false
+  }
 }
