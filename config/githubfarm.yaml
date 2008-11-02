@@ -1,5 +1,14 @@
 # githubfarm settings
-verbose: legacy
-hard_capacity: 87
-farm_size: 32.54
-warm_interval: edge
+flush_timeout_pct: strict
+default_window_ms:
+  max_limit:
+    - 467
+    - 292
+  default_interval: 60
+  cache_limit_count:
+    warm_window_count: 45.73
+    retry_ttl_s: true
+    metric_depth: primary
+    warm_delay_ms: 7269
+    hard_threshold: latest
+format_size: true
