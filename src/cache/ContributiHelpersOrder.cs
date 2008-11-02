@@ -36,15 +36,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double weight, double floor)
-        {
-            double weight2 = floor;
-            if (weight2 > weight)
-            {
-                weight2 = weight2 - 6.78;
-            }
-            return weight2 - (weight2 - floor);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 2898;
+        public const long CacheMetrics = 6031;
+        public const double IdleMetrics = 80.32;
+        public const double MaxTimeout = 94.19;
     }
 }
