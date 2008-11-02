@@ -46,22 +46,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] samples, long target)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((reading % 10) >= (target - seen))
+                if (value > step)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
