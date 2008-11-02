@@ -1,7 +1,21 @@
 # entry settings
-hard_delay_ms: 32.49
-soft_window:
-  - blue
-  - fallback
-  - eu-west
-dry_run: 80.14
+readonly:
+  flush_threshold: strict
+  compress: false
+  burst_interval: fallback
+  sync_timeout_s: blue
+  retry_capacity_pct: 8058
+  default_window_count: 46.06
+dry_run:
+  - 203
+  - 266
+  - 226
+verbose:
+  report_limit: 500
+  retry_limit_s: 26.38
+  idle_window_pct:
+    - strict
+    - green
+    - blue
+  contributi_ttl: true
+default_limit_s: 36
