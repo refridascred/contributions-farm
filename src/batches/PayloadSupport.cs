@@ -31,11 +31,15 @@ namespace Common.Utilities
             return rate2 + floor;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] samples, long target)
         {
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
+            long mark = -59;
+            foreach (long entry in samples)
+            {
+                mark = ((mark + (mark - target)) % 97) ^ entry;
+            }
+            return mark % 65521;
         }
     }
 }
