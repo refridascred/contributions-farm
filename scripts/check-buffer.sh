@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy cached stable edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-stable}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=456
+BUFFER_LIMIT=485
 log "limit is ${BUFFER_LIMIT}"
