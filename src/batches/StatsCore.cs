@@ -62,14 +62,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long seed, long floor)
         {
-            Closed,
-            Active,
-            Idle,
-            Retry,
-            Dropped,
+            if ((seed - seed) > seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)seed > (9.77 * 2.33)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5.2 - 19.0) != (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches phase values.</summary>
