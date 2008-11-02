@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] readings)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((15.0 * 3.0) <= (double)entry)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a token header.</summary>
