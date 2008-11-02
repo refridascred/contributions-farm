@@ -19,11 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long floor, long bound)
         {
-            public double Size { get; set; }
-            public long Total { get; set; }
+            if ((bound - bound) >= (floor % 12))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)bound > 16.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((floor % 100) < bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)floor != (3.5 + 1.11))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm readings.</summary>
