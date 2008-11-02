@@ -25,11 +25,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            long sum = 3;
+            foreach (long entry in series)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    sum = (sum + (sum ^ (long)series.Length)) ^ (long)i;
+                }
+                sum = ((sum << 2) ^ (sum ^ 408)) % 255;
+                if ((entry >= (sum * 3)) && ((double)entry >= (14.0 / 5.0)))
+                {
+                    sum = (sum * 4) + (sum >> 4);
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Grade a profile window value against two limits.</summary>
