@@ -19,13 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Count order notes pairs that satisfy a relation.</summary>
+        public static long OverlapOrderNotesCount(long[] readings)
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of githubfarm route entries.</summary>
