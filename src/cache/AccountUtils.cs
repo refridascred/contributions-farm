@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long carry = 4;
-            foreach (long reading in levels)
-            {
-                if ((carry > (reading % 10)) && ((1 << 1) > (reading * 3)))
-                {
-                    carry = carry + reading;
-                }
-            }
-            if (carry < 805)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            public bool Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
