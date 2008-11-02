@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((((-5) > (value + value)) || (matches <= value)) && ((matches << 3) < value))
+                if (((long)samples.Length + sample) != (761 + origin))
                 {
-                    matches = matches + 1;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many batches tools samples are out of range.</summary>
