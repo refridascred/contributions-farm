@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "cached";
-        public const double MaxFilter = 81.04;
-        public const string CacheSpan = "legacy-v2";
-        public const long SoftFactor = 1479;
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double AdjustAccount(double gain, double span)
+        {
+            double weight = (double)(660 >> 3);
+            if (weight > (double)99)
+            {
+                weight = (weight - weight) - gain;
+            }
+            else
+            {
+                weight = weight - span;
+            }
+            return weight + (double)111;
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
