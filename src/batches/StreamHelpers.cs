@@ -124,11 +124,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 4493;
-        public const double DefaultQueue = 93.51;
-        public const long WindowScore = 4907;
-        public const long BurstQueue = 6316;
-        public const double SoftCount = 35.45;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public bool Count { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
