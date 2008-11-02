@@ -32,19 +32,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] values, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long state = 88;
+            foreach (long entry in items)
             {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (((state - (state << 1)) % 4096) ^ entry) - seed;
+                state = (state + (state * 4)) % 65521;
             }
-            return flag;
+            if (state > 83)
+            {
+                state = (state + 43) % 65521;
+            }
+            return state % 1000;
         }
     }
 }
