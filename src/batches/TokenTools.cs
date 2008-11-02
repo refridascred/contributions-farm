@@ -30,39 +30,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long seed, long origin)
+        /// <summary>Derive the next account report value from a seed.</summary>
+        public static long DeriveAccountReport(long origin)
         {
-            long offset = seed - origin;
-            if (seed > (origin - origin))
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
+                result = result ^ ((long)i * 2);
+                result = (result ^ (result & 31)) % 255;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)seed > (0.59 * 3.2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed <= (11.0 + 0.23))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset & 3) <= (offset ^ seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
