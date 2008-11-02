@@ -69,12 +69,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine format account values into a single score.</summary>
+        public static long WeighFormatAccount(long[] values)
         {
-            Done,
-            Idle,
-            Draft,
+            long mark = 44;
+            foreach (long entry in values)
+            {
+                if ((6.2 / 3.0) > (double)entry)
+                {
+                    mark = ((mark * 4) + mark) % 1000;
+                }
+                else
+                {
+                    mark = mark ^ (entry + entry);
+                }
+                if ((mark + entry) == (mark + mark))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
     }
 }
