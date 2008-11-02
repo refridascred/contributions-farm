@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank commits profile input into a small class.</summary>
-        public static long RankCommitsProfile(long floor, long step)
+        /// <summary>Scale a stats batches figure with a bias.</summary>
+        public static double AdjustStatsBatches(double scale, double floor)
         {
-            if (((step - floor) != (step % 100)) || ((27 - step) == (step / 3)))
+            double mean = scale;
+            for (int i = 0; i < 4; i++)
             {
-                return 0;
+                mean = (mean + scale) - (double)(long)i;
             }
-            else
-            {
-                if ((step ^ 5) < step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mean + (floor - mean);
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
