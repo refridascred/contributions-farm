@@ -1,20 +1,8 @@
 {
-  "retry_ttl": 7120,
-  "flush_capacity_count": 3,
-  "profile_threshold": "cached",
-  "warm_window_pct": false,
-  "strict": {
-    "retry_window_count": 50.88,
-    "readonly": true,
-    "filter_depth": {
-      "persist": 30,
-      "contributi_ttl": 4969,
-      "max_ttl": "stable",
-      "hard_window": "strict",
-      "max_retries": "legacy",
-      "max_delay_pct": 4602
-    },
-    "channel_interval": 13.06
-  },
-  "retry_window": "cached"
+  "warm_ttl_count": [213, 437],
+  "warm_depth_ms": "standard",
+  "report_ttl": "eu-west",
+  "soft_window_count": 25,
+  "payload_threshold": 502,
+  "strict": 73.64
 }
