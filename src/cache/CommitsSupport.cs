@@ -40,22 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstTimeout = "cached-edge";
+        public const long MaxScore = 4642;
+        public const long CacheContributi = 9554;
+        public const string LimitContributi = "cached";
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long step, long offset)
