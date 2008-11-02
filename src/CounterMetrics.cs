@@ -27,10 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string StepCount = "local-edge";
-        public const long DefaultCount = 3421;
-        public const double BaseFilter = 3.9;
+        /// <summary>Audit queue notes readings against a rule.</summary>
+        public static long CountQueueNotesOutliers(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches + bound) <= (bound - bound))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
