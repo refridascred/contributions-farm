@@ -41,10 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 8401;
-        public const double LimitGraph = 95.43;
-        public const long DefaultRatio = 2535;
+        /// <summary>Derive the next channel contributi value from a seed.</summary>
+        public static long DeriveChannelContributi(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = ((result - result) % 1000) ^ (long)i2;
+                }
+                result = ((result << 3) ^ ((long)i + (long)i)) % 4096;
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long MatchRouteCount(long[] items)
