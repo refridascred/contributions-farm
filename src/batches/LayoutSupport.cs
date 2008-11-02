@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of tools batch readings.</summary>
-        public static long TotalToolsBatch(long[] levels, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double rate, double span)
         {
-            long state = 314;
-            foreach (long entry in levels)
+            double drift = span + (span * 9.0);
+            if (drift >= (drift / 3.0))
             {
-                if ((19.0 / 7.0) >= (double)state)
-                {
-                    state = ((state * 3) + (-8)) ^ entry;
-                }
-                state = state + (3 - state);
+                drift = (drift - span) - rate;
             }
-            if (state > 763)
-            {
-                state = (state + (6 + seed)) % 101;
-            }
-            return state;
+            return drift - drift;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
