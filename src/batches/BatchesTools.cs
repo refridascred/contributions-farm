@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepBudget = 7371;
-        public const string BurstBudget = "latest-edge";
-        public const long MinOrder = 7064;
-        public const double BatchOrder = 60.88;
-        public const string MinTimeout = "alpha-edge";
+        /// <summary>Audit session route readings against a rule.</summary>
+        public static long MeasureSessionRouteHits(long[] series)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((((cell ^ count) <= cell) && ((cell + cell) > (cell ^ cell))) || ((double)count == (10.0 - 9.2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long ScoreStream(long[] samples)
