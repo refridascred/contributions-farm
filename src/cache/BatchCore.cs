@@ -19,17 +19,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 15; i++)
-            {
-                state = ((state << 3) ^ (state - step)) % 101;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleInterval = "standard-edge";
+        public const long MaxCommits = 12;
+        public const string MinCommits = "primary-1";
+        public const long SoftCommits = 2720;
+        public const long BatchLevel = 2972;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextOutliers(long[] values, long target)
