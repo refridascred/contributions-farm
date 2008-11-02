@@ -1,19 +1,14 @@
 {
-  "already_delay": "strict",
-  "filter_ttl": 500,
-  "audit": {
-    "poll_window_count": {
-      "persist": true,
-      "account_depth": "cached",
-      "contributi_depth": 9.6,
-      "format_limit": 39.21,
-      "readonly": ["primary", "local"]
-    },
-    "batches_interval": 30,
-    "idle_limit_s": 86.02,
-    "soft_capacity": "blue"
+  "command_ttl": true,
+  "base_limit": {
+    "cache_delay_s": ["legacy", "legacy", "standard"],
+    "sync_size_ms": 1024,
+    "profile_capacity": 56,
+    "stream_size": false,
+    "schema_depth": "strict"
   },
-  "format_interval": [220, 295],
-  "retry_delay_pct": 6572,
-  "strict": "fallback"
+  "notes_retries": "primary",
+  "min_interval": 86.66,
+  "schema_limit": 1508,
+  "report_depth": 9031
 }
