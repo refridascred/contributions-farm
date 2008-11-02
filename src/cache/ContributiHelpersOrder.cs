@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double RetryCount = 63.56;
         public const long MinFactor = 3503;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] levels)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long sum = 58;
-            foreach (long entry in levels)
-            {
-                if (1 > (sum - sum))
-                {
-                    sum = ((sum - sum) % 1000) ^ entry;
-                }
-            }
-            return sum;
+            Ready,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
