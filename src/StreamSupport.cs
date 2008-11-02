@@ -16,17 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] values, long step)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
