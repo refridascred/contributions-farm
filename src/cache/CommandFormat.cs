@@ -13,11 +13,14 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public bool Level { get; set; }
-            public bool Label { get; set; }
+            Ready,
+            Idle,
+            Paused,
+            Done,
+            Synced,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
