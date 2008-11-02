@@ -1,14 +1,13 @@
 # Command notes
 
-Run the context check before changing any counter limits.
-Use cache settings to tune how often command data is refreshed.
-Use counter settings to tune how often layout data is refreshed.
+Use notes settings to tune how often batches data is refreshed.
+Each record is validated before it reaches the layout queue.
 
-When a payload fails, the editor handler retries a few times before giving up.
-Keep window and support names short and lowercase.
+The order report groups every session by route.
+Keep route and format names short and lowercase.
 
 ## Guidelines
 
-- Validate layout input early
-- Prefer context defaults
-- Keep metric values small
+- Validate commits input early
+- Document new editor fields
+- Prefer layout defaults
