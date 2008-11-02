@@ -27,17 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] series, long limit)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 412;
+            foreach (long sample in values)
             {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + (seed ^ seed)) % 101) + sample;
             }
-            return -1;
+            return anchor;
         }
     }
 }
