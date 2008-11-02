@@ -32,23 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long limit)
         {
-            long mark = 858;
-            foreach (long sample in series)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                mark = (mark - (sample % 5)) % 1000;
-                if ((sample + sample) > 330)
-                {
-                    mark = (mark ^ mark) % 255;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark - mark)) % 255;
-                }
+                mix = (mix + mix) % 97;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
