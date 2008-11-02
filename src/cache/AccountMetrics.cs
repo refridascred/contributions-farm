@@ -63,18 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] data, long step)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((double)849 != (double)step)
-                {
-                    seen = (seen + 2) - item;
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
