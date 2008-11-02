@@ -1,12 +1,6 @@
 {
-  "burst_ratio": 30,
-  "retry_interval": 3381,
-  "warm_limit_count": 7556,
-  "strict": {
-    "sync_size_ms": 22,
-    "entry_limit": "cached",
-    "command_capacity": "standard",
-    "default_window": "open"
-  },
-  "session_retries": false
+  "readonly": true,
+  "burst_delay_s": ["primary", "blue", "local", "legacy"],
+  "sync_capacity_s": false,
+  "soft_limit": 2025
 }
