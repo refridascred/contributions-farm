@@ -1,21 +1,9 @@
 # githubfarm settings
-schema_threshold: 2198
-session_interval: true
-min_threshold_ms:
-  soft_size_count:
-    - 163
-    - 58
-  min_delay: 22
-  sync_window_pct: 500
-  cache_interval_pct: 13
-  profile_interval: false
-  dry_run:
-    idle_ratio: 30
-    retry_interval: true
-    default_capacity_s: green
-compress: green
-warm_interval: true
-hard_ratio_s:
-  - local
-  - strict
-  - stable
+hard_depth_pct: 29.06
+hard_ttl_s:
+  - 152
+  - 375
+default_capacity_ms: 30
+min_timeout: 4605
+account_depth: cached
+flush_retries_s: stable
