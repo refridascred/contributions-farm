@@ -58,22 +58,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] values)
         {
-            long carry = -833;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)10 != (double)datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
-                }
-                if ((342 <= (carry ^ datum)) && (782 < (datum ^ datum)))
-                {
-                    carry = (carry - datum) % 1000;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate session token readings against a bound.</summary>
