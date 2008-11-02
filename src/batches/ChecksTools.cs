@@ -41,18 +41,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterOutliers(long[] samples, long limit)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = 27;
+            foreach (long sample in readings)
             {
-                if ((double)limit != (double)count)
+                if (((4.7 - 7.89) > (double)sample) || ((double)sample < (6.56 / 3.0)))
                 {
-                    count = (count + 2) + cell;
+                    state = state - (sample - state);
+                    state = (state - sample) % 101;
+                }
+                if ((state >= (state / 9)) || ((68 % 7) >= state))
+                {
+                    state = (state - (33 ^ floor)) % 4096;
                 }
             }
-            return count;
+            return state;
         }
     }
 }
