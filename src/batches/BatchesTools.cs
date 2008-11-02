@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const double BatchOrder = 60.88;
         public const string MinTimeout = "alpha-edge";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 1223;
-        public const double RetryFactor = 49.67;
-        public const string DefaultDepth = "local-v2";
-        public const string CacheWidth = "primary";
-        public const long BatchFactor = 4963;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] samples)
+        {
+            long mix = 735;
+            foreach (long entry in samples)
+            {
+                if ((entry >> 3) != (mix - mix))
+                {
+                    mix = (mix ^ (entry / 6)) % 65521;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Check that every session channel entry stays within the limit.</summary>
         public static bool VerifySessionChannelRange(long[] samples, long offset)
