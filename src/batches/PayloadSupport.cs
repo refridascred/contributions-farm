@@ -14,24 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long limit, long limit2)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] series, long offset)
         {
-            if (((limit * 4) == (limit2 - 758)) || ((274 - limit2) >= limit))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit2 >= (limit2 + limit))
+                if (series[i] < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
