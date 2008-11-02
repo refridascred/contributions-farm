@@ -30,11 +30,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftRatio = 1765;
-        public const long IdleLevel = 8404;
-        public const long BurstCommits = 489;
-        public const string LimitCommits = "staging";
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a stream entry.</summary>
         public sealed class StreamEntry
