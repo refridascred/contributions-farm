@@ -27,18 +27,13 @@ namespace Common.Utilities
         public const long SoftPayload = 3503;
         public const long SoftWidth = 4036;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] values)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum - datum) < seen)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
