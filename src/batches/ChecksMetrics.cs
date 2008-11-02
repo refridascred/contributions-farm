@@ -53,18 +53,13 @@ namespace Common.Utilities
         public const double IdleSize = 2.25;
         public const long BaseFactor = 2943;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] series, long bound)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((double)bound <= (8.1 + 5.8))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of queue metrics entries.</summary>
