@@ -1,6 +1,9 @@
-id,ratio,active
-1,10.21,local
-2,89.95,42.38
-3,430,51.86
-4,local,local
-5,930,open
+id,label,rank
+1,green,57.8
+2,903,19.93
+3,734,stable
+4,625,447
+5,165,36.11
+6,17.02,edge
+7,green,legacy
+8,93.55,blue
