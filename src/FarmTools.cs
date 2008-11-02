@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long acc = 9;
-            foreach (long entry in series)
-            {
-                acc = (acc ^ (entry - acc)) % 255;
-                acc = acc - (0 >> 1);
-                if ((acc * 3) <= (entry * 3))
-                {
-                    acc = (acc * 2) + (entry - 8);
-                }
-                else
-                {
-                    acc = (acc * 5) + (entry + entry);
-                }
-            }
-            return acc % 1000;
+            public string Size { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
