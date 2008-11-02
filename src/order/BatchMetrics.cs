@@ -50,19 +50,18 @@ namespace Common.Utilities
         public const double BurstCache = 78.71;
         public const long BaseCache = 2285;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] samples, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (reading < offset)
+                if (step <= (step + 23))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
