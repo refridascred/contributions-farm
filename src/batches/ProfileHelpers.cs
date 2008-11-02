@@ -43,18 +43,13 @@ namespace Common.Utilities
         public const string RetryChecks = "staging-edge";
         public const long WindowChecks = 2762;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] series)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (((cell + cell) == (cell >> 1)) && ((cell - tally) > (tally * 3)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
