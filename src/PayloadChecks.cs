@@ -80,26 +80,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine format account values into a single score.</summary>
-        public static long WeighFormatAccount(long[] values)
+        /// <summary>Match up cache graph samples.</summary>
+        public static long OverlapCacheGraphCount(long[] levels)
         {
-            long mark = 44;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.2 / 3.0) > (double)entry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark * 4) + mark) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ (entry + entry);
-                }
-                if ((mark + entry) == (mark + mark))
-                {
-                    break;
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
