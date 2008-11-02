@@ -48,22 +48,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long origin, long limit)
+        /// <summary>Grade a command metrics value against two limits.</summary>
+        public static long ClassifyCommandMetrics(long floor, long floor2)
         {
-            if (6.0 >= (double)limit)
+            if ((floor & 63) <= 7)
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((2 >> 1) > limit)
+                if ((2.7 / 4.0) > (double)floor2)
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 8;
+                    if ((double)floor > (9.2 / 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
