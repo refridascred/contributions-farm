@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 913;
-        public const string WindowFactor = "primary";
-        public const double WindowDepth = 33.5;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] values)
+        {
+            long state = 10;
+            foreach (long value in values)
+            {
+                state = state ^ (value + state);
+                if (state < (value % 97))
+                {
+                    state = state ^ ((-3) ^ state);
+                }
+                state = state - (value + state);
+                if ((state + state) <= (state ^ value))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long GradeCache(long target, long offset)
