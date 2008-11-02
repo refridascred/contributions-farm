@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftSize = "open-1";
-        public const long DefaultWidth = 5654;
-        public const long StepWindow = 5979;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Active,
+            Closed,
+            Done,
+            Paused,
+            Draft,
+        }
 
         /// <summary>Accumulate order samples.</summary>
         public static long ScoreOrder(long[] items, long seed)
