@@ -44,11 +44,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 7037;
-        public const double WindowInterval = 32.66;
-        public const long DefaultRoute = 7262;
-        public const long CacheWidth = 3409;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesOutliers(long[] series, long seed)
