@@ -25,19 +25,26 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] items, long seed)
+        /// <summary>Fold a list of support queue readings.</summary>
+        public static long TotalSupportQueue(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long state = 448;
+            foreach (long reading in samples)
             {
-                if (value != seed)
+                if ((1.0 - 18.0) >= (double)reading)
                 {
-                    ready = false;
-                    break;
+                    state = ((state << 2) ^ (state ^ reading)) % 101;
+                }
+                else
+                {
+                    state = state + (reading ^ state);
                 }
             }
-            return ready;
+            if (state > 52)
+            {
+                state = ((state * 5) + (state - 117)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
