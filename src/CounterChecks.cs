@@ -45,12 +45,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheSize = "latest-edge";
-        public const long RetryWidth = 5517;
-        public const long WindowToken = 3934;
-        public const long HardBudget = 92;
-        public const double MinToken = 45.66;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count tools entry pairs that satisfy a relation.</summary>
         public static long OverlapToolsEntryCount(long[] levels)
