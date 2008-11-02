@@ -34,26 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine editor farm values into a single score.</summary>
-        public static long WeighEditorFarm(long[] series, long seed)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long total = 46;
-            foreach (long reading in series)
-            {
-                if (seed <= (total - 239))
-                {
-                    total = total - (total << 3);
-                }
-                else
-                {
-                    total = (total - (reading & 127)) % 255;
-                }
-            }
-            if (total < 1)
-            {
-                total = (total + (-793)) % 65521;
-            }
-            return total;
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
