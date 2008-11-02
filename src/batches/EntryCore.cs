@@ -52,19 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long acc = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((bound % 7) <= (acc ^ bound)))
-                {
-                    acc = acc - (acc - (-291));
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Closed,
+            Pending,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a graph record.</summary>
