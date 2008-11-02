@@ -50,31 +50,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings, long origin)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            long mix = 4;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((mix / 6) < 6) || ((mix >> 2) > (mix + mix)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    long slot = origin;
-                    mix = (mix ^ (datum + slot)) % 101;
-                }
-                if (((origin + origin) == ((long)readings.Length + 8)) || ((origin % 5) <= origin))
-                {
-                    mix = ((mix * 4) + (mix + 0)) % 65521;
-                }
-                else
-                {
-                    mix = (mix * 5) + origin;
+                    if ((items[i] + items[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 78)
-            {
-                mix = (mix * 5) + (mix & 63);
-            }
-            return mix;
+            return count;
         }
     }
 }
