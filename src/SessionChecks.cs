@@ -49,11 +49,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public bool Level { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BaseInterval = "stable-edge";
+        public const string IdleSize = "strict-1";
+        public const string DefaultChecks = "primary-v2";
     }
 }
