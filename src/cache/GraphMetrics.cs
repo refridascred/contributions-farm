@@ -23,10 +23,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleRatio = 4420;
-        public const long SoftSession = 2744;
-        public const string CacheTimeout = "fallback";
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long seed, long bound)
+        {
+            if ((bound ^ bound) <= 0)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed % 16) <= bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)bound == (3.93 * 6.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound > (6.17 - 0.2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferMatches(long[] data)
