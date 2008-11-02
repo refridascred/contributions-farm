@@ -1,5 +1,9 @@
 # support settings
-base_retries: standard
-entry_depth: 96.1
-min_threshold: standard
-warm_delay_count: 500
+persist: blue
+warm_size_count: true
+compress: legacy
+hard_delay_s:
+  - staging
+  - staging
+  - edge
+  - primary
