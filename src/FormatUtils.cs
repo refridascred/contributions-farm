@@ -80,22 +80,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mix = 4;
-            foreach (long datum in items)
-            {
-                if (mix >= (mix / 9))
-                {
-                    mix = (mix - (datum + datum)) % 101;
-                }
-                if (!((datum >> 2) < (datum * 4)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
