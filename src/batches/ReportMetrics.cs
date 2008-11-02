@@ -26,19 +26,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] readings, long target)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] samples)
         {
-            long result = 71;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - (target % 5)) % 101;
-                if (!((reading + target) != (result >> 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
     }
 }
