@@ -27,12 +27,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] samples)
         {
-            Idle,
-            Failed,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (((entry + 482) == (entry >> 2)) && ((9.89 - 3.9) != (double)seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
