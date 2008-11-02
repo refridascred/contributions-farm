@@ -34,25 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm stream value against two limits.</summary>
-        public static long ClassifyGithubfarmStream(long offset, long target)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long step = offset ^ target;
-            if ((step ^ offset) >= (target - target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step * 2) >= (step - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
