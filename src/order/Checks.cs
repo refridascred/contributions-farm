@@ -31,18 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] samples)
+        /// <summary>Measure how many batch account samples are out of range.</summary>
+        public static long TallyBatchAccountGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((hits < (reading / 5)) && ((double)reading != (5.7 - 5.0)))
+                if (((double)datum < (1.2 * 16.0)) || ((double)matches <= 3.0))
                 {
-                    hits = hits + 2;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up entry samples.</summary>
