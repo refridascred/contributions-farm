@@ -1,7 +1,12 @@
 {
-  "hard_window_ms": 3,
-  "readonly": "staging",
-  "command_interval": [498, 293, 408],
-  "payload_delay": "blue",
-  "payload_retries": false
+  "sync_limit_s": {
+    "idle_ttl_s": "cached",
+    "max_depth_pct": 8358,
+    "batch_limit_pct": false
+  },
+  "burst_size_count": 7376,
+  "stats_delay": 4112,
+  "min_timeout": "staging",
+  "payload_threshold": 45,
+  "audit": 13.58
 }
