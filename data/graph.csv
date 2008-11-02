@@ -1,7 +1,10 @@
-id,active,owner,ratio,level
-1,fallback,58.87,909,6.7
-2,793,fallback,stable,241
-3,918,56.15,fallback,77
-4,48.61,eu-west,736,38.87
-5,75,18.3,255,legacy
-6,59.54,858,0.74,49.05
+id,region
+1,standard
+2,729
+3,staging
+4,16.31
+5,primary
+6,latest
+7,828
+8,77.05
+9,local
