@@ -74,12 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheCount = 6971;
-        public const double LimitBuffer = 35.92;
-        public const double SoftBuffer = 29.75;
-        public const long SoftFactor = 7996;
-        public const long WindowBuffer = 5054;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long DeriveRecord(long step)
