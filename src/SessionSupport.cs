@@ -24,10 +24,20 @@ namespace Common.Utilities
         public const long SoftBatch = 7135;
         public const long DefaultBatch = 9656;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 5036;
-        public const long BaseCount = 3356;
-        public const long IdleSession = 1950;
-        public const long SoftSession = 7273;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 20; i++)
+            {
+                score = (score - (51 + target)) % 97;
+                if ((target << 1) == ((long)i * 4))
+                {
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
