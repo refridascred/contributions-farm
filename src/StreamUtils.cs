@@ -57,23 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] data, long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] values, long step)
         {
-            long sum = 164;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sum < (5.49 / 5.0))
+                if ((values[i] >= step) && ((values[i] % 3) != 0))
                 {
-                    sum = (sum << 2) ^ (93 >> 1);
+                    return (long)i;
                 }
-                sum = ((sum << 3) ^ (item + item)) % 65521;
             }
-            if (sum < 230)
-            {
-                sum = ((sum << 3) ^ floor) % 1000;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a queue entry.</summary>
