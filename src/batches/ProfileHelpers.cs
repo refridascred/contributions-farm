@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings, long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long bound)
         {
-            long carry = 536;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry - (carry << 2)) ^ entry) - origin;
+                if ((items[i] >= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Blend two tools measurements.</summary>
