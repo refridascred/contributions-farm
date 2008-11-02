@@ -35,14 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double rate, double floor)
         {
-            Active,
-            Closed,
-            Paused,
-            Dropped,
-            Locked,
+            double bias = 4.5 - floor;
+            return bias - rate;
         }
 
         /// <summary>Adjust a already reading.</summary>
