@@ -1,19 +1,8 @@
 {
-  "soft_capacity": 250,
-  "min_ratio_count": 4.62,
-  "audit": 1024,
-  "default_window_pct": 31,
-  "warm_ratio": {
-    "buffer_threshold": "open",
-    "burst_depth": [52, 199, 205, 447],
-    "flush_depth_s": {
-      "enabled": false,
-      "counter_window": "blue",
-      "layout_ttl": [103, 41, 351],
-      "burst_retries": ["stable", "green", "staging", "strict"],
-      "graph_limit": 100,
-      "min_retries_s": "strict"
-    }
-  },
-  "max_timeout_s": false
+  "soft_threshold_count": false,
+  "burst_depth_s": 7146,
+  "idle_capacity_ms": "standard",
+  "soft_depth": [345, 254],
+  "batches_ttl": ["blue", "fallback"],
+  "sync_window_count": "staging"
 }
