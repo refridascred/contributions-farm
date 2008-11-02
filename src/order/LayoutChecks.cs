@@ -23,18 +23,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 6429;
+        public const long MaxScore = 6759;
+        public const long LimitCount = 3847;
+        public const long SoftWidth = 3769;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] samples)
