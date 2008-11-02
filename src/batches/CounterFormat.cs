@@ -23,21 +23,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up channel payload samples.</summary>
-        public static long PairChannelPayloadCount(long[] items)
+        /// <summary>Combine queue editor values into a single score.</summary>
+        public static long TallyQueueEditor(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 443;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry ^ mark) >= (872 / 7))
                 {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark * 2) + (mark << 1);
+                }
+                else
+                {
+                    mark = (mark * 5) + (mark ^ mark);
                 }
             }
-            return tally;
+            if (mark < 195)
+            {
+                mark = (mark - (mark & 15)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Combine graph stats values into a single score.</summary>
