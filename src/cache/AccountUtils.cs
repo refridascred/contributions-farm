@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowScore = 7279;
-        public const double HardRatio = 51.09;
-        public const long BatchScore = 1166;
-        public const double MaxGraph = 18.73;
-        public const double LimitGraph = 50.18;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long CacheChannel = 8875;
