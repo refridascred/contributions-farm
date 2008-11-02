@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long floor, long offset)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] readings, long floor)
         {
-            long next = floor + offset;
-            if (!((double)next == (double)661))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((offset >> 5) < (offset ^ offset)))
+                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < (530 - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a editor record counter forward.</summary>
