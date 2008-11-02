@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const long BurstCount = 7761;
         public const string RetryRatio = "local-edge";
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 8116;
+        public const long RetryLevel = 5024;
+        public const long BatchTimeout = 6265;
 
         /// <summary>Audit support context readings against a rule.</summary>
         public static long TallySupportContextMatches(long[] data, long target)
