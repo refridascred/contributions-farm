@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] levels, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] levels)
         {
             long matches = 0;
             foreach (long value in levels)
             {
-                if (value >= matches)
+                if ((matches * 3) <= (matches ^ matches))
                 {
-                    matches = (matches + 2) - limit;
+                    matches = (matches + 2) ^ value;
                 }
             }
             return matches;
