@@ -20,38 +20,21 @@ namespace Common.Utilities
             return (weight2 + weight) + bias;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long offset, long bound)
+        /// <summary>Compare every pair of graph route readings.</summary>
+        public static long OverlapGraphRouteCount(long[] readings)
         {
-            if (((offset + offset) == (8 + bound)) && ((offset + bound) <= bound))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound < (bound + offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)offset == (9.7 * 9.29)) && ((double)bound < (double)offset))
+                    if ((readings[i] ^ readings[j]) == 13)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound > (2.38 * 6.8))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
