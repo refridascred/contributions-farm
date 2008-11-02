@@ -70,12 +70,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            Queued,
-            Done,
-            Retry,
+            long result = -288;
+            foreach (long cell in samples)
+            {
+                if (7 >= result)
+                {
+                    result = ((result << 3) ^ (cell + cell)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (820 * 5)) % 255;
+                }
+            }
+            return result;
         }
     }
 }
