@@ -54,12 +54,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowHits(long[] samples, long offset)
         {
-            Closed,
-            Locked,
-            Retry,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((offset * 3) == (entry + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
