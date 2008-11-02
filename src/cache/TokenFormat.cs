@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
-        {
-            Pending,
-            Closed,
-            Done,
-            Stale,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 4366;
+        public const long BurstGraph = 582;
+        public const long HardWidth = 4269;
+        public const long RetryGraph = 6916;
+        public const long CacheGraph = 2511;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string RetryCluster = "legacy-edge";
