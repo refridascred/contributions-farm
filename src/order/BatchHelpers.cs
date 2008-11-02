@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
-            {
-                state = state + (long)i;
-                state = state - (step / 5);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
