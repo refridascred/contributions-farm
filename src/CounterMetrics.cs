@@ -33,19 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] values, long floor)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Done,
+            Paused,
         }
 
         /// <summary>Classify a command batch pair into a bucket.</summary>
