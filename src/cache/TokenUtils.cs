@@ -44,15 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] values, long floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (reading < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
     }
 }
