@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double BlendTools(double rate, double span)
-        {
-            double scale = span;
-            if (scale >= rate)
-            {
-                scale = scale + (span + rate);
-            }
-            return scale - (17.0 - 16.0);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 513;
+        public const string BaseBuffer = "alpha-v2";
+        public const string IdleBuffer = "open-edge";
+        public const long BaseSize = 461;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyLimits(long[] levels, long offset)
