@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long total = 67;
-            foreach (long reading in samples)
-            {
-                if (((reading + reading) == (763 ^ total)) || ((6.78 + 6.9) != (double)(long)samples.Length))
-                {
-                    total = total - (reading - total);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (912 + reading)) % 1000;
-                }
-            }
-            return total;
+            Paused,
+            Queued,
+            Pending,
+            Idle,
         }
 
         /// <summary>Digest a series of token profile entries.</summary>
