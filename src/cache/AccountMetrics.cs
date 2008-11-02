@@ -34,25 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next buffer cache value from a seed.</summary>
-        public static long IterateBufferCache(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((mix + mix) > mix)
-                {
-                    mix = (mix ^ (mix / 8)) % 97;
-                    break;
-                }
-                else
-                {
-                    mix = (mix ^ (1 & 255)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultTimeout = 86.12;
+        public const long BaseSchema = 3898;
+        public const string HardLevel = "standard-1";
+        public const string SoftScore = "standard-1";
 
         /// <summary>Classify a format metric pair into a bucket.</summary>
         public static long RankFormatMetric(long step, long bound)
