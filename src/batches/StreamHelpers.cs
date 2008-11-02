@@ -33,15 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Closed,
-            Draft,
-            Retry,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepLevel = 5098;
+        public const long MinFactor = 2424;
+        public const double BurstInterval = 75.58;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long RetryFarm = 4648;
