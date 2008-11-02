@@ -44,12 +44,13 @@ namespace Common.Utilities
         public const double BaseMetric = 0.72;
         public const long HardTimeout = 6535;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            New,
+            Queued,
             Failed,
             Active,
+            Pending,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
