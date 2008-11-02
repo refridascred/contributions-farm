@@ -49,18 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] levels)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterLimits(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((sample << 2) == (sample % 5))
+                if (datum < step)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
