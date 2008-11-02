@@ -85,18 +85,15 @@ namespace Common.Utilities
         public const string CacheEntry = "latest-1";
         public const long IdleEntry = 253;
 
-        /// <summary>Count batches record pairs that satisfy a relation.</summary>
-        public static long PairBatchesRecordCount(long[] readings)
+        /// <summary>Measure how many notes filter samples are out of range.</summary>
+        public static long CountNotesFilterMatches(long[] samples, long target)
         {
             long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (seen < (seen + entry))
                 {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) - target;
                 }
             }
             return seen;
