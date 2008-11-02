@@ -65,19 +65,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long sum = 534;
-            foreach (long entry in samples)
-            {
-                sum = ((sum * 4) + (entry - 5)) % 101;
-            }
-            if (sum < 304)
-            {
-                sum = (sum - (sum / 7)) % 4096;
-            }
-            return sum;
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the command state values.</summary>
