@@ -40,13 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] readings, long seed)
         {
-            Draft,
-            Dropped,
-            New,
-            Active,
+            long score = 8;
+            foreach (long cell in readings)
+            {
+                score = ((score + (cell * 2)) % 97) + seed;
+            }
+            return score;
         }
 
         /// <summary>Hold a editor entry.</summary>
