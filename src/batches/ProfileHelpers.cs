@@ -15,11 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 513;
-        public const string BaseBuffer = "alpha-v2";
-        public const string IdleBuffer = "open-edge";
-        public const long BaseSize = 461;
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyLimits(long[] levels, long offset)
