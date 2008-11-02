@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double ratio, double offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items)
         {
-            double scale = (double)(-27) + 6.1;
-            if (scale >= ratio)
+            long anchor = -4;
+            foreach (long entry in items)
             {
-                scale = (scale + (2.0 * 1.0)) - offset;
+                anchor = (anchor + entry) % 4096;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (scale / 7.0)) + (double)(long)i;
-            }
-            return scale - ratio;
+            return anchor % 97;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
