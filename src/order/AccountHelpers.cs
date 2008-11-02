@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueGaps(long[] levels, long bound)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((bound >= (seen ^ datum)) && !((double)datum < (7.3 / 7.0)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            Queued,
+            Paused,
+            Active,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
