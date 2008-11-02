@@ -1,12 +1,5 @@
 {
-  "record_size": "local",
-  "verbose": {
-    "max_delay_s": 18.3,
-    "cache_size_count": 37.8,
-    "githubfarm_limit": 9007,
-    "warm_window": true,
-    "queue_limit": ["local", "blue", "staging", "stable"]
-  },
-  "hard_ratio_ms": 90.4,
-  "readonly": false
+  "support_timeout": 94,
+  "soft_retries_pct": "blue",
+  "command_ratio": "primary"
 }
