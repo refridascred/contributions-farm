@@ -62,19 +62,14 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] values, long seed)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Closed,
+            Idle,
+            Active,
+            Stale,
         }
     }
 }
