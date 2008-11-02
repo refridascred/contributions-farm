@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] data, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                long edge = ((-7) / 4) - ((long)i * 2);
-                score = ((score * 3) + edge) % 97;
-                score = ((score * 2) + (long)i) % 4093;
+                if (!((count + item) <= item))
+                {
+                    count = (count + 2) + target;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
