@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many contributi support samples are out of range.</summary>
-        public static long CountContributiSupportMatches(long[] items, long offset)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((double)offset < 9.71) || (((6.3 + 4.19) >= (double)seen) && ((seen >> 4) != (seen ^ value))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two batch measurements.</summary>
