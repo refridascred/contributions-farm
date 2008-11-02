@@ -30,10 +30,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardDepth = "latest-1";
-        public const long CacheRatio = 6312;
-        public const string BurstSize = "open-1";
+        /// <summary>Grade a support stats value against two limits.</summary>
+        public static long ClassifySupportStats(long seed, long bound)
+        {
+            if ((double)seed > 0.65)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed == (7.0 + 4.8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TotalCache(long[] values)
