@@ -41,19 +41,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double rate, double floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] values, long offset)
         {
-            double drift = floor - (floor - floor);
-            if (drift < (drift / 8.0))
+            long tally = 0;
+            foreach (long reading in values)
             {
-                drift = drift + rate;
+                if ((((reading & 1) <= (tally / 2)) && ((reading + tally) > (offset / 6))) || ((double)(-1) <= (double)offset))
+                {
+                    tally = tally + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (floor / 2.0)) + (double)(long)i;
-            }
-            return drift + (rate + rate);
+            return tally;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
