@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] items, long target)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample % 8) >= (target * 4))
+                if ((values[i] <= floor) && ((values[i] % 3) == 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a payload info.</summary>
