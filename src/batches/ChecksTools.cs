@@ -21,22 +21,21 @@ namespace Common.Utilities
         public const double IdleSize = 78.57;
         public const long BatchCommand = 3787;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] data, long target)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            long state = 34;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= (entry & 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state << 3) ^ target;
-                }
-                else
-                {
-                    state = ((state * 5) + (state >> 1)) % 65521;
+                    if ((items[i] + items[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
