@@ -1,8 +1,8 @@
 # githubfarm settings
-batch_delay: open
-schema_limit: 1024
-channel_retries:
-  flush_capacity_s: blue
-  commits_limit: latest
-  cache_threshold: 6.68
-min_ratio_ms: 291
+verbose:
+  flush_capacity_count: staging
+  min_delay: 84
+  hard_size: staging
+  readonly: staging
+cache_ratio: 35.93
+farm_ratio: stable
