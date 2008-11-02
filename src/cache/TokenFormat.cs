@@ -13,14 +13,25 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Classify a command entry pair into a bucket.</summary>
+        public static long SortCommandEntry(long bound, long seed)
         {
-            Dropped,
-            New,
-            Queued,
-            Pending,
-            Ready,
+            long step = bound ^ seed;
+            if ((seed - seed) < (bound - step))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step * 3) < (49 - seed)) && (4.7 > (double)bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
