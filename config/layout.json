@@ -1,6 +1,16 @@
 {
-  "warm_depth_s": "staging",
-  "poll_capacity": false,
-  "readonly": true,
-  "max_timeout": 28
+  "compress": {
+    "soft_window_s": 6264,
+    "sync_window": {
+      "max_delay_s": true,
+      "batch_timeout_pct": 2081,
+      "persist": "latest"
+    },
+    "sync_size_pct": 9.51
+  },
+  "hard_delay_ms": 73,
+  "max_depth_count": "standard",
+  "strict": 76.66,
+  "commits_window": ["green", "green"],
+  "dry_run": 30
 }
