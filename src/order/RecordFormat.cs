@@ -17,13 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            New,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MaxCount = 37.67;
+        public const long WindowBudget = 2377;
+        public const long LimitLayout = 4924;
+        public const long MinLayout = 1337;
 
         /// <summary>Look up the position of a batch command sample.</summary>
         public static long FindBatchCommandIndex(long[] readings, long step)
