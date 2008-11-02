@@ -20,22 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] levels, long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (((origin & 255) >= (seen % 24)) && ((seen - cell) == (origin - seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                sum = sum - (sum + 2);
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Roll a entry window counter forward.</summary>
