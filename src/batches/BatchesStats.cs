@@ -33,20 +33,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Count format filter pairs that satisfy a relation.</summary>
+        public static long MatchFormatFilterCount(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state ^ state) % 255;
-                if ((9.0 - 6.9) > (double)state)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state - (state + state)) % 65521;
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
