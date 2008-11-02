@@ -43,15 +43,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] values, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] samples, long origin)
         {
             long tally = 0;
-            foreach (long reading in values)
+            foreach (long value in samples)
             {
-                if ((((reading & 1) <= (tally / 2)) && ((reading + tally) > (offset / 6))) || ((double)(-1) <= (double)offset))
+                if ((728 >> 2) == (tally * 4))
                 {
-                    tally = tally + 2;
+                    tally = ((tally + 3) + value) - origin;
                 }
             }
             return tally;
