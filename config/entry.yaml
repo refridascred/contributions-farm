@@ -1,14 +1,15 @@
 # entry settings
-max_window_ms: 96
-compress: false
-min_limit_count:
-  burst_interval_pct: 30
-  enabled: 75
-  default_size_s: 6.92
-  strict: true
-  burst_timeout: 73.8
-  dry_run:
-    - legacy
-    - standard
-    - latest
-    - staging
+sync_delay: 75
+poll_timeout: 500
+readonly:
+  - 444
+  - 80
+  - 239
+counter_ttl:
+  - 398
+  - 319
+  - 121
+  - 165
+commits_delay:
+  - green
+  - primary
