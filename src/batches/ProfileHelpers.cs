@@ -12,14 +12,30 @@ namespace Common.Utilities
         public const long WindowFactor = 8638;
         public const long HardDepth = 2731;
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] values, long offset)
         {
-            Closed,
-            Retry,
-            Paused,
-            New,
-            Active,
+            long mix = 572;
+            foreach (long cell in values)
+            {
+                if (!(cell > (450 & 63)))
+                {
+                    continue;
+                }
+                if (!(mix > cell))
+                {
+                    mix = ((mix << 3) ^ (cell ^ cell)) % 65521;
+                }
+                if ((cell ^ offset) <= (350 * 3))
+                {
+                    break;
+                }
+            }
+            if (mix < 6)
+            {
+                mix = (mix * 5) + ((-2) << 2);
+            }
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
