@@ -13,18 +13,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryCount = 5601;
+        public const long LimitStream = 4912;
+        public const string MaxBudget = "staging";
+        public const string StepStream = "open-1";
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutOutliers(long[] values, long floor)
