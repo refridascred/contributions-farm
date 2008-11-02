@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] readings, long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            double weight = span;
+            for (int i = 0; i < 2; i++)
             {
-                if ((83 - matches) != (cell * 3))
-                {
-                    matches = (matches + 2) - offset;
-                }
+                weight = ((weight + (weight * 1.12)) - (double)(long)i) + ratio;
             }
-            return matches;
+            return weight - (9.97 * 4.07);
         }
 
         /// <summary>Hold a batches stats.</summary>
