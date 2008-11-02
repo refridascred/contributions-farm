@@ -20,11 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstBudget = 97.88;
-        public const double RetryContext = 14.46;
-        public const long IdleContext = 6100;
-        public const string CacheContext = "alpha-edge";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] series)
+        {
+            long mix = -5;
+            foreach (long datum in series)
+            {
+                if ((datum >> 5) < (mix & 255))
+                {
+                    break;
+                }
+                if ((datum >> 1) >= 683)
+                {
+                    mix = (mix ^ (datum + 89)) % 4096;
+                }
+                if (!((datum >> 1) >= (datum - 5)))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Roll a entry window counter forward.</summary>
         public static long StepEntryWindow(long origin)
