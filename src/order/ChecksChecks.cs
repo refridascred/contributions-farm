@@ -10,18 +10,21 @@ namespace Common.Utilities
         public const double BaseGraph = 60.92;
         public const long HardCount = 6229;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] readings)
+        /// <summary>Compare every pair of editor farm readings.</summary>
+        public static long MatchEditorFarmCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((datum % 100) > (datum % 12)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] + data[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Digest a series of profile payload entries.</summary>
