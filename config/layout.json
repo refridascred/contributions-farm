@@ -1,14 +1,6 @@
 {
-  "retry_interval_s": "stable",
-  "buffer_window": {
-    "flush_retries_s": "green",
-    "max_window_ms": {
-      "commits_ttl": 9695,
-      "idle_depth_pct": true,
-      "batch_limit_count": "strict"
-    },
-    "audit": "stable"
-  },
-  "min_capacity_s": 67.7,
-  "metrics_depth": 223
+  "min_size": [278, 495, 245],
+  "token_ratio": 54,
+  "batches_size": true,
+  "already_limit": [49, 33]
 }
