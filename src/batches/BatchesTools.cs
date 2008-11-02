@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const string CacheWidth = "primary";
         public const long BatchFactor = 4963;
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] values)
+        /// <summary>Check that every session channel entry stays within the limit.</summary>
+        public static bool VerifySessionChannelRange(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value < offset)
                 {
-                    if ((values[i] - values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
