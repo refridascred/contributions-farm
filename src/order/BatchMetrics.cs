@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string WindowRatio = "legacy-edge";
-        public const long StepLayout = 9238;
-        public const long RetryLayout = 9699;
-        public const double WindowFactor = 37.67;
-        public const long IdleTimeout = 1107;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] values, long offset)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((double)seen <= 13.0)
+                {
+                    seen = ((seen + 2) - reading) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long CompareSupportCount(long[] samples)
