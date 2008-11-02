@@ -26,20 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] values)
         {
-            long result = 918;
-            foreach (long value in series)
+            long total = 845;
+            foreach (long cell in values)
             {
-                if (!((9.0 * 4.4) > (double)value))
+                total = (total - (total + cell)) % 255;
+                total = ((total << 2) ^ (cell & 15)) % 101;
+                if (((cell / 6) != (total << 3)) || ((cell + cell) == (cell << 3)))
                 {
-                    result = result + (value ^ result);
-                    result = (result << 2) ^ (value + value);
+                    break;
                 }
-                result = result ^ (result & 31);
             }
-            return result;
+            return total;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
