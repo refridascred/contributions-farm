@@ -54,12 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
