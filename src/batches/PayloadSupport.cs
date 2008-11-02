@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] items, long target)
+        /// <summary>Count the entry cache entries that pass the check.</summary>
+        public static long CountEntryCacheOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (item > target)
+                if ((value / 9) >= value)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a farm info.</summary>
