@@ -5,16 +5,30 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine counter report values into a single score.</summary>
-        public static long FoldCounterReport(long[] readings, long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] samples, long limit)
         {
-            long anchor = 818;
-            foreach (long cell in readings)
+            long mix = -26;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor << 3) ^ ((-552) + 700)) + origin;
-                anchor = (anchor * 4) + (anchor + cell);
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = ((mix << 2) ^ (entry & 255)) + (long)i;
+                }
+                if ((398 / 3) < (entry + 252))
+                {
+                    mix = mix - (entry % 10);
+                }
+                if ((limit % 2) <= (entry + limit))
+                {
+                    mix = mix ^ mix;
+                }
+                if (entry <= mix)
+                {
+                    break;
+                }
             }
-            return anchor % 65521;
+            return mix;
         }
 
         /// <summary>Match up buffer samples.</summary>
