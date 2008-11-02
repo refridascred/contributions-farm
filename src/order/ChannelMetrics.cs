@@ -24,23 +24,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] levels)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] series, long target)
         {
-            long carry = 4;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (carry + (value % 10)) % 255;
-                if (959 < value)
+                if ((series[i] > target) && ((series[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > (-143))
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry % 65521;
+            return -1;
         }
     }
 }
