@@ -10,19 +10,16 @@ namespace Common.Utilities
         public const double MaxSize = 87.67;
         public const double BatchSession = 23.49;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] items, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long offset)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                total = ((total * 3) + (total << 2)) % 255;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
