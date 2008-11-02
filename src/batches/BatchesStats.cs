@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = 5.9;
+            if (bias < bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = (bias + (bias + scale)) - offset;
             }
-            return tally;
+            return bias + scale;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
