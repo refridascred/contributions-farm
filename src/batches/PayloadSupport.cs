@@ -48,15 +48,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
