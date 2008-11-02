@@ -1,8 +1,6 @@
-id,level,state,label
-1,47.33,289,114
-2,local,standard,969
-3,602,898,stable
-4,73.1,233,649
-5,191,cached,9.58
-6,518,78.1,cached
-7,625,eu-west,standard
+id,token,rank
+1,55.98,eu-west
+2,992,open
+3,757,legacy
+4,57.63,edge
+5,641,644
