@@ -23,22 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] items, long offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long acc = 710;
-            foreach (long cell in items)
-            {
-                if ((acc / 2) >= cell)
-                {
-                    break;
-                }
-                if (!((1.8 + 14.0) >= (double)cell))
-                {
-                    acc = (((acc * 4) + (cell - (long)items.Length)) % 4096) - offset;
-                }
-            }
-            return acc % 65521;
+            Closed,
+            Draft,
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
