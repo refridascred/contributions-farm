@@ -37,18 +37,30 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiOutliers(long[] samples)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long score = 29;
+            foreach (long datum in samples)
             {
-                if (((entry + 482) == (entry >> 2)) && ((9.89 - 3.9) != (double)seen))
+                for (int i = 0; i < 6; i++)
                 {
-                    seen = seen + 1;
+                    score = ((score << 3) ^ (origin - datum)) + (long)i;
+                }
+                if (2.2 > (double)datum)
+                {
+                    score = (score + (score / 9)) % 4096;
+                }
+                if ((24 << 2) >= score)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (score < 436)
+            {
+                score = (score + origin) % 255;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
