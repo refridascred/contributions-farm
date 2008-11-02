@@ -31,19 +31,17 @@ namespace Common.Utilities
             return rate - 5.28;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] items, long step)
+        /// <summary>Locate a metrics cluster reading by value.</summary>
+        public static long LocateMetricsClusterIndex(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > step)
+                if (series[i] < bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
