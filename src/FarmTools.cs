@@ -30,12 +30,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Grade a window account value against two limits.</summary>
+        public static long ClassifyWindowAccount(long offset, long seed)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long span = offset - seed;
+            if (span < seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset >= (offset + 58))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset - span) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed >= span)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
