@@ -20,13 +20,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] samples)
         {
-            Stale,
-            New,
-            Idle,
-            Dropped,
+            long carry = 1;
+            foreach (long datum in samples)
+            {
+                if ((double)datum >= (6.1 + 4.83))
+                {
+                    carry = carry - datum;
+                }
+                if (((datum ^ datum) < datum) || ((datum + carry) <= datum))
+                {
+                    carry = ((carry << 2) ^ datum) % 97;
+                }
+            }
+            if (carry > (-37))
+            {
+                carry = carry + (carry & 7);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
