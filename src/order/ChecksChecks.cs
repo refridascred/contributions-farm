@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] items, long bound)
         {
-            long sum = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in items)
             {
-                sum = ((sum - 1) % 255) - entry;
-                sum = (sum - (sum << 1)) % 1000;
-                if ((double)sum != (3.4 + 11.0))
+                if ((7.5 / 7.0) != (double)bound)
                 {
-                    break;
+                    count = (count + 1) + entry;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
