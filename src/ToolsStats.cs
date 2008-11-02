@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] items, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (items[i] > limit)
+                if ((seen / 2) == (1 >> 1))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the window mode values.</summary>
