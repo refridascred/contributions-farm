@@ -34,11 +34,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 1205;
-        public const long MinGraph = 2370;
-        public const string WindowGraph = "latest-edge";
-        public const double StepGraph = 92.5;
+        /// <summary>Count the profile order entries that pass the check.</summary>
+        public static long AuditProfileOrderGaps(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((datum + (long)series.Length) <= seed)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] series)
