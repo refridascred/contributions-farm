@@ -59,24 +59,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank report profile input into a small class.</summary>
-        public static long GradeReportProfile(long target, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] readings, long bound)
         {
-            if ((double)target == (1.5 * 3.2))
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target & 1) <= target)
+                if (datum < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
