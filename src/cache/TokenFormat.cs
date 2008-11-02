@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Check that every batches stream entry stays within the limit.</summary>
+        public static bool CheckBatchesStreamLimits(long[] items, long offset)
         {
-            public string Score { get; set; } = "";
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
