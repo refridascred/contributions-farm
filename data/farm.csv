@@ -1,6 +1,6 @@
-id,owner,label,count
-1,891,green,blue
-2,327,standard,109
-3,732,706,283
-4,cached,347,20.51
-5,17.94,38.24,773
+id,level,region
+1,standard,local
+2,37.77,615
+3,edge,595
+4,cached,61.77
+5,763,5.94
