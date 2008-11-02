@@ -20,13 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + sample) <= sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
