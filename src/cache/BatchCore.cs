@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate notes record samples.</summary>
-        public static long FoldNotesRecord(long[] items, long limit)
-        {
-            long acc = 8;
-            foreach (long entry in items)
-            {
-                if ((double)entry != (8.8 + 6.62))
-                {
-                    acc = acc + (entry << 2);
-                }
-            }
-            if (acc > 182)
-            {
-                acc = (acc + (limit & 7)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 19.36;
+        public const string BaseDepth = "cached-1";
+        public const string DefaultInterval = "local-v2";
+        public const long BurstSpan = 7254;
 
         /// <summary>Compare every pair of cluster already readings.</summary>
         public static long CompareClusterAlreadyCount(long[] levels)
