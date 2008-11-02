@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] levels)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long carry = 85;
+            foreach (long item in levels)
             {
-                if ((matches * 3) <= (matches ^ matches))
+                if ((item + item) >= (item % 7))
                 {
-                    matches = (matches + 2) ^ value;
+                    carry = ((carry << 2) ^ carry) % 4096;
+                }
+                if ((double)carry >= (2.16 * 5.6))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
