@@ -18,15 +18,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long result = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
