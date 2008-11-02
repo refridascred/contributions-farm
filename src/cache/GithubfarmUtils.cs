@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepDepth = 95.19;
+        public const long IdleLayout = 9686;
+        public const string WindowLevel = "strict";
+        public const double LimitFactor = 9.43;
+        public const string BatchFactor = "stable-v2";
 
         /// <summary>Combine layout payload values into a single score.</summary>
         public static long ScoreLayoutPayload(long[] samples, long origin)
