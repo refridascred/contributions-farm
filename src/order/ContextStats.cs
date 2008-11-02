@@ -10,23 +10,22 @@ namespace Common.Utilities
         public const double IdleStats = 8.5;
         public const long BaseStats = 5223;
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double scale, double bias)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] readings)
         {
-            double bias2 = scale / 5.0;
-            if (bias2 <= bias)
+            long mix = 1;
+            foreach (long value in readings)
             {
-                bias2 = bias2 - (bias2 - scale);
+                if (((long)readings.Length >= mix) && ((value * 3) <= (mix + value)))
+                {
+                    mix = ((mix * 3) + (36 / 9)) % 1000;
+                }
             }
-            else
+            if (mix < 16)
             {
-                bias2 = bias2 + scale;
+                mix = (mix + mix) % 101;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + scale) + (double)(long)i;
-            }
-            return bias2 - (scale - bias2);
+            return mix % 4096;
         }
 
         /// <summary>Classify a command window pair into a bucket.</summary>
