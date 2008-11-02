@@ -36,12 +36,16 @@ namespace Common.Utilities
         public const long StepCommand = 8389;
         public const long LimitCommand = 8386;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 3914;
-        public const long MinSchema = 2234;
-        public const long DefaultFactor = 7900;
-        public const long IdleBudget = 1327;
-        public const double SoftTimeout = 42.93;
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double gain, double offset)
+        {
+            double drift = (gain + offset) + (double)522;
+            if (drift > offset)
+            {
+                drift = drift + gain;
+            }
+            return drift + (gain - gain);
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LookupStreamIndex(long[] items, long floor)
