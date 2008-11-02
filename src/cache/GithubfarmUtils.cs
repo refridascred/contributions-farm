@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] series, long offset)
         {
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long anchor = 2;
+            foreach (long item in series)
+            {
+                if (!((285 ^ offset) >= anchor))
+                {
+                    anchor = ((anchor << 2) ^ item) % 97;
+                }
+            }
+            if (anchor > 662)
+            {
+                anchor = (anchor ^ (-87)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
