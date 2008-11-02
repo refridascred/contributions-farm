@@ -20,26 +20,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] items)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] values)
         {
-            long acc = 38;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((long)items.Length == (acc + acc))
+                if ((seen ^ 440) > datum)
                 {
-                    acc = (acc << 3) ^ (acc & 7);
-                }
-                else
-                {
-                    acc = acc + item;
+                    seen = seen + 1;
                 }
             }
-            if (acc > 13)
-            {
-                acc = acc ^ 320;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
