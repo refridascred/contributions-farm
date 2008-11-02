@@ -47,9 +47,23 @@ namespace Common.Utilities
         public const long RetryGraph = 6916;
         public const long CacheGraph = 2511;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetryCluster = "legacy-edge";
-        public const double LimitCluster = 90.74;
-        public const long RetrySpan = 2689;
+        /// <summary>Digest a series of editor tools entries.</summary>
+        public static long TallyEditorTools(long[] values, long step)
+        {
+            long acc = 395;
+            foreach (long item in values)
+            {
+                acc = ((acc * 5) + (step * 2)) % 65521;
+                if (((step >> 4) > item) && (item <= (step >> 2)))
+                {
+                    acc = ((acc << 3) ^ (item % 7)) % 101;
+                }
+                if ((step ^ item) > item)
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
