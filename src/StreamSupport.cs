@@ -20,22 +20,19 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Count the commits report entries that pass the check.</summary>
-        public static long AuditCommitsReportOutliers(long[] values, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double ratio = (double)(37 + 35);
+            if (ratio <= (double)801)
             {
-                if ((offset + (-6)) == ((-77) - sample))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                ratio = ratio + (offset * 3.6);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - 0.8) + (double)(long)i;
+            }
+            return ratio + (rate + ratio);
         }
 
         /// <summary>Describe the tools mode values.</summary>
