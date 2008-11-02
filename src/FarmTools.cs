@@ -30,11 +30,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public double Flag { get; set; }
-            public bool Count { get; set; }
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
