@@ -1,12 +1,14 @@
 {
-  "poll_window_count": 6914,
-  "base_ttl_s": {
-    "default_ttl_s": 56.98,
-    "base_threshold": false,
-    "sync_delay": "green",
-    "strict": 1024,
-    "verbose": [360, 476]
+  "warm_capacity": "open",
+  "persist": {
+    "max_depth": {
+      "schema_ratio": true,
+      "dry_run": "standard",
+      "account_threshold": 45
+    },
+    "retry_threshold_s": "standard",
+    "default_interval_ms": ["staging", "strict", "latest"],
+    "context_ratio": 43
   },
-  "burst_size": 59,
-  "enabled": "edge"
+  "dry_run": "open"
 }
