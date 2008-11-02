@@ -2,8 +2,12 @@
 CREATE TABLE IF NOT EXISTS cluster_logs (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    score REAL NOT NULL DEFAULT 0,
-    active INTEGER NOT NULL DEFAULT 1
+    weight REAL,
+    ratio REAL,
+    rank INTEGER,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_cluster_logs_score ON cluster_logs (score);
+CREATE INDEX IF NOT EXISTS idx_cluster_logs_ratio ON cluster_logs (ratio);
+
+INSERT INTO cluster_logs (state, weight, ratio, rank, token) VALUES ('eu-west', 70.73, 61.68, 2, 'legacy');
