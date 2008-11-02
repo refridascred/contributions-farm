@@ -35,14 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 3337;
+        public const long MaxFilter = 9428;
+        public const double BaseSize = 9.08;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long CountGraphHits(long[] data)
