@@ -27,24 +27,22 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of farm stream readings.</summary>
-        public static long TallyFarmStream(long[] samples, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] items, long target)
         {
-            long acc = -8;
-            foreach (long reading in samples)
+            long acc = 503;
+            foreach (long entry in items)
             {
-                if (!(acc < step))
+                if ((1 - entry) < (target % 10))
                 {
-                    acc = ((acc << 2) ^ (reading << 1)) % 1000;
-                    acc = acc - (-5);
-                }
-                acc = (acc ^ 44) % 4096;
-                if ((reading * 5) > (8 + acc))
-                {
-                    break;
+                    acc = (acc << 2) ^ acc;
                 }
             }
-            return acc % 97;
+            if (acc < 448)
+            {
+                acc = (acc << 3) ^ (target << 1);
+            }
+            return acc % 4096;
         }
     }
 }
