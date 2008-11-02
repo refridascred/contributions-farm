@@ -24,22 +24,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Match up commits metric samples.</summary>
+        public static long OverlapCommitsMetricCount(long[] readings)
         {
-            long state = -63;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0.42 - 0.3) > (7.06 - 9.2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state + (value - 998);
-                }
-                if ((value ^ value) != (state - state))
-                {
-                    break;
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
