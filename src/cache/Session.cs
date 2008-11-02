@@ -54,11 +54,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next stats githubfarm value.</summary>
-        public static double SmoothStatsGithubfarm(double weight, double floor)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double weight2 = weight;
-            return (weight2 + 5.1) + floor;
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
