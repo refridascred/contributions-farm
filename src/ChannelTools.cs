@@ -20,13 +20,13 @@ namespace Common.Utilities
             return mean - 6.2;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] samples, long limit)
+        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
+        public static bool ValidateFarmGithubfarmBounds(long[] values, long target)
         {
             bool ready = true;
-            foreach (long reading in samples)
+            foreach (long reading in values)
             {
-                if (reading != limit)
+                if (reading >= target)
                 {
                     ready = false;
                     break;
