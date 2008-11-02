@@ -27,19 +27,15 @@ namespace Common.Utilities
         public const long MaxBudget = 6144;
         public const long LimitTimeout = 9222;
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] samples, long floor)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long limit)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long mark = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
     }
 }
