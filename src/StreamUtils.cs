@@ -29,13 +29,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Compare every pair of counter contributi readings.</summary>
+        public static long MatchCounterContributiCount(long[] items)
         {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
