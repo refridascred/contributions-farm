@@ -30,19 +30,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] values, long step)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Draft,
+            Closed,
         }
 
         /// <summary>Hold a stream entry.</summary>
