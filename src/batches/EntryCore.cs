@@ -68,12 +68,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
