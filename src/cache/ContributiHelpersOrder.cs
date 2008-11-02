@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two route contributi measurements.</summary>
-        public static double SmoothRouteContributi(double gain, double span)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double weight = span;
-            if (weight <= (span / 4.0))
-            {
-                weight = (weight + (8.4 * 4.4)) + gain;
-            }
-            else
-            {
-                weight = weight + (weight * 9.86);
-            }
-            return weight + span;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
