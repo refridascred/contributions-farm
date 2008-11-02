@@ -22,16 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum << 3) ^ 3;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Retry,
+            Synced,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
