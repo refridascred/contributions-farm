@@ -32,15 +32,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double gain, double span)
+        /// <summary>Match up tools already samples.</summary>
+        public static long OverlapToolsAlreadyCount(long[] levels)
         {
-            double ratio = gain - gain;
-            if (ratio > 1.0)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio + gain) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio + (7.0 * 6.26);
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
