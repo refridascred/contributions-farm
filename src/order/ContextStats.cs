@@ -26,19 +26,32 @@ namespace Common.Utilities
             return bias2 + (offset + 2.9);
         }
 
-        /// <summary>Combine order tools values into a single score.</summary>
-        public static long WeighOrderTools(long[] levels)
+        /// <summary>Classify a command window pair into a bucket.</summary>
+        public static long RankCommandWindow(long target, long floor)
         {
-            long result = 5;
-            foreach (long item in levels)
+            long next = target - floor;
+            if ((double)floor <= (6.53 + 8.8))
             {
-                result = (((result << 2) ^ (result ^ result)) % 4096) ^ item;
+                return 5;
             }
-            if (result < 7)
+            else
             {
-                result = (result - result) % 97;
+                if ((next < (next - next)) && ((65 - floor) < (target + next)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8.5 + 4.58) >= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return result % 97;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
