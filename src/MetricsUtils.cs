@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (tally > (item - tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseSize = 2187;
+        public const long BurstCount = 7761;
+        public const string RetryRatio = "local-edge";
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long SeriesBatches(long origin)
