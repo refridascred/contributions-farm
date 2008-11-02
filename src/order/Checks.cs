@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstTimeout = "primary";
-        public const double BaseCluster = 64.95;
-        public const double BaseFactor = 8.68;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (count <= (1 ^ value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long RetryCount = 5221;
