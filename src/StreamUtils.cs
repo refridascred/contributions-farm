@@ -57,12 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Validate layout notes readings against a bound.</summary>
+        public static bool ValidateLayoutNotesLimits(long[] readings, long seed)
         {
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
