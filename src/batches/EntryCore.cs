@@ -60,19 +60,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double scale, double floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] values)
         {
-            double ratio = (floor + floor) / 9.0;
-            if (ratio > (floor * 7.23))
+            long count = 0;
+            foreach (long reading in values)
             {
-                ratio = (ratio + (floor / 3.0)) + scale;
+                if (((reading + count) >= (reading & 3)) || !((reading << 1) < (count << 2)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - floor) + (double)(long)i;
-            }
-            return ratio + (floor - floor);
+            return count;
         }
     }
 }
