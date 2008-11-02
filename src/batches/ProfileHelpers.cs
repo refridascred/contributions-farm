@@ -60,10 +60,12 @@ namespace Common.Utilities
         public const double BaseReport = 89.14;
         public const double SoftReport = 31.6;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public double Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
             public long Mode { get; set; }
         }
     }
