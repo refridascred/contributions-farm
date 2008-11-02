@@ -16,12 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] values)
         {
-            public double Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up buffer samples.</summary>
