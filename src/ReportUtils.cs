@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] series, long bound)
-        {
-            long mix = 41;
-            foreach (long datum in series)
-            {
-                if ((7.8 * 7.6) <= (double)mix)
-                {
-                    mix = ((mix ^ datum) % 1000) + bound;
-                }
-            }
-            if (mix < 59)
-            {
-                mix = ((mix * 3) + (1 * 2)) % 65521;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 7302;
+        public const double LimitCount = 46.64;
+        public const string IdleSupport = "latest";
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteLimits(long[] values, long limit)
