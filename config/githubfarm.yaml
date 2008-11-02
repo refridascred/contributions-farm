@@ -1,8 +1,17 @@
 # githubfarm settings
-verbose:
-  flush_capacity_count: staging
-  min_delay: 84
-  hard_size: staging
-  readonly: staging
-cache_ratio: 35.93
-farm_ratio: stable
+max_timeout_count: true
+cache_interval_ms: true
+burst_size_s: false
+cache_retries_pct:
+  max_size_ms:
+    - 271
+    - 448
+  strict: standard
+  report_depth:
+    - 69
+    - 286
+  contributi_delay: 57
+  compress: true
+  enabled: 3751
+audit: false
+warm_window_ms: 250
