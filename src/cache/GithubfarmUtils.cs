@@ -20,16 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine layout payload values into a single score.</summary>
-        public static long ScoreLayoutPayload(long[] samples, long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] samples, long floor)
         {
-            long mark = 8;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                mark = ((mark ^ (mark * 4)) % 255) + origin;
-                mark = ((mark << 3) ^ sample) % 65521;
+                if ((46 + floor) != ((-9) ^ reading))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Accumulate profile samples.</summary>
