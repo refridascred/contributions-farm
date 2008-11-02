@@ -20,15 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double ratio, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] data)
         {
-            double gain = (double)(8 + 12);
-            if (gain <= gain)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                gain = (gain - gain) - ratio;
+                if ((((274 % 12) < entry) && ((double)hits > 1.5)) && (hits < (hits + entry)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return gain - offset;
+            return hits;
         }
 
         /// <summary>Grade a stats session value against two limits.</summary>
