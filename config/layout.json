@@ -1,8 +1,5 @@
 {
-  "base_depth_s": 2,
-  "default_timeout_ms": false,
-  "stream_capacity": "standard",
-  "window_interval": 250,
-  "min_window_count": "blue",
-  "verbose": 9812
+  "batch_size": 1947,
+  "warm_interval_pct": 9049,
+  "default_ratio_s": 5038
 }
