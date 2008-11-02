@@ -1,4 +1,4 @@
 # githubfarm settings
-cache_window_pct: false
-audit: legacy
-flush_retries_ms: 6765
+strict: cached
+counter_timeout: eu-west
+token_capacity: 60
