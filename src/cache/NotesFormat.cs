@@ -20,11 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long limit)
         {
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            long result = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the farm class values.</summary>
