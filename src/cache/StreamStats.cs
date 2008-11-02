@@ -14,17 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] readings, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Retry,
+            Dropped,
+            Active,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
