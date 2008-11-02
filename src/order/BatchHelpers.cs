@@ -42,16 +42,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a entry window counter forward.</summary>
-        public static long StepEntryWindow(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result + origin) % 101;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchFactor = 67.59;
+        public const long BurstBudget = 5315;
+        public const long BurstInterval = 8315;
+        public const string RetryWindow = "fallback-v2";
+        public const double MinWindow = 91.15;
     }
 }
