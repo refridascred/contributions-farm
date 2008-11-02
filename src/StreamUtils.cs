@@ -57,17 +57,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] items, long floor)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= floor) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
