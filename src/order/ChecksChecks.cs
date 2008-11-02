@@ -21,12 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Adjust a session reading.</summary>
