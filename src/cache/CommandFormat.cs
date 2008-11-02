@@ -24,12 +24,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] items, long limit)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public double Token { get; set; }
+            long total = 4;
+            foreach (long cell in items)
+            {
+                if (((long)items.Length - total) <= (total / 4))
+                {
+                    total = (((total * 4) + (limit + total)) % 97) + cell;
+                }
+                if ((total * 2) <= (limit & 7))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a metrics entry.</summary>
