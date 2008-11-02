@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] values, long step)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long acc = 40;
-            foreach (long item in values)
-            {
-                acc = (((acc * 2) + (2 * 2)) ^ item) + step;
-            }
-            return acc;
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of layout entries.</summary>
