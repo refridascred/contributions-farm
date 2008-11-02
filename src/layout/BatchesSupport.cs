@@ -57,21 +57,21 @@ namespace Common.Utilities
         public const long WindowPayload = 9231;
         public const double StepTimeout = 62.1;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Match up channel checks samples.</summary>
+        public static long MatchChannelChecksCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 3)
+                    if ((data[i] - data[j]) < 7)
                     {
-                        seen = seen + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
