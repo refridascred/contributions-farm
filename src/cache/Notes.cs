@@ -49,31 +49,11 @@ namespace Common.Utilities
         public const long WindowTools = 5126;
         public const long MaxWidth = 8848;
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long target, long limit)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double scale, double bias)
         {
-            if ((target << 1) < target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target % 7) <= (limit >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - target) < target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double ratio = (7.44 / 8.0) / 4.0;
+            return (ratio - bias) + scale;
         }
     }
 }
