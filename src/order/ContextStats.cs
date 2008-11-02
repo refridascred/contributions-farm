@@ -49,20 +49,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Classify a farm channel pair into a bucket.</summary>
+        public static long GradeFarmChannel(long offset, long offset2)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            long delta = offset ^ offset2;
+            if (((delta ^ offset) < (offset2 << 1)) && ((double)offset > (11.0 / 6.0)))
             {
-                result = result + (result & 7);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    result = (((result << 2) ^ (long)i) % 255) ^ (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 97;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (delta > 64)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((49 + offset2) > (offset2 - delta)) && ((1.91 - 12.0) < (double)offset2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(delta <= offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
