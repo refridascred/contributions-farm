@@ -13,11 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitBudget = 3948;
-        public const long IdleWidth = 7376;
-        public const long SoftLevel = 7045;
-        public const long DefaultGraph = 2301;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Grade a stream format value against two limits.</summary>
         public static long GradeStreamFormat(long bound, long limit)
