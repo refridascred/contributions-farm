@@ -100,39 +100,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long origin, long step)
-        {
-            long next = origin - step;
-            if ((222 + origin) <= step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((next & 127) != (8 % 60))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin & 127) <= next)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)origin >= 18.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowCount = 30.95;
+        public const long BatchLayout = 744;
+        public const double HardSpan = 35.83;
+        public const long WindowWidth = 4844;
+        public const long WindowScore = 8081;
     }
 }
