@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] data)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((8.13 * 18.0) <= (double)tally) && ((double)tally <= (5.0 * 5.3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) + sample;
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
