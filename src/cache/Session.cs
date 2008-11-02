@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] series, long limit)
         {
-            Draft,
-            Done,
-            Pending,
+            long result = -36;
+            foreach (long entry in series)
+            {
+                if (!(2.8 <= (double)entry))
+                {
+                    result = result + (limit & 15);
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
