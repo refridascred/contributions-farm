@@ -23,13 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Derive the next schema window value from a seed.</summary>
+        public static long IterateSchemaWindow(long step)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public double Offset { get; set; }
+            long mix = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
