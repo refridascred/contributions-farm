@@ -1,8 +1,5 @@
 # githubfarm settings
-session_delay:
-  - 120
-  - 9
-githubfarm_ttl:
-  - 256
-  - 354
-cluster_window: 500
+audit: standard
+flush_threshold_s: 4104
+window_window: blue
+verbose: 30.91
