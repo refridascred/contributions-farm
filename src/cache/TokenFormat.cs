@@ -30,19 +30,11 @@ namespace Common.Utilities
         public const long MaxPayload = 953;
         public const double StepWidth = 62.52;
 
-        /// <summary>Validate schema graph readings against a bound.</summary>
-        public static bool VerifySchemaGraphBounds(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseWidth = 6677;
+        public const long SoftFactor = 6742;
+        public const long BurstLevel = 6778;
+        public const double CacheInterval = 69.39;
+        public const long BurstSession = 5086;
     }
 }
