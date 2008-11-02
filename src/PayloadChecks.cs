@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count batch batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchBatchesCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string HardCount = "staging-1";
+        public const double MaxGraph = 96.97;
+        public const string WindowRatio = "cached-v2";
+        public const long RetryTimeout = 9258;
+        public const long MaxFactor = 515;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
