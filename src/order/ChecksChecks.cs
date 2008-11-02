@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double scale, double offset)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long floor)
         {
-            double scale2 = scale;
-            if (scale2 < (scale - offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                scale2 = scale2 + scale2;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (double)38;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
