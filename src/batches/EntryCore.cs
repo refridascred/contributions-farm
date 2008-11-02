@@ -50,13 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] readings, long origin)
         {
-            Closed,
-            Pending,
-            Failed,
-            Stale,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a graph record.</summary>
