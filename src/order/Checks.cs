@@ -20,18 +20,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Look up the position of a contributi stream sample.</summary>
-        public static long LocateContributiStreamIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryCount = 5221;
+        public const string MinOrder = "cached-edge";
+        public const long SoftLevel = 3614;
 
         /// <summary>Measure how many batch account samples are out of range.</summary>
         public static long TallyBatchAccountGaps(long[] values)
