@@ -48,12 +48,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] samples, long step)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((296 * 4) <= datum)
+                {
+                    hits = (hits + 2) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
