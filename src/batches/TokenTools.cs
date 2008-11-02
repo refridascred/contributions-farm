@@ -34,26 +34,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesOutliers(long[] levels)
         {
-            long carry = 3;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (((carry - carry) >= (sample / 6)) && ((-97) > (sample % 97)))
+                if ((seen * 2) == (value & 127))
                 {
-                    break;
+                    seen = seen + 3;
                 }
-                if (((double)carry > 4.0) || (sample <= (carry / 6)))
+                else
                 {
-                    carry = (carry * 2) + (sample << 3);
+                    seen = seen - 1;
                 }
             }
-            if (carry < 6)
-            {
-                carry = ((carry << 2) ^ (carry % 3)) % 65521;
-            }
-            return carry % 1000;
+            return seen;
         }
     }
 }
