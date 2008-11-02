@@ -66,10 +66,10 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 8291;
-        public const long RetryLevel = 5104;
-        public const double MinDepth = 7.26;
-        public const long BaseDepth = 8257;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchWidth = 2873;
+        public const double HardContext = 92.89;
+        public const long WindowDepth = 7136;
+        public const long DefaultContext = 5116;
     }
 }
