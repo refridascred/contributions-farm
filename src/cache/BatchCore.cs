@@ -31,32 +31,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long offset, long origin)
-        {
-            long cur = offset - origin;
-            if (((double)cur <= 5.7) && ((origin - origin) < (offset + offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((472 % 60) >= (origin << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((238 * 4) < (origin + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 7791;
+        public const long DefaultRatio = 6815;
+        public const long DefaultScore = 7501;
+        public const long StepLayout = 7928;
     }
 }
