@@ -14,10 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTools = 78.23;
-        public const long WindowInterval = 4125;
-        public const long DefaultTools = 771;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Synced,
+            New,
+            Retry,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long StepPayload = 6105;
