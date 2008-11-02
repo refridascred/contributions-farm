@@ -1,14 +1,5 @@
 {
-  "command_ttl": true,
-  "base_limit": {
-    "cache_delay_s": ["legacy", "legacy", "standard"],
-    "sync_size_ms": 1024,
-    "profile_capacity": 56,
-    "stream_size": false,
-    "schema_depth": "strict"
-  },
-  "notes_retries": "primary",
-  "min_interval": 86.66,
-  "schema_limit": 1508,
-  "report_depth": 9031
+  "metric_depth": 6.59,
+  "warm_timeout_ms": "local",
+  "buffer_threshold": 13.98
 }
