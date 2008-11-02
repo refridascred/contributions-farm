@@ -35,12 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordLimits(long[] readings, long floor)
         {
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public double Limit { get; set; }
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
