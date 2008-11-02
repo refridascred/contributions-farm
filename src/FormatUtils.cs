@@ -69,23 +69,21 @@ namespace Common.Utilities
             return drift + (rate + rate);
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] readings, long bound)
+        /// <summary>Count already schema pairs that satisfy a relation.</summary>
+        public static long PairAlreadySchemaCount(long[] data)
         {
-            long carry = 52;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry ^ (sample + bound)) % 97;
-                if (((sample - sample) <= 82) || (sample >= ((long)readings.Length - 0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry - sample;
+                    if ((data[i] - data[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (carry > (-3))
-            {
-                carry = (carry + (bound & 7)) % 97;
-            }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
