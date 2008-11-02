@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            Synced,
-            Stale,
-            Retry,
-            Locked,
-            Closed,
+            public double Label { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
