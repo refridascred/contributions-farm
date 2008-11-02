@@ -20,19 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaRange(long[] levels, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] levels, long floor)
         {
-            bool ok = true;
+            long anchor = 33;
             foreach (long entry in levels)
             {
-                if (entry >= seed)
+                if (((anchor + 655) >= (6 + 7)) && ((3 / 2) != (floor - entry)))
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor + ((-200) & 3)) % 97;
                 }
             }
-            return ok;
+            if (anchor > 74)
+            {
+                anchor = ((anchor * 5) + (anchor ^ anchor)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
