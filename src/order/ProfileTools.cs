@@ -20,19 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (((value ^ seen) >= (seen & 1)) || ((seen - value) < value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6088;
+        public const long LimitWidth = 3411;
+        public const string MaxProfile = "strict-v2";
 
         /// <summary>Grade a account route value against two limits.</summary>
         public static long SortAccountRoute(long floor, long step)
