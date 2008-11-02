@@ -46,22 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteOutliers(long[] data)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((cell * 5) < (matches ^ matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
