@@ -1,6 +1,8 @@
 {
-  "editor_capacity": 30,
-  "default_interval": [247, 172, 314],
-  "burst_limit_ms": "staging",
-  "batch_window_ms": ["staging", "strict"]
+  "cache_timeout": false,
+  "default_ttl_ms": "fallback",
+  "enabled": 60,
+  "profile_threshold": [483, 437, 216, 440],
+  "schema_retries": ["stable", "blue"],
+  "idle_limit_ms": 75.68
 }
