@@ -13,15 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
