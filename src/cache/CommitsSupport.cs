@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] items)
         {
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (((long)items.Length * 2) != (reading + reading))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the order mode values.</summary>
