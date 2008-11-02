@@ -14,19 +14,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of token profile entries.</summary>
-        public static long ScoreTokenProfile(long[] samples, long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long bound, long step)
         {
-            long mix = 0;
-            foreach (long reading in samples)
+            if (step < (step - step))
             {
-                mix = (((mix * 5) + (542 & 255)) - reading) - limit;
+                return 8;
             }
-            if (mix < 48)
+            else
             {
-                mix = ((mix << 2) ^ (mix * 5)) % 1000;
+                if ((548 + bound) > 90)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + step) > (step ^ 56))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((step + step) <= (bound - step)) && (step < (step % 12)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return mix % 97;
         }
 
         /// <summary>Describe the already kind values.</summary>
