@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] readings, long seed)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long seed)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((seed * 3) < (count % 7))
+                if (((seed / 8) < ((long)i ^ seed)) && (15.0 > (18.0 * 3.3)))
                 {
-                    count = (count + 2) + cell;
+                    sum = ((sum * 2) + (sum / 9)) % 101;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Project the next queue value.</summary>
