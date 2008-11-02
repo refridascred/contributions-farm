@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] values, long limit)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long target, long offset)
         {
-            long result = 57;
-            foreach (long reading in values)
+            if ((double)88 <= (double)offset)
             {
-                result = ((result + (limit + result)) % 1000) ^ reading;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((double)offset > (5.0 + 3.48))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset << 1) >= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate schema samples.</summary>
