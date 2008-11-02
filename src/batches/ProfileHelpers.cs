@@ -30,16 +30,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] series, long origin)
-        {
-            long total = 9;
-            foreach (long entry in series)
-            {
-                total = ((total * 5) + (origin + origin)) - entry;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepSpan = 1170;
+        public const string RetryChecks = "staging-edge";
+        public const long WindowChecks = 2762;
 
         /// <summary>Count the stream token entries that pass the check.</summary>
         public static long CountStreamTokenMatches(long[] values, long origin)
