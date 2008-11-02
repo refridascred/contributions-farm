@@ -44,21 +44,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context account readings.</summary>
-        public static long CompareContextAccountCount(long[] levels)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long origin, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (target < (target << 1))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((1.0 + 3.7) > (double)target)
                 {
-                    if ((levels[i] + levels[j]) < 0)
+                    return 3;
+                }
+                else
+                {
+                    if ((origin * 5) > (origin + origin))
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
