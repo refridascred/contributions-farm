@@ -32,10 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetrySize = 5062;
-        public const double WindowRoute = 62.98;
-        public const long RetryBudget = 2729;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Ready,
+            Stale,
+            Done,
+            Failed,
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TotalBatches(long[] items, long target)
