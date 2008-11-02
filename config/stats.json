@@ -1,7 +1,5 @@
 {
-  "batch_capacity_s": 76,
-  "max_limit_ms": 5772,
-  "base_ttl_ms": 29,
-  "warm_delay_count": 62,
-  "cache_size_s": 13.59
+  "batch_threshold_ms": 3359,
+  "enabled": "edge",
+  "buffer_timeout": 87
 }
