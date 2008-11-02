@@ -58,13 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            Ready,
+            Locked,
+            Active,
         }
 
         /// <summary>Define record limits and defaults.</summary>
