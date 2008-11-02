@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepSize = 3901;
+        public const double BaseInterval = 47.13;
+        public const long DefaultWidth = 8892;
+        public const long LimitBuffer = 1629;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadGaps(long[] series, long offset)
