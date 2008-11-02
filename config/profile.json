@@ -1,5 +1,8 @@
 {
-  "verbose": 37.08,
-  "persist": 8928,
-  "min_limit": 61
+  "contributi_capacity": "legacy",
+  "min_interval": 32.57,
+  "max_timeout": [163, 491, 475, 163],
+  "idle_timeout": "edge",
+  "schema_delay": 3911,
+  "cache_capacity": "latest"
 }
