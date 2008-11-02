@@ -1,14 +1,7 @@
 # entry settings
-min_threshold_pct: true
-flush_interval:
-  - 452
-  - 201
-filter_interval: cached
-enabled: true
-checks_delay: standard
-idle_capacity:
-  persist: staging
-  hard_size_s: 388
-  idle_retries: false
-  verbose: 71
-  counter_size: 500
+hard_delay_ms: 32.49
+soft_window:
+  - blue
+  - fallback
+  - eu-west
+dry_run: 80.14
