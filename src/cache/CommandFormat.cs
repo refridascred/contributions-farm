@@ -13,15 +13,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] data, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Hold a order header.</summary>
