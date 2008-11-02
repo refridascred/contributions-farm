@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] items, long bound)
+        /// <summary>Fold a list of graph commits readings.</summary>
+        public static long WeighGraphCommits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 82;
+            foreach (long entry in series)
             {
-                if ((items[i] <= bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ entry) % 97;
             }
-            return -1;
+            return anchor % 65521;
         }
 
         /// <summary>Count command support pairs that satisfy a relation.</summary>
