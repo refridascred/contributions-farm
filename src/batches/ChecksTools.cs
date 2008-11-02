@@ -30,12 +30,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "cached-v2";
-        public const string WindowRoute = "primary-1";
-        public const long IdleBudget = 1574;
-        public const string BurstSize = "legacy-1";
-        public const long SoftScore = 6477;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] levels)
+        {
+            long mark = 92;
+            foreach (long value in levels)
+            {
+                if ((mark >> 3) != (value + mark))
+                {
+                    mark = (mark + (mark + mark)) % 65521;
+                }
+                else
+                {
+                    mark = mark - value;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
