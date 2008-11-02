@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const string HardScore = "staging";
         public const long BaseDepth = 145;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Scale a graph queue figure with a bias.</summary>
+        public static double BlendGraphQueue(double ratio, double offset)
         {
-            Paused,
-            Draft,
-            Synced,
-            Failed,
+            double rate = ratio;
+            if (rate < ratio)
+            {
+                rate = rate - offset;
+            }
+            else
+            {
+                rate = rate + (14.0 / 5.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + ratio) - (double)(long)i;
+            }
+            return rate - (double)97;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
