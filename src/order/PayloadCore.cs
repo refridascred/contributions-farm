@@ -35,19 +35,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseSize = 33.84;
+        public const double RetryGithubfarm = 45.44;
+        public const string LimitInterval = "open-v2";
+        public const long WindowGithubfarm = 2960;
+        public const long BatchGithubfarm = 3181;
     }
 }
