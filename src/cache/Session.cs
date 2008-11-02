@@ -41,9 +41,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFactor = 3069;
-        public const string BaseFactor = "primary-v2";
-        public const long MaxRatio = 7555;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long step, long limit)
+        {
+            if ((double)limit != (5.1 - 18.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((step - limit) >= (171 + limit)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (limit < step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((step - step) <= (limit ^ 8)) || ((step + step) > (step + limit)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
