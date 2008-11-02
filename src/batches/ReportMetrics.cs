@@ -43,22 +43,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long total = 4;
+            foreach (long item in levels)
             {
-                if ((0.2 * 7.0) <= (double)cell)
+                if ((double)item >= 15.0)
                 {
-                    tally = tally + 3;
+                    long step = (item - 768) * 5;
+                    total = ((total * 5) + step) % 65521;
                 }
-                else
+                if (((double)(-2) >= (double)total) || ((double)item > (1.0 - 2.94)))
                 {
-                    tally = tally - 1;
+                    total = total - (636 + total);
+                    total = ((total << 3) ^ (322 / 8)) % 65521;
                 }
+                total = (total + (771 * 5)) % 101;
             }
-            return tally;
+            if (total > 6)
+            {
+                total = total + seed;
+            }
+            return total;
         }
     }
 }
