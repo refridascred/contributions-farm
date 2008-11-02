@@ -13,15 +13,10 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Ready,
-            Idle,
-            Paused,
-            Done,
-            Synced,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleWidth = 8403;
+        public const double DefaultFormat = 8.9;
+        public const long StepInterval = 6124;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultLevel = 614;
