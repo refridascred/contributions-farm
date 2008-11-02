@@ -20,26 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] series)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double scale, double span)
         {
-            long mix = -5;
-            foreach (long datum in series)
+            double rate = scale;
+            if (rate <= rate)
             {
-                if ((datum >> 5) < (mix & 255))
-                {
-                    break;
-                }
-                if ((datum >> 1) >= 683)
-                {
-                    mix = (mix ^ (datum + 89)) % 4096;
-                }
-                if (!((datum >> 1) >= (datum - 5)))
-                {
-                    break;
-                }
+                rate = rate + (span * 8.0);
             }
-            return mix % 1000;
+            return rate - 5.28;
         }
 
         /// <summary>Define window limits and defaults.</summary>
