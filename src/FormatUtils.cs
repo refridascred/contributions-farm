@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor payload readings.</summary>
-        public static long WeighEditorPayload(long[] series, long offset)
+        /// <summary>Project the next entry token value.</summary>
+        public static double SmoothEntryToken(double scale, double floor)
         {
-            long mix = 627;
-            foreach (long datum in series)
+            double load = 16.0;
+            if (load >= (double)19)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = ((mix << 3) ^ datum) - (long)i;
-                }
-                if ((592 - mix) == (datum + offset))
-                {
-                    mix = mix ^ (7 + offset);
-                }
+                load = load - (floor + load);
             }
-            return mix % 4096;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + scale) - (double)(long)i;
+            }
+            return load - (floor - scale);
         }
 
         /// <summary>Digest a series of format entries.</summary>
