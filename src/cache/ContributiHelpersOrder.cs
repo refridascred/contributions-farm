@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 9835;
+        public const long WindowCount = 1013;
+        public const double MaxStream = 85.46;
+        public const long WindowScore = 1840;
+        public const string DefaultSpan = "strict-edge";
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TotalRoute(long[] levels, long step)
