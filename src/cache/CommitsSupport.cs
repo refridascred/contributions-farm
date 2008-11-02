@@ -68,10 +68,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepTimeout = 32.38;
-        public const double IdleRoute = 94.99;
-        public const long MinRoute = 9529;
-        public const double CacheCount = 78.06;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (!((174 << 1) >= (value ^ 5)) || ((value << 3) <= floor))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
