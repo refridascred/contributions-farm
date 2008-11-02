@@ -5,40 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long bound, long seed)
-        {
-            long delta = bound ^ seed;
-            if ((5.15 + 1.51) < (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed << 3) > (bound + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound > (72 - delta)) && (3.43 < (double)seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (7 > (bound % 64))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchScore = 8302;
+        public const double BurstFarm = 67.85;
+        public const string MinScore = "standard-v2";
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TallyCounter(long[] items, long offset)
