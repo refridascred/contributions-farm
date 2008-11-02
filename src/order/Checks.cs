@@ -20,19 +20,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] samples, long bound)
+        /// <summary>Look up the position of a contributi stream sample.</summary>
+        public static long LocateContributiStreamIndex(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell < bound)
+                if (data[i] <= offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Measure how many batch account samples are out of range.</summary>
