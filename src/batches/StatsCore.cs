@@ -46,32 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long origin, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] values, long target)
         {
-            long gap = origin - offset;
-            if ((gap % 3) > origin)
+            long anchor = 4;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((64 + origin) >= (gap / 9)) || ((offset & 127) != (gap + gap)))
+                anchor = ((anchor * 4) + (anchor * 4)) % 1000;
+                if ((double)anchor == (6.0 - 5.0))
                 {
-                    return 7;
+                    anchor = (anchor << 2) ^ (anchor % 3);
                 }
-                else
+                if (((target - (-206)) == (anchor << 2)) && ((anchor & 31) >= (value % 97)))
                 {
-                    if ((origin + origin) <= origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a filter header.</summary>
