@@ -49,21 +49,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of channel filter readings.</summary>
-        public static long OverlapChannelFilterCount(long[] levels)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample << 2) == (sample % 5))
                 {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
