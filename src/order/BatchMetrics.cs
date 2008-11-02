@@ -19,21 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Accumulate batches samples.</summary>
