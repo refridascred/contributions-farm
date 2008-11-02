@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] values, long target)
         {
-            long result = 84;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                result = result + cell;
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Define route limits and defaults.</summary>
