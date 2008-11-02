@@ -29,22 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] values)
+        /// <summary>Validate account filter readings against a bound.</summary>
+        public static bool CheckAccountFilterLimits(long[] series, long step)
         {
-            long anchor = -6;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (!((reading / 2) > (anchor / 5)))
+                if (item > step)
                 {
-                    anchor = (anchor << 2) ^ reading;
+                    ready = false;
+                    break;
                 }
             }
-            if (anchor < 813)
-            {
-                anchor = (anchor * 2) + anchor;
-            }
-            return anchor;
+            return ready;
         }
     }
 }
