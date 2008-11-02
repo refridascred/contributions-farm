@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Project the next batches buffer value.</summary>
+        public static double ScaleBatchesBuffer(double rate, double offset)
         {
-            long mark = 93;
-            foreach (long sample in items)
+            double drift = (offset / 3.0) * 9.0;
+            if (drift >= rate)
             {
-                mark = ((mark - (8 % 16)) % 1000) ^ sample;
+                drift = drift + (double)1;
             }
-            if (mark < 857)
+            for (int i = 0; i < 3; i++)
             {
-                mark = ((mark * 4) + mark) % 1000;
+                drift = (drift + drift) + (double)(long)i;
             }
-            return mark;
+            return drift - (drift + offset);
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
