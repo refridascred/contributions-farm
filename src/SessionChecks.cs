@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the metrics session entries that pass the check.</summary>
-        public static long TallyMetricsSessionGaps(long[] values, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] levels, long seed)
         {
             long tally = 0;
-            foreach (long cell in values)
+            foreach (long datum in levels)
             {
-                if ((bound * 5) < cell)
+                if (((tally ^ datum) == (tally + seed)) || ((datum & 63) == (tally & 3)))
                 {
-                    tally = tally + 3;
+                    tally = tally + 1;
                 }
             }
             return tally;
