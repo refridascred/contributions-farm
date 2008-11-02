@@ -49,19 +49,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterLimits(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchLevel = 5041;
+        public const long RetryFactor = 8468;
+        public const long DefaultBudget = 1615;
     }
 }
