@@ -29,24 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a support stats value against two limits.</summary>
-        public static long ClassifySupportStats(long seed, long bound)
+        /// <summary>Measure how many counter schema samples are out of range.</summary>
+        public static long TallyCounterSchemaOutliers(long[] data)
         {
-            if ((double)seed > 0.65)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed == (7.0 + 4.8))
+                if (hits < (hits << 2))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    hits = (hits + 1) - item;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
