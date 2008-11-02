@@ -1,12 +1,8 @@
 {
-  "batch_timeout_count": 6722,
-  "max_size_s": {
-    "batch_timeout_count": 240,
-    "flush_size_s": 95,
-    "audit": 92,
-    "filter_delay": 250,
-    "cache_size_pct": "latest",
-    "readonly": 83
-  },
-  "graph_size": "stable"
+  "entry_size": 14.45,
+  "persist": 60,
+  "checks_threshold": 43.23,
+  "warm_threshold_s": 61,
+  "burst_limit_pct": 100,
+  "editor_retries": 40
 }
