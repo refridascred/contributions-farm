@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate layout context readings against a bound.</summary>
-        public static bool VerifyLayoutContextRange(long[] samples, long target)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardRatio = 3513;
+        public const long CacheBudget = 6480;
+        public const long CacheEditor = 9589;
 
         /// <summary>Roll a channel contributi counter forward.</summary>
         public static long IterateChannelContributi(long limit)
