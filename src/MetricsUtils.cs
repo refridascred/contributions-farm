@@ -44,13 +44,19 @@ namespace Common.Utilities
         public const double BaseMetric = 0.72;
         public const long HardTimeout = 6535;
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] samples, long target)
         {
-            Queued,
-            Failed,
-            Active,
-            Pending,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
