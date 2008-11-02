@@ -1,6 +1,11 @@
 {
-  "persist": 97,
-  "farm_capacity": 1024,
-  "retry_window": 2702,
-  "poll_size_pct": 73
+  "cache_window": 45.81,
+  "dry_run": 26.33,
+  "retry_depth": 60,
+  "min_limit_count": {
+    "default_limit_ms": "fallback",
+    "metrics_window": false,
+    "max_limit_ms": [344, 167, 404, 135]
+  },
+  "stats_threshold": "green"
 }
