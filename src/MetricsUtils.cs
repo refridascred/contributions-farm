@@ -35,38 +35,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a graph support pair into a bucket.</summary>
-        public static long SortGraphSupport(long origin, long seed)
+        /// <summary>Match up report cache samples.</summary>
+        public static long CompareReportCacheCount(long[] data)
         {
-            if (origin <= (seed + origin))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8.0 + 3.8) >= (double)seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin >= (14.0 - 7.0))
+                    if ((data[i] - data[j]) < 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin >= (origin + seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
