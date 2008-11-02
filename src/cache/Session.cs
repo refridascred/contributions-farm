@@ -67,12 +67,17 @@ namespace Common.Utilities
             return scale - 6.3;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long total = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total ^ (total / 7)) % 101;
+                total = ((total << 3) ^ total) % 255;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
