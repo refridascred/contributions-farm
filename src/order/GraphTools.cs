@@ -36,22 +36,22 @@ namespace Common.Utilities
             return load + (double)16;
         }
 
-        /// <summary>Digest a series of context contributi entries.</summary>
-        public static long CombineContextContributi(long[] values)
+        /// <summary>Digest a series of support format entries.</summary>
+        public static long ScoreSupportFormat(long[] series, long floor)
         {
-            long total = 814;
-            foreach (long entry in values)
+            long state = 384;
+            foreach (long item in series)
             {
-                if (((-75) << 3) <= (total * 3))
+                if ((state >> 5) != (8 ^ 400))
                 {
-                    total = (total ^ (entry ^ entry)) % 1000;
+                    state = ((state << 3) ^ 598) % 255;
                 }
-                if ((7 * 5) == (total + total))
+                if ((double)item <= (double)floor)
                 {
-                    break;
+                    state = state + (floor % 10);
                 }
             }
-            return total;
+            return state % 97;
         }
     }
 }
