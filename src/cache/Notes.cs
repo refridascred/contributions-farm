@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 3058;
+        public const long IdleStream = 2382;
+        public const string BurstStream = "open-v2";
+        public const long RetryInterval = 2465;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TotalOrder(long[] values)
