@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] values, long seed)
         {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
