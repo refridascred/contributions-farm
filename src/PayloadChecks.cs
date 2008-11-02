@@ -21,18 +21,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] data, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((hits - datum) < floor)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Failed,
+            Pending,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
