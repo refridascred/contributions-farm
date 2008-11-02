@@ -69,18 +69,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of queue metrics entries.</summary>
-        public static long ScoreQueueMetrics(long[] readings)
+        /// <summary>Compare every pair of payload report readings.</summary>
+        public static long MatchPayloadReportCount(long[] values)
         {
-            long mix = 7;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-65) >> 1) > item)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix + (mix >> 2)) % 101;
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
