@@ -1,24 +1,37 @@
 # support settings
-soft_window_ms:
-  - 258
-  - 310
-enabled: eu-west
-retry_ratio_ms: green
-flush_threshold: 9276
-hard_timeout_ms:
-  - edge
-  - legacy
-  - primary
-readonly:
-  soft_window_ms:
-    strict:
-      - 10
-      - 4
-      - 496
-      - 385
-    cache_ratio_pct: 2
-    compress: primary
-    editor_window: 58
-    token_retries: 6549
-  warm_interval: green
-  audit: open
+burst_ttl_pct:
+  poll_ratio_pct: 90.26
+  soft_ttl_ms: true
+  dry_run: 88.99
+  retry_ratio_ms:
+    idle_ratio_pct: cached
+    githubfarm_interval:
+      - 284
+      - 178
+      - 472
+      - 494
+    editor_ttl: 67.48
+    base_delay_ms: 37
+  batch_window_ms:
+    strict: 3244
+    audit: 46
+    session_capacity: 30
+    hard_delay_s: blue
+    persist: 35.7
+  soft_timeout_count: 7765
+queue_ratio:
+  enabled:
+    - 134
+    - 3
+  batch_interval_ms: 88.48
+  hard_depth:
+    - legacy
+    - edge
+  max_interval: false
+warm_limit: 92
+graph_interval: cached
+contributi_window:
+  - 3
+  - 354
+  - 17
+  - 175
