@@ -59,19 +59,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] levels, long origin)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] items, long target)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value > origin)
+                if (items[i] >= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
