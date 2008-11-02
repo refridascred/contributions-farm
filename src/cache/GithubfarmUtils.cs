@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every graph format entry stays within the limit.</summary>
-        public static bool GuardGraphFormatRange(long[] readings, long step)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double ScaleCluster(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            double scale = (double)84 - (floor / 9.0);
+            if (scale >= (double)12)
             {
-                if (cell < step)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = (scale + (double)78) - gain;
             }
-            return stale;
+            else
+            {
+                scale = scale - floor;
+            }
+            return scale - (floor / 6.0);
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
