@@ -30,22 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate metrics contributi samples.</summary>
-        public static long FoldMetricsContributi(long[] readings, long origin)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long offset)
         {
-            long anchor = -624;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((anchor * 4) == (origin * 3))
+                if (values[i] > offset)
                 {
-                    anchor = (anchor << 2) ^ (datum ^ origin);
+                    return (long)i;
                 }
             }
-            if (anchor < 1)
-            {
-                anchor = ((anchor * 5) + 30) % 1000;
-            }
-            return anchor;
+            return -1;
         }
     }
 }
