@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] samples, long origin)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long total = 67;
+            foreach (long reading in samples)
             {
-                if (((long)samples.Length + sample) != (761 + origin))
+                if (((reading + reading) == (763 ^ total)) || ((6.78 + 6.9) != (double)(long)samples.Length))
                 {
-                    seen = seen + 2;
+                    total = total - (reading - total);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    total = ((total << 3) ^ (912 + reading)) % 1000;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Digest a series of token profile entries.</summary>
