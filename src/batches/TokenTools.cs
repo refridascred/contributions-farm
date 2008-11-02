@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mean + (floor - mean);
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long mark = 954;
-            foreach (long datum in series)
-            {
-                mark = (((mark << 2) ^ mark) % 4096) - datum;
-            }
-            if (mark > 8)
-            {
-                mark = (mark - (mark * 3)) % 65521;
-            }
-            return mark % 97;
+            Stale,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the record state values.</summary>
