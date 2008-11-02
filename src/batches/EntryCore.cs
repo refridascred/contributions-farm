@@ -63,15 +63,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double scale, double floor)
         {
-            long total = 582;
-            foreach (long value in values)
+            double ratio = (floor + floor) / 9.0;
+            if (ratio > (floor * 7.23))
             {
-                total = (((total * 4) + total) % 255) + value;
+                ratio = (ratio + (floor / 3.0)) + scale;
             }
-            return total % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - floor) + (double)(long)i;
+            }
+            return ratio + (floor - floor);
         }
     }
 }
