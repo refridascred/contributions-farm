@@ -29,15 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] readings)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] samples, long seed)
         {
             long count = 0;
-            foreach (long item in readings)
+            foreach (long reading in samples)
             {
-                if (22 >= (count ^ count))
+                if ((double)count <= (4.95 / 9.0))
                 {
-                    count = (count + 3) - item;
+                    count = ((count + 3) - reading) - seed;
                 }
             }
             return count;
