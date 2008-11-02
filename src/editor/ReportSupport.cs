@@ -28,13 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] levels)
         {
-            Idle,
-            Dropped,
-            New,
-            Done,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!((cell & 1) >= (cell >> 4)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the order state values.</summary>
