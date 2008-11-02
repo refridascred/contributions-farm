@@ -63,18 +63,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] items, long offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double scale, double floor)
         {
-            long count = 0;
-            foreach (long cell in items)
+            double load = floor + (12.0 * 8.0);
+            if (load <= (double)5)
             {
-                if ((8.3 < (double)count) && ((cell ^ cell) <= cell))
-                {
-                    count = (count + 2) - offset;
-                }
+                load = load + floor;
             }
-            return count;
+            else
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + (scale + scale);
         }
     }
 }
