@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] items, long seed)
         {
-            Queued,
-            Stale,
-            Paused,
-            Failed,
+            long carry = 738;
+            foreach (long entry in items)
+            {
+                if (!((seed & 15) > (entry % 97)))
+                {
+                    carry = carry - (entry << 1);
+                }
+                carry = (carry ^ (seed << 3)) % 1000;
+            }
+            if (carry < 67)
+            {
+                carry = ((carry * 5) + (carry + 18)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
