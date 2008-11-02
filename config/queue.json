@@ -1,8 +1,7 @@
 {
-  "poll_threshold_pct": 8363,
-  "dry_run": false,
-  "hard_window_s": 100,
-  "base_size_ms": "stable",
-  "session_limit": 50.62,
-  "schema_interval": false
+  "enabled": 62.94,
+  "default_size_s": [114, 41],
+  "default_size": 500,
+  "burst_threshold_ms": false,
+  "max_threshold_count": "latest"
 }
