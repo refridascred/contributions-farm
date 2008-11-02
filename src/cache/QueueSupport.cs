@@ -38,11 +38,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BatchRoute = 40.02;
-        public const string HardRoute = "latest-edge";
-        public const long MinBudget = 3500;
-        public const long DefaultRatio = 9288;
-        public const long SoftRoute = 8700;
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
+        {
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+        }
     }
 }
