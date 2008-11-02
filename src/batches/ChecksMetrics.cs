@@ -67,15 +67,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double ratio, double floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long origin, long offset)
         {
-            double gain = 19.0;
-            if (gain <= (ratio + gain))
+            if (origin < (origin - 125))
             {
-                gain = (gain + (gain * 6.0)) + floor;
+                return 5;
             }
-            return gain - (double)932;
+            else
+            {
+                if (!((double)offset >= (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
