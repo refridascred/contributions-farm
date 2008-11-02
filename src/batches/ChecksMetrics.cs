@@ -19,26 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] levels)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long state = 72;
-            foreach (long cell in levels)
-            {
-                if (((cell + state) < (state - state)) && ((double)(long)levels.Length < (5.0 * 5.4)))
-                {
-                    state = ((state << 2) ^ (state ^ cell)) % 1000;
-                }
-                else
-                {
-                    state = (state << 3) ^ state;
-                }
-            }
-            if (state < 0)
-            {
-                state = (state * 2) + state;
-            }
-            return state % 97;
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
