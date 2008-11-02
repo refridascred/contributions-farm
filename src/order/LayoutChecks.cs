@@ -47,17 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] items, long bound)
+        /// <summary>Validate session token readings against a bound.</summary>
+        public static bool ValidateSessionTokenRange(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) == 0))
+                if (sample < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a stream record.</summary>
