@@ -16,13 +16,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Closed,
-            New,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 2456;
+        public const long HardTimeout = 5197;
+        public const long StepStats = 5510;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
