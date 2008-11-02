@@ -34,18 +34,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit githubfarm batches readings against a rule.</summary>
-        public static long TallyGithubfarmBatchesOutliers(long[] levels)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell >= (matches / 7)) && (((matches + cell) < cell) || (matches < (matches * 2))))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] - levels[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a command metrics value against two limits.</summary>
