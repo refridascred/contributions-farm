@@ -46,14 +46,19 @@ namespace Common.Utilities
         public const long StepCommand = 8389;
         public const long LimitCommand = 8386;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] values, long floor)
         {
-            Paused,
-            Stale,
-            Retry,
-            Pending,
-            Closed,
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the batches kind values.</summary>
