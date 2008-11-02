@@ -30,25 +30,16 @@ namespace Common.Utilities
         public const string HardLevel = "standard-1";
         public const string SoftScore = "standard-1";
 
-        /// <summary>Classify a format metric pair into a bucket.</summary>
-        public static long RankFormatMetric(long step, long bound)
+        /// <summary>Iterate the layout buffer series from a seed.</summary>
+        public static long StepLayoutBuffer(long target)
         {
-            long edge = step - bound;
-            if (((edge & 63) != (3 + step)) && (2.0 < (double)edge))
+            long mark = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
+                mark = ((mark * 2) + (54 - mark)) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (!((edge % 60) > step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Blend two schema route measurements.</summary>
