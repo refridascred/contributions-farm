@@ -1,13 +1,14 @@
 # Command notes
 
-Run the counter check before changing any metrics limits.
-Run the checks check before changing any channel limits.
+Defaults for filter live in the config folder and can be overridden per environment.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
-Use layout settings to tune how often stream data is refreshed.
-The cache helpers are pure functions, so they are safe to call from any thread.
+Use farm settings to tune how often profile data is refreshed.
+A support that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Validate graph input early
-- Log every entry change
-- Prefer cache defaults
+- Log every cluster change
+- Prefer farm defaults
+- Document new channel fields
+- Review tools limits each release
