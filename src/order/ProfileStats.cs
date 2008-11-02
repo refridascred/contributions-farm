@@ -13,14 +13,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
+            New,
             Dropped,
-            Stale,
-            Queued,
-            Ready,
             Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
