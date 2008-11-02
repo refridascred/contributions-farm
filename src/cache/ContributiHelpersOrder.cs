@@ -35,19 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every window counter entry stays within the limit.</summary>
-        public static bool CheckWindowCounterBounds(long[] readings, long limit)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
