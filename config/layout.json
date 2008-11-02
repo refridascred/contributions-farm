@@ -1,6 +1,13 @@
 {
-  "compress": 500,
-  "burst_interval_s": true,
-  "retry_window": false,
-  "retry_timeout_pct": 21.33
+  "compress": {
+    "stream_limit": false,
+    "batch_timeout_ms": "cached",
+    "flush_capacity_pct": 7184,
+    "retry_capacity_pct": "green",
+    "soft_window": 0.45,
+    "idle_ratio": "stable"
+  },
+  "context_size": "latest",
+  "retry_depth_s": "eu-west",
+  "idle_limit": [490, 470, 183, 245]
 }
