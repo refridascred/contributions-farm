@@ -15,15 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] data, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((cell % 24) >= (44 - 6))
+                {
+                    seen = (seen + 2) + step;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Locate a format reading by value.</summary>
