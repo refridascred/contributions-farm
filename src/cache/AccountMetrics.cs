@@ -66,15 +66,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] values, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if (sample >= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the farm class values.</summary>
