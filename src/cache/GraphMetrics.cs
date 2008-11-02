@@ -55,19 +55,21 @@ namespace Common.Utilities
         public const long DefaultWidth = 3678;
         public const double CacheFarm = 46.1;
 
-        /// <summary>Digest a series of stats session entries.</summary>
-        public static long DigestStatsSession(long[] data, long step)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] data)
         {
-            long sum = 4;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((((sum * 5) + (90 >> 1)) % 101) - cell) - step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum < 501)
-            {
-                sum = sum - (long)data.Length;
-            }
-            return sum;
+            return tally;
         }
     }
 }
