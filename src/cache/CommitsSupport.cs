@@ -21,21 +21,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] series)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
