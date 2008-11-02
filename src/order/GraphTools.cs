@@ -49,10 +49,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxSize = 4564;
-        public const long DefaultBudget = 2206;
-        public const long RetryMetric = 676;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 5923;
+        public const long StepLevel = 6704;
+        public const long HardTimeout = 9402;
+        public const string WindowFactor = "stable";
+        public const long BatchPayload = 1264;
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
