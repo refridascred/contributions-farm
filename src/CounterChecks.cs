@@ -53,19 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileLimits(long[] series, long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] items)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Count tools entry pairs that satisfy a relation.</summary>
