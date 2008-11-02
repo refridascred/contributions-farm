@@ -23,17 +23,11 @@ namespace Common.Utilities
         public const long LimitLayout = 4924;
         public const long MinLayout = 1337;
 
-        /// <summary>Look up the position of a batch command sample.</summary>
-        public static long FindBatchCommandIndex(long[] readings, long step)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Compare every pair of contributi tools readings.</summary>
