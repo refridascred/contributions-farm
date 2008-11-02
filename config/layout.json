@@ -1,5 +1,8 @@
 {
-  "compress": 24,
-  "default_delay_ms": 250,
-  "payload_window": 8431
+  "max_threshold_s": "standard",
+  "verbose": true,
+  "batch_retries": 69.3,
+  "default_depth_s": "local",
+  "enabled": 500,
+  "flush_depth": 30
 }
