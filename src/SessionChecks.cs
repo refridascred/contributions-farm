@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheWidth = 15.77;
-        public const double WindowInterval = 17.07;
-        public const string CacheLevel = "latest";
-        public const long MaxNotes = 9742;
-        public const long DefaultBudget = 3231;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
