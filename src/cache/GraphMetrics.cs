@@ -63,10 +63,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinSpan = 5782;
-        public const long RetryChannel = 1803;
-        public const long HardChannel = 8064;
-        public const string CacheChannel = "latest";
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
