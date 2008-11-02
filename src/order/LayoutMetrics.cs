@@ -18,29 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor + (anchor + 572)) % 1000;
-                if (!(((anchor % 8) < (limit ^ 32)) || ((anchor + (long)i) < (674 % 64))))
-                {
-                    anchor = ((anchor * 4) + (limit >> 4)) % 255;
-                }
-                if (!((double)limit < (1.8 - 3.3)))
-                {
-                    anchor = (anchor * 2) + limit;
-                }
-                else
-                {
-                    anchor = (anchor - limit) % 255;
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the stats class values.</summary>
