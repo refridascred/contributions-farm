@@ -30,31 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a notes commits pair into a bucket.</summary>
-        public static long GradeNotesCommits(long target, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            if (13.0 >= (double)offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset <= (target % 8)) || (target <= (target + offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((0.35 + 4.0) > (double)offset) || ((target & 15) > (offset / 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
