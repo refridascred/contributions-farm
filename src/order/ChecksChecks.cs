@@ -32,16 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long limit)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                mix = (mix + mix) % 97;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
