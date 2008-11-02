@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long anchor = -4;
-            foreach (long entry in items)
-            {
-                anchor = (anchor + entry) % 4096;
-            }
-            return anchor % 97;
+            Active,
+            Pending,
+            Idle,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
