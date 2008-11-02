@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double ratio, double bias)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] levels, long floor)
         {
-            double mean = bias;
-            if (mean > mean)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + ratio;
+                if ((levels[i] >= floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
