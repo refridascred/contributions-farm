@@ -39,17 +39,22 @@ namespace Common.Utilities
         public const long StepCommand = 8389;
         public const long LimitCommand = 8386;
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] levels, long bound)
+        /// <summary>Measure how many editor support samples are out of range.</summary>
+        public static long AuditEditorSupportGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) != 0))
+                if ((seed + 25) >= (6 ^ (long)samples.Length))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the batches kind values.</summary>
