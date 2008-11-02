@@ -41,22 +41,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor batches readings against a rule.</summary>
-        public static long MeasureEditorBatchesHits(long[] readings, long floor)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            double drift = weight;
+            if (drift <= span)
             {
-                if ((15.0 * 2.6) == (double)floor)
-                {
-                    hits = (hits + 1) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift - drift;
             }
-            return hits;
+            else
+            {
+                drift = drift + (weight / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (double)417) - (double)(long)i;
+            }
+            return drift - 0.79;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
