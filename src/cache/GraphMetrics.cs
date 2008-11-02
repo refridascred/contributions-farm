@@ -28,12 +28,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public double Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleRatio = 4420;
+        public const long SoftSession = 2744;
+        public const string CacheTimeout = "fallback";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double WindowFarm = 97.46;
