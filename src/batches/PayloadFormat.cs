@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const string MaxBudget = "staging";
         public const string StepStream = "open-1";
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] values, long floor)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor ^ seen) >= 7)
+                if (series[i] == limit)
                 {
-                    seen = (seen + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
