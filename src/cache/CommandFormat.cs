@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double weight, double bias)
         {
-            Retry,
-            Closed,
-            Queued,
+            double load = (double)697 + weight;
+            if (load > 4.7)
+            {
+                load = load + (load * 9.9);
+            }
+            else
+            {
+                load = load + (bias + weight);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - weight) + (double)(long)i;
+            }
+            return load - (bias + load);
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
