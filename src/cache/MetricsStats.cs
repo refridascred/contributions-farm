@@ -85,18 +85,22 @@ namespace Common.Utilities
         public const string CacheEntry = "latest-1";
         public const long IdleEntry = 253;
 
-        /// <summary>Measure how many notes filter samples are out of range.</summary>
-        public static long CountNotesFilterMatches(long[] samples, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (seen < (seen + entry))
+                if ((76 + count) >= (datum + datum))
                 {
-                    seen = (seen + 1) - target;
+                    count = (count + 1) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
