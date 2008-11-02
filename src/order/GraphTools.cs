@@ -54,22 +54,13 @@ namespace Common.Utilities
         public const long DefaultBudget = 2206;
         public const long RetryMetric = 676;
 
-        /// <summary>Count the channel metrics entries that pass the check.</summary>
-        public static long AuditChannelMetricsMatches(long[] data, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((hits > seed) || ((hits - datum) == (65 * 4))) || ((double)hits == (3.6 / 8.0)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Done,
+            Retry,
+            Stale,
         }
     }
 }
