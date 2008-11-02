@@ -30,17 +30,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] readings, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long bound, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = bound ^ offset;
+            if (((diff << 1) <= (diff + bound)) || ((14.0 + 7.9) < (double)diff))
             {
-                if (readings[i] <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((37 >> 4) > (offset + diff))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((9.9 * 14.0) >= (double)diff) || ((double)offset <= (0.94 * 0.39)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((diff << 1) >= bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
