@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a record route sample.</summary>
-        public static long LookupRecordRouteIndex(long[] values, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 34;
+            foreach (long datum in levels)
             {
-                if ((values[i] <= origin) && ((values[i] % 3) != 0))
+                result = (result - (datum + result)) % 255;
+                result = result - (631 - datum);
+                if (9 <= (result * 4))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Fold a list of route readings.</summary>
