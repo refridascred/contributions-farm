@@ -31,22 +31,18 @@ namespace Common.Utilities
             return rate - 5.28;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (!(((seen & 255) <= (618 & 31)) || ((reading - seen) != (reading - reading))))
+                if ((step >= (944 + matches)) && (((double)step >= 11.0) && (cell > (step - matches))))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
