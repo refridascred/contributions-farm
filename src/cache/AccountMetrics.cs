@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long seed, long seed2)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long limit, long origin)
         {
-            if ((15.0 * 6.4) == (double)seed2)
+            if ((2.5 + 0.8) >= (double)origin)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((seed2 + seed) > (seed2 / 9))
+                if (limit < (origin + 9))
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    if ((double)seed2 == (2.7 - 1.24))
+                    if ((origin + limit) < (limit - limit))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 2;
+                        return 0;
                     }
                 }
             }
