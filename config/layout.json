@@ -1,11 +1,7 @@
 {
-  "compress": "edge",
-  "persist": "blue",
-  "default_ratio_s": {
-    "cache_interval_ms": 8326,
-    "idle_interval": 6646,
-    "editor_size": 60,
-    "base_ttl": 27.68,
-    "stream_size": "standard"
-  }
+  "hard_window_ms": 3,
+  "readonly": "staging",
+  "command_interval": [498, 293, 408],
+  "payload_delay": "blue",
+  "payload_retries": false
 }
