@@ -1,5 +1,7 @@
 {
-  "batch_size": 1947,
-  "warm_interval_pct": 9049,
-  "default_ratio_s": 5038
+  "readonly": "legacy",
+  "payload_delay": ["strict", "stable", "staging"],
+  "channel_ratio": ["standard", "legacy", "fallback", "edge"],
+  "max_delay": 2511,
+  "soft_threshold_ms": "standard"
 }
