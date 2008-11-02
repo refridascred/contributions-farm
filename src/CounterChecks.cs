@@ -54,12 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double scale, double span)
         {
-            Ready,
-            Draft,
-            Stale,
+            double drift = (scale / 2.0) / 8.0;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift + scale;
         }
 
         /// <summary>Count tools entry pairs that satisfy a relation.</summary>
