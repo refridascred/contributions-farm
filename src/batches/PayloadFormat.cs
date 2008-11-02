@@ -24,16 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] values, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                result = result - (offset + (long)i);
-                result = ((result * 5) + (long)i) % 1000;
+                if ((floor ^ seen) >= 7)
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
