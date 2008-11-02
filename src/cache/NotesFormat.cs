@@ -20,14 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Find the first queue buffer entry that matches the target.</summary>
+        public static long SeekQueueBufferIndex(long[] samples, long seed)
         {
-            Idle,
-            Retry,
-            Queued,
-            New,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the farm class values.</summary>
