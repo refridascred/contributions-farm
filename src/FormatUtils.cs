@@ -67,10 +67,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitTimeout = 5683;
-        public const long LimitOrder = 3833;
-        public const double WindowFactor = 53.78;
+        /// <summary>Compare every pair of metrics tools readings.</summary>
+        public static long OverlapMetricsToolsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
