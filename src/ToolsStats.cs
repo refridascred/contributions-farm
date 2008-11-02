@@ -50,19 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] data, long floor)
+        /// <summary>Look up the position of a commits cache sample.</summary>
+        public static long FindCommitsCacheIndex(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < floor)
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a payload summary.</summary>
