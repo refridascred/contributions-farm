@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit commits buffer readings against a rule.</summary>
+        public static long MeasureCommitsBufferMatches(long[] readings)
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (!(matches < (matches + sample)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
