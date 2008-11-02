@@ -18,12 +18,23 @@ namespace Common.Utilities
         public const double DefaultFormat = 8.9;
         public const long StepInterval = 6124;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultLevel = 614;
-        public const long BatchInterval = 5834;
-        public const long DefaultCluster = 6728;
-        public const long MaxBudget = 6144;
-        public const long LimitTimeout = 9222;
+        /// <summary>Combine format schema values into a single score.</summary>
+        public static long WeighFormatSchema(long[] readings, long target)
+        {
+            long state = 718;
+            foreach (long reading in readings)
+            {
+                if (((target >> 3) < state) && (reading >= (9 + reading)))
+                {
+                    state = (state - reading) % 97;
+                }
+                if ((reading - 174) == (reading + target))
+                {
+                    state = ((state * 5) + (target - reading)) % 97;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long StepWindow(long limit)
