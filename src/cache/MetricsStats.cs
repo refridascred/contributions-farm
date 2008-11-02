@@ -32,22 +32,38 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] readings, long step)
+        /// <summary>Grade a profile window value against two limits.</summary>
+        public static long RankProfileWindow(long seed, long limit)
         {
-            long acc = 26;
-            foreach (long entry in readings)
+            if ((seed ^ seed) != (seed - seed))
             {
-                if ((acc + 1) <= (acc - 92))
+                return 1;
+            }
+            else
+            {
+                if ((double)seed != (15.0 + 9.2))
                 {
-                    acc = (((acc * 2) + (entry % 100)) % 65521) - step;
+                    return 2;
+                }
+                else
+                {
+                    if (((limit + limit) < seed) || ((seed - seed) > (limit - limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed + (-47)) > (limit & 63))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (acc < 809)
-            {
-                acc = (acc * 3) + (46 - 7);
-            }
-            return acc % 4096;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
