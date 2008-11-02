@@ -33,11 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinSpan = 5293;
-        public const double WindowPayload = 70.95;
-        public const long IdlePayload = 47;
-        public const long RetryPayload = 5359;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftRatio = 1765;
+        public const long IdleLevel = 8404;
+        public const long BurstCommits = 489;
+        public const string LimitCommits = "staging";
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool CheckWindowBounds(long[] items, long step)
