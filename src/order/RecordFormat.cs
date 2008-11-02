@@ -45,21 +45,16 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of contributi tools readings.</summary>
-        public static long PairContributiToolsCount(long[] series)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = ((acc * 4) + acc) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Hold a batches info.</summary>
