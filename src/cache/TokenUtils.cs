@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double ratio, double floor)
-        {
-            double ratio2 = ratio / 9.0;
-            if (ratio2 <= ratio2)
-            {
-                ratio2 = (ratio2 + ratio2) - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 - 2.71) + (double)(long)i;
-            }
-            return ratio2 + ratio;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryBudget = 6667;
+        public const string CacheInterval = "latest-edge";
+        public const long BatchSpan = 1396;
+        public const string WindowContributi = "standard-1";
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
