@@ -24,11 +24,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 3902;
-        public const double SoftCount = 87.48;
-        public const long MaxPayload = 953;
-        public const double StepWidth = 62.52;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((14.0 - 6.94) <= (double)value)
+                {
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BaseWidth = 6677;
