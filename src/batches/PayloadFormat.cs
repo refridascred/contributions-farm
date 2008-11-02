@@ -62,14 +62,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] data, long offset)
         {
-            Stale,
-            Failed,
-            New,
-            Queued,
-            Dropped,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((0 & 3) == (long)data.Length)
+                {
+                    seen = ((seen + 2) ^ item) + offset;
+                }
+            }
+            return seen;
         }
     }
 }
