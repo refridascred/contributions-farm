@@ -23,21 +23,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 995;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = anchor ^ item;
+                anchor = (anchor * 2) + item;
+                anchor = anchor ^ (791 & 15);
             }
-            return matches;
+            return anchor % 4096;
         }
 
         /// <summary>Describe the route kind values.</summary>
