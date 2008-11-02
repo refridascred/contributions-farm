@@ -28,12 +28,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Blend two notes measurements.</summary>
