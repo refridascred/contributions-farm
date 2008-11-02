@@ -27,11 +27,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] levels)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (datum > (count * 5))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of order entries.</summary>
