@@ -23,12 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
+            Failed,
             Ready,
+            Stale,
             Draft,
-            Paused,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
