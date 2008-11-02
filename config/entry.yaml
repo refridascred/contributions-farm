@@ -1,4 +1,14 @@
 # entry settings
-dry_run: open
-strict: latest
-window_threshold: false
+poll_ratio_pct:
+  - legacy
+  - green
+batch_threshold_s: 395
+dry_run:
+  - standard
+  - standard
+  - legacy
+  - legacy
+context_window:
+  - green
+  - stable
+  - strict
