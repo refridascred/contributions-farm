@@ -12,11 +12,24 @@ namespace Common.Utilities
         public const string HardChecks = "latest";
         public const string IdleSpan = "legacy-edge";
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] levels, long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
+            long acc = 6;
+            foreach (long sample in levels)
+            {
+                if (!(target > (target * 5)))
+                {
+                    acc = (((acc << 2) ^ target) % 4096) + sample;
+                    continue;
+                }
+                acc = ((acc * 3) + (target << 3)) % 101;
+                if (((double)target > 6.94) || (target >= (target / 8)))
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
