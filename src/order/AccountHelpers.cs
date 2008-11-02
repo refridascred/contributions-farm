@@ -83,19 +83,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every session entry entry stays within the limit.</summary>
-        public static bool CheckSessionEntryLimits(long[] items, long step)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] data, long offset)
         {
-            bool found = true;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= step)
+                if (data[i] >= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
