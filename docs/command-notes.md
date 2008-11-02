@@ -1,12 +1,11 @@
 # Command notes
 
-Use commits settings to tune how often metric data is refreshed.
-The window report groups every queue by profile.
-Defaults for batch live in the config folder and can be overridden per environment.
+A counter that stays idle for too long is moved to the githubfarm list.
+Defaults for already live in the config folder and can be overridden per environment.
+Keep batches and order names short and lowercase.
 
 ## Guidelines
 
-- Review command limits each release
-- Log every record change
-- Validate account input early
-- Document new contributi fields
+- Prefer batches defaults
+- Validate context input early
+- Review entry limits each release
