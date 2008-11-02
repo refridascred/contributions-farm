@@ -33,22 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] levels)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (datum > (count * 5))
+                if (item > floor)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Classify a command batch pair into a bucket.</summary>
