@@ -52,16 +52,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long seed)
+        /// <summary>Find the first contributi order entry that matches the target.</summary>
+        public static long FindContributiOrderIndex(long[] readings, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 4) + acc) % 1000;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((readings[i] == step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a batches info.</summary>
