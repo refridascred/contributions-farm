@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Iterate the account layout series from a seed.</summary>
+        public static long SeriesAccountLayout(long origin)
         {
-            Locked,
-            Closed,
-            Ready,
-            Queued,
-            Idle,
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if (9.0 >= (double)mix)
+                {
+                    break;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Combine layout payload values into a single score.</summary>
