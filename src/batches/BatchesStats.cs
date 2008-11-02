@@ -16,20 +16,10 @@ namespace Common.Utilities
             return load + (rate / 5.0);
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] items, long floor)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTools = 78.23;
+        public const long WindowInterval = 4125;
+        public const long DefaultTools = 771;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long SoftScore = 6820;
