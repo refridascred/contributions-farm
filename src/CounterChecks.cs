@@ -20,32 +20,21 @@ namespace Common.Utilities
         public const long BatchOrder = 4136;
         public const long SoftWidth = 6194;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long limit, long bound)
+        /// <summary>Match up queue support samples.</summary>
+        public static long OverlapQueueSupportCount(long[] series)
         {
-            long prev = limit + bound;
-            if ((prev + bound) >= (59 + limit))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (prev >= (limit ^ limit))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(limit >= (5 - prev)))
+                    if ((series[i] + series[j]) > 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Match up buffer samples.</summary>
