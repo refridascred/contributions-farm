@@ -23,26 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] samples)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowBounds(long[] samples, long limit)
         {
-            long carry = 1;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((double)datum >= (6.1 + 4.83))
+                if (reading != limit)
                 {
-                    carry = carry - datum;
-                }
-                if (((datum ^ datum) < datum) || ((datum + carry) <= datum))
-                {
-                    carry = ((carry << 2) ^ datum) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry > (-37))
-            {
-                carry = carry + (carry & 7);
-            }
-            return carry % 1000;
+            return ready;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
