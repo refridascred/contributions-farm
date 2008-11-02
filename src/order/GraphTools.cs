@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] samples)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)matches < 6.0)
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
