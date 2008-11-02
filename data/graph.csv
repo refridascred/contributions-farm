@@ -1,8 +1,7 @@
-id,weight,rank,level
-1,53,932,open
-2,343,18.06,edge
-3,663,green,legacy
-4,edge,947,stable
-5,primary,28.89,edge
-6,278,845,986
-7,legacy,88.01,572
+id,token,score,weight
+1,eu-west,latest,34.62
+2,963,246,edge
+3,413,standard,56.13
+4,6,3,eu-west
+5,311,edge,65.97
+6,strict,321,81.0
