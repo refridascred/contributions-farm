@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Project the next channel stats value.</summary>
+        public static double AdjustChannelStats(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = span;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate + (double)(long)i) - ratio;
             }
-            return count;
+            return rate - rate;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
