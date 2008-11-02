@@ -1,8 +1,8 @@
 {
-  "audit": 77,
-  "retry_size": 4068,
-  "batch_ratio_count": 250,
-  "burst_ratio_ms": 914,
-  "command_capacity": true,
-  "already_limit": 76.05
+  "audit": 1024,
+  "warm_retries_count": "strict",
+  "sync_capacity_s": "edge",
+  "base_delay": 68.16,
+  "hard_interval_pct": false,
+  "burst_ratio": "open"
 }
