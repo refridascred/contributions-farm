@@ -57,12 +57,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 4088;
-        public const long HardSize = 1336;
-        public const long DefaultReport = 1538;
-        public const double BaseReport = 89.14;
-        public const double SoftReport = 31.6;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
