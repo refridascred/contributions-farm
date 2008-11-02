@@ -37,18 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] items, long origin)
+        /// <summary>Find the first commits schema entry that matches the target.</summary>
+        public static long FindCommitsSchemaIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits != (0.8 - 7.37))
+                if (values[i] < target)
                 {
-                    hits = ((hits + 3) ^ reading) + origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
