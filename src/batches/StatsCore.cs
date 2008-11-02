@@ -46,13 +46,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long origin, long offset)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
+            long gap = origin - offset;
+            if ((gap % 3) > origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((64 + origin) >= (gap / 9)) || ((offset & 127) != (gap + gap)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + origin) <= origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter status values.</summary>
