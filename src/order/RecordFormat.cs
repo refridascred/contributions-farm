@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] readings, long step)
-        {
-            long acc = 80;
-            foreach (long reading in readings)
-            {
-                if (((step << 2) > (step - step)) || (step >= 219))
-                {
-                    acc = (acc * 4) + acc;
-                }
-                else
-                {
-                    acc = (acc ^ (reading - step)) % 4096;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardSize = "fallback-v2";
+        public const long BaseFactor = 8548;
+        public const double LimitFarm = 39.64;
+        public const long DefaultFarm = 3967;
+        public const string MaxWidth = "stable-v2";
 
         /// <summary>Describe the window state values.</summary>
         public enum WindowState
