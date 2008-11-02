@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long origin, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long diff = origin - floor;
-            if ((double)diff == (19.0 * 6.53))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 2) != (diff + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.1 * 12.0) >= (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)diff <= (12.0 / 8.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
