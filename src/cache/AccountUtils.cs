@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double scale, double offset)
+        /// <summary>Measure how many cache format samples are out of range.</summary>
+        public static long AuditCacheFormatGaps(long[] series)
         {
-            double scale2 = scale;
-            return (scale2 - (scale2 + scale)) + offset;
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((double)value <= (1.0 + 5.2))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
