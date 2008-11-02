@@ -27,11 +27,18 @@ namespace Common.Utilities
         public const string RetryChecks = "staging-edge";
         public const long WindowChecks = 2762;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] series)
         {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((cell + cell) == (cell >> 1)) && ((cell - tally) > (tally * 3)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
