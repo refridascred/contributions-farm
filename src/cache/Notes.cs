@@ -33,13 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] readings, long seed)
         {
-            Dropped,
-            New,
-            Locked,
-            Idle,
+            long state = 4;
+            foreach (long value in readings)
+            {
+                if ((seed ^ 3) <= (0 & 3))
+                {
+                    state = ((state * 2) + (value - seed)) % 101;
+                }
+            }
+            if (state > 764)
+            {
+                state = (state ^ seed) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
