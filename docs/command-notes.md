@@ -1,10 +1,10 @@
 # Command notes
 
-The record report groups every account by farm.
-Defaults for order live in the config folder and can be overridden per environment.
+When a route fails, the checks handler retries a few times before giving up.
+The checks report groups every stats by filter.
 
 ## Guidelines
 
-- Document new report fields
-- Log every payload change
-- Review stream limits each release
+- Validate cluster input early
+- Keep metrics values small
+- Prefer report defaults
