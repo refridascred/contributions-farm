@@ -33,12 +33,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data)
         {
-            Active,
-            Queued,
-            Paused,
+            long acc = 331;
+            foreach (long datum in data)
+            {
+                acc = (acc - (datum - 0)) % 101;
+            }
+            if (acc < 5)
+            {
+                acc = acc - acc;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
