@@ -21,17 +21,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] levels, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
