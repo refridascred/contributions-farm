@@ -22,26 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] items, long floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long acc = 14;
-            foreach (long entry in items)
-            {
-                if ((acc + acc) < acc)
-                {
-                    acc = (((acc << 3) ^ acc) % 97) + floor;
-                }
-                else
-                {
-                    acc = (acc + (entry ^ acc)) % 65521;
-                }
-            }
-            if (acc < 2)
-            {
-                acc = acc + (442 + 5);
-            }
-            return acc;
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
