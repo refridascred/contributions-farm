@@ -28,21 +28,31 @@ namespace Common.Utilities
         public const string MinOrder = "cached-edge";
         public const long SoftLevel = 3614;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] items)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long floor, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)step == (5.87 / 8.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (17 < (step - floor))
                 {
-                    if ((items[i] + items[j]) < 8)
+                    return 5;
+                }
+                else
+                {
+                    if (((double)step > 11.0) && ((936 & 255) <= (floor ^ (-5))))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
