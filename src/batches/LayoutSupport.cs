@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count batches graph pairs that satisfy a relation.</summary>
+        public static long MatchBatchesGraphCount(long[] items)
         {
-            Queued,
-            Active,
-            Dropped,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
