@@ -20,14 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public double Rank { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstBudget = 97.88;
+        public const double RetryContext = 14.46;
+        public const long IdleContext = 6100;
+        public const string CacheContext = "alpha-edge";
 
         /// <summary>Roll a entry window counter forward.</summary>
         public static long StepEntryWindow(long origin)
