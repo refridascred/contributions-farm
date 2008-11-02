@@ -95,19 +95,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Compare every pair of farm graph readings.</summary>
+        public static long OverlapFarmGraphCount(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark / 2) < (56 << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark * 5) + floor;
+                    if ((levels[i] - levels[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return matches;
         }
     }
 }
