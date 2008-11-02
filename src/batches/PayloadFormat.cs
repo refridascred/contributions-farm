@@ -24,21 +24,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm stats samples.</summary>
-        public static long OverlapFarmStatsCount(long[] items)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = result - (offset + (long)i);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
