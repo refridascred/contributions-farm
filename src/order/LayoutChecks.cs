@@ -44,18 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values, long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long acc = 7;
-            foreach (long value in values)
-            {
-                if (((origin / 6) < (origin ^ (-8))) || ((acc ^ value) == (acc + value)))
-                {
-                    acc = acc ^ (acc + origin);
-                }
-            }
-            return acc;
+            Queued,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
