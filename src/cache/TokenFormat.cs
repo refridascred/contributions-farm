@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long BurstStats = 4641;
         public const double SoftStats = 80.38;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheBudget = "standard";
-        public const long LimitBudget = 4106;
-        public const string MinCount = "strict-edge";
-        public const long DefaultLayout = 9034;
-        public const long MinLayout = 7699;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = (carry ^ (origin % 5)) % 4096;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] samples, long bound)
