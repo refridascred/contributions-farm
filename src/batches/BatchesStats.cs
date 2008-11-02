@@ -50,9 +50,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchLevel = 5041;
-        public const long RetryFactor = 8468;
-        public const long DefaultBudget = 1615;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally & 63) >= (7 + tally))
+                {
+                    tally = ((tally + 1) + reading) + seed;
+                }
+            }
+            return tally;
+        }
     }
 }
