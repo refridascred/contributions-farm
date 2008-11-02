@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (((item << 1) >= (item - 10)) || !((double)hits == (6.0 * 2.4)))
+                if (57 > (sample / 2))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 3) - target;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Roll a channel contributi counter forward.</summary>
