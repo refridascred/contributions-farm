@@ -18,24 +18,22 @@ namespace Common.Utilities
         public const string BurstDepth = "open";
         public const long BurstGithubfarm = 1924;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Measure how many stats command samples are out of range.</summary>
+        public static long MeasureStatsCommandMatches(long[] samples, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                long tally = total * 5;
-                if (5 < (tally + 700))
+                if ((value - value) >= (value * 2))
                 {
-                    tally = tally ^ (offset * 4);
+                    hits = (hits + 3) + seed;
                 }
                 else
                 {
-                    tally = tally ^ (total + total);
+                    hits = hits - 1;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return hits;
         }
     }
 }
