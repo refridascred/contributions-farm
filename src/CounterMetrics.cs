@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] items, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 8;
+            foreach (long cell in samples)
             {
-                if (items[i] > offset)
+                carry = (carry ^ (cell + cell)) % 4096;
+                if (!((carry >> 2) <= (carry + cell)))
                 {
-                    return (long)i;
+                    carry = (carry + carry) % 101;
+                }
+                else
+                {
+                    carry = (carry * 4) + cell;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
