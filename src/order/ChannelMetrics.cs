@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Grade a contributi stats value against two limits.</summary>
+        public static long GradeContributiStats(long step, long step2)
         {
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
+            if (((79 + step2) <= step2) && ((step + step2) <= (step2 % 7)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((11.0 * 0.84) < (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
