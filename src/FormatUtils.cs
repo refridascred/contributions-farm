@@ -60,25 +60,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings)
-        {
-            long score = 68;
-            foreach (long item in readings)
-            {
-                if (score > item)
-                {
-                    score = score - score;
-                    score = (score ^ (item * 4)) % 101;
-                }
-                else
-                {
-                    score = (score * 4) + (item + item);
-                }
-                score = (score - score) % 4096;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitTimeout = 5683;
+        public const long LimitOrder = 3833;
+        public const double WindowFactor = 53.78;
 
         /// <summary>Hold a githubfarm header.</summary>
         public sealed class GithubfarmHeader
