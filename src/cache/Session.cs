@@ -28,19 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] samples, long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double ratio, double floor)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double scale = (double)(1 >> 1);
+            if (scale >= floor)
             {
-                if (item <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale + 5.4;
             }
-            return flag;
+            else
+            {
+                scale = scale + (5.78 + ratio);
+            }
+            return scale - (scale + floor);
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
