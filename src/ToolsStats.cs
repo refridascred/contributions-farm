@@ -66,12 +66,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] values, long offset)
         {
-            public bool Label { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits + value) <= value)
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
         }
     }
 }
