@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] series, long origin)
+        /// <summary>Match up graph notes samples.</summary>
+        public static long CompareGraphNotesCount(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry > origin)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
