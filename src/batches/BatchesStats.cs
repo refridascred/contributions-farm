@@ -33,15 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double scale, double bias)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double bias2 = (double)(4 + 31);
-            if (bias2 >= (15.0 * 1.0))
-            {
-                bias2 = (bias2 - (bias / 9.0)) - scale;
-            }
-            return bias2 - (bias2 / 2.0);
+            public double Level { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
