@@ -1,15 +1,20 @@
 # githubfarm settings
-cluster_window:
-  - staging
-  - staging
+strict: 250
+retry_size: true
+verbose:
+  - edge
   - green
-  - strict
-retry_timeout_count: 1024
-cluster_limit: local
-notes_depth:
-  - 285
-  - 305
-  - 1
-  - 272
-min_ttl: 28
-graph_size: open
+audit:
+  payload_size: stable
+  burst_limit_s: eu-west
+  readonly:
+    - cached
+    - local
+    - stable
+  idle_depth:
+    - staging
+    - latest
+    - open
+    - open
+  warm_delay: false
+sync_threshold: edge
