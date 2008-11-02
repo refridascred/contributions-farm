@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Count the checks tools entries that pass the check.</summary>
+        public static long MeasureChecksToolsHits(long[] data, long limit)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (!((limit & 127) <= (value & 3)) || ((double)matches > (6.9 / 4.0)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
