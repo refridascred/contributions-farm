@@ -1,8 +1,14 @@
 {
-  "min_retries_ms": "edge",
-  "strict": ["open", "fallback", "primary"],
-  "window_delay": 42,
-  "idle_ratio": 37.71,
-  "retry_limit": false,
-  "default_delay_count": 8.44
+  "retry_interval_s": "stable",
+  "buffer_window": {
+    "flush_retries_s": "green",
+    "max_window_ms": {
+      "commits_ttl": 9695,
+      "idle_depth_pct": true,
+      "batch_limit_count": "strict"
+    },
+    "audit": "stable"
+  },
+  "min_capacity_s": 67.7,
+  "metrics_depth": 223
 }
