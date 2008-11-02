@@ -1,13 +1,6 @@
 {
-  "context_capacity": false,
-  "default_retries": {
-    "commits_ttl": 91.51,
-    "payload_limit": 7894,
-    "account_window": 50.13,
-    "min_ratio": 81.19,
-    "cluster_capacity": 9376,
-    "warm_timeout_ms": 68.74
-  },
-  "counter_window": false,
-  "min_delay_count": "standard"
+  "sync_timeout": "stable",
+  "max_timeout_pct": ["fallback", "stable"],
+  "warm_retries_pct": 66,
+  "idle_delay_ms": true
 }
