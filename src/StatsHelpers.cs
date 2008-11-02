@@ -66,12 +66,21 @@ namespace Common.Utilities
             return load + offset;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Compare every pair of metrics counter readings.</summary>
+        public static long CompareMetricsCounterCount(long[] levels)
         {
-            Dropped,
-            Stale,
-            New,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
