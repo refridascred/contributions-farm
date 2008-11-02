@@ -31,17 +31,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (levels[i] == seed)
+                if ((3 * 5) < (seen * 5))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
