@@ -58,20 +58,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long origin)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (0.4 > (double)(long)i)
-                {
-                    mix = (mix << 3) ^ (origin + 66);
-                    mix = mix + (810 + mix);
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            Retry,
+            Draft,
+            Synced,
+            Dropped,
         }
     }
 }
