@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if ((floor & 255) < (floor + floor))
             {
-                if (!((hits < (hits + sample)) || (0.5 >= (double)sample)))
+                return 1;
+            }
+            else
+            {
+                if ((99 + floor) >= limit)
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - limit) != (floor + 20))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
