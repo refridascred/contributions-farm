@@ -66,15 +66,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] series, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] levels, long floor)
         {
             long seen = 0;
-            foreach (long entry in series)
+            foreach (long value in levels)
             {
-                if ((double)seen == (14.0 / 5.0))
+                if ((seen * 5) <= (4 & 7))
                 {
-                    seen = ((seen + 1) + entry) - limit;
+                    seen = ((seen + 2) ^ value) + floor;
                 }
             }
             return seen;
