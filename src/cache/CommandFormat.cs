@@ -13,19 +13,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] data, long seed)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a order header.</summary>
