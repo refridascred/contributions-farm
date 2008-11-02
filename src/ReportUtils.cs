@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 1969;
-        public const long BatchDepth = 5528;
-        public const long MaxSize = 519;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Draft,
+            Stale,
+            Done,
+            Pending,
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long DeriveCache(long seed)
