@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] series, long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mix = 3;
-            foreach (long reading in series)
-            {
-                mix = ((mix - (reading % 100)) % 255) - seed;
-            }
-            return mix;
+            Ready,
+            Paused,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Blend two already measurements.</summary>
