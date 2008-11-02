@@ -22,12 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double ratio, double floor)
         {
-            Pending,
-            Retry,
-            Draft,
+            double weight = floor + (double)0;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = ((weight + (weight / 9.0)) + (double)(long)i) + ratio;
+            }
+            return weight + (double)154;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
