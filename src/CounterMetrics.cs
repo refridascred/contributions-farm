@@ -19,18 +19,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Audit queue notes readings against a rule.</summary>
-        public static long CountQueueNotesOutliers(long[] readings, long bound)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((matches + bound) <= (bound - bound))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a graph entry.</summary>
