@@ -28,19 +28,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] series, long seed)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry <= seed)
+                if ((mix + limit) == ((-4) << 1))
                 {
-                    flag = false;
-                    break;
+                    mix = mix ^ ((-68) ^ limit);
                 }
+                else
+                {
+                    mix = mix - (limit << 3);
+                }
+                mix = (mix - (mix + limit)) % 4096;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return flag;
+            return mix;
         }
     }
 }
