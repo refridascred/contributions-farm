@@ -38,17 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] values, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((values[i] >= limit) && ((values[i] % 5) == 0))
+                if ((datum + datum) > (step - step))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
