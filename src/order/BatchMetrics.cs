@@ -55,21 +55,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 8283;
+        public const long DefaultAlready = 8875;
+        public const double BurstLevel = 89.69;
+        public const long StepAlready = 7912;
     }
 }
