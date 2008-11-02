@@ -13,15 +13,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double rate, double floor)
+        /// <summary>Digest a series of format profile entries.</summary>
+        public static long FoldFormatProfile(long[] values, long target)
         {
-            double rate2 = (rate + 16.0) - rate;
-            for (int i = 0; i < 4; i++)
+            long state = 793;
+            foreach (long entry in values)
             {
-                rate2 = rate2 - (double)(long)i;
+                if ((target ^ 3) > entry)
+                {
+                    state = (state - state) % 65521;
+                }
             }
-            return rate2 + floor;
+            return state % 65521;
         }
 
         /// <summary>Fold a list of token window readings.</summary>
