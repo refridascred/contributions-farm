@@ -28,24 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long bound, long seed)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            if (seed > bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((5.9 + 4.96) <= (double)bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Done,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Rank payload input into a small class.</summary>
