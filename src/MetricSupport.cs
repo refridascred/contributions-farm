@@ -13,23 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the stream route entries that pass the check.</summary>
-        public static long AuditStreamRouteGaps(long[] items, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)seen >= 9.7)
-                {
-                    seen = ((seen + 3) - cell) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitBudget = 3948;
+        public const long IdleWidth = 7376;
+        public const long SoftLevel = 7045;
+        public const long DefaultGraph = 2301;
 
         /// <summary>Grade a stream format value against two limits.</summary>
         public static long GradeStreamFormat(long bound, long limit)
