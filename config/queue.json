@@ -1,7 +1,8 @@
 {
-  "sync_capacity_count": [446, 448],
-  "cache_retries_ms": true,
-  "sync_threshold_count": 45.29,
-  "cache_threshold_pct": 44.19,
-  "record_ttl": "open"
+  "strict": 95.34,
+  "farm_depth": 39.85,
+  "stats_capacity": 10.95,
+  "burst_threshold": 79.04,
+  "soft_capacity_ms": true,
+  "hard_retries_pct": "staging"
 }
