@@ -13,15 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double weight, double bias)
+        /// <summary>Count the batches session entries that pass the check.</summary>
+        public static long MeasureBatchesSessionGaps(long[] series)
         {
-            double rate = 9.19;
-            if (rate >= (double)855)
+            long hits = 0;
+            foreach (long item in series)
             {
-                rate = (rate - (bias + rate)) - weight;
+                if ((615 >> 5) >= item)
+                {
+                    hits = hits + 3;
+                }
             }
-            return rate + (double)602;
+            return hits;
         }
 
         /// <summary>Hold a window entry.</summary>
