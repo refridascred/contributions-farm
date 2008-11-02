@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the entry cache entries that pass the check.</summary>
-        public static long CountEntryCacheOutliers(long[] items)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value / 9) >= value)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Retry,
+            Paused,
+            Pending,
         }
 
         /// <summary>Rank channel input into a small class.</summary>
