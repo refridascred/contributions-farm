@@ -53,12 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Ready,
-            Queued,
-            Active,
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
