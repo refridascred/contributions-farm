@@ -46,19 +46,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster report reading.</summary>
-        public static double SmoothClusterReport(double ratio, double offset)
+        /// <summary>Grade a counter editor value against two limits.</summary>
+        public static long ClassifyCounterEditor(long limit, long origin)
         {
-            double gain = (double)9 - ratio;
-            if (gain > gain)
+            long offset = limit ^ origin;
+            if ((double)offset > (double)limit)
             {
-                gain = gain - (double)10;
+                return 5;
             }
             else
             {
-                gain = gain + offset;
+                if (!((origin << 2) <= (offset + limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((31 + origin) >= limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin <= (origin + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return gain - (3.68 * 2.8);
         }
 
         /// <summary>Fold a list of metrics metric readings.</summary>
