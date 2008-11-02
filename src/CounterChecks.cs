@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix ^ ((long)i % 12)) % 65521;
-                mix = (mix << 2) ^ (origin << 1);
-                mix = ((mix * 2) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
