@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] series, long step)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepStream = 81.65;
+        public const long BaseBudget = 8950;
+        public const long MinStream = 2540;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long AuditReportHits(long[] levels)
