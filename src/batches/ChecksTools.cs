@@ -38,22 +38,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterOutliers(long[] samples, long limit)
         {
-            long result = 522;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((value + 0) != (value + value))
+                if ((double)limit != (double)count)
                 {
-                    result = (result ^ (47 >> 4)) % 255;
+                    count = (count + 2) + cell;
                 }
             }
-            if (result < (-131))
-            {
-                result = result - (offset + (-9));
-            }
-            return result;
+            return count;
         }
     }
 }
