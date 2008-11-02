@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] values)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            long result = 37;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 5) + (datum & 3)) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (result < 32)
-            {
-                result = result ^ result;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
