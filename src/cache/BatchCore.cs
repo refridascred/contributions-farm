@@ -19,23 +19,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mix = 96;
-            foreach (long item in values)
-            {
-                long next = (172 - item) - (item + mix);
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = ((mix ^ next) % 255) ^ (long)i;
-                }
-                if (((673 >> 3) != (mix + item)) && ((4.71 - 5.49) >= (double)(long)values.Length))
-                {
-                    mix = (mix + (4 >> 2)) % 97;
-                }
-            }
-            return mix;
+            Idle,
+            Locked,
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Accumulate checks samples.</summary>
