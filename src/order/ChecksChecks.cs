@@ -41,25 +41,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long limit, long floor)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] items, long target)
         {
-            long offset = limit - floor;
-            if (offset >= (floor + limit))
+            long result = 59;
+            foreach (long datum in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset >= 8.2)
+                if ((double)result < (double)datum)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    result = (result - datum) + target;
                 }
             }
+            return result;
         }
     }
 }
