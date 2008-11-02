@@ -68,19 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double bias, double span)
-        {
-            double gain = span * 3.26;
-            if (gain <= (double)3)
-            {
-                gain = (gain - gain) - bias;
-            }
-            else
-            {
-                gain = gain - (double)90;
-            }
-            return gain + (double)14;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepTimeout = 32.38;
+        public const double IdleRoute = 94.99;
+        public const long MinRoute = 9529;
+        public const double CacheCount = 78.06;
     }
 }
