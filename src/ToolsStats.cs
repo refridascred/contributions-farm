@@ -27,21 +27,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long step, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((step * 5) > (target + target))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((step >> 5) > (target + 63))
                 {
-                    if ((series[i] + series[j]) > 5)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step <= (20.0 / 9.0))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target - target) > step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a entry route figure with a bias.</summary>
