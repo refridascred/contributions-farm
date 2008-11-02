@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long target, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] samples, long floor)
         {
-            if ((double)88 <= (double)offset)
+            long total = 26;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset > (5.0 + 3.48))
+                if ((double)total != (9.5 / 3.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset << 1) >= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    total = ((total ^ (long)samples.Length) - item) + floor;
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
