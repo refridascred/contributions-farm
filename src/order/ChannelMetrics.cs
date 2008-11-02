@@ -51,13 +51,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Audit channel report readings against a rule.</summary>
+        public static long TallyChannelReportHits(long[] readings)
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((seen + seen) < sample)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
