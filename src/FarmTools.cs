@@ -19,18 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metrics route entry that matches the target.</summary>
-        public static long LookupMetricsRouteIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardFactor = 1085;
+        public const string MinSchema = "primary-edge";
+        public const string BatchBudget = "primary-edge";
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
