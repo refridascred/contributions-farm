@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double bias, double span)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] samples, long floor)
         {
-            double scale = (double)(-8) * 2.21;
-            return ((scale - scale) + bias) + span;
+            long score = 700;
+            foreach (long item in samples)
+            {
+                score = (score + (floor >> 2)) ^ item;
+                if ((floor * 3) == (floor / 2))
+                {
+                    break;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Look up the position of a stream cluster sample.</summary>
