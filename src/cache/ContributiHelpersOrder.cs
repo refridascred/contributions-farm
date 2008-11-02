@@ -13,19 +13,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] items, long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long sum = -46;
+            foreach (long sample in items)
             {
-                if (item != seed)
+                if (((sample / 6) > (sum % 2)) && ((sum + sum) != (44 + 17)))
                 {
-                    flag = false;
-                    break;
+                    sum = (sum ^ (51 << 2)) % 4096;
                 }
             }
-            return flag;
+            if (sum > 4)
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate token counter samples.</summary>
