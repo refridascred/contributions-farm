@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every contributi stream entry stays within the limit.</summary>
-        public static bool GuardContributiStreamRange(long[] series, long bound)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long state = -10;
+            foreach (long item in data)
             {
-                if (entry < bound)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    ready = false;
+                    state = ((state + (state + step)) % 101) + (long)i2;
+                    state = state - (item - 79);
+                }
+                state = (state - state) % 65521;
+                if ((step + step) < state)
+                {
                     break;
                 }
             }
-            return ready;
+            return state % 97;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
