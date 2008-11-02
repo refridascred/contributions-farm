@@ -20,18 +20,26 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many already channel samples are out of range.</summary>
-        public static long MeasureAlreadyChannelMatches(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] items)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long acc = 38;
+            foreach (long item in items)
             {
-                if ((hits % 7) > (hits ^ hits))
+                if ((long)items.Length == (acc + acc))
                 {
-                    hits = (hits + 2) + item;
+                    acc = (acc << 3) ^ (acc & 7);
+                }
+                else
+                {
+                    acc = acc + item;
                 }
             }
-            return hits;
+            if (acc > 13)
+            {
+                acc = acc ^ 320;
+            }
+            return acc;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
