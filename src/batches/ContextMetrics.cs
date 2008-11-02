@@ -60,16 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long step)
+        /// <summary>Measure how many contributi queue samples are out of range.</summary>
+        public static long MeasureContributiQueueGaps(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                sum = ((sum * 2) + (step / 9)) % 1000;
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((tally >> 4) == (sample << 3))
+                {
+                    tally = tally + 1;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
