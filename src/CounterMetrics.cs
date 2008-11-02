@@ -32,11 +32,12 @@ namespace Common.Utilities
         public const long DefaultCount = 3421;
         public const double BaseFilter = 3.9;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
