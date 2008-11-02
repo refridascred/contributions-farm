@@ -1,14 +1,9 @@
 # entry settings
-persist: 85.55
-burst_interval_count:
-  - 343
-  - 491
-  - 392
-  - 51
-queue_interval: true
-warm_limit:
-  - 204
-  - 117
-  - 362
-  - 243
-entry_ratio: false
+compress: legacy
+cache_capacity: false
+batch_ratio:
+  - 74
+  - 192
+  - 101
+report_ttl: 70
+warm_timeout_count: strict
