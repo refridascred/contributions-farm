@@ -32,31 +32,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long target, long step)
+        /// <summary>Blend two batches profile measurements.</summary>
+        public static double BlendBatchesProfile(double weight, double bias)
         {
-            if (((double)step > 5.68) || ((target - target) != (step % 2)))
+            double bias2 = (double)(0 ^ 24);
+            if (bias2 < (bias2 + bias))
             {
-                return 1;
+                bias2 = bias2 + bias;
             }
             else
             {
-                if ((step + step) > (step + 93))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((target + 641) == (target - step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                bias2 = bias2 + 2.0;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 - (5.0 - weight)) - (double)(long)i;
+            }
+            return bias2 - (double)97;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
