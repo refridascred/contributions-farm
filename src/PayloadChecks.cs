@@ -31,19 +31,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] levels, long origin)
+        /// <summary>Adjust a cluster report reading.</summary>
+        public static double SmoothClusterReport(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            double gain = (double)9 - ratio;
+            if (gain > gain)
             {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = gain - (double)10;
             }
-            return flag;
+            else
+            {
+                gain = gain + offset;
+            }
+            return gain - (3.68 * 2.8);
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
