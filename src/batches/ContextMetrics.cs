@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((double)hits != (4.53 + 5.69))
-                {
-                    hits = ((hits + 1) + entry) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string IdleCounter = "cached-v2";
+        public const long IdleInterval = 965;
+        public const long StepCounter = 1116;
+        public const long MaxCounter = 4752;
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
