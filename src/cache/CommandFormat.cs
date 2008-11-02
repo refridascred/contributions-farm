@@ -69,19 +69,38 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long bound, long target)
         {
-            long anchor = -706;
-            foreach (long cell in samples)
+            if ((target >> 3) <= bound)
             {
-                anchor = ((anchor << 2) ^ (cell - anchor)) % 255;
+                return 6;
             }
-            if (anchor > 475)
+            else
             {
-                anchor = anchor - (anchor + 0);
+                if ((double)target <= (2.45 + 1.97))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (target > (bound >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target <= (bound + target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return anchor % 65521;
         }
     }
 }
