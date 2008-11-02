@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every editor entry entry stays within the limit.</summary>
-        public static bool GuardEditorEntryLimits(long[] items, long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a entry stats.</summary>
