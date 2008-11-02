@@ -51,18 +51,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] samples)
+        /// <summary>Iterate the batches cache series from a seed.</summary>
+        public static long StepBatchesCache(long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((hits * 2) > (2 + hits))
-                {
-                    hits = (hits + 2) ^ reading;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
     }
 }
