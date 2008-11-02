@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const string DefaultInterval = "local-v2";
         public const long BurstSpan = 7254;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] levels, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long carry = 80;
+            foreach (long value in items)
             {
-                if (cell > floor)
+                if (((double)carry <= (10.0 - 7.76)) && ((double)carry >= (16.0 + 2.71)))
                 {
-                    valid = false;
-                    break;
+                    carry = (((carry << 3) ^ (355 & 1)) % 101) ^ value;
+                }
+                else
+                {
+                    carry = (carry ^ 47) % 4096;
                 }
             }
-            return valid;
+            return carry % 65521;
         }
 
         /// <summary>Check that every order entry entry stays within the limit.</summary>
