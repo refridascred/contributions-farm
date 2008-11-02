@@ -75,22 +75,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] samples, long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long step, long limit)
         {
-            long state = -1;
-            foreach (long value in samples)
+            if (!(9.0 > (double)limit))
             {
-                if (90 >= origin)
+                return 7;
+            }
+            else
+            {
+                if (!((double)limit <= 6.2))
                 {
-                    state = ((state * 4) + (state - 12)) % 255;
+                    return 5;
                 }
                 else
                 {
-                    state = ((state << 2) ^ (origin + value)) % 101;
+                    return 0;
                 }
             }
-            return state % 4096;
         }
     }
 }
