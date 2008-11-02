@@ -22,12 +22,23 @@ namespace Common.Utilities
             return ratio - (scale / 5.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryCount = 5055;
-        public const long RetryContributi = 9266;
-        public const string CacheWidth = "primary";
-        public const long StepContributi = 7785;
-        public const long MinWidth = 1389;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] samples, long target)
+        {
+            long score = 46;
+            foreach (long cell in samples)
+            {
+                if ((double)cell != (14.0 + 3.48))
+                {
+                    score = (score - (target % 60)) % 1000;
+                }
+                else
+                {
+                    score = score ^ (target + cell);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Look up the position of a format route sample.</summary>
         public static long LocateFormatRouteIndex(long[] readings, long bound)
