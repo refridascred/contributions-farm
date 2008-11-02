@@ -47,19 +47,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item & 3) < (item % 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardSpan = 658;
+        public const double HardChecks = 66.71;
+        public const double IdleSize = 2.25;
+        public const long BaseFactor = 2943;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long CountToolsHits(long[] series, long bound)
