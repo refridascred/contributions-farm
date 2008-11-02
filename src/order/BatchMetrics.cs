@@ -41,21 +41,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] values)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double bias, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = bias;
+            if (load < offset)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load + bias;
             }
-            return count;
+            return load + load;
         }
 
         /// <summary>Define support limits and defaults.</summary>
