@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] samples)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long result = 865;
-            foreach (long reading in samples)
-            {
-                result = (result * 3) + (reading + reading);
-                result = (result << 2) ^ (result - reading);
-                if ((349 * 2) == (reading + result))
-                {
-                    result = ((result << 3) ^ (7 + reading)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result % 64)) % 101;
-                }
-            }
-            return result;
+            Closed,
+            Dropped,
+            Paused,
+            Synced,
         }
 
         /// <summary>Hold a schema summary.</summary>
