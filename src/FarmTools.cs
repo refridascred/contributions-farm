@@ -42,19 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two profile counter measurements.</summary>
-        public static double ProjectProfileCounter(double ratio, double bias)
+        /// <summary>Audit session metrics readings against a rule.</summary>
+        public static long AuditSessionMetricsGaps(long[] data)
         {
-            double ratio2 = bias;
-            if (ratio2 <= ratio2)
+            long count = 0;
+            foreach (long datum in data)
             {
-                ratio2 = ratio2 - ratio;
+                if ((count >> 3) <= count)
+                {
+                    count = (count + 2) ^ datum;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (double)169;
-            }
-            return ratio2 + (bias + ratio2);
+            return count;
         }
     }
 }
