@@ -28,10 +28,23 @@ namespace Common.Utilities
         public const long SoftSession = 2744;
         public const string CacheTimeout = "fallback";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 97.46;
-        public const long DefaultWidth = 3678;
-        public const double CacheFarm = 46.1;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] data)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((count <= (count & 255)) && ((reading ^ 4) == (6 >> 1))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] data)
