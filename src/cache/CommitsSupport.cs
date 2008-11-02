@@ -13,39 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long limit, long target)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] data)
         {
-            long diff = limit + target;
-            if ((diff * 4) < (target + target))
+            long mark = 105;
+            foreach (long reading in data)
             {
-                return 5;
+                mark = ((mark << 2) ^ (reading + reading)) % 255;
             }
-            else
-            {
-                if ((double)limit >= (double)diff)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (limit < (limit - 34))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target & 7) > 18)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
