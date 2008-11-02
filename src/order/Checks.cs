@@ -16,12 +16,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 2231;
-        public const double MaxOrder = 70.78;
-        public const string LimitSpan = "cached-1";
-        public const long HardOrder = 5222;
-        public const long MaxDepth = 8600;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long CountProfileOutliers(long[] samples)
