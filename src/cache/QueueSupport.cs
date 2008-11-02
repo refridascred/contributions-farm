@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 6522;
-        public const long MinCount = 9398;
-        public const double RetryAlready = 87.77;
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] series, long target)
+        {
+            long mark = 492;
+            foreach (long item in series)
+            {
+                mark = ((mark + (target & 1)) % 1000) + item;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderMatches(long[] items, long step)
