@@ -59,11 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchRatio = 6594;
-        public const string WindowCount = "staging";
-        public const string LimitScore = "stable";
-        public const long BurstSize = 3283;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "alpha-1";
+        public const long RetryCommits = 5169;
+        public const string BaseCommits = "alpha-1";
+        public const string BurstCommits = "latest";
+        public const long StepCount = 8569;
 
         /// <summary>Match up buffer samples.</summary>
         public static long CompareBufferCount(long[] data)
