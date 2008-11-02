@@ -16,15 +16,12 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Retry,
-            Failed,
-            Synced,
-            Idle,
-            Active,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstSize = 8679;
+        public const string RetryWindow = "strict-edge";
+        public const string WindowRatio = "fallback";
+        public const long BurstWindow = 8014;
+        public const long SoftWindow = 9304;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
