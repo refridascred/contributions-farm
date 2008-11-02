@@ -35,12 +35,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] samples, long origin)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Owner { get; set; }
+            long carry = 564;
+            foreach (long entry in samples)
+            {
+                carry = ((carry + 49) - entry) - origin;
+            }
+            if (carry < 468)
+            {
+                carry = (carry + carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
