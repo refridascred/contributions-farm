@@ -35,19 +35,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of window buffer entries.</summary>
-        public static long CombineWindowBuffer(long[] values, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long limit)
         {
-            long mix = 4;
-            foreach (long reading in values)
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
             {
-                mix = ((mix << 3) ^ reading) % 4096;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            if (mix > 45)
-            {
-                mix = ((mix * 4) + (bound + 3)) % 1000;
-            }
-            return mix % 1000;
+            return mix;
         }
     }
 }
