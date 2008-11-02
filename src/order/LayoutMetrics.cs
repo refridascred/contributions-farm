@@ -16,14 +16,14 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Failed,
-            Locked,
-            Closed,
-            Dropped,
             Draft,
+            Pending,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Measure how many payload contributi samples are out of range.</summary>
