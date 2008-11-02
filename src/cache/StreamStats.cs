@@ -49,15 +49,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Fold a list of context counter readings.</summary>
+        public static long TallyContextCounter(long[] series)
         {
-            double rate = bias + (double)16;
-            if (rate <= (bias * 2.38))
+            long score = 699;
+            foreach (long reading in series)
             {
-                rate = rate - rate;
+                score = ((score << 3) ^ (long)series.Length) + reading;
             }
-            return rate - (bias2 + rate);
+            if (score > 35)
+            {
+                score = score - score;
+            }
+            return score % 65521;
         }
     }
 }
