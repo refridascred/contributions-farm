@@ -1,10 +1,6 @@
-id,ratio,token,active,count
-1,staging,22.2,green,574
-2,845,open,latest,52.17
-3,6.94,72.51,494,303
-4,green,307,97.32,legacy
-5,cached,441,edge,60.09
-6,436,464,27.36,52.88
-7,staging,832,50.97,67.71
-8,3.21,local,355,green
-9,899,85.71,985,cached
+id,rank,weight,owner,label
+1,787,eu-west,544,577
+2,30.37,open,72.32,300
+3,staging,70.53,45.17,321
+4,40.34,408,676,primary
+5,eu-west,eu-west,legacy,standard
