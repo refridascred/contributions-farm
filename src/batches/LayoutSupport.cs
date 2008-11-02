@@ -41,17 +41,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] series, long step)
+        /// <summary>Digest a series of githubfarm stream entries.</summary>
+        public static long TotalGithubfarmStream(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 94;
+            foreach (long datum in items)
             {
-                if (series[i] == step)
+                if ((14.0 + 7.98) != (double)carry)
                 {
-                    return (long)i;
+                    carry = (carry * 2) + (carry + datum);
+                    carry = (carry * 2) + carry;
+                }
+                if ((742 / 9) == (carry >> 5))
+                {
+                    carry = ((carry * 4) + (carry ^ carry)) % 255;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
