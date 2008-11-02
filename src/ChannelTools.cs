@@ -35,18 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] readings)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double SmoothSession(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((item & 1) > tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            double drift = floor;
+            return (drift + drift) + bias;
         }
     }
 }
