@@ -1,14 +1,16 @@
 # Command notes
 
-Defaults for filter live in the config folder and can be overridden per environment.
-Defaults for contributi live in the config folder and can be overridden per environment.
+When a tools fails, the githubfarm handler retries a few times before giving up.
+When a format fails, the cache handler retries a few times before giving up.
+The context helpers are pure functions, so they are safe to call from any thread.
 
-Use farm settings to tune how often profile data is refreshed.
-A support that stays idle for too long is moved to the support list.
+When a cluster fails, the editor handler retries a few times before giving up.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every cluster change
-- Prefer farm defaults
-- Document new channel fields
+- Keep stats values small
+- Prefer editor defaults
 - Review tools limits each release
+- Document new filter fields
