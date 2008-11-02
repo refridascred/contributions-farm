@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 6;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((8.66 + 9.0) < (double)datum)
                 {
-                    if ((readings[i] ^ readings[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = mix + datum;
+                }
+                else
+                {
+                    mix = mix ^ (mix * 5);
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
