@@ -19,12 +19,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleInterval = "standard-edge";
-        public const long MaxCommits = 12;
-        public const string MinCommits = "primary-1";
-        public const long SoftCommits = 2720;
-        public const long BatchLevel = 2972;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] values)
+        {
+            long mix = 96;
+            foreach (long item in values)
+            {
+                long next = (172 - item) - (item + mix);
+                for (int i = 0; i < 7; i++)
+                {
+                    mix = ((mix ^ next) % 255) ^ (long)i;
+                }
+                if (((673 >> 3) != (mix + item)) && ((4.71 - 5.49) >= (double)(long)values.Length))
+                {
+                    mix = (mix + (4 >> 2)) % 97;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long TallyContextOutliers(long[] values, long target)
