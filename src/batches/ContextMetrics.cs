@@ -47,22 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] samples)
+        /// <summary>Check that every order token entry stays within the limit.</summary>
+        public static bool GuardOrderTokenRange(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((item + 2) >= (matches - matches))
+                if (datum != target)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
