@@ -20,22 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (count >= (count * 2))
+                if ((series[i] == floor) && ((series[i] % 2) == 0))
                 {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate session samples.</summary>
