@@ -1,14 +1,5 @@
 {
-  "warm_capacity": "open",
-  "persist": {
-    "max_depth": {
-      "schema_ratio": true,
-      "dry_run": "standard",
-      "account_threshold": 45
-    },
-    "retry_threshold_s": "standard",
-    "default_interval_ms": ["staging", "strict", "latest"],
-    "context_ratio": 43
-  },
-  "dry_run": "open"
+  "farm_interval": false,
+  "graph_delay": ["green", "legacy", "fallback"],
+  "account_window": [280, 254, 486, 207]
 }
