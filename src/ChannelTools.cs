@@ -16,14 +16,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Paused,
-            Active,
-            Pending,
-            Synced,
+            Stale,
             New,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Fold a list of batch readings.</summary>
