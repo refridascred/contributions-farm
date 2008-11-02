@@ -46,24 +46,12 @@ namespace Common.Utilities
         public const long StepCommand = 8389;
         public const long LimitCommand = 8386;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long bound, long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            if (target > bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound != (6.65 + 9.9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the batches kind values.</summary>
