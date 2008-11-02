@@ -20,18 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] data)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((((274 % 12) < entry) && ((double)hits > 1.5)) && (hits < (hits + entry)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Retry,
+            New,
+            Idle,
         }
 
         /// <summary>Grade a stats session value against two limits.</summary>
