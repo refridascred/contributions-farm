@@ -34,17 +34,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next account report value from a seed.</summary>
-        public static long DeriveAccountReport(long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            long carry = 3;
+            foreach (long sample in items)
             {
-                result = result ^ ((long)i * 2);
-                result = (result ^ (result & 31)) % 255;
-                result = ((result * 3) + (long)i) % 4093;
+                if (((carry - carry) >= (sample / 6)) && ((-97) > (sample % 97)))
+                {
+                    break;
+                }
+                if (((double)carry > 4.0) || (sample <= (carry / 6)))
+                {
+                    carry = (carry * 2) + (sample << 3);
+                }
             }
-            return result;
+            if (carry < 6)
+            {
+                carry = ((carry << 2) ^ (carry % 3)) % 65521;
+            }
+            return carry % 1000;
         }
     }
 }
