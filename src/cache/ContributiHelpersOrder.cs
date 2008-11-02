@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next batches buffer value.</summary>
-        public static double ScaleBatchesBuffer(double rate, double offset)
+        /// <summary>Blend two route contributi measurements.</summary>
+        public static double SmoothRouteContributi(double gain, double span)
         {
-            double drift = (offset / 3.0) * 9.0;
-            if (drift >= rate)
+            double weight = span;
+            if (weight <= (span / 4.0))
             {
-                drift = drift + (double)1;
+                weight = (weight + (8.4 * 4.4)) + gain;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                drift = (drift + drift) + (double)(long)i;
+                weight = weight + (weight * 9.86);
             }
-            return drift - (drift + offset);
+            return weight + span;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
