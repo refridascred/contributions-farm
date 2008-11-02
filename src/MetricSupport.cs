@@ -20,31 +20,24 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Grade a stream format value against two limits.</summary>
-        public static long GradeStreamFormat(long bound, long limit)
+        /// <summary>Fold a list of farm stream readings.</summary>
+        public static long TallyFarmStream(long[] samples, long step)
         {
-            if (((4 - 83) == (bound * 5)) && ((limit * 5) < (70 / 9)))
+            long acc = -8;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (97 >= (limit << 1))
+                if (!(acc < step))
                 {
-                    return 8;
+                    acc = ((acc << 2) ^ (reading << 1)) % 1000;
+                    acc = acc - (-5);
                 }
-                else
+                acc = (acc ^ 44) % 4096;
+                if ((reading * 5) > (8 + acc))
                 {
-                    if ((71 + limit) >= bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return acc % 97;
         }
     }
 }
