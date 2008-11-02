@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double bias, double bias2)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = bias + (bias - 2.7);
+            if (scale < (2.82 - scale))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale + (double)37) + bias2;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (scale / 5.0)) + (double)(long)i;
+            }
+            return scale + 4.45;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
