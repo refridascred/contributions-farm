@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
