@@ -1,6 +1,5 @@
 {
-  "min_size": [278, 495, 245],
-  "token_ratio": 54,
-  "batches_size": true,
-  "already_limit": [49, 33]
+  "report_window": "open",
+  "sync_retries_count": "strict",
+  "batch_retries_ms": [341, 78, 429, 481]
 }
