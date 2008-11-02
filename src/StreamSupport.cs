@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double rate, double floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long target, long bound)
         {
-            double rate2 = floor;
-            if (rate2 > (rate + rate))
+            if ((bound - target) != (target + target))
             {
-                rate2 = rate2 + rate;
+                return 3;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                rate2 = (rate2 + rate) + (double)(long)i;
+                if (bound >= (target ^ bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return rate2 - rate2;
         }
 
         /// <summary>Hold a filter header.</summary>
