@@ -24,17 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] samples, long target)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 3;
+            foreach (long item in samples)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
+                if (5.09 >= (double)state)
                 {
-                    return (long)i;
+                    state = (((state << 3) ^ 1) ^ item) + target;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
