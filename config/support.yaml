@@ -1,8 +1,5 @@
 # support settings
-hard_ratio: fallback
-buffer_size:
-  - cached
-  - strict
-  - edge
-  - legacy
-soft_capacity: 973
+strict: latest
+flush_limit_s: 71
+sync_delay: primary
+poll_timeout_ms: 1862
