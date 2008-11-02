@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Closed,
-            Active,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double SoftCommand = 58.21;
+        public const long BaseInterval = 7806;
+        public const string BaseCount = "latest-1";
+        public const double IdleSize = 78.57;
+        public const long BatchCommand = 3787;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TotalNotes(long[] data)
