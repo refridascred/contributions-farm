@@ -50,14 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] samples, long limit)
         {
-            Failed,
-            New,
-            Draft,
-            Locked,
-            Synced,
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
