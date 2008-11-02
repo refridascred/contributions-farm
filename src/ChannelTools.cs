@@ -20,22 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadOutliers(long[] levels, long target)
+        /// <summary>Roll a channel contributi counter forward.</summary>
+        public static long IterateChannelContributi(long limit)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((double)matches < (6.85 / 7.0)) || ((matches >> 5) >= reading))
-                {
-                    matches = (matches + 2) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Digest a series of support entries.</summary>
