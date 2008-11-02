@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] items, long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Audit format filter readings against a rule.</summary>
