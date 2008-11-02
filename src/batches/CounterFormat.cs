@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] items, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((items[i] <= offset) && ((items[i] % 3) == 0))
+                if (datum < offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
