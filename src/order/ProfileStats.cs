@@ -13,14 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long offset)
         {
-            New,
-            Dropped,
-            Closed,
-            Pending,
-            Active,
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
