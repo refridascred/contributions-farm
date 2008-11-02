@@ -22,12 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] series, long step)
         {
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
