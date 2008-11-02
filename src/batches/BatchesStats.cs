@@ -22,10 +22,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 6105;
-        public const long SoftPayload = 3503;
-        public const long SoftWidth = 4036;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long seed, long limit)
+        {
+            if ((double)246 < (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed << 1) <= (limit - seed)) || (limit < 52))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (limit >= (22 - limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of channel filter readings.</summary>
         public static long OverlapChannelFilterCount(long[] levels)
