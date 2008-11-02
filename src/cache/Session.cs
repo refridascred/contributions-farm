@@ -35,21 +35,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate channel buffer samples.</summary>
-        public static long FoldChannelBuffer(long[] series)
+        /// <summary>Audit metric stream readings against a rule.</summary>
+        public static long TallyMetricStreamHits(long[] items)
         {
-            long score = 3;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                score = score - (score ^ item);
-                score = ((score * 5) + (item + (-70))) % 1000;
-                score = ((score << 2) ^ (7 % 60)) % 97;
+                if (((sample >> 3) >= (matches - 891)) && ((sample ^ (-310)) < (10 / 2)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (score < 45)
-            {
-                score = (score ^ score) % 65521;
-            }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
