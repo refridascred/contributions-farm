@@ -36,18 +36,31 @@ namespace Common.Utilities
         public const double StepScore = 59.0;
         public const long SoftWidth = 3498;
 
-        /// <summary>Audit profile token readings against a rule.</summary>
-        public static long TallyProfileTokenHits(long[] items, long offset)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            if (!((28 << 1) <= (floor - seed)))
             {
-                if (tally < (67 + reading))
+                return 8;
+            }
+            else
+            {
+                if (((floor >> 1) == (floor >> 3)) && ((seed / 9) <= floor))
                 {
-                    tally = (tally + 2) - offset;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed & 1) < 25)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
