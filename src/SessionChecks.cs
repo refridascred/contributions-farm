@@ -33,22 +33,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] levels, long step)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double weight = (double)(18 << 1);
+            if (weight < (ratio - offset))
             {
-                if ((double)hits != (double)step)
-                {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight - offset;
             }
-            return hits;
+            else
+            {
+                weight = weight + (offset * 11.0);
+            }
+            return weight + weight;
         }
     }
 }
