@@ -64,18 +64,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of editor batches entries.</summary>
-        public static long TallyEditorBatches(long[] values, long seed)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long offset)
         {
-            long mark = 14;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((1.14 / 9.0) != (double)mark) || ((seed * 2) >= sample))
+                if (samples[i] == offset)
                 {
-                    mark = ((mark << 3) ^ (seed + mark)) % 101;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
