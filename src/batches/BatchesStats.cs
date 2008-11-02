@@ -14,12 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] data)
         {
-            Synced,
-            New,
-            Retry,
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
