@@ -1,5 +1,8 @@
 {
-  "max_retries_pct": ["standard", "strict"],
-  "max_delay_count": 75,
-  "retry_retries": 9.55
+  "base_depth_s": 2,
+  "default_timeout_ms": false,
+  "stream_capacity": "standard",
+  "window_interval": 250,
+  "min_window_count": "blue",
+  "verbose": 9812
 }
