@@ -1,12 +1,17 @@
 # entry settings
-burst_ttl_s: stable
-soft_timeout_s: 67
-context_threshold: 9625
-strict: blue
-notes_capacity: 60
-warm_limit_pct:
-  poll_window: 58
-  batches_window: 6.38
-  graph_retries: 771
-  soft_depth_pct: standard
-  compress: 95.83
+default_delay_pct: 250
+hard_ratio_ms:
+  poll_limit_s: 52.47
+  hard_threshold:
+    - local
+    - standard
+    - primary
+    - edge
+  flush_capacity: 3535
+  min_ratio_ms: 1943
+tools_size:
+  - 104
+  - 476
+filter_size: green
+base_size_ms: fallback
+audit: standard
