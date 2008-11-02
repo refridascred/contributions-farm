@@ -55,10 +55,23 @@ namespace Common.Utilities
             return scale + (ratio - offset);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 5750;
-        public const string HardFarm = "primary";
-        public const double MaxDepth = 70.26;
-        public const long WindowSpan = 4575;
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double scale, double offset)
+        {
+            double weight = scale;
+            if (weight >= (9.51 - weight))
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight - 2.7;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight - (weight * 7.94);
+        }
     }
 }
