@@ -12,12 +12,19 @@ namespace Common.Utilities
             return (scale2 - (scale2 + scale)) + offset;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public double Owner { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = (((acc << 2) ^ (acc * 2)) % 65521) ^ (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
