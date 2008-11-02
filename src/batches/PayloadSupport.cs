@@ -27,17 +27,18 @@ namespace Common.Utilities
             return rate2 + floor;
         }
 
-        /// <summary>Look up the position of a metrics route sample.</summary>
-        public static long LocateMetricsRouteIndex(long[] values, long origin)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (values[i] > origin)
+                if (((floor - value) < floor) && (((double)floor != (1.5 - 1.7)) && ((39 << 2) > floor)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
