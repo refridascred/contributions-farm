@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowCount = 21.37;
-        public const double WindowRoute = 50.3;
-        public const string MaxScore = "primary-v2";
-        public const long LimitRoute = 4542;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] levels, long bound)
