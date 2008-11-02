@@ -1,10 +1,5 @@
 # githubfarm settings
-warm_limit_s: open
-flush_depth:
-  - 250
-  - 382
-  - 10
-  - 241
-idle_retries: 5995
-min_size_pct: false
-filter_retries: 88.49
+verbose: legacy
+hard_capacity: 87
+farm_size: 32.54
+warm_interval: edge
