@@ -19,22 +19,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] series)
-        {
-            long mix = 984;
-            foreach (long cell in series)
-            {
-                if ((mix - cell) >= 92)
-                {
-                    mix = mix + (mix + mix);
-                }
-            }
-            if (mix > 40)
-            {
-                mix = mix ^ (35 * 4);
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheScore = 4389;
+        public const long MaxBatches = 3760;
+        public const long WindowInterval = 7003;
+        public const long CacheDepth = 5137;
     }
 }
