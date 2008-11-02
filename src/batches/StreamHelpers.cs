@@ -36,31 +36,20 @@ namespace Common.Utilities
         public const double StepScore = 59.0;
         public const long SoftWidth = 3498;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long seed, long floor)
+        /// <summary>Derive the next metrics channel value from a seed.</summary>
+        public static long StepMetricsChannel(long step)
         {
-            if (!((28 << 1) <= (floor - seed)))
+            long carry = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor >> 1) == (floor >> 3)) && ((seed / 9) <= floor))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return 1;
+                    carry = (((carry * 2) + (carry % 3)) % 101) + (long)i2;
+                    carry = (carry * 4) + (carry << 3);
                 }
-                else
-                {
-                    if ((seed & 1) < 25)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Hold a report stats.</summary>
