@@ -29,14 +29,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] data)
         {
-            Failed,
-            Ready,
-            Draft,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((matches >= (matches ^ matches)) && (((-62) >> 3) < (matches ^ (long)data.Length)))
+                {
+                    matches = (matches + 1) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
