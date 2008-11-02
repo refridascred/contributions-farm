@@ -32,22 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] readings)
+        /// <summary>Measure how many token context samples are out of range.</summary>
+        public static long TallyTokenContextGaps(long[] levels, long target)
         {
-            long mix = 1;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (((long)readings.Length >= mix) && ((value * 3) <= (mix + value)))
+                if (4.1 > (double)hits)
                 {
-                    mix = ((mix * 3) + (36 / 9)) % 1000;
+                    hits = ((hits + 2) + entry) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (mix < 16)
-            {
-                mix = (mix + mix) % 101;
-            }
-            return mix % 4096;
+            return hits;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
