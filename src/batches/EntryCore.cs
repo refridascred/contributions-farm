@@ -38,11 +38,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 7542;
-        public const long HardLevel = 6471;
-        public const string MaxReport = "legacy";
-        public const long DefaultReport = 9635;
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if (!((bound % 7) <= (acc ^ bound)))
+                {
+                    acc = acc - (acc - (-291));
+                }
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
