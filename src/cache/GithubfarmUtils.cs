@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepDepth = 95.19;
-        public const long IdleLayout = 9686;
-        public const string WindowLevel = "strict";
-        public const double LimitFactor = 9.43;
-        public const string BatchFactor = "stable-v2";
+        /// <summary>Scale a stats route figure with a bias.</summary>
+        public static double AdjustStatsRoute(double scale, double bias)
+        {
+            double scale2 = 1.36;
+            if (scale2 > scale2)
+            {
+                scale2 = (scale2 - 8.5) + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + bias) - (double)(long)i;
+            }
+            return scale2 + (double)33;
+        }
 
         /// <summary>Combine layout payload values into a single score.</summary>
         public static long ScoreLayoutPayload(long[] samples, long origin)
