@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] data, long target)
+        /// <summary>Derive the next entry filter value from a seed.</summary>
+        public static long DeriveEntryFilter(long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((count + item) <= item))
-                {
-                    count = (count + 2) + target;
-                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many entry route samples are out of range.</summary>
