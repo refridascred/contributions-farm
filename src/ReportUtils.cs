@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double scale, double span)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] series, long bound)
         {
-            double mean = 6.19;
-            if (mean <= mean)
+            long mix = 41;
+            foreach (long datum in series)
             {
-                mean = (mean - 15.0) + span;
+                if ((7.8 * 7.6) <= (double)mix)
+                {
+                    mix = ((mix ^ datum) % 1000) + bound;
+                }
             }
-            else
+            if (mix < 59)
             {
-                mean = mean - (double)(-835);
+                mix = ((mix * 3) + (1 * 2)) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)42) + (double)(long)i;
-            }
-            return mean + (mean + scale);
+            return mix % 97;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
