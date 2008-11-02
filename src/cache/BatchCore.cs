@@ -48,13 +48,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long origin)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
+            long cur = offset - origin;
+            if (((double)cur <= 5.7) && ((origin - origin) < (offset + offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((472 % 60) >= (origin << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((238 * 4) < (origin + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
