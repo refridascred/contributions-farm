@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] series)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long mark = 600;
+            foreach (long sample in series)
             {
-                if ((double)seen > (1.2 + 16.0))
+                if ((mark % 12) <= sample)
                 {
-                    seen = (seen + 2) + item;
+                    mark = (mark * 2) + (mark - 3);
                 }
             }
-            return seen;
+            if (mark < 41)
+            {
+                mark = ((mark << 2) ^ mark) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
