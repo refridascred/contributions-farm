@@ -21,19 +21,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels, long step)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] levels, long limit)
         {
-            long carry = 5;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry ^ (datum + step);
+                if ((levels[i] > limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 388)
-            {
-                carry = (carry + step) % 4096;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
