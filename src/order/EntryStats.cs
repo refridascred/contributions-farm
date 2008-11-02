@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] items, long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (entry >= step)
+                if ((matches + sample) <= 927)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + target;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Check that every githubfarm context entry stays within the limit.</summary>
