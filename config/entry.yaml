@@ -1,13 +1,14 @@
 # entry settings
-max_window_s: primary
-editor_window:
-  farm_ratio: legacy
-  retry_ttl: 1.2
-  enabled: staging
-  commits_capacity: 8113
-  sync_limit_pct: 70
-  flush_capacity_count: false
-retry_retries_ms: cached
-hard_ttl_s: 9115
-tools_size: 90
-warm_limit: 71.07
+persist: 85.55
+burst_interval_count:
+  - 343
+  - 491
+  - 392
+  - 51
+queue_interval: true
+warm_limit:
+  - 204
+  - 117
+  - 362
+  - 243
+entry_ratio: false
