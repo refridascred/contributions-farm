@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const long BurstLevel = 8536;
         public const string MaxMetric = "strict-v2";
 
-        /// <summary>Digest a series of githubfarm route entries.</summary>
-        public static long DigestGithubfarmRoute(long[] levels, long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] readings, long offset)
         {
-            long state = 446;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((double)datum < (2.8 / 6.0))
+                if (value >= offset)
                 {
-                    state = (state ^ (state * 5)) + target;
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
     }
 }
