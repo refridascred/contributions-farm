@@ -22,17 +22,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = (anchor - 33) % 101;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 4999;
+        public const long StepLevel = 6448;
+        public const long RetryInterval = 7270;
+        public const double BaseMetric = 0.72;
+        public const long HardTimeout = 6535;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long MeasurePayloadGaps(long[] levels, long limit)
