@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] levels, long bound)
         {
-            Idle,
-            Closed,
-            Done,
-            Stale,
-            Queued,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (0.61 >= (double)value)
+                {
+                    count = (count + 3) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
