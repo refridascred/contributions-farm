@@ -1,5 +1,7 @@
 {
-  "audit": "blue",
-  "readonly": ["edge", "primary", "blue"],
-  "cache_size_count": 41.08
+  "default_ttl": "open",
+  "warm_depth": 100,
+  "schema_retries": 2329,
+  "flush_ratio": false,
+  "readonly": "cached"
 }
