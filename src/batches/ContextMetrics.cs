@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] items, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (!(offset < (99 % 5)))
+                if ((double)hits != (4.53 + 5.69))
                 {
-                    sum = (sum - ((long)i - sum)) % 65521;
-                    continue;
+                    hits = ((hits + 1) + entry) + bound;
                 }
                 else
                 {
-                    sum = ((sum << 3) ^ (31 / 6)) % 4096;
+                    hits = hits - 1;
                 }
-                sum = (sum << 2) ^ (sum ^ (long)i);
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a record stats.</summary>
