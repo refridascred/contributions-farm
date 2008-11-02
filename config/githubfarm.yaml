@@ -1,20 +1,4 @@
 # githubfarm settings
-strict: 250
-retry_size: true
-verbose:
-  - edge
-  - green
-audit:
-  payload_size: stable
-  burst_limit_s: eu-west
-  readonly:
-    - cached
-    - local
-    - stable
-  idle_depth:
-    - staging
-    - latest
-    - open
-    - open
-  warm_delay: false
-sync_threshold: edge
+cache_window_pct: false
+audit: legacy
+flush_retries_ms: 6765
