@@ -1,17 +1,5 @@
 # support settings
-base_capacity_count:
-  - 417
-  - 258
-  - 382
-  - 316
-filter_size: false
-report_timeout: blue
-readonly:
-  - cached
-  - stable
-hard_limit_pct:
-  idle_retries_s: legacy
-  enabled: local
-  token_timeout: edge
-  poll_size_count: 86
-metrics_limit: eu-west
+tools_depth: 91.93
+burst_size_ms: true
+compress: 60
+min_retries_count: true
