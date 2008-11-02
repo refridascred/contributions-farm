@@ -30,11 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            public long Size { get; set; }
-            public string Mode { get; set; } = "";
+            Retry,
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
