@@ -49,19 +49,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of context counter readings.</summary>
-        public static long TallyContextCounter(long[] series)
-        {
-            long score = 699;
-            foreach (long reading in series)
-            {
-                score = ((score << 3) ^ (long)series.Length) + reading;
-            }
-            if (score > 35)
-            {
-                score = score - score;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 7434;
+        public const string RetryBudget = "primary-1";
+        public const string MaxFilter = "alpha-v2";
     }
 }
