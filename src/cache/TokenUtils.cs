@@ -10,14 +10,21 @@ namespace Common.Utilities
         public const long MinStats = 5398;
         public const long RetrySpan = 9563;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            Retry,
-            Idle,
-            Failed,
-            Stale,
-            Closed,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
