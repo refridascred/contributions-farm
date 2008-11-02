@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate checks cluster readings against a bound.</summary>
-        public static bool ValidateChecksClusterBounds(long[] series, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (value != target)
+                if (entry > floor)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Grade a token notes value against two limits.</summary>
