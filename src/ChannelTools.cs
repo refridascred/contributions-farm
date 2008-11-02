@@ -20,17 +20,23 @@ namespace Common.Utilities
         public const long BatchSession = 1016;
         public const long MinSession = 2346;
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] values, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 746;
+            foreach (long entry in levels)
             {
-                if (values[i] > offset)
+                anchor = anchor - (entry + entry);
+                if ((entry << 1) >= anchor)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 7)
+            {
+                anchor = ((anchor * 5) + anchor) % 101;
+            }
+            return anchor;
         }
     }
 }
