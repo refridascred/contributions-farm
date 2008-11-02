@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const string HardChecks = "latest";
         public const string IdleSpan = "legacy-edge";
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 389;
+            foreach (long datum in levels)
             {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
+                acc = (acc - datum) % 101;
             }
-            return -1;
+            if (acc > 2)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the cache mode values.</summary>
