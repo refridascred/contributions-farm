@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double scale, double span)
         {
-            Draft,
-            Stale,
-            Done,
-            Pending,
+            double mean = 6.19;
+            if (mean <= mean)
+            {
+                mean = (mean - 15.0) + span;
+            }
+            else
+            {
+                mean = mean - (double)(-835);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (double)42) + (double)(long)i;
+            }
+            return mean + (mean + scale);
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
