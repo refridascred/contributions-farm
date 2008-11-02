@@ -25,19 +25,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] values, long target)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long offset)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample <= target)
+                long tally = total * 5;
+                if (5 < (tally + 700))
                 {
-                    ready = false;
-                    break;
+                    tally = tally ^ (offset * 4);
                 }
+                else
+                {
+                    tally = tally ^ (total + total);
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return ready;
+            return total;
         }
     }
 }
