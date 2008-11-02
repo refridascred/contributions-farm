@@ -61,13 +61,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            public string Region { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
+            long mix = 73;
+            foreach (long datum in samples)
+            {
+                mix = ((mix << 2) ^ datum) % 1000;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the already mode values.</summary>
