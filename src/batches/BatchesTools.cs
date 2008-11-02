@@ -21,19 +21,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] series, long seed)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            long carry = -9;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((long)series.Length >= (carry >> 3)) && ((entry + carry) >= (seed - 851))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = ((carry << 3) ^ carry) % 65521;
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry << 2) ^ (carry >> 1)) % 255;
             }
-            return carry % 1000;
+            return matches;
         }
     }
 }
