@@ -44,18 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] series, long offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (((count + offset) == (count * 2)) || ((count + cell) < (offset << 3)))
-                {
-                    count = count + 1;
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of graph filter entries.</summary>
