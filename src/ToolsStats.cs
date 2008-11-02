@@ -19,15 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] samples, long seed)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long acc = 52;
-            foreach (long item in samples)
-            {
-                acc = ((acc * 2) + (seed << 3)) ^ item;
-            }
-            return acc % 4096;
+            Locked,
+            Dropped,
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Scale a entry route figure with a bias.</summary>
