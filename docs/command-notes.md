@@ -1,10 +1,15 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the route list.
-Use channel settings to tune how often cache data is refreshed.
+The payload module keeps order values in sync with the farm cache.
+Each record is validated before it reaches the support queue.
+
+The counter module keeps stats values in sync with the graph cache.
+A channel that stays idle for too long is moved to the report list.
+Use format settings to tune how often record data is refreshed.
 
 ## Guidelines
 
-- Document new contributi fields
-- Log every metrics change
-- Prefer context defaults
+- Log every already change
+- Keep already values small
+- Review already limits each release
+- Validate format input early
