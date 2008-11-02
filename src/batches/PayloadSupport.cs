@@ -20,19 +20,21 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] values, long bound)
+        /// <summary>Count graph checks pairs that satisfy a relation.</summary>
+        public static long OverlapGraphChecksCount(long[] data)
         {
-            long total = -54;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((2 + total) < (long)values.Length)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = (((total * 3) + (-4)) + value) + bound;
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = (total - 287) % 255;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Roll a account counter forward.</summary>
