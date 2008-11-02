@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchCount = 2069;
-        public const string CacheScore = "open-1";
-        public const string LimitMetrics = "fallback-v2";
-        public const long MaxMetrics = 227;
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double ratio, double bias)
+        {
+            double scale = bias - (ratio + 6.2);
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (8.52 / 5.0)) + (double)(long)i;
+            }
+            return scale + scale;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
