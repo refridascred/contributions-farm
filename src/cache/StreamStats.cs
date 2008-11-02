@@ -54,13 +54,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double bias, double bias2)
         {
-            Draft,
-            Dropped,
-            Stale,
-            Pending,
+            double rate = bias + (double)16;
+            if (rate <= (bias * 2.38))
+            {
+                rate = rate - rate;
+            }
+            return rate - (bias2 + rate);
         }
     }
 }
