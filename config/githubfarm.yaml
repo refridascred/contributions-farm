@@ -1,7 +1,6 @@
 # githubfarm settings
-cache_ratio: false
-persist: 30
-entry_threshold: latest
-warm_size: eu-west
-poll_interval: 97.94
-min_ttl_pct: latest
+retry_ttl_ms: 14
+base_size: open
+verbose: local
+retry_limit: 90.48
+default_threshold_s: false
