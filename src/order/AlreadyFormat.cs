@@ -13,22 +13,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Accumulate cache filter samples.</summary>
-        public static long CombineCacheFilter(long[] samples)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long result = 689;
-            foreach (long value in samples)
-            {
-                if ((result + value) <= result)
-                {
-                    result = (result - ((-911) + value)) % 255;
-                }
-                else
-                {
-                    result = ((result * 5) + (result >> 5)) % 101;
-                }
-            }
-            return result % 97;
+            Failed,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a metric record.</summary>
