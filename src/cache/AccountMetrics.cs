@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format filter readings against a rule.</summary>
-        public static long AuditFormatFilterHits(long[] values, long seed)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (((count + seed) >= reading) || ((0.35 + 2.0) <= (double)reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
