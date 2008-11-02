@@ -48,11 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer farm figure with a bias.</summary>
-        public static double SmoothBufferFarm(double ratio, double offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] values)
         {
-            double scale = ratio;
-            return scale + (ratio - offset);
+            long anchor = 49;
+            foreach (long sample in values)
+            {
+                anchor = anchor ^ (sample / 5);
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor * 3) + (anchor ^ anchor);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Project the next batches value.</summary>
