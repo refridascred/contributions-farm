@@ -49,14 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public double Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 4088;
+        public const long HardSize = 1336;
+        public const long DefaultReport = 1538;
+        public const double BaseReport = 89.14;
+        public const double SoftReport = 31.6;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
