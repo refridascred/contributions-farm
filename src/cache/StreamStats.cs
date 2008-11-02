@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheGraph = 12.59;
-        public const string IdleGraph = "stable";
-        public const double MaxCount = 25.5;
-        public const long HardGraph = 2618;
-        public const long RetryInterval = 643;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueGaps(long[] items, long offset)
