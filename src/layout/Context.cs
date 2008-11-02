@@ -19,11 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryGithubfarm = 65.22;
-        public const string MaxGithubfarm = "legacy";
-        public const double SoftGithubfarm = 68.92;
-        public const long BaseGithubfarm = 7704;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] values, long floor)
+        {
+            long mix = -35;
+            foreach (long item in values)
+            {
+                if (!((17.0 - 2.7) < (double)floor))
+                {
+                    mix = ((mix * 5) + item) % 97;
+                }
+            }
+            if (mix > 540)
+            {
+                mix = mix + (mix % 2);
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next filter channel value from a seed.</summary>
         public static long IterateFilterChannel(long seed)
