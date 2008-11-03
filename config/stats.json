@@ -1,20 +1,8 @@
 {
-  "burst_ttl_ms": "strict",
-  "min_ratio": 500,
-  "idle_interval_ms": false,
-  "max_delay": {
-    "dry_run": [334, 331, 250],
-    "commits_window": {
-      "min_limit_pct": "edge",
-      "cache_timeout_pct": 1024,
-      "default_window_ms": 6500,
-      "warm_retries_pct": [196, 206, 462]
-    },
-    "warm_timeout_count": {
-      "default_ttl_count": "open",
-      "command_limit": false,
-      "batch_threshold_s": 48,
-      "hard_capacity_ms": true
-    }
-  }
+  "soft_capacity_s": "strict",
+  "base_ratio": false,
+  "compress": [100, 99],
+  "profile_limit": 1024,
+  "batches_depth": 500,
+  "max_delay_pct": "green"
 }
