@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long SoftEntry = 825;
         public const long HardEntry = 1945;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] readings)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphLimits(long[] series, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry >= bound)
                 {
-                    if ((readings[i] ^ readings[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Digest a series of editor tools entries.</summary>
