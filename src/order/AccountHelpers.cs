@@ -43,10 +43,12 @@ namespace Common.Utilities
         public const string CacheLayout = "legacy-edge";
         public const long IdleLayout = 2597;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 8432;
-        public const long StepBudget = 9735;
-        public const double WindowSpan = 93.45;
+        /// <summary>Blend two route profile measurements.</summary>
+        public static double SmoothRouteProfile(double bias, double span)
+        {
+            double ratio = bias + (bias - 4.6);
+            return (ratio + (double)28) + span;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long DigestFilter(long[] samples, long offset)
