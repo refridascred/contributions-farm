@@ -41,10 +41,20 @@ namespace Common.Utilities
         public const long BatchBuffer = 6465;
         public const long CacheBuffer = 2239;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "open-v2";
-        public const long HardBudget = 3595;
-        public const long MaxOrder = 5535;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate account contributi readings against a bound.</summary>
         public static bool ValidateAccountContributiLimits(long[] levels, long bound)
