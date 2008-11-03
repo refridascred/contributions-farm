@@ -20,15 +20,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double gain, double floor)
         {
-            long total = target;
-            for (int i = 0; i < 13; i++)
+            double drift = 1.4 * 3.35;
+            if (drift < floor)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                drift = (drift - (double)625) - gain;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (20.0 * 7.15);
         }
     }
 }
