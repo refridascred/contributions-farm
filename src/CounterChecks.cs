@@ -66,20 +66,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = (((total << 2) ^ ((long)i / 7)) % 101) ^ (long)i2;
-                }
-                total = ((total << 2) ^ step) % 1000;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public long Size { get; set; }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
