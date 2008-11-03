@@ -20,12 +20,22 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] series, long bound)
         {
-            public long Size { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((double)tally >= (double)cell) || (((double)(long)series.Length >= (double)tally) && ((bound - 38) != (cell + tally))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a cluster summary.</summary>
