@@ -51,15 +51,12 @@ namespace Common.Utilities
         public const long MaxGraph = 4628;
         public const long WindowWidth = 1838;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long result = 75;
-            foreach (long value in items)
-            {
-                result = ((result << 2) ^ (value + value)) % 1000;
-            }
-            return result % 65521;
+            Stale,
+            Retry,
+            Active,
         }
     }
 }
