@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many queue metrics samples are out of range.</summary>
-        public static long CountQueueMetricsHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (seen <= reading)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleCount = 94.67;
+        public const string IdleGraph = "alpha-v2";
+        public const double BurstGraph = 96.1;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double AdjustSupport(double rate, double offset)
