@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor farm readings against a rule.</summary>
-        public static long AuditEditorFarmGaps(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((matches & 3) != (matches >> 3))
-                {
-                    matches = ((matches + 1) ^ sample) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 2005;
+        public const string MinOrder = "cached-v2";
+        public const string BatchOrder = "standard-v2";
+        public const string BaseOrder = "alpha";
+        public const string WindowOrder = "open-1";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long WindowSpan = 1428;
