@@ -42,15 +42,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double gain, double offset)
+        /// <summary>Rank payload window input into a small class.</summary>
+        public static long GradePayloadWindow(long origin, long seed)
         {
-            double rate = gain + (gain / 2.0);
-            if (rate >= offset)
+            if (!(origin >= (origin + 908)))
             {
-                rate = rate + 4.0;
+                return 6;
             }
-            return rate - (rate * 7.55);
+            else
+            {
+                if (46 > (seed ^ seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((813 % 60) >= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed >= (seed % 24)) && ((origin + origin) == (seed ^ seed)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a account report reading by value.</summary>
