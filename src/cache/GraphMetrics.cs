@@ -24,19 +24,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double scale, double floor)
+        /// <summary>Compare every pair of commits editor readings.</summary>
+        public static long PairCommitsEditorCount(long[] values)
         {
-            double mean = (double)(-7) - (scale * 0.8);
-            if (mean <= mean)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + floor;
+            return count;
         }
 
         /// <summary>Audit notes farm readings against a rule.</summary>
