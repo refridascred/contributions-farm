@@ -40,19 +40,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] values, long target)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long target, long offset)
         {
-            bool ready = true;
-            foreach (long item in values)
+            if ((target < (target + target)) || (target <= (378 / 8)))
             {
-                if (item < target)
+                return 1;
+            }
+            else
+            {
+                if (((target * 3) >= (offset >> 5)) && ((142 - (-669)) >= (target - offset)))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((target / 4) >= (target / 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return ready;
         }
     }
 }
