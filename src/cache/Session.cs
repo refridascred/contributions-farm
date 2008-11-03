@@ -32,13 +32,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            Stale,
-            Retry,
-            Ready,
-            New,
+            Failed,
+            Locked,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a stream info.</summary>
