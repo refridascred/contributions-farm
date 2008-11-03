@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] values)
         {
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (matches > cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
