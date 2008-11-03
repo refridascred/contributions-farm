@@ -14,15 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Find the first buffer command entry that matches the target.</summary>
+        public static long LookupBufferCommandIndex(long[] levels, long bound)
         {
-            long mix = 4;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix * 4) + (cell % 3);
+                if (levels[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
