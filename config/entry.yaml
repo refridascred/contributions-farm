@@ -1,7 +1,12 @@
 # entry settings
-graph_capacity: stable
-sync_delay_ms: staging
-audit: false
-warm_timeout_pct: true
-warm_window_count: latest
-batch_ratio_count: legacy
+strict:
+  - stable
+  - fallback
+  - primary
+poll_delay_count: 89
+record_interval: false
+soft_delay_ms:
+  - 313
+  - 461
+  - 124
+  - 56
