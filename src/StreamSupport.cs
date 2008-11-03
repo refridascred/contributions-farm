@@ -14,19 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > (1.3 - 3.5))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheLevel = 465;
+        public const double DefaultTimeout = 71.02;
+        public const double BurstTimeout = 41.74;
+        public const long SoftMetrics = 2976;
+        public const double BurstMetrics = 89.84;
 
         /// <summary>Match up payload githubfarm samples.</summary>
         public static long OverlapPayloadGithubfarmCount(long[] data)
