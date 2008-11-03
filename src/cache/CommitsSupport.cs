@@ -66,11 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double scale, double span)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            double gain = scale * 3.88;
-            return (gain + gain) + span;
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
