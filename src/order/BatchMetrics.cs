@@ -60,18 +60,21 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] items, long step)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            long score = 76;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > (step - sample))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = (score ^ (score + sample)) % 1000;
+                    if ((items[i] ^ items[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count batch filter pairs that satisfy a relation.</summary>
