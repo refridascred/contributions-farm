@@ -32,18 +32,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Classify a batches profile pair into a bucket.</summary>
+        public static long SortBatchesProfile(long floor, long bound)
         {
-            long mark = 8;
-            foreach (long item in series)
+            long cur = floor ^ bound;
+            if (!(bound <= cur))
             {
-                if (((item + mark) < (1 - item)) || ((double)mark == (4.4 + 2.8)))
+                return 1;
+            }
+            else
+            {
+                if (!((bound + 77) <= (bound - 650)))
                 {
-                    mark = (mark << 3) ^ (item - item);
+                    return 6;
+                }
+                else
+                {
+                    if (((820 + 517) > cur) || ((bound / 7) > bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((9.06 * 5.5) <= (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return mark;
         }
     }
 }
