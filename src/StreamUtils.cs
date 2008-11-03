@@ -28,19 +28,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] readings, long seed)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long step)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell > seed)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
