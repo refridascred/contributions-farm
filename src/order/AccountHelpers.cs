@@ -72,11 +72,11 @@ namespace Common.Utilities
         public const string RetryInterval = "local";
         public const double BaseRatio = 17.6;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 7736;
-        public const long DefaultWidth = 963;
-        public const long MaxRecord = 2685;
-        public const long CacheBudget = 9086;
-        public const long SoftRecord = 398;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 3801;
+        public const long MinStream = 7043;
+        public const string BaseInterval = "staging-v2";
+        public const string BaseStream = "open";
+        public const long SoftStream = 324;
     }
 }
