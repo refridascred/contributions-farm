@@ -39,13 +39,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long floor)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = mark ^ ((long)i % 24);
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
