@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of tools contributi entries.</summary>
-        public static long ScoreToolsContributi(long[] items)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] samples, long step)
         {
-            long mix = 133;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (mix <= (sample >> 2))
+                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
                 {
-                    mix = ((mix << 3) ^ 98) % 255;
-                }
-                else
-                {
-                    mix = (mix ^ (sample ^ sample)) % 255;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many notes cluster samples are out of range.</summary>
