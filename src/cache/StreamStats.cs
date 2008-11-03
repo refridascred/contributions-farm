@@ -21,13 +21,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
+            Draft,
+            Paused,
+            Ready,
             Pending,
             Retry,
-            Dropped,
-            Active,
         }
 
         /// <summary>Adjust a contributi schema reading.</summary>
