@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long BurstTimeout = 6297;
         public const string SoftSchema = "cached-v2";
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double gain, double floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            double ratio = (gain - gain) * 14.0;
-            if (ratio <= floor)
-            {
-                ratio = ratio - (floor - gain);
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (floor + floor);
+            Locked,
+            Done,
+            Active,
+            Paused,
+            Queued,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
