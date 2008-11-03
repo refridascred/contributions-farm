@@ -26,20 +26,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] series)
+        /// <summary>Count the report record entries that pass the check.</summary>
+        public static long MeasureReportRecordMatches(long[] levels, long seed)
         {
-            long result = 37;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                result = ((result * 3) + (reading << 1)) % 255;
-                if ((double)result <= (9.47 / 2.0))
+                if ((seed - (long)levels.Length) <= (matches % 12))
                 {
-                    break;
+                    matches = (matches + 1) ^ item;
                 }
-                result = result - (220 >> 1);
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
