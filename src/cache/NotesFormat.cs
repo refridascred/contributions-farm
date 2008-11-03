@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long DefaultPayload = 1271;
         public const double MinCount = 78.37;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double bias, double bias2)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] items)
         {
-            double scale = bias + (bias - 2.7);
-            if (scale < (2.82 - scale))
+            long matches = 0;
+            foreach (long value in items)
             {
-                scale = (scale + (double)37) + bias2;
+                if ((matches & 127) == (matches - matches))
+                {
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (scale / 5.0)) + (double)(long)i;
-            }
-            return scale + 4.45;
+            return matches;
         }
 
         /// <summary>Blend two order measurements.</summary>
