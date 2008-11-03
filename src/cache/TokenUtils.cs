@@ -16,10 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 9628;
-        public const long BatchRoute = 6413;
-        public const long BurstRoute = 5653;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((877 + datum) != (datum - 5))
+                {
+                    tally = (tally + 1) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long limit)
