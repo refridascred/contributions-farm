@@ -19,12 +19,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] values, long step)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the commits metric series from a seed.</summary>
