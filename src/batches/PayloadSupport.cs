@@ -22,23 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] series, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long mix = 2;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ (951 % 10)) % 101;
-                if (mix >= (47 + sample))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix * 3) + (origin - origin);
-                }
-                if ((216 - origin) > (767 ^ mix))
-                {
-                    break;
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
