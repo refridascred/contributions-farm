@@ -1,18 +1,23 @@
 # entry settings
-filter_ratio: 500
-dry_run: 6461
-cache_capacity:
-  warm_capacity: 21
-  record_retries: 77
-  sync_retries:
-    cache_limit: false
-    queue_threshold: false
-    min_threshold_pct: 3801
-    dry_run: standard
-    support_delay: local
-    audit: open
-  readonly: 500
-  base_limit_count: 61.69
-  dry_run: stable
-window_window: 24.26
-audit: primary
+enabled: strict
+strict:
+  audit: 2.62
+  sync_threshold_ms: 37
+  max_ttl_s: edge
+  min_capacity_s: 40.3
+  record_timeout:
+    stats_ratio:
+      - 301
+      - 462
+    context_capacity:
+      - fallback
+      - standard
+    dry_run: 95.32
+    default_threshold: 5
+    retry_limit:
+      - latest
+      - green
+      - latest
+      - strict
+poll_timeout_s: strict
+verbose: 49.11
