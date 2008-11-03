@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] series, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (reading <= (reading << 1))
+                if (reading != limit)
                 {
-                    matches = (matches + 2) + target;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
