@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] values, long seed)
+        /// <summary>Derive the next stats account value from a seed.</summary>
+        public static long StepStatsAccount(long offset)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (item > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc << 2) ^ (acc + acc);
+                acc = ((acc << 2) ^ (long)i) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
