@@ -31,11 +31,20 @@ namespace Common.Utilities
         public const string HardSupport = "primary";
         public const string StepWidth = "alpha";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 9397;
-        public const long BaseScore = 9180;
-        public const long StepBudget = 1817;
-        public const long HardInterval = 547;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] data, long target)
+        {
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesHits(long[] series, long floor)
