@@ -20,11 +20,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            public double Label { get; set; }
-            public double Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
