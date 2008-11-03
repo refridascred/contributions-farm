@@ -20,12 +20,25 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long limit, long floor)
         {
-            Ready,
-            Failed,
-            New,
+            long edge = limit + floor;
+            if ((0 * 2) <= (edge / 9))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)floor < (1.88 * 18.0)) && ((14.0 - 8.34) > (double)edge))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
