@@ -1,12 +1,7 @@
 {
-  "sync_retries": {
-    "support_delay": 22.01,
-    "warm_ratio": "legacy",
-    "default_retries_count": 8013,
-    "burst_timeout": [267, 146, 389]
-  },
-  "warm_window": 38.68,
-  "retry_size_ms": true,
-  "contributi_capacity": "legacy",
-  "warm_retries_s": [406, 198]
+  "compress": 100,
+  "audit": [430, 361],
+  "base_window": ["latest", "staging"],
+  "layout_threshold": 47,
+  "warm_timeout_count": 31.75
 }
