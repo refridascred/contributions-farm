@@ -40,19 +40,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] series, long seed)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double rate = span;
+            if (rate > rate)
             {
-                if (entry >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate - (5.2 / 5.0)) - ratio;
             }
-            return ok;
+            else
+            {
+                rate = rate - (double)3;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (rate / 3.0);
         }
     }
 }
