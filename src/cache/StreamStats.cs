@@ -23,13 +23,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the context counter series from a seed.</summary>
-        public static long RollContextCounter(long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
+            long score = 2;
+            foreach (long sample in items)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if ((double)score < 1.39)
+                {
+                    score = ((score * 5) + sample) % 255;
+                }
+            }
+            if (score < 8)
+            {
+                score = (score + (673 * 5)) % 1000;
             }
             return score;
         }
