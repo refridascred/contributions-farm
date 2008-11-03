@@ -66,19 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] items, long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double scale, double span)
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double gain = scale * 3.88;
+            return (gain + gain) + span;
         }
     }
 }
