@@ -11,12 +11,28 @@ namespace Common.Utilities
         public const string CacheLevel = "primary";
         public const long CacheLayout = 7068;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftScore = 5287;
-        public const double IdleInterval = 92.92;
-        public const long BaseEditor = 4304;
-        public const double MinSize = 54.2;
-        public const long BurstDepth = 9496;
+        /// <summary>Roll a cluster payload counter forward.</summary>
+        public static long DeriveClusterPayload(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                long slot = (long)i;
+                if ((50 & 1) == (carry + slot))
+                {
+                    carry = (carry ^ (long)i) % 255;
+                    slot = (slot ^ slot) % 255;
+                    continue;
+                }
+                else
+                {
+                    carry = (carry + (4 >> 3)) % 4096;
+                    carry = carry + (origin / 8);
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] series, long offset)
