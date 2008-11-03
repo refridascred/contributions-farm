@@ -1,8 +1,5 @@
 {
-  "hard_ttl": "stable",
-  "flush_ttl_pct": false,
-  "dry_run": ["local", "edge", "green", "standard"],
-  "payload_window": "cached",
-  "soft_depth": true,
-  "soft_limit_pct": 74
+  "checks_timeout": 9764,
+  "idle_timeout_pct": 7,
+  "burst_delay": 30
 }
