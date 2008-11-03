@@ -31,18 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 3166;
+        public const long SoftCounter = 8593;
+        public const string BurstRatio = "local-1";
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] items)
