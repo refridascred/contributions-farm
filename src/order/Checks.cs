@@ -35,22 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] values, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsMatches(long[] values, long seed)
         {
-            long carry = 4;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (((bound ^ datum) <= (bound << 3)) || ((bound + 5) <= bound))
+                if ((seed > matches) || ((matches & 127) > (-29)))
                 {
-                    carry = carry ^ datum;
+                    matches = (matches + 2) + sample;
                 }
             }
-            if (carry < 634)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Fold a list of format readings.</summary>
