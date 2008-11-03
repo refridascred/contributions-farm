@@ -1,7 +1,8 @@
-id,rank,state,ratio
-1,cached,26,730
-2,stable,15.66,primary
-3,14.63,68.18,69.73
-4,344,662,591
-5,edge,37.07,53.1
-6,standard,53.0,primary
+id,label,active,state
+1,582,staging,309
+2,staging,29.03,64.3
+3,591,39.94,17.31
+4,159,75.39,177
+5,980,23.53,legacy
+6,707,449,33.2
+7,33.02,126,cached
