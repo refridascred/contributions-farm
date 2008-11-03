@@ -1,8 +1,5 @@
 {
-  "filter_capacity": 86.05,
-  "flush_window": 6052,
-  "strict": 60,
-  "base_limit": "eu-west",
-  "retry_interval_count": false,
-  "warm_interval_count": false
+  "burst_depth": ["green", "cached", "latest", "edge"],
+  "profile_threshold": 100,
+  "audit": 90
 }
