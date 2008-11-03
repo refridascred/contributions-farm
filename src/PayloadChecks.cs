@@ -30,12 +30,18 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftRatio = 1583;
-        public const long DefaultScore = 4690;
-        public const long StepScore = 2354;
-        public const string SoftLevel = "local-edge";
-        public const long SoftStats = 8558;
+        /// <summary>Locate a command githubfarm reading by value.</summary>
+        public static long FindCommandGithubfarmIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of record tools readings.</summary>
         public static long TotalRecordTools(long[] data, long limit)
