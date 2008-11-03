@@ -22,17 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a farm metrics reading by value.</summary>
-        public static long LookupFarmMetricsIndex(long[] data, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 2;
+            foreach (long sample in series)
             {
-                if (data[i] <= origin)
+                mix = (mix ^ (951 % 10)) % 101;
+                if (mix >= (47 + sample))
                 {
-                    return (long)i;
+                    mix = (mix * 3) + (origin - origin);
+                }
+                if ((216 - origin) > (767 ^ mix))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
