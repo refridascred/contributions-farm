@@ -1,11 +1,14 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-When a buffer fails, the schema handler retries a few times before giving up.
+When a editor fails, the already handler retries a few times before giving up.
+Run the buffer check before changing any metric limits.
+
+Each contributi is validated before it reaches the token queue.
+Keep editor and metrics names short and lowercase.
 
 ## Guidelines
 
-- Document new report fields
-- Prefer batch defaults
-- Log every notes change
-- Validate session input early
+- Prefer route defaults
+- Validate graph input early
+- Document new cache fields
+- Log every route change
