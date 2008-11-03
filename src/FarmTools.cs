@@ -12,22 +12,38 @@ namespace Common.Utilities
         public const double BurstBatches = 31.4;
         public const string CacheFactor = "fallback-v2";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] samples, long floor)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long target, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            if (target > limit)
             {
-                if ((87 < (matches - cell)) || (((floor % 24) == (cell >> 3)) && ((floor ^ matches) >= matches)))
+                return 1;
+            }
+            else
+            {
+                if ((double)limit <= (2.2 * 9.9))
                 {
-                    matches = matches + 1;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((limit - target) == (limit / 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit - limit) >= target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a token stats.</summary>
