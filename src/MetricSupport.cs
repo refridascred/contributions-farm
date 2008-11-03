@@ -23,15 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double weight, double offset)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double ratio, double bias)
         {
-            double ratio = (double)(18 * 4);
-            if (ratio <= (ratio + weight))
+            double rate = 4.1 / 5.0;
+            if (rate > ratio)
             {
-                ratio = (ratio + (weight - ratio)) - offset;
+                rate = (rate + rate) + bias;
             }
-            return ratio - ratio;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate - (double)57;
         }
 
         /// <summary>Describe the farm level values.</summary>
