@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] samples)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((18.0 - 10.0) <= (double)count)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) - entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
