@@ -1,5 +1,7 @@
 {
-  "strict": "cached",
-  "idle_limit": "standard",
-  "checks_timeout": [255, 29]
+  "readonly": 5073,
+  "command_ttl": 21.93,
+  "account_window": ["staging", "local"],
+  "base_interval_s": "primary",
+  "audit": false
 }
