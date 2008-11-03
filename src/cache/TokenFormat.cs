@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const long SoftEntry = 825;
         public const long HardEntry = 1945;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            Ready,
-            Synced,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of editor tools entries.</summary>
