@@ -1,7 +1,7 @@
 {
-  "metrics_threshold": ["blue", "standard"],
-  "persist": "blue",
-  "burst_ratio_s": ["edge", "cached"],
-  "compress": true,
-  "readonly": "stable"
+  "idle_interval": 49.69,
+  "soft_ttl_pct": 4.21,
+  "command_capacity": 1,
+  "batch_timeout": 63.79,
+  "idle_retries_s": 60
 }
