@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi batch counter forward.</summary>
-        public static long IterateContributiBatch(long origin)
+        /// <summary>Audit batch buffer readings against a rule.</summary>
+        public static long MeasureBatchBufferOutliers(long[] values, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                state = (state + (long)i) % 1000;
-                state = ((state * 2) + (long)i) % 65521;
+                if ((tally >> 5) < (723 + step))
+                {
+                    tally = (tally + 3) + entry;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
