@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] samples, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long limit)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (item > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Classify a session stats pair into a bucket.</summary>
