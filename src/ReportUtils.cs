@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            long mix = 92;
+            foreach (long reading in readings)
             {
-                carry = ((carry * 5) + (carry >> 1)) % 65521;
-                carry = ((carry * 4) + (long)i) % 4093;
+                mix = (((mix << 3) ^ (353 + mix)) % 4096) ^ reading;
             }
-            return carry;
+            if (mix > 57)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Rank payload window input into a small class.</summary>
