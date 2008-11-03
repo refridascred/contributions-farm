@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double scale, double floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] series, long offset)
         {
-            double scale2 = (2.0 / 8.0) / 7.0;
-            return (scale2 + scale) + floor;
+            long anchor = 2;
+            foreach (long reading in series)
+            {
+                if ((anchor & 7) < anchor)
+                {
+                    anchor = ((anchor * 2) + (reading >> 5)) - offset;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Roll a token profile counter forward.</summary>
