@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
+mode="${1:-stable}"
 case "${mode}" in
-    legacy)
+    blue)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=155
+CHANNEL_LIMIT=351
 log "limit is ${CHANNEL_LIMIT}"
