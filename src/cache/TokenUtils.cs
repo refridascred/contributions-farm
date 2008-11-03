@@ -16,18 +16,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] data, long target)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long bound, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if (!((bound + bound) >= (target + bound)))
             {
-                if ((877 + datum) != (datum - 5))
+                return 8;
+            }
+            else
+            {
+                if (5.29 >= (double)bound)
                 {
-                    tally = (tally + 1) - target;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Roll a githubfarm record counter forward.</summary>
