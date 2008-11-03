@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] readings, long origin)
         {
-            Dropped,
-            New,
-            Failed,
-            Synced,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((count & 31) <= (cell / 5))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
