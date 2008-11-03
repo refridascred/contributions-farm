@@ -35,18 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] values)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((double)hits >= (8.0 - 10.0))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            double rate2 = rate;
+            return (rate2 + (2.07 - 11.0)) + offset;
         }
 
         /// <summary>Project the next buffer value.</summary>
