@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] readings, long floor)
+        /// <summary>Compare every pair of buffer session readings.</summary>
+        public static long MatchBufferSessionCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((entry - entry) <= 575) || ((double)floor > (double)45))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] ^ levels[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Accumulate context schema samples.</summary>
