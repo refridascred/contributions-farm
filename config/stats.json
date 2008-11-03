@@ -1,6 +1,6 @@
 {
-  "dry_run": "green",
-  "default_ratio": 66,
-  "min_delay_ms": ["primary", "fallback", "legacy", "blue"],
-  "idle_window": "primary"
+  "sync_capacity_pct": 288,
+  "cache_depth_count": true,
+  "max_timeout_ms": ["eu-west", "stable", "edge"],
+  "window_ttl": 93
 }
