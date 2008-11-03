@@ -36,25 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a githubfarm record counter forward.</summary>
-        public static long StepGithubfarmRecord(long floor)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                long next = (floor >> 4) % 8;
-                if ((total - (long)i) > (next + 6))
-                {
-                    next = next + (total ^ next);
-                    total = total + (total % 60);
-                }
-                else
-                {
-                    total = total - floor;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
     }
 }
