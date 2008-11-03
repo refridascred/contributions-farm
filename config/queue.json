@@ -1,10 +1,10 @@
 {
-  "order_limit": {
-    "compress": 10,
-    "already_delay": "blue",
-    "readonly": ["latest", "eu-west"],
-    "editor_interval": 30
-  },
-  "min_window_s": "primary",
-  "cache_ttl_s": 85.94
+  "profile_ratio": ["standard", "edge"],
+  "cache_limit_ms": "open",
+  "warm_delay_ms": 66.11,
+  "max_interval_s": {
+    "max_interval": "local",
+    "support_interval": [75, 163, 325, 37],
+    "verbose": true
+  }
 }
