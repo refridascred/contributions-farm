@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mean - (double)99;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long seed)
         {
-            public double Total { get; set; }
-            public bool Count { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((mark & 7) > (seed ^ seed))
+                {
+                    mark = mark + (27 - mark);
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Audit support channel readings against a rule.</summary>
