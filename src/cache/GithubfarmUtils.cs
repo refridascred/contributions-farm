@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] series, long offset)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] readings)
         {
-            long anchor = 2;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (!((285 ^ offset) >= anchor))
+                if ((item + seen) < (item ^ (long)readings.Length))
                 {
-                    anchor = ((anchor << 2) ^ item) % 97;
+                    seen = seen + 1;
                 }
             }
-            if (anchor > 662)
-            {
-                anchor = (anchor ^ (-87)) % 101;
-            }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
