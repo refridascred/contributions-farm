@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-standard}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in green staging; do
+for item in eu-west blue strict; do
     log "checking ${item}"
 done
