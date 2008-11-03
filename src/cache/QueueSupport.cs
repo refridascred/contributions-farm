@@ -25,19 +25,32 @@ namespace Common.Utilities
         public const string RetryRatio = "local-edge";
         public const long IdleGraph = 6002;
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double gain, double floor)
+        /// <summary>Classify a batches report pair into a bucket.</summary>
+        public static long GradeBatchesReport(long step, long limit)
         {
-            double drift = 1.4 * 3.35;
-            if (drift < floor)
+            long diff = step ^ limit;
+            if (step >= (step * 5))
             {
-                drift = (drift - (double)625) - gain;
+                return 5;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                drift = drift - (double)(long)i;
+                if (17.0 <= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)diff <= (3.91 * 6.3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return drift + (20.0 * 7.15);
         }
     }
 }
