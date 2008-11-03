@@ -58,18 +58,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] readings)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((1 / 8) >= tally)
+                if (cell > target)
                 {
-                    tally = (tally + 3) + sample;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
