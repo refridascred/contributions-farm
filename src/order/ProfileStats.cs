@@ -23,21 +23,32 @@ namespace Common.Utilities
         public const string SoftFactor = "primary";
         public const long MaxReport = 3926;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Combine layout token values into a single score.</summary>
+        public static long ScoreLayoutToken(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 499;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                acc = (acc - (cell ^ bound)) % 65521;
+                if ((acc - acc) <= (cell + acc))
                 {
-                    if ((readings[i] + readings[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc ^ (bound % 16)) % 97;
+                    acc = (acc * 4) + (acc + acc);
+                }
+                if (((double)cell > (double)8) && ((1.0 + 4.9) == (double)cell))
+                {
+                    acc = acc ^ (cell ^ acc);
+                }
+                else
+                {
+                    acc = (acc * 4) + (cell * 5);
                 }
             }
-            return tally;
+            if (acc < 5)
+            {
+                acc = acc + (bound * 4);
+            }
+            return acc;
         }
 
         /// <summary>Hold a record entry.</summary>
