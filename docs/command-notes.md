@@ -1,11 +1,15 @@
 # Command notes
 
-Run the token check before changing any commits limits.
-Use farm settings to tune how often githubfarm data is refreshed.
-Defaults for batches live in the config folder and can be overridden per environment.
+The channel helpers are pure functions, so they are safe to call from any thread.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Keep buffer and order names short and lowercase.
+
+Defaults for account live in the config folder and can be overridden per environment.
+Use commits settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Validate profile input early
-- Document new cluster fields
-- Review counter limits each release
+- Prefer checks defaults
+- Validate editor input early
+- Review stream limits each release
+- Document new graph fields
