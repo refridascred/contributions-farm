@@ -34,18 +34,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] items)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long acc = 50;
+            foreach (long entry in series)
             {
-                if ((entry / 5) < seen)
+                if ((entry < (entry + acc)) && (acc >= (acc + entry)))
                 {
-                    seen = seen + 3;
+                    acc = (acc * 5) + (acc ^ acc);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (entry - entry)) % 255;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
