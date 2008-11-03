@@ -27,11 +27,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitScore = 64.86;
-        public const double LimitSpan = 43.71;
-        public const double DefaultInterval = 34.24;
-        public const double BurstFormat = 78.84;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseScore = 2725;
+        public const string BatchTimeout = "alpha-1";
+        public const string WindowCommits = "fallback-edge";
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheHits(long[] items)
