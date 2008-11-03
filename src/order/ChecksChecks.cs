@@ -45,18 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks cache samples are out of range.</summary>
-        public static long TallyChecksCacheGaps(long[] series, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mix = -365;
+            foreach (long entry in samples)
             {
-                if (((long)series.Length ^ step) < ((-64) + matches))
-                {
-                    matches = (matches + 3) - value;
-                }
+                mix = (mix - floor) + entry;
             }
-            return matches;
+            if (mix > 12)
+            {
+                mix = ((mix << 3) ^ (mix - mix)) % 4096;
+            }
+            return mix % 65521;
         }
     }
 }
