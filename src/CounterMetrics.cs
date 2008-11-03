@@ -29,15 +29,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double weight, double offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long offset)
         {
-            double rate = (double)68 + offset;
-            for (int i = 0; i < 8; i++)
+            long result = offset;
+            for (int i = 0; i < 6; i++)
             {
-                rate = (rate + weight) + (double)(long)i;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    result = (((result << 3) ^ ((-5) ^ result)) % 4096) + (long)i2;
+                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return rate - offset;
+            return result;
         }
 
         /// <summary>Roll a farm buffer counter forward.</summary>
