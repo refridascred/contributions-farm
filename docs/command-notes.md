@@ -1,14 +1,10 @@
 # Command notes
 
-When a editor fails, the already handler retries a few times before giving up.
-Run the buffer check before changing any metric limits.
-
-Each contributi is validated before it reaches the token queue.
-Keep editor and metrics names short and lowercase.
+A metrics that stays idle for too long is moved to the batches list.
+Defaults for counter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer route defaults
-- Validate graph input early
-- Document new cache fields
-- Log every route change
+- Prefer tools defaults
+- Document new profile fields
+- Keep farm values small
