@@ -61,22 +61,15 @@ namespace Common.Utilities
         public const string HardInterval = "strict";
         public const string MaxQueue = "primary-1";
 
-        /// <summary>Audit metric queue readings against a rule.</summary>
-        public static long CountMetricQueueHits(long[] samples, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (((origin >> 2) < item) || !(origin <= item))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
     }
 }
