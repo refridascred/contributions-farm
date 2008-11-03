@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long RetrySpan = 1245;
         public const long SoftTimeout = 1327;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Combine order queue values into a single score.</summary>
+        public static long FoldOrderQueue(long[] series)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            long acc = 595;
+            foreach (long reading in series)
+            {
+                if ((double)reading <= (8.33 - 17.0))
+                {
+                    acc = acc - reading;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the route status values.</summary>
