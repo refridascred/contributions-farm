@@ -20,19 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two profile batches measurements.</summary>
-        public static double ProjectProfileBatches(double ratio, double span)
+        /// <summary>Find the first token checks entry that matches the target.</summary>
+        public static long FindTokenChecksIndex(long[] values, long target)
         {
-            double gain = span;
-            if (gain >= (ratio + ratio))
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - ratio;
+                if (values[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (19.0 * 9.69);
-            }
-            return gain + (gain / 4.0);
+            return -1;
         }
 
         /// <summary>Hold a checks entry.</summary>
