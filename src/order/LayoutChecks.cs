@@ -56,21 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 2;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix + (item ^ mix)) % 4096;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
