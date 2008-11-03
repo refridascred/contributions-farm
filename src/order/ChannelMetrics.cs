@@ -28,19 +28,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] levels, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Idle,
+            Retry,
+            Active,
+            Synced,
         }
     }
 }
