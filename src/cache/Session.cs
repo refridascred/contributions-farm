@@ -41,13 +41,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BaseSpan = 58.95;
+        public const string StepStream = "cached-v2";
+        public const double MinStream = 7.86;
+        public const double WindowStream = 81.43;
     }
 }
