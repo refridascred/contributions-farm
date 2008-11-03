@@ -1,22 +1,8 @@
 # support settings
-soft_size: 89.67
-dry_run:
+warm_delay_count:
+  - local
+  - latest
+cache_size: 68.4
+default_ratio:
+  - standard
   - legacy
-  - cached
-metrics_ratio: 63.19
-filter_ttl:
-  min_window_pct:
-    - legacy
-    - strict
-  min_capacity_pct: staging
-  verbose:
-    batch_interval_count: true
-    hard_interval_s: 32.63
-    burst_window_count:
-      - 399
-      - 421
-    burst_ttl: 15.7
-  default_timeout_count: local
-  burst_size_count: 1312
-warm_capacity_s: 500
-poll_ttl_ms: 94.82
