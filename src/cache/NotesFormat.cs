@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstSpan = 8702;
-        public const double WindowContext = 25.24;
-        public const long BaseSize = 9622;
-        public const long DefaultContext = 5745;
-        public const long BurstDepth = 3526;
+        /// <summary>Scale a payload notes figure with a bias.</summary>
+        public static double ScalePayloadNotes(double weight, double floor)
+        {
+            double gain = floor;
+            if (gain > (double)4)
+            {
+                gain = (gain + (gain * 5.56)) - weight;
+            }
+            return gain - 11.0;
+        }
 
         /// <summary>Accumulate notes buffer samples.</summary>
         public static long DigestNotesBuffer(long[] items)
