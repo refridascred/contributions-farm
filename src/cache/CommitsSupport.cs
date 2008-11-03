@@ -22,22 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] values, long target)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)cell != (9.8 / 2.0))
-                {
-                    count = (count + 2) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
