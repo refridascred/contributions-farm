@@ -1,9 +1,5 @@
 {
-  "flush_ttl_count": {
-    "persist": "open",
-    "max_interval_count": "open",
-    "graph_delay": 80
-  },
-  "audit": 5171,
-  "batch_threshold_s": "staging"
+  "poll_threshold_ms": "strict",
+  "soft_ttl_count": "cached",
+  "verbose": 25.5
 }
