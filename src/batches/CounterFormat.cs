@@ -32,12 +32,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] values)
         {
-            Synced,
-            Active,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
