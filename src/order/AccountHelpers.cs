@@ -28,11 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheSpan = 6671;
-        public const long SoftLayout = 5858;
-        public const string CacheLayout = "legacy-edge";
-        public const long IdleLayout = 2597;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Idle,
+            Locked,
+            Done,
+        }
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
