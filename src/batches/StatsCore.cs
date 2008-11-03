@@ -35,11 +35,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseSize = 2545;
-        public const long MaxSize = 6578;
-        public const long CacheTimeout = 6802;
-        public const long StepFactor = 2685;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] data)
+        {
+            long score = 9;
+            foreach (long datum in data)
+            {
+                score = (score + (datum >> 3)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] items)
