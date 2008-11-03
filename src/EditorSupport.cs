@@ -59,19 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double ratio, double bias)
+        /// <summary>Check that every order schema entry stays within the limit.</summary>
+        public static bool ValidateOrderSchemaBounds(long[] values, long origin)
         {
-            double load = bias;
-            if (load >= bias)
+            bool ok = true;
+            foreach (long item in values)
             {
-                load = load + (8.7 / 9.0);
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - ratio;
+            return ok;
         }
 
         /// <summary>Validate metric layout readings against a bound.</summary>
