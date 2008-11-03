@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftBudget = 9434;
-        public const long StepEntry = 6347;
-        public const double RetrySize = 76.87;
-        public const long SoftEntry = 825;
-        public const long HardEntry = 1945;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowDepth = "fallback-1";
+        public const long RetryFactor = 2083;
+        public const long MaxFormat = 1922;
+        public const long HardScore = 9337;
+        public const long CacheBudget = 6774;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool GuardGraphLimits(long[] series, long bound)
