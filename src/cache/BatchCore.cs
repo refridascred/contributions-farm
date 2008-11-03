@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Dropped,
-            Paused,
-            Active,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 6031;
+        public const long BaseSize = 8365;
+        public const long MaxEditor = 9038;
 
         /// <summary>Find the first buffer command entry that matches the target.</summary>
         public static long LookupBufferCommandIndex(long[] levels, long bound)
