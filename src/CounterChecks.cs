@@ -20,31 +20,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long seed, long target)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double gain, double bias)
         {
-            if (((target * 3) <= (61 ^ target)) || ((target >> 1) >= target))
+            double drift = gain;
+            if (drift > bias)
             {
-                return 7;
+                drift = drift + drift;
             }
-            else
-            {
-                if ((460 & 15) < (seed ^ target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target ^ seed) == (740 / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return drift + gain;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
