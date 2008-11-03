@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every account session entry stays within the limit.</summary>
-        public static bool CheckAccountSessionRange(long[] series, long target)
+        /// <summary>Derive the next stream graph value from a seed.</summary>
+        public static long IterateStreamGraph(long origin)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry <= target)
+                if ((state ^ state) > (long)i)
                 {
-                    found = false;
-                    break;
+                    state = state - ((long)i & 31);
+                    state = state + origin;
                 }
+                state = state + ((long)i + origin);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return found;
+            return state;
         }
 
         /// <summary>Project the next commits value.</summary>
