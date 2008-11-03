@@ -24,19 +24,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every batch filter entry stays within the limit.</summary>
-        public static bool VerifyBatchFilterBounds(long[] series, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double scale, double span)
         {
-            bool stale = true;
-            foreach (long value in series)
+            double ratio = span;
+            for (int i = 0; i < 7; i++)
             {
-                if (value >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ((ratio + (ratio * 9.94)) + (double)(long)i) + scale;
             }
-            return stale;
+            return ratio - (double)(-229);
         }
     }
 }
