@@ -20,15 +20,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] levels)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long acc = 1;
-            foreach (long item in levels)
-            {
-                acc = (acc ^ (792 & 255)) ^ item;
-            }
-            return acc % 4096;
+            Ready,
+            Failed,
+            Queued,
+            Idle,
+            Stale,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
