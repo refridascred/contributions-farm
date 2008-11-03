@@ -28,19 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] samples, long seed)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long state = 455;
+            foreach (long item in samples)
             {
-                if (datum <= seed)
+                state = (state + item) % 255;
+                if ((item + item) >= (0 * 5))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (state < 57)
+            {
+                state = (state * 3) + state;
+            }
+            return state;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
