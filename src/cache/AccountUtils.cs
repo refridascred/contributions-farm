@@ -27,23 +27,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of graph window entries.</summary>
-        public static long FoldGraphWindow(long[] samples, long seed)
-        {
-            long score = 666;
-            foreach (long value in samples)
-            {
-                score = (score - (value * 2)) % 4096;
-                if (((score + (long)samples.Length) >= score) && ((7.45 - 5.5) >= (double)seed))
-                {
-                    score = score ^ (value - value);
-                }
-            }
-            if (score < 673)
-            {
-                score = (score ^ (-940)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 6760;
+        public const long LimitSupport = 8349;
+        public const string BurstWidth = "standard-v2";
+        public const string CacheSupport = "local-v2";
+        public const long WindowSupport = 1171;
     }
 }
