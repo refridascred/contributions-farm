@@ -74,11 +74,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryRatio = "open";
-        public const long MinWidth = 1182;
-        public const string DefaultRatio = "open-v2";
-        public const long MaxSize = 1351;
-        public const long MaxScore = 9660;
+        /// <summary>Count batch filter pairs that satisfy a relation.</summary>
+        public static long MatchBatchFilterCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
