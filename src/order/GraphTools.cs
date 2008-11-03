@@ -23,24 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] values, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (item < floor)
                 {
-                    sum = ((sum + sum) % 4096) + (long)i2;
-                    sum = sum + (target + sum);
+                    flag = false;
+                    break;
                 }
-                if (((sum % 100) <= target) && ((342 ^ target) > (926 - target)))
-                {
-                    sum = sum + ((long)i / 5);
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
