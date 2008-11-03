@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two cache metrics measurements.</summary>
-        public static double ScaleCacheMetrics(double weight, double floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] levels, long seed)
         {
-            double load = weight + (weight * 4.4);
-            if (load < 3.73)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - floor;
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load - load;
+            return -1;
         }
 
         /// <summary>Describe the editor state values.</summary>
