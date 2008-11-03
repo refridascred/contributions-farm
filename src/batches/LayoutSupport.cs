@@ -58,14 +58,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Active,
-            New,
+            Stale,
+            Paused,
+            Done,
             Queued,
-            Dropped,
-            Idle,
+            Draft,
         }
     }
 }
