@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] levels, long seed)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (((tally ^ datum) == (tally + seed)) || ((datum & 63) == (tally & 3)))
-                {
-                    tally = tally + 1;
-                }
+                sum = ((sum << 2) ^ sum) % 4096;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the commits class values.</summary>
