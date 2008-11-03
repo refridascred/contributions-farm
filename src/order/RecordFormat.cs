@@ -41,16 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            long total = 2;
+            foreach (long item in values)
             {
-                acc = (acc ^ seed) % 1000;
-                acc = ((acc * 3) + (long)i) % 97;
+                if (item <= total)
+                {
+                    total = (total ^ item) % 255;
+                }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
