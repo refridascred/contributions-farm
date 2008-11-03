@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit contributi payload readings against a rule.</summary>
-        public static long AuditContributiPayloadOutliers(long[] samples, long floor)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((seen > (6 + seen)) && (((double)seen > (double)sample) && ((double)sample > 9.13)))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the commits class values.</summary>
