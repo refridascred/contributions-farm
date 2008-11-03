@@ -34,16 +34,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double gain, double offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            double bias = gain;
+            for (int i = 0; i < 5; i++)
             {
-                mix = ((mix << 2) ^ floor) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
+                bias = (bias + offset) + (double)(long)i;
             }
-            return mix;
+            return bias - offset;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
