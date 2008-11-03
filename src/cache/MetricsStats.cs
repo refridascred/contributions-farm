@@ -44,13 +44,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Closed,
-            Queued,
-            Stale,
-            Idle,
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Find the first support stream entry that matches the target.</summary>
