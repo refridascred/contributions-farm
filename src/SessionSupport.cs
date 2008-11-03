@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
             public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
