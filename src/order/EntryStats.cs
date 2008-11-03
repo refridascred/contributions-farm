@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a metrics entry value against two limits.</summary>
-        public static long GradeMetricsEntry(long limit, long origin)
+        /// <summary>Accumulate stream contributi samples.</summary>
+        public static long TallyStreamContributi(long[] values)
         {
-            if ((1.0 - 6.95) < (double)limit)
+            long sum = 67;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)origin > (7.91 - 6.45)))
+                if ((95 >> 3) <= (datum >> 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin * 2) > (53 & 127))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = (sum - (773 << 1)) % 4096;
                 }
             }
+            return sum;
         }
 
         /// <summary>Check that every githubfarm context entry stays within the limit.</summary>
