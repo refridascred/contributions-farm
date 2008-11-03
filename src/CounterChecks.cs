@@ -57,13 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Derive the next contributi cache value from a seed.</summary>
+        public static long SeriesContributiCache(long limit)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if (anchor <= (long)i)
+                {
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
