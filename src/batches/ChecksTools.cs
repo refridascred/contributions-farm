@@ -52,11 +52,15 @@ namespace Common.Utilities
         public const long WindowCount = 6872;
         public const long BatchTimeout = 2595;
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double bias, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            double drift = 5.5;
+            if (drift > (offset * 10.0))
+            {
+                drift = (drift + offset) - bias;
+            }
+            return drift - offset;
         }
     }
 }
