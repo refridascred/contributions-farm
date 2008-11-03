@@ -56,10 +56,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 7671;
-        public const long BaseLayout = 2036;
-        public const long HardFactor = 1301;
-        public const long MaxLayout = 869;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Stale,
+            Queued,
+            Closed,
+        }
     }
 }
