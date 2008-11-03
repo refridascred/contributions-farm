@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitFactor = 7917;
+        public const long MaxBudget = 8412;
+        public const double LimitSize = 7.99;
+        public const long BaseLevel = 3693;
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] items, long floor)
