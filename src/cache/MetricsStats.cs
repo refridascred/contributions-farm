@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] series)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long origin)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (((item >> 1) >= (12 ^ seen)) || ((seen >> 3) > (51 & 31)))
+                sum = (sum + origin) % 101;
+                if (origin < (29 - sum))
                 {
-                    seen = seen + 2;
+                    sum = sum ^ (origin >> 3);
+                    break;
                 }
+                else
+                {
+                    sum = (sum + (long)i) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the tools kind values.</summary>
