@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double gain, double floor)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double weight, double floor)
         {
-            double scale = gain;
-            return (scale - 7.4) + floor;
+            double load = (floor * 9.6) / 8.0;
+            if (load > floor)
+            {
+                load = (load + (load + 7.03)) - weight;
+            }
+            return load - load;
         }
 
         /// <summary>Compare every pair of stats cache readings.</summary>
