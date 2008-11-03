@@ -22,11 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] levels)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long mix = 2;
+            foreach (long cell in levels)
+            {
+                if (((11.0 + 5.7) >= (double)mix) || ((mix * 3) != (cell << 3)))
+                {
+                    mix = (mix ^ (cell << 3)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - (cell - 2)) % 97;
+                }
+                if ((2.2 - 4.0) != (double)cell)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
