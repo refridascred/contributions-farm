@@ -26,10 +26,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 2898;
-        public const long CacheMetrics = 6031;
-        public const double IdleMetrics = 80.32;
-        public const double MaxTimeout = 94.19;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowLayout = 4826;
+        public const long CacheLevel = 2955;
+        public const long IdleLevel = 8242;
+        public const string WindowBudget = "standard-1";
     }
 }
