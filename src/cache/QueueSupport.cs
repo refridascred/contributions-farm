@@ -35,22 +35,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] data)
+        /// <summary>Combine layout command values into a single score.</summary>
+        public static long TallyLayoutCommand(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long sum = 873;
+            foreach (long entry in readings)
             {
-                if ((matches >= (matches ^ matches)) && (((-62) >> 3) < (matches ^ (long)data.Length)))
-                {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = sum + ((long)readings.Length >> 1);
+                sum = (sum + (entry * 4)) % 65521;
             }
-            return matches;
+            if (sum > (-3))
+            {
+                sum = ((sum << 2) ^ 52) % 97;
+            }
+            return sum % 65521;
         }
     }
 }
