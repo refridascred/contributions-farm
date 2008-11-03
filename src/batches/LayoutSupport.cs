@@ -32,18 +32,32 @@ namespace Common.Utilities
         public const string BatchTimeout = "alpha-1";
         public const string WindowCommits = "fallback-edge";
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] items)
+        /// <summary>Classify a session stats pair into a bucket.</summary>
+        public static long SortSessionStats(long origin, long seed)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long lane = origin ^ seed;
+            if (((724 + origin) < lane) || (((-562) - seed) < (892 >> 5)))
             {
-                if (((item >> 3) <= (item + 9)) || (((9.0 + 6.8) != (double)item) || ((seen + 8) > ((long)items.Length / 4))))
+                return 5;
+            }
+            else
+            {
+                if (lane >= (origin + seed))
                 {
-                    seen = seen + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed ^ seed) > (lane - lane))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
