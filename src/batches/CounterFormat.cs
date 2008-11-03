@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double bias, double floor)
+        /// <summary>Find the first route schema entry that matches the target.</summary>
+        public static long LookupRouteSchemaIndex(long[] levels, long limit)
         {
-            double mean = bias;
-            if (mean > (bias - 3.8))
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - 9.5) - floor;
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (double)0) + (double)(long)i;
-            }
-            return mean + bias;
+            return -1;
         }
 
         /// <summary>Measure how many layout cluster samples are out of range.</summary>
