@@ -1,5 +1,20 @@
 # support settings
-max_ttl_pct: 52.28
-compress: true
-soft_interval_s: 19.53
-burst_timeout_count: open
+warm_size_pct: 92
+layout_timeout:
+  - 21
+  - 233
+  - 109
+hard_size_pct:
+  sync_ratio_s:
+    poll_window_count:
+      - primary
+      - latest
+      - legacy
+      - fallback
+    strict: false
+    batch_interval_ms: 3.47
+  sync_delay_pct:
+    sync_interval: local
+    queue_depth: 60
+    strict: true
+  batch_threshold_ms: true
