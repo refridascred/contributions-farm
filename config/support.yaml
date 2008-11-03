@@ -1,4 +1,14 @@
 # support settings
-default_threshold: fallback
-cache_ratio_pct: 1825
-context_capacity: false
+layout_capacity: stable
+poll_retries_count: 250
+cache_interval:
+  - blue
+  - open
+  - cached
+metric_ttl: edge
+dry_run: 78.02
+min_ratio_ms:
+  - fallback
+  - local
+  - blue
+  - cached
