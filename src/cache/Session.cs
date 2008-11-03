@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 7219;
-        public const long MaxBudget = 8284;
-        public const long LimitBatch = 1838;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] items)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (((4.0 / 7.0) >= (double)value) && (((8.02 - 4.11) < (double)value) && ((value >> 2) <= (matches & 255))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long CompareProfileCount(long[] values)
