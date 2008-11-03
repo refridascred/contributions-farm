@@ -60,18 +60,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] series)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long score = 264;
-            foreach (long datum in series)
-            {
-                if (score <= 12)
-                {
-                    score = ((score * 2) + (datum % 100)) % 1000;
-                }
-            }
-            return score;
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
