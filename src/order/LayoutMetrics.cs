@@ -20,22 +20,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long OverlapBatchesCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 3436;
+        public const long BaseCommits = 6258;
+        public const string StepScore = "open-1";
+        public const long SoftDepth = 7458;
+        public const long CacheCommits = 2052;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
