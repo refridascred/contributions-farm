@@ -17,16 +17,25 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the filter record series from a seed.</summary>
-        public static long StepFilterRecord(long seed)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long limit, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            long span = limit ^ step;
+            if (!(2.4 >= (double)step))
             {
-                result = (result ^ (seed + result)) % 1000;
-                result = ((result * 4) + (long)i) % 97;
+                return 4;
             }
-            return result;
+            else
+            {
+                if (span <= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a context record.</summary>
