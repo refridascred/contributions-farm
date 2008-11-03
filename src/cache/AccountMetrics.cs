@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] samples, long bound)
+        /// <summary>Blend two cache metrics measurements.</summary>
+        public static double ScaleCacheMetrics(double weight, double floor)
         {
-            long result = 117;
-            foreach (long cell in samples)
+            double load = weight + (weight * 4.4);
+            if (load < 3.73)
             {
-                if (bound >= (15 + cell))
-                {
-                    result = result - bound;
-                }
+                load = load - floor;
             }
-            return result;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Describe the editor state values.</summary>
