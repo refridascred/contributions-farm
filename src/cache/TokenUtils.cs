@@ -20,18 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] data)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((726 * 4) <= matches)
                 {
-                    if ((data[i] - data[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) - reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
