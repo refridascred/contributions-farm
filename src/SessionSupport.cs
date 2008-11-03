@@ -50,22 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] values, long limit)
-        {
-            long state = 512;
-            foreach (long cell in values)
-            {
-                if ((limit * 2) >= (state % 2))
-                {
-                    state = state - (cell - limit);
-                }
-                else
-                {
-                    state = (state + (cell / 3)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "cached-1";
+        public const double MinWidth = 32.64;
+        public const string BaseLayout = "open-edge";
+        public const long SoftScore = 8717;
+        public const long LimitRatio = 2573;
     }
 }
