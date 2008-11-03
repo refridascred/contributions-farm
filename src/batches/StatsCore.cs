@@ -82,22 +82,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] samples, long bound)
+        /// <summary>Classify a already counter pair into a bucket.</summary>
+        public static long SortAlreadyCounter(long origin, long target)
         {
-            long sum = 0;
-            foreach (long cell in samples)
+            long bound = origin ^ target;
+            if ((7.9 + 2.0) != (double)target)
             {
-                if (847 >= (cell ^ 76))
+                return 3;
+            }
+            else
+            {
+                if (target > (bound % 8))
                 {
-                    sum = (sum + (142 + bound)) % 97;
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ 277;
+                    return 4;
                 }
             }
-            return sum;
         }
     }
 }
