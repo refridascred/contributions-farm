@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const string LimitSpan = "standard";
         public const long LimitInterval = 1532;
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] items, long step)
         {
-            public string Rank { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public bool Count { get; set; }
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
