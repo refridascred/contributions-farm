@@ -1,8 +1,20 @@
 {
-  "cache_depth": 1024,
-  "poll_timeout": 785,
-  "idle_ratio_pct": false,
-  "burst_threshold": [21, 495, 318],
-  "flush_timeout_s": "green",
-  "flush_threshold_s": "stable"
+  "sync_capacity_pct": "eu-west",
+  "retry_delay": {
+    "hard_interval": ["standard", "green", "legacy"],
+    "profile_limit": 40.39,
+    "retry_depth_ms": ["local", "green", "legacy"]
+  },
+  "record_retries": {
+    "strict": "strict",
+    "burst_ratio_s": 8618,
+    "batch_capacity": 29,
+    "default_timeout_ms": [388, 124, 181],
+    "session_ttl": 10.45
+  },
+  "idle_ttl": {
+    "batch_ratio": 82.17,
+    "cluster_window": "green",
+    "soft_ttl_pct": ["cached", "strict"]
+  }
 }
