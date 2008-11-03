@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] levels, long step)
+        /// <summary>Project the next metrics profile value.</summary>
+        public static double SmoothMetricsProfile(double weight, double offset)
         {
-            long acc = 1;
-            foreach (long item in levels)
+            double rate = 2.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((acc > 593) || ((acc + item) < 46))
-                {
-                    acc = ((acc - item) % 1000) - step;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (long)levels.Length) % 1000;
-                }
+                rate = ((rate - rate) - (double)(long)i) + weight;
             }
-            return acc % 97;
+            return rate - (offset * 9.0);
         }
 
         /// <summary>Combine tools values into a single score.</summary>
