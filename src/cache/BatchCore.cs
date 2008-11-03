@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinTimeout = "local-edge";
-        public const string DefaultDepth = "open-1";
-        public const double MaxRatio = 31.9;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Dropped,
+            Paused,
+            Active,
+            Done,
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long CombineFormat(long[] items)
