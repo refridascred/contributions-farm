@@ -1,17 +1,29 @@
 # githubfarm settings
-dry_run:
-  - legacy
-  - open
-tools_size: open
-min_timeout_ms:
-  contributi_capacity: 250
-  audit: strict
-  profile_limit: 6421
-  sync_ratio_count:
-    - 447
-    - 160
-    - 420
-    - 400
-soft_timeout_count: false
-idle_window: false
-min_interval_s: 42
+default_capacity_ms:
+  buffer_timeout: 95
+  burst_capacity:
+    enabled: open
+    schema_ratio:
+      - 220
+      - 499
+      - 64
+      - 165
+    warm_capacity_count:
+      - local
+      - strict
+      - standard
+      - standard
+    batch_ratio_count: 81.08
+    compress: stable
+  compress:
+    - 381
+    - 457
+    - 123
+  base_timeout_count: latest
+  hard_window: 1.25
+burst_ttl_s:
+  - 5
+  - 484
+  - 445
+  - 358
+soft_ttl_s: false
