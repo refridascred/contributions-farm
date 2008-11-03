@@ -50,19 +50,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] readings, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long sum = 761;
-            foreach (long value in readings)
-            {
-                if ((value ^ seed) <= (seed * 3))
-                {
-                    continue;
-                }
-                sum = (sum + (value * 3)) % 97;
-            }
-            return sum % 4096;
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
