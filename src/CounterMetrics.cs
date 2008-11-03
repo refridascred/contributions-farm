@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Digest a series of support context entries.</summary>
+        public static long CombineSupportContext(long[] samples)
         {
-            Closed,
-            New,
-            Draft,
-            Stale,
+            long total = 770;
+            foreach (long item in samples)
+            {
+                total = (((total * 2) + (33 % 12)) % 97) - item;
+            }
+            if (total < 8)
+            {
+                total = ((total << 2) ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Classify a session stats pair into a bucket.</summary>
