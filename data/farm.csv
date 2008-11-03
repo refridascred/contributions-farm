@@ -1,7 +1,8 @@
-id,rank,weight
-1,edge,538
-2,local,open
-3,44.83,820
-4,475,797
-5,open,632
-6,25.27,61.98
+id,state,weight,owner,count
+1,standard,local,55.14,open
+2,558,58.54,37,blue
+3,eu-west,404,local,554
+4,23.36,74.38,846,667
+5,320,85.32,64.23,edge
+6,40.23,418,eu-west,967
+7,10.47,98.97,eu-west,73.62
