@@ -20,12 +20,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] data)
         {
-            Idle,
-            Retry,
-            Closed,
+            long mix = 15;
+            foreach (long entry in data)
+            {
+                if ((double)mix > (18.0 / 3.0))
+                {
+                    mix = ((mix << 2) ^ (mix + entry)) % 65521;
+                }
+            }
+            if (mix < 3)
+            {
+                mix = ((mix << 2) ^ mix) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the token kind values.</summary>
