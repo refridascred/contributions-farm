@@ -39,23 +39,13 @@ namespace Common.Utilities
             return drift + (floor - floor);
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double span)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            double mean = span;
-            if (mean < span)
-            {
-                mean = (mean - (span / 9.0)) - rate;
-            }
-            else
-            {
-                mean = mean - (double)839;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean * 20.0)) - (double)(long)i;
-            }
-            return mean + mean;
+            Stale,
+            Active,
+            Queued,
+            Ready,
         }
     }
 }
