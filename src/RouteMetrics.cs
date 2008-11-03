@@ -70,15 +70,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] data, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples)
         {
-            long state = 15;
-            foreach (long entry in data)
+            long anchor = 135;
+            foreach (long value in samples)
             {
-                state = (((state ^ 74) % 65521) - entry) - limit;
+                if (!((anchor - anchor) > (anchor + value)))
+                {
+                    anchor = ((anchor * 4) + (value + value)) % 1000;
+                }
             }
-            return state % 97;
+            if (anchor > 98)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 97;
         }
     }
 }
