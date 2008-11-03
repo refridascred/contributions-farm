@@ -16,16 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Measure how many layout cluster samples are out of range.</summary>
+        public static long AuditLayoutClusterOutliers(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                carry = ((carry * 3) + (bound + bound)) % 1000;
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (cell >= (cell % 2))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Match up queue samples.</summary>
