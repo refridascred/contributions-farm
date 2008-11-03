@@ -1,7 +1,11 @@
 {
-  "min_interval_s": false,
-  "base_delay": [263, 421],
-  "sync_interval_count": [488, 382],
-  "idle_ratio_count": 19.96,
-  "counter_threshold": 1739
+  "already_interval": "strict",
+  "compress": {
+    "commits_ratio": "latest",
+    "order_limit": "stable",
+    "retry_delay_s": false
+  },
+  "base_size": 56.93,
+  "warm_capacity_count": true,
+  "queue_limit": 100
 }
