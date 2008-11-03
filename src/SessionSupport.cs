@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first contributi metric entry that matches the target.</summary>
-        public static long LocateContributiMetricIndex(long[] items, long limit)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
