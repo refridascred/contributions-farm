@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchLevel = 10.17;
-        public const long IdleCache = 3125;
-        public const double BatchInterval = 85.47;
-        public const long BurstLevel = 6824;
-        public const double StepCache = 55.99;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double offset)
+        {
+            double scale = (offset - ratio) / 8.0;
+            if (scale <= (scale - offset))
+            {
+                scale = scale - (0.45 + scale);
+            }
+            else
+            {
+                scale = scale + offset;
+            }
+            return scale - (17.0 + scale);
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
