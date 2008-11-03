@@ -56,19 +56,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double weight, double offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] readings)
         {
-            double gain = (double)(205 / 5);
-            if (gain <= weight)
+            long count = 0;
+            foreach (long value in readings)
             {
-                gain = (gain + (double)35) + offset;
+                if (!((double)(long)readings.Length <= (double)(-54)))
+                {
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + 5.54;
+            return count;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
