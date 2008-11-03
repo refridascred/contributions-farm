@@ -1,13 +1,14 @@
 {
-  "entry_interval": 30,
-  "default_interval_s": 52,
-  "batch_threshold_count": 30,
-  "default_window_count": {
-    "idle_capacity_count": true,
-    "hard_ttl_s": "local",
-    "counter_limit": false,
-    "compress": 69
+  "burst_depth": {
+    "soft_timeout": "local",
+    "hard_size_s": "standard",
+    "compress": false,
+    "layout_retries": [115, 430, 369, 66],
+    "burst_timeout": 1.84
   },
-  "poll_depth": false,
-  "base_depth_ms": 43.9
+  "hard_threshold_count": false,
+  "sync_limit_pct": 1221,
+  "burst_threshold_ms": ["edge", "legacy"],
+  "batch_limit": 54.6,
+  "stream_threshold": 68
 }
