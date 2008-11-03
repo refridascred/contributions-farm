@@ -17,28 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = ((mark + bound) % 101) ^ (long)i2;
-                }
-                if (((long)i & 127) <= ((long)i - (long)i))
-                {
-                    mark = mark + bound;
-                }
-                else
-                {
-                    mark = (mark ^ (long)i) % 4096;
-                    mark = mark ^ (mark >> 2);
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
