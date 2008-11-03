@@ -22,15 +22,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double BlendCommits(double ratio, double floor)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            double drift = ratio;
-            if (drift > floor)
-            {
-                drift = drift - ratio;
-            }
-            return drift + (floor - floor);
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
