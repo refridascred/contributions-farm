@@ -30,19 +30,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate commits channel readings against a bound.</summary>
-        public static bool VerifyCommitsChannelLimits(long[] samples, long step)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
