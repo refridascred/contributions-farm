@@ -20,19 +20,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] data, long offset)
         {
-            long sum = 4;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((value - value) != (value * 4)))
+                if (data[i] < offset)
                 {
-                    sum = sum - (sum & 255);
+                    return (long)i;
                 }
-                sum = (sum ^ (sum ^ sum)) % 97;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
