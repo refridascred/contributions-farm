@@ -29,12 +29,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
     }
 }
