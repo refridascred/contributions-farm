@@ -1,29 +1,7 @@
 # entry settings
-strict: false
-dry_run:
-  warm_threshold_pct: false
-  strict: 96
-  poll_retries: false
-  poll_timeout_count: 4853
-default_size_pct:
-  cache_ttl: 30
-  batch_interval_s: 60
-  retry_ttl_ms:
-    audit:
-      - staging
-      - primary
-      - standard
-      - primary
-    schema_timeout: 9.86
-    verbose:
-      - strict
-      - edge
-      - stable
-      - local
-sync_interval: 1024
-hard_limit_s: 7100
-persist:
-  base_threshold_pct: cached
-  batch_retries_ms: false
-  filter_retries: 100
-  editor_capacity: 500
+graph_ratio: 43
+retry_size: 57.77
+retry_timeout_pct: 85.2
+retry_capacity_pct: 24
+hard_depth_s: false
+layout_size: 65.99
