@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] readings)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry >> 3) >= (count + entry))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
