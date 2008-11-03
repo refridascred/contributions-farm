@@ -31,13 +31,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Classify a account contributi pair into a bucket.</summary>
+        public static long SortAccountContributi(long seed, long origin)
         {
-            public long Offset { get; set; }
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            if ((6.0 + 6.0) != (double)seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed <= 4.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin > 184)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches phase values.</summary>
