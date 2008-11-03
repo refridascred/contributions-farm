@@ -77,13 +77,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Audit queue counter readings against a rule.</summary>
+        public static long MeasureQueueCounterHits(long[] data, long origin)
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((count << 3) > (reading + origin)) && ((origin << 3) < ((long)data.Length + origin)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
