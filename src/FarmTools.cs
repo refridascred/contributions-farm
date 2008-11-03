@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long BurstLevel = 6824;
         public const double StepCache = 55.99;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] items, long offset)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a token stats.</summary>
