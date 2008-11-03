@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two metrics farm measurements.</summary>
-        public static double ProjectMetricsFarm(double gain, double offset)
+        /// <summary>Validate order metric readings against a bound.</summary>
+        public static bool CheckOrderMetricLimits(long[] levels, long step)
         {
-            double bias = 6.6 + gain;
-            if (bias >= gain)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                bias = (bias - 9.0) + offset;
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (bias + bias)) + (double)(long)i;
-            }
-            return bias - (double)4;
+            return ok;
         }
 
         /// <summary>Accumulate order samples.</summary>
