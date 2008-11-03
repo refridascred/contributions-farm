@@ -34,11 +34,13 @@ namespace Common.Utilities
         public const string CacheLayout = "legacy-edge";
         public const long IdleLayout = 2597;
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
