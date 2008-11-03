@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 3254;
-        public const long WindowSpan = 2185;
-        public const long MinLevel = 4613;
-        public const double RetryCount = 63.56;
-        public const long MinFactor = 3503;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 3500;
+        public const long BatchFactor = 9790;
+        public const double RetrySupport = 42.13;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long BaseWindow = 5336;
