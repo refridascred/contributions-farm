@@ -39,13 +39,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Grade a counter entry value against two limits.</summary>
+        public static long RankCounterEntry(long limit, long target)
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            if (target >= (target * 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit + 0) != (6 - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
