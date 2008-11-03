@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public bool Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheDepth = 1238;
+        public const long BurstSupport = 7853;
+        public const long BatchSupport = 4653;
+        public const string RetrySupport = "stable-v2";
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] items, long bound)
