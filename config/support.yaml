@@ -1,6 +1,5 @@
 # support settings
-warm_capacity: green
-audit: 60
-cluster_depth: strict
-hard_ttl_pct: 60
-dry_run: 4
+format_window: 100
+flush_depth_s: 30.96
+audit: 100
+context_size: false
