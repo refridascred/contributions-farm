@@ -20,19 +20,17 @@ namespace Common.Utilities
             return load + (load - offset);
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double weight, double span)
+        /// <summary>Look up the position of a checks order sample.</summary>
+        public static long FindChecksOrderIndex(long[] values, long limit)
         {
-            double rate = 0.6 - span;
-            if (rate >= weight)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate + span;
+                if ((values[i] >= limit) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + 6.0;
-            }
-            return rate + weight;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
