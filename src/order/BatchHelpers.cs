@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Closed,
-            Draft,
-            Failed,
-            Done,
+            Paused,
+            Pending,
+            Ready,
         }
 
         /// <summary>Accumulate counter samples.</summary>
