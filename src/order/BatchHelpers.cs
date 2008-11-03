@@ -38,38 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long origin, long floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] items, long seed)
         {
-            if ((9.07 / 5.0) <= (double)origin)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor >= (1.06 * 0.74))
+                if ((items[i] > seed) && ((items[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.82 / 2.0) > (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin - floor) >= origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
