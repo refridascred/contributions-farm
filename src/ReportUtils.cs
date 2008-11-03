@@ -48,38 +48,18 @@ namespace Common.Utilities
         public const long RetryCount = 21;
         public const long CacheChecks = 96;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long step, long bound)
+        /// <summary>Count the contributi batches entries that pass the check.</summary>
+        public static long AuditContributiBatchesMatches(long[] data)
         {
-            if ((bound % 16) <= (step * 5))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-8) * 5) <= (bound + step))
+                if (tally > (1 << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 5) >= (step << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound << 2) == (bound % 64))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 3) - entry;
                 }
             }
+            return tally;
         }
     }
 }
