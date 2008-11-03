@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double AdjustAccount(double gain, double span)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long floor)
         {
-            double weight = (double)(660 >> 3);
-            if (weight > (double)99)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                weight = (weight - weight) - gain;
+                anchor = (anchor ^ (long)i) % 4096;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = ((anchor + (anchor - 6)) % 101) - (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - span;
-            }
-            return weight + (double)111;
+            return anchor;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
