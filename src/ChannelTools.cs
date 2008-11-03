@@ -36,22 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] items, long seed)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long mark = 166;
-            foreach (long entry in items)
-            {
-                if ((mark >> 1) <= (mark + 3))
-                {
-                    mark = (((mark * 2) + (seed % 24)) % 255) - entry;
-                }
-                if (((double)seed <= (7.5 - 11.0)) || ((mark + 85) < (1 + 743)))
-                {
-                    break;
-                }
-            }
-            return mark % 65521;
+            Dropped,
+            Queued,
+            Closed,
         }
     }
 }
