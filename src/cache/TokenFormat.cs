@@ -25,17 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] readings, long floor)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale = offset;
+            if (scale < (scale - scale))
             {
-                if (readings[i] == floor)
-                {
-                    return (long)i;
-                }
+                scale = scale + gain;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (offset / 7.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
     }
 }
