@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] values)
+        /// <summary>Count the buffer contributi entries that pass the check.</summary>
+        public static long MeasureBufferContributiMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (((8.0 + 7.85) < (double)item) && !((item + matches) != (item ^ 98)))
+                if ((item >> 1) < (tally - tally))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the command state values.</summary>
