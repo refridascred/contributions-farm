@@ -50,13 +50,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long floor)
         {
-            Synced,
-            Closed,
-            Paused,
-            Queued,
+            long acc = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = acc + (acc & 127);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
