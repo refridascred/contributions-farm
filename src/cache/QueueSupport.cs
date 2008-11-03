@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long step)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double scale, double bias)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            double ratio = scale;
+            if (ratio >= (6.0 * 6.0))
             {
-                anchor = (anchor + ((long)i << 3)) % 4096;
-                anchor = ((anchor << 2) ^ (anchor - 980)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                ratio = ratio + (double)898;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - (ratio - 0.9);
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
