@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a session window counter forward.</summary>
-        public static long StepSessionWindow(long seed)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] levels, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if (value < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Rank window order input into a small class.</summary>
