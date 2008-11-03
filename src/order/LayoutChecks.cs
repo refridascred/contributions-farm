@@ -20,24 +20,21 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a commits counter value against two limits.</summary>
-        public static long ClassifyCommitsCounter(long seed, long limit)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            if (!((seed + 631) > (limit - limit)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit - (-8)) != (limit ^ 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    if ((values[i] + values[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
