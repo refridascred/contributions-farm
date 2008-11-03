@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long target, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            long diff = target ^ step;
+            if (((target + target) <= (step + target)) && ((target + diff) != (step + 3)))
             {
-                acc = acc - 4;
-                acc = ((acc * 5) + (long)i) % 1000;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((step >> 3) == (target ^ 0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
