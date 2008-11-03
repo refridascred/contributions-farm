@@ -1,21 +1,9 @@
 # entry settings
-base_delay:
-  base_ttl_count: 44.74
-  idle_size_pct: 7525
-  persist: 1024
-poll_window_count: 8490
-readonly: 250
-default_ratio_pct: eu-west
-idle_ratio_pct:
-  flush_capacity_count: true
-  strict: 250
-  retry_limit_s: 68
-  enabled: latest
-  flush_window_count:
-    verbose: 500
-    base_interval_s:
-      - 240
-      - 219
-      - 288
-      - 354
-    dry_run: false
+buffer_capacity:
+  - 209
+  - 217
+  - 234
+account_limit: staging
+notes_ratio: 1560
+max_ttl_count: 44
+queue_ratio: 500
