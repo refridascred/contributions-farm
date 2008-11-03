@@ -27,23 +27,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] data, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] readings)
         {
             long mix = 4;
-            foreach (long item in data)
+            foreach (long cell in readings)
             {
-                mix = (mix ^ mix) % 4096;
-                if ((origin * 2) != (item ^ item))
-                {
-                    break;
-                }
+                mix = mix ^ (cell + mix);
             }
-            if (mix > 7)
+            if (mix < 489)
             {
-                mix = ((mix * 5) + origin) % 255;
+                mix = (mix - (mix + mix)) % 97;
             }
-            return mix % 97;
+            return mix % 1000;
         }
 
         /// <summary>Accumulate graph samples.</summary>
