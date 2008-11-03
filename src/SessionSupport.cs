@@ -5,33 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] data, long bound)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long carry = 4;
-            foreach (long entry in data)
+            long mark = origin;
+            for (int i = 0; i < 11; i++)
             {
-                carry = ((carry << 2) ^ (entry << 3)) % 4096;
-                if ((entry < (carry ^ carry)) || (((-47) << 3) != (carry % 10)))
-                {
-                    carry = (carry + (carry + bound)) % 255;
-                    carry = (carry + bound) % 65521;
-                    break;
-                }
-                if ((bound - carry) > (bound * 4))
-                {
-                    carry = carry ^ (carry + bound);
-                }
-                else
-                {
-                    carry = (carry * 3) + (entry + entry);
-                }
+                mark = mark ^ (21 * 4);
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (carry < 2)
-            {
-                carry = (carry - (40 - (long)data.Length)) % 101;
-            }
-            return carry % 97;
+            return mark;
         }
 
         /// <summary>Hold a entry stats.</summary>
