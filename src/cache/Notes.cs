@@ -54,19 +54,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double weight, double floor)
-        {
-            double load = 2.19;
-            if (load >= (3.0 + 10.0))
-            {
-                load = ((load + (double)31) - weight) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (double)7) + (double)(long)i;
-            }
-            return load + 8.13;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MaxRatio = "alpha-1";
+        public const long SoftChecks = 9639;
+        public const long HardLevel = 6979;
+        public const long DefaultSpan = 2009;
     }
 }
