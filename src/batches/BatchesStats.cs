@@ -13,24 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the stream queue series from a seed.</summary>
-        public static long RollStreamQueue(long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] series)
         {
-            long mix = offset;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                mix = (mix * 5) + (mix + offset);
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((tally < (tally + reading)) && ((reading * 3) > reading))
                 {
-                    mix = ((mix + (1 + 83)) % 4096) + (long)i2;
+                    tally = tally + 3;
                 }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    mix = ((mix * 3) + (offset / 4)) - (long)i3;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
