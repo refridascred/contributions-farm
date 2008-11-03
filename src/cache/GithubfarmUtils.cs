@@ -14,21 +14,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Fold a list of editor checks readings.</summary>
+        public static long ScoreEditorChecks(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 2;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = state + (value + value);
             }
-            return seen;
+            if (state < (-25))
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Describe the checks kind values.</summary>
