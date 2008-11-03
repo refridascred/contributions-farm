@@ -1,8 +1,6 @@
 {
-  "sync_depth_pct": 2535,
-  "hard_retries_pct": 8466,
-  "flush_window_pct": ["strict", "stable", "staging"],
-  "base_threshold": 37,
-  "default_delay": "blue",
-  "warm_ttl_s": 250
+  "hard_size_ms": "green",
+  "record_capacity": "local",
+  "payload_interval": true,
+  "dry_run": "eu-west"
 }
