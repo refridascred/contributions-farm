@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const double RetryCount = 63.56;
         public const long MinFactor = 3503;
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] samples, long floor)
         {
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long acc = -3;
+            foreach (long cell in samples)
+            {
+                if ((cell & 31) < 3)
+                {
+                    acc = ((acc ^ (cell % 64)) % 65521) + floor;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
