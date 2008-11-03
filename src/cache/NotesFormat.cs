@@ -25,19 +25,25 @@ namespace Common.Utilities
             return scale + 4.45;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] series, long offset)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long origin)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (value <= offset)
+                if (((-318) ^ anchor) != (anchor >> 1))
                 {
-                    stale = false;
-                    break;
+                    anchor = (anchor * 4) + ((long)i % 64);
+                    anchor = anchor + (74 ^ anchor);
                 }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (long)i) % 65521;
+                    anchor = anchor + (anchor + 943);
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return stale;
+            return anchor;
         }
     }
 }
