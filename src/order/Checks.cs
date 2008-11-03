@@ -35,18 +35,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] values)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] values, long bound)
         {
-            long seen = 0;
+            long carry = 4;
             foreach (long datum in values)
             {
-                if ((datum - datum) > (datum / 6))
+                if (((bound ^ datum) <= (bound << 3)) || ((bound + 5) <= bound))
                 {
-                    seen = seen + 3;
+                    carry = carry ^ datum;
                 }
             }
-            return seen;
+            if (carry < 634)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Hold a counter entry.</summary>
