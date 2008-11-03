@@ -1,13 +1,22 @@
 {
-  "verbose": {
-    "cache_depth": "latest",
-    "dry_run": [13, 241, 297, 151],
-    "base_size_s": [300, 76, 126, 14],
-    "flush_depth": false
+  "readonly": "eu-west",
+  "githubfarm_limit": 6042,
+  "cache_threshold_s": {
+    "already_depth": [356, 198, 446],
+    "report_retries": 13,
+    "readonly": 3723,
+    "persist": 27.51,
+    "schema_delay": [291, 154, 14],
+    "retry_retries_pct": 30
   },
-  "cache_delay_count": "latest",
-  "base_ratio_ms": ["eu-west", "local", "standard", "latest"],
-  "editor_ratio": 8772,
-  "cache_ratio": "fallback",
-  "metric_delay": "open"
+  "cache_capacity": {
+    "filter_depth": "open",
+    "warm_threshold": 16,
+    "batch_ratio": {
+      "retry_retries": "edge",
+      "session_ratio": false,
+      "cache_timeout": 70.17
+    }
+  },
+  "dry_run": 69.67
 }
