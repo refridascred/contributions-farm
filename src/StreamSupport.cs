@@ -14,13 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] values)
         {
-            public double Score { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((double)reading > (1.3 - 3.5))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
