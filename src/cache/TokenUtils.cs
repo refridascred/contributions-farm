@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Accumulate stats already samples.</summary>
+        public static long ScoreStatsAlready(long[] values)
         {
-            Active,
-            Stale,
-            Ready,
-            Closed,
-            Queued,
+            long anchor = 0;
+            foreach (long cell in values)
+            {
+                if ((76 + 813) <= (anchor + cell))
+                {
+                    anchor = ((anchor << 3) ^ (cell ^ 711)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 255;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
