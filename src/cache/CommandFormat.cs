@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftWidth = 3866;
-        public const long IdleToken = 9404;
-        public const string HardToken = "stable-edge";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((value * 4) != (matches % 5)) || (matches <= (value + matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
