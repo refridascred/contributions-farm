@@ -45,12 +45,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinInterval = 6751;
-        public const long MaxBudget = 4364;
-        public const double HardDepth = 35.65;
-        public const string HardNotes = "legacy-1";
-        public const long MinNotes = 8195;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardFormat = "alpha-1";
+        public const long StepSpan = 8713;
+        public const long IdleCount = 9263;
+        public const long MinFormat = 941;
+        public const long BurstTimeout = 3373;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
