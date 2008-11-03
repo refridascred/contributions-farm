@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] readings, long origin)
+        /// <summary>Accumulate cluster checks samples.</summary>
+        public static long TallyClusterChecks(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 7;
+            foreach (long datum in samples)
             {
-                if (readings[i] >= origin)
+                mix = mix ^ ((long)samples.Length + datum);
+                if ((datum * 2) > (datum << 3))
                 {
-                    return (long)i;
+                    mix = (mix ^ (datum + datum)) % 101;
                 }
             }
-            return -1;
+            if (mix > 407)
+            {
+                mix = (mix * 2) + (mix * 4);
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of route readings.</summary>
