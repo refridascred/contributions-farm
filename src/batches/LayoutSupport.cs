@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Pending,
-            Synced,
-            Done,
-            New,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardSpan = 6345;
+        public const long LimitGraph = 8562;
+        public const long BurstGraph = 8570;
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long IterateCluster(long floor)
