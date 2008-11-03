@@ -27,14 +27,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] levels, long origin)
         {
-            Ready,
-            Closed,
-            New,
-            Active,
-            Dropped,
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
