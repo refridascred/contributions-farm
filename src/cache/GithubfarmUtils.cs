@@ -37,19 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] data, long offset)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
