@@ -56,18 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] samples)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((4 <= (datum / 8)) || ((matches ^ matches) > (matches + datum)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double drift = (double)(6 * 4);
+            return (drift - scale) + floor;
         }
 
         /// <summary>Hold a farm entry.</summary>
