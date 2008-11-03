@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a metrics notes pair into a bucket.</summary>
-        public static long BucketMetricsNotes(long bound, long floor)
-        {
-            if (7.4 >= (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((851 / 3) <= (7 + bound)) && (bound > (floor & 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftScore = 4461;
+        public const double BurstRatio = 53.87;
+        public const long WindowPayload = 8021;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TotalToken(long[] samples)
