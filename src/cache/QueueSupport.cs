@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 6657;
-        public const long BaseProfile = 212;
-        public const double HardProfile = 63.75;
-        public const double RetryProfile = 64.78;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "primary-1";
+        public const long MaxTimeout = 7153;
+        public const long BaseDepth = 6597;
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
