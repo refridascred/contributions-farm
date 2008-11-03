@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long HardBuffer = 610;
         public const long BaseLevel = 8880;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
