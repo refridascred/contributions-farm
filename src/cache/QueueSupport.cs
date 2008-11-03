@@ -18,19 +18,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] samples, long offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Closed,
+            Synced,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
