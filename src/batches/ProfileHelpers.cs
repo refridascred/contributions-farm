@@ -33,18 +33,19 @@ namespace Common.Utilities
             return weight + (double)154;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] series)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = 59;
+            foreach (long entry in values)
             {
-                if ((value ^ hits) >= (hits >> 3))
+                mix = ((mix << 3) ^ ((-5) & 1)) % 65521;
+                if (6 >= entry)
                 {
-                    hits = hits + 2;
+                    mix = ((mix * 5) + (entry + mix)) % 255;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Find the first commits schema entry that matches the target.</summary>
