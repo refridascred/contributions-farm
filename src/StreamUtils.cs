@@ -62,26 +62,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] samples)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long sum = 4;
-            foreach (long value in samples)
-            {
-                if ((7 << 1) == (sum & 63))
-                {
-                    sum = ((sum * 4) + (7 + value)) % 4096;
-                }
-                if (!((8.0 + 4.0) != (double)value))
-                {
-                    break;
-                }
-            }
-            if (sum < 44)
-            {
-                sum = sum ^ (sum * 4);
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
