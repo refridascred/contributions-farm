@@ -1,6 +1,9 @@
 {
-  "burst_timeout_s": 44,
-  "persist": 78,
-  "metric_ttl": true,
-  "schema_retries": [388, 113, 30]
+  "batch_limit": {
+    "cluster_interval": [93, 306, 414, 7],
+    "hard_ttl_ms": [100, 10, 185],
+    "buffer_size": 60
+  },
+  "min_retries_count": 2561,
+  "tools_capacity": "legacy"
 }
