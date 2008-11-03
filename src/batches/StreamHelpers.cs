@@ -66,24 +66,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if (((double)(long)i <= (double)46) && (origin >= 538))
-                {
-                    acc = acc + (acc & 255);
-                    acc = acc - origin;
-                }
-                else
-                {
-                    acc = acc - ((long)i + origin);
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Paused,
+            Failed,
+            Draft,
+            Synced,
+            Idle,
         }
     }
 }
