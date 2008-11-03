@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public double Level { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define order limits and defaults.</summary>
