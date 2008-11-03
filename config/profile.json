@@ -1,7 +1,7 @@
 {
-  "enabled": "legacy",
-  "sync_ttl": false,
-  "commits_capacity": false,
-  "stats_ratio": 1278,
-  "retry_depth": false
+  "batch_depth_ms": "green",
+  "default_depth": 40,
+  "contributi_delay": "strict",
+  "burst_interval_pct": 84.28,
+  "audit": true
 }
