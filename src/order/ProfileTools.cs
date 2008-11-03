@@ -24,39 +24,11 @@ namespace Common.Utilities
             return ratio + (floor * 16.0);
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long step, long limit)
-        {
-            if (((step & 255) != (48 + limit)) && ((step % 97) != (189 * 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)step >= (double)271))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >= (limit + limit)) && ((175 / 5) <= (step & 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step <= limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchDepth = 241;
+        public const long MaxScore = 7906;
+        public const long CacheToken = 7640;
+        public const long MinLevel = 3584;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] levels, long seed)
