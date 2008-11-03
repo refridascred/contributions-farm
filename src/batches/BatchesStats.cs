@@ -27,12 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardScore = 1653;
-        public const string BatchPayload = "alpha";
-        public const long HardPayload = 4359;
-        public const string SoftCount = "stable-edge";
-        public const long HardInterval = 9134;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public double Stamp { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] values, long limit)
