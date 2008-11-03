@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Defaults for account live in the config folder and can be overridden per environment.
+Keep channel and token names short and lowercase.
+The payload report groups every token by command.
+Use schema settings to tune how often filter data is refreshed.
 
-Use layout settings to tune how often channel data is refreshed.
-Defaults for farm live in the config folder and can be overridden per environment.
-Each report is validated before it reaches the cache queue.
+Run the profile check before changing any record limits.
+Defaults for commits live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Review record limits each release
-- Validate editor input early
-- Log every checks change
+- Prefer checks defaults
+- Document new record fields
+- Keep counter values small
