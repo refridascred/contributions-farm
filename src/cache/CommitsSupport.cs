@@ -66,16 +66,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] items, long bound)
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                total = total ^ (total & 15);
-                total = ((total * 2) + (long)i) % 97;
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
     }
 }
