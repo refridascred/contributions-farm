@@ -26,20 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] values, long origin)
-        {
-            long acc = 92;
-            foreach (long item in values)
-            {
-                acc = (acc ^ item) % 101;
-            }
-            if (acc < 640)
-            {
-                acc = acc ^ (origin - acc);
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 5936;
+        public const long MaxRatio = 5745;
+        public const long BurstBatch = 6404;
+        public const string MinRatio = "primary-edge";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double IdleSchema = 98.83;
