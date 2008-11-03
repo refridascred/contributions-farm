@@ -42,18 +42,13 @@ namespace Common.Utilities
         public const long HardStream = 7162;
         public const double CacheSpan = 11.71;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] levels, long target)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (seen >= (target - seen))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            public double Weight { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
