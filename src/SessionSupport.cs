@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
