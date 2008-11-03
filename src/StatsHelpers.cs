@@ -48,18 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((8.4 * 3.63) >= (double)matches)
-                {
-                    matches = ((matches + 2) + sample) - offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstChannel = 3204;
+        public const long CacheChannel = 7642;
+        public const long BatchChannel = 9716;
+        public const string WindowInterval = "primary-1";
     }
 }
