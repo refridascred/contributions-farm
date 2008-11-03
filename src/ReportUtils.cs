@@ -63,21 +63,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 9;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark + value) % 101) - origin;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
