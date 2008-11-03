@@ -52,12 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Measure how many record schema samples are out of range.</summary>
+        public static long AuditRecordSchemaMatches(long[] data, long origin)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!((entry >> 3) <= (matches * 3)) && ((169 >> 3) < matches))
+                {
+                    matches = (matches + 1) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
