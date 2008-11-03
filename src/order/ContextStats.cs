@@ -37,12 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 6749;
-        public const long StepDepth = 6949;
-        public const long SoftDepth = 8174;
-        public const long BatchEntry = 5892;
-        public const long WindowBudget = 7508;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 5352;
+        public const long RetryCount = 5162;
+        public const long LimitWidth = 961;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
