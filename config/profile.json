@@ -1,8 +1,7 @@
 {
-  "batch_timeout_s": 6709,
-  "warm_interval_pct": 12,
-  "cache_ttl_count": 61,
-  "burst_ttl": 53,
-  "batch_delay": 93.48,
-  "warm_threshold_pct": 50.78
+  "enabled": "legacy",
+  "sync_ttl": false,
+  "commits_capacity": false,
+  "stats_ratio": 1278,
+  "retry_depth": false
 }
