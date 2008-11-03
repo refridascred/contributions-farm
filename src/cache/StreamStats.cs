@@ -14,12 +14,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] data, long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > origin) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the context counter series from a seed.</summary>
