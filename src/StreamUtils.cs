@@ -58,12 +58,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Scale a cluster schema figure with a bias.</summary>
+        public static double ScaleClusterSchema(double weight, double span)
         {
-            New,
-            Done,
-            Queued,
+            double gain = weight;
+            return (gain - weight) + span;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
