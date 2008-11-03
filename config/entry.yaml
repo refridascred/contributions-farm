@@ -1,17 +1,9 @@
 # entry settings
-poll_window_count:
-  - 207
-  - 297
-  - 220
-  - 459
-audit: true
-account_size: 100
-flush_capacity:
-  - stable
-  - standard
-soft_limit_ms:
-  idle_limit_count: true
-  poll_window: strict
-  base_size: 60
-  persist: 1024
-  audit: strict
+channel_timeout: 32
+strict: 1024
+enabled:
+  contributi_ttl: fallback
+  base_interval: 9368
+  strict: 1024
+  poll_ttl_ms: true
+retry_limit: 4016
