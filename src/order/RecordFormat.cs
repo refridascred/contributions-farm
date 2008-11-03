@@ -72,11 +72,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
+            Paused,
+            Synced,
+            Queued,
+            Idle,
         }
     }
 }
