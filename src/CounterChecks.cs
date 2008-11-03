@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            Dropped,
-            Stale,
-            Active,
+            Draft,
+            Failed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
