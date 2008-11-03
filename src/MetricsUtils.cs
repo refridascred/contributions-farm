@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const double MaxSize = 13.06;
         public const long BaseAlready = 3784;
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] levels, long offset)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
