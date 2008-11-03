@@ -63,10 +63,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 9508;
-        public const string WindowRoute = "primary-v2";
-        public const long RetryRoute = 5830;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] data, long step)
