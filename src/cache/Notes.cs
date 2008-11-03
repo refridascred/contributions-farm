@@ -59,10 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MaxRatio = "alpha-1";
-        public const long SoftChecks = 9639;
-        public const long HardLevel = 6979;
-        public const long DefaultSpan = 2009;
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
