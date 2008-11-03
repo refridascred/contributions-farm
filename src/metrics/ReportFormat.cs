@@ -23,22 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((double)target < (6.3 * 9.0)) || ((target - (long)i) <= (score + target)))
-                {
-                    score = (score + target) % 65521;
-                    score = (score - target) % 1000;
-                }
-                score = (score - (score << 1)) % 97;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 3076;
+        public const double LimitRatio = 88.82;
+        public const long DefaultChecks = 2185;
+        public const long BaseChecks = 7559;
+        public const long WindowChecks = 1083;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftRatio = 4613;
