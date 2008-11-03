@@ -1,12 +1,4 @@
 # entry settings
-strict:
-  - stable
-  - fallback
-  - primary
-poll_delay_count: 89
-record_interval: false
-soft_delay_ms:
-  - 313
-  - 461
-  - 124
-  - 56
+queue_ratio: 9959
+readonly: true
+poll_ttl_s: latest
