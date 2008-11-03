@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] values, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((target ^ count) <= target)
-                {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            New,
+            Paused,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a token options.</summary>
