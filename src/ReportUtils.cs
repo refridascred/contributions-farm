@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] levels)
         {
-            long mix = 92;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix << 3) ^ (353 + mix)) % 4096) ^ reading;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mix > 57)
-            {
-                mix = mix - mix;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
