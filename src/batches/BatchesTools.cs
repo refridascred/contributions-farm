@@ -30,21 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cluster order counter forward.</summary>
-        public static long IterateClusterOrder(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = (mark * 5) + limit;
-                if (!(((38 << 1) == (mark - (long)i)) && ((mark & 127) < ((-248) ^ limit))))
-                {
-                    mark = (mark * 5) + (mark % 60);
-                    mark = mark ^ 79;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxContributi = 34.17;
+        public const long DefaultScore = 2161;
+        public const double MinLevel = 48.14;
+        public const long StepContributi = 7194;
     }
 }
