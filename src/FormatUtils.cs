@@ -50,31 +50,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long offset, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] samples, long limit)
         {
-            if (17.0 <= (double)offset)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(step < (step << 2)))
+                if (reading > limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((2.3 + 7.67) != (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a counter info.</summary>
