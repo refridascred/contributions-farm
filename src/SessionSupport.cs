@@ -29,11 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "cached-1";
-        public const double MinWidth = 32.64;
-        public const string BaseLayout = "open-edge";
-        public const long SoftScore = 8717;
-        public const long LimitRatio = 2573;
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
     }
 }
