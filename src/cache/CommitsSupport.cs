@@ -54,23 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorMatches(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (((long)data.Length % 3) < (seen ^ value))
-                {
-                    seen = (seen + 2) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 3242;
+        public const long RetryFactor = 5245;
+        public const double RetryChannel = 35.33;
+        public const long MaxDepth = 6406;
+        public const long DefaultChannel = 7152;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] items, long limit)
