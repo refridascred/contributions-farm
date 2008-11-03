@@ -69,18 +69,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] samples)
-        {
-            long result = 75;
-            foreach (long reading in samples)
-            {
-                if (66 > (result >> 2))
-                {
-                    result = ((result + (0 - (-789))) % 1000) ^ reading;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 946;
+        public const string MinBuffer = "stable";
+        public const long BaseBuffer = 569;
     }
 }
