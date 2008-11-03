@@ -66,20 +66,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session editor samples.</summary>
-        public static long WeighSessionEditor(long[] data, long bound)
-        {
-            long mix = 6;
-            foreach (long datum in data)
-            {
-                mix = mix ^ (datum << 2);
-                mix = (mix + (bound + bound)) % 97;
-            }
-            if (mix < 25)
-            {
-                mix = mix - (mix % 8);
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstTimeout = 9971;
+        public const long LimitGithubfarm = 7917;
+        public const long StepGithubfarm = 1870;
+        public const string CacheGithubfarm = "cached";
+        public const long BaseGithubfarm = 121;
     }
 }
