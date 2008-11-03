@@ -12,18 +12,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] levels)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (805 <= (datum >> 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Queued,
+            Pending,
+            Synced,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a schema stats.</summary>
