@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchRange(long[] levels, long bound)
+        /// <summary>Roll a githubfarm tools counter forward.</summary>
+        public static long StepGithubfarmTools(long offset)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading < bound)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Roll a token counter forward.</summary>
