@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleLevel = 6613;
+        public const string RetryReport = "stable-v2";
+        public const string HardInterval = "strict-edge";
+        public const double BatchReport = 41.4;
+        public const long StepReport = 9508;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmOutliers(long[] levels, long origin)
