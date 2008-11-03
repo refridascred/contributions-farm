@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "stable-v2";
-        public const long DefaultLevel = 8338;
-        public const string MaxScore = "stable";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepProfile = 27.69;
+        public const long BurstProfile = 4186;
+        public const long DefaultLevel = 4551;
+        public const double MinProfile = 21.97;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long CombineRecord(long[] data, long offset)
