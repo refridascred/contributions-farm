@@ -1,17 +1,5 @@
 {
-  "burst_timeout_s": [480, 65, 449],
-  "soft_threshold_s": "open",
-  "editor_interval": {
-    "cache_size_count": "legacy",
-    "hard_timeout": 35,
-    "session_ratio": false,
-    "default_threshold": {
-      "default_window_count": 78,
-      "batches_depth": 83,
-      "account_size": 744,
-      "layout_depth": 7494
-    },
-    "route_window": 60,
-    "cache_delay_ms": "fallback"
-  }
+  "enabled": 7014,
+  "compress": 23.09,
+  "cache_depth": 250
 }
