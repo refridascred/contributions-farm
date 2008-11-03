@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardRatio = 7846;
-        public const string BatchWidth = "fallback-1";
-        public const string BatchRatio = "local";
-        public const string LimitSupport = "fallback-v2";
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitGithubfarm = 8811;
