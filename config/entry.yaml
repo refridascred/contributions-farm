@@ -1,31 +1,9 @@
 # entry settings
-audit: 100
-default_threshold_s: stable
-account_capacity:
-  batch_retries: 89
-  default_window_count: true
-  audit:
-    retry_depth:
-      - 408
-      - 162
-      - 390
-    verbose:
-      - strict
-      - edge
-      - blue
-      - edge
-    report_interval: 75.89
-    readonly: false
-    persist:
-      - primary
-      - primary
-      - open
-      - cached
-    default_interval_s: 90.2
-  retry_size: 1.03
-  channel_capacity:
-    - green
-    - edge
-    - stable
-  enabled: local
-batch_capacity_pct: true
+counter_retries:
+  - 433
+  - 136
+  - 467
+batch_threshold: 5
+strict:
+  - 270
+  - 172
