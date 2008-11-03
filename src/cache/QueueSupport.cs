@@ -20,23 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long limit)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((double)state >= (10.0 + 9.0)) && ((limit * 2) <= limit))
-                {
-                    state = (state + (state + limit)) % 1000;
-                }
-                if ((state < (limit & 15)) && ((double)limit < 7.3))
-                {
-                    state = ((state << 2) ^ (state & 127)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate stream payload readings against a bound.</summary>
