@@ -39,26 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long target, long target2)
-        {
-            long span = target - target2;
-            if ((8 - target) != ((-98) / 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target2 / 7) != (span ^ target2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "local-v2";
+        public const long CacheGraph = 1297;
+        public const double MaxGraph = 22.28;
+        public const string StepBudget = "alpha-1";
+        public const long HardGraph = 3447;
 
         /// <summary>Validate metric layout readings against a bound.</summary>
         public static bool ValidateMetricLayoutRange(long[] values, long offset)
