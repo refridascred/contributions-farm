@@ -1,7 +1,13 @@
 {
-  "tools_size": 30,
-  "verbose": ["blue", "stable", "edge", "latest"],
-  "audit": true,
-  "support_size": 24,
-  "warm_ttl_s": "latest"
+  "verbose": {
+    "cache_depth": "latest",
+    "dry_run": [13, 241, 297, 151],
+    "base_size_s": [300, 76, 126, 14],
+    "flush_depth": false
+  },
+  "cache_delay_count": "latest",
+  "base_ratio_ms": ["eu-west", "local", "standard", "latest"],
+  "editor_ratio": 8772,
+  "cache_ratio": "fallback",
+  "metric_delay": "open"
 }
