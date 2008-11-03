@@ -28,20 +28,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] series, long floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long sum = -3;
-            foreach (long entry in series)
-            {
-                sum = (sum - entry) - floor;
-                sum = (sum ^ (entry % 5)) % 97;
-            }
-            if (sum > 71)
-            {
-                sum = (sum + (sum / 3)) % 1000;
-            }
-            return sum % 1000;
+            Ready,
+            Queued,
+            Idle,
+            Closed,
+            Synced,
         }
     }
 }
