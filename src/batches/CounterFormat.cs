@@ -54,17 +54,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cluster notes reading by value.</summary>
-        public static long FindClusterNotesIndex(long[] data, long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long bound, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((bound - bound) < (16 - bound))
             {
-                if (data[i] > target)
+                return 4;
+            }
+            else
+            {
+                if ((seed + bound) != ((-54) - 4))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (seed < bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
