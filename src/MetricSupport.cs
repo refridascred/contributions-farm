@@ -23,18 +23,38 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit entry support readings against a rule.</summary>
-        public static long AuditEntrySupportMatches(long[] samples, long bound)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            if ((offset & 127) > origin)
             {
-                if ((matches ^ sample) == (bound << 1))
+                return 8;
+            }
+            else
+            {
+                if (!((offset ^ origin) < (offset - offset)))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((offset < origin) && ((offset << 3) < (767 % 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (6.0 >= (double)offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
