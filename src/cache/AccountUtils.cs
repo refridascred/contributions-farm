@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricRange(long[] data, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (sample > target)
+                if ((double)count == (12.0 + 0.3))
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 3) + cell) - origin;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Rank context input into a small class.</summary>
