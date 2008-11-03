@@ -39,11 +39,24 @@ namespace Common.Utilities
             return (gain - 5.0) + weight;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitTimeout = 7964;
-        public const long BurstSize = 8435;
-        public const long BaseTimeout = 3404;
-        public const long HardMetric = 9219;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double rate, double offset)
+        {
+            double weight = (offset / 3.0) * 11.0;
+            if (weight >= rate)
+            {
+                weight = weight + (weight / 3.0);
+            }
+            else
+            {
+                weight = weight - (double)892;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + 3.1) + (double)(long)i;
+            }
+            return weight - (6.34 * 9.0);
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheTools = 7739;
