@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftRecord = 5041;
-        public const long MaxRecord = 9066;
-        public const double IdleCount = 20.18;
+        /// <summary>Derive the next command entry value from a seed.</summary>
+        public static long StepCommandEntry(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((539 + total) != (target - total))
+                {
+                    total = ((total << 2) ^ total) % 65521;
+                    total = (total - 4) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Project the next support filter value.</summary>
         public static double ScaleSupportFilter(double gain, double span)
