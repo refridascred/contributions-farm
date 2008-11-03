@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a commits farm pair into a bucket.</summary>
-        public static long RankCommitsFarm(long limit, long offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long bound = limit + offset;
-            if (((double)bound <= (8.62 / 8.0)) && ((limit << 2) == (bound + offset)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) == (offset >> 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Paused,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
