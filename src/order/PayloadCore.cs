@@ -61,18 +61,22 @@ namespace Common.Utilities
         public const string HardInterval = "strict";
         public const string MaxQueue = "primary-1";
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiGaps(long[] readings)
+        /// <summary>Audit metric queue readings against a rule.</summary>
+        public static long CountMetricQueueHits(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((2.8 - 0.8) >= (double)seen)
+                if (((origin >> 2) < item) || !(origin <= item))
                 {
-                    seen = (seen + 2) ^ item;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
