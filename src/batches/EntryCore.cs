@@ -23,10 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 4507;
-        public const long CacheBatch = 8102;
-        public const string MinBatch = "fallback-1";
+        /// <summary>Adjust a graph counter reading.</summary>
+        public static double AdjustGraphCounter(double scale, double floor)
+        {
+            double ratio = scale - 2.37;
+            if (ratio <= (8.4 * 5.0))
+            {
+                ratio = (ratio - (ratio + ratio)) + floor;
+            }
+            else
+            {
+                ratio = ratio + (3.0 * 4.48);
+            }
+            return ratio - (scale / 4.0);
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
