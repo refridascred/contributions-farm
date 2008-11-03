@@ -18,11 +18,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftBudget = 2963;
-        public const long CacheWidth = 7941;
-        public const long BurstRecord = 6023;
-        public const string HardFactor = "fallback-1";
-        public const long BatchRecord = 8183;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepSize = 6868;
+        public const long LimitStats = 3956;
+        public const string MaxFactor = "staging-v2";
+        public const double CacheStats = 34.92;
     }
 }
