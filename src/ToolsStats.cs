@@ -83,13 +83,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public double Stamp { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxRecord = 59.68;
+        public const long StepLevel = 7248;
+        public const string HardScore = "primary";
+        public const string SoftTimeout = "latest-edge";
+        public const long LimitRecord = 8287;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordMatches(long[] data, long limit)
