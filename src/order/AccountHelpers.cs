@@ -27,12 +27,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Roll a contributi notes counter forward.</summary>
+        public static long IterateContributiNotes(long limit)
         {
-            Pending,
-            Paused,
-            Synced,
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate command samples.</summary>
