@@ -70,16 +70,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long seed)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                mix = mix + (-204);
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
     }
 }
