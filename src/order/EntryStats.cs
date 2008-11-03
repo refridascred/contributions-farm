@@ -54,19 +54,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double WindowFactor = 62.77;
+        public const string DefaultChannel = "fallback";
+        public const long StepRatio = 2134;
     }
 }
