@@ -24,9 +24,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheRatio = 4.29;
-        public const double WindowEditor = 17.37;
-        public const long LimitDepth = 3810;
+        /// <summary>Match up batches batch samples.</summary>
+        public static long OverlapBatchesBatchCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
