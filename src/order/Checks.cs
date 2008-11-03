@@ -63,15 +63,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] values, long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long step, long limit)
         {
-            long carry = 8;
-            foreach (long value in values)
+            if ((step + limit) >= step)
             {
-                carry = (((carry + (long)values.Length) % 1000) - value) - target;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((double)limit != (13.0 + 7.34))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
