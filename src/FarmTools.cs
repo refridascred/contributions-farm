@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score * 2) + origin;
-                score = (score - (score / 2)) % 101;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxAccount = "standard-edge";
+        public const long DefaultBudget = 6267;
+        public const double WindowAccount = 3.02;
+        public const long HardDepth = 3454;
+        public const long BatchSize = 1932;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseBatches = 1184;
