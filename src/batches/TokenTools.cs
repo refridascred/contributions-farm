@@ -31,10 +31,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double CacheDepth = 84.24;
-        public const long BatchRatio = 1698;
-        public const double HardToken = 47.36;
-        public const long BaseWidth = 8626;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Ready,
+            Synced,
+            New,
+        }
     }
 }
