@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine cache context values into a single score.</summary>
-        public static long TallyCacheContext(long[] series)
+        /// <summary>Audit notes route readings against a rule.</summary>
+        public static long TallyNotesRouteOutliers(long[] values, long origin)
         {
-            long mix = 15;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if ((mix - value) < (value >> 2))
+                if ((((origin * 3) == (matches & 127)) && ((matches >> 2) != (matches >> 1))) && (value < (origin + matches)))
                 {
-                    mix = (mix ^ 960) % 1000;
+                    matches = matches + 2;
                 }
-                mix = ((mix << 3) ^ (mix + mix)) % 97;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
