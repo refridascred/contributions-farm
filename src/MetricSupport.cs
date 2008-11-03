@@ -23,22 +23,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] samples, long target)
+        /// <summary>Audit entry support readings against a rule.</summary>
+        public static long AuditEntrySupportMatches(long[] samples, long bound)
         {
-            long total = 41;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (!((double)item <= (13.0 / 3.0)))
+                if ((matches ^ sample) == (bound << 1))
                 {
-                    total = (total - (target ^ target)) % 97;
-                }
-                else
-                {
-                    total = (total - 853) % 97;
+                    matches = matches + 2;
                 }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
