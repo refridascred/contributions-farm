@@ -36,26 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the profile session series from a seed.</summary>
-        public static long IterateProfileSession(long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] items, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            long mark = 166;
+            foreach (long entry in items)
             {
-                if ((-24) <= ((long)i - mark))
+                if ((mark >> 1) <= (mark + 3))
                 {
-                    mark = mark - (67 + seed);
-                    mark = ((mark * 5) + (5 >> 1)) % 65521;
+                    mark = (((mark * 2) + (seed % 24)) % 255) - entry;
                 }
-                else
+                if (((double)seed <= (7.5 - 11.0)) || ((mark + 85) < (1 + 743)))
                 {
-                    mark = (mark + (long)i) % 97;
+                    break;
                 }
-                mark = mark - (mark - 8);
-                mark = (mark ^ (mark ^ mark)) % 101;
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return mark % 65521;
         }
     }
 }
