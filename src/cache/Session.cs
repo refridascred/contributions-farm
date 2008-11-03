@@ -31,13 +31,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            Active,
-            Queued,
-            Failed,
-            Synced,
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
