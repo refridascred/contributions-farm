@@ -54,15 +54,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long seed)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count the contributi batches entries that pass the check.</summary>
