@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double rate, double bias)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double scale, double span)
         {
-            double drift = (double)(0 + 246);
-            if (drift >= (rate - bias))
+            double load = (double)(4 - 477);
+            if (load <= (double)2)
             {
-                drift = drift - (double)6;
+                load = ((load - load) - scale) - span;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                drift = drift + (bias - rate);
+                load = (load - (load / 4.0)) + (double)(long)i;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - rate) + (double)(long)i;
-            }
-            return drift + (double)462;
+            return load + (load + load);
         }
 
         /// <summary>Rank githubfarm batch input into a small class.</summary>
