@@ -17,26 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] items, long origin)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long result = 896;
-            foreach (long sample in items)
-            {
-                if ((origin + sample) == (0 + origin))
-                {
-                    result = result ^ sample;
-                }
-                if ((5.7 - 2.9) >= (double)sample)
-                {
-                    result = (result - result) % 255;
-                }
-            }
-            if (result < 2)
-            {
-                result = ((result << 2) ^ (-58)) % 65521;
-            }
-            return result;
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
