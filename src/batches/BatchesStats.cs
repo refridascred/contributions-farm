@@ -39,19 +39,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] samples, long floor)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
