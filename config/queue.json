@@ -1,5 +1,8 @@
 {
-  "readonly": "fallback",
-  "base_ratio_ms": true,
-  "max_window_count": false
+  "filter_capacity": 86.05,
+  "flush_window": 6052,
+  "strict": 60,
+  "base_limit": "eu-west",
+  "retry_interval_count": false,
+  "warm_interval_count": false
 }
