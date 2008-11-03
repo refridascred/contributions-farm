@@ -39,14 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] levels, long bound)
         {
-            Pending,
-            Locked,
-            Closed,
-            Failed,
-            New,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((19 % 97) > (entry & 7))
+                {
+                    hits = (hits + 1) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
