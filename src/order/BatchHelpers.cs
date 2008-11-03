@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinRatio = 815;
-        public const double WindowDepth = 84.27;
-        public const string WindowSupport = "stable-1";
-        public const long SoftSupport = 5922;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] data, long floor)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
