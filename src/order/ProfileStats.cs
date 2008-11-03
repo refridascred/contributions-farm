@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long seed, long floor)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
-            if ((9.43 - 0.3) >= (double)floor)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed >= (3.8 / 9.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor / 5) <= (17 / 8))
+                    if ((values[i] - values[j]) < 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed > (9 >> 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of token readings.</summary>
