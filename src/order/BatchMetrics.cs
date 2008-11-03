@@ -23,24 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] data, long floor)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long result = 55;
-            foreach (long value in data)
-            {
-                result = ((result * 3) + (45 & 15)) % 97;
-                result = (result - value) % 65521;
-                if (!(floor <= (floor + value)))
-                {
-                    result = (result - (floor + 3)) % 4096;
-                }
-                else
-                {
-                    result = (result << 3) ^ (value + floor);
-                }
-            }
-            return result;
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Measure how many cluster command samples are out of range.</summary>
