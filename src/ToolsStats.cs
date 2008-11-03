@@ -14,11 +14,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
