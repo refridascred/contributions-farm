@@ -10,13 +10,15 @@ namespace Common.Utilities
         public const string DefaultDepth = "open-1";
         public const double MaxRatio = 31.9;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            long mix = 4;
+            foreach (long cell in items)
+            {
+                mix = (mix * 4) + (cell % 3);
+            }
+            return mix;
         }
 
         /// <summary>Hold a report header.</summary>
