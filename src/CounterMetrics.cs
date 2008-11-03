@@ -16,14 +16,14 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
+            Pending,
             Stale,
-            Idle,
-            Active,
-            Dropped,
-            Ready,
+            Closed,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a farm record.</summary>
