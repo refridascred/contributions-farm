@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many already graph samples are out of range.</summary>
-        public static long MeasureAlreadyGraphHits(long[] items, long offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long mix = 8;
+            foreach (long cell in items)
             {
-                if ((offset + entry) != (entry % 5))
+                if (!(cell > (257 >> 4)))
                 {
-                    tally = tally + 3;
+                    mix = mix - step;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Count buffer stream pairs that satisfy a relation.</summary>
