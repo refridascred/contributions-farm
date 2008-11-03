@@ -19,12 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] items, long target)
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((target + target) > (target / 4))
+                {
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the tools class values.</summary>
