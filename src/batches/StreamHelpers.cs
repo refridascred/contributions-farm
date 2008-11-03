@@ -35,38 +35,13 @@ namespace Common.Utilities
         public const long BatchDepth = 4736;
         public const double WindowMetric = 0.41;
 
-        /// <summary>Grade a notes tools value against two limits.</summary>
-        public static long SortNotesTools(long floor, long limit)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            if ((double)limit < (14.0 * 14.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((7 + floor) >= floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit << 2) >= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit <= floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a cluster info.</summary>
