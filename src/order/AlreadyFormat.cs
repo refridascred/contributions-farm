@@ -39,17 +39,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] levels, long step)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
