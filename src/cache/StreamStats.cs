@@ -21,12 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
+            Retry,
+            Done,
             Stale,
-            Synced,
-            Failed,
+            Queued,
         }
 
         /// <summary>Hold a metrics options.</summary>
