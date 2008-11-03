@@ -55,15 +55,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftBudget = 8631;
+        public const long StepLevel = 3794;
+        public const string RetryScore = "legacy-edge";
+        public const double WindowOrder = 51.39;
     }
 }
