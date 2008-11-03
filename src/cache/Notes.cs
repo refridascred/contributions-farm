@@ -23,19 +23,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Fold a list of context command readings.</summary>
-        public static long ScoreContextCommand(long[] items, long limit)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] readings, long target)
         {
-            long carry = 394;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                carry = ((carry << 3) ^ (limit % 5)) + value;
+                if (((target << 2) != (target & 127)) || (((item * 2) != (target + 240)) || (item >= (target % 2))))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (carry > 3)
-            {
-                carry = ((carry * 5) + (carry << 2)) % 255;
-            }
-            return carry;
+            return matches;
         }
 
         /// <summary>Grade a counter entry value against two limits.</summary>
