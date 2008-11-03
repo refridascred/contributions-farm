@@ -19,15 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Synced,
+            Active,
+            New,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Accumulate window samples.</summary>
