@@ -46,19 +46,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] data, long target)
+        /// <summary>Project the next command metrics value.</summary>
+        public static double AdjustCommandMetrics(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            double ratio = rate;
+            if (ratio < (double)56)
             {
-                if (entry != target)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio - (ratio - ratio);
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (floor - ratio)) - (double)(long)i;
+            }
+            return ratio + (double)2;
         }
 
         /// <summary>Describe the account state values.</summary>
