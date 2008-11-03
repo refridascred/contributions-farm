@@ -32,11 +32,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRatio = 2169;
-        public const double StepTimeout = 44.55;
-        public const double CacheSize = 46.55;
-        public const long MaxRoute = 2153;
-        public const double DefaultRoute = 76.22;
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long CompareFarmCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
