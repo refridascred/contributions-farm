@@ -28,12 +28,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] samples)
         {
-            Idle,
-            Locked,
-            Done,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum - datum) > datum) && ((matches - datum) <= datum))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
