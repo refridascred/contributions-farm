@@ -1,5 +1,5 @@
 {
-  "checks_timeout": 9764,
-  "idle_timeout_pct": 7,
-  "burst_delay": 30
+  "dry_run": true,
+  "idle_interval_ms": "stable",
+  "retry_limit_ms": 25.19
 }
