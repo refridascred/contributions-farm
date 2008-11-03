@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=488
-log "limit is ${CHANNEL_LIMIT}"
+for item in staging cached fallback eu-west; do
+    log "checking ${item}"
+done
 
-mode="${1:-green}"
+mode="${1:-edge}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
