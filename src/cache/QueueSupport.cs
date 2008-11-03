@@ -18,32 +18,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Classify a batches report pair into a bucket.</summary>
-        public static long GradeBatchesReport(long step, long limit)
-        {
-            long diff = step ^ limit;
-            if (step >= (step * 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if (17.0 <= (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)diff <= (3.91 * 6.3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchInterval = 38.87;
+        public const long DefaultCount = 4781;
+        public const long RetryCount = 5986;
+        public const long LimitScore = 3074;
+        public const double CacheDepth = 31.99;
     }
 }
