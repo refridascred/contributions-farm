@@ -47,12 +47,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public string Label { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string IdleFilter = "strict-v2";
+        public const long BatchBudget = 7403;
+        public const string HardFactor = "local";
+        public const string DefaultWidth = "latest-edge";
+        public const long BurstFilter = 9817;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
