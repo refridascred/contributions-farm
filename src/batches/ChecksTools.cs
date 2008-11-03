@@ -42,19 +42,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next support payload value.</summary>
-        public static double BlendSupportPayload(double ratio, double bias)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            double gain = (double)3 / 3.0;
-            if (gain >= bias)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (ratio / 6.0);
-            }
-            return gain + (gain + 5.0);
+            return tally;
         }
     }
 }
