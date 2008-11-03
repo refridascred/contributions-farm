@@ -26,19 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (reading < ((-859) + reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 4828;
+        public const long BatchStream = 5415;
+        public const long SoftStream = 1480;
+        public const long BatchRatio = 4561;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
