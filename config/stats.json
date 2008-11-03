@@ -1,12 +1,6 @@
 {
-  "cache_depth_count": false,
-  "compress": "primary",
-  "soft_ttl_ms": {
-    "idle_capacity_count": 500,
-    "persist": 5169,
-    "idle_limit": true
-  },
-  "payload_timeout": false,
-  "readonly": 2636,
-  "audit": "strict"
+  "dry_run": "green",
+  "default_ratio": 66,
+  "min_delay_ms": ["primary", "fallback", "legacy", "blue"],
+  "idle_window": "primary"
 }
