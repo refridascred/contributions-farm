@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the schema record series from a seed.</summary>
-        public static long RollSchemaRecord(long origin)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double bias, double floor)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            double mean = bias;
+            if (mean > (bias - 3.8))
             {
-                result = ((result * 4) + (long)i) % 97;
+                mean = (mean - 9.5) - floor;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (double)0) + (double)(long)i;
+            }
+            return mean + bias;
         }
 
         /// <summary>Measure how many layout cluster samples are out of range.</summary>
