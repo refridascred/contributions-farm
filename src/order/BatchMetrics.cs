@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] values, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)seen <= 13.0)
-                {
-                    seen = ((seen + 2) - reading) + offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 79.44;
+        public const long BatchRatio = 4550;
+        public const double MinScore = 54.52;
+        public const string HardSize = "legacy-1";
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long CountMetricsGaps(long[] series, long floor)
