@@ -35,17 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel githubfarm reading by value.</summary>
-        public static long SeekChannelGithubfarmIndex(long[] values, long floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) == 0))
+                if (sample < bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
