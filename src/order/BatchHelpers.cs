@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] data, long floor)
+        /// <summary>Validate graph channel readings against a bound.</summary>
+        public static bool CheckGraphChannelRange(long[] values, long target)
         {
             bool ready = true;
-            foreach (long value in data)
+            foreach (long item in values)
             {
-                if (value < floor)
+                if (item <= target)
                 {
                     ready = false;
                     break;
