@@ -17,20 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultInterval = "fallback";
+        public const long BatchInterval = 679;
+        public const double MaxTools = 63.46;
+        public const string StepTools = "stable-edge";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long FoldBatches(long[] readings)
