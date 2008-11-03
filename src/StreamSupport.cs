@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 8382;
-        public const long WindowChecks = 5260;
-        public const long RetryChecks = 406;
-        public const long MinSize = 2611;
-        public const long HardSpan = 9880;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinScore = 9615;
+        public const string BaseSize = "cached-1";
+        public const long BaseAccount = 5199;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long floor)
