@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] items, long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] <= seed)
+                if (readings[i] >= origin)
                 {
                     return (long)i;
                 }
