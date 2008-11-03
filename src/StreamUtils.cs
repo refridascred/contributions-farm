@@ -20,17 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] samples, long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
