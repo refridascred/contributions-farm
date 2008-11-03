@@ -80,18 +80,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] values, long seed)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if ((seed - count) > (entry - entry))
+                if (datum >= seed)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
