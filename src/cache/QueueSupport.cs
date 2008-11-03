@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] samples, long seed)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (datum < seed)
+                if ((value + hits) < (value % 60))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a batches record.</summary>
