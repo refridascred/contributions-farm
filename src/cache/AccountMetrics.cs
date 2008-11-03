@@ -59,11 +59,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 3042;
-        public const double BatchStats = 53.47;
-        public const string WindowDepth = "legacy";
-        public const string WindowStats = "cached";
-        public const long StepStats = 2648;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)floor == (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
