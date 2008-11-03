@@ -38,11 +38,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepRatio = 5486;
-        public const long BurstSize = 460;
-        public const long BaseSize = 6851;
-        public const long MaxCommits = 7580;
-        public const double BatchCommits = 52.95;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
