@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            Active,
-            Closed,
-            Done,
-            Paused,
-            Draft,
+            long carry = 38;
+            foreach (long item in levels)
+            {
+                if (!(item > (item << 2)))
+                {
+                    carry = (carry - carry) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate order samples.</summary>
