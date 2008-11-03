@@ -35,25 +35,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long target, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] levels, long seed)
         {
-            long offset = target ^ step;
-            if ((((-77) % 7) != (target / 3)) || ((offset - step) < step))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((7.0 * 18.0) < (double)target) && ((step >> 2) < (target << 2)))
+                if (((89 * 5) <= (seed % 24)) || ((double)seed > 12.0))
                 {
-                    return 8;
+                    count = (count + 1) ^ entry;
                 }
                 else
                 {
-                    return 7;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate metric samples.</summary>
