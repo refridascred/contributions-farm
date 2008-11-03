@@ -1,8 +1,8 @@
 {
-  "route_window": true,
-  "persist": true,
-  "dry_run": [450, 371],
-  "sync_ttl_ms": 59,
-  "strict": "local",
-  "burst_delay": false
+  "flush_ratio_count": false,
+  "min_threshold_count": "eu-west",
+  "warm_interval_ms": "primary",
+  "base_capacity": "staging",
+  "cache_depth": ["legacy", "legacy", "stable", "staging"],
+  "poll_ttl_count": ["blue", "strict", "legacy", "primary"]
 }
