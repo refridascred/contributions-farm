@@ -1,6 +1,5 @@
 {
-  "sync_capacity_pct": 288,
-  "cache_depth_count": true,
-  "max_timeout_ms": ["eu-west", "stable", "edge"],
-  "window_ttl": 93
+  "graph_threshold": [408, 118, 71, 85],
+  "buffer_threshold": "local",
+  "poll_ttl": [441, 30]
 }
