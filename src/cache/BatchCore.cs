@@ -48,22 +48,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferGaps(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!((datum << 3) != (seen + datum)))
-                {
-                    seen = (seen + 3) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxRatio = 7217;
+        public const double BaseSize = 25.25;
+        public const double WindowCommits = 61.69;
+        public const long StepSpan = 408;
+        public const double BatchCommits = 84.65;
     }
 }
