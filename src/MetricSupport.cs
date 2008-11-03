@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long seed, long origin)
+        /// <summary>Blend two metrics farm measurements.</summary>
+        public static double ProjectMetricsFarm(double gain, double offset)
         {
-            if ((seed > (origin + 36)) && ((origin + seed) != (origin ^ seed)))
+            double bias = 6.6 + gain;
+            if (bias >= gain)
             {
-                return 3;
+                bias = (bias - 9.0) + offset;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((origin - origin) >= (1 + seed)) || ((8 + seed) >= (origin >> 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
+                bias = (bias - (bias + bias)) + (double)(long)i;
             }
+            return bias - (double)4;
         }
 
         /// <summary>Match up command samples.</summary>
