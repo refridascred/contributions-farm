@@ -26,13 +26,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double scale, double span)
         {
-            public double Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            double weight = (double)(0 + 8);
+            if (weight > scale)
+            {
+                weight = (weight + (double)112) - span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (double)3;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
