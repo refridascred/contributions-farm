@@ -26,22 +26,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] series)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportRange(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (((value & 127) != (hits / 5)) || (((36 + value) >= value) || (value < (value - value))))
+                if (sample != floor)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
