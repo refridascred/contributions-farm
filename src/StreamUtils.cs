@@ -39,17 +39,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] values, long step)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
