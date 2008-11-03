@@ -36,17 +36,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] values, long floor)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 6;
+            foreach (long datum in values)
             {
-                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                if ((datum + 232) > 33)
                 {
-                    return (long)i;
+                    result = result + (result << 2);
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
