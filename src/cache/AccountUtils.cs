@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 62.99;
-        public const double CacheWidth = 51.65;
-        public const double MinDepth = 87.12;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (limit < (limit % 60))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long GradeContext(long target, long floor)
