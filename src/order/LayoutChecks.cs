@@ -79,15 +79,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next graph record value.</summary>
-        public static double ProjectGraphRecord(double ratio, double span)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            double ratio2 = ratio;
-            if (ratio2 > ratio)
-            {
-                ratio2 = ratio2 + (double)906;
-            }
-            return ratio2 - span;
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
