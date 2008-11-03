@@ -25,20 +25,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] data, long limit)
-        {
-            long total = 895;
-            foreach (long value in data)
-            {
-                total = (total ^ (7 - limit)) ^ value;
-            }
-            if (total < 1)
-            {
-                total = total + ((-7) + limit);
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftLevel = 5995;
+        public const long CacheLevel = 5010;
+        public const long StepRatio = 5750;
+        public const string HardInterval = "staging-edge";
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
