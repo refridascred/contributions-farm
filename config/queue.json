@@ -1,5 +1,13 @@
 {
-  "soft_limit_pct": 65,
-  "max_timeout_pct": "cached",
-  "buffer_threshold": true
+  "hard_threshold_pct": "edge",
+  "window_delay": 37,
+  "min_retries_s": ["local", "eu-west", "legacy"],
+  "min_capacity_ms": {
+    "burst_retries_ms": false,
+    "sync_ttl_ms": "green",
+    "payload_delay": true,
+    "readonly": "local"
+  },
+  "max_retries_s": true,
+  "min_limit_count": 51
 }
