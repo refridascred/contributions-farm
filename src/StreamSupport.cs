@@ -35,11 +35,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 2594;
-        public const long StepQueue = 952;
-        public const long DefaultQueue = 6842;
-        public const string RetryInterval = "stable";
-        public const long BurstInterval = 9611;
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LocateCommitsIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
