@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Idle,
-            Failed,
-            Done,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string LimitSpan = "stable-v2";
+        public const string HardGithubfarm = "primary-edge";
+        public const string IdleGithubfarm = "fallback-v2";
+        public const double LimitTimeout = 90.33;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
