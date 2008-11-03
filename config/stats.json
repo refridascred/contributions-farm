@@ -1,5 +1,6 @@
 {
-  "min_retries_ms": "eu-west",
-  "persist": ["cached", "latest", "open", "eu-west"],
-  "metrics_window": false
+  "readonly": 1024,
+  "cache_capacity_ms": ["staging", "latest", "green"],
+  "compress": ["standard", "blue", "latest", "legacy"],
+  "stream_timeout": 29
 }
