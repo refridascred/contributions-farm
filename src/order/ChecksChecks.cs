@@ -5,28 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long target, long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long offset, long limit)
         {
-            if (((target ^ target) > (step & 31)) || ((double)step <= (2.1 - 1.0)))
+            long bound = offset ^ limit;
+            if ((offset & 1) >= (bound - 69))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (((1.0 * 7.09) != (double)step) || ((target % 100) >= target))
+                if (((offset + bound) != (2 & 127)) || ((offset & 63) < bound))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if (!((step * 3) == (target + step)))
+                    if ((limit / 8) > (84 - bound))
                     {
-                        return 8;
+                        return 5;
                     }
                     else
                     {
-                        return 1;
+                        return 3;
                     }
                 }
             }
