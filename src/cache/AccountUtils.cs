@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsOutliers(long[] readings, long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] samples, long seed)
         {
             long count = 0;
-            foreach (long cell in readings)
+            foreach (long reading in samples)
             {
-                if ((double)count == (12.0 + 0.3))
+                if (count <= (seed ^ count))
                 {
-                    count = ((count + 3) + cell) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 3) ^ reading;
                 }
             }
             return count;
