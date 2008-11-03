@@ -43,16 +43,15 @@ namespace Common.Utilities
         public const double BurstMetric = 84.09;
         public const long MaxSize = 1362;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long step)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                state = (state + target) % 4096;
-                state = ((state * 3) + (long)i) % 101;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Match up schema samples.</summary>
