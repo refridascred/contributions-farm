@@ -41,18 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] samples)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(((seen / 8) != (seen + 0)) || (datum < seen)))
-                {
-                    seen = seen + 1;
-                }
+                acc = (acc ^ seed) % 1000;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Fold a list of format readings.</summary>
