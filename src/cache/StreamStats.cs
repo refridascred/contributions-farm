@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Locked,
             Queued,
-            New,
-            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
