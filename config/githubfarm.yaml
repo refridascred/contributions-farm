@@ -1,13 +1,17 @@
 # githubfarm settings
-readonly: 100
-soft_window_pct: eu-west
-burst_interval_count: 35
-report_depth:
-  route_limit: 7124
-  window_interval: 6907
-  default_window: standard
-  filter_interval:
-    - 486
-    - 379
-    - 333
-    - 281
+dry_run:
+  - legacy
+  - open
+tools_size: open
+min_timeout_ms:
+  contributi_capacity: 250
+  audit: strict
+  profile_limit: 6421
+  sync_ratio_count:
+    - 447
+    - 160
+    - 420
+    - 400
+soft_timeout_count: false
+idle_window: false
+min_interval_s: 42
