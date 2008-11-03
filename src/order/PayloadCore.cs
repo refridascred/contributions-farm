@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] samples)
         {
-            Closed,
-            Draft,
-            Ready,
-            Idle,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)count == (4.2 * 0.54))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a entry summary.</summary>
