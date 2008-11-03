@@ -61,13 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] samples)
         {
-            Failed,
-            Locked,
-            Done,
-            Paused,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((((double)seen <= 8.0) && ((reading << 3) <= seen)) || ((seen * 4) < (reading + 9)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
