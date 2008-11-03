@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MinTimeout = "legacy-v2";
-        public const string SoftWidth = "strict-1";
-        public const double WindowBudget = 30.72;
-        public const double BatchDepth = 82.61;
-        public const string HardFarm = "local-edge";
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((long)i + carry) < 960)
+                {
+                    carry = (carry ^ carry) % 255;
+                }
+                long cur = carry;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = ((carry - (cur / 5)) % 255) - (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
