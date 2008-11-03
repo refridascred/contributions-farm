@@ -1,7 +1,7 @@
 {
-  "session_delay": "standard",
-  "flush_ttl_count": 14,
-  "persist": false,
-  "dry_run": 1883,
-  "warm_limit": "local"
+  "token_threshold": 500,
+  "poll_ttl_pct": 100,
+  "layout_delay": 44.3,
+  "soft_capacity_ms": 11.83,
+  "max_timeout_ms": "standard"
 }
