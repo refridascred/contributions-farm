@@ -14,17 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a order metrics sample.</summary>
-        public static long LookupOrderMetricsIndex(long[] data, long floor)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public bool Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a window record.</summary>
