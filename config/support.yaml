@@ -1,14 +1,16 @@
 # support settings
-report_ratio: stable
-entry_retries:
-  base_window_count:
-    base_threshold_s: 60
-    batch_depth: 2.76
-    tools_timeout: 79
-  retry_threshold_ms: false
-  max_delay_count:
-    - 292
-    - 89
-    - 14
-retry_threshold: 60
-payload_size: staging
+dry_run:
+  dry_run:
+    editor_interval:
+      - 398
+      - 482
+      - 423
+      - 132
+    strict: true
+    route_ttl: 86
+  farm_limit: 63.19
+  max_interval: false
+enabled: 2333
+hard_interval_ms: true
+soft_ttl_ms: 59
+burst_ttl: 86
