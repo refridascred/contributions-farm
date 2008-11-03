@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepTimeout = 8889;
-        public const long BatchSupport = 6033;
-        public const string WindowScore = "latest-1";
-        public const long RetryScore = 3728;
+        /// <summary>Iterate the farm filter series from a seed.</summary>
+        public static long StepFarmFilter(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a cluster counter reading by value.</summary>
         public static long LocateClusterCounterIndex(long[] data, long bound)
