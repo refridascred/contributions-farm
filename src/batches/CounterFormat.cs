@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Pending,
-            New,
-            Stale,
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
