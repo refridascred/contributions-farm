@@ -28,18 +28,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] samples, long limit)
+        /// <summary>Check that every batch filter entry stays within the limit.</summary>
+        public static bool VerifyBatchFilterBounds(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (((long)samples.Length << 2) == (limit + reading))
+                if (value >= offset)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
