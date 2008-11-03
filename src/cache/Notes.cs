@@ -23,18 +23,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] readings, long target)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double scale, double span)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double mean = (double)101 + (double)82;
+            if (mean < (mean - span))
             {
-                if (((target << 2) != (target & 127)) || (((item * 2) != (target + 240)) || (item >= (target % 2))))
-                {
-                    matches = matches + 3;
-                }
+                mean = (mean - (mean - 8.9)) - scale;
             }
-            return matches;
+            else
+            {
+                mean = mean - (double)22;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Grade a counter entry value against two limits.</summary>
