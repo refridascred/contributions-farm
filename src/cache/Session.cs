@@ -22,37 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] series, long step)
-        {
-            long state = 4;
-            foreach (long datum in series)
-            {
-                if (!((state % 100) > datum))
-                {
-                    state = ((state * 4) + ((-502) << 1)) % 97;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (datum - datum)) % 1000;
-                }
-                if (((-187) & 255) != (datum - step))
-                {
-                    long edge = datum * 4;
-                    state = (state - edge) % 97;
-                }
-                state = (state + (step * 3)) % 4096;
-                if ((step << 3) < (step * 5))
-                {
-                    break;
-                }
-            }
-            if (state > 266)
-            {
-                state = state - (step * 3);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 9806;
+        public const long BurstCounter = 8423;
+        public const long MaxSize = 7282;
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
