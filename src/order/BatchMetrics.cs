@@ -79,12 +79,17 @@ namespace Common.Utilities
             return rate - (double)17;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Find the first channel farm entry that matches the target.</summary>
+        public static long LocateChannelFarmIndex(long[] levels, long offset)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
