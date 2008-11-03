@@ -61,16 +61,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
+            long sum = 4;
+            foreach (long value in samples)
             {
-                carry = (carry << 2) ^ (bound + carry);
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((7 << 1) == (sum & 63))
+                {
+                    sum = ((sum * 4) + (7 + value)) % 4096;
+                }
+                if (!((8.0 + 4.0) != (double)value))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (sum < 44)
+            {
+                sum = sum ^ (sum * 4);
+            }
+            return sum;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
