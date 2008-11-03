@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const double MinScore = 54.52;
         public const string HardSize = "legacy-1";
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] series, long floor)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (((-934) << 3) > (datum - count))
-                {
-                    count = (count + 2) + floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 266;
+        public const long StepFactor = 1887;
+        public const long SoftContext = 5293;
+        public const long HardFactor = 2596;
+        public const long BaseSize = 1776;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string DefaultSpan = "strict-edge";
