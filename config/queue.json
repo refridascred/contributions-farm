@@ -1,8 +1,19 @@
 {
-  "hard_window": 97,
-  "flush_ratio": 6211,
-  "base_size": "primary",
-  "batch_delay": 8580,
-  "idle_retries_pct": "primary",
-  "audit": 7.87
+  "flush_limit": 98.09,
+  "tools_ratio": {
+    "cache_retries": 30,
+    "verbose": 57.09,
+    "soft_capacity": 0.43,
+    "flush_retries_ms": 1024
+  },
+  "poll_size_s": 6391,
+  "stats_limit": "stable",
+  "poll_capacity": {
+    "dry_run": "open",
+    "format_timeout": "eu-west",
+    "sync_delay_count": 39.17,
+    "hard_interval_pct": true,
+    "audit": "edge"
+  },
+  "retry_threshold": 80
 }
