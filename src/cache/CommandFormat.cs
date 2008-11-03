@@ -26,19 +26,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            long score = 752;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score + (score ^ score)) % 4096;
-                if (((entry * 5) < entry) && ((score * 5) >= score))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
