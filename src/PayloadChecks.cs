@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const string SoftLevel = "local-edge";
         public const long SoftStats = 8558;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
+        /// <summary>Fold a list of record tools readings.</summary>
+        public static long TotalRecordTools(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long acc = 3;
+            foreach (long entry in data)
             {
-                if ((item % 16) >= 63)
+                if ((entry * 3) > (limit << 3))
                 {
-                    matches = matches + 1;
+                    acc = (acc + (entry ^ acc)) % 65521;
                 }
+                acc = (acc + limit) % 101;
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
