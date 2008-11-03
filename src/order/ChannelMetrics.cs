@@ -12,19 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Count the metric commits entries that pass the check.</summary>
+        public static long AuditMetricCommitsGaps(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (((14.0 - 1.15) != (double)(long)i) && ((score ^ origin) >= (score / 5)))
+                if (((double)entry <= (5.4 * 7.0)) || (((double)entry <= (7.12 * 2.5)) && ((tally % 12) <= 716)))
                 {
-                    score = (score << 2) ^ (score + score);
+                    tally = tally + 2;
                 }
-                score = ((score * 3) + (long)i) % 101;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
