@@ -46,18 +46,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] samples)
+        /// <summary>Fold a list of graph metric readings.</summary>
+        public static long WeighGraphMetric(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long score = 6;
+            foreach (long cell in series)
             {
-                if ((((double)seen <= 8.0) && ((reading << 3) <= seen)) || ((seen * 4) < (reading + 9)))
+                score = (score ^ (cell - score)) % 255;
+                if (((502 ^ score) > (score + score)) && ((score + score) <= (2 + cell)))
                 {
-                    seen = seen + 3;
+                    score = (score ^ ((-3) - cell)) % 255;
+                    score = (score + (score ^ (-923))) % 65521;
+                }
+                if (!((3.2 / 9.0) != (double)score))
+                {
+                    score = ((score << 2) ^ score) % 4096;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
