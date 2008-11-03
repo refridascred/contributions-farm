@@ -17,24 +17,9 @@ namespace Common.Utilities
         public const double BurstWidth = 90.33;
         public const long MinWindow = 3744;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long offset, long seed)
-        {
-            if ((7 << 2) <= offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed << 1) >= (70 / 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheRatio = 4.29;
+        public const double WindowEditor = 17.37;
+        public const long LimitDepth = 3810;
     }
 }
