@@ -22,15 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Stale,
+            Failed,
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Define record limits and defaults.</summary>
