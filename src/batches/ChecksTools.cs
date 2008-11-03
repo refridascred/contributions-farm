@@ -40,22 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double bias, double floor)
         {
-            long mark = 92;
-            foreach (long value in levels)
+            double gain = (double)(672 % 100);
+            for (int i = 0; i < 4; i++)
             {
-                if ((mark >> 3) != (value + mark))
-                {
-                    mark = (mark + (mark + mark)) % 65521;
-                }
-                else
-                {
-                    mark = mark - value;
-                }
+                gain = (((gain + (gain / 4.0)) + (double)(long)i) - bias) + floor;
             }
-            return mark;
+            return gain - (0.7 * 2.91);
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
