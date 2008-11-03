@@ -71,12 +71,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Idle,
-            Pending,
-            Closed,
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
