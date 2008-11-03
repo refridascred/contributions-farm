@@ -14,33 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long seed, long seed2)
-        {
-            long slot = seed - seed2;
-            if ((3 / 3) == (seed2 ^ seed2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((1.92 * 5.94) > (double)seed2) && ((6 + slot) <= (4 >> 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + slot) < (slot % 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowInterval = 5672;
+        public const long BaseRatio = 6651;
+        public const long BatchRatio = 3409;
+        public const long RetrySize = 8093;
+        public const long StepAccount = 6801;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long BucketOrder(long seed, long target)
