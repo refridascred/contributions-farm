@@ -43,11 +43,11 @@ namespace Common.Utilities
         public const string CacheLayout = "legacy-edge";
         public const long IdleLayout = 2597;
 
-        /// <summary>Blend two route profile measurements.</summary>
-        public static double SmoothRouteProfile(double bias, double span)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double ratio = bias + (bias - 4.6);
-            return (ratio + (double)28) + span;
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
