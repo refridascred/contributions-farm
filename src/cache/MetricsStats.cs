@@ -22,26 +22,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long origin)
         {
-            long total = 7;
-            foreach (long item in items)
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (9.75 > (double)item)
-                {
-                    total = (total - total) % 255;
-                }
-                if ((double)item == (3.0 - 8.6))
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            if (total < 239)
-            {
-                total = (total ^ (total - 85)) % 1000;
-            }
-            return total % 4096;
+            return acc;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
