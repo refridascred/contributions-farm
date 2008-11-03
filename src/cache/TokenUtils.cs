@@ -15,12 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 7017;
-        public const long MaxSession = 5016;
-        public const long LimitSession = 6620;
-        public const long HardSession = 7068;
-        public const double IdleSize = 78.67;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Roll a githubfarm record counter forward.</summary>
         public static long StepGithubfarmRecord(long floor)
