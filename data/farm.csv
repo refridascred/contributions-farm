@@ -1,9 +1,8 @@
-id,weight,state,region,score
-1,94.6,155,92,29.49
-2,54.42,stable,153,40.28
-3,733,11.7,47,47.0
-4,143,539,primary,443
-5,fallback,97.55,144,886
-6,strict,48.64,58.44,36
-7,strict,884,strict,377
-8,40.85,75.99,primary,local
+id,weight,level,region,active
+1,613,42.36,55.35,180
+2,standard,33.13,807,47.25
+3,staging,primary,standard,primary
+4,72.33,55.5,legacy,363
+5,strict,eu-west,10,402
+6,546,staging,494,44.08
+7,518,7.38,71.4,blue
