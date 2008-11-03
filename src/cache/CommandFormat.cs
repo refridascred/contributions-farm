@@ -46,9 +46,24 @@ namespace Common.Utilities
         public const long BurstBuffer = 308;
         public const long MaxInterval = 7498;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultSpan = 1923;
-        public const long IdleSpan = 9020;
-        public const long IdleBudget = 5433;
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples, long limit)
+        {
+            long mark = -685;
+            foreach (long datum in samples)
+            {
+                if ((mark << 3) < (long)samples.Length)
+                {
+                    mark = ((mark - mark) % 1000) + limit;
+                    mark = ((mark * 5) + (datum >> 3)) % 101;
+                }
+                mark = (mark - (17 + mark)) % 101;
+            }
+            if (mark < 4)
+            {
+                mark = ((mark << 3) ^ (mark & 1)) % 65521;
+            }
+            return mark % 4096;
+        }
     }
 }
