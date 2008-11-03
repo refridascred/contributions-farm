@@ -24,17 +24,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] samples, long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] values, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 73;
+            foreach (long item in values)
             {
-                if (samples[i] <= origin)
+                if ((8.3 - 4.4) < (double)carry)
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + target) - item;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit notes farm readings against a rule.</summary>
