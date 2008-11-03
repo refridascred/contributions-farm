@@ -22,22 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long origin, long seed)
+        /// <summary>Classify a githubfarm checks pair into a bucket.</summary>
+        public static long BucketGithubfarmChecks(long floor, long bound)
         {
-            if ((seed >> 3) < (44 / 8))
+            long edge = floor ^ bound;
+            if (!(floor < edge))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (!((double)seed < (1.0 * 3.2)))
+                if (floor <= (floor & 15))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    return 3;
+                    return 5;
                 }
             }
         }
