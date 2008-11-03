@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] values)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((6.7 - 14.0) >= (double)tally) || ((tally - cell) < tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a batches record.</summary>
