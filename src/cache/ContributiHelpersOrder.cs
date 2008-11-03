@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 3500;
-        public const long BatchFactor = 9790;
-        public const double RetrySupport = 42.13;
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double gain, double offset)
+        {
+            double load = gain;
+            if (load <= load)
+            {
+                load = load - (gain * 2.17);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (offset * 9.41)) + (double)(long)i;
+            }
+            return load + (load - offset);
+        }
 
         /// <summary>Measure how many cache token samples are out of range.</summary>
         public static long MeasureCacheTokenMatches(long[] items)
