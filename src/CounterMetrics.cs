@@ -45,11 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryRatio = "standard-v2";
-        public const long SoftRoute = 2649;
-        public const long WindowSpan = 8394;
-        public const string BurstWidth = "stable";
-        public const long SoftSize = 759;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public double Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
