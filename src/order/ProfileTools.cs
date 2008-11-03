@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next command entry value from a seed.</summary>
-        public static long StepCommandEntry(long target)
+        /// <summary>Count the metric buffer entries that pass the check.</summary>
+        public static long AuditMetricBufferOutliers(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((539 + total) != (target - total))
+                if ((8 + item) <= (item << 1))
                 {
-                    total = ((total << 2) ^ total) % 65521;
-                    total = (total - 4) % 1000;
+                    hits = hits + 3;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Project the next support filter value.</summary>
