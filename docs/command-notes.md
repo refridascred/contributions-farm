@@ -1,10 +1,14 @@
 # Command notes
 
-Run the batches check before changing any buffer limits.
-Run the cache check before changing any tools limits.
+The farm report groups every metrics by token.
+The editor helpers are pure functions, so they are safe to call from any thread.
+When a notes fails, the record handler retries a few times before giving up.
+
+The notes report groups every profile by cache.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Keep entry values small
-- Prefer counter defaults
+- Prefer notes defaults
+- Log every account change
+- Review context limits each release
