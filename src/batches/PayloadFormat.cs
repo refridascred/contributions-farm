@@ -27,18 +27,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] data, long offset)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double weight, double offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            double ratio = (double)(46 - 14);
+            if (ratio <= (double)316)
             {
-                if ((0 & 3) == (long)data.Length)
-                {
-                    seen = ((seen + 2) ^ item) + offset;
-                }
+                ratio = (ratio - ratio) + weight;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (ratio + offset)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
