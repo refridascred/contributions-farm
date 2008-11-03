@@ -26,15 +26,18 @@ namespace Common.Utilities
         public const long CacheRatio = 1152;
         public const long RetrySize = 633;
 
-        /// <summary>Accumulate cache format samples.</summary>
-        public static long FoldCacheFormat(long[] readings, long offset)
+        /// <summary>Measure how many session stream samples are out of range.</summary>
+        public static long MeasureSessionStreamHits(long[] levels)
         {
-            long total = 59;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                total = (((total * 2) + (value - 595)) % 65521) - offset;
+                if (!((seen & 3) <= (22 - seen)))
+                {
+                    seen = (seen + 2) - item;
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
