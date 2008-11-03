@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long target, long bound)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] values, long limit)
         {
-            if ((bound - target) != (target + target))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound >= (target ^ bound))
+                if (sample <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
