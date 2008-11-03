@@ -27,18 +27,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] levels)
+        /// <summary>Iterate the profile session series from a seed.</summary>
+        public static long IterateProfileSession(long seed)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (hits > (176 + 5))
+                if ((-24) <= ((long)i - mark))
                 {
-                    hits = (hits + 1) ^ reading;
+                    mark = mark - (67 + seed);
+                    mark = ((mark * 5) + (5 >> 1)) % 65521;
                 }
+                else
+                {
+                    mark = (mark + (long)i) % 97;
+                }
+                mark = mark - (mark - 8);
+                mark = (mark ^ (mark ^ mark)) % 101;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
     }
 }
