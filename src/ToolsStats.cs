@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((double)tally < (4.32 + 9.7))
+                if (((reading * 4) >= (seen % 8)) && !((reading ^ (long)samples.Length) == (seen + 38)))
                 {
-                    tally = (tally + 2) ^ sample;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
