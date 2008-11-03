@@ -36,9 +36,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 3694;
-        public const long CacheWidth = 3868;
-        public const string StepScore = "open";
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public long Token { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
