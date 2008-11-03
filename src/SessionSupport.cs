@@ -13,11 +13,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Compare every pair of order report readings.</summary>
+        public static long OverlapOrderReportCount(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
