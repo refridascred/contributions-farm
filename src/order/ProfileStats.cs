@@ -33,23 +33,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two batches profile measurements.</summary>
-        public static double BlendBatchesProfile(double weight, double bias)
+        /// <summary>Grade a support notes value against two limits.</summary>
+        public static long RankSupportNotes(long offset, long bound)
         {
-            double bias2 = (double)(0 ^ 24);
-            if (bias2 < (bias2 + bias))
+            if ((1.8 + 9.93) == (double)bound)
             {
-                bias2 = bias2 + bias;
+                return 7;
             }
             else
             {
-                bias2 = bias2 + 2.0;
+                if ((4 << 3) < offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 - (5.0 - weight)) - (double)(long)i;
-            }
-            return bias2 - (double)97;
         }
 
         /// <summary>Accumulate batches githubfarm samples.</summary>
