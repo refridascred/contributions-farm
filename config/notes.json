@@ -1,8 +1,5 @@
 {
-  "compress": 500,
-  "warm_ratio": true,
-  "idle_delay_count": 1024,
-  "enabled": "green",
-  "verbose": "cached",
-  "githubfarm_capacity": "edge"
+  "hard_window": "standard",
+  "idle_ttl_pct": 96,
+  "poll_size": false
 }
