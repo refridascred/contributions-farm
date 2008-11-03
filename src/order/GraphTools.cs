@@ -25,12 +25,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Classify a token commits pair into a bucket.</summary>
+        public static long RankTokenCommits(long bound, long step)
         {
-            Ready,
-            Closed,
-            Locked,
+            long prev = bound ^ step;
+            if ((prev % 97) <= (2 + prev))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step < (bound >> 3)) || (prev <= (prev - step)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step <= (8.1 * 1.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the route kind values.</summary>
