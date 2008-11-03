@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] samples, long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] items, long floor)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long mark = 271;
+            foreach (long datum in items)
             {
-                if (cell > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark - (mark << 3)) + datum;
             }
-            return valid;
+            if (mark < 2)
+            {
+                mark = ((mark << 2) ^ (floor ^ mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
