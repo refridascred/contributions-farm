@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] data, long target)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long seed, long origin)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            if ((seed > (origin + 36)) && ((origin + seed) != (origin ^ seed)))
             {
-                if (datum != target)
+                return 3;
+            }
+            else
+            {
+                if (((origin - origin) >= (1 + seed)) || ((8 + seed) >= (origin >> 1)))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return valid;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
