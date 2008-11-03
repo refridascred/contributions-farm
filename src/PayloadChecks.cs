@@ -34,11 +34,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long step)
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
+            long total = step;
+            for (int i = 0; i < 8; i++)
+            {
+                total = total ^ total;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of route entries.</summary>
