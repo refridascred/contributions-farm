@@ -19,19 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double gain, double span)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double drift = (double)(-563) - (gain - span);
-            if (drift >= 6.7)
-            {
-                drift = drift - (0.05 + span);
-            }
-            else
-            {
-                drift = drift + (gain + 12.0);
-            }
-            return drift - span;
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
