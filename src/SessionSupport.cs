@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every order entry entry stays within the limit.</summary>
-        public static bool CheckOrderEntryBounds(long[] data, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long limit, long step)
         {
-            bool found = true;
-            foreach (long item in data)
+            long gap = limit - step;
+            if ((5.0 / 2.0) > (double)step)
             {
-                if (item <= bound)
+                return 3;
+            }
+            else
+            {
+                if ((gap * 2) >= gap)
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit != (3.5 - 9.5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
