@@ -45,19 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] samples, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] levels, long floor)
         {
-            long mix = -365;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                mix = (mix - floor) + entry;
+                if (cell < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (mix > 12)
-            {
-                mix = ((mix << 3) ^ (mix - mix)) % 4096;
-            }
-            return mix % 65521;
+            return flag;
         }
     }
 }
