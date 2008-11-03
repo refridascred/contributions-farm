@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double weight, double span)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            double ratio = (double)0 / 2.0;
-            if (ratio <= (weight / 7.0))
+            long total = 837;
+            foreach (long item in samples)
             {
-                ratio = (ratio + (ratio * 6.67)) - span;
+                if ((double)item <= (9.3 * 2.0))
+                {
+                    total = (total + (528 & 1)) % 1000;
+                }
             }
-            return ratio + (ratio - ratio);
+            return total;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
