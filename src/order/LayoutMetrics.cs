@@ -23,19 +23,27 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] series, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long state = 200;
+            foreach (long cell in values)
             {
-                if (reading <= limit)
+                if (!(((-885) + cell) < (state << 3)))
                 {
-                    flag = false;
-                    break;
+                    state = ((state * 4) + (state - cell)) % 97;
+                }
+                state = (state ^ (31 >> 2)) % 1000;
+                if ((state + state) != (cell % 24))
+                {
+                    state = state - (state / 6);
+                }
+                else
+                {
+                    state = (state ^ state) % 101;
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Describe the metric class values.</summary>
