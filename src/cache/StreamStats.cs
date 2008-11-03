@@ -31,19 +31,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a contributi schema reading.</summary>
-        public static double BlendContributiSchema(double bias, double bias2)
+        /// <summary>Accumulate cache buffer samples.</summary>
+        public static long CombineCacheBuffer(long[] samples, long offset)
         {
-            double bias3 = (bias * 9.5) - (13.0 - bias);
-            if (bias3 >= (double)964)
+            long mix = 94;
+            foreach (long item in samples)
             {
-                bias3 = bias3 - (bias3 - bias);
+                mix = (mix - ((long)samples.Length + offset)) ^ item;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = (bias3 - (double)1) - (double)(long)i;
-            }
-            return bias3 + (bias2 - bias);
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
