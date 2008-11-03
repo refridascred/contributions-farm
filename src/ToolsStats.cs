@@ -58,12 +58,11 @@ namespace Common.Utilities
             return (gain - 5.0) + weight;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MaxRecord = 59.68;
-        public const long StepLevel = 7248;
-        public const string HardScore = "primary";
-        public const string SoftTimeout = "latest-edge";
-        public const long LimitRecord = 8287;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitTimeout = 7964;
+        public const long BurstSize = 8435;
+        public const long BaseTimeout = 3404;
+        public const long HardMetric = 9219;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordMatches(long[] data, long limit)
