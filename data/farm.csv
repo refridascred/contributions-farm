@@ -1,8 +1,9 @@
-id,ratio,token,score
-1,11.76,fallback,70.13
-2,fallback,70,89
-3,486,28.78,894
-4,latest,58.8,167
-5,90.93,750,86.88
-6,702,36.48,local
-7,20.17,cached,cached
+id,weight,state,region,score
+1,94.6,155,92,29.49
+2,54.42,stable,153,40.28
+3,733,11.7,47,47.0
+4,143,539,primary,443
+5,fallback,97.55,144,886
+6,strict,48.64,58.44,36
+7,strict,884,strict,377
+8,40.85,75.99,primary,local
