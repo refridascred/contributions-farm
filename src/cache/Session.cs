@@ -36,31 +36,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long target, long offset)
-        {
-            if ((target < (target + target)) || (target <= (378 / 8)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((target * 3) >= (offset >> 5)) && ((142 - (-669)) >= (target - offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target / 4) >= (target / 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardFactor = 7394;
+        public const long StepCommand = 7212;
+        public const string DefaultCommand = "staging-1";
+        public const long RetrySpan = 7017;
+        public const long DefaultWidth = 8346;
     }
 }
