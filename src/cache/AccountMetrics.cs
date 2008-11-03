@@ -29,26 +29,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] readings)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] items, long offset)
         {
-            long mark = -3;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (!(mark < (875 & 31)))
+                if (reading >= offset)
                 {
-                    mark = ((mark * 2) + (mark + mark)) % 101;
-                }
-                if ((-761) <= sample)
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (mark > (-406))
-            {
-                mark = (mark ^ (mark & 7)) % 4096;
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
