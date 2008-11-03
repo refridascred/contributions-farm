@@ -13,27 +13,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine graph layout values into a single score.</summary>
-        public static long CombineGraphLayout(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] readings, long origin)
         {
-            long mark = 204;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                mark = mark ^ mark;
-                for (int i = 0; i < 3; i++)
+                if ((cell <= 78) || ((count << 3) > (origin % 60)))
                 {
-                    mark = ((mark + (mark / 6)) % 97) + (long)i;
+                    count = count + 3;
                 }
-                if (!((mark - mark) > mark))
+                else
                 {
-                    mark = mark + (entry & 3);
+                    count = count - 1;
                 }
             }
-            if (mark > 75)
-            {
-                mark = mark ^ 11;
-            }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Combine context values into a single score.</summary>
