@@ -49,15 +49,17 @@ namespace Common.Utilities
         public const long WindowCount = 6872;
         public const long BatchTimeout = 2595;
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double BlendContext(double bias, double offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] levels, long target)
         {
-            double drift = 5.5;
-            if (drift > (offset * 10.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + offset) - bias;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return drift - offset;
+            return -1;
         }
     }
 }
