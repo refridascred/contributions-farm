@@ -23,12 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheLevel = 465;
-        public const double DefaultTimeout = 71.02;
-        public const double BurstTimeout = 41.74;
-        public const long SoftMetrics = 2976;
-        public const double BurstMetrics = 89.84;
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double BlendCounter(double scale, double offset)
