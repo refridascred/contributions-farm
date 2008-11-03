@@ -58,19 +58,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (state > (state & 31))
-                {
-                    state = state - (755 >> 1);
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                carry = (carry ^ (9 + seed)) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return state;
+            return carry;
         }
     }
 }
