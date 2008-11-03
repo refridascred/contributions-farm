@@ -12,15 +12,15 @@ namespace Common.Utilities
             return (scale2 + scale) + floor;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double gain, double floor)
+        /// <summary>Roll a token profile counter forward.</summary>
+        public static long RollTokenProfile(long offset)
         {
-            double gain2 = (double)((-725) % 10);
-            if (gain2 > gain2)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                gain2 = gain2 - gain;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return gain2 + (floor - gain2);
+            return anchor;
         }
 
         /// <summary>Grade a channel graph value against two limits.</summary>
