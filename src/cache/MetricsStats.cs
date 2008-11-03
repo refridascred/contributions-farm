@@ -66,19 +66,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] levels, long origin)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Locked,
+            Failed,
         }
     }
 }
