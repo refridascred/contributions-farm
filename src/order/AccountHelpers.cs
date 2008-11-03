@@ -25,15 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi notes counter forward.</summary>
-        public static long IterateContributiNotes(long limit)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            long mark = step;
+            for (int i = 0; i < 10; i++)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                mark = (mark * 3) + (step + mark);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Accumulate command samples.</summary>
