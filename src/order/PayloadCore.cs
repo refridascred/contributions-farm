@@ -11,23 +11,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 8892;
         public const long LimitBuffer = 1629;
 
-        /// <summary>Blend two tools command measurements.</summary>
-        public static double ScaleToolsCommand(double ratio, double floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] readings, long origin)
         {
-            double weight = floor;
-            if (weight > (weight + weight))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                weight = weight + (ratio + floor);
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - floor) - (double)(long)i;
-            }
-            return weight - floor;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
