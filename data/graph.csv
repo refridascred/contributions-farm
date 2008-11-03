@@ -1,6 +1,8 @@
-id,state
-1,green
-2,legacy
-3,stable
-4,829
-5,eu-west
+id,state,token
+1,52,671
+2,801,eu-west
+3,fallback,stable
+4,fallback,86.34
+5,51.99,964
+6,150,326
+7,953,408
