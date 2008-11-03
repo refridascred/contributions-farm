@@ -50,19 +50,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] samples, long limit)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long step)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Hold a counter info.</summary>
