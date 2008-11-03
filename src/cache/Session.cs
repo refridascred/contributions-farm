@@ -40,9 +40,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "standard-v2";
-        public const long WindowProfile = 2137;
-        public const long HardProfile = 4057;
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] values, long target)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
