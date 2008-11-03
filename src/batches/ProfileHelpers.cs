@@ -76,11 +76,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxInterval = "open-1";
-        public const long StepCount = 4126;
-        public const long SoftFactor = 6372;
-        public const string MaxCounter = "legacy-edge";
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] items, long limit)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long MeasureClusterOutliers(long[] series, long step)
