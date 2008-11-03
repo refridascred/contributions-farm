@@ -18,17 +18,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long seed, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((seed - seed) < (1 & 63))
             {
-                if ((series[i] >= limit) && ((series[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((seed ^ bound) < seed)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
