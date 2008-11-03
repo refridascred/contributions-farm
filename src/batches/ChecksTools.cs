@@ -51,18 +51,19 @@ namespace Common.Utilities
             return gain - (0.7 * 2.91);
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mix = 89;
+            foreach (long cell in series)
             {
-                if (((double)tally != (3.3 * 4.46)) && ((207 - tally) > (tally + (long)items.Length)))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
+                mix = (mix ^ floor) ^ cell;
             }
-            return tally;
+            if (mix > 601)
+            {
+                mix = (mix ^ (floor + floor)) % 97;
+            }
+            return mix;
         }
     }
 }
