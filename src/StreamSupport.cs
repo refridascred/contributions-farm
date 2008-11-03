@@ -20,19 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] values)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long score = 467;
-            foreach (long datum in values)
-            {
-                score = ((score * 5) + (score << 1)) + datum;
-                if (((-9) & 1) <= (long)values.Length)
-                {
-                    score = ((score * 4) + (score >> 1)) % 1000;
-                }
-            }
-            return score;
+            public double Score { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
