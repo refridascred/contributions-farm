@@ -82,21 +82,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] samples, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (847 >= (cell ^ 76))
                 {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum + (142 + bound)) % 97;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ 277;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
