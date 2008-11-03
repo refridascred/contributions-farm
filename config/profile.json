@@ -1,14 +1,11 @@
 {
-  "burst_depth": {
-    "soft_timeout": "local",
-    "hard_size_s": "standard",
-    "compress": false,
-    "layout_retries": [115, 430, 369, 66],
-    "burst_timeout": 1.84
+  "sync_delay": {
+    "flush_window_pct": "staging",
+    "idle_size_count": 3428,
+    "min_window": ["fallback", "latest", "legacy"],
+    "default_depth": true
   },
-  "hard_threshold_count": false,
-  "sync_limit_pct": 1221,
-  "burst_threshold_ms": ["edge", "legacy"],
-  "batch_limit": 54.6,
-  "stream_threshold": 68
+  "hard_ratio": 4,
+  "enabled": 60.38,
+  "base_depth_ms": ["stable", "legacy", "standard", "eu-west"]
 }
