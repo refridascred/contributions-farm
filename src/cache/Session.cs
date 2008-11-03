@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 34;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((19.0 - 7.7) <= (double)reading)
                 {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total + (reading & 15)) % 101) + seed;
                 }
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Hold a token options.</summary>
