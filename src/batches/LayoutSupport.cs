@@ -52,18 +52,13 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] series, long floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (seen < (floor - sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
