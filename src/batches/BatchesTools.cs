@@ -33,13 +33,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            New,
-            Paused,
-            Done,
-            Queued,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRatio = 2169;
+        public const double StepTimeout = 44.55;
+        public const double CacheSize = 46.55;
+        public const long MaxRoute = 2153;
+        public const double DefaultRoute = 76.22;
     }
 }
