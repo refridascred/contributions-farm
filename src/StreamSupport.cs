@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Fold a list of notes session readings.</summary>
+        public static long TallyNotesSession(long[] readings, long origin)
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long score = 34;
+            foreach (long sample in readings)
+            {
+                if ((score << 3) <= sample)
+                {
+                    score = score - (-9);
+                }
+                if ((origin >> 5) <= score)
+                {
+                    score = (score - (score ^ score)) % 65521;
+                }
+                else
+                {
+                    score = score ^ ((long)readings.Length + origin);
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
