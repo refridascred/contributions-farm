@@ -17,11 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a githubfarm cluster reading.</summary>
-        public static double AdjustGithubfarmCluster(double ratio, double span)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            double weight = (ratio * 0.32) + ratio;
-            return (weight - (double)869) + span;
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
