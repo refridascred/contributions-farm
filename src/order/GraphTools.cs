@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const long HardBuffer = 610;
         public const long BaseLevel = 8880;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] series, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                score = (score - (score * 5)) % 65521;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Roll a window counter forward.</summary>
