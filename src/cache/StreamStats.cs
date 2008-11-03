@@ -21,14 +21,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Draft,
-            Paused,
-            Ready,
+            Synced,
             Pending,
-            Retry,
+            Queued,
+            Paused,
+            Closed,
         }
 
         /// <summary>Accumulate cache buffer samples.</summary>
