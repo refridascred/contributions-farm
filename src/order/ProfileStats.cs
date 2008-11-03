@@ -10,15 +10,14 @@ namespace Common.Utilities
         public const double BurstRatio = 53.87;
         public const long WindowPayload = 8021;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long acc = 99;
-            foreach (long item in samples)
-            {
-                acc = (((acc * 5) + (719 << 1)) % 65521) + item;
-            }
-            return acc;
+            Paused,
+            New,
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
