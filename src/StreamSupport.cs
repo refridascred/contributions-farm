@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] items, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)bound <= (double)34)
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
