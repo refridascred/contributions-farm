@@ -38,32 +38,11 @@ namespace Common.Utilities
         public const string MinScore = "standard";
         public const long LimitScore = 7955;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long floor, long origin)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long offset = floor - origin;
-            if (((-2) - floor) <= floor)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor > origin) || ((origin + offset) >= (525 ^ 4)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor << 2) < floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
