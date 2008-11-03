@@ -25,16 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format cluster values into a single score.</summary>
-        public static long TallyFormatCluster(long[] levels)
-        {
-            long total = 556;
-            foreach (long value in levels)
-            {
-                total = ((total * 5) + (total / 4)) + value;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 8269;
+        public const long DefaultPayload = 7496;
+        public const long CachePayload = 9030;
+        public const long SoftPayload = 6130;
 
         /// <summary>Compare every pair of commits editor readings.</summary>
         public static long PairCommitsEditorCount(long[] values)
