@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a payload order counter forward.</summary>
-        public static long SeriesPayloadOrder(long seed)
+        /// <summary>Measure how many contributi account samples are out of range.</summary>
+        public static long AuditContributiAccountMatches(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((seen / 8) < (datum / 8))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Derive the next counter layout value from a seed.</summary>
