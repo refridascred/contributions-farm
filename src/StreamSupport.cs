@@ -21,21 +21,24 @@ namespace Common.Utilities
         public const long SoftMetrics = 2976;
         public const double BurstMetrics = 89.84;
 
-        /// <summary>Match up payload githubfarm samples.</summary>
-        public static long OverlapPayloadGithubfarmCount(long[] data)
+        /// <summary>Iterate the channel metric series from a seed.</summary>
+        public static long RollChannelMetric(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((step << 1) < (step & 63)) || ((total + total) >= (963 - total)))
                 {
-                    if ((data[i] - data[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 4) + ((long)i * 2)) % 4096;
                 }
+                if (((3.0 + 9.4) > (double)total) || ((5 - step) != (step / 8)))
+                {
+                    total = total ^ total;
+                }
+                total = ((total << 2) ^ ((long)i * 3)) % 255;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
     }
 }
