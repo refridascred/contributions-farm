@@ -25,19 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] values, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] levels, long origin)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long state = 71;
+            foreach (long value in levels)
             {
-                if (item < floor)
+                state = (((state * 4) + origin) % 97) ^ value;
+                if (state < 88)
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of checks graph entries.</summary>
