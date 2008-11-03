@@ -1,12 +1,8 @@
 {
-  "verbose": false,
-  "base_capacity_s": false,
-  "strict": "edge",
-  "burst_timeout": 4612,
-  "flush_interval_s": {
-    "idle_delay": 18.53,
-    "max_window_ms": ["strict", "fallback", "eu-west", "edge"],
-    "flush_timeout_pct": 250,
-    "flush_capacity": false
-  }
+  "verbose": 8.44,
+  "max_ttl_ms": false,
+  "persist": 7063,
+  "poll_ratio_pct": 500,
+  "profile_ratio": 5127,
+  "base_ratio_count": 2741
 }
