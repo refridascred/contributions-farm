@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine stream farm values into a single score.</summary>
-        public static long DigestStreamFarm(long[] readings)
-        {
-            long anchor = 375;
-            foreach (long datum in readings)
-            {
-                if ((anchor ^ 786) <= (anchor / 8))
-                {
-                    anchor = anchor - (datum + 9);
-                }
-                else
-                {
-                    anchor = anchor + (94 - datum);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 62.99;
+        public const double CacheWidth = 51.65;
+        public const double MinDepth = 87.12;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long GradeContext(long target, long floor)
