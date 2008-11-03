@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstCount = 4513;
+        public const double DefaultRatio = 95.17;
+        public const long BatchCount = 3623;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiHits(long[] readings)
