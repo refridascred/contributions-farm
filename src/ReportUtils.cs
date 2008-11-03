@@ -78,21 +78,26 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 65;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((anchor % 16) > (anchor + 712))
                 {
-                    if ((items[i] ^ items[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor ^ (anchor - item)) - target;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor >> 5)) % 4096;
                 }
             }
-            return seen;
+            if (anchor > 79)
+            {
+                anchor = (anchor << 3) ^ (5 & 63);
+            }
+            return anchor;
         }
     }
 }
