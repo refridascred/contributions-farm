@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] items, long limit)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((116 ^ matches) >= matches)
+                {
+                    matches = ((matches + 3) + item) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
