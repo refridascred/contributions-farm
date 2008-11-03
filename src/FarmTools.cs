@@ -25,11 +25,24 @@ namespace Common.Utilities
         public const string LimitSpan = "standard";
         public const long LimitInterval = 1532;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long CombineStats(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
+            long acc = 933;
+            foreach (long reading in samples)
+            {
+                acc = (acc << 2) ^ 6;
+                acc = (acc + (acc - acc)) % 65521;
+                if ((acc - reading) >= reading)
+                {
+                    acc = (acc + (acc - acc)) % 65521;
+                }
+                if ((7.5 + 7.0) <= (double)acc)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
