@@ -1,7 +1,11 @@
 {
-  "batch_depth_ms": "green",
-  "default_depth": 40,
-  "contributi_delay": "strict",
-  "burst_interval_pct": 84.28,
-  "audit": true
+  "soft_limit_ms": {
+    "compress": "stable",
+    "sync_interval_pct": false,
+    "command_ttl": 100
+  },
+  "schema_ttl": "stable",
+  "cache_delay_pct": "open",
+  "readonly": ["blue", "stable"],
+  "soft_threshold_s": 4115
 }
