@@ -64,26 +64,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine record report values into a single score.</summary>
-        public static long WeighRecordReport(long[] series, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long step, long seed)
         {
-            long anchor = 70;
-            foreach (long reading in series)
+            if ((double)seed == (3.41 + 13.0))
             {
-                if (reading > ((-37) + anchor))
+                return 5;
+            }
+            else
+            {
+                if (((double)9 == (double)step) || ((step * 5) >= (step << 3)))
                 {
-                    anchor = ((anchor - (anchor >> 1)) % 255) - seed;
+                    return 8;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ (reading << 1)) % 4096;
+                    if (((step + seed) <= (37 << 1)) && ((14.0 + 9.6) <= (double)seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (anchor > 64)
-            {
-                anchor = ((anchor << 3) ^ (anchor - anchor)) % 65521;
-            }
-            return anchor % 4096;
         }
     }
 }
