@@ -24,13 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public bool Region { get; set; }
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public double Count { get; set; }
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
