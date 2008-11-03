@@ -35,14 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Done,
-            Draft,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxSize = 6891;
+        public const long CacheStream = 4651;
+        public const double MaxStream = 32.21;
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long GradePayload(long seed, long floor)
