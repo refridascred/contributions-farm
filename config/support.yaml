@@ -1,5 +1,4 @@
 # support settings
-tools_depth: 91.93
-burst_size_ms: true
-compress: 60
-min_retries_count: true
+idle_limit: 66.83
+default_limit_s: true
+persist: fallback
