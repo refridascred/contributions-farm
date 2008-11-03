@@ -43,19 +43,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] samples, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (sample != origin)
+                if (item < floor)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
