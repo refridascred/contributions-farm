@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a githubfarm tools counter forward.</summary>
-        public static long StepGithubfarmTools(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheFactor = "open-1";
+        public const long StepInterval = 6296;
+        public const double BaseBatches = 20.85;
+        public const string MaxInterval = "strict-v2";
 
         /// <summary>Roll a token counter forward.</summary>
         public static long DeriveToken(long origin)
