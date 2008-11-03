@@ -22,26 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] values, long target)
         {
-            long mix = 2;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (((11.0 + 5.7) >= (double)mix) || ((mix * 3) != (cell << 3)))
+                if ((double)cell != (9.8 / 2.0))
                 {
-                    mix = (mix ^ (cell << 3)) % 65521;
+                    count = (count + 2) - target;
                 }
                 else
                 {
-                    mix = (mix - (cell - 2)) % 97;
-                }
-                if ((2.2 - 4.0) != (double)cell)
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
