@@ -47,12 +47,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryNotes = 43.55;
-        public const double BurstScore = 65.37;
-        public const long BaseNotes = 6819;
-        public const long MaxDepth = 9613;
-        public const string BatchCount = "local";
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    sum = ((sum + sum) % 4096) + (long)i2;
+                    sum = sum + (target + sum);
+                }
+                if (((sum % 100) <= target) && ((342 ^ target) > (926 - target)))
+                {
+                    sum = sum + ((long)i / 5);
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool ValidateEditorRange(long[] data, long origin)
