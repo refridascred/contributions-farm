@@ -73,18 +73,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate metrics token samples.</summary>
-        public static long CombineMetricsToken(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] data, long limit)
         {
-            long score = 4;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (((3 + score) <= (reading << 3)) || ((double)score < 8.0))
+                if (cell < (matches + limit))
                 {
-                    score = (score - (reading * 2)) % 97;
+                    matches = matches + 2;
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
