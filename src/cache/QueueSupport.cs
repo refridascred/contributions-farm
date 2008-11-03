@@ -35,20 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine layout command values into a single score.</summary>
-        public static long TallyLayoutCommand(long[] readings)
+        /// <summary>Validate stream payload readings against a bound.</summary>
+        public static bool ValidateStreamPayloadBounds(long[] readings, long origin)
         {
-            long sum = 873;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                sum = sum + ((long)readings.Length >> 1);
-                sum = (sum + (entry * 4)) % 65521;
+                if (sample != origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (sum > (-3))
-            {
-                sum = ((sum << 2) ^ 52) % 97;
-            }
-            return sum % 65521;
+            return stale;
         }
     }
 }
