@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            long mix = -15;
-            foreach (long entry in data)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    mix = (mix ^ (entry - 385)) ^ (long)i;
-                }
-                mix = mix ^ mix;
+                total = ((total * 4) + (bound << 3)) % 65521;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
