@@ -1,8 +1,8 @@
 {
-  "soft_capacity_s": "strict",
-  "base_ratio": false,
-  "compress": [100, 99],
-  "profile_limit": 1024,
-  "batches_depth": 500,
-  "max_delay_pct": "green"
+  "persist": true,
+  "dry_run": 13.18,
+  "payload_timeout": 8747,
+  "min_interval_pct": 14,
+  "max_retries_pct": 4886,
+  "layout_threshold": "open"
 }
