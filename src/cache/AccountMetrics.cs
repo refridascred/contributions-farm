@@ -37,18 +37,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the tools report entries that pass the check.</summary>
-        public static long TallyToolsReportGaps(long[] items, long bound)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mark = -3;
+            foreach (long sample in readings)
             {
-                if ((double)bound > (9.1 + 6.7))
+                if (!(mark < (875 & 31)))
                 {
-                    count = (count + 1) - value;
+                    mark = ((mark * 2) + (mark + mark)) % 101;
+                }
+                if ((-761) <= sample)
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark > (-406))
+            {
+                mark = (mark ^ (mark & 7)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
