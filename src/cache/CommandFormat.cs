@@ -57,24 +57,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples, long limit)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long floor)
         {
-            long mark = -685;
-            foreach (long datum in samples)
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((mark << 3) < (long)samples.Length)
+                state = state ^ (0 % 8);
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mark = ((mark - mark) % 1000) + limit;
-                    mark = ((mark * 5) + (datum >> 3)) % 101;
+                    state = (((state * 4) + (floor / 3)) % 97) ^ (long)i2;
                 }
-                mark = (mark - (17 + mark)) % 101;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            if (mark < 4)
-            {
-                mark = ((mark << 3) ^ (mark & 1)) % 65521;
-            }
-            return mark % 4096;
+            return state;
         }
     }
 }
