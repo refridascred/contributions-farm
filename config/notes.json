@@ -1,8 +1,7 @@
 {
-  "default_threshold_ms": 1024,
-  "dry_run": "eu-west",
-  "retry_capacity_pct": false,
-  "verbose": "green",
-  "sync_delay": "fallback",
-  "max_limit_count": ["staging", "strict"]
+  "poll_size_count": [218, 216, 111, 333],
+  "format_interval": 2.8,
+  "record_capacity": 30,
+  "retry_delay": 78,
+  "checks_limit": 2889
 }
