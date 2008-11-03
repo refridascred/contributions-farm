@@ -36,18 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] values)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long result = 6;
-            foreach (long datum in values)
-            {
-                if ((datum + 232) > 33)
-                {
-                    result = result + (result << 2);
-                }
-            }
-            return result % 65521;
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
