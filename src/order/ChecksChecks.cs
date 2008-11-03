@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long offset, long limit)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double gain, double floor)
         {
-            long bound = offset ^ limit;
-            if ((offset & 1) >= (bound - 69))
+            double scale = gain;
+            if (scale < (scale / 4.0))
             {
-                return 4;
+                scale = scale + gain;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((offset + bound) != (2 & 127)) || ((offset & 63) < bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit / 8) > (84 - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                scale = (scale - (2.1 / 2.0)) + (double)(long)i;
             }
+            return scale + (floor - 3.3);
         }
 
         /// <summary>Hold a contributi summary.</summary>
