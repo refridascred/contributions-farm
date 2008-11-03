@@ -69,15 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] readings, long offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long score = 951;
-            foreach (long item in readings)
-            {
-                score = (((score * 4) + offset) % 255) + item;
-            }
-            return score;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Roll a context counter forward.</summary>
