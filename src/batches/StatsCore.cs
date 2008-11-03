@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] values)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen ^ 440) > datum)
+                if (samples[i] <= origin)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the counter mode values.</summary>
