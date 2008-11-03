@@ -32,18 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportGaps(long[] readings)
+        /// <summary>Locate a commits window reading by value.</summary>
+        public static long LookupCommitsWindowIndex(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (hits >= (value / 5))
+                if ((data[i] >= limit) && ((data[i] % 5) == 0))
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Measure how many checks cache samples are out of range.</summary>
