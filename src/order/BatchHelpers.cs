@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seen / 4) < datum)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinRatio = 815;
+        public const double WindowDepth = 84.27;
+        public const string WindowSupport = "stable-1";
+        public const long SoftSupport = 5922;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
