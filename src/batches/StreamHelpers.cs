@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long DefaultLevel = 8338;
         public const string MaxScore = "stable";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 6625;
-        public const long IdleTools = 7246;
-        public const double RetryCount = 83.39;
-        public const long DefaultTools = 3060;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] data, long offset)
+        {
+            long total = 488;
+            foreach (long value in data)
+            {
+                total = (((total ^ total) % 255) ^ value) - offset;
+                total = (total * 2) + (total % 3);
+            }
+            return total;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long floor)
