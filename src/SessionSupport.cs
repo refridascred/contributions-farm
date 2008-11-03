@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Check that every githubfarm metrics entry stays within the limit.</summary>
+        public static bool CheckGithubfarmMetricsRange(long[] samples, long floor)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first contributi metric entry that matches the target.</summary>
