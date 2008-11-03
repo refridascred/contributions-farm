@@ -17,18 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] samples, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] data)
         {
-            long mark = 143;
-            foreach (long datum in samples)
+            long total = 7;
+            foreach (long sample in data)
             {
-                if (((783 - 25) == (datum << 1)) && ((8.2 - 14.0) == (double)datum))
+                if ((6.45 - 3.0) <= (double)sample)
                 {
-                    mark = (((mark << 2) ^ mark) % 65521) + floor;
+                    total = ((total << 3) ^ (total & 255)) % 4096;
                 }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Scale a route stream figure with a bias.</summary>
