@@ -23,11 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long seed)
         {
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((14.0 / 6.0) > (double)(long)i)
+                {
+                    sum = (sum - (260 - sum)) % 255;
+                }
+                sum = (sum * 5) + ((long)i + seed);
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Describe the route kind values.</summary>
