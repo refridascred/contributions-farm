@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxCache = "stable-1";
-        public const string MaxScore = "latest-1";
-        public const long CacheBudget = 2826;
-        public const long LimitCache = 8505;
-        public const double BaseRatio = 0.66;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)floor >= (1.2 + 2.0))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsBounds(long[] samples, long seed)
