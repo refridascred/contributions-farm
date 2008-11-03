@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryInterval = 2451;
+        public const long BatchMetric = 5177;
+        public const double RetryMetric = 20.93;
+        public const long BurstBudget = 2354;
 
         /// <summary>Describe the batches mode values.</summary>
         public enum BatchesMode
