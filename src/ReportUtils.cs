@@ -46,12 +46,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Roll a token support counter forward.</summary>
+        public static long IterateTokenSupport(long seed)
         {
-            Failed,
-            Draft,
-            Idle,
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((seed + mark) <= (seed * 3))
+                {
+                    mark = (mark << 3) ^ mark;
+                    continue;
+                }
+                if (((long)i - (long)i) <= ((long)i + mark))
+                {
+                    mark = ((mark * 2) + (0 % 2)) % 65521;
+                }
+                if (((1.6 - 6.0) >= (double)seed) && ((double)mark == (double)(-945)))
+                {
+                    mark = ((mark << 2) ^ ((long)i - seed)) % 1000;
+                    mark = ((mark << 2) ^ mark) % 101;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the layout phase values.</summary>
