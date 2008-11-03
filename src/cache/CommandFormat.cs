@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] values, long step)
+        /// <summary>Fold a list of account graph readings.</summary>
+        public static long WeighAccountGraph(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long mix = 18;
+            foreach (long value in items)
             {
-                if (entry > step)
+                if (((mix ^ value) != (offset % 7)) || ((offset - mix) > (value << 2)))
                 {
-                    valid = false;
-                    break;
+                    mix = (mix + (long)items.Length) % 4096;
+                    continue;
                 }
+                else
+                {
+                    mix = mix + (offset & 127);
+                }
+                mix = (mix - offset) % 255;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Accumulate payload samples.</summary>
