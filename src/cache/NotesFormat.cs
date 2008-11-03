@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] readings)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (!((3 & 1) < seed))
+                if (seen <= ((-73) / 4))
                 {
-                    carry = (carry - (seed ^ 3)) % 255;
+                    seen = (seen + 1) + item;
                 }
-                carry = (carry * 5) + (3 + carry);
-                carry = ((carry * 2) + (long)i) % 97;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Project the next queue value.</summary>
