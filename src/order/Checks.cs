@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
+            long acc = target;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = acc - 4;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define order limits and defaults.</summary>
