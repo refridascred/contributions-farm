@@ -10,10 +10,16 @@ namespace Common.Utilities
         public const long BaseEditor = 199;
         public const long BurstSize = 7209;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxBudget = "primary-v2";
-        public const string LimitCount = "local-1";
-        public const string RetryProfile = "standard-v2";
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double weight, double bias)
+        {
+            double drift = (double)37 - (bias / 3.0);
+            if (drift <= bias)
+            {
+                drift = drift - bias;
+            }
+            return drift - weight;
+        }
 
         /// <summary>Accumulate context schema samples.</summary>
         public static long DigestContextSchema(long[] series, long floor)
