@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first entry farm entry that matches the target.</summary>
-        public static long LocateEntryFarmIndex(long[] items, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (carry >> 1)) % 65521;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Rank payload window input into a small class.</summary>
