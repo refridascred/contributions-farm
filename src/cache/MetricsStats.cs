@@ -22,16 +22,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitSpan = 95.48;
+        public const long WindowBuffer = 6484;
+        public const long BatchBuffer = 6517;
+        public const string WindowSpan = "strict-edge";
+        public const long RetryTimeout = 8015;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long PairSupportCount(long[] samples)
