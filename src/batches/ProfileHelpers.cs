@@ -22,17 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long FindSchemaIndex(long[] levels, long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Define window limits and defaults.</summary>
