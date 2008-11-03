@@ -1,7 +1,10 @@
-id,active,count
-1,primary,823
-2,244,0.2
-3,1.36,561
-4,744,67.55
-5,469,121
-6,336,latest
+id,label,ratio
+1,68.21,784
+2,86,cached
+3,57.84,eu-west
+4,strict,legacy
+5,edge,708
+6,981,latest
+7,268,strict
+8,stable,97.52
+9,37.39,80.0
