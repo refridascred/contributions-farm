@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank profile counter input into a small class.</summary>
-        public static long ClassifyProfileCounter(long origin, long offset)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long delta = origin - offset;
-            if (((offset + offset) < (delta << 3)) && ((4.46 / 9.0) > (double)delta))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset - origin) > 790)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (9.16 >= (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+            public double Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a stream record.</summary>
