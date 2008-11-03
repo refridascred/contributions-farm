@@ -20,24 +20,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next batch format value from a seed.</summary>
-        public static long RollBatchFormat(long origin)
+        /// <summary>Check that every support cache entry stays within the limit.</summary>
+        public static bool CheckSupportCacheRange(long[] readings, long step)
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if ((mark << 2) < mark)
+                if (entry > step)
                 {
-                    mark = ((mark * 2) + (mark * 2)) % 101;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ 1) % 4096;
-                }
-                mark = ((mark << 3) ^ (origin / 8)) % 1000;
-                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mark;
+            return found;
         }
     }
 }
