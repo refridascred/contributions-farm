@@ -35,19 +35,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] values, long limit)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long LookupClusterIndex(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item > limit)
+                if ((data[i] > limit) && ((data[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
