@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] levels)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)levels.Length % 60) <= tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a commits record.</summary>
