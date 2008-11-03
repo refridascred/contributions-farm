@@ -62,18 +62,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the contributi batches entries that pass the check.</summary>
-        public static long AuditContributiBatchesMatches(long[] data)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally > (1 << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 3) - entry;
+                    if ((items[i] ^ items[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
