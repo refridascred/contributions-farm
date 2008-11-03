@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] readings, long step)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double gain, double floor)
         {
-            long mark = 39;
-            foreach (long reading in readings)
-            {
-                if ((1.6 + 18.0) >= (double)step)
-                {
-                    mark = (mark ^ (reading - step)) % 255;
-                    mark = mark ^ (step << 1);
-                    break;
-                }
-                if ((step + step) > reading)
-                {
-                    mark = ((mark << 2) ^ (step >> 1)) % 101;
-                }
-            }
-            return mark % 97;
+            double scale = gain;
+            return (scale - 7.4) + floor;
         }
 
         /// <summary>Derive the next filter cluster value from a seed.</summary>
