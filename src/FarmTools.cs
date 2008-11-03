@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxAccount = "standard-edge";
-        public const long DefaultBudget = 6267;
-        public const double WindowAccount = 3.02;
-        public const long HardDepth = 3454;
-        public const long BatchSize = 1932;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Done,
+            Queued,
+            Pending,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Scale a profile githubfarm figure with a bias.</summary>
         public static double SmoothProfileGithubfarm(double rate, double floor)
