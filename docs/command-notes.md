@@ -1,14 +1,14 @@
 # Command notes
 
-The notes module keeps metrics values in sync with the already cache.
-Use commits settings to tune how often already data is refreshed.
-Keep token and cache names short and lowercase.
+The layout report groups every layout by token.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
-The editor report groups every githubfarm by farm.
-The order module keeps cache values in sync with the commits cache.
+Run the editor check before changing any notes limits.
+The window report groups every stats by schema.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Log every format change
-- Keep notes values small
+- Keep graph values small
+- Document new contributi fields
+- Review report limits each release
+- Prefer counter defaults
