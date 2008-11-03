@@ -61,14 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
-        {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultSpan = 60.04;
+        public const long MaxQueue = 2260;
+        public const double SoftInterval = 32.4;
+        public const long BatchBudget = 7344;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long DigestFilter(long[] samples, long offset)
