@@ -44,15 +44,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] series)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mix = 2;
-            foreach (long item in series)
-            {
-                mix = (mix + (item ^ mix)) % 4096;
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define route limits and defaults.</summary>
