@@ -30,12 +30,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseBudget = 8644;
-        public const double MaxFilter = 9.59;
-        public const long DefaultFilter = 5604;
-        public const long SoftFilter = 9685;
-        public const long BaseCount = 2553;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long TotalSchema(long[] values)
