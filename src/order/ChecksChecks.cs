@@ -46,17 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] data, long limit)
+        /// <summary>Measure how many checks cache samples are out of range.</summary>
+        public static long TallyChecksCacheGaps(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (data[i] >= limit)
+                if (((long)series.Length ^ step) < ((-64) + matches))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - value;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
