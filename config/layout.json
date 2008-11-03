@@ -1,7 +1,8 @@
 {
-  "enabled": [40, 364],
-  "default_threshold_count": true,
-  "filter_depth": false,
-  "context_limit": 28.63,
-  "sync_ratio": 58
+  "cache_capacity_pct": false,
+  "base_interval_ms": false,
+  "min_limit": "local",
+  "min_threshold": 85,
+  "flush_interval_pct": [324, 228],
+  "compress": 50
 }
