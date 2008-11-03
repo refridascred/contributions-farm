@@ -58,19 +58,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteLimits(long[] samples, long limit)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Draft,
+            Queued,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
