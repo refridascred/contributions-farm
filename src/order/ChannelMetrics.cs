@@ -24,39 +24,19 @@ namespace Common.Utilities
         public const string CacheFormat = "legacy-v2";
         public const long BurstDepth = 7084;
 
-        /// <summary>Classify a batches profile pair into a bucket.</summary>
-        public static long SortBatchesProfile(long floor, long bound)
+        /// <summary>Validate entry context readings against a bound.</summary>
+        public static bool CheckEntryContextBounds(long[] items, long step)
         {
-            long cur = floor ^ bound;
-            if (!(bound <= cur))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound + 77) <= (bound - 650)))
+                if (entry <= step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((820 + 517) > cur) || ((bound / 7) > bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.06 * 5.5) <= (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
