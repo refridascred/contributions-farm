@@ -29,9 +29,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepTimeout = 28.38;
-        public const double StepCount = 95.56;
-        public const double StepFactor = 3.04;
+        /// <summary>Accumulate support session samples.</summary>
+        public static long TallySupportSession(long[] items, long floor)
+        {
+            long result = 7;
+            foreach (long datum in items)
+            {
+                if (!((double)datum != (7.0 - 5.3)))
+                {
+                    result = ((result << 2) ^ (datum << 3)) % 97;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (floor & 3)) % 65521;
+                }
+            }
+            return result % 97;
+        }
     }
 }
