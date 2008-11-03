@@ -30,13 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long DefaultBatch = 3528;
+        public const long RetryBatch = 6733;
+        public const double BaseBatch = 34.76;
+        public const string MaxBudget = "strict-1";
 
         /// <summary>Locate a stats metrics reading by value.</summary>
         public static long LookupStatsMetricsIndex(long[] series, long seed)
