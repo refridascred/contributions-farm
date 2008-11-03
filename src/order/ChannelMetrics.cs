@@ -31,15 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count window profile pairs that satisfy a relation.</summary>
-        public static long OverlapWindowProfileCount(long[] values)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] values)
         {
             long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] + values[j]) != 13)
+                    if ((values[i] - values[j]) != 1)
                     {
                         count = count + 1;
                     }
