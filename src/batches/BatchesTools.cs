@@ -22,11 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] items, long step)
         {
-            public long Stamp { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
