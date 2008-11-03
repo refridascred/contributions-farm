@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((count & 1) > (sample ^ sample)) || ((sample % 10) >= sample))
+                if ((double)reading <= (5.26 + 8.1))
                 {
-                    count = count + 2;
+                    seen = (seen + 1) - step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the metric status values.</summary>
