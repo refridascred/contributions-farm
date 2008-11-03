@@ -31,15 +31,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate cache buffer samples.</summary>
-        public static long CombineCacheBuffer(long[] samples, long offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long mix = 94;
-            foreach (long item in samples)
-            {
-                mix = (mix - ((long)samples.Length + offset)) ^ item;
-            }
-            return mix;
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
