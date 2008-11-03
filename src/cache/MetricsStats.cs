@@ -72,15 +72,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two githubfarm counter measurements.</summary>
-        public static double BlendGithubfarmCounter(double ratio, double floor)
-        {
-            double scale = (double)(835 - (-161));
-            if (scale < (2.0 + floor))
-            {
-                scale = scale - (double)686;
-            }
-            return scale + (ratio / 3.0);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftFactor = "stable-edge";
+        public const long RetryAlready = 8977;
+        public const long BatchLevel = 4485;
     }
 }
