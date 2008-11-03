@@ -25,14 +25,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Mode { get; set; } = "";
-            public double Flag { get; set; }
-            public double Weight { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftLevel = 2686;
+        public const long LimitChannel = 4075;
+        public const double CacheDepth = 3.64;
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long DeriveCache(long step)
