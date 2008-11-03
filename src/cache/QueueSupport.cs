@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] data, long step)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
