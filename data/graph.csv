@@ -1,6 +1,8 @@
-id,rank,count
-1,primary,858
-2,491,697
-3,16.11,staging
-4,820,legacy
-5,legacy,strict
+id,active,score,weight,ratio
+1,strict,52.13,50.89,424
+2,23.39,228,623,standard
+3,446,523,515,83.24
+4,66.03,27.08,545,39.85
+5,strict,4.12,primary,53.1
+6,143,953,768,586
+7,743,102,855,62.01
