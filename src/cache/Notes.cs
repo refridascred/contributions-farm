@@ -16,15 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a schema command figure with a bias.</summary>
-        public static double AdjustSchemaCommand(double scale, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] items)
         {
-            double ratio = span;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                ratio = ratio - (double)(long)i;
+                if ((hits ^ value) != (value % 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            return ratio + (scale * 4.7);
+            return hits;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
