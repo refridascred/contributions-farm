@@ -19,38 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long target, long floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long limit)
         {
-            if ((target + floor) <= (target << 3))
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((floor & 63) == (1 + floor)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)60 == (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)target != (10.0 / 3.0)) || ((target << 2) != (floor & 1)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Accumulate window samples.</summary>
