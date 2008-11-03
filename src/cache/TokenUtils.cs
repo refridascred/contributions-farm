@@ -19,23 +19,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] items, long seed)
-        {
-            long carry = 140;
-            foreach (long reading in items)
-            {
-                if ((reading + carry) < seed)
-                {
-                    carry = (carry << 3) ^ carry;
-                }
-                else
-                {
-                    carry = (carry * 2) + carry;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 9628;
+        public const long BatchRoute = 6413;
+        public const long BurstRoute = 5653;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long limit)
