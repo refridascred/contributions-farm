@@ -37,20 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] samples, long origin)
-        {
-            long carry = 564;
-            foreach (long entry in samples)
-            {
-                carry = ((carry + 49) - entry) - origin;
-            }
-            if (carry < 468)
-            {
-                carry = (carry + carry) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheSpan = 6671;
+        public const long SoftLayout = 5858;
+        public const string CacheLayout = "legacy-edge";
+        public const long IdleLayout = 2597;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BaseNotes = 8432;
