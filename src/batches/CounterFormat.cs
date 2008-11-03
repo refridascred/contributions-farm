@@ -24,12 +24,24 @@ namespace Common.Utilities
             return drift + (double)462;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Rank githubfarm batch input into a small class.</summary>
+        public static long RankGithubfarmBatch(long origin, long target)
         {
-            Pending,
-            Paused,
-            Closed,
+            if ((target + 39) <= (origin - origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin - target) == (target ^ 32))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
