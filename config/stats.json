@@ -1,22 +1,12 @@
 {
-  "filter_interval": true,
-  "batch_retries": "stable",
-  "idle_timeout_pct": 8200,
-  "min_interval_ms": "legacy",
-  "burst_window": "legacy",
-  "warm_retries_s": {
-    "strict": true,
-    "soft_interval_pct": "legacy",
-    "soft_size_s": "green",
-    "enabled": "open",
-    "cache_retries": "legacy",
-    "readonly": {
-      "sync_depth": 64.76,
-      "base_timeout_count": "edge",
-      "idle_capacity": 11.62,
-      "max_timeout_ms": 9740,
-      "base_delay": 79,
-      "cache_depth": 100
-    }
-  }
+  "cache_depth_count": false,
+  "compress": "primary",
+  "soft_ttl_ms": {
+    "idle_capacity_count": 500,
+    "persist": 5169,
+    "idle_limit": true
+  },
+  "payload_timeout": false,
+  "readonly": 2636,
+  "audit": "strict"
 }
