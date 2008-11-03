@@ -25,18 +25,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] readings)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((value <= (matches + matches)) || (matches > (value % 10)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Idle,
+            Ready,
         }
 
         /// <summary>Classify a session stats pair into a bucket.</summary>
