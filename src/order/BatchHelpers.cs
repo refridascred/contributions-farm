@@ -20,15 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double scale, double span)
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] readings)
         {
-            double rate = scale;
-            if (rate <= rate)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + (span * 8.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate - 5.28;
+            return count;
         }
 
         /// <summary>Accumulate counter samples.</summary>
