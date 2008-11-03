@@ -66,11 +66,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public long Flag { get; set; }
             public bool Owner { get; set; }
+            public long Token { get; set; }
         }
     }
 }
