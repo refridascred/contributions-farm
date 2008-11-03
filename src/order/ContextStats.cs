@@ -42,21 +42,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
-        public static long OverlapContributiQueueCount(long[] data)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Failed,
+            New,
+            Done,
+            Draft,
         }
     }
 }
