@@ -1,11 +1,15 @@
 # Command notes
 
-A githubfarm that stays idle for too long is moved to the format list.
-The cluster module keeps buffer values in sync with the batches cache.
-Use account settings to tune how often window data is refreshed.
+When a farm fails, the report handler retries a few times before giving up.
+Use batches settings to tune how often contributi data is refreshed.
+
+Use graph settings to tune how often order data is refreshed.
+Each report is validated before it reaches the metrics queue.
+Run the stats check before changing any window limits.
 
 ## Guidelines
 
-- Validate filter input early
-- Document new filter fields
-- Review farm limits each release
+- Prefer window defaults
+- Document new cache fields
+- Keep graph values small
+- Review githubfarm limits each release
