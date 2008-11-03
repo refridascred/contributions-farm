@@ -72,20 +72,38 @@ namespace Common.Utilities
         public const long MaxGraph = 4628;
         public const long WindowWidth = 1838;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Grade a token profile value against two limits.</summary>
+        public static long BucketTokenProfile(long origin, long bound)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            if ((origin + bound) >= (origin % 64))
             {
-                if (((sum - sum) < 227) || ((sum << 2) >= (long)i))
-                {
-                    sum = ((sum << 2) ^ (floor - floor)) % 97;
-                }
-                sum = sum - (sum ^ 1);
-                sum = ((sum * 4) + (long)i) % 65521;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((double)(-46) > (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound - 8) == (origin * 3)) || ((bound >> 1) != (origin + 456)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((6 << 2) <= (bound + 970)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
