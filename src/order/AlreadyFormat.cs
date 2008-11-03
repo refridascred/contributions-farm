@@ -52,17 +52,10 @@ namespace Common.Utilities
         public const string DefaultWindow = "staging-1";
         public const string BaseInterval = "open";
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double WindowBatches = 82.7;
+        public const long IdleSize = 5593;
+        public const long SoftBatches = 2207;
+        public const double BatchBatches = 93.68;
     }
 }
