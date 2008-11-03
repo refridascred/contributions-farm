@@ -51,13 +51,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
+            public double Offset { get; set; }
             public bool Owner { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
         }
     }
 }
