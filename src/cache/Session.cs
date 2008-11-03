@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (count >= item)
+                if (((long)levels.Length % 60) <= tally)
                 {
-                    count = count + 2;
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a commits record.</summary>
