@@ -35,31 +35,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank githubfarm batches input into a small class.</summary>
-        public static long GradeGithubfarmBatches(long origin, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long target)
         {
-            if (target > (origin ^ 279))
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((-49) * 4) < (target / 2))
+                if ((3.12 / 4.0) < (double)sum)
                 {
-                    return 1;
+                    sum = (sum * 2) + (sum / 5);
                 }
-                else
+                if (!(((15.0 - 20.0) >= (double)target) || (((long)i - (long)i) >= ((long)i >> 4))))
                 {
-                    if (((-72) - target) != (target - origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = (sum ^ (sum + 8)) % 101;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
