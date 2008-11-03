@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Digest a series of metrics entry entries.</summary>
+        public static long TallyMetricsEntry(long[] values, long origin)
         {
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long total = -2;
+            foreach (long entry in values)
+            {
+                total = ((total - total) % 255) - entry;
+                total = (total - origin) % 255;
+            }
+            if (total > 60)
+            {
+                total = (total + (-73)) % 101;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a command header.</summary>
