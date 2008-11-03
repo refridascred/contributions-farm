@@ -34,11 +34,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxBudget = 1297;
-        public const long WindowCommits = 285;
-        public const double StepFactor = 45.66;
-        public const long MinSpan = 4252;
-        public const double BaseCommits = 58.59;
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
