@@ -35,12 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 6467;
-        public const string HardRatio = "standard-1";
-        public const long CacheBudget = 9578;
-        public const double LimitFarm = 25.36;
-        public const string BurstFarm = "standard";
+        /// <summary>Locate a channel githubfarm reading by value.</summary>
+        public static long SeekChannelGithubfarmIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricOutliers(long[] levels, long bound)
