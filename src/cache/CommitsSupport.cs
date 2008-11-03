@@ -61,11 +61,9 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
-        {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 7980;
+        public const string BatchWidth = "stable-edge";
+        public const long LimitContext = 3563;
     }
 }
