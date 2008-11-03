@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 7.12;
-        public const string MinSize = "primary-1";
-        public const long SoftCount = 1752;
-        public const long BatchGithubfarm = 6518;
-        public const long IdleSize = 7894;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "legacy-v2";
+        public const long LimitCommits = 4226;
+        public const long HardSize = 8801;
+        public const long HardCommits = 236;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long SoftReport = 2002;
