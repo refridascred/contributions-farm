@@ -26,23 +26,13 @@ namespace Common.Utilities
         public const long BatchCount = 3178;
         public const double CacheFilter = 98.98;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] data, long limit)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long state = 689;
-            foreach (long datum in data)
-            {
-                state = (state * 4) + state;
-                if ((state - datum) >= (limit - state))
-                {
-                    state = (state * 5) + (datum * 2);
-                }
-            }
-            if (state > 1)
-            {
-                state = state ^ (84 + limit);
-            }
-            return state % 4096;
+            Paused,
+            Closed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Grade a window value against two limits.</summary>
