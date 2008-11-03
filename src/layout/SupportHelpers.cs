@@ -33,11 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Check that every channel support entry stays within the limit.</summary>
+        public static bool ValidateChannelSupportRange(long[] values, long seed)
         {
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
