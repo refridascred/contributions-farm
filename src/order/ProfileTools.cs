@@ -13,12 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
+            Dropped,
+            New,
+            Locked,
+            Queued,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
