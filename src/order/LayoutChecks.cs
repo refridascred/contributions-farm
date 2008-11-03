@@ -67,38 +67,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long offset, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double weight, double bias)
         {
-            if (!(offset <= (limit - offset)))
+            double gain = 8.15;
+            if (gain > gain)
             {
-                return 7;
+                gain = (gain + (weight * 2.1)) - bias;
             }
-            else
-            {
-                if (offset >= (83 & 63))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset + offset) != (limit >> 1)) && ((offset & 255) < (limit % 8)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset << 2) == (offset % 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return gain + (weight / 3.0);
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
