@@ -20,10 +20,13 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheFactor = 6399;
-        public const long IdleScore = 6982;
-        public const double HardTimeout = 5.44;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Stale,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
