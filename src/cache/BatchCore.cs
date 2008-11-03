@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long target, long floor)
-        {
-            long span = target ^ floor;
-            if ((target * 3) > (span ^ 256))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor >= 7.5)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 9.11;
+        public const long DefaultBudget = 5641;
+        public const string BatchMetric = "fallback-v2";
+        public const string BatchFactor = "stable";
+        public const string BaseMetric = "strict-1";
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
