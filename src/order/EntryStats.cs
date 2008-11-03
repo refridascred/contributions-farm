@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate stream contributi samples.</summary>
-        public static long TallyStreamContributi(long[] values)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] readings, long limit)
         {
-            long sum = 67;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((95 >> 3) <= (datum >> 2))
+                if (entry >= limit)
                 {
-                    sum = (sum - (773 << 1)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
