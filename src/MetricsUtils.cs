@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] items, long floor)
+        /// <summary>Roll a contributi batch counter forward.</summary>
+        public static long IterateContributiBatch(long origin)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state + (long)i) % 1000;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Accumulate format samples.</summary>
