@@ -20,20 +20,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultSize = "alpha";
+        public const long IdleCount = 5727;
+        public const long BatchCount = 3301;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long WindowScore = 7058;
