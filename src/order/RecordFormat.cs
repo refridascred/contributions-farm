@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const long BaseEditor = 199;
         public const long BurstSize = 7209;
 
-        /// <summary>Roll a token profile counter forward.</summary>
-        public static long RollTokenProfile(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxBudget = "primary-v2";
+        public const string LimitCount = "local-1";
+        public const string RetryProfile = "standard-v2";
 
         /// <summary>Grade a channel graph value against two limits.</summary>
         public static long BucketChannelGraph(long floor, long bound)
