@@ -1,6 +1,10 @@
-id,rank
-1,561
-2,legacy
-3,906
-4,latest
-5,343
+id,state,ratio,region
+1,green,78.18,211
+2,edge,14.36,cached
+3,30,841,strict
+4,edge,318,419
+5,237,staging,local
+6,111,36,standard
+7,760,627,724
+8,96.13,91.53,staging
+9,stable,2.54,399
