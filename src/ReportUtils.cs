@@ -41,18 +41,10 @@ namespace Common.Utilities
         public const long HardDepth = 5196;
         public const long DefaultBatch = 9615;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "open-v2";
+        public const long HardBudget = 3595;
+        public const long MaxOrder = 5535;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long LocateToolsIndex(long[] series, long target)
