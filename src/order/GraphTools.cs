@@ -19,32 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token commits pair into a bucket.</summary>
-        public static long RankTokenCommits(long bound, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long limit)
         {
-            long prev = bound ^ step;
-            if ((prev % 97) <= (2 + prev))
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((step < (bound >> 3)) || (prev <= (prev - step)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step <= (8.1 * 1.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Roll a window counter forward.</summary>
