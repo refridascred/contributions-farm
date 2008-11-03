@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] items, long origin)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + cell) < (origin * 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
