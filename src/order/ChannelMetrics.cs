@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long offset, long offset2)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long span = offset - offset2;
-            if (!((28 + offset2) < (offset2 ^ 81)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((63 - offset) < (offset2 ^ 91)) && ((4 + offset) < (offset % 24)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset > (span - (-5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
