@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long offset, long offset2)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            if ((39 < (offset + offset)) || ((2.27 / 2.0) >= (double)offset2))
             {
-                if (!((3.0 >= (double)seed) || ((seed + seed) <= (118 + 16))))
-                {
-                    total = ((total * 3) + (55 << 3)) % 97;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                return 6;
             }
-            return total;
+            else
+            {
+                if (((6.6 / 4.0) != (double)offset) || (offset2 < (offset2 + offset2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)offset < 4.42) && ((offset ^ 246) != (offset2 ^ offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset % 64) < 13)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next commits value.</summary>
