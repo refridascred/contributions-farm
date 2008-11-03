@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double ratio, double span)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            double weight = span - span;
-            if (weight < (ratio / 9.0))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - span;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (double)3;
-            }
-            return weight + ratio;
+            return seen;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
