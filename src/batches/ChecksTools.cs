@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long IdleScore = 6982;
         public const double HardTimeout = 5.44;
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Ready,
-            Active,
-            Paused,
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
