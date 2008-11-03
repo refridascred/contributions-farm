@@ -1,6 +1,17 @@
 # entry settings
-flush_timeout_s: 49.31
-persist: local
-soft_ratio_pct: false
-max_delay: 7550
-session_limit: cached
+poll_window_count:
+  - 207
+  - 297
+  - 220
+  - 459
+audit: true
+account_size: 100
+flush_capacity:
+  - stable
+  - standard
+soft_limit_ms:
+  idle_limit_count: true
+  poll_window: strict
+  base_size: 60
+  persist: 1024
+  audit: strict
