@@ -1,5 +1,14 @@
 # support settings
-tools_threshold: standard
-max_threshold: stable
-route_size: open
-dry_run: 24
+report_ratio: stable
+entry_retries:
+  base_window_count:
+    base_threshold_s: 60
+    batch_depth: 2.76
+    tools_timeout: 79
+  retry_threshold_ms: false
+  max_delay_count:
+    - 292
+    - 89
+    - 14
+retry_threshold: 60
+payload_size: staging
