@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheFactor = "open-1";
-        public const long StepInterval = 6296;
-        public const double BaseBatches = 20.85;
-        public const string MaxInterval = "strict-v2";
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long offset, long offset2)
+        {
+            long span = offset - offset2;
+            if (!((28 + offset2) < (offset2 ^ 81)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((63 - offset) < (offset2 ^ 91)) && ((4 + offset) < (offset % 24)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset > (span - (-5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long DeriveToken(long origin)
