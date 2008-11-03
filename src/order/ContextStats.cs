@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Retry,
+            Failed,
+            Closed,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
