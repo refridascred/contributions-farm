@@ -26,19 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] levels, long bound)
+        /// <summary>Audit cluster report readings against a rule.</summary>
+        public static long TallyClusterReportGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (sample < bound)
+                if ((entry * 2) > 63)
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
