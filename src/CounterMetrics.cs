@@ -33,25 +33,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a session stats pair into a bucket.</summary>
-        public static long GradeSessionStats(long origin, long limit)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long gap = origin ^ limit;
-            if ((double)origin < (11.0 * 7.74))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((origin - 1) < (gap - gap)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Adjust a context reading.</summary>
