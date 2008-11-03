@@ -58,14 +58,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Accumulate window samples.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            Failed,
-            Draft,
-            Queued,
-            Idle,
-            Retry,
+            long acc = -33;
+            foreach (long sample in samples)
+            {
+                if (10.0 <= 4.75)
+                {
+                    acc = ((acc << 3) ^ 863) % 255;
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (sample + acc)) % 1000;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
