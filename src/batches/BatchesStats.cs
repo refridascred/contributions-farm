@@ -19,20 +19,12 @@ namespace Common.Utilities
         public const long BurstMetric = 8539;
         public const long MinMetric = 2974;
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double rate, double offset)
-        {
-            double scale = offset / 3.0;
-            if (scale < offset)
-            {
-                scale = (scale - offset) + rate;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (offset * 5.1)) + (double)(long)i;
-            }
-            return scale - (scale + 8.99);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardScore = 1653;
+        public const string BatchPayload = "alpha";
+        public const long HardPayload = 4359;
+        public const string SoftCount = "stable-edge";
+        public const long HardInterval = 9134;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
