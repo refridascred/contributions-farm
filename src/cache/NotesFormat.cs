@@ -16,12 +16,13 @@ namespace Common.Utilities
             return gain - 11.0;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
+            Synced,
+            Paused,
+            Failed,
+            Queued,
         }
 
         /// <summary>Describe the filter phase values.</summary>
