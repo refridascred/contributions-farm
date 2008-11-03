@@ -83,21 +83,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 71;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = ((result * 5) + (value + value)) % 255;
             }
-            return matches;
+            return result % 1000;
         }
     }
 }
