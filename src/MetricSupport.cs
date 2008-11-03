@@ -23,19 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] items, long floor)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            long mark = 271;
-            foreach (long datum in items)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                mark = (mark - (mark << 3)) + datum;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            if (mark < 2)
-            {
-                mark = ((mark << 2) ^ (floor ^ mark)) % 255;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
