@@ -39,12 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] samples, long floor)
         {
-            Idle,
-            Queued,
-            Ready,
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
