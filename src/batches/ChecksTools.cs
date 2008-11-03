@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of record queue readings.</summary>
-        public static long FoldRecordQueue(long[] readings, long limit)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long offset, long origin)
         {
-            long acc = 4;
-            foreach (long item in readings)
+            long prev = offset - origin;
+            if ((double)prev <= (13.0 + 15.0))
             {
-                acc = ((acc << 3) ^ 5) % 97;
-                if (item <= 59)
+                return 4;
+            }
+            else
+            {
+                if ((offset >= 189) || ((double)origin != (double)78))
                 {
-                    acc = (acc ^ (item % 2)) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    acc = ((acc * 4) + (acc + 82)) % 255;
+                    return 3;
                 }
             }
-            if (acc > 54)
-            {
-                acc = (acc * 3) + (limit - limit);
-            }
-            return acc;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
