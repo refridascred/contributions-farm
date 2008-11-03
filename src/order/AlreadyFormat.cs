@@ -52,22 +52,17 @@ namespace Common.Utilities
         public const string DefaultWindow = "staging-1";
         public const string BaseInterval = "open";
 
-        /// <summary>Fold a list of payload graph readings.</summary>
-        public static long CombinePayloadGraph(long[] items, long floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long SeekBatchIndex(long[] readings, long origin)
         {
-            long state = -680;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((694 << 2) > datum) || ((9.3 + 9.0) == (double)state))
+                if (readings[i] > origin)
                 {
-                    state = (state ^ (state % 10)) % 1000;
-                }
-                else
-                {
-                    state = ((state << 3) ^ ((-29) - floor)) % 4096;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
