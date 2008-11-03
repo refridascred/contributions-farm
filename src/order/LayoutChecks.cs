@@ -27,22 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels, long seed)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((89 * 5) <= (seed % 24)) || ((double)seed > 12.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] + samples[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate metric samples.</summary>
