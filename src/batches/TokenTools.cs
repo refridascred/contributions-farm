@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepDepth = "cached";
-        public const long BatchFactor = 5663;
-        public const long MinMetrics = 9097;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Project the next commits value.</summary>
         public static double BlendCommits(double ratio, double floor)
