@@ -1,5 +1,8 @@
 {
-  "verbose": ["fallback", "edge", "strict"],
-  "retry_window": 1024,
-  "cache_ratio": 100
+  "batch_limit": 500,
+  "min_threshold": 100,
+  "order_ttl": "legacy",
+  "profile_window": "primary",
+  "poll_size_s": 60,
+  "max_retries_ms": "edge"
 }
