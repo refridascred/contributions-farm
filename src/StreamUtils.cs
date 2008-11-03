@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] readings, long origin)
         {
-            Locked,
-            Paused,
-            Stale,
-            Synced,
-            Idle,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Locate a record reading by value.</summary>
