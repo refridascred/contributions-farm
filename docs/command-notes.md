@@ -1,15 +1,15 @@
 # Command notes
 
-The channel helpers are pure functions, so they are safe to call from any thread.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Keep buffer and order names short and lowercase.
+Use githubfarm settings to tune how often filter data is refreshed.
+The entry helpers are pure functions, so they are safe to call from any thread.
+Run the window check before changing any format limits.
 
-Defaults for account live in the config folder and can be overridden per environment.
-Use commits settings to tune how often filter data is refreshed.
+The channel module keeps window values in sync with the tools cache.
+Keep githubfarm and metrics names short and lowercase.
+Use githubfarm settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Validate editor input early
-- Review stream limits each release
-- Document new graph fields
+- Prefer contributi defaults
+- Document new profile fields
+- Keep checks values small
