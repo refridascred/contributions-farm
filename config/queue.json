@@ -1,5 +1,11 @@
 {
-  "enabled": 7014,
-  "compress": 23.09,
-  "cache_depth": 250
+  "base_threshold_s": {
+    "notes_threshold": true,
+    "min_limit_pct": [177, 202],
+    "min_depth_count": ["staging", "eu-west"],
+    "verbose": 42.67,
+    "enabled": 60.52
+  },
+  "schema_size": "blue",
+  "batch_interval": 3.49
 }
