@@ -1,12 +1,8 @@
 {
-  "flush_ratio_s": "cached",
-  "record_capacity": 9759,
-  "compress": true,
-  "counter_ttl": "strict",
-  "stats_depth": {
-    "entry_ttl": true,
-    "report_depth": 53,
-    "warm_window_count": "edge",
-    "metrics_size": true
-  }
+  "compress": 70,
+  "min_interval_pct": "stable",
+  "hard_size_s": [312, 130],
+  "default_window_count": false,
+  "batch_retries": 14.34,
+  "warm_timeout_count": true
 }
