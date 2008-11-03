@@ -1,6 +1,12 @@
 {
-  "cache_size_count": 100,
-  "batch_threshold_ms": 3454,
-  "min_depth": 8676,
-  "default_retries_pct": 3
+  "verbose": false,
+  "base_capacity_s": false,
+  "strict": "edge",
+  "burst_timeout": 4612,
+  "flush_interval_s": {
+    "idle_delay": 18.53,
+    "max_window_ms": ["strict", "fallback", "eu-west", "edge"],
+    "flush_timeout_pct": 250,
+    "flush_capacity": false
+  }
 }
