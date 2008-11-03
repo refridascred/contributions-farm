@@ -22,16 +22,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] series, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total * 3) + floor;
-                total = ((total * 3) + (long)i) % 101;
+                if ((series[i] >= seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
