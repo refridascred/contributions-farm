@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Find the first entry farm entry that matches the target.</summary>
+        public static long LocateEntryFarmIndex(long[] items, long target)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
