@@ -1,7 +1,13 @@
 # entry settings
-contributi_depth: true
-burst_limit: green
-strict: 1457
-burst_limit_count: 50.02
-record_ratio: 60
-idle_interval: true
+batches_threshold: primary
+idle_capacity_count: 7892
+max_timeout_ms:
+  idle_delay:
+    - 343
+    - 175
+  layout_retries: legacy
+  entry_threshold: strict
+  command_delay: fallback
+cache_size_pct: true
+flush_retries: 2
+enabled: true
