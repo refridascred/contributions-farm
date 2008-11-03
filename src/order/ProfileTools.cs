@@ -32,19 +32,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of already graph entries.</summary>
-        public static long CombineAlreadyGraph(long[] values, long origin)
-        {
-            long mix = -9;
-            foreach (long entry in values)
-            {
-                if (!(53 < entry))
-                {
-                    mix = mix + (origin << 1);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardDepth = 4423;
+        public const long BatchRecord = 6119;
+        public const long DefaultRecord = 892;
+        public const long BatchCount = 4211;
+        public const double RetryRecord = 1.58;
 
         /// <summary>Project the next already channel value.</summary>
         public static double BlendAlreadyChannel(double scale, double span)
