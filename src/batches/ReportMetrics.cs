@@ -20,27 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the counter batches series from a seed.</summary>
-        public static long DeriveCounterBatches(long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterMatches(long[] series, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((long)i < (bound ^ 93)) && ((total & 63) <= (bound * 2)))
+                if ((value + matches) < (seed + matches))
                 {
-                    break;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    total = (total ^ (23 - total)) % 4096;
-                }
-                if (!(((total & 15) == (bound - total)) || ((double)(long)i != (double)total)))
-                {
-                    total = ((total << 3) ^ ((long)i * 3)) % 101;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
