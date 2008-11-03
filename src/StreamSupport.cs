@@ -5,26 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of notes session readings.</summary>
-        public static long TallyNotesSession(long[] readings, long origin)
+        /// <summary>Classify a route batches pair into a bucket.</summary>
+        public static long BucketRouteBatches(long target, long target2)
         {
-            long score = 34;
-            foreach (long sample in readings)
+            long diff = target + target2;
+            if ((double)target < (1.47 - 2.14))
             {
-                if ((score << 3) <= sample)
+                return 1;
+            }
+            else
+            {
+                if ((95 <= (diff - 575)) && (diff > target))
                 {
-                    score = score - (-9);
-                }
-                if ((origin >> 5) <= score)
-                {
-                    score = (score - (score ^ score)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    score = score ^ ((long)readings.Length + origin);
+                    return 5;
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
