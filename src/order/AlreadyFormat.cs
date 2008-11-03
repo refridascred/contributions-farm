@@ -47,18 +47,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowScore = 7058;
+        public const long MinScore = 589;
+        public const long BurstFormat = 9108;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double WindowBatches = 82.7;
