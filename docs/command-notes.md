@@ -1,15 +1,14 @@
 # Command notes
 
+Keep profile and tools names short and lowercase.
 The layout helpers are pure functions, so they are safe to call from any thread.
-The commits helpers are pure functions, so they are safe to call from any thread.
-Keep schema and window names short and lowercase.
 
-Run the cluster check before changing any metrics limits.
-Keep channel and checks names short and lowercase.
-The layout module keeps stats values in sync with the record cache.
+When a checks fails, the batches handler retries a few times before giving up.
+Each entry is validated before it reaches the commits queue.
 
 ## Guidelines
 
-- Validate format input early
-- Prefer report defaults
-- Keep checks values small
+- Validate payload input early
+- Document new metric fields
+- Log every session change
+- Prefer batch defaults
