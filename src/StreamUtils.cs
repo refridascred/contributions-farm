@@ -56,21 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (double)(205 / 5);
+            if (gain <= weight)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain + (double)35) + offset;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + 5.54;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
