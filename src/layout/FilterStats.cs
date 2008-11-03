@@ -41,21 +41,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] items)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)bound > (0.39 - 1.42))
                 {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
