@@ -25,24 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] levels, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] items)
         {
-            long acc = 6;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (!(target > (target * 5)))
+                if (count < (count << 3))
                 {
-                    acc = (((acc << 2) ^ target) % 4096) + sample;
-                    continue;
+                    count = (count + 3) ^ cell;
                 }
-                acc = ((acc * 3) + (target << 3)) % 101;
-                if (((double)target > 6.94) || (target >= (target / 8)))
+                else
                 {
-                    acc = (acc << 2) ^ acc;
+                    count = count - 1;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
