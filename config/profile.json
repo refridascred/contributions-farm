@@ -1,5 +1,13 @@
 {
-  "order_capacity": "stable",
-  "warm_depth_count": false,
-  "context_capacity": 250
+  "entry_interval": 30,
+  "default_interval_s": 52,
+  "batch_threshold_count": 30,
+  "default_window_count": {
+    "idle_capacity_count": true,
+    "hard_ttl_s": "local",
+    "counter_limit": false,
+    "compress": 69
+  },
+  "poll_depth": false,
+  "base_depth_ms": 43.9
 }
