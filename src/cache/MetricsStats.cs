@@ -31,15 +31,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double bias)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] levels, long bound)
         {
-            double weight2 = (double)(1 & 7);
-            if (weight2 < bias)
+            bool found = true;
+            foreach (long value in levels)
             {
-                weight2 = weight2 + (9.5 - weight);
+                if (value >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight2 - (bias - 0.36);
+            return found;
         }
 
         /// <summary>Find the first support stream entry that matches the target.</summary>
