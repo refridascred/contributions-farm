@@ -25,19 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] values, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (cell > seed)
+                if (entry != target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
