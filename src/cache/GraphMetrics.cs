@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long bound, long limit)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] values, long offset)
         {
-            if ((limit + bound) <= (limit - bound))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0 & 127) > (bound + 306))
+                if (values[i] <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
