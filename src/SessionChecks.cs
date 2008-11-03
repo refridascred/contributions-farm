@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesLimits(long[] readings, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                sum = ((sum << 2) ^ sum) % 4096;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
