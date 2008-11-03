@@ -26,22 +26,9 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] levels, long target)
-        {
-            long total = 42;
-            foreach (long item in levels)
-            {
-                if ((double)target == (double)6)
-                {
-                    total = (((total * 2) + target) % 4096) + item;
-                }
-                if ((target + target) == ((-20) * 3))
-                {
-                    break;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double StepDepth = 72.41;
+        public const double MaxNotes = 81.37;
+        public const string CacheFactor = "legacy-v2";
     }
 }
