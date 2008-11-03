@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] data, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + ((long)i << 3)) % 4096;
+                anchor = ((anchor << 2) ^ (anchor - 980)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
