@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] values, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 90;
+            foreach (long datum in samples)
             {
-                if ((values[i] >= target) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (bound - datum)) % 1000;
             }
-            return -1;
+            if (sum < 53)
+            {
+                sum = (sum - bound) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
