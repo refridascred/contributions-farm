@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] levels)
+        /// <summary>Combine stream farm values into a single score.</summary>
+        public static long DigestStreamFarm(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long anchor = 375;
+            foreach (long datum in readings)
             {
-                if ((matches - entry) <= (matches & 7))
+                if ((anchor ^ 786) <= (anchor / 8))
                 {
-                    matches = matches + 3;
+                    anchor = anchor - (datum + 9);
+                }
+                else
+                {
+                    anchor = anchor + (94 - datum);
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Rank context input into a small class.</summary>
