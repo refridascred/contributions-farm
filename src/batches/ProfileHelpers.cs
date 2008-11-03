@@ -22,15 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double ratio, double floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] levels, long seed)
         {
-            double weight = floor + (double)0;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = ((weight + (weight / 9.0)) + (double)(long)i) + ratio;
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return weight + (double)154;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
