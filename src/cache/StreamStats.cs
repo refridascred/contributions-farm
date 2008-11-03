@@ -49,9 +49,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 7434;
-        public const string RetryBudget = "primary-1";
-        public const string MaxFilter = "alpha-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 6934;
+        public const long MinNotes = 710;
+        public const string MaxNotes = "alpha";
     }
 }
