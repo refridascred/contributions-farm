@@ -32,13 +32,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] samples, long step)
         {
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
