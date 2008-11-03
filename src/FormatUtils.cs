@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit profile account readings against a rule.</summary>
-        public static long CountProfileAccountGaps(long[] samples, long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + step) <= (step << 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Done,
+            Dropped,
+            Paused,
+            New,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
