@@ -29,13 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
-        {
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSchema = 98.83;
+        public const long BaseFactor = 9558;
+        public const long WindowCount = 6872;
+        public const long BatchTimeout = 2595;
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
