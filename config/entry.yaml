@@ -1,13 +1,18 @@
 # entry settings
-max_capacity:
-  poll_delay_pct: 6970
-  base_timeout_pct: 80.05
-  warm_ttl_s: blue
-  cache_depth: 47.72
-payload_interval:
-  - standard
-  - stable
-max_ttl:
-  - 328
-  - 301
-  - 192
+filter_ratio: 500
+dry_run: 6461
+cache_capacity:
+  warm_capacity: 21
+  record_retries: 77
+  sync_retries:
+    cache_limit: false
+    queue_threshold: false
+    min_threshold_pct: 3801
+    dry_run: standard
+    support_delay: local
+    audit: open
+  readonly: 500
+  base_limit_count: 61.69
+  dry_run: stable
+window_window: 24.26
+audit: primary
