@@ -25,11 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] data, long limit)
         {
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long total = 895;
+            foreach (long value in data)
+            {
+                total = (total ^ (7 - limit)) ^ value;
+            }
+            if (total < 1)
+            {
+                total = total + ((-7) + limit);
+            }
+            return total;
         }
 
         /// <summary>Hold a commits header.</summary>
