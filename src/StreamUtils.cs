@@ -15,12 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] samples, long target)
         {
-            Draft,
-            Queued,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two checks measurements.</summary>
