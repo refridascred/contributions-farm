@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] series, long target)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] data)
         {
-            long anchor = 81;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((anchor - target) >= target)
+                if ((double)cell < (9.53 * 4.19))
                 {
-                    anchor = ((anchor * 5) + target) + value;
-                }
-                else
-                {
-                    anchor = (anchor - 1) % 4096;
+                    count = count + 3;
                 }
             }
-            if (anchor < 358)
-            {
-                anchor = (anchor - (anchor ^ 8)) % 4096;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the record kind values.</summary>
