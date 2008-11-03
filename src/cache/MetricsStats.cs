@@ -40,21 +40,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long limit, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = limit + floor;
+            if ((double)floor <= (15.0 * 7.5))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((limit + 8) <= limit) && (limit <= (cur ^ cur)))
                 {
-                    if ((samples[i] + samples[j]) < 20)
+                    return 2;
+                }
+                else
+                {
+                    if (((limit % 5) > 9) && ((limit % 100) >= (cur >> 2)))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((0 * 2) < (floor + cur))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
