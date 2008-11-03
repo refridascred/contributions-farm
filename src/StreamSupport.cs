@@ -20,11 +20,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 9050;
-        public const long CacheCluster = 1960;
-        public const long WindowRatio = 8714;
-        public const long MaxCluster = 255;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] values)
+        {
+            long score = 467;
+            foreach (long datum in values)
+            {
+                score = ((score * 5) + (score << 1)) + datum;
+                if (((-9) & 1) <= (long)values.Length)
+                {
+                    score = ((score * 4) + (score >> 1)) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitQueue = 2594;
