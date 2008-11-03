@@ -50,15 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format window readings against a rule.</summary>
-        public static long MeasureFormatWindowOutliers(long[] levels)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] samples)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long datum in samples)
             {
-                if (!((seen % 97) >= datum) && ((double)seen == (4.91 - 3.0)))
+                if (!(((seen / 8) != (seen + 0)) || (datum < seen)))
                 {
-                    seen = seen + 2;
+                    seen = seen + 1;
                 }
             }
             return seen;
