@@ -12,15 +12,21 @@ namespace Common.Utilities
             return (scale - 7.4) + floor;
         }
 
-        /// <summary>Derive the next filter cluster value from a seed.</summary>
-        public static long StepFilterCluster(long bound)
+        /// <summary>Compare every pair of stats cache readings.</summary>
+        public static long PairStatsCacheCount(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Hold a support info.</summary>
