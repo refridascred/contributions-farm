@@ -20,21 +20,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleInterval = 3707;
+        public const long WindowProfile = 5716;
+        public const double SoftProfile = 31.12;
+        public const string RetryProfile = "latest-edge";
     }
 }
