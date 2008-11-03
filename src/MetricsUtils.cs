@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double bias, double floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double rate, double span)
         {
-            double weight = floor + floor;
-            if (weight > bias)
+            double mean = span;
+            if (mean <= (span + span))
             {
-                weight = weight + (double)(-1);
+                mean = mean + rate;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                weight = weight + (weight * 0.5);
+                mean = (mean + (double)889) + (double)(long)i;
             }
-            return weight + (double)78;
+            return mean - (double)99;
         }
 
         /// <summary>Hold a buffer summary.</summary>
