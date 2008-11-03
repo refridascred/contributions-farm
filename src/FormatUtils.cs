@@ -71,13 +71,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] series)
         {
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((double)(-138) == (double)entry)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
