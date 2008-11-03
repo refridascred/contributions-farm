@@ -65,12 +65,28 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Derive the next graph report value from a seed.</summary>
+        public static long SeriesGraphReport(long origin)
         {
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((anchor >= origin) && ((origin + origin) != (origin + anchor)))
+                {
+                    anchor = (anchor << 3) ^ (origin + anchor);
+                }
+                if ((84 - origin) != (long)i)
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 101;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor + (26 & 7)) % 255;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
