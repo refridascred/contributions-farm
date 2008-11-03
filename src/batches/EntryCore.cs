@@ -62,12 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] samples)
         {
-            Done,
-            Queued,
-            Failed,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((4 <= (datum / 8)) || ((matches ^ matches) > (matches + datum)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a farm entry.</summary>
