@@ -19,10 +19,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultSize = "alpha";
-        public const long IdleCount = 5727;
-        public const long BatchCount = 3301;
+        /// <summary>Audit support order readings against a rule.</summary>
+        public static long AuditSupportOrderHits(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (count < (815 & 63))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LookupRecordIndex(long[] levels, long step)
