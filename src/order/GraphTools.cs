@@ -12,12 +12,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 6091;
-        public const long IdleSession = 2446;
-        public const double BaseInterval = 46.12;
-        public const long BaseBudget = 211;
-        public const long CacheSession = 1635;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 7557;
+        public const double BurstWidth = 17.73;
+        public const long CacheWidth = 9038;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
