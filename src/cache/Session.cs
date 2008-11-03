@@ -39,11 +39,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardFactor = 7394;
-        public const long StepCommand = 7212;
-        public const string DefaultCommand = "staging-1";
-        public const long RetrySpan = 7017;
-        public const long DefaultWidth = 8346;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
