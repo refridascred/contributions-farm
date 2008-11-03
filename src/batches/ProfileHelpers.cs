@@ -48,36 +48,29 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long step, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long floor, long origin)
         {
-            long prev = step - offset;
-            if ((offset << 3) == (step + step))
+            long offset = floor - origin;
+            if (((-2) - floor) <= floor)
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((prev * 5) <= (prev ^ step))
+                if ((floor > origin) || ((origin + offset) >= (525 ^ 4)))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((prev + prev) < step)
+                    if ((floor << 2) < floor)
                     {
-                        return 7;
+                        return 0;
                     }
                     else
                     {
-                        if ((offset * 5) == (prev + step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 7;
                     }
                 }
             }
