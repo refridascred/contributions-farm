@@ -35,11 +35,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 6706;
-        public const double RetryScore = 12.19;
-        public const long BatchDepth = 4736;
-        public const double WindowMetric = 0.41;
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] items, long floor)
+        {
+            long sum = 94;
+            foreach (long datum in items)
+            {
+                sum = (sum ^ (floor + sum)) % 1000;
+                if ((datum - floor) < (datum * 5))
+                {
+                    sum = (sum - (floor - sum)) % 65521;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
