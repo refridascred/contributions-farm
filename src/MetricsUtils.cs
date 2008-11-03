@@ -49,13 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] values, long seed)
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public double Label { get; set; }
-            public double Score { get; set; }
+            long mix = 949;
+            foreach (long entry in values)
+            {
+                if ((831 - 467) > mix)
+                {
+                    mix = ((mix - seed) % 1000) ^ entry;
+                }
+            }
+            if (mix > 9)
+            {
+                mix = (mix + (seed >> 5)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
