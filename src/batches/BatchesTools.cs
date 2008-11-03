@@ -20,23 +20,11 @@ namespace Common.Utilities
             return mean + 13.0;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (!((seen + 0) <= item) || (((origin + item) == (983 & 1)) && ((double)seen >= (1.09 + 7.7))))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseScore = 94.49;
+        public const string MinSpan = "fallback-v2";
+        public const long DefaultSpan = 1601;
+        public const long BurstRatio = 7715;
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long RollSchema(long origin)
