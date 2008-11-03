@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] data, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long mix = 373;
+            foreach (long reading in data)
             {
-                if (!(((long)i / 8) != (floor % 8)))
+                if (!((double)limit == (3.03 / 8.0)))
                 {
-                    anchor = (anchor - (anchor * 2)) % 255;
+                    mix = (mix + (mix / 6)) ^ reading;
                 }
-                anchor = ((anchor << 3) ^ anchor) % 101;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                else
+                {
+                    mix = (mix << 3) ^ (limit - (-2));
+                }
             }
-            return anchor;
+            if (mix < 555)
+            {
+                mix = mix - ((-238) + limit);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of route entries.</summary>
