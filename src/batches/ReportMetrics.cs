@@ -40,29 +40,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] levels, long seed)
+        /// <summary>Combine route queue values into a single score.</summary>
+        public static long DigestRouteQueue(long[] series, long floor)
         {
-            long total = 4;
-            foreach (long item in levels)
+            long score = 432;
+            foreach (long entry in series)
             {
-                if ((double)item >= 15.0)
+                score = (score << 3) ^ (entry - floor);
+                score = (score ^ (floor % 16)) % 255;
+                if (entry <= (score % 24))
                 {
-                    long step = (item - 768) * 5;
-                    total = ((total * 5) + step) % 65521;
+                    break;
                 }
-                if (((double)(-2) >= (double)total) || ((double)item > (1.0 - 2.94)))
-                {
-                    total = total - (636 + total);
-                    total = ((total << 3) ^ (322 / 8)) % 65521;
-                }
-                total = (total + (771 * 5)) % 101;
             }
-            if (total > 6)
-            {
-                total = total + seed;
-            }
-            return total;
+            return score % 4096;
         }
     }
 }
