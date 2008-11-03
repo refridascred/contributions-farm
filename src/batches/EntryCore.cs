@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 62.31;
-        public const double CacheFactor = 53.4;
-        public const long BatchScore = 2683;
-        public const long IdleSupport = 5820;
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long FindQueueIndex(long[] samples, long seed)
