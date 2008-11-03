@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] samples)
+        /// <summary>Rank contributi githubfarm input into a small class.</summary>
+        public static long BucketContributiGithubfarm(long bound, long limit)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            if ((limit + limit) > bound)
             {
-                if (hits <= (-55))
+                return 5;
+            }
+            else
+            {
+                if (((bound - bound) != (bound / 5)) && (limit < (496 >> 1)))
                 {
-                    hits = (hits + 3) + reading;
+                    return 3;
+                }
+                else
+                {
+                    if (limit <= (limit * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
