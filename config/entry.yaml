@@ -1,10 +1,7 @@
 # entry settings
-profile_interval:
-  - 289
-  - 360
-  - 96
-  - 125
-persist: cached
-enabled:
-  - stable
-  - cached
+dry_run: local
+poll_threshold_pct:
+  - primary
+  - standard
+  - strict
+buffer_size: 6.36
