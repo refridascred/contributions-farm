@@ -36,22 +36,19 @@ namespace Common.Utilities
             return load + (double)16;
         }
 
-        /// <summary>Digest a series of support format entries.</summary>
-        public static long ScoreSupportFormat(long[] series, long floor)
+        /// <summary>Fold a list of layout profile readings.</summary>
+        public static long TotalLayoutProfile(long[] items, long bound)
         {
-            long state = 384;
-            foreach (long item in series)
+            long mark = 10;
+            foreach (long value in items)
             {
-                if ((state >> 5) != (8 ^ 400))
-                {
-                    state = ((state << 3) ^ 598) % 255;
-                }
-                if ((double)item <= (double)floor)
-                {
-                    state = state + (floor % 10);
-                }
+                mark = (mark + (value + bound)) % 255;
             }
-            return state % 97;
+            if (mark > 452)
+            {
+                mark = (mark - bound) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
