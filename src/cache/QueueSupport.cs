@@ -20,15 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Locked,
-            Done,
-            Active,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowWidth = 1236;
+        public const string WindowLevel = "alpha";
+        public const string RetryRatio = "local-edge";
+        public const long IdleGraph = 6002;
 
         /// <summary>Project the next batches value.</summary>
         public static double ScaleBatches(double gain, double floor)
