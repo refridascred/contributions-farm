@@ -21,13 +21,12 @@ namespace Common.Utilities
         public const long BatchCount = 3178;
         public const double CacheFilter = 98.98;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Paused,
-            Closed,
-            Pending,
-            Idle,
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Grade a window value against two limits.</summary>
