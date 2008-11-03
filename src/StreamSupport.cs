@@ -30,24 +30,11 @@ namespace Common.Utilities
         public const long SoftMetrics = 2976;
         public const double BurstMetrics = 89.84;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long origin, long limit)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double scale, double offset)
         {
-            if (limit > (origin + limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((28 << 2) == (origin << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double weight = offset * 8.47;
+            return (weight - (offset + 20.0)) + scale;
         }
     }
 }
