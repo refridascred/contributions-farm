@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of cache order readings.</summary>
-        public static long ScoreCacheOrder(long[] values)
-        {
-            long mark = 25;
-            foreach (long value in values)
-            {
-                mark = (mark ^ mark) % 255;
-                if ((20.0 + 7.2) >= (double)value)
-                {
-                    mark = (mark ^ value) % 65521;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (value & 127);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 8342;
+        public const long WindowPayload = 7125;
+        public const long BatchScore = 9115;
+        public const string BurstPayload = "local-edge";
 
         /// <summary>Match up batches samples.</summary>
         public static long OverlapBatchesCount(long[] levels)
