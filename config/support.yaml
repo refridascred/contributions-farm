@@ -1,11 +1,5 @@
 # support settings
-audit: 68
-warm_ratio_pct: 60
-soft_ratio: false
-burst_depth_s: false
-retry_retries:
-  - 326
-  - 124
-  - 332
-  - 249
-metrics_interval: strict
+max_ttl_pct: 52.28
+compress: true
+soft_interval_s: 19.53
+burst_timeout_count: open
