@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] readings, long bound)
         {
-            public bool Limit { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (((bound + cell) != (long)readings.Length) && (((cell / 9) >= seen) || ((seen / 3) <= seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the order kind values.</summary>
