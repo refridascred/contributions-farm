@@ -37,19 +37,19 @@ namespace Common.Utilities
         public const long SoftFilter = 9685;
         public const long BaseCount = 2553;
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] data, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long mix = -78;
+            foreach (long item in values)
             {
-                if (datum <= target)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix - (191 + mix)) % 97) - item;
             }
-            return stale;
+            if (mix > 607)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
