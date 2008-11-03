@@ -58,19 +58,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] levels, long target)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Locked,
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
