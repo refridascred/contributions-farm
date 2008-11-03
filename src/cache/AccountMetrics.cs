@@ -83,9 +83,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 3672;
-        public const string DefaultFarm = "open-edge";
-        public const long WindowSpan = 7443;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "primary";
+        public const double BaseCount = 90.97;
+        public const string BaseScore = "fallback-v2";
+        public const long MaxScore = 6558;
+        public const string CacheBuffer = "latest-v2";
     }
 }
