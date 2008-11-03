@@ -82,12 +82,19 @@ namespace Common.Utilities
         public const double LimitSchema = 54.46;
         public const long DefaultSchema = 1368;
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] values, long target)
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
