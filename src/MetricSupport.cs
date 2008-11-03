@@ -20,21 +20,22 @@ namespace Common.Utilities
             return bias - (double)4;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 41;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)item <= (13.0 / 3.0)))
                 {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - (target ^ target)) % 97;
+                }
+                else
+                {
+                    total = (total - 853) % 97;
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Describe the report phase values.</summary>
