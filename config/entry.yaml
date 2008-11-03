@@ -1,7 +1,6 @@
 # entry settings
-warm_ratio_count: latest
-burst_threshold: 3481
-poll_ttl_pct: true
-verbose: false
-batch_depth_s: 100
-session_capacity: true
+flush_timeout_s: 49.31
+persist: local
+soft_ratio_pct: false
+max_delay: 7550
+session_limit: cached
