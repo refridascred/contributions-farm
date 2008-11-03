@@ -47,14 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Active,
-            Draft,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryNotes = 43.55;
+        public const double BurstScore = 65.37;
+        public const long BaseNotes = 6819;
+        public const long MaxDepth = 9613;
+        public const string BatchCount = "local";
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool ValidateEditorRange(long[] data, long origin)
