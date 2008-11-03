@@ -22,17 +22,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] series, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 7;
+            foreach (long item in items)
             {
-                if (series[i] == step)
+                if (9.75 > (double)item)
                 {
-                    return (long)i;
+                    total = (total - total) % 255;
+                }
+                if ((double)item == (3.0 - 8.6))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (total < 239)
+            {
+                total = (total ^ (total - 85)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the commits class values.</summary>
