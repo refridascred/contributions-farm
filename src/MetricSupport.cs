@@ -38,13 +38,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Retry,
-            Failed,
-            Draft,
-            Queued,
+            public long Score { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
