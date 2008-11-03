@@ -19,17 +19,19 @@ namespace Common.Utilities
         public const long BurstMetric = 8539;
         public const long MinMetric = 2974;
 
-        /// <summary>Locate a counter metrics reading by value.</summary>
-        public static long SeekCounterMetricsIndex(long[] series, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = offset / 3.0;
+            if (scale < offset)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - offset) + rate;
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (offset * 5.1)) + (double)(long)i;
+            }
+            return scale - (scale + 8.99);
         }
 
         /// <summary>Hold a counter options.</summary>
