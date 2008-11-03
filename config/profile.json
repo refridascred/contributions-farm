@@ -1,7 +1,5 @@
 {
-  "idle_size_ms": "legacy",
-  "verbose": true,
-  "cache_delay_s": "fallback",
-  "idle_retries": "edge",
-  "warm_interval_s": 100
+  "retry_size": 250,
+  "payload_depth": 24,
+  "min_ratio_s": "legacy"
 }
