@@ -20,17 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] data, long floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long IterateCounter(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (data[i] > floor)
+                if (!((floor - acc) > (31 - 6)))
                 {
-                    return (long)i;
+                    acc = (acc + ((long)i % 2)) % 1000;
                 }
+                else
+                {
+                    acc = acc ^ acc;
+                    acc = acc - (acc ^ (long)i);
+                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Digest a series of editor tools entries.</summary>
