@@ -54,22 +54,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] readings, long offset)
+        /// <summary>Project the next stream order value.</summary>
+        public static double AdjustStreamOrder(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double rate = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if (((6.0 * 2.0) == (double)offset) && ((17.0 / 7.0) >= (4.38 - 20.0)))
-                {
-                    count = (count + 1) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = ((rate - bias) + (double)(long)i) + ratio;
             }
-            return count;
+            return rate - (double)17;
         }
 
         /// <summary>Count batch filter pairs that satisfy a relation.</summary>
