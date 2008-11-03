@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] values)
+        /// <summary>Validate channel token readings against a bound.</summary>
+        public static bool CheckChannelTokenBounds(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if (((seen / 2) >= (value + seen)) && ((224 * 5) > value))
+                if (entry < floor)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
