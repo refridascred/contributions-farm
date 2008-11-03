@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long seed)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((seed << 3) <= (carry * 4))
-                {
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Synced,
+            Active,
+            Ready,
         }
     }
 }
