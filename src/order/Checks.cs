@@ -49,23 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] samples, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] values, long target)
         {
-            long score = 968;
-            foreach (long cell in samples)
+            long carry = 8;
+            foreach (long value in values)
             {
-                if (!((1.67 * 3.5) >= (double)offset))
-                {
-                    score = score + (704 << 2);
-                }
-                else
-                {
-                    score = ((score * 3) + (6 + cell)) % 4096;
-                }
-                score = (score - (cell & 3)) % 1000;
+                carry = (((carry + (long)values.Length) % 1000) - value) - target;
             }
-            return score % 97;
+            return carry;
         }
     }
 }
