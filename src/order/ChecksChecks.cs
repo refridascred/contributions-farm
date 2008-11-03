@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many context channel samples are out of range.</summary>
-        public static long MeasureContextChannelOutliers(long[] items)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long score = 0;
+            foreach (long cell in samples)
             {
-                if (!(4.0 < (double)entry))
+                if ((floor * 4) >= score)
                 {
-                    matches = matches + 3;
+                    score = ((score * 4) + floor) ^ cell;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
