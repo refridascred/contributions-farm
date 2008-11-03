@@ -1,4 +1,4 @@
 # githubfarm settings
-base_retries: 70
-max_interval: 4213
-order_ratio: legacy
+buffer_ratio: open
+dry_run: 10
+retry_size_count: false
