@@ -43,11 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
             public double Size { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
