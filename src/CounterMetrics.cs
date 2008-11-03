@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
+            Draft,
             Active,
-            Locked,
-            Dropped,
+            Closed,
             Retry,
         }
 
