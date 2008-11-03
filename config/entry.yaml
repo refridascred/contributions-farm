@@ -1,9 +1,6 @@
 # entry settings
-counter_retries:
-  - 433
-  - 136
-  - 467
-batch_threshold: 5
-strict:
-  - 270
-  - 172
+burst_timeout: 93
+command_window: 5420
+retry_interval_ms: 47.98
+persist: 41
+hard_timeout: 82
