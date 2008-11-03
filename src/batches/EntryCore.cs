@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
+        public static long TallyContributiGithubfarmOutliers(long[] items)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)(-3) != (double)sample)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
