@@ -35,24 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank order report input into a small class.</summary>
-        public static long RankOrderReport(long origin, long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] values)
         {
-            if ((bound / 4) < (bound % 97))
+            long hits = 0;
+            foreach (long entry in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin >> 1) >= (origin >> 4))
+                if ((double)hits >= (8.0 - 10.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    hits = (hits + 3) + entry;
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next buffer value.</summary>
