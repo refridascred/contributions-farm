@@ -1,8 +1,11 @@
 {
-  "route_delay": 28.53,
-  "strict": true,
-  "readonly": false,
-  "profile_delay": true,
-  "enabled": "open",
-  "base_interval_count": "open"
+  "idle_limit_pct": [359, 430],
+  "batch_ratio_count": true,
+  "readonly": {
+    "retry_interval": [252, 48, 276],
+    "min_depth_ms": true,
+    "soft_window_s": ["primary", "cached", "staging"]
+  },
+  "sync_window_pct": "standard",
+  "warm_window": 6108
 }
