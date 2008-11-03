@@ -20,16 +20,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = (mark * 3) + (step + mark);
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
