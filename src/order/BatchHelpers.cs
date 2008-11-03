@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double weight, double offset)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyOutliers(long[] series)
         {
-            double rate = weight;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                rate = (rate - (weight + offset)) + (double)(long)i;
+                if ((seen / 4) < datum)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return rate + (offset - weight);
+            return seen;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
