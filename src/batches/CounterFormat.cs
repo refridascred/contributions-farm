@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const string IdleGraph = "alpha-v2";
         public const double BurstGraph = 96.1;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] samples, long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
