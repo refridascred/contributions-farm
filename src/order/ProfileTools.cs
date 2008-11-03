@@ -31,25 +31,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long limit, long offset)
+        /// <summary>Blend two contributi batches measurements.</summary>
+        public static double AdjustContributiBatches(double rate, double offset)
         {
-            long prev = limit - offset;
-            if ((limit & 127) > prev)
+            double weight = (offset + 6.74) * 19.0;
+            if (weight > (rate / 4.0))
             {
-                return 1;
+                weight = weight - (rate / 9.0);
             }
             else
             {
-                if ((limit / 3) <= (prev + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                weight = weight + weight;
             }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (rate + rate)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Measure how many record schema samples are out of range.</summary>
