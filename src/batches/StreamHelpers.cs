@@ -35,12 +35,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Grade a notes tools value against two limits.</summary>
+        public static long SortNotesTools(long floor, long limit)
         {
-            New,
-            Ready,
-            Done,
+            if ((double)limit < (14.0 * 14.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((7 + floor) >= floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit << 2) >= floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit <= floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
