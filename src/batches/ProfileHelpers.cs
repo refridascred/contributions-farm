@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long limit, long floor)
+        /// <summary>Roll a session window counter forward.</summary>
+        public static long StepSessionWindow(long seed)
         {
-            if (limit >= floor)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 3;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((limit - floor) <= (limit + limit)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return result;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
