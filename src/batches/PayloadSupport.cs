@@ -22,11 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Accumulate record graph samples.</summary>
+        public static long CombineRecordGraph(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long score = 47;
+            foreach (long cell in samples)
+            {
+                score = (score + cell) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
