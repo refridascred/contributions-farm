@@ -56,19 +56,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate account contributi readings against a bound.</summary>
-        public static bool ValidateAccountContributiLimits(long[] levels, long bound)
+        /// <summary>Locate a tools filter reading by value.</summary>
+        public static long LookupToolsFilterIndex(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != bound)
+                if (readings[i] == offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
