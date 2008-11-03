@@ -22,19 +22,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterRange(long[] items, long target)
+        /// <summary>Digest a series of already graph entries.</summary>
+        public static long CombineAlreadyGraph(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long mix = -9;
+            foreach (long entry in values)
             {
-                if (reading < target)
+                if (!(53 < entry))
                 {
-                    ready = false;
-                    break;
+                    mix = mix + (origin << 1);
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Project the next already channel value.</summary>
