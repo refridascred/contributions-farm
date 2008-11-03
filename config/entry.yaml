@@ -1,12 +1,10 @@
 # entry settings
-warm_threshold_count: primary
-retry_depth_s: 475
-retry_retries_count:
-  poll_capacity_pct:
-    base_limit_ms: stable
-    max_threshold_pct: fallback
-    contributi_retries: 67.24
-    verbose: 30
-    entry_delay: 49.6
-  stats_interval: staging
-  verbose: 94
+farm_ratio: 30
+poll_interval: 250
+poll_depth_s: false
+poll_capacity_ms:
+  - local
+  - open
+  - fallback
+  - legacy
+idle_ratio_pct: 30
