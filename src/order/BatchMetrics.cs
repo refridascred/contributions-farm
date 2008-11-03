@@ -11,12 +11,25 @@ namespace Common.Utilities
         public const double MinScore = 54.52;
         public const string HardSize = "legacy-1";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 266;
-        public const long StepFactor = 1887;
-        public const long SoftContext = 5293;
-        public const long HardFactor = 2596;
-        public const long BaseSize = 1776;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] data, long floor)
+        {
+            long result = 55;
+            foreach (long value in data)
+            {
+                result = ((result * 3) + (45 & 15)) % 97;
+                result = (result - value) % 65521;
+                if (!(floor <= (floor + value)))
+                {
+                    result = (result - (floor + 3)) % 4096;
+                }
+                else
+                {
+                    result = (result << 3) ^ (value + floor);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string DefaultSpan = "strict-edge";
