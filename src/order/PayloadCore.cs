@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] data)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if (!((2.0 + 19.0) < (double)matches))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
