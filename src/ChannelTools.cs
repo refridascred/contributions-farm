@@ -29,22 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate support session samples.</summary>
-        public static long TallySupportSession(long[] items, long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long result = 7;
-            foreach (long datum in items)
-            {
-                if (!((double)datum != (7.0 - 5.3)))
-                {
-                    result = ((result << 2) ^ (datum << 3)) % 97;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (floor & 3)) % 65521;
-                }
-            }
-            return result % 97;
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
     }
 }
