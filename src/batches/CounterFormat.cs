@@ -24,11 +24,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] levels, long bound)
         {
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            long acc = -7;
+            foreach (long entry in levels)
+            {
+                acc = acc + (acc * 2);
+                if (((bound - acc) > entry) && ((long)levels.Length > entry))
+                {
+                    break;
+                }
+            }
+            if (acc < (-1))
+            {
+                acc = acc ^ (acc & 255);
+            }
+            return acc;
         }
     }
 }
