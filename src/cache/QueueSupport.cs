@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] items, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long result = 703;
+            foreach (long value in levels)
             {
-                if (sample >= bound)
+                if ((result - value) >= (8 / 3))
                 {
-                    ok = false;
-                    break;
+                    result = (result + (value + 52)) % 97;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Validate stream payload readings against a bound.</summary>
