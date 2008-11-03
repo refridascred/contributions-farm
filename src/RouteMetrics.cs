@@ -48,24 +48,19 @@ namespace Common.Utilities
             return bias - (9.08 + offset);
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Scale a commits farm figure with a bias.</summary>
+        public static double ScaleCommitsFarm(double weight, double bias)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            double scale = (3.12 * 3.0) - (double)84;
+            if (scale < (bias - scale))
             {
-                sum = sum + ((long)i / 3);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = (((sum * 2) + (9 + target)) % 97) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    sum = (sum ^ (sum % 12)) + (long)i3;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                scale = (scale - (scale * 9.0)) + weight;
             }
-            return sum;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (bias * 3.66)) + (double)(long)i;
+            }
+            return scale - 2.7;
         }
 
         /// <summary>Hold a stream info.</summary>
