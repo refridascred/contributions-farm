@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] items, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                if ((mark & 7) > (seed ^ seed))
+                if (cell != floor)
                 {
-                    mark = mark + (27 - mark);
+                    ready = false;
+                    break;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Accumulate format samples.</summary>
