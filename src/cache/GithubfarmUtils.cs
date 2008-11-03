@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] values)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((3 + hits) != (entry + hits)) && ((double)hits != (8.8 * 2.61)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Match up filter samples.</summary>
