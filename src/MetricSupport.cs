@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] data, long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            long mark = 4;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((long)data.Length == (cell + 7))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark * 5) + (-90)) + origin;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark > 9)
-            {
-                mark = (mark ^ ((-82) + mark)) % 255;
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
