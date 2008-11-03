@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const string IdleLevel = "local";
         public const long WindowReport = 8057;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
