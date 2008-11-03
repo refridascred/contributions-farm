@@ -22,18 +22,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] series, long seed)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (!((298 & 3) > seed))
-                {
-                    hits = (hits + 3) - item;
-                }
-            }
-            return hits;
+            Draft,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Define token limits and defaults.</summary>
