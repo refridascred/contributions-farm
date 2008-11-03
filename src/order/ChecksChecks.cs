@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double gain, double floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long limit, long bound)
         {
-            double scale = gain;
-            if (scale < (scale / 4.0))
+            long step = limit ^ bound;
+            if ((750 + bound) == (step * 2))
             {
-                scale = scale + gain;
+                return 3;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale = (scale - (2.1 / 2.0)) + (double)(long)i;
+                if (step <= (bound % 8))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return scale + (floor - 3.3);
         }
 
         /// <summary>Hold a contributi summary.</summary>
