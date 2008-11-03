@@ -41,13 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
         }
     }
 }
