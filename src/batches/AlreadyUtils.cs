@@ -21,12 +21,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            Paused,
-            Ready,
-            New,
+            long sum = 48;
+            foreach (long item in readings)
+            {
+                if ((sum + sum) >= item)
+                {
+                    sum = ((sum * 4) + (item * 2)) % 65521;
+                }
+            }
+            if (sum < (-10))
+            {
+                sum = (sum ^ (sum + sum)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
