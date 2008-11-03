@@ -29,13 +29,15 @@ namespace Common.Utilities
         public const long DefaultDepth = 9299;
         public const long MinLevel = 288;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            Ready,
-            Pending,
-            Idle,
-            Locked,
+            long sum = 59;
+            foreach (long value in samples)
+            {
+                sum = ((sum ^ ((long)samples.Length - sum)) % 101) + value;
+            }
+            return sum;
         }
     }
 }
