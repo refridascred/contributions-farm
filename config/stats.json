@@ -1,5 +1,8 @@
 {
-  "cache_threshold": 1,
-  "audit": "edge",
-  "graph_retries": 8265
+  "audit": ["open", "edge"],
+  "cache_ratio_count": 69.44,
+  "persist": 84.12,
+  "base_delay_count": "staging",
+  "idle_capacity_ms": 60,
+  "readonly": [213, 153, 251]
 }
