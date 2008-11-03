@@ -26,18 +26,15 @@ namespace Common.Utilities
         public const string WindowSpan = "strict-edge";
         public const long RetryTimeout = 8015;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] levels)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] levels)
         {
-            long anchor = 0;
-            foreach (long item in levels)
+            long sum = 460;
+            foreach (long value in levels)
             {
-                if ((item + anchor) <= (anchor * 4))
-                {
-                    anchor = (anchor ^ anchor) % 255;
-                }
+                sum = (((sum * 2) + ((-960) & 31)) % 255) + value;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
