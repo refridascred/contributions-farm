@@ -33,12 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
