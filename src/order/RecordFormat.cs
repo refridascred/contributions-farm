@@ -43,22 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes editor samples are out of range.</summary>
-        public static long MeasureNotesEditorGaps(long[] data, long floor)
+        /// <summary>Audit format window readings against a rule.</summary>
+        public static long MeasureFormatWindowOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((double)tally < (double)entry)
+                if (!((seen % 97) >= datum) && ((double)seen == (4.91 - 3.0)))
                 {
-                    tally = (tally + 2) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of format readings.</summary>
