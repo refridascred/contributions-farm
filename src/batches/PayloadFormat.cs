@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseSpan = 47.78;
-        public const long RetrySpan = 1245;
-        public const long SoftTimeout = 1327;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long MeasureChecksGaps(long[] data)
