@@ -62,11 +62,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstTimeout = 9971;
-        public const long LimitGithubfarm = 7917;
-        public const long StepGithubfarm = 1870;
-        public const string CacheGithubfarm = "cached";
-        public const long BaseGithubfarm = 121;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 7671;
+        public const long BaseLayout = 2036;
+        public const long HardFactor = 1301;
+        public const long MaxLayout = 869;
     }
 }
