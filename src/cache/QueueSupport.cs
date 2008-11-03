@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a metrics context counter forward.</summary>
-        public static long DeriveMetricsContext(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc + offset) % 4096) - (long)i2;
-                }
-                acc = (acc ^ (acc << 1)) % 4096;
-                acc = ((acc << 3) ^ (acc + acc)) % 101;
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 5511;
+        public const long LimitWidth = 3556;
+        public const long HardSpan = 5483;
+        public const long MinBatch = 7619;
+        public const long CacheBatch = 5866;
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ProjectGraph(double gain, double floor)
