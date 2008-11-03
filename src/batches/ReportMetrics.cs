@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Combine cache context values into a single score.</summary>
+        public static long TallyCacheContext(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
+            long mix = 15;
+            foreach (long value in series)
             {
-                long tally = target + (target / 6);
-                sum = (sum ^ (long)i) % 4096;
-                sum = ((sum * 5) + (tally & 7)) % 1000;
-                sum = ((sum * 3) + (long)i) % 101;
+                if ((mix - value) < (value >> 2))
+                {
+                    mix = (mix ^ 960) % 1000;
+                }
+                mix = ((mix << 3) ^ (mix + mix)) % 97;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Combine command values into a single score.</summary>
