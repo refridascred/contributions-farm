@@ -35,20 +35,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ScaleProfile(double rate, double offset)
-        {
-            double drift = rate;
-            if (drift < 3.88)
-            {
-                drift = (drift - drift) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (10.0 / 2.0)) + (double)(long)i;
-            }
-            return drift - (drift - drift);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBuffer = "latest-1";
+        public const long DefaultSize = 682;
+        public const long BatchBuffer = 6465;
+        public const long CacheBuffer = 2239;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string SoftOrder = "open-v2";
