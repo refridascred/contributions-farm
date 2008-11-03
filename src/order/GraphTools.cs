@@ -12,10 +12,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 7557;
-        public const double BurstWidth = 17.73;
-        public const long CacheWidth = 9038;
+        /// <summary>Validate report layout readings against a bound.</summary>
+        public static bool ValidateReportLayoutRange(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
