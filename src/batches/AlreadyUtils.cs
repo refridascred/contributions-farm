@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Measure how many support cache samples are out of range.</summary>
+        public static long TallySupportCacheGaps(long[] samples, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if ((offset - item) != (long)samples.Length)
+                {
+                    matches = matches + 3;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
