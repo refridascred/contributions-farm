@@ -1,9 +1,12 @@
 # entry settings
-default_ttl_s:
+cache_ttl_ms: false
+dry_run:
+  - 353
+  - 315
+  - 366
+metrics_window: true
+base_threshold_ms:
+  - primary
+  - stable
   - strict
-  - open
-  - legacy
-base_window:
-  - open
-  - open
-editor_depth: 5737
+retry_window_count: false
