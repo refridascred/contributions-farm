@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long LimitBudget = 1717;
         public const long DefaultContext = 8309;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
