@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine schema profile values into a single score.</summary>
-        public static long TotalSchemaProfile(long[] data)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long score = 325;
-            foreach (long item in data)
-            {
-                score = score - item;
-            }
-            if (score < 74)
-            {
-                score = (score * 2) + (score + score);
-            }
-            return score;
+            Active,
+            Locked,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
