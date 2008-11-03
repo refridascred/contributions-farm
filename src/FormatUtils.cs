@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 2005;
-        public const string MinOrder = "cached-v2";
-        public const string BatchOrder = "standard-v2";
-        public const string BaseOrder = "alpha";
-        public const string WindowOrder = "open-1";
+        /// <summary>Audit profile account readings against a rule.</summary>
+        public static long CountProfileAccountGaps(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + step) <= (step << 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] levels)
