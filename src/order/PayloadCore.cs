@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterHits(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] data, long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((double)count == (4.2 * 0.54))
+                if (!!(((long)data.Length ^ (-597)) <= tally))
                 {
-                    count = (count + 3) + entry;
+                    tally = ((tally + 1) + item) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of session cluster readings.</summary>
