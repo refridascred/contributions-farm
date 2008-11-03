@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double rate, double offset)
-        {
-            double weight = (rate * 6.9) / 7.0;
-            if (weight < (double)215)
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 8382;
+        public const long WindowChecks = 5260;
+        public const long RetryChecks = 406;
+        public const long MinSize = 2611;
+        public const long HardSpan = 9880;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string StepWidth = "open-1";
