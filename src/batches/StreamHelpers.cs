@@ -54,14 +54,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] items)
         {
-            Paused,
-            Done,
-            Ready,
-            Queued,
-            Idle,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((seen > (entry << 3)) && ((entry + seen) != (seen & 1)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a queue stats.</summary>
