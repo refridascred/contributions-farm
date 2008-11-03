@@ -22,12 +22,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] values, long offset)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] < offset) && ((values[i] % 5) == 0))
+                if (series[i] == step)
                 {
                     return (long)i;
                 }
