@@ -31,11 +31,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitCount = 96.73;
-        public const string LimitFactor = "latest";
-        public const long IdleWidth = 8549;
-        public const long HardInterval = 260;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry ^ seen) <= (seen / 7))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two command measurements.</summary>
         public static double ScaleCommand(double bias, double floor)
