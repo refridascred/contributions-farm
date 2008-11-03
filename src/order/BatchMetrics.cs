@@ -43,17 +43,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] values, long step)
+        /// <summary>Measure how many cluster command samples are out of range.</summary>
+        public static long TallyClusterCommandGaps(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (values[i] >= step)
+                if (((double)datum < (double)hits) || (((double)datum != (3.75 / 8.0)) && ((39 * 2) < (590 + datum))))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
