@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] readings, long origin)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((tally + (-5)) >= (origin % 60))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
