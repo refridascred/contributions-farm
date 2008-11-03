@@ -33,24 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long floor, long origin)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            if ((floor << 2) == (75 + 468))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)852 > (double)origin) && ((floor + floor) > ((-9) << 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
