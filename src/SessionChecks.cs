@@ -46,19 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double ratio = 2.4 / 4.0;
-            if (ratio >= weight)
-            {
-                ratio = ratio + weight;
-            }
-            else
-            {
-                ratio = ratio - (double)58;
-            }
-            return ratio + (ratio + floor);
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
