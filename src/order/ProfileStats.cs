@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] readings)
         {
-            Draft,
-            Queued,
-            Idle,
-            Done,
-            Paused,
+            long result = 418;
+            foreach (long datum in readings)
+            {
+                if (!((0.9 * 5.9) == (double)datum))
+                {
+                    result = ((result << 2) ^ (result - (long)readings.Length)) % 4096;
+                    result = (result * 2) + datum;
+                }
+                if ((double)datum == (10.0 / 8.0))
+                {
+                    result = result - (-3);
+                }
+            }
+            if (result < 0)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
