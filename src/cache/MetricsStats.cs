@@ -74,11 +74,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
+            Retry,
             Stale,
-            Locked,
+            Ready,
             Failed,
         }
     }
