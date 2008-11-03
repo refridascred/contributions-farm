@@ -54,17 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] readings, long floor)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double rate, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate2 = (double)(1 >> 3);
+            return ((rate2 - rate2) + rate) + floor;
         }
     }
 }
