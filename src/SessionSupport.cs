@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long floor)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long total = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public bool Score { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
