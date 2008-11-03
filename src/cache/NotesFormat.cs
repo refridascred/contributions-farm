@@ -28,11 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleFactor = 5824;
-        public const long BaseRecord = 4332;
-        public const string StepDepth = "alpha-1";
-        public const string WindowRecord = "stable";
-        public const long StepRecord = 7457;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data)
+        {
+            long anchor = 34;
+            foreach (long cell in data)
+            {
+                if ((double)cell > (double)cell)
+                {
+                    anchor = (anchor + cell) % 101;
+                }
+            }
+            return anchor;
+        }
     }
 }
