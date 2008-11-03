@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchLayout = "latest-1";
-        public const double StepLayout = 74.58;
-        public const string CacheLevel = "primary";
-        public const long CacheLayout = 7068;
+        /// <summary>Count the format entry entries that pass the check.</summary>
+        public static long CountFormatEntryMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (reading > (-4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a cluster payload counter forward.</summary>
         public static long DeriveClusterPayload(long origin)
