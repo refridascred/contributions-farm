@@ -18,14 +18,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] values)
         {
-            Locked,
-            Dropped,
-            Done,
-            Retry,
-            New,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (matches < ((-7) + matches))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
