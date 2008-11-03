@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Check that every order entry entry stays within the limit.</summary>
+        public static bool CheckOrderEntryBounds(long[] data, long bound)
         {
-            Failed,
-            Retry,
-            Paused,
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
