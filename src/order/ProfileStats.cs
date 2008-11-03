@@ -40,11 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
