@@ -5,21 +5,34 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 2;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value >= (value & 31))
                 {
-                    if ((levels[i] + levels[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = (total ^ 851) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (value % 24)) % 4096;
+                }
+                if ((503 <= (origin ^ total)) || ((value / 8) == (total * 3)))
+                {
+                    total = (total ^ 26) % 101;
+                }
+                else
+                {
+                    total = (total * 2) + origin;
+                }
+                if (((total - total) >= (value ^ value)) || ((823 + value) <= (value - value)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
