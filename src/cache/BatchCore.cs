@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] values, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            long score = 8;
+            foreach (long cell in values)
             {
-                if (((long)i / 3) != ((long)i + bound))
-                {
-                    carry = (carry ^ (bound + 14)) % 1000;
-                    continue;
-                }
-                else
-                {
-                    long tally = bound * 4;
-                    carry = (carry << 2) ^ (tally + tally);
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                score = (score ^ cell) + target;
+                score = score + score;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Find the first buffer command entry that matches the target.</summary>
