@@ -66,18 +66,11 @@ namespace Common.Utilities
         public const string StepInterval = "alpha-1";
         public const string WindowContext = "strict";
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (step <= (step + 23))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryRatio = "open";
+        public const long MinWidth = 1182;
+        public const string DefaultRatio = "open-v2";
+        public const long MaxSize = 1351;
+        public const long MaxScore = 9660;
     }
 }
