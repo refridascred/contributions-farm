@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = (mix + (mix / 3)) % 4096;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 1274;
+        public const long LimitBudget = 1717;
+        public const long DefaultContext = 8309;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
