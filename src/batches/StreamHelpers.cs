@@ -10,22 +10,31 @@ namespace Common.Utilities
         public const long DefaultLevel = 8338;
         public const string MaxScore = "stable";
 
-        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
-        public static long CountBufferGithubfarmMatches(long[] levels)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            if ((15.0 >= (double)seed) && ((16.0 / 6.0) > (double)seed))
             {
-                if ((double)tally < (7.8 / 9.0))
+                return 2;
+            }
+            else
+            {
+                if (((bound ^ seed) == (bound ^ bound)) && (bound >= (bound + 33)))
                 {
-                    tally = (tally + 1) + datum;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((bound & 31) > (bound >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
