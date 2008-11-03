@@ -44,13 +44,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Match up support session samples.</summary>
+        public static long MatchSupportSessionCount(long[] levels)
         {
-            Pending,
-            Stale,
-            Paused,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
