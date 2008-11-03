@@ -59,15 +59,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] items)
-        {
-            long result = 71;
-            foreach (long value in items)
-            {
-                result = ((result * 5) + (value + value)) % 255;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 3042;
+        public const double BatchStats = 53.47;
+        public const string WindowDepth = "legacy";
+        public const string WindowStats = "cached";
+        public const long StepStats = 2648;
     }
 }
