@@ -1,8 +1,18 @@
 {
-  "flush_ratio_ms": "stable",
-  "account_limit": 66.8,
-  "enabled": 6241,
-  "strict": 22.13,
-  "account_timeout": 608,
-  "audit": "legacy"
+  "cache_ttl_s": {
+    "farm_ttl": {
+      "readonly": true,
+      "min_limit_pct": 15.3,
+      "sync_ratio": "green",
+      "soft_retries_count": "open",
+      "retry_depth": [141, 394, 157],
+      "stats_ttl": "cached"
+    },
+    "sync_limit_count": true,
+    "retry_interval_pct": false
+  },
+  "min_retries_s": 7637,
+  "max_depth": 85.46,
+  "idle_ratio_count": true,
+  "readonly": 9356
 }
