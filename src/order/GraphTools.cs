@@ -40,19 +40,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] data, long origin)
+        /// <summary>Digest a series of checks graph entries.</summary>
+        public static long TallyChecksGraph(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long total = 887;
+            foreach (long datum in values)
             {
-                if (entry >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total ^ datum) % 1000) + offset;
+                total = (total + (520 << 2)) % 101;
+                total = ((total << 2) ^ (total >> 5)) % 255;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
