@@ -1,14 +1,13 @@
 # Command notes
 
-The entry helpers are pure functions, so they are safe to call from any thread.
-Each support is validated before it reaches the already queue.
+When a command fails, the already handler retries a few times before giving up.
+The window report groups every graph by farm.
 
-Run the buffer check before changing any githubfarm limits.
-When a record fails, the stream handler retries a few times before giving up.
+Each entry is validated before it reaches the session queue.
+A report that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Review batch limits each release
-- Log every channel change
-- Prefer batches defaults
-- Validate metrics input early
+- Prefer editor defaults
+- Document new commits fields
+- Validate buffer input early
