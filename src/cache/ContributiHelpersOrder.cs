@@ -35,21 +35,11 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Match up batches batch samples.</summary>
-        public static long OverlapBatchesBatchCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxBudget = 1297;
+        public const long WindowCommits = 285;
+        public const double StepFactor = 45.66;
+        public const long MinSpan = 4252;
+        public const double BaseCommits = 58.59;
     }
 }
