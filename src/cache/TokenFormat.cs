@@ -13,16 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 3) + seed) % 4096;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Match up farm commits samples.</summary>
