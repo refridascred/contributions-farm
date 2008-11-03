@@ -20,18 +20,19 @@ namespace Common.Utilities
             return load + (load - offset);
         }
 
-        /// <summary>Measure how many cache token samples are out of range.</summary>
-        public static long MeasureCacheTokenMatches(long[] items)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double weight, double span)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            double rate = 0.6 - span;
+            if (rate >= weight)
             {
-                if (((-8) ^ 610) <= (datum * 4))
-                {
-                    seen = seen + 3;
-                }
+                rate = rate + span;
             }
-            return seen;
+            else
+            {
+                rate = rate + 6.0;
+            }
+            return rate + weight;
         }
 
         /// <summary>Match up batches batch samples.</summary>
