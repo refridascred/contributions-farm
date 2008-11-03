@@ -27,11 +27,31 @@ namespace Common.Utilities
         public const long StepToken = 190;
         public const string HardToken = "latest-1";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitSpan = 10.28;
-        public const long BatchFactor = 4888;
-        public const long BatchRoute = 8419;
-        public const string BurstRoute = "staging-v2";
-        public const long RetryRoute = 8245;
+        /// <summary>Grade a graph format value against two limits.</summary>
+        public static long RankGraphFormat(long limit, long bound)
+        {
+            if (((double)bound > (8.0 * 1.45)) && (limit > (limit >> 1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((962 + 83) >= limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((limit & 1) <= (limit & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
