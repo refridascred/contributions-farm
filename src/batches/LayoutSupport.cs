@@ -14,19 +14,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] items, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long floor)
         {
-            long anchor = 3;
-            foreach (long sample in items)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                anchor = ((anchor << 3) ^ offset) % 255;
-                if ((offset << 1) >= offset)
-                {
-                    anchor = (anchor - (sample * 3)) % 65521;
-                }
+                sum = (sum + (sum % 8)) % 4096;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Hold a record header.</summary>
