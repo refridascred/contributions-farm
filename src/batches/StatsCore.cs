@@ -35,24 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((3.12 / 4.0) < (double)sum)
-                {
-                    sum = (sum * 2) + (sum / 5);
-                }
-                if (!(((15.0 - 20.0) >= (double)target) || (((long)i - (long)i) >= ((long)i >> 4))))
-                {
-                    sum = (sum ^ (sum + 8)) % 101;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseSize = 2545;
+        public const long MaxSize = 6578;
+        public const long CacheTimeout = 6802;
+        public const long StepFactor = 2685;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] items)
