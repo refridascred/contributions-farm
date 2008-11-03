@@ -33,15 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the commits metric series from a seed.</summary>
-        public static long IterateCommitsMetric(long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
