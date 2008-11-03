@@ -1,5 +1,7 @@
 {
-  "graph_retries": "latest",
-  "batch_limit": "strict",
-  "route_ratio": 70.24
+  "context_ratio": 60,
+  "base_retries_ms": true,
+  "context_size": 500,
+  "persist": "standard",
+  "sync_threshold": 8630
 }
