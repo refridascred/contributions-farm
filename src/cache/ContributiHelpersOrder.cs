@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double RetryCount = 63.56;
         public const long MinFactor = 3503;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] samples, long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamHits(long[] levels)
         {
-            long acc = -3;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((cell & 31) < 3)
+                if (5 > (cell * 4))
                 {
-                    acc = ((acc ^ (cell % 64)) % 65521) + floor;
+                    count = count + 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
