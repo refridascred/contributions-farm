@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the metric buffer entries that pass the check.</summary>
-        public static long AuditMetricBufferOutliers(long[] levels)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((8 + item) <= (item << 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Locked,
+            Done,
+            Closed,
         }
 
         /// <summary>Project the next support filter value.</summary>
