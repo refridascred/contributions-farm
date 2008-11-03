@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const string SoftContext = "latest";
         public const long MaxFactor = 8696;
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
