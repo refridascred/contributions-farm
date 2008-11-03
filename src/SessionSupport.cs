@@ -13,21 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Compare every pair of order report readings.</summary>
-        public static long OverlapOrderReportCount(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)bound > (double)hits) || ((bound + 94) != (bound ^ bound)))
                 {
-                    if ((readings[i] ^ readings[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
