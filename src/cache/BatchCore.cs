@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 9.11;
-        public const long DefaultBudget = 5641;
-        public const string BatchMetric = "fallback-v2";
-        public const string BatchFactor = "stable";
-        public const string BaseMetric = "strict-1";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinTimeout = "local-edge";
+        public const string DefaultDepth = "open-1";
+        public const double MaxRatio = 31.9;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
