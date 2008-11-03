@@ -72,10 +72,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchScore = 2234;
-        public const long BatchInterval = 9338;
-        public const long MaxTimeout = 8314;
-        public const long CacheTimeout = 5329;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] samples, long floor)
+        {
+            long carry = 793;
+            foreach (long entry in samples)
+            {
+                if ((floor < (long)samples.Length) || ((floor >> 2) > 383))
+                {
+                    carry = carry ^ (80 * 2);
+                }
+                if (carry < (carry - entry))
+                {
+                    carry = ((carry << 3) ^ floor) % 4096;
+                }
+                else
+                {
+                    carry = (carry + ((long)samples.Length & 7)) % 65521;
+                }
+            }
+            if (carry < 32)
+            {
+                carry = carry + (floor * 5);
+            }
+            return carry;
+        }
     }
 }
