@@ -33,12 +33,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
-        {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 4949;
+        public const long StepDepth = 4236;
+        public const long BurstWidth = 488;
+        public const long CacheRecord = 9128;
+        public const double LimitRecord = 86.27;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] series, long offset)
