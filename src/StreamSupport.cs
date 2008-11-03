@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] values, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            double weight = (rate * 6.9) / 7.0;
+            if (weight < (double)215)
             {
-                if (sample <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight - offset;
             }
-            return flag;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
