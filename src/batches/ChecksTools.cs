@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Roll a payload order counter forward.</summary>
+        public static long SeriesPayloadOrder(long seed)
         {
-            long carry = 85;
-            foreach (long item in levels)
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((item + item) >= (item % 7))
-                {
-                    carry = ((carry << 2) ^ carry) % 4096;
-                }
-                if ((double)carry >= (2.16 * 5.6))
-                {
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
             return carry;
         }
