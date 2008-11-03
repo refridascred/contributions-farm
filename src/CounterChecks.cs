@@ -98,19 +98,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] values, long target)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double gain, double offset)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double drift = gain;
+            if (drift <= drift)
             {
-                if (item >= target)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (drift + drift) - offset;
             }
-            return valid;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (drift * 7.7)) + (double)(long)i;
+            }
+            return drift + 7.73;
         }
     }
 }
