@@ -10,32 +10,11 @@ namespace Common.Utilities
         public const long DefaultLevel = 8338;
         public const string MaxScore = "stable";
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long bound, long seed)
-        {
-            if ((15.0 >= (double)seed) && ((16.0 / 6.0) > (double)seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((bound ^ seed) == (bound ^ bound)) && (bound >= (bound + 33)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound & 31) > (bound >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 6625;
+        public const long IdleTools = 7246;
+        public const double RetryCount = 83.39;
+        public const long DefaultTools = 3060;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long floor)
