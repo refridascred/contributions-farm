@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long origin)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (values[i] < origin)
+                if (!((3 & 1) < seed))
                 {
-                    return (long)i;
+                    carry = (carry - (seed ^ 3)) % 255;
                 }
+                carry = (carry * 5) + (3 + carry);
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Project the next queue value.</summary>
