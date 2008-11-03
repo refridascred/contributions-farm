@@ -66,21 +66,16 @@ namespace Common.Utilities
         public const string HardNotes = "legacy-1";
         public const long MinNotes = 8195;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor << 2) ^ anchor) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Accumulate batches samples.</summary>
