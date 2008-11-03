@@ -19,24 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long seed, long seed2)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] data, long seed)
         {
-            if ((10.0 * 7.0) > (double)seed2)
+            long sum = 857;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed2 >= (seed - seed2))
+                if ((item * 4) != (seed - item))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    sum = (sum + 34) % 4096;
                 }
             }
+            if (sum > 13)
+            {
+                sum = ((sum * 5) + (seed / 6)) % 4096;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of route entries.</summary>
