@@ -52,18 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] samples, long offset)
+        /// <summary>Look up the position of a already commits sample.</summary>
+        public static long SeekAlreadyCommitsIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell - seen) != (offset + (long)samples.Length))
+                if ((data[i] <= limit) && ((data[i] % 2) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a entry stats.</summary>
