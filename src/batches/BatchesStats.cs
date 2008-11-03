@@ -32,9 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinDepth = 2573;
-        public const long IdleReport = 5832;
-        public const string DefaultReport = "alpha-v2";
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
