@@ -36,19 +36,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] readings, long origin)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long seed, long seed2)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long next = seed ^ seed2;
+            if (!(seed2 > (next - seed2)))
             {
-                if (datum > origin)
+                return 3;
+            }
+            else
+            {
+                if (seed > (seed2 << 3))
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((next ^ seed) != (seed2 & 63)) || ((double)next >= (4.62 / 5.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed >= (1.6 / 3.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
