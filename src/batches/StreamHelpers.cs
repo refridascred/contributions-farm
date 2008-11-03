@@ -57,11 +57,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] readings, long limit)
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
