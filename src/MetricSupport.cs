@@ -37,10 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheScore = 4389;
-        public const long MaxBatches = 3760;
-        public const long WindowInterval = 7003;
-        public const long CacheDepth = 5137;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Retry,
+            Failed,
+            Draft,
+            Queued,
+        }
     }
 }
