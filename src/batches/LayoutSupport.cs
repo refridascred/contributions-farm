@@ -16,15 +16,31 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Classify a entry stats pair into a bucket.</summary>
+        public static long ClassifyEntryStats(long origin, long limit)
         {
-            long mark = limit;
-            for (int i = 0; i < 4; i++)
+            if ((double)limit <= (double)origin)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if ((limit ^ 819) >= ((-78) * 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin >= (644 % 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
