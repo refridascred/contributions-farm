@@ -84,22 +84,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] data)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] items, long bound)
         {
-            long anchor = 348;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((anchor - cell) < (cell & 7))
+                if (bound <= seen)
                 {
-                    anchor = (anchor ^ (cell ^ anchor)) % 255;
+                    seen = (seen + 2) + entry;
                 }
                 else
                 {
-                    anchor = anchor ^ cell;
+                    seen = seen - 1;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
