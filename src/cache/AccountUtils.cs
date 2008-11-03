@@ -54,11 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] readings, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally + (-5)) >= (origin % 60))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+            }
+            return tally;
         }
     }
 }
