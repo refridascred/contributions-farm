@@ -32,13 +32,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Audit token account readings against a rule.</summary>
+        public static long AuditTokenAccountOutliers(long[] readings, long floor)
         {
-            Pending,
-            Active,
-            Draft,
-            Idle,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((267 / 6) >= (floor / 9)) || ((7 <= (entry % 100)) && (313 >= floor)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
