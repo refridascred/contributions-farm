@@ -48,11 +48,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Locate a stats metrics reading by value.</summary>
+        public static long LookupStatsMetricsIndex(long[] series, long seed)
         {
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
