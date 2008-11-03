@@ -30,15 +30,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double rate, double floor)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            double mean = (0.65 + 4.3) / 2.0;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (((mean + (mean - mean)) + (double)(long)i) + rate) + floor;
-            }
-            return mean - (double)92;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a stats metrics reading by value.</summary>
