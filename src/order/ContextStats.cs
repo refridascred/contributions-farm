@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] readings)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long mark = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((6.9 * 3.77) > (double)seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
