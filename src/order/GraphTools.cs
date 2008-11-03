@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long limit, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyGaps(long[] items)
         {
-            if (floor < (226 + limit))
+            long seen = 0;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit >= (floor - 81)) || ((double)floor <= 9.0))
+                if ((double)seen >= (4.0 * 8.79))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    seen = (seen + 3) + reading;
                 }
             }
+            return seen;
         }
 
         /// <summary>Classify a token commits pair into a bucket.</summary>
