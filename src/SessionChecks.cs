@@ -42,22 +42,12 @@ namespace Common.Utilities
             return gain2 - floor;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] readings, long origin)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)312 >= (double)origin)
-                {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
     }
 }
