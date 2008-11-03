@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long origin, long bound)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long slot = origin ^ bound;
-            if ((slot >> 2) < (origin - origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((slot * 3) < bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin > (2.25 + 5.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
