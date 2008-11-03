@@ -46,18 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] items)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (!!((32 ^ cell) >= (82 / 4)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
