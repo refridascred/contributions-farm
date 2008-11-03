@@ -1,23 +1,18 @@
 # support settings
-enabled:
-  soft_interval_count:
-    - 52
-    - 136
-    - 496
-    - 94
-  dry_run: 1024
-  soft_threshold_count: green
-  persist: false
-  flush_timeout_s:
-    - 315
-    - 27
-    - 74
-    - 259
-  readonly:
-    - primary
-    - latest
-    - standard
+buffer_ttl: strict
+batch_size: 8643
+base_limit: true
+batch_retries:
+  - eu-west
+  - fallback
+filter_limit:
+  flush_ratio_count: local
+  min_retries_s: 9542
+  warm_size_ms: local
+  stats_ratio: strict
+  default_threshold_count: 88.55
+  flush_interval_s:
+    - strict
     - open
-dry_run: true
-default_depth: false
-report_ttl: green
+    - primary
+    - strict
