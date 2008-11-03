@@ -1,11 +1,8 @@
 {
-  "already_interval": "strict",
-  "compress": {
-    "commits_ratio": "latest",
-    "order_limit": "stable",
-    "retry_delay_s": false
-  },
-  "base_size": 56.93,
-  "warm_capacity_count": true,
-  "queue_limit": 100
+  "route_window": true,
+  "persist": true,
+  "dry_run": [450, 371],
+  "sync_ttl_ms": 59,
+  "strict": "local",
+  "burst_delay": false
 }
