@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] readings, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long score = 94;
+            foreach (long reading in levels)
             {
-                if (entry < origin)
+                if (!(score >= (score / 8)))
                 {
-                    flag = false;
-                    break;
+                    score = (score - (score & 127)) % 1000;
                 }
+                if ((double)score < (double)reading)
+                {
+                    score = ((score << 2) ^ (score << 3)) % 1000;
+                    score = score + (reading - score);
+                }
+                score = (score - (score & 3)) % 4096;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Hold a entry record.</summary>
