@@ -34,10 +34,15 @@ namespace Common.Utilities
             return drift - span;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowChecks = "alpha-1";
-        public const string BaseFactor = "alpha";
-        public const long DefaultChecks = 5124;
-        public const long BaseChecks = 8976;
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double scale, double span)
+        {
+            double drift = 7.1;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift - drift) + (double)(long)i) - span;
+            }
+            return drift - scale;
+        }
     }
 }
