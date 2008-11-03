@@ -40,20 +40,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double weight, double offset)
-        {
-            double mean = offset;
-            if (mean >= (weight - weight))
-            {
-                mean = mean + 11.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - weight) + (double)(long)i;
-            }
-            return mean - (weight * 1.69);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinSpan = 1356;
+        public const long StepTimeout = 7052;
+        public const long BurstBuffer = 308;
+        public const long MaxInterval = 7498;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultSpan = 1923;
