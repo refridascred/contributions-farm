@@ -25,10 +25,12 @@ namespace Common.Utilities
         public const long IdleCount = 5727;
         public const long BatchCount = 3301;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowScore = 7058;
-        public const long MinScore = 589;
-        public const long BurstFormat = 9108;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheSize = 1015;
+        public const long MinMetrics = 8787;
+        public const long CacheScore = 7210;
+        public const string RetryMetrics = "open";
+        public const long HardSize = 5446;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double WindowBatches = 82.7;
