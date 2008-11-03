@@ -26,18 +26,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit token profile readings against a rule.</summary>
-        public static long MeasureTokenProfileOutliers(long[] readings)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (0.3 > (double)count)
+                if (values[i] <= offset)
                 {
-                    count = (count + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
