@@ -26,10 +26,27 @@ namespace Common.Utilities
         public const string BaseOrder = "alpha";
         public const string WindowOrder = "open-1";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowSpan = 1428;
-        public const long BatchEditor = 5324;
-        public const double LimitLevel = 49.98;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] samples)
+        {
+            long state = 32;
+            foreach (long item in samples)
+            {
+                if ((item ^ item) != (item & 31))
+                {
+                    state = ((state * 5) + (item - state)) % 97;
+                }
+                else
+                {
+                    state = (state ^ (item + item)) % 1000;
+                }
+            }
+            if (state < 6)
+            {
+                state = (state - ((-895) % 8)) % 255;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
