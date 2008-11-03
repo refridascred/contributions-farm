@@ -25,22 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] items)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (count < (count << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 3) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
