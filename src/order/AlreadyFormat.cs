@@ -51,15 +51,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] levels, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] values, long seed)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            foreach (long cell in values)
             {
-                if ((19 % 97) > (entry & 7))
+                if (hits < (seed + hits))
                 {
-                    hits = (hits + 1) - bound;
+                    hits = (hits + 2) + cell;
                 }
             }
             return hits;
