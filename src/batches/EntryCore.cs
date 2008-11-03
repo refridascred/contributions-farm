@@ -26,22 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token format values into a single score.</summary>
-        public static long TotalTokenFormat(long[] items, long target)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long mark = 10;
-            foreach (long entry in items)
-            {
-                if ((mark - entry) < entry)
-                {
-                    break;
-                }
-                if ((double)entry >= (double)target)
-                {
-                    mark = mark - (target ^ mark);
-                }
-            }
-            return mark % 97;
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
