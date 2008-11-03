@@ -23,12 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            Stale,
-            Closed,
-            Active,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((((8 & 255) < (hits + (long)series.Length)) && (4 <= hits)) || (((9.64 + 2.1) > (double)reading) || (9.99 > (double)hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
