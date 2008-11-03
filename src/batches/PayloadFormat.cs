@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the format entry entries that pass the check.</summary>
-        public static long CountFormatEntryMatches(long[] data)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (reading > (-4))
+                if (datum <= offset)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Roll a cluster payload counter forward.</summary>
