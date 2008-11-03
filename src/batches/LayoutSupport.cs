@@ -55,32 +55,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Classify a session stats pair into a bucket.</summary>
-        public static long SortSessionStats(long origin, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] samples, long target)
         {
-            long lane = origin ^ seed;
-            if (((724 + origin) < lane) || (((-562) - seed) < (892 >> 5)))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (lane >= (origin + seed))
+                if ((3.0 * 4.7) == (double)tally)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed ^ seed) > (lane - lane))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = ((tally + 2) + cell) - target;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
