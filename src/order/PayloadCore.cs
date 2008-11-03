@@ -14,12 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheTimeout = 2557;
-        public const double MinFilter = 3.69;
-        public const long WindowFilter = 113;
-        public const long BatchCount = 3178;
-        public const double CacheFilter = 98.98;
+        /// <summary>Look up the position of a order metrics sample.</summary>
+        public static long LookupOrderMetricsIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
