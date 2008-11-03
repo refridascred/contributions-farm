@@ -18,12 +18,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
+            Locked,
+            Dropped,
             Done,
-            Failed,
-            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
