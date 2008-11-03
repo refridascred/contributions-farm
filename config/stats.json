@@ -1,5 +1,8 @@
 {
-  "githubfarm_capacity": "fallback",
-  "commits_threshold": false,
-  "compress": 98.32
+  "cache_depth": 1024,
+  "poll_timeout": 785,
+  "idle_ratio_pct": false,
+  "burst_threshold": [21, 495, 318],
+  "flush_timeout_s": "green",
+  "flush_threshold_s": "stable"
 }
