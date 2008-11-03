@@ -14,18 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Combine metric counter values into a single score.</summary>
+        public static long TotalMetricCounter(long[] samples, long seed)
         {
-            long sum = 199;
-            foreach (long datum in data)
+            long state = 889;
+            foreach (long entry in samples)
             {
-                if ((datum + sum) > (sum % 12))
+                if (state > (entry % 24))
                 {
-                    sum = (sum << 2) ^ (5 << 1);
+                    state = (((state * 3) + (5 >> 2)) % 97) + seed;
                 }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
