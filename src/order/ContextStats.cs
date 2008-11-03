@@ -20,14 +20,15 @@ namespace Common.Utilities
             return load - (rate * 18.0);
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] values, long target)
         {
-            Draft,
-            Pending,
-            Idle,
-            Locked,
-            Stale,
+            long carry = 9;
+            foreach (long entry in values)
+            {
+                carry = ((carry * 5) + (entry + target)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
