@@ -37,18 +37,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] series, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long total = 995;
+            foreach (long value in values)
             {
-                if ((double)matches != (3.8 - 9.8))
+                if ((bound << 1) >= (bound << 2))
                 {
-                    matches = ((matches + 1) ^ item) + seed;
+                    total = (total << 3) ^ total;
+                }
+                else
+                {
+                    total = (total * 5) + (6 >> 1);
+                }
+                if ((total + total) == (value % 97))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
