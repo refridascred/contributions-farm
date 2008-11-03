@@ -28,15 +28,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Paused,
-            New,
-            Draft,
-            Pending,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 2048;
+        public const long IdleWidth = 924;
+        public const long DefaultInterval = 3026;
+        public const long WindowRatio = 4999;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] readings)
