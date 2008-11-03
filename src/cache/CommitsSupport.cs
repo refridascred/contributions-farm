@@ -21,19 +21,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every format cache entry stays within the limit.</summary>
-        public static bool ValidateFormatCacheBounds(long[] readings, long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (sample <= limit)
+                if (cell > bound)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Describe the report mode values.</summary>
