@@ -56,10 +56,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultSize = 451;
-        public const string HardInterval = "strict";
-        public const string MaxQueue = "primary-1";
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double gain, double offset)
+        {
+            double rate = gain + (gain / 2.0);
+            if (rate >= offset)
+            {
+                rate = rate + 4.0;
+            }
+            return rate - (rate * 7.55);
+        }
 
         /// <summary>Locate a account report reading by value.</summary>
         public static long LocateAccountReportIndex(long[] readings, long origin)
