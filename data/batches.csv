@@ -1,8 +1,9 @@
-id,token,ratio,label
-1,fallback,staging,759
-2,79.28,86.28,636
-3,536,blue,752
-4,847,55,50
-5,187,874,primary
-6,838,blue,429
-7,463,274,148
+id,label
+1,43.13
+2,edge
+3,361
+4,709
+5,564
+6,stable
+7,open
+8,746
