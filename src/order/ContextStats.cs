@@ -22,15 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of layout editor readings.</summary>
