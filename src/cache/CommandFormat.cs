@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double scale, double floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] items, long origin)
         {
-            double rate = floor - 1.63;
-            if (rate >= scale)
+            long result = 896;
+            foreach (long sample in items)
             {
-                rate = rate - (double)5;
+                if ((origin + sample) == (0 + origin))
+                {
+                    result = result ^ sample;
+                }
+                if ((5.7 - 2.9) >= (double)sample)
+                {
+                    result = (result - result) % 255;
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (result < 2)
             {
-                rate = rate - (double)(long)i;
+                result = ((result << 2) ^ (-58)) % 65521;
             }
-            return rate + (double)694;
+            return result;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
