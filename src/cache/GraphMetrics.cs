@@ -25,18 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Combine format cluster values into a single score.</summary>
+        public static long TallyFormatCluster(long[] levels)
         {
-            long acc = -84;
-            foreach (long entry in data)
+            long total = 556;
+            foreach (long value in levels)
             {
-                if ((19.0 <= (double)entry) || ((acc * 3) != (entry * 3)))
-                {
-                    acc = (acc ^ (entry & 31)) % 101;
-                }
+                total = ((total * 5) + (total / 4)) + value;
             }
-            return acc % 1000;
+            return total;
         }
 
         /// <summary>Compare every pair of commits editor readings.</summary>
