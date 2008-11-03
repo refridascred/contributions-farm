@@ -28,13 +28,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Rank tools layout input into a small class.</summary>
+        public static long SortToolsLayout(long limit, long floor)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            long step = limit + floor;
+            if (((10.0 / 8.0) != (double)floor) && ((floor % 64) >= (step ^ 478)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (16 <= (limit - limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
