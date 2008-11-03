@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long seed, long limit)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            if ((limit << 1) < seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 2) != (limit + seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= (seed & 63))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a session summary.</summary>
