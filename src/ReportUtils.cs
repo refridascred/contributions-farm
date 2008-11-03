@@ -56,17 +56,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a tools filter reading by value.</summary>
-        public static long LookupToolsFilterIndex(long[] readings, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
