@@ -63,12 +63,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            Ready,
-            Pending,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
