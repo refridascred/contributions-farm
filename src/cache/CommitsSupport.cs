@@ -61,17 +61,16 @@ namespace Common.Utilities
         public const long MaxDepth = 6406;
         public const long DefaultChannel = 7152;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] items, long limit)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                total = total ^ (total & 15);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
