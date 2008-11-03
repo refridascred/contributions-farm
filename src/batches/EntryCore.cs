@@ -54,12 +54,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public long Weight { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 9940;
+        public const string RetryTimeout = "open-1";
+        public const double CacheRatio = 24.63;
+        public const long HardStream = 7162;
+        public const double CacheSpan = 11.71;
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long FindSupportIndex(long[] levels, long step)
