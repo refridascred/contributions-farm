@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 3840;
-        public const double HardWidth = 20.82;
-        public const long StepCount = 291;
-        public const string IdleLevel = "local";
-        public const long WindowReport = 8057;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
