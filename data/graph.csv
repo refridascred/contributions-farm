@@ -1,8 +1,6 @@
-id,ratio,level,rank
-1,353,324,22.41
-2,49.54,92,893
-3,legacy,237,7.79
-4,687,315,fallback
-5,210,stable,eu-west
-6,fallback,988,37.12
-7,454,86.12,staging
+id,state
+1,green
+2,legacy
+3,stable
+4,829
+5,eu-west
