@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long DeriveCounter(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((samples[i] + samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (((state * 3) + (origin & 31)) % 255) ^ (long)i2;
                 }
+                state = (state + state) % 65521;
+                state = (state - origin) % 97;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
