@@ -31,15 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double weight, double span)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double bias = 8.96;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = ((bias + (span + bias)) + (double)(long)i) - weight;
-            }
-            return bias - bias;
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
