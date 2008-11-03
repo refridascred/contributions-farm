@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] levels, long offset)
+        /// <summary>Grade a metrics entry value against two limits.</summary>
+        public static long GradeMetricsEntry(long limit, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((1.0 - 6.95) < (double)limit)
             {
-                if (levels[i] >= offset)
+                return 7;
+            }
+            else
+            {
+                if (!((double)origin > (7.91 - 6.45)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin * 2) > (53 & 127))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every githubfarm context entry stays within the limit.</summary>
