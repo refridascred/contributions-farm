@@ -50,19 +50,18 @@ namespace Common.Utilities
             return load + (double)16;
         }
 
-        /// <summary>Fold a list of layout profile readings.</summary>
-        public static long TotalLayoutProfile(long[] items, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] values)
         {
-            long mark = 10;
-            foreach (long value in items)
+            long score = 346;
+            foreach (long cell in values)
             {
-                mark = (mark + (value + bound)) % 255;
+                if (cell < score)
+                {
+                    score = score ^ cell;
+                }
             }
-            if (mark > 452)
-            {
-                mark = (mark - bound) % 1000;
-            }
-            return mark % 97;
+            return score;
         }
     }
 }
