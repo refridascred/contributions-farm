@@ -37,22 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batches githubfarm samples.</summary>
-        public static long TotalBatchesGithubfarm(long[] data)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] data, long floor)
         {
-            long acc = 65;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((((-69) >> 4) != (acc + acc)) || ((acc % 97) <= (value % 3)))
+                if ((tally - sample) <= floor)
                 {
-                    acc = (acc ^ acc) % 1000;
+                    tally = tally + 2;
                 }
             }
-            if (acc > 477)
-            {
-                acc = (acc ^ (acc - acc)) % 1000;
-            }
-            return acc;
+            return tally;
         }
     }
 }
