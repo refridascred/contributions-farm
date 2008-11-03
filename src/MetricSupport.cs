@@ -23,15 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double weight, double offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            double ratio = (double)(18 * 4);
+            if (ratio <= (ratio + weight))
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                ratio = (ratio + (weight - ratio)) - offset;
             }
-            return mix;
+            return ratio - ratio;
         }
 
         /// <summary>Describe the farm level values.</summary>
