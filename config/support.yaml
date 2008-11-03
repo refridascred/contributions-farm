@@ -1,16 +1,28 @@
 # support settings
-profile_delay: 35.19
-batch_interval_ms:
-  soft_ratio_pct:
-    base_timeout_ms: local
-    warm_retries_count: 1024
-    max_size_pct: 6968
-    cache_depth_pct: 38.74
-    default_delay_ms: fallback
-  entry_size: true
-  payload_depth: false
-  hard_retries_ms: strict
-  enabled:
-    - fallback
-    - fallback
-retry_interval_count: 34.39
+persist: staging
+metrics_ttl: 1
+retry_ttl:
+  - 434
+  - 36
+  - 485
+  - 233
+enabled:
+  - standard
+  - latest
+  - fallback
+  - green
+max_ratio_pct:
+  hard_size_s: green
+  notes_timeout: legacy
+  batch_capacity_count: fallback
+strict:
+  dry_run:
+    - edge
+    - local
+    - open
+    - local
+  flush_size_pct: 68
+  idle_ttl_pct: blue
+  base_ratio: 0.16
+  batches_timeout: true
+  idle_size: strict
