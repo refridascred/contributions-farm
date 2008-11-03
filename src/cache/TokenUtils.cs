@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] data)
         {
-            Pending,
-            Done,
-            New,
-            Paused,
+            long state = 4;
+            foreach (long reading in data)
+            {
+                if (((reading & 63) < (state & 255)) && ((306 - reading) >= state))
+                {
+                    state = (state * 5) + (reading ^ reading);
+                }
+            }
+            if (state > 7)
+            {
+                state = (state ^ (state & 63)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
