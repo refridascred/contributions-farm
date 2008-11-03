@@ -24,17 +24,38 @@ namespace Common.Utilities
             return ratio + (floor * 16.0);
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] data, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long step, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((step & 255) != (48 + limit)) && ((step % 97) != (189 * 2)))
             {
-                if (data[i] < bound)
+                return 3;
+            }
+            else
+            {
+                if (!((double)step >= (double)271))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((step >= (limit + limit)) && ((175 / 5) <= (step & 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (step <= limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
