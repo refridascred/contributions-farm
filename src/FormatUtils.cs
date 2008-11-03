@@ -84,18 +84,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] series)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((double)(-138) == (double)entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
