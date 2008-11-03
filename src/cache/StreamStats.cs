@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] values, long origin)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long state = 808;
-            foreach (long entry in values)
-            {
-                state = ((((state << 2) ^ 383) % 65521) - entry) - origin;
-            }
-            return state % 65521;
+            public string Flag { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Validate token readings against a bound.</summary>
