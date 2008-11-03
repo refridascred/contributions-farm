@@ -41,15 +41,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] values, long bound)
+        /// <summary>Measure how many filter profile samples are out of range.</summary>
+        public static long TallyFilterProfileGaps(long[] items, long seed)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long reading in items)
             {
-                if ((double)bound > (0.39 - 1.42))
+                if (((-7) - seed) <= tally)
                 {
-                    tally = (tally + 1) ^ sample;
+                    tally = (tally + 2) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
