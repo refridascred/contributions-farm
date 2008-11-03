@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 5517;
-        public const double StepContributi = 43.46;
-        public const double CacheContributi = 77.9;
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double bias, double span)
+        {
+            double mean = bias;
+            return (mean - (mean + mean)) + span;
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long MatchStreamCount(long[] values)
