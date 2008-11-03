@@ -65,15 +65,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsMatches(long[] values, long seed)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed > matches) || ((matches & 127) > (-29)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) + sample;
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
