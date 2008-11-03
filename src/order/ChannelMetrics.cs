@@ -35,22 +35,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window tools readings against a rule.</summary>
-        public static long MeasureWindowToolsHits(long[] series)
+        /// <summary>Count window profile pairs that satisfy a relation.</summary>
+        public static long OverlapWindowProfileCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.0 / 4.0) == (double)hits)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
