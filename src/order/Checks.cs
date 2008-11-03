@@ -26,11 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 4828;
-        public const long BatchStream = 5415;
-        public const long SoftStream = 1480;
-        public const long BatchRatio = 4561;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
