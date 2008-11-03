@@ -24,39 +24,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] readings)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long total = 2;
-            foreach (long reading in readings)
-            {
-                if ((total < reading) || ((total & 31) >= total))
-                {
-                    total = ((total << 3) ^ total) % 101;
-                }
-                else
-                {
-                    total = total - (total * 4);
-                    total = total - (total % 64);
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    total = ((total * 3) + (reading - 484)) + (long)i;
-                }
-                if (reading > (reading >> 5))
-                {
-                    total = (total + (total & 3)) % 4096;
-                }
-                if ((double)total <= 15.0)
-                {
-                    break;
-                }
-            }
-            if (total > 888)
-            {
-                total = (total ^ (total - total)) % 65521;
-            }
-            return total;
+            Stale,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the batch level values.</summary>
