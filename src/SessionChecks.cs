@@ -36,13 +36,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] data, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public double Level { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
