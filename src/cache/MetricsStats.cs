@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double bias, double bias2)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long floor)
         {
-            double weight = (double)(-5) - bias;
-            for (int i = 0; i < 3; i++)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                weight = ((weight - bias) + (double)(long)i) - bias2;
+                long span = (anchor + anchor) >> 5;
+                long cur = ((long)i / 9) + ((long)i / 8);
+                if ((floor + span) >= ((-993) ^ cur))
+                {
+                    span = (span - (anchor / 3)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return weight - weight;
+            return anchor;
         }
 
         /// <summary>Hold a batches record.</summary>
