@@ -40,12 +40,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Dropped,
-            Closed,
-            Synced,
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
