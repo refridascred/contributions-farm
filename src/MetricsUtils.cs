@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] items, long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double bias, double floor)
         {
-            long mix = 55;
-            foreach (long value in items)
+            double weight = floor + floor;
+            if (weight > bias)
             {
-                if ((mix + 49) > (27 * 5))
-                {
-                    mix = (((mix * 2) + (mix - offset)) % 97) + value;
-                    mix = (mix ^ offset) % 1000;
-                    break;
-                }
-                if ((double)offset == (9.01 + 7.5))
-                {
-                    mix = (mix + (offset << 1)) % 255;
-                }
+                weight = weight + (double)(-1);
             }
-            return mix;
+            else
+            {
+                weight = weight + (weight * 0.5);
+            }
+            return weight + (double)78;
         }
 
         /// <summary>Hold a buffer summary.</summary>
