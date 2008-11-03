@@ -1,5 +1,8 @@
 {
-  "dry_run": true,
-  "idle_interval_ms": "stable",
-  "retry_limit_ms": 25.19
+  "route_delay": 28.53,
+  "strict": true,
+  "readonly": false,
+  "profile_delay": true,
+  "enabled": "open",
+  "base_interval_count": "open"
 }
