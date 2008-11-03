@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the notes format entries that pass the check.</summary>
-        public static long AuditNotesFormatMatches(long[] samples, long origin)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((((double)origin <= (double)hits) || ((origin * 3) < (hits & 15))) || (((0.41 / 8.0) == (double)hits) || ((6.45 * 4.38) == (double)hits)))
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit profile account readings against a rule.</summary>
