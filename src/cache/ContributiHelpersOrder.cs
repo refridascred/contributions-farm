@@ -21,17 +21,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a checks order sample.</summary>
-        public static long FindChecksOrderIndex(long[] values, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 79;
+            foreach (long sample in items)
             {
-                if ((values[i] >= limit) && ((values[i] % 2) != 0))
+                sum = ((sum << 2) ^ (sum * 4)) - bound;
+                sum = (sum ^ (sample >> 2)) % 1000;
+                if ((double)sample != (3.97 * 4.7))
                 {
-                    return (long)i;
+                    sum = (sum * 5) + (sum + sum);
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
