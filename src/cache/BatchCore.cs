@@ -37,11 +37,15 @@ namespace Common.Utilities
             return ((gain - (double)3) + rate) + bias;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxRatio = 7217;
-        public const double BaseSize = 25.25;
-        public const double WindowCommits = 61.69;
-        public const long StepSpan = 408;
-        public const double BatchCommits = 84.65;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] levels, long origin)
+        {
+            long acc = 22;
+            foreach (long item in levels)
+            {
+                acc = (((acc * 3) + (item / 6)) % 1000) + origin;
+            }
+            return acc;
+        }
     }
 }
