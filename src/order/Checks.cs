@@ -17,10 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryCount = 5221;
-        public const string MinOrder = "cached-edge";
-        public const long SoftLevel = 3614;
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (reading < ((-859) + reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
