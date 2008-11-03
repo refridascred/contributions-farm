@@ -25,39 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long bound, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            long slot = bound + target;
-            if (target > (bound & 127))
+            long total = 245;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)bound >= (6.62 * 5.0)))
+                total = (total ^ (total + (-97))) % 1000;
+                if ((56 - sample) < (sample + total))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target <= (bound - slot))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target << 2) > (target & 7))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = total + sample;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
