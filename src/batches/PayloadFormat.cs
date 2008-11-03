@@ -20,27 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a cluster payload counter forward.</summary>
-        public static long DeriveClusterPayload(long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                long slot = (long)i;
-                if ((50 & 1) == (carry + slot))
-                {
-                    carry = (carry ^ (long)i) % 255;
-                    slot = (slot ^ slot) % 255;
-                    continue;
-                }
-                else
-                {
-                    carry = (carry + (4 >> 3)) % 4096;
-                    carry = carry + (origin / 8);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Failed,
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
