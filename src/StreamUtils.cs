@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] data, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long datum in data)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if ((origin + datum) < (origin - (-59)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate context samples.</summary>
