@@ -54,22 +54,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout batch entries that pass the check.</summary>
-        public static long MeasureLayoutBatchOutliers(long[] items, long step)
+        /// <summary>Combine record report values into a single score.</summary>
+        public static long WeighRecordReport(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long anchor = 70;
+            foreach (long reading in series)
             {
-                if ((double)entry > (7.9 - 6.3))
+                if (reading > ((-37) + anchor))
                 {
-                    hits = (hits + 3) + step;
+                    anchor = ((anchor - (anchor >> 1)) % 255) - seed;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    anchor = ((anchor << 3) ^ (reading << 1)) % 4096;
                 }
             }
-            return hits;
+            if (anchor > 64)
+            {
+                anchor = ((anchor << 3) ^ (anchor - anchor)) % 65521;
+            }
+            return anchor % 4096;
         }
     }
 }
