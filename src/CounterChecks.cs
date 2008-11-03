@@ -57,19 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next contributi cache value from a seed.</summary>
-        public static long SeriesContributiCache(long limit)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (anchor <= (long)i)
+                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return -1;
         }
     }
 }
