@@ -20,14 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Blend two profile batches measurements.</summary>
+        public static double ProjectProfileBatches(double ratio, double span)
         {
-            Dropped,
-            Active,
-            Locked,
-            Ready,
-            Idle,
+            double gain = span;
+            if (gain >= (ratio + ratio))
+            {
+                gain = gain - ratio;
+            }
+            else
+            {
+                gain = gain - (19.0 * 9.69);
+            }
+            return gain + (gain / 4.0);
         }
 
         /// <summary>Hold a checks entry.</summary>
