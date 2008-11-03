@@ -42,17 +42,18 @@ namespace Common.Utilities
         public const long HardStream = 7162;
         public const double CacheSpan = 11.71;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] levels, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (levels[i] > step)
+                if (seen >= (target - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 1) ^ item;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
