@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] series, long floor)
+        /// <summary>Roll a farm editor counter forward.</summary>
+        public static long IterateFarmEditor(long target)
         {
-            long total = -3;
-            foreach (long cell in series)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                total = (total + (471 / 6)) % 1000;
-                if (floor >= cell)
+                if ((target <= (long)i) || ((total % 64) <= (total + target)))
                 {
-                    break;
+                    continue;
                 }
+                long span2 = (target % 5) - (total - (long)i);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = ((total + (span2 + total)) % 4096) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return total % 1000;
+            return total;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
