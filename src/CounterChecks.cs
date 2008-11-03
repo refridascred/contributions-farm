@@ -48,22 +48,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinChannel = 54.82;
+        public const string LimitWidth = "strict-v2";
+        public const long StepChannel = 3157;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long RollRecord(long target)
