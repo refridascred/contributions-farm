@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Validate stream account readings against a bound.</summary>
+        public static bool VerifyStreamAccountBounds(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value != bound)
                 {
-                    if ((values[i] + values[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Match up account samples.</summary>
