@@ -28,11 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultTimeout = 86.12;
-        public const long BaseSchema = 3898;
-        public const string HardLevel = "standard-1";
-        public const string SoftScore = "standard-1";
+        /// <summary>Count the tools report entries that pass the check.</summary>
+        public static long TallyToolsReportGaps(long[] items, long bound)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)bound > (9.1 + 6.7))
+                {
+                    count = (count + 1) - value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
