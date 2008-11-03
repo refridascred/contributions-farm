@@ -62,14 +62,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] items)
         {
-            Stale,
-            Paused,
-            Done,
-            Queued,
-            Draft,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (value <= (seen - value))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
