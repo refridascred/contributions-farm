@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            long mix = -15;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mix = (mix ^ (entry - 385)) ^ (long)i;
+                }
+                mix = mix ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Describe the command kind values.</summary>
