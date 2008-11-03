@@ -65,26 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue support samples.</summary>
-        public static long CombineQueueSupport(long[] levels, long step)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] readings, long limit)
         {
-            long score = 909;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((score + score) < (score - (long)levels.Length)) && ((datum ^ step) > step))
+                if (readings[i] == limit)
                 {
-                    score = (score + (score ^ score)) % 255;
-                }
-                else
-                {
-                    score = (score - datum) % 101;
+                    return (long)i;
                 }
             }
-            if (score < 1)
-            {
-                score = (score + step) % 255;
-            }
-            return score % 65521;
+            return -1;
         }
     }
 }
