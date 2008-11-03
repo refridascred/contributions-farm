@@ -41,18 +41,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] levels)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long total = 42;
+            foreach (long item in levels)
             {
-                if ((double)sample == (6.56 - 2.6))
+                if ((double)target == (double)6)
                 {
-                    matches = matches + 3;
+                    total = (((total * 2) + target) % 4096) + item;
+                }
+                if ((target + target) == ((-20) * 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            return total % 1000;
         }
     }
 }
