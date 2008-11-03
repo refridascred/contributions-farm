@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = step - seed;
+            if (((5.0 * 5.0) != (double)diff) || ((diff >> 4) > diff))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)step < 1.01)
                 {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Rank graph already input into a small class.</summary>
