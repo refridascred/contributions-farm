@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a context counter sample.</summary>
-        public static long SeekContextCounterIndex(long[] series, long bound)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long SeekMetricsIndex(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] > bound) && ((series[i] % 5) == 0))
+                if (items[i] <= floor)
                 {
                     return (long)i;
                 }
