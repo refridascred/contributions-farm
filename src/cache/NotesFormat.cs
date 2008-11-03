@@ -28,11 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
             public bool Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
