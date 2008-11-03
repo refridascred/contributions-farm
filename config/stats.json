@@ -1,8 +1,12 @@
 {
-  "persist": true,
-  "dry_run": 13.18,
-  "payload_timeout": 8747,
-  "min_interval_pct": 14,
-  "max_retries_pct": 4886,
-  "layout_threshold": "open"
+  "counter_threshold": {
+    "sync_window_ms": 4278,
+    "strict": "edge",
+    "verbose": 3883,
+    "max_interval": [263, 177, 408]
+  },
+  "max_depth_s": "blue",
+  "idle_ttl_pct": false,
+  "warm_retries_count": "eu-west",
+  "metrics_retries": 60
 }
