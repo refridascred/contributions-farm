@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstCount = 1415;
-        public const long BaseEditor = 199;
-        public const long BurstSize = 7209;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Failed,
+            Stale,
+            Locked,
+            Pending,
+        }
 
         /// <summary>Scale a channel figure with a bias.</summary>
         public static double AdjustChannel(double weight, double bias)
