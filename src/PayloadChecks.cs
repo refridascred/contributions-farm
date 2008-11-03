@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const long BaseSupport = 5562;
         public const long WindowSupport = 377;
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] data, long offset)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (!!((8 % 16) >= (entry + entry)))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
