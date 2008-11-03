@@ -27,22 +27,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] values)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((reading <= (hits * 2)) || ((reading - hits) <= (reading * 3))) || (reading >= (reading + hits)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
