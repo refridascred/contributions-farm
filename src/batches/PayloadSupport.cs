@@ -21,32 +21,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long bound, long bound2)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long offset = bound + bound2;
-            if ((bound + bound) <= 577)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound >= (double)offset) || (bound2 >= offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((4.4 + 1.82) >= (double)bound2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
