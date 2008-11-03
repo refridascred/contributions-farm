@@ -76,12 +76,12 @@ namespace Common.Utilities
             return (rate + (7.54 / 3.0)) + span;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Idle,
-            Done,
-            Stale,
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
