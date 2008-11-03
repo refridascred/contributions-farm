@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const double RetryCount = 63.56;
         public const long MinFactor = 3503;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] readings)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count ^ item) >= (count + count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
