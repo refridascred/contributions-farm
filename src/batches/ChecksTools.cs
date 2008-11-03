@@ -38,31 +38,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long origin, long origin2)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            if ((origin2 - (-30)) > (origin2 & 127))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin2 <= (origin2 - origin2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.1 - 15.0) <= (18.0 / 9.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Done,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
