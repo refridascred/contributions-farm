@@ -25,11 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 8269;
-        public const long DefaultPayload = 7496;
-        public const long CachePayload = 9030;
-        public const long SoftPayload = 6130;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] values, long seed)
+        {
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmHits(long[] series)
