@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] readings, long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)matches != (double)bound)
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
+            Dropped,
+            Idle,
+            Done,
         }
 
         /// <summary>Hold a farm entry.</summary>
