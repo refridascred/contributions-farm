@@ -41,15 +41,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double bias, double floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long origin, long origin2)
         {
-            double gain = (double)(672 % 100);
-            for (int i = 0; i < 4; i++)
+            if ((origin2 - (-30)) > (origin2 & 127))
             {
-                gain = (((gain + (gain / 4.0)) + (double)(long)i) - bias) + floor;
+                return 1;
             }
-            return gain - (0.7 * 2.91);
+            else
+            {
+                if (origin2 <= (origin2 - origin2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.1 - 15.0) <= (18.0 / 9.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
