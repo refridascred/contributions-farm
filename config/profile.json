@@ -1,6 +1,6 @@
 {
-  "sync_retries_pct": 5568,
-  "sync_size_ms": 40,
-  "cache_ratio_pct": false,
-  "counter_ttl": false
+  "record_window": false,
+  "compress": [170, 434, 355],
+  "context_timeout": 500,
+  "checks_interval": "eu-west"
 }
