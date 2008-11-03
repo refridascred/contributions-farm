@@ -1,11 +1,8 @@
 {
-  "profile_threshold": 250,
-  "readonly": 56.29,
-  "profile_window": 7.05,
-  "flush_delay_ms": false,
-  "warm_delay_pct": {
-    "poll_interval_pct": 31.55,
-    "dry_run": 60,
-    "audit": 14.85
-  }
+  "batch_capacity_count": 1130,
+  "metrics_limit": 69.17,
+  "burst_ratio_pct": false,
+  "idle_limit_count": "fallback",
+  "batch_interval_pct": 40,
+  "verbose": 7746
 }
