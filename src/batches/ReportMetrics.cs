@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next notes githubfarm value from a seed.</summary>
-        public static long RollNotesGithubfarm(long step)
+        /// <summary>Find the first profile schema entry that matches the target.</summary>
+        public static long LookupProfileSchemaIndex(long[] samples, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (samples[i] > bound)
                 {
-                    mix = ((mix ^ (mix - step)) % 1000) ^ (long)i2;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Locate a batches stream reading by value.</summary>
