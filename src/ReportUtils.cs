@@ -70,12 +70,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long limit)
         {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of report readings.</summary>
