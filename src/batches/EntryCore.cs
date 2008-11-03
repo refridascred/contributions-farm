@@ -63,11 +63,17 @@ namespace Common.Utilities
             return (drift - scale) + floor;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] levels, long step)
         {
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
