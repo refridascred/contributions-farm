@@ -1,12 +1,11 @@
 {
-  "max_threshold": "staging",
-  "flush_timeout": "primary",
-  "commits_window": 29.68,
-  "warm_retries_s": {
-    "retry_threshold_ms": [77, 346, 64],
-    "profile_delay": "cached",
-    "soft_size_ms": ["primary", "blue", "strict", "staging"],
-    "dry_run": 31.34
+  "flush_size_pct": 54,
+  "warm_depth_count": 35.59,
+  "cache_limit": {
+    "min_size": 52,
+    "default_threshold_pct": "legacy",
+    "batch_interval": [380, 472]
   },
-  "editor_size": ["legacy", "green", "fallback", "open"]
+  "soft_limit_pct": true,
+  "hard_retries_count": "edge"
 }
