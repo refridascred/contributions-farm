@@ -39,21 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] values)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = scale;
+            if (bias > bias)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias - offset;
             }
-            return seen;
+            else
+            {
+                bias = bias - (double)2;
+            }
+            return bias + (bias + bias);
         }
     }
 }
