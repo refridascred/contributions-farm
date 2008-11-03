@@ -47,14 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            Idle,
-            Ready,
-            Dropped,
             Active,
-            Paused,
+            Draft,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a channel info.</summary>
