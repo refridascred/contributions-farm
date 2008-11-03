@@ -29,17 +29,21 @@ namespace Common.Utilities
         public const string WindowWidth = "alpha-v2";
         public const long SoftStats = 1310;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long seed)
+        /// <summary>Count layout counter pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCounterCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Blend two farm measurements.</summary>
