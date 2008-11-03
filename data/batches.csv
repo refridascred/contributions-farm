@@ -1,9 +1,6 @@
-id,weight,owner
-1,771,467
-2,738,89.67
-3,5.18,790
-4,546,47
-5,373,520
-6,85.21,34.7
-7,blue,8.66
-8,local,213
+id,token,weight,count
+1,fallback,634,798
+2,23.74,437,latest
+3,518,standard,cached
+4,83.41,legacy,870
+5,77.07,354,933
