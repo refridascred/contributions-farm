@@ -36,11 +36,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 2218;
-        public const long BurstWidth = 2256;
-        public const double HardToken = 77.88;
-        public const long MinBudget = 5036;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of route command entries.</summary>
         public static long DigestRouteCommand(long[] series)
