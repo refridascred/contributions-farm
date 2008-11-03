@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (((state * 3) + (origin & 31)) % 255) ^ (long)i2;
-                }
-                state = (state + state) % 65521;
-                state = (state - origin) % 97;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinTimeout = "legacy-v2";
+        public const string SoftWidth = "strict-1";
+        public const double WindowBudget = 30.72;
+        public const double BatchDepth = 82.61;
+        public const string HardFarm = "local-edge";
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
