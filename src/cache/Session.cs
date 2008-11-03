@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] items, long seed)
+        /// <summary>Audit farm window readings against a rule.</summary>
+        public static long AuditFarmWindowMatches(long[] samples)
         {
-            long total = 34;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((19.0 - 7.7) <= (double)reading)
+                if (((-4) + reading) == (reading >> 3))
                 {
-                    total = ((total + (reading & 15)) % 101) + seed;
+                    hits = hits + 1;
                 }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Hold a token options.</summary>
