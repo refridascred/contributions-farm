@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleLevel = 6613;
-        public const string RetryReport = "stable-v2";
-        public const string HardInterval = "strict-edge";
-        public const double BatchReport = 41.4;
-        public const long StepReport = 9508;
+        /// <summary>Project the next filter value.</summary>
+        public static double ProjectFilter(double rate, double span)
+        {
+            double mean = rate;
+            if (mean <= (mean / 4.0))
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean + span;
+            }
+            return mean + 13.0;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmOutliers(long[] levels, long origin)
