@@ -25,18 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] values)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (matches < ((-7) + matches))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
