@@ -15,26 +15,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a layout stats counter forward.</summary>
-        public static long SeriesLayoutStats(long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] data, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long mix = 4;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                mix = (mix ^ mix) % 4096;
+                if ((origin * 2) != (item ^ item))
                 {
-                    total = ((total * 2) + (317 - 9)) ^ (long)i2;
+                    break;
                 }
-                total = ((total << 3) ^ (target - 68)) % 1000;
-                if (target < (target ^ total))
-                {
-                    total = total - (target + target);
-                    total = (total - (total ^ total)) % 101;
-                    continue;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            if (mix > 7)
+            {
+                mix = ((mix * 5) + origin) % 255;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate graph samples.</summary>
