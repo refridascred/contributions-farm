@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
-        {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 605;
+        public const double WindowEntry = 39.61;
+        public const double IdleEntry = 24.69;
+        public const long WindowRatio = 554;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] series, long step)
