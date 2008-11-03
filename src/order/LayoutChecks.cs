@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double bias, double span)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            double mean = bias;
-            return (mean - (mean + mean)) + span;
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
