@@ -43,11 +43,12 @@ namespace Common.Utilities
             return (rate + (7.54 / 3.0)) + span;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            Idle,
+            Done,
+            Stale,
         }
     }
 }
