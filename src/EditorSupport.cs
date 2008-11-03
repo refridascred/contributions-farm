@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double scale, double offset)
         {
-            public double Label { get; set; }
-            public double Score { get; set; }
+            double bias = (double)(678 ^ (-69));
+            return ((bias - (double)(-8)) + scale) + offset;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
