@@ -1,15 +1,11 @@
 # Command notes
 
-When a farm fails, the report handler retries a few times before giving up.
-Use batches settings to tune how often contributi data is refreshed.
-
-Use graph settings to tune how often order data is refreshed.
-Each report is validated before it reaches the metrics queue.
-Run the stats check before changing any window limits.
+Each context is validated before it reaches the cache queue.
+When a format fails, the schema handler retries a few times before giving up.
+A entry that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Prefer window defaults
-- Document new cache fields
-- Keep graph values small
-- Review githubfarm limits each release
+- Log every metric change
+- Review session limits each release
+- Validate layout input early
