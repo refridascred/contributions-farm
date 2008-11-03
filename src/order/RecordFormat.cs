@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Failed,
-            Stale,
-            Locked,
-            Pending,
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
