@@ -46,18 +46,10 @@ namespace Common.Utilities
         public const long HardBudget = 3595;
         public const long MaxOrder = 5535;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseCount = "standard-1";
+        public const long BatchLevel = 3525;
+        public const long BaseSchema = 9399;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstBatches = 21.58;
