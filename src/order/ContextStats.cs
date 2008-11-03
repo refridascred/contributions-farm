@@ -48,12 +48,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Combine schema batch values into a single score.</summary>
+        public static long DigestSchemaBatch(long[] data, long step)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
+            long mark = 63;
+            foreach (long cell in data)
+            {
+                if ((2 - step) < (mark + 88))
+                {
+                    mark = (mark - (step + step)) + cell;
+                }
+                else
+                {
+                    mark = mark ^ step;
+                }
+            }
+            return mark;
         }
     }
 }
