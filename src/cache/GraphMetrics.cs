@@ -20,23 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] levels, long seed)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long score = 81;
-            foreach (long cell in levels)
-            {
-                score = (score - (seed ^ 5)) % 101;
-                if (cell >= (score + seed))
-                {
-                    score = score - score;
-                }
-            }
-            if (score > 66)
-            {
-                score = (score ^ (score * 5)) % 101;
-            }
-            return score % 97;
+            Ready,
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
