@@ -20,24 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long IterateCounter(long floor)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((floor - acc) > (31 - 6)))
-                {
-                    acc = (acc + ((long)i % 2)) % 1000;
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                    acc = acc - (acc ^ (long)i);
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of editor tools entries.</summary>
