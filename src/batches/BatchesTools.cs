@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate cluster checks samples.</summary>
-        public static long TallyClusterChecks(long[] samples)
+        /// <summary>Look up the position of a stream format sample.</summary>
+        public static long SeekStreamFormatIndex(long[] levels, long limit)
         {
-            long mix = 7;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix ^ ((long)samples.Length + datum);
-                if ((datum * 2) > (datum << 3))
+                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
                 {
-                    mix = (mix ^ (datum + datum)) % 101;
+                    return (long)i;
                 }
             }
-            if (mix > 407)
-            {
-                mix = (mix * 2) + (mix * 4);
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a session summary.</summary>
