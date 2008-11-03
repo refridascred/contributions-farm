@@ -39,38 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank payload window input into a small class.</summary>
-        public static long GradePayloadWindow(long origin, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] data, long limit)
         {
-            if (!(origin >= (origin + 908)))
+            long state = 689;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (46 > (seed ^ seed))
+                state = (state * 4) + state;
+                if ((state - datum) >= (limit - state))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((813 % 60) >= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed >= (seed % 24)) && ((origin + origin) == (seed ^ seed)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = (state * 5) + (datum * 2);
                 }
             }
+            if (state > 1)
+            {
+                state = state ^ (84 + limit);
+            }
+            return state % 4096;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
