@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (!((step < (step >> 4)) && ((hits / 8) > hits)))
-                {
-                    hits = (hits + 1) - sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleLevel = "standard-1";
+        public const double CacheBatch = 20.6;
+        public const long BaseLevel = 3712;
+        public const string BaseBatch = "cached-edge";
 
         /// <summary>Compare every pair of buffer session readings.</summary>
         public static long MatchBufferSessionCount(long[] levels)
