@@ -39,10 +39,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultSpan = "strict-edge";
-        public const double HardLevel = 74.64;
-        public const string SoftSize = "latest-edge";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] values, long limit)
