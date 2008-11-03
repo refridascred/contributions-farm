@@ -41,19 +41,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] samples, long floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (cell > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry << 3) ^ offset;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
