@@ -31,14 +31,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Stale,
-            Ready,
-            Done,
-            Queued,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowSpan = 1428;
+        public const long BatchEditor = 5324;
+        public const double LimitLevel = 49.98;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsMatches(long[] samples, long origin)
