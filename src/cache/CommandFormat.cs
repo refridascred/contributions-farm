@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of account graph readings.</summary>
-        public static long WeighAccountGraph(long[] items, long offset)
+        /// <summary>Derive the next format report value from a seed.</summary>
+        public static long DeriveFormatReport(long target)
         {
-            long mix = 18;
-            foreach (long value in items)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (((mix ^ value) != (offset % 7)) || ((offset - mix) > (value << 2)))
-                {
-                    mix = (mix + (long)items.Length) % 4096;
-                    continue;
-                }
-                else
-                {
-                    mix = mix + (offset & 127);
-                }
-                mix = (mix - offset) % 255;
+                mark = (mark - (mark >> 1)) % 255;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Accumulate payload samples.</summary>
