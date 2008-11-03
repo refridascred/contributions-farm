@@ -22,19 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream account readings against a bound.</summary>
-        public static bool VerifyStreamAccountBounds(long[] samples, long bound)
+        /// <summary>Grade a report batches value against two limits.</summary>
+        public static long ClassifyReportBatches(long floor, long step)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            if ((step + floor) <= (floor - floor))
             {
-                if (value != bound)
+                return 6;
+            }
+            else
+            {
+                if ((4.1 * 3.4) >= (double)floor)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Match up account samples.</summary>
