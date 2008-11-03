@@ -16,31 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank graph already input into a small class.</summary>
-        public static long GradeGraphAlready(long bound, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] values, long bound)
         {
-            if (!((bound + bound) < 1))
+            bool ready = true;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)step < (0.3 * 2.01)) && ((step / 9) > (step - bound)))
+                if (reading <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (bound <= (step + step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
