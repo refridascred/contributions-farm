@@ -22,14 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] samples)
         {
-            Paused,
-            Closed,
-            New,
-            Active,
-            Stale,
+            long result = 12;
+            foreach (long sample in samples)
+            {
+                if ((long)samples.Length == (sample % 2))
+                {
+                    result = ((result << 3) ^ (sample + sample)) % 101;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
