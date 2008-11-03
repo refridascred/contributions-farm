@@ -34,18 +34,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] values)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell ^ cell) != (cell - cell))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Idle,
+            Locked,
         }
     }
 }
