@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit farm window readings against a rule.</summary>
-        public static long AuditFarmWindowMatches(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (((-4) + reading) == (reading >> 3))
+                if ((target ^ count) <= target)
                 {
-                    hits = hits + 1;
+                    count = (count + 1) + sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a token options.</summary>
