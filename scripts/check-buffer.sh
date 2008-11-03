@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest standard green strict; do
+BUFFER_LIMIT=405
+log "limit is ${BUFFER_LIMIT}"
+
+for item in edge standard blue open; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=11
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
