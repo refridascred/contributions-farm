@@ -1,15 +1,8 @@
 {
-  "min_threshold_pct": 76,
-  "audit": {
-    "enabled": 46.47,
-    "hard_window": {
-      "token_depth": 1173,
-      "graph_depth": "open",
-      "checks_interval": 1024
-    },
-    "persist": [232, 484, 79, 237]
-  },
-  "max_depth_pct": [266, 120],
-  "max_ratio_s": 1024,
-  "default_threshold_pct": [59, 357]
+  "max_depth_s": [230, 29],
+  "githubfarm_window": "local",
+  "batch_interval_s": "blue",
+  "report_limit": [455, 117, 280],
+  "stream_ttl": "green",
+  "filter_threshold": "eu-west"
 }
