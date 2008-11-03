@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseScore = 94.49;
-        public const string MinSpan = "fallback-v2";
-        public const long DefaultSpan = 1601;
-        public const long BurstRatio = 7715;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] readings, long bound)
+        {
+            long total = 240;
+            foreach (long datum in readings)
+            {
+                total = ((total * 3) + (bound / 8)) + datum;
+                total = ((total * 5) + bound) % 97;
+                if (((long)readings.Length * 3) >= total)
+                {
+                    total = (total * 5) + total;
+                }
+            }
+            if (total < 14)
+            {
+                total = total - (bound / 8);
+            }
+            return total % 1000;
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
