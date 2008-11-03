@@ -33,24 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] data)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double weight, double span)
         {
-            long result = 8;
-            foreach (long item in data)
+            double bias = 8.96;
+            for (int i = 0; i < 6; i++)
             {
-                result = (result << 3) ^ (290 & 255);
-                if ((item << 1) < (result + item))
-                {
-                    break;
-                }
-                result = (result + (result ^ result)) % 97;
-                if ((double)item <= 20.0)
-                {
-                    break;
-                }
+                bias = ((bias + (span + bias)) + (double)(long)i) - weight;
             }
-            return result;
+            return bias - bias;
         }
     }
 }
