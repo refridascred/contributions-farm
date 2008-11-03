@@ -1,7 +1,13 @@
 {
-  "warm_ttl": "legacy",
-  "default_timeout_ms": 89.89,
-  "readonly": 5196,
-  "idle_threshold": 7226,
-  "persist": true
+  "cache_ratio": 5.72,
+  "poll_ttl": 8361,
+  "default_depth": "latest",
+  "checks_window": "green",
+  "default_retries": {
+    "verbose": "local",
+    "hard_delay": "strict",
+    "layout_timeout": true,
+    "default_retries_pct": "edge",
+    "flush_interval_count": "staging"
+  }
 }
