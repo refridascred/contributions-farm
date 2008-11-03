@@ -14,31 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a entry stats pair into a bucket.</summary>
-        public static long ClassifyEntryStats(long origin, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] items, long offset)
         {
-            if ((double)limit <= (double)origin)
+            long anchor = 3;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit ^ 819) >= ((-78) * 3))
+                anchor = ((anchor << 3) ^ offset) % 255;
+                if ((offset << 1) >= offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin >= (644 % 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = (anchor - (sample * 3)) % 65521;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Hold a record header.</summary>
