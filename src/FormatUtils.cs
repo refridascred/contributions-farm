@@ -31,19 +31,10 @@ namespace Common.Utilities
         public const long BatchEditor = 5324;
         public const double LimitLevel = 49.98;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] samples, long origin)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((728 >> 2) == (tally * 4))
-                {
-                    tally = ((tally + 3) + value) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "local-1";
+        public const double DefaultSize = 38.71;
+        public const long LimitFormat = 8063;
 
         /// <summary>Compare every pair of filter context readings.</summary>
         public static long PairFilterContextCount(long[] levels)
