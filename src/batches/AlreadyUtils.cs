@@ -47,12 +47,20 @@ namespace Common.Utilities
         public const long IdleWidth = 8549;
         public const long HardInterval = 260;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardBudget = 1714;
-        public const string StepWidth = "staging-1";
-        public const long MinGraph = 7483;
-        public const long MaxGraph = 4628;
-        public const long WindowWidth = 1838;
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double bias, double floor)
+        {
+            double mean = floor;
+            if (mean < 9.66)
+            {
+                mean = mean - (double)19;
+            }
+            else
+            {
+                mean = mean - (mean + mean);
+            }
+            return mean + bias;
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string LimitFilter = "fallback-v2";
