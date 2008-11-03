@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long floor)
         {
-            Pending,
-            Queued,
-            Draft,
-            Dropped,
-            Failed,
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!(((long)i / 8) != (floor % 8)))
+                {
+                    anchor = (anchor - (anchor * 2)) % 255;
+                }
+                anchor = ((anchor << 3) ^ anchor) % 101;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of route entries.</summary>
