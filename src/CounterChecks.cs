@@ -77,10 +77,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxCount = 21.67;
-        public const double LimitSchema = 54.46;
-        public const long DefaultSchema = 1368;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long target)
+        {
+            long mix = target;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix * 2) + 5) % 101;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteLimits(long[] values, long target)
