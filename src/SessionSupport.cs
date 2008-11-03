@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public bool Score { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a commits counter forward.</summary>
