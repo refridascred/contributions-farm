@@ -80,25 +80,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a already counter pair into a bucket.</summary>
-        public static long SortAlreadyCounter(long origin, long target)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double rate, double span)
         {
-            long bound = origin ^ target;
-            if ((7.9 + 2.0) != (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (target > (bound % 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            double drift = span;
+            return (drift - (span / 9.0)) + rate;
         }
     }
 }
