@@ -48,12 +48,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long target, long step)
         {
-            Queued,
-            Synced,
-            Dropped,
+            long offset = target ^ step;
+            if ((((-77) % 7) != (target / 3)) || ((offset - step) < step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((7.0 * 18.0) < (double)target) && ((step >> 2) < (target << 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
