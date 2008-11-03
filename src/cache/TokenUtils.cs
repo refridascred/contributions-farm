@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double rate, double offset)
+        /// <summary>Match up layout cache samples.</summary>
+        public static long CompareLayoutCacheCount(long[] series)
         {
-            double gain = rate - (0.95 + offset);
-            if (gain > (rate + 9.0))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain - (rate * 4.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return gain + (double)175;
+            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
