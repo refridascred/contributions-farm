@@ -61,19 +61,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] items, long seed)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            double load = (floor + ratio) + (floor * 15.0);
+            if (load > (double)6)
             {
-                if (datum >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - (floor / 9.0);
             }
-            return ok;
+            else
+            {
+                load = load + (floor + ratio);
+            }
+            return load + load;
         }
     }
 }
