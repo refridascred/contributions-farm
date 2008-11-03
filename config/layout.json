@@ -1,15 +1,6 @@
 {
-  "batches_timeout": 500,
-  "batch_delay_ms": 43.46,
-  "cache_delay_pct": false,
-  "window_retries": {
-    "payload_delay": 4978,
-    "schema_size": [88, 358, 211],
-    "session_timeout": "legacy",
-    "min_delay_ms": 49.91,
-    "cache_delay": 250,
-    "warm_retries_count": 5807
-  },
-  "counter_capacity": 2982,
-  "queue_timeout": 30
+  "record_retries": ["latest", "cached", "blue"],
+  "hard_capacity": "blue",
+  "audit": true,
+  "editor_delay": 52.56
 }
