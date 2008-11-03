@@ -45,12 +45,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardFormat = "alpha-1";
-        public const long StepSpan = 8713;
-        public const long IdleCount = 9263;
-        public const long MinFormat = 941;
-        public const long BurstTimeout = 3373;
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
+        {
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
