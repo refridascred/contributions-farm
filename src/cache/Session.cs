@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TallyContributi(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] values)
         {
-            long mix = 415;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                mix = (mix - (mix & 255)) - value;
+                if ((1 + hits) < (5 ^ datum))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Match up profile samples.</summary>
