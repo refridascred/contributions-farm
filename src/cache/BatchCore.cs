@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 1105;
-        public const long CacheContext = 5878;
-        public const string SoftContext = "latest";
-        public const long MaxFactor = 8696;
+        /// <summary>Locate a commits session reading by value.</summary>
+        public static long LookupCommitsSessionIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
