@@ -35,39 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long offset, long seed)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] values)
         {
-            long bound = offset ^ seed;
-            if ((bound ^ offset) < (offset ^ bound))
+            long seen = 0;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset % 97) > (229 * 5))
+                if ((datum - datum) > (datum / 6))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset >= 8.2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((257 & 63) < offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a counter entry.</summary>
