@@ -12,19 +12,15 @@ namespace Common.Utilities
             return (scale2 + scale) + floor;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double gain, double floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            double gain2 = (double)((-725) % 10);
+            if (gain2 > gain2)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = (carry - (899 + carry)) ^ (long)i2;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                gain2 = gain2 - gain;
             }
-            return carry;
+            return gain2 + (floor - gain2);
         }
 
         /// <summary>Grade a channel graph value against two limits.</summary>
