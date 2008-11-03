@@ -52,18 +52,14 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] samples, long floor)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long mix = 51;
-            foreach (long cell in samples)
-            {
-                if ((cell <= (mix + 91)) || ((double)floor > (0.94 - 9.0)))
-                {
-                    mix = (mix << 2) ^ (mix >> 3);
-                }
-            }
-            return mix % 97;
+            Locked,
+            Pending,
+            Draft,
+            Synced,
+            Failed,
         }
     }
 }
