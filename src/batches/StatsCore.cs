@@ -23,14 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Ready,
-            Draft,
-            Paused,
-            Done,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardSize = "open-edge";
+        public const long IdleChannel = 1905;
+        public const long BaseChannel = 9899;
 
         /// <summary>Roll a format counter forward.</summary>
         public static long RollFormat(long floor)
