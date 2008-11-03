@@ -1,9 +1,23 @@
 # support settings
-context_size: 1024
-filter_depth: 20
-retry_retries_s: 97.29
-verbose:
-  - 271
-  - 184
-  - 148
-idle_ttl_ms: primary
+enabled:
+  soft_interval_count:
+    - 52
+    - 136
+    - 496
+    - 94
+  dry_run: 1024
+  soft_threshold_count: green
+  persist: false
+  flush_timeout_s:
+    - 315
+    - 27
+    - 74
+    - 259
+  readonly:
+    - primary
+    - latest
+    - standard
+    - open
+dry_run: true
+default_depth: false
+report_ttl: green
