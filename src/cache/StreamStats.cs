@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] data)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long limit)
         {
-            long result = -8;
-            foreach (long reading in data)
+            long result = limit;
+            for (int i = 0; i < 5; i++)
             {
-                result = ((result * 5) + (reading - reading)) % 1000;
-                result = (result - (reading << 3)) % 65521;
-            }
-            if (result > 65)
-            {
-                result = result ^ result;
+                result = ((result << 3) ^ (result - result)) % 4096;
+                result = ((result * 4) + (long)i) % 65521;
             }
             return result;
         }
