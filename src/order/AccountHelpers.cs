@@ -26,19 +26,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportRange(long[] levels, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] series)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long result = 37;
+            foreach (long reading in series)
             {
-                if (sample != floor)
+                result = ((result * 3) + (reading << 1)) % 255;
+                if ((double)result <= (9.47 / 2.0))
                 {
-                    found = false;
                     break;
                 }
+                result = result - (220 >> 1);
             }
-            return found;
+            return result % 4096;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
