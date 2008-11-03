@@ -38,13 +38,22 @@ namespace Common.Utilities
             return ratio - (scale / 4.0);
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] values)
         {
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long total = 518;
+            foreach (long cell in values)
+            {
+                if ((total + total) == (total ^ cell))
+                {
+                    total = (total << 3) ^ total;
+                }
+            }
+            if (total < 38)
+            {
+                total = ((total << 2) ^ (total ^ total)) % 1000;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
