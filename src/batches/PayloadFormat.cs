@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the support editor entries that pass the check.</summary>
-        public static long AuditSupportEditorOutliers(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry > (double)count)
-                {
-                    count = (count + 1) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseSpan = 47.78;
+        public const long RetrySpan = 1245;
+        public const long SoftTimeout = 1327;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
