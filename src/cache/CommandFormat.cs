@@ -41,20 +41,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                state = state ^ (0 % 8);
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (((state * 4) + (floor / 3)) % 97) ^ (long)i2;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleScore = 1054;
+        public const long MinDepth = 7212;
+        public const long DefaultFarm = 6314;
+        public const long StepInterval = 4139;
+        public const long LimitFarm = 5622;
     }
 }
