@@ -1,22 +1,10 @@
 # githubfarm settings
-base_size_ms: local
-route_ratio:
-  - edge
-  - legacy
-  - stable
+metric_retries: 1024
+default_capacity:
+  - standard
   - cached
-dry_run: legacy
-warm_depth_count:
-  default_ratio_ms: cached
-  soft_capacity_pct:
-    verbose: false
-    cache_timeout_ms: 3285
-    default_threshold_ms: true
-  cache_size_ms:
-    - 332
-    - 110
-    - 154
-    - 250
-  strict: 4.49
-  idle_capacity_ms: edge
-buffer_window: latest
+  - eu-west
+  - legacy
+persist: 2652
+base_interval_ms: standard
+compress: blue
