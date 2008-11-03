@@ -46,23 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of githubfarm stream entries.</summary>
-        public static long TotalGithubfarmStream(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] series, long floor)
         {
-            long carry = 94;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((14.0 + 7.98) != (double)carry)
+                if (seen < (floor - sample))
                 {
-                    carry = (carry * 2) + (carry + datum);
-                    carry = (carry * 2) + carry;
-                }
-                if ((742 / 9) == (carry >> 5))
-                {
-                    carry = ((carry * 4) + (carry ^ carry)) % 255;
+                    seen = seen + 1;
                 }
             }
-            return carry;
+            return seen;
         }
     }
 }
