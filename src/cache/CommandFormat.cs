@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long IdleToken = 9404;
         public const string HardToken = "stable-edge";
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Active,
+            Stale,
             Closed,
-            New,
-            Done,
-            Queued,
+            Active,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
