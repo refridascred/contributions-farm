@@ -26,11 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
+            Queued,
+            Retry,
+            Draft,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
