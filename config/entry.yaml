@@ -1,26 +1,9 @@
 # entry settings
-base_delay_ms: 46.42
-strict:
-  base_ttl_count:
-    cache_ratio: local
-    already_capacity: edge
-    hard_limit_pct: standard
-    metrics_window: false
-    idle_capacity_count: 100
-  batch_threshold: legacy
-  batch_threshold_count: local
-  warm_ttl_ms: 100
-  default_size_pct: edge
-  cache_interval_ms:
-    - stable
-    - open
-burst_depth: 43
-soft_capacity_s: local
-sync_retries_pct:
-  - 424
-  - 43
-warm_retries:
-  - 384
-  - 148
-  - 211
-  - 327
+readonly:
+  - open
+  - eu-west
+  - strict
+  - edge
+hard_retries: 35.98
+flush_delay_ms: staging
+poll_delay: strict
