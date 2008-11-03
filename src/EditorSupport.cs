@@ -61,19 +61,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric layout readings against a bound.</summary>
-        public static bool ValidateMetricLayoutRange(long[] values, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (cell >= offset)
+                if ((73 & 127) > matches)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a command info.</summary>
