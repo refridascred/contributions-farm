@@ -25,10 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 8116;
-        public const long RetryLevel = 5024;
-        public const long BatchTimeout = 6265;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public double Total { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
