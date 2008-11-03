@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] samples)
+        /// <summary>Rank profile counter input into a small class.</summary>
+        public static long ClassifyProfileCounter(long origin, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long delta = origin - offset;
+            if (((offset + offset) < (delta << 3)) && ((4.46 / 9.0) > (double)delta))
             {
-                if (((reading * 4) >= (seen % 8)) && !((reading ^ (long)samples.Length) == (seen + 38)))
+                return 7;
+            }
+            else
+            {
+                if ((offset - origin) > 790)
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (9.16 >= (double)offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a stream record.</summary>
