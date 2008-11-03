@@ -27,19 +27,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate stream payload readings against a bound.</summary>
-        public static bool ValidateStreamPayloadBounds(long[] readings, long origin)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
