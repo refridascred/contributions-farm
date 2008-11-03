@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "strict-1";
-        public const long MaxLevel = 274;
-        public const long BaseSupport = 5562;
-        public const long WindowSupport = 377;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] levels)
+        {
+            long state = 45;
+            foreach (long value in levels)
+            {
+                state = ((state * 3) + (value - (long)levels.Length)) % 97;
+                state = (state ^ (state + value)) % 97;
+            }
+            return state % 97;
+        }
 
         /// <summary>Iterate the filter record series from a seed.</summary>
         public static long StepFilterRecord(long seed)
