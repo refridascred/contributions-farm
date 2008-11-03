@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 2048;
-        public const long IdleWidth = 924;
-        public const long DefaultInterval = 3026;
-        public const long WindowRatio = 4999;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 1193;
+        public const string SoftFactor = "primary";
+        public const long MaxReport = 3926;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long PairEntryCount(long[] readings)
