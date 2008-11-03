@@ -1,5 +1,5 @@
 {
-  "sync_retries": [493, 216, 352, 362],
-  "sync_capacity": 500,
-  "flush_interval_ms": true
+  "cache_interval_s": "legacy",
+  "persist": "green",
+  "max_ratio": 2417
 }
