@@ -70,15 +70,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stream order value.</summary>
-        public static double AdjustStreamOrder(double ratio, double bias)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] levels, long target)
         {
-            double rate = bias;
-            for (int i = 0; i < 2; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                rate = ((rate - bias) + (double)(long)i) + ratio;
+                if (value <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate - (double)17;
+            return valid;
         }
 
         /// <summary>Find the first channel farm entry that matches the target.</summary>
