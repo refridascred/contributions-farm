@@ -1,5 +1,8 @@
 {
-  "batch_threshold": false,
-  "verbose": true,
-  "max_ratio_count": "fallback"
+  "hard_window": 97,
+  "flush_ratio": 6211,
+  "base_size": "primary",
+  "batch_delay": 8580,
+  "idle_retries_pct": "primary",
+  "audit": 7.87
 }
