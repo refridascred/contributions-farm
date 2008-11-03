@@ -13,15 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next support filter value.</summary>
-        public static double ScaleSupportFilter(double gain, double span)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double gain2 = gain;
-            if (gain2 > 4.8)
-            {
-                gain2 = (gain2 + gain2) + span;
-            }
-            return gain2 + gain2;
+            public double Score { get; set; }
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
