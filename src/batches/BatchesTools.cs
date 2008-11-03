@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a stream format sample.</summary>
-        public static long SeekStreamFormatIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 3840;
+        public const double HardWidth = 20.82;
+        public const long StepCount = 291;
+        public const string IdleLevel = "local";
+        public const long WindowReport = 8057;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
