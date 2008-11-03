@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] series)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                long span = (anchor + anchor) >> 5;
-                long cur = ((long)i / 9) + ((long)i / 8);
-                if ((floor + span) >= ((-993) ^ cur))
+                if (((item >> 1) >= (12 ^ seen)) || ((seen >> 3) > (51 & 31)))
                 {
-                    span = (span - (anchor / 3)) % 1000;
+                    seen = seen + 2;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
