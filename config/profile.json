@@ -1,7 +1,5 @@
 {
-  "idle_size_s": ["latest", "eu-west"],
-  "cache_retries_s": 3592,
-  "hard_delay_count": true,
-  "max_capacity_s": "edge",
-  "cache_limit_s": true
+  "base_timeout_s": 30,
+  "dry_run": false,
+  "cache_interval_s": "cached"
 }
