@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count cache batch pairs that satisfy a relation.</summary>
-        public static long OverlapCacheBatchCount(long[] items)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((7 >= item) || ((double)hits > (double)item)) || ((item + item) <= item))
                 {
-                    if ((items[i] + items[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
