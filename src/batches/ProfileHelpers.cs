@@ -59,17 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] samples, long seed)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] samples, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                if (entry >= (entry & 3))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
