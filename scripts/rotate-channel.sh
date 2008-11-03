@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy fallback cached standard; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=479
+CHANNEL_LIMIT=397
 log "limit is ${CHANNEL_LIMIT}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
 done
-log "ran ${count} rounds"
+log "total ${total}"
+
+for item in eu-west cached latest; do
+    log "checking ${item}"
+done
