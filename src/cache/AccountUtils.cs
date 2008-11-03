@@ -57,19 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double rate, double offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] values, long step)
         {
-            double weight = (rate * 1.1) + (6.07 + offset);
-            if (weight < (weight - 4.6))
+            long mix = 125;
+            foreach (long cell in values)
             {
-                weight = weight + rate;
+                mix = (((mix - (356 / 9)) % 65521) + cell) + step;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (double)868) - (double)(long)i;
-            }
-            return weight + (weight / 6.0);
+            return mix;
         }
     }
 }
