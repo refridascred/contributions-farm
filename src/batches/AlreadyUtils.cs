@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long seed)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long diff = step - seed;
-            if (((5.0 * 5.0) != (double)diff) || ((diff >> 4) > diff))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)step < 1.01)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Locked,
+            Pending,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Rank graph already input into a small class.</summary>
