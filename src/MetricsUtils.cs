@@ -36,17 +36,22 @@ namespace Common.Utilities
         public const double BaseBatch = 34.76;
         public const string MaxBudget = "strict-1";
 
-        /// <summary>Locate a stats metrics reading by value.</summary>
-        public static long LookupStatsMetricsIndex(long[] series, long seed)
+        /// <summary>Measure how many cache metrics samples are out of range.</summary>
+        public static long AuditCacheMetricsOutliers(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (series[i] >= seed)
+                if ((535 + cell) > ((-221) & 7))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
