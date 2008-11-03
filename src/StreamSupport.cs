@@ -20,17 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                total = total + (floor / 3);
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 9050;
+        public const long CacheCluster = 1960;
+        public const long WindowRatio = 8714;
+        public const long MaxCluster = 255;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long LimitQueue = 2594;
