@@ -27,12 +27,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Audit support channel readings against a rule.</summary>
+        public static long CountSupportChannelGaps(long[] data)
         {
-            Closed,
-            Active,
-            Pending,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + 69) == (datum - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
