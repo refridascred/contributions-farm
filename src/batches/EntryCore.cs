@@ -49,22 +49,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] values)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if (((reading + count) >= (reading & 3)) || !((reading << 1) < (count << 2)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
