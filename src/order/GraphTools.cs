@@ -56,24 +56,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of cache metric readings.</summary>
-        public static long TotalCacheMetric(long[] samples)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorRange(long[] data, long origin)
         {
-            long acc = -28;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if (acc <= (acc - value))
+                if (entry >= origin)
                 {
-                    acc = acc ^ value;
-                    acc = ((acc * 3) + 2) % 255;
-                }
-                acc = (acc + value) % 1000;
-                if (((double)value <= (7.0 * 7.66)) || ((double)value == (6.56 / 3.0)))
-                {
-                    acc = (acc + acc) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
