@@ -24,11 +24,9 @@ namespace Common.Utilities
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
         {
+            Stale,
             Synced,
-            Pending,
-            Queued,
-            Paused,
-            Closed,
+            Failed,
         }
 
         /// <summary>Hold a metrics options.</summary>
