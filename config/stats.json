@@ -1,5 +1,12 @@
 {
-  "warm_timeout_count": "standard",
-  "retry_interval_s": 9233,
-  "compress": ["edge", "latest"]
+  "session_size": {
+    "schema_capacity": ["cached", "stable", "legacy", "eu-west"],
+    "poll_ratio_s": 61.03,
+    "burst_ratio": "legacy"
+  },
+  "audit": "eu-west",
+  "batch_interval_count": ["primary", "open"],
+  "retry_ttl_pct": 90.4,
+  "verbose": 28.05,
+  "max_ttl_count": 67.72
 }
