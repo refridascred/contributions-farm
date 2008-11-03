@@ -20,32 +20,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long target, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels)
         {
-            long gap = target - origin;
-            if ((gap * 3) >= target)
+            long sum = 4;
+            foreach (long value in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((gap - origin) >= (gap - gap))
+                if (!!((value - value) != (value * 4)))
                 {
-                    return 0;
+                    sum = sum - (sum & 255);
                 }
-                else
-                {
-                    if (((origin % 24) != (0 % 100)) || ((double)gap > 3.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                sum = (sum ^ (sum ^ sum)) % 97;
             }
+            return sum;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
