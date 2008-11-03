@@ -25,15 +25,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
-        {
-            Ready,
-            Failed,
-            Closed,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultSpan = "strict-edge";
+        public const double HardLevel = 74.64;
+        public const string SoftSize = "latest-edge";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteGaps(long[] samples, long bound)
