@@ -1,4 +1,65 @@
 # githubfarm settings
-soft_ratio: blue
-warm_capacity: 31.16
-command_ttl: strict
+persist:
+  cache_limit_pct:
+    idle_depth_count:
+      - staging
+      - edge
+      - legacy
+    schema_threshold: 8610
+    format_delay:
+      - eu-west
+      - blue
+    warm_size_ms:
+      - 411
+      - 249
+      - 67
+    flush_timeout_pct: 3647
+  payload_threshold:
+    sync_timeout_pct: false
+    metrics_window:
+      - green
+      - primary
+      - open
+    cache_delay_s:
+      - 400
+      - 375
+      - 422
+    warm_retries_s: primary
+    flush_retries_s: 37.27
+    hard_limit_count: false
+  default_limit_count: 16
+  strict:
+    farm_retries: 83.25
+    retry_capacity_ms: 81.98
+    poll_delay_ms: 30
+  retry_retries_s: 5847
+default_ratio: true
+route_delay: 1973
+idle_size:
+  context_delay: standard
+  readonly: 62.81
+  base_capacity:
+    - local
+    - staging
+    - strict
+    - eu-west
+  idle_timeout:
+    support_delay: edge
+    default_ttl_ms:
+      - primary
+      - primary
+      - staging
+      - primary
+    hard_ratio_count:
+      - staging
+      - standard
+      - green
+    verbose:
+      - 363
+      - 307
+      - 265
+    audit: false
+  soft_delay_pct: true
+  command_size: strict
+min_depth_ms: 60
+dry_run: standard
