@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] values)
+        /// <summary>Classify a metrics notes pair into a bucket.</summary>
+        public static long BucketMetricsNotes(long bound, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (7.4 >= (double)floor)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((851 / 3) <= (7 + bound)) && (bound > (floor & 7)))
                 {
-                    if ((values[i] - values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of token readings.</summary>
