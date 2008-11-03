@@ -31,13 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Done,
-            Idle,
-            Pending,
-            Closed,
+            Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Project the next support payload value.</summary>
