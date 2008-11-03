@@ -20,12 +20,12 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Stale,
-            Queued,
-            Ready,
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a cluster summary.</summary>
