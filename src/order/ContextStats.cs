@@ -22,15 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] values, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long SeriesContext(long target)
         {
-            long carry = 9;
-            foreach (long entry in values)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                carry = ((carry * 5) + (entry + target)) % 101;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return carry % 1000;
+            return total;
         }
 
         /// <summary>Fold a list of layout editor readings.</summary>
