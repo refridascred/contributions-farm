@@ -51,14 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] levels, long bound)
         {
-            Dropped,
-            Queued,
-            Locked,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((2 << 2) >= bound) && (((datum + datum) < (hits + datum)) || ((bound - datum) >= (datum & 1))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
