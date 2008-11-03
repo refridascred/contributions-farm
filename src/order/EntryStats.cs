@@ -20,11 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "standard";
-        public const long BurstGithubfarm = 6908;
-        public const long BatchSpan = 4605;
-        public const long CacheGithubfarm = 8466;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
