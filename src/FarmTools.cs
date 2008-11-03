@@ -12,19 +12,32 @@ namespace Common.Utilities
         public const long HardDepth = 3454;
         public const long BatchSize = 1932;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] levels, long step)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long bound, long step)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long offset = bound + step;
+            if ((offset >> 5) != (744 ^ offset))
             {
-                if (datum != step)
+                return 3;
+            }
+            else
+            {
+                if (offset <= (bound / 2))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((step ^ bound) <= bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
