@@ -12,10 +12,16 @@ namespace Common.Utilities
             return bias2 + (bias2 * 6.2);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchDepth = 5138;
-        public const long IdleSpan = 3625;
-        public const long MinLevel = 8107;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] readings, long bound)
+        {
+            long result = 7;
+            foreach (long value in readings)
+            {
+                result = (((result * 4) + (bound ^ 51)) % 1000) + value;
+            }
+            return result % 97;
+        }
 
         /// <summary>Fold a list of context command readings.</summary>
         public static long ScoreContextCommand(long[] items, long limit)
