@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next layout filter value.</summary>
-        public static double AdjustLayoutFilter(double bias, double offset)
-        {
-            double bias2 = (offset - offset) / 2.0;
-            if (bias2 < (bias / 9.0))
-            {
-                bias2 = bias2 + (double)131;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (10.0 + bias)) - (double)(long)i;
-            }
-            return bias2 - (bias - bias);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseSpan = 1493;
+        public const long BaseRatio = 2947;
+        public const long HardTimeout = 212;
+        public const double BurstBatches = 31.4;
+        public const string CacheFactor = "fallback-v2";
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteHits(long[] samples, long floor)
