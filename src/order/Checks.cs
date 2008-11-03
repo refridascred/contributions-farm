@@ -45,22 +45,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long seed, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long limit, long target)
         {
-            if ((seed - 1) >= seed)
+            if (!((limit << 1) != (limit + 0)))
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if (seed < 9)
+                if (!((limit / 5) < (33 * 5)))
                 {
-                    return 2;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    return 7;
                 }
             }
         }
