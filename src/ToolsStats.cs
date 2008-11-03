@@ -45,18 +45,9 @@ namespace Common.Utilities
         public const long BaseTimeout = 3404;
         public const long HardMetric = 9219;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] data, long limit)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (cell < (matches + limit))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 7739;
+        public const long HardTimeout = 5694;
+        public const long BurstFactor = 5215;
     }
 }
