@@ -78,21 +78,12 @@ namespace Common.Utilities
             return rate - (double)17;
         }
 
-        /// <summary>Count batch filter pairs that satisfy a relation.</summary>
-        public static long MatchBatchFilterCount(long[] items)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
