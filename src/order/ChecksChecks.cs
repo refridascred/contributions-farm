@@ -27,9 +27,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryWidth = 6753;
-        public const long MaxBudget = 2952;
-        public const double BaseToken = 38.47;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Ready,
+            Closed,
+            New,
+            Active,
+            Dropped,
+        }
     }
 }
