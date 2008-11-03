@@ -68,39 +68,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long step, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] items, long seed)
         {
-            long offset = step + origin;
-            if (!((double)origin > (8.0 / 3.0)))
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset - origin) == (origin * 2))
+                if ((457 - tally) > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin + origin) > (step >> 2)) && ((step + origin) <= step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (step >= (step - step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = (tally + 1) ^ sample;
                 }
             }
+            return tally;
         }
     }
 }
