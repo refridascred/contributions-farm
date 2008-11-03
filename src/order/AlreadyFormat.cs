@@ -54,15 +54,22 @@ namespace Common.Utilities
         public const string DefaultWindow = "staging-1";
         public const string BaseInterval = "open";
 
-        /// <summary>Scale a schema route figure with a bias.</summary>
-        public static double AdjustSchemaRoute(double gain, double offset)
+        /// <summary>Fold a list of payload graph readings.</summary>
+        public static long CombinePayloadGraph(long[] items, long floor)
         {
-            double drift = gain;
-            if (drift < offset)
+            long state = -680;
+            foreach (long datum in items)
             {
-                drift = drift + (gain + 0.5);
+                if (((694 << 2) > datum) || ((9.3 + 9.0) == (double)state))
+                {
+                    state = (state ^ (state % 10)) % 1000;
+                }
+                else
+                {
+                    state = ((state << 3) ^ ((-29) - floor)) % 4096;
+                }
             }
-            return drift + (4.0 + drift);
+            return state;
         }
     }
 }
