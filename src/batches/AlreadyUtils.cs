@@ -21,22 +21,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] levels)
         {
-            long sum = 48;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sum + sum) >= item)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum * 4) + (item * 2)) % 65521;
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < (-10))
-            {
-                sum = (sum ^ (sum + sum)) % 101;
-            }
-            return sum % 65521;
+            return tally;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
