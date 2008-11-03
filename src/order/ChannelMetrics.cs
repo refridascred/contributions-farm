@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] readings, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (((bound + cell) != (long)readings.Length) && (((cell / 9) >= seen) || ((seen / 3) <= seen)))
+                if (hits <= (-55))
                 {
-                    seen = seen + 2;
+                    hits = (hits + 3) + reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
