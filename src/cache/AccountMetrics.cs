@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] series, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long result = 117;
+            foreach (long cell in samples)
             {
-                if ((cell % 5) <= (cell % 100))
+                if (bound >= (15 + cell))
                 {
-                    matches = (matches + 2) - step;
+                    result = result - bound;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
