@@ -1,11 +1,10 @@
 # Command notes
 
-Each context is validated before it reaches the cache queue.
-When a format fails, the schema handler retries a few times before giving up.
-A entry that stays idle for too long is moved to the entry list.
+Each format is validated before it reaches the buffer queue.
+Use editor settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Log every metric change
-- Review session limits each release
-- Validate layout input early
+- Document new cluster fields
+- Log every githubfarm change
+- Review batch limits each release
