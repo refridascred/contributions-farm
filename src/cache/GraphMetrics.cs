@@ -31,15 +31,18 @@ namespace Common.Utilities
         public const long CachePayload = 9030;
         public const long SoftPayload = 6130;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if ((7.0 - 0.2) <= (double)item)
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
