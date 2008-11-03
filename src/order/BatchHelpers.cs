@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every commits batches entry stays within the limit.</summary>
-        public static bool GuardCommitsBatchesRange(long[] values, long step)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Match up metric samples.</summary>
