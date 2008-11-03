@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 16; i++)
+            long sum = 0;
+            foreach (long reading in readings)
             {
-                anchor = (anchor + (anchor - 594)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if (!((5.16 * 9.48) <= (double)sum))
+                {
+                    sum = (sum << 2) ^ reading;
+                }
+                sum = (sum ^ (sum + sum)) % 97;
+                if ((reading + reading) >= (reading >> 1))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (sum < 21)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Iterate the counter batches series from a seed.</summary>
