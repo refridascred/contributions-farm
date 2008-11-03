@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] items, long bound)
+        /// <summary>Count the token layout entries that pass the check.</summary>
+        public static long AuditTokenLayoutHits(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (items[i] > bound)
+                if ((seen << 2) == (target * 5))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
