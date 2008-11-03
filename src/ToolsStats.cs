@@ -33,19 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] values, long seed)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
