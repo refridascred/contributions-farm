@@ -48,10 +48,40 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryCommits = 2.35;
-        public const double BaseCommits = 53.51;
-        public const long DefaultCommits = 1750;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long floor, long step)
+        {
+            long span = floor - step;
+            if ((floor >> 4) >= 91)
+            {
+                return 5;
+            }
+            else
+            {
+                if (span < (floor + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(floor >= (13 * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((22 << 2) < span)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
