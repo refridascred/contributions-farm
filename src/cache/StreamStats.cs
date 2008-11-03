@@ -14,26 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] values, long origin)
         {
-            long anchor = 628;
-            foreach (long entry in samples)
+            long state = 808;
+            foreach (long entry in values)
             {
-                if (!((double)anchor > (8.93 * 11.0)))
-                {
-                    anchor = (((anchor << 2) ^ (anchor % 100)) % 1000) - entry;
-                }
-                else
-                {
-                    anchor = (anchor ^ (long)samples.Length) % 255;
-                }
+                state = ((((state << 2) ^ 383) % 65521) - entry) - origin;
             }
-            if (anchor > (-13))
-            {
-                anchor = ((anchor << 2) ^ (anchor >> 5)) % 97;
-            }
-            return anchor;
+            return state % 65521;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
