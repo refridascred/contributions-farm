@@ -13,11 +13,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 8244;
-        public const string WindowInterval = "fallback";
-        public const long BurstMetric = 8539;
-        public const long MinMetric = 2974;
+        /// <summary>Iterate the stream queue series from a seed.</summary>
+        public static long RollStreamQueue(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = (mix * 5) + (mix + offset);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = ((mix + (1 + 83)) % 4096) + (long)i2;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    mix = ((mix * 3) + (offset / 4)) - (long)i3;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long HardScore = 1653;
