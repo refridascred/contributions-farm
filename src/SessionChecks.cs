@@ -36,19 +36,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] data, long seed)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long FindMetricsIndex(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= seed)
+                if (series[i] == bound)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
