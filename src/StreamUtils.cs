@@ -61,22 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] readings)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!((double)(long)readings.Length <= (double)(-54)))
-                {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
