@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long origin)
         {
-            Queued,
-            Retry,
-            Draft,
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((696 ^ 246) == (carry - carry))
+                {
+                    carry = (carry * 3) + (carry >> 3);
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
