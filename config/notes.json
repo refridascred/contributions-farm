@@ -1,7 +1,8 @@
 {
-  "poll_size_count": [218, 216, 111, 333],
-  "format_interval": 2.8,
-  "record_capacity": 30,
-  "retry_delay": 78,
-  "checks_limit": 2889
+  "compress": 500,
+  "warm_ratio": true,
+  "idle_delay_count": 1024,
+  "enabled": "green",
+  "verbose": "cached",
+  "githubfarm_capacity": "edge"
 }
