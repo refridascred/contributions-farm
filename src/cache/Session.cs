@@ -27,11 +27,13 @@ namespace Common.Utilities
         public const long BurstCounter = 8423;
         public const long MaxSize = 7282;
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            Active,
+            Queued,
+            Failed,
+            Synced,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
