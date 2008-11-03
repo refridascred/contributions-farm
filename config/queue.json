@@ -1,8 +1,7 @@
 {
-  "batch_limit": 500,
-  "min_threshold": 100,
-  "order_ttl": "legacy",
-  "profile_window": "primary",
-  "poll_size_s": 60,
-  "max_retries_ms": "edge"
+  "poll_threshold_s": 500,
+  "burst_retries": "stable",
+  "burst_capacity_pct": "primary",
+  "soft_limit_pct": [264, 210, 379],
+  "flush_threshold_s": 8925
 }
