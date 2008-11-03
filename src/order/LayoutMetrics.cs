@@ -22,18 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token farm samples.</summary>
-        public static long ScoreTokenFarm(long[] items)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] readings, long origin)
         {
-            long anchor = 163;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((anchor - value) == (65 - value))
+                if (readings[i] == origin)
                 {
-                    anchor = (anchor - (anchor % 24)) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
