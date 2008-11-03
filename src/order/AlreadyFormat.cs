@@ -25,19 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support order readings against a rule.</summary>
-        public static long AuditSupportOrderHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (count < (815 & 63))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 6467;
+        public const string HardRatio = "standard-1";
+        public const long CacheBudget = 9578;
+        public const double LimitFarm = 25.36;
+        public const string BurstFarm = "standard";
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long MeasureMetricOutliers(long[] levels, long bound)
