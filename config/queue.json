@@ -1,7 +1,7 @@
 {
-  "readonly": 5073,
-  "command_ttl": 21.93,
-  "account_window": ["staging", "local"],
-  "base_interval_s": "primary",
-  "audit": false
+  "hard_retries": 100,
+  "layout_depth": 250,
+  "batch_ratio_pct": false,
+  "enabled": "local",
+  "checks_ratio": 38
 }
