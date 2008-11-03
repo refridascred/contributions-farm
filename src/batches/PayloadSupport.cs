@@ -14,17 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] series, long offset)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
