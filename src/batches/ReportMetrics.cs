@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Ready,
-            Failed,
             Queued,
-            Idle,
-            Stale,
+            New,
+            Retry,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
