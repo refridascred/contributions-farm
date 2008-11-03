@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const long RetrySpan = 1245;
         public const long SoftTimeout = 1327;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
