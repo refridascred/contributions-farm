@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "legacy-v2";
-        public const long LimitCommits = 4226;
-        public const long HardSize = 8801;
-        public const long HardCommits = 236;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double DefaultFactor = 25.67;
+        public const string MinRecord = "strict-v2";
+        public const string LimitRecord = "primary-1";
+        public const string IdleRecord = "legacy-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long SoftReport = 2002;
