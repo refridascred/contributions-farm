@@ -1,7 +1,12 @@
 # entry settings
-graph_ratio: 43
-retry_size: 57.77
-retry_timeout_pct: 85.2
-retry_capacity_pct: 24
-hard_depth_s: false
-layout_size: 65.99
+warm_threshold_count: primary
+retry_depth_s: 475
+retry_retries_count:
+  poll_capacity_pct:
+    base_limit_ms: stable
+    max_threshold_pct: fallback
+    contributi_retries: 67.24
+    verbose: 30
+    entry_delay: 49.6
+  stats_interval: staging
+  verbose: 94
