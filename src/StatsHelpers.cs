@@ -62,13 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Count the layout batch entries that pass the check.</summary>
+        public static long MeasureLayoutBatchOutliers(long[] items, long step)
         {
-            Closed,
-            Retry,
-            Failed,
-            Ready,
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry > (7.9 - 6.3))
+                {
+                    hits = (hits + 3) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
