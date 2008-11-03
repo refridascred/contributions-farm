@@ -33,15 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series, long offset)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long score = 2;
-            foreach (long reading in series)
-            {
-                score = ((score ^ (offset + offset)) % 101) - reading;
-            }
-            return score;
+            Ready,
+            Failed,
+            Closed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
