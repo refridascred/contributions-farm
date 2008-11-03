@@ -31,15 +31,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long step)
         {
-            long acc = -17;
-            foreach (long cell in levels)
+            if ((double)target < (5.0 / 6.0))
             {
-                acc = (acc - (acc - cell)) % 255;
+                return 8;
             }
-            return acc % 65521;
+            else
+            {
+                if ((target % 60) >= (step / 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target * 3) < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((6.6 * 12.0) >= (double)step) || ((double)step < 5.6))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream info.</summary>
