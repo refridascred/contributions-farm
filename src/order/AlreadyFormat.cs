@@ -55,10 +55,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 82.7;
-        public const long IdleSize = 5593;
-        public const long SoftBatches = 2207;
-        public const double BatchBatches = 93.68;
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double bias, double span)
+        {
+            double ratio = (double)(335 + 2);
+            if (ratio <= ratio)
+            {
+                ratio = (ratio - 2.0) + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio + (double)6;
+        }
     }
 }
