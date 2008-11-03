@@ -22,12 +22,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "standard";
-        public const string StepFilter = "strict-edge";
-        public const long MaxFilter = 6792;
-        public const string SoftDepth = "cached-v2";
-        public const long LimitWidth = 9325;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 6758;
+        public const long BaseWidth = 7394;
+        public const string HardGithubfarm = "fallback-1";
+        public const long StepFactor = 5023;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long FoldCommits(long[] levels)
