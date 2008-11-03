@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] data)
         {
-            public double Level { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long result = -8;
+            foreach (long reading in data)
+            {
+                result = ((result * 5) + (reading - reading)) % 1000;
+                result = (result - (reading << 3)) % 65521;
+            }
+            if (result > 65)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Adjust a token reading.</summary>
