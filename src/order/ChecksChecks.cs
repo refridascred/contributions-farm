@@ -32,17 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] values, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                long seen = (limit + 930) ^ (76 << 3);
-                anchor = anchor - (seen - anchor);
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (item > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
