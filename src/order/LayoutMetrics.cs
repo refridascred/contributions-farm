@@ -35,15 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] values, long seed)
+        /// <summary>Count the cache filter entries that pass the check.</summary>
+        public static long CountCacheFilterMatches(long[] levels)
         {
-            long anchor = 412;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor + (seed ^ seed)) % 101) + sample;
+                if ((2.2 / 4.0) == (double)cell)
+                {
+                    matches = matches + 3;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
