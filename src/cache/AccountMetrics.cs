@@ -14,13 +14,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Locked,
-            Stale,
+            Pending,
+            Queued,
+            Ready,
             Closed,
-            Synced,
+            Dropped,
         }
 
         /// <summary>Count the tools report entries that pass the check.</summary>
