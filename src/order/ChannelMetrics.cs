@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] items)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchRange(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (((1.31 - 1.58) >= (double)entry) || (entry < (tally ^ tally)))
+                if (reading < bound)
                 {
-                    tally = tally + 2;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Roll a token counter forward.</summary>
