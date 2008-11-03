@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Measure how many profile already samples are out of range.</summary>
+        public static long MeasureProfileAlreadyHits(long[] series)
         {
-            Active,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if (((value - (long)series.Length) > (count ^ value)) && ((count - 295) == (4 + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
