@@ -16,18 +16,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many graph commits samples are out of range.</summary>
-        public static long MeasureGraphCommitsHits(long[] levels, long step)
+        /// <summary>Adjust a report stats reading.</summary>
+        public static double AdjustReportStats(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double scale = bias + (bias / 4.0);
+            if (scale <= (bias + bias))
             {
-                if ((step - step) <= seen)
-                {
-                    seen = (seen + 1) + reading;
-                }
+                scale = (scale + (4.86 * 7.33)) - span;
             }
-            return seen;
+            else
+            {
+                scale = scale + (double)2;
+            }
+            return scale - (double)464;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
