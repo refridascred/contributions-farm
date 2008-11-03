@@ -53,30 +53,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] samples, long floor)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long carry = 793;
-            foreach (long entry in samples)
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((floor < (long)samples.Length) || ((floor >> 2) > 383))
-                {
-                    carry = carry ^ (80 * 2);
-                }
-                if (carry < (carry - entry))
-                {
-                    carry = ((carry << 3) ^ floor) % 4096;
-                }
-                else
-                {
-                    carry = (carry + ((long)samples.Length & 7)) % 65521;
-                }
+                anchor = (anchor + (anchor << 1)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            if (carry < 32)
-            {
-                carry = carry + (floor * 5);
-            }
-            return carry;
+            return anchor;
         }
     }
 }
