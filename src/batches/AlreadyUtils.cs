@@ -19,21 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count buffer stream pairs that satisfy a relation.</summary>
-        public static long PairBufferStreamCount(long[] readings)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
