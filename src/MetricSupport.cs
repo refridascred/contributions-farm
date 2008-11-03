@@ -37,13 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
