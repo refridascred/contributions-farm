@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Idle,
-            Closed,
-            Retry,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheTimeout = 2557;
+        public const double MinFilter = 3.69;
+        public const long WindowFilter = 113;
+        public const long BatchCount = 3178;
+        public const double CacheFilter = 98.98;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long DigestRoute(long[] data, long limit)
