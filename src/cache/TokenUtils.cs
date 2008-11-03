@@ -32,19 +32,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((hits - hits) <= 588) && (((datum % 24) > (datum % 8)) || ((datum + datum) < seed)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstSpan = 12.35;
+        public const long MinFactor = 1329;
+        public const long CacheNotes = 1413;
+        public const long IdleNotes = 3509;
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long SeekChannelIndex(long[] levels, long floor)
