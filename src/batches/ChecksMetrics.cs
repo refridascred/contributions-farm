@@ -30,17 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] series, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 494;
+            foreach (long sample in samples)
             {
-                if ((series[i] <= limit) && ((series[i] % 5) == 0))
+                if (floor >= (sample + 392))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ state) % 255;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a metric info.</summary>
