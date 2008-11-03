@@ -1,7 +1,11 @@
 {
-  "profile_delay": 4448,
-  "base_window_pct": 250,
-  "cache_limit_count": 27,
-  "cluster_interval": 97.76,
-  "contributi_ratio": 500
+  "profile_threshold": 250,
+  "readonly": 56.29,
+  "profile_window": 7.05,
+  "flush_delay_ms": false,
+  "warm_delay_pct": {
+    "poll_interval_pct": 31.55,
+    "dry_run": 60,
+    "audit": 14.85
+  }
 }
