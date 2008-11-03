@@ -14,19 +14,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] data, long floor)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long mark = 622;
+            foreach (long value in readings)
             {
-                if (entry >= floor)
+                if ((mark + value) <= (mark - mark))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark + (97 + mark)) % 1000;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Hold a order stats.</summary>
