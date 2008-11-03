@@ -55,9 +55,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 946;
-        public const string MinBuffer = "stable";
-        public const long BaseBuffer = 569;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long value in items)
+            {
+                if (value <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
