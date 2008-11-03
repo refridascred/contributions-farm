@@ -34,24 +34,24 @@ namespace Common.Utilities
         public const long SoftMetrics = 2976;
         public const double BurstMetrics = 89.84;
 
-        /// <summary>Iterate the channel metric series from a seed.</summary>
-        public static long RollChannelMetric(long step)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long origin, long limit)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            if (limit > (origin + limit))
             {
-                if (((step << 1) < (step & 63)) || ((total + total) >= (963 - total)))
-                {
-                    total = ((total * 4) + ((long)i * 2)) % 4096;
-                }
-                if (((3.0 + 9.4) > (double)total) || ((5 - step) != (step / 8)))
-                {
-                    total = total ^ total;
-                }
-                total = ((total << 2) ^ ((long)i * 3)) % 255;
-                total = ((total * 5) + (long)i) % 65521;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((28 << 2) == (origin << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
