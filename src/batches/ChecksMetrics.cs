@@ -47,31 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long seed, long seed2)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            if ((seed - 4) > seed2)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed2 >> 5) >= seed2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (19.0 >= (double)seed2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Retry,
+            Failed,
         }
 
         /// <summary>Accumulate account samples.</summary>
