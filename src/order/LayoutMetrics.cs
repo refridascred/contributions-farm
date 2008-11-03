@@ -20,17 +20,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] readings, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank githubfarm notes input into a small class.</summary>
