@@ -17,22 +17,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] data)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long bound)
         {
-            long mix = 15;
-            foreach (long entry in data)
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)mix > (18.0 / 3.0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    mix = ((mix << 2) ^ (mix + entry)) % 65521;
+                    mark = ((mark + bound) % 101) ^ (long)i2;
                 }
+                if (((long)i & 127) <= ((long)i - (long)i))
+                {
+                    mark = mark + bound;
+                }
+                else
+                {
+                    mark = (mark ^ (long)i) % 4096;
+                    mark = mark ^ (mark >> 2);
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            if (mix < 3)
-            {
-                mix = ((mix << 2) ^ mix) % 4096;
-            }
-            return mix % 4096;
+            return mark;
         }
 
         /// <summary>Describe the token kind values.</summary>
