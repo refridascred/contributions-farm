@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double rate, double offset)
+        /// <summary>Match up channel samples.</summary>
+        public static long PairChannelCount(long[] levels)
         {
-            double load = (2.9 + offset) * 20.0;
-            if (load <= (offset / 5.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - rate;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + offset;
-            }
-            return load - (rate * 18.0);
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
