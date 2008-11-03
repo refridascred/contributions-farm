@@ -42,11 +42,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a farm entry.</summary>
