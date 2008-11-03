@@ -19,18 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric counter values into a single score.</summary>
-        public static long TotalMetricCounter(long[] samples, long seed)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] readings)
         {
-            long state = 889;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (state > (entry % 24))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (((state * 3) + (5 >> 2)) % 97) + seed;
+                    if ((readings[i] + readings[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
