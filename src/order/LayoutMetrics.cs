@@ -24,24 +24,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank record queue input into a small class.</summary>
-        public static long ClassifyRecordQueue(long seed, long bound)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            if (((bound + bound) == (seed - seed)) || ((1.7 * 8.94) <= (double)seed))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound * 3) != (seed / 4)) && ((16.0 + 2.93) > (double)bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] - levels[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
