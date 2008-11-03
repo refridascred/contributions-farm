@@ -1,6 +1,11 @@
-id,label,ratio,active
-1,62,standard,23.84
-2,64.98,32.43,95.22
-3,405,11.9,23.5
-4,primary,local,eu-west
-5,local,eu-west,62.73
+id,weight,label
+1,393,74.23
+2,285,94
+3,226,128
+4,strict,85
+5,strict,598
+6,539,883
+7,64.73,39.87
+8,legacy,70.91
+9,4.66,253
+10,568,52.82
