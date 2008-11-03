@@ -39,13 +39,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public bool Offset { get; set; }
-            public double Total { get; set; }
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultInterval = 873;
+        public const double MinAccount = 3.51;
+        public const long BaseBudget = 950;
+        public const long BurstScore = 7463;
     }
 }
