@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] items, long seed)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (entry <= seed)
+                if (((3 + hits) != (entry + hits)) && ((double)hits != (8.8 * 2.61)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Match up filter samples.</summary>
