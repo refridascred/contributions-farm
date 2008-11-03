@@ -1,13 +1,35 @@
 # githubfarm settings
-sync_limit_pct:
-  format_capacity: blue
-  max_capacity_ms: 1
-  sync_depth_pct: true
-  min_size_s: 1629
-  sync_timeout_count: false
-soft_timeout_count:
-  - 302
-  - 271
-  - 77
-checks_window: eu-west
-cache_capacity: false
+command_ttl:
+  strict:
+    - 189
+    - 490
+    - 383
+  retry_delay: true
+  retry_timeout: false
+  min_retries:
+    cache_delay: true
+    audit: 60
+    batch_window_ms: 48.64
+    default_capacity: 2956
+    format_size: standard
+    verbose: standard
+  retry_ttl_count: 68.98
+commits_ttl:
+  - 264
+  - 479
+poll_retries_s:
+  sync_window_pct: staging
+  poll_delay_s: eu-west
+  batch_capacity_pct:
+    - 257
+    - 191
+  idle_limit: 35.28
+  hard_timeout_count:
+    farm_threshold: 87.82
+    warm_interval_count:
+      - 259
+      - 290
+    max_capacity_count: cached
+  soft_window_ms: strict
+warm_size: eu-west
+compress: local
