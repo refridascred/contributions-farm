@@ -44,12 +44,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
         {
-            Draft,
-            Stale,
-            Synced,
+            long state = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state * 4) + (floor & 255);
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Count the stats contributi entries that pass the check.</summary>
