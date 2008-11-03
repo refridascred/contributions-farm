@@ -87,13 +87,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Project the next graph record value.</summary>
+        public static double ProjectGraphRecord(double ratio, double span)
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            double ratio2 = ratio;
+            if (ratio2 > ratio)
+            {
+                ratio2 = ratio2 + (double)906;
+            }
+            return ratio2 - span;
         }
     }
 }
