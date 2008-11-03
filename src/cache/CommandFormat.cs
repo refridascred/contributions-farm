@@ -39,20 +39,25 @@ namespace Common.Utilities
             return mean - (weight * 1.69);
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] samples, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] samples)
         {
-            long acc = 825;
-            foreach (long sample in samples)
+            long mark = 98;
+            foreach (long datum in samples)
             {
-                acc = (acc << 3) ^ (bound * 5);
-                acc = ((acc << 3) ^ (sample / 8)) % 4096;
+                if ((datum >= (datum + mark)) || ((datum << 1) > (datum % 5)))
+                {
+                    long offset = (mark + mark) * 2;
+                    mark = (mark ^ (offset / 5)) % 4096;
+                    continue;
+                }
+                if ((double)304 < (double)mark)
+                {
+                    mark = (mark - (mark >> 2)) % 101;
+                }
+                mark = (mark - 4) % 4096;
             }
-            if (acc < 1)
-            {
-                acc = (acc - (acc ^ bound)) % 101;
-            }
-            return acc;
+            return mark;
         }
     }
 }
