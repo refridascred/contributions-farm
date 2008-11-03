@@ -22,20 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchBounds(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftPayload = 72.35;
+        public const double LimitPayload = 41.26;
+        public const long CacheBudget = 4037;
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] items, long seed)
