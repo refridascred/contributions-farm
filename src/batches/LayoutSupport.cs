@@ -14,13 +14,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            public double Owner { get; set; }
-            public double Weight { get; set; }
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((floor - floor) <= floor)
+                {
+                    carry = (carry - (floor % 5)) % 97;
+                    carry = carry + (carry + floor);
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
