@@ -28,21 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long MatchBatchesCount(long[] items)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
