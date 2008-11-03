@@ -69,18 +69,11 @@ namespace Common.Utilities
         public const string RetryInterval = "local";
         public const double BaseRatio = 17.6;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] samples, long offset)
-        {
-            long mark = 42;
-            foreach (long sample in samples)
-            {
-                if (((-18) & 31) == (sample / 4))
-                {
-                    mark = (mark ^ (offset - mark)) % 101;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 7736;
+        public const long DefaultWidth = 963;
+        public const long MaxRecord = 2685;
+        public const long CacheBudget = 9086;
+        public const long SoftRecord = 398;
     }
 }
