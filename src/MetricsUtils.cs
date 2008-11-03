@@ -49,12 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultFarm = 89.8;
-        public const double BatchFarm = 50.81;
-        public const long HardFarm = 926;
-        public const long LimitCount = 962;
-        public const long BaseFarm = 5104;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Classify a cache account pair into a bucket.</summary>
         public static long RankCacheAccount(long limit, long seed)
