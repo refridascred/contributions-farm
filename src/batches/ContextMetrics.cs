@@ -17,11 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultInterval = "fallback";
-        public const long BatchInterval = 679;
-        public const double MaxTools = 63.46;
-        public const string StepTools = "stable-edge";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 2709;
+        public const long BatchSchema = 408;
+        public const long MinSpan = 2425;
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long FoldBatches(long[] readings)
