@@ -1,6 +1,10 @@
 {
-  "default_timeout": [133, 96, 144, 283],
-  "hard_ttl": 91.25,
-  "compress": 41,
-  "audit": 52
+  "context_delay": 53.88,
+  "audit": 30,
+  "retry_retries_ms": 23.97,
+  "payload_depth": {
+    "poll_timeout": 73,
+    "layout_window": 32,
+    "hard_threshold": 11.62
+  }
 }
