@@ -1,7 +1,11 @@
 # support settings
-base_threshold_s: 79.94
-order_interval: 6720
-base_window_s: false
-poll_interval_s: 500
-support_window: 6876
-soft_capacity: 6579
+audit: 68
+warm_ratio_pct: 60
+soft_ratio: false
+burst_depth_s: false
+retry_retries:
+  - 326
+  - 124
+  - 332
+  - 249
+metrics_interval: strict
