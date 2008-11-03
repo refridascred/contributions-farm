@@ -1,5 +1,7 @@
 {
-  "sync_interval_count": 1.01,
-  "sync_capacity_ms": false,
-  "hard_depth": "staging"
+  "session_delay": "standard",
+  "flush_ttl_count": 14,
+  "persist": false,
+  "dry_run": 1883,
+  "warm_limit": "local"
 }
