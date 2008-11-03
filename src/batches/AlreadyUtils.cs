@@ -53,13 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] samples)
         {
-            Stale,
-            Idle,
-            Active,
-            New,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches >> 1) >= (matches * 5))
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
