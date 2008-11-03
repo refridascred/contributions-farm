@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBuffer = 79.44;
-        public const long BatchRatio = 4550;
-        public const double MinScore = 54.52;
-        public const string HardSize = "legacy-1";
+        /// <summary>Rank channel window input into a small class.</summary>
+        public static long SortChannelWindow(long bound, long seed)
+        {
+            if ((double)1 == (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((2.55 / 2.0) == (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((4 >> 3) < seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long TotalContributi(long[] data, long floor)
