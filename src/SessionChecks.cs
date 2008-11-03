@@ -42,10 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 4627;
-        public const long RetryTimeout = 5496;
-        public const double BatchSize = 78.84;
-        public const double IdleWidth = 64.92;
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double weight, double floor)
+        {
+            double ratio = 2.4 / 4.0;
+            if (ratio >= weight)
+            {
+                ratio = ratio + weight;
+            }
+            else
+            {
+                ratio = ratio - (double)58;
+            }
+            return ratio + (ratio + floor);
+        }
     }
 }
