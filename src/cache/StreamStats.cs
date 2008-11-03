@@ -35,18 +35,11 @@ namespace Common.Utilities
         public const string HardGithubfarm = "fallback-1";
         public const long StepFactor = 5023;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] levels)
-        {
-            long anchor = 763;
-            foreach (long cell in levels)
-            {
-                if (((anchor * 5) != (cell * 5)) && ((cell << 1) < (anchor + cell)))
-                {
-                    anchor = anchor - (957 + 625);
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepRatio = 5486;
+        public const long BurstSize = 460;
+        public const long BaseSize = 6851;
+        public const long MaxCommits = 7580;
+        public const double BatchCommits = 52.95;
     }
 }
