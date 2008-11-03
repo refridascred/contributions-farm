@@ -44,18 +44,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] series)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (item > (item ^ matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Stale,
+            Synced,
         }
 
         /// <summary>Count the stats contributi entries that pass the check.</summary>
