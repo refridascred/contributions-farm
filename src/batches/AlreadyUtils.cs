@@ -21,15 +21,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long PairNotesCount(long[] levels)
+        /// <summary>Count buffer stream pairs that satisfy a relation.</summary>
+        public static long PairBufferStreamCount(long[] readings)
         {
             long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) < 2)
+                    if ((readings[i] ^ readings[j]) != 4)
                     {
                         tally = tally + 1;
                     }
