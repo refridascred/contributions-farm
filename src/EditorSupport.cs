@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double scale, double offset)
+        /// <summary>Scale a checks tools figure with a bias.</summary>
+        public static double SmoothChecksTools(double rate, double floor)
         {
-            double bias = (double)(678 ^ (-69));
-            return ((bias - (double)(-8)) + scale) + offset;
+            double mean = rate;
+            if (mean > (double)699)
+            {
+                mean = (mean + mean) + floor;
+            }
+            return mean + mean;
         }
 
         /// <summary>Locate a cluster counter reading by value.</summary>
