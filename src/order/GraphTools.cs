@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long limit, long floor)
         {
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            if (floor < (226 + limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit >= (floor - 81)) || ((double)floor <= 9.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the token kind values.</summary>
