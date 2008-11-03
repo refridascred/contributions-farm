@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] items, long offset)
         {
-            Failed,
-            New,
-            Draft,
-            Ready,
-            Synced,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample ^ sample) > (offset + offset))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
