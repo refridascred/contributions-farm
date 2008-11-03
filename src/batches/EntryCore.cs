@@ -56,11 +56,16 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MinToken = 7886;
-        public const long MaxToken = 1591;
-        public const long StepDepth = 6120;
-        public const string CacheToken = "fallback-1";
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] data, long target)
+        {
+            long mark = 89;
+            foreach (long sample in data)
+            {
+                mark = ((((mark << 2) ^ (52 >> 4)) % 255) ^ sample) - target;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
