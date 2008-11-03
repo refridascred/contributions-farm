@@ -56,14 +56,14 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Ready,
-            Draft,
-            Dropped,
+            Synced,
+            Locked,
+            Done,
+            Queued,
             Retry,
-            New,
         }
     }
 }
