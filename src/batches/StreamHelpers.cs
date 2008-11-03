@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] values, long offset)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (offset < (offset & 255))
+                if ((values[i] >= target) && ((values[i] % 3) == 0))
                 {
-                    seen = (seen + 3) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
