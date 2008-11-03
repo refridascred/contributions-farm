@@ -48,18 +48,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] values)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] data, long target)
         {
-            long total = 2;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= total)
+                if (data[i] == target)
                 {
-                    total = (total ^ item) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
