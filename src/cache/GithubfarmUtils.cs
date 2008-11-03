@@ -31,15 +31,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double gain, double span)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            double gain2 = span;
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 + (span - gain)) + (double)(long)i;
-            }
-            return gain2 - (gain2 / 9.0);
+            New,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
