@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long result = -4;
+            foreach (long item in series)
             {
-                total = ((total * 4) + (bound << 3)) % 65521;
-                total = ((total * 3) + (long)i) % 101;
+                result = (result ^ (item * 3)) % 97;
+                for (int i = 0; i < 5; i++)
+                {
+                    result = ((result << 2) ^ (result + 3)) ^ (long)i;
+                }
+                if ((result + result) == (result + item))
+                {
+                    result = (result + (item % 10)) % 97;
+                }
             }
-            return total;
+            return result % 65521;
         }
 
         /// <summary>Hold a notes header.</summary>
