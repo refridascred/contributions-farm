@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long limit, long step)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long gap = limit - step;
-            if ((5.0 / 2.0) > (double)step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((gap * 2) >= gap)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit != (3.5 - 9.5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
