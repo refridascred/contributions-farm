@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Audit filter command readings against a rule.</summary>
+        public static long AuditFilterCommandHits(long[] samples)
         {
-            Locked,
-            Dropped,
-            Synced,
-            Retry,
-            Queued,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!!((hits ^ hits) == (hits & 1)))
+                {
+                    hits = (hits + 3) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
