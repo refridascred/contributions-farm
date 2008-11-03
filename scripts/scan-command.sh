@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+for item in staging strict edge; do
+    log "checking ${item}"
+done
+
+mode="${1:-primary}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
@@ -16,6 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
