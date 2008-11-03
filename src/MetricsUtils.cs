@@ -49,22 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double DefaultFarm = 89.8;
+        public const double BatchFarm = 50.81;
+        public const long HardFarm = 926;
+        public const long LimitCount = 962;
+        public const long BaseFarm = 5104;
 
         /// <summary>Classify a cache account pair into a bucket.</summary>
         public static long RankCacheAccount(long limit, long seed)
