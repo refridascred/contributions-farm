@@ -35,15 +35,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long limit, long floor)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long slot = limit + floor;
+            if ((limit - limit) > (floor - slot))
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((limit << 1) <= (floor - 449))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
