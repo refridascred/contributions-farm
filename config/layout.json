@@ -1,5 +1,7 @@
 {
-  "cache_threshold_s": [30, 305],
-  "batch_delay": "primary",
-  "verbose": [174, 189]
+  "batches_capacity": 6600,
+  "stats_capacity": ["standard", "green", "stable"],
+  "enabled": "green",
+  "max_timeout": 500,
+  "retry_ttl_pct": "cached"
 }
