@@ -20,25 +20,22 @@ namespace Common.Utilities
             return bias2 - (bias - bias);
         }
 
-        /// <summary>Classify a githubfarm checks pair into a bucket.</summary>
-        public static long BucketGithubfarmChecks(long floor, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] samples, long floor)
         {
-            long edge = floor ^ bound;
-            if (!(floor < edge))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor <= (floor & 15))
+                if ((87 < (matches - cell)) || (((floor % 24) == (cell >> 3)) && ((floor ^ matches) >= matches)))
                 {
-                    return 2;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a token stats.</summary>
