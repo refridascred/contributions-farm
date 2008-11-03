@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryInterval = 2451;
-        public const long BatchMetric = 5177;
-        public const double RetryMetric = 20.93;
-        public const long BurstBudget = 2354;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
