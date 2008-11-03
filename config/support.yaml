@@ -1,34 +1,5 @@
 # support settings
-persist: 56.63
-enabled: 32.01
-burst_ratio_count: strict
-channel_size:
-  already_size: 30
-  account_window:
-    flush_interval_count: true
-    cache_ratio_s: 97.26
-    readonly: 1938
-    commits_timeout: legacy
-  poll_ratio_s:
-    poll_capacity_ms: 81.52
-    flush_threshold_pct:
-      - 461
-      - 156
-    soft_ttl_s: 250
-    dry_run: 250
-  flush_threshold: 30
-  record_ratio:
-    token_interval:
-      - 328
-      - 414
-      - 368
-      - 431
-    verbose: 72
-    enabled: 1113
-    default_timeout_count:
-      - 143
-      - 69
-      - 68
-      - 186
-    compress: 5238
-  burst_retries_s: standard
+tools_threshold: standard
+max_threshold: stable
+route_size: open
+dry_run: 24
