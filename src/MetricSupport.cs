@@ -23,38 +23,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long offset, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] samples, long origin)
         {
-            if ((offset & 127) > origin)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((offset ^ origin) < (offset - offset)))
+                if (cell > origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset < origin) && ((offset << 3) < (767 % 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (6.0 >= (double)offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
