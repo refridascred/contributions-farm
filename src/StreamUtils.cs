@@ -25,12 +25,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
             public double Flag { get; set; }
-            public long Region { get; set; }
+            public double Weight { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
