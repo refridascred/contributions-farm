@@ -18,14 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Classify a commits farm pair into a bucket.</summary>
+        public static long RankCommitsFarm(long limit, long offset)
         {
-            Synced,
-            Active,
-            New,
-            Dropped,
-            Locked,
+            long bound = limit + offset;
+            if (((double)bound <= (8.62 / 8.0)) && ((limit << 2) == (bound + offset)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) == (offset >> 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
