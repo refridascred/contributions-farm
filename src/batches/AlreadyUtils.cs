@@ -52,26 +52,18 @@ namespace Common.Utilities
         public const long MaxGraph = 4628;
         public const long WindowWidth = 1838;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] levels, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] levels)
         {
-            long sum = 390;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (3.9 > (double)floor)
+                if ((((double)5 >= (double)entry) && (tally > (970 + entry))) && ((27 * 2) < (entry / 4)))
                 {
-                    sum = (sum + (sum - value)) % 65521;
-                }
-                if ((floor ^ sum) < (floor + sum))
-                {
-                    sum = (sum - (sum / 8)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            if (sum > 779)
-            {
-                sum = (sum + sum) % 65521;
-            }
-            return sum;
+            return tally;
         }
     }
 }
