@@ -1,6 +1,19 @@
 {
-  "persist": true,
-  "readonly": "eu-west",
-  "warm_capacity_ms": ["fallback", "local", "local", "eu-west"],
-  "report_retries": 93.73
+  "retry_threshold_count": {
+    "base_depth_count": "strict",
+    "schema_retries": "green",
+    "verbose": true,
+    "compress": "local",
+    "metric_timeout": "fallback",
+    "sync_depth_ms": [416, 469, 461]
+  },
+  "commits_threshold": false,
+  "stream_threshold": 25,
+  "record_retries": {
+    "persist": false,
+    "editor_retries": 500,
+    "batch_ratio_s": 76,
+    "burst_capacity": 62
+  },
+  "batch_capacity": false
 }
