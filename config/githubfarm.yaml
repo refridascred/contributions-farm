@@ -1,23 +1,28 @@
 # githubfarm settings
-cache_ratio: 71
-format_threshold:
-  poll_threshold_count: 5.26
-  filter_ttl: edge
-  enabled: 4497
-  sync_window: green
-  flush_ttl_count:
-    - 233
-    - 365
-    - 343
-    - 255
-  persist:
-    base_ratio_s:
-      - 399
-      - 104
-      - 337
-      - 12
-    strict: fallback
-    audit: false
-    readonly: 2186
-cache_retries_count: 15.61
-default_ttl: fallback
+compress:
+  strict: true
+  retry_retries: 250
+  editor_delay:
+    max_size_count:
+      - stable
+      - open
+    poll_depth:
+      - 395
+      - 398
+      - 359
+      - 136
+    max_capacity_ms: false
+    dry_run: cached
+  notes_retries: true
+  flush_timeout:
+    - 226
+    - 346
+  cache_delay_count: 5
+verbose: false
+strict:
+  enabled: 2461
+  base_interval_ms: true
+  queue_retries: true
+  counter_depth: blue
+  soft_depth_ms: 19.98
+  hard_ratio_count: 43.69
