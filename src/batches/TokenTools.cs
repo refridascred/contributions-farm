@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const string LimitRecord = "primary-1";
         public const string IdleRecord = "legacy-1";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 2002;
-        public const double BatchReport = 41.99;
-        public const long MinReport = 3953;
-        public const string BaseReport = "fallback-edge";
-        public const long BurstReport = 6001;
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            Synced,
+            Paused,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long StepBatch(long offset)
