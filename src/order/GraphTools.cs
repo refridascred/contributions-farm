@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long HardBuffer = 610;
         public const long BaseLevel = 8880;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] series, long offset)
         {
-            public bool Mode { get; set; }
-            public bool Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
