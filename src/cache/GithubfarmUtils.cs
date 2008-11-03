@@ -45,38 +45,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long origin, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] samples)
         {
-            if ((((-5) % 3) <= (target + target)) && (target > (target + target)))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((17.0 - 2.67) != (double)target)
+                if (((-53) + item) < (hits * 2))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (target <= 80)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target >> 5) < (target + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
