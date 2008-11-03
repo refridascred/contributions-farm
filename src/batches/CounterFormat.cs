@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first route schema entry that matches the target.</summary>
-        public static long LookupRouteSchemaIndex(long[] levels, long limit)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
