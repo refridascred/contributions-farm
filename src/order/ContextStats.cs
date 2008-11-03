@@ -20,18 +20,22 @@ namespace Common.Utilities
             return load - (rate * 18.0);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] samples, long floor)
+        /// <summary>Accumulate buffer report samples.</summary>
+        public static long FoldBufferReport(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long state = 8;
+            foreach (long datum in data)
             {
-                if (hits < (floor * 3))
+                if (63 < (state + state))
                 {
-                    hits = (hits + 2) ^ reading;
+                    state = ((state - (316 - target)) % 65521) - datum;
                 }
             }
-            return hits;
+            if (state < 29)
+            {
+                state = ((state * 2) + (state & 63)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
