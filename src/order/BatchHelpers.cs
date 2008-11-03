@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsOutliers(long[] readings)
         {
-            Paused,
-            Pending,
-            Ready,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!((59 + cell) <= (954 << 3)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate counter samples.</summary>
