@@ -26,33 +26,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long offset, long offset2)
-        {
-            long slot = offset ^ offset2;
-            if (((886 - slot) >= 3) && ((slot - offset2) == (offset + offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset2 + offset2) == (slot + offset2)) && (offset <= (offset * 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset2 << 2) > (offset ^ 37))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultSize = 451;
+        public const string HardInterval = "strict";
+        public const string MaxQueue = "primary-1";
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiGaps(long[] readings)
