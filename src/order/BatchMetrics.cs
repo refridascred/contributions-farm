@@ -71,19 +71,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] items, long step)
         {
-            long acc = 10;
-            foreach (long item in samples)
+            long score = 76;
+            foreach (long sample in items)
             {
-                acc = (acc ^ (acc ^ acc)) ^ item;
+                if (sample > (step - sample))
+                {
+                    score = (score ^ (score + sample)) % 1000;
+                }
             }
-            if (acc < 323)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc % 97;
+            return score;
         }
 
         /// <summary>Count batch filter pairs that satisfy a relation.</summary>
