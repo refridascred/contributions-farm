@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] series, long step)
         {
-            long sum = 8;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                sum = (sum - (item & 127)) % 101;
-                sum = sum ^ item;
-                if ((sum - sum) >= sum)
+                if ((cell % 5) <= (cell % 100))
                 {
-                    sum = (sum << 2) ^ (307 - sum);
+                    matches = (matches + 2) - step;
                 }
             }
-            if (sum > (-917))
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
