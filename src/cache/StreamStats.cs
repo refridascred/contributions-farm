@@ -36,13 +36,19 @@ namespace Common.Utilities
             return ratio + (double)(-5);
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Adjust a contributi schema reading.</summary>
+        public static double BlendContributiSchema(double bias, double bias2)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            double bias3 = (bias * 9.5) - (13.0 - bias);
+            if (bias3 >= (double)964)
+            {
+                bias3 = bias3 - (bias3 - bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias3 = (bias3 - (double)1) - (double)(long)i;
+            }
+            return bias3 + (bias2 - bias);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
