@@ -62,11 +62,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultSpan = 60.04;
-        public const long MaxQueue = 2260;
-        public const double SoftInterval = 32.4;
-        public const long BatchBudget = 7344;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "latest-v2";
+        public const long DefaultSpan = 4652;
+        public const string WindowScore = "alpha-v2";
+        public const string RetryInterval = "local";
+        public const double BaseRatio = 17.6;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long DigestFilter(long[] samples, long offset)
