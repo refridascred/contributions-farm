@@ -61,19 +61,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double ratio, double floor)
+        /// <summary>Iterate the format batches series from a seed.</summary>
+        public static long IterateFormatBatches(long target)
         {
-            double load = (floor + ratio) + (floor * 15.0);
-            if (load > (double)6)
+            long state = target;
+            for (int i = 0; i < 22; i++)
             {
-                load = load - (floor / 9.0);
+                if (!((target ^ (long)i) < (target - target)))
+                {
+                    state = state - state;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                load = load + (floor + ratio);
-            }
-            return load + load;
+            return state;
         }
     }
 }
