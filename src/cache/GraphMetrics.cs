@@ -37,15 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] data)
+        /// <summary>Audit notes farm readings against a rule.</summary>
+        public static long CountNotesFarmGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long value in data)
+            foreach (long item in levels)
             {
-                if (value < 2)
+                if (item < (tally - item))
                 {
-                    tally = tally + 2;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
