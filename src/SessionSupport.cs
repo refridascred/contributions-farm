@@ -13,11 +13,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long target)
         {
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long carry = target;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
