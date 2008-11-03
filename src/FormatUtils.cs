@@ -31,10 +31,12 @@ namespace Common.Utilities
         public const long BatchEditor = 5324;
         public const double LimitLevel = 49.98;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "local-1";
-        public const double DefaultSize = 38.71;
-        public const long LimitFormat = 8063;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Compare every pair of filter context readings.</summary>
         public static long PairFilterContextCount(long[] levels)
