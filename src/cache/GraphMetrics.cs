@@ -20,13 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Ready,
-            Dropped,
-            Failed,
-            Retry,
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
