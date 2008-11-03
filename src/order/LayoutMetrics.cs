@@ -39,13 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Count the graph contributi entries that pass the check.</summary>
+        public static long TallyGraphContributiGaps(long[] values)
         {
-            Done,
-            Failed,
-            Retry,
-            Draft,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (!(((seen << 3) != (seen / 9)) && ((99 % 3) <= (cell << 1))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
