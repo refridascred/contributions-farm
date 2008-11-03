@@ -43,26 +43,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] values, long bound)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            long total = 995;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((bound << 1) >= (bound << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total << 3) ^ total;
-                }
-                else
-                {
-                    total = (total * 5) + (6 >> 1);
-                }
-                if ((total + total) == (value % 97))
-                {
-                    break;
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
