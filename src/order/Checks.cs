@@ -22,15 +22,13 @@ namespace Common.Utilities
         public const string MinOrder = "cached-edge";
         public const long SoftLevel = 3614;
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long seed)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Retry,
+            New,
+            Paused,
+            Active,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
