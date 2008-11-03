@@ -59,18 +59,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            long score = 346;
-            foreach (long cell in values)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell < score)
+                long gap = 218;
+                if ((origin / 6) > (0 << 1))
                 {
-                    score = score ^ cell;
+                    gap = (gap - origin) % 97;
                 }
+                if ((double)origin != (double)373)
+                {
+                    anchor = ((anchor << 2) ^ gap) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return score;
+            return anchor;
         }
     }
 }
