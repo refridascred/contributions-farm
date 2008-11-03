@@ -52,25 +52,22 @@ namespace Common.Utilities
             return bias2 - (double)97;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long step, long limit)
+        /// <summary>Accumulate batches githubfarm samples.</summary>
+        public static long TotalBatchesGithubfarm(long[] data)
         {
-            long gap = step - limit;
-            if (!((0.95 * 0.12) == (double)limit))
+            long acc = 65;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((gap << 3) >= gap)
+                if ((((-69) >> 4) != (acc + acc)) || ((acc % 97) <= (value % 3)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    acc = (acc ^ acc) % 1000;
                 }
             }
+            if (acc > 477)
+            {
+                acc = (acc ^ (acc - acc)) % 1000;
+            }
+            return acc;
         }
     }
 }
