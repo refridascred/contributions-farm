@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((7 >= item) || ((double)hits > (double)item)) || ((item + item) <= item))
+                if (!((2.0 + 19.0) < (double)matches))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
