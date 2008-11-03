@@ -16,21 +16,14 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Compare every pair of stats cache readings.</summary>
-        public static long PairStatsCacheCount(long[] readings)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Idle,
+            Active,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Derive the next batch entry value from a seed.</summary>
