@@ -29,11 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a entry route figure with a bias.</summary>
-        public static double AdjustEntryRoute(double rate, double floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] values, long seed)
         {
-            double scale = (double)(19 << 3);
-            return (scale + rate) + floor;
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample > seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
