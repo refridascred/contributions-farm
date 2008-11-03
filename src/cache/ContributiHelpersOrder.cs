@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] levels)
+        /// <summary>Iterate the stats token series from a seed.</summary>
+        public static long IterateStatsToken(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = ((carry * 3) + carry) % 4096;
+                if (((9.6 - 6.0) >= (double)carry) && ((long)i == (step / 3)))
                 {
-                    if ((levels[i] - levels[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Look up the position of a checks order sample.</summary>
