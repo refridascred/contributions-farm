@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
