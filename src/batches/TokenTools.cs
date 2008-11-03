@@ -22,12 +22,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] series, long seed)
         {
-            public bool Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!((298 & 3) > seed))
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define token limits and defaults.</summary>
