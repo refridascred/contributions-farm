@@ -22,35 +22,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long target, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long limit, long floor)
         {
-            if (target > limit)
+            long lane = limit + floor;
+            if (lane <= (lane >> 3))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((double)limit <= (2.2 * 9.9))
+                if ((limit * 2) <= (floor + limit))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((limit - target) == (limit / 9))
+                    if (!((floor - lane) != (floor & 1)))
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        if ((limit - limit) >= target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 0;
                     }
                 }
             }
