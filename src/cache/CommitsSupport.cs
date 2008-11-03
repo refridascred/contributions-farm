@@ -44,21 +44,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] values)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 1)
+                    if ((items[i] + items[j]) < 3)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
