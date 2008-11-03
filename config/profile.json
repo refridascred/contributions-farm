@@ -1,8 +1,7 @@
 {
-  "max_depth_s": [230, 29],
-  "githubfarm_window": "local",
-  "batch_interval_s": "blue",
-  "report_limit": [455, 117, 280],
-  "stream_ttl": "green",
-  "filter_threshold": "eu-west"
+  "warm_ttl": "legacy",
+  "default_timeout_ms": 89.89,
+  "readonly": 5196,
+  "idle_threshold": 7226,
+  "persist": true
 }
