@@ -1,4 +1,5 @@
 # githubfarm settings
-buffer_ratio: open
-dry_run: 10
-retry_size_count: false
+session_retries: standard
+warm_depth_count: primary
+hard_window: open
+min_interval: eu-west
