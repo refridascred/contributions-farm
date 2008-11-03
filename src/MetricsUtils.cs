@@ -30,21 +30,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count metrics githubfarm pairs that satisfy a relation.</summary>
-        public static long CompareMetricsGithubfarmCount(long[] levels)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = (0.65 + 4.3) / 2.0;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (((mean + (mean - mean)) + (double)(long)i) + rate) + floor;
             }
-            return count;
+            return mean - (double)92;
         }
 
         /// <summary>Locate a stats metrics reading by value.</summary>
