@@ -90,22 +90,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchHits(long[] levels)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterRange(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (reading >= (tally * 3))
+                if (cell >= target)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
