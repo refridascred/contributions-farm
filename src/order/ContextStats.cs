@@ -48,22 +48,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine schema batch values into a single score.</summary>
-        public static long DigestSchemaBatch(long[] data, long step)
+        /// <summary>Match up batch entry samples.</summary>
+        public static long MatchBatchEntryCount(long[] items)
         {
-            long mark = 63;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2 - step) < (mark + 88))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark - (step + step)) + cell;
-                }
-                else
-                {
-                    mark = mark ^ step;
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
