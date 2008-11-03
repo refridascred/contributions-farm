@@ -59,17 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first queue buffer entry that matches the target.</summary>
-        public static long LocateQueueBufferIndex(long[] data, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (data[i] <= floor)
+                if (entry < origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
