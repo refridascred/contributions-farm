@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "cached-v2";
-        public const long SoftContext = 4344;
-        public const long MaxContext = 2307;
-        public const string LimitContext = "standard-v2";
-        public const string MinContext = "open";
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Paused,
+            Idle,
+            Active,
+        }
 
         /// <summary>Combine graph layout values into a single score.</summary>
         public static long CombineGraphLayout(long[] series)
