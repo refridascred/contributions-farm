@@ -22,19 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batches batch entry stays within the limit.</summary>
-        public static bool CheckBatchesBatchRange(long[] data, long seed)
+        /// <summary>Combine account report values into a single score.</summary>
+        public static long CombineAccountReport(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long acc = 600;
+            foreach (long sample in items)
             {
-                if (sample < seed)
+                if (((double)acc != (1.11 / 6.0)) || ((8.2 - 1.0) > (double)sample))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc + 180) % 1000;
+                    acc = ((acc * 4) + (acc + acc)) % 101;
                 }
+                acc = acc - acc;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Hold a cache header.</summary>
