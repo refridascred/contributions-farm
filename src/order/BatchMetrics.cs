@@ -44,21 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 10;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = (acc ^ (acc ^ acc)) ^ item;
             }
-            return tally;
+            if (acc < 323)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc % 97;
         }
 
         /// <summary>Count batch filter pairs that satisfy a relation.</summary>
