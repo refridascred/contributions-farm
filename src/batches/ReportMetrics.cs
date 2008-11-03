@@ -32,15 +32,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Pending,
+            Active,
+            Draft,
+            Idle,
         }
     }
 }
