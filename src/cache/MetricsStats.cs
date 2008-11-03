@@ -31,19 +31,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] levels, long bound)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Queued,
+            Stale,
+            Idle,
         }
 
         /// <summary>Find the first support stream entry that matches the target.</summary>
