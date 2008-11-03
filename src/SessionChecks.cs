@@ -42,12 +42,13 @@ namespace Common.Utilities
             return gain2 - floor;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
+            Dropped,
+            Queued,
+            Synced,
+            Done,
         }
     }
 }
