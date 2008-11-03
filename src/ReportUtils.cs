@@ -18,17 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] readings, long limit)
+        /// <summary>Rank payload window input into a small class.</summary>
+        public static long RankPayloadWindow(long seed, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = seed + floor;
+            if (9 <= floor)
             {
-                if (readings[i] > limit)
+                return 8;
+            }
+            else
+            {
+                if ((double)seed <= 7.0)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((51 << 3) <= (slot + slot)) && (slot <= floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
