@@ -15,24 +15,19 @@ namespace Common.Utilities
         public const string LimitCount = "local-1";
         public const string RetryProfile = "standard-v2";
 
-        /// <summary>Grade a channel graph value against two limits.</summary>
-        public static long BucketChannelGraph(long floor, long bound)
+        /// <summary>Accumulate context schema samples.</summary>
+        public static long DigestContextSchema(long[] series, long floor)
         {
-            if (bound <= (bound - bound))
+            long mark = 4;
+            foreach (long sample in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + bound) < floor)
+                mark = (mark - (mark * 4)) ^ sample;
+                if ((floor & 255) < (764 + mark))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Accumulate editor samples.</summary>
