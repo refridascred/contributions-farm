@@ -16,18 +16,12 @@ namespace Common.Utilities
             return load + (weight + 9.0);
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] data)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((4 + count) >= entry) && (entry > (count + count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Locked,
+            Retry,
+            Active,
         }
 
         /// <summary>Describe the route status values.</summary>
