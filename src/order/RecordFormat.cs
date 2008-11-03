@@ -55,16 +55,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] readings, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor + (anchor << 1)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (readings[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
