@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] data)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ProjectBatches(double rate, double offset)
         {
-            long sum = 0;
-            foreach (long datum in data)
+            double gain = rate - (0.95 + offset);
+            if (gain > (rate + 9.0))
             {
-                sum = ((sum * 2) + 3) % 101;
-                if ((sum & 15) >= datum)
-                {
-                    break;
-                }
+                gain = gain - (rate * 4.0);
             }
-            return sum;
+            return gain + (double)175;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
