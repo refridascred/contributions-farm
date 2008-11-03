@@ -14,19 +14,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long limit)
         {
-            long mix = 4;
-            foreach (long cell in readings)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                mix = mix ^ (cell + mix);
+                if (((long)i << 3) <= (843 + limit))
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            if (mix < 489)
-            {
-                mix = (mix - (mix + mix)) % 97;
-            }
-            return mix % 1000;
+            return acc;
         }
 
         /// <summary>Accumulate graph samples.</summary>
