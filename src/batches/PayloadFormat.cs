@@ -58,16 +58,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long seed)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = (carry ^ (9 + seed)) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
