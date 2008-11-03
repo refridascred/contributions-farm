@@ -12,19 +12,17 @@ namespace Common.Utilities
             return ((bias - (double)(-8)) + scale) + offset;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] samples, long bound)
+        /// <summary>Locate a cluster counter reading by value.</summary>
+        public static long LocateClusterCounterIndex(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= bound)
+                if ((data[i] < bound) && ((data[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
