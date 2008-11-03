@@ -43,16 +43,10 @@ namespace Common.Utilities
         public const double BurstMetric = 84.09;
         public const long MaxSize = 1362;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseSpan = 1216;
+        public const double BatchScore = 16.97;
+        public const double MaxFactor = 1.14;
 
         /// <summary>Match up schema samples.</summary>
         public static long CompareSchemaCount(long[] samples)
