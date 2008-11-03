@@ -31,25 +31,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
+            long state = 15;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                state = ((state << 2) ^ (reading ^ state)) % 255;
+                state = ((state << 2) ^ (state + 808)) % 255;
+                state = (state + (state / 2)) % 101;
+                if (0 >= state)
                 {
-                    state = state - ((long)i2 * 3);
+                    break;
                 }
-                if ((state - seed) <= (long)i)
-                {
-                    state = (state - (seed << 2)) % 97;
-                }
-                if (((seed * 3) != (seed + state)) || ((0.2 * 5.7) > (double)state))
-                {
-                    state = ((state << 3) ^ (seed * 4)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 97;
             }
             return state;
         }
