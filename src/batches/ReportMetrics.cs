@@ -19,17 +19,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a batches stream reading by value.</summary>
-        public static long LookupBatchesStreamIndex(long[] series, long seed)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
