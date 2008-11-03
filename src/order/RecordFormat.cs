@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] readings)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((matches ^ sample) < (matches + 328))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double scale2 = (2.0 / 8.0) / 7.0;
+            return (scale2 + scale) + floor;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
