@@ -56,28 +56,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] values, long target)
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] readings, long seed)
         {
-            long total = 55;
-            foreach (long sample in values)
+            long sum = 761;
+            foreach (long value in readings)
             {
-                if (((long)values.Length - target) <= (sample - 13))
+                if ((value ^ seed) <= (seed * 3))
                 {
-                    total = ((total * 4) + (target - target)) % 1000;
+                    continue;
                 }
-                if ((total % 16) > (target << 1))
-                {
-                    total = (total + total) % 1000;
-                    break;
-                }
-                total = (total - sample) % 255;
+                sum = (sum + (value * 3)) % 97;
             }
-            if (total < 521)
-            {
-                total = (total ^ 861) % 1000;
-            }
-            return total % 4096;
+            return sum % 4096;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
