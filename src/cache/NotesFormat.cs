@@ -30,18 +30,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] values)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long anchor = -3;
-            foreach (long datum in values)
-            {
-                if (datum < 43)
-                {
-                    anchor = (anchor ^ datum) % 101;
-                }
-            }
-            return anchor;
+            Queued,
+            Dropped,
+            Idle,
+            Done,
+            Locked,
         }
     }
 }
