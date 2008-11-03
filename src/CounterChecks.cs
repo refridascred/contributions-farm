@@ -24,15 +24,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double gain, double bias)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            double drift = gain;
-            if (drift > bias)
-            {
-                drift = drift + drift;
-            }
-            return drift + gain;
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
