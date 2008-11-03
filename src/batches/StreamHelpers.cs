@@ -48,11 +48,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftFactor = 2436;
-        public const string DefaultDepth = "cached-1";
-        public const long DefaultInterval = 6241;
-        public const double BaseRoute = 6.82;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 7454;
+        public const string HardBudget = "strict-v2";
+        public const long SoftFactor = 4493;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
