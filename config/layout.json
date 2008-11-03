@@ -1,6 +1,5 @@
 {
-  "burst_depth_count": false,
-  "min_delay": true,
-  "retry_window": "latest",
-  "compress": 500
+  "cache_threshold_s": [30, 305],
+  "batch_delay": "primary",
+  "verbose": [174, 189]
 }
