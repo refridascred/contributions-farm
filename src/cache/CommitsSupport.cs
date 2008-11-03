@@ -54,11 +54,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBudget = 9965;
-        public const long BatchLevel = 130;
-        public const double BatchDepth = 42.36;
-        public const long DefaultBatch = 1767;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorMatches(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((long)data.Length % 3) < (seen ^ value))
+                {
+                    seen = (seen + 2) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] items, long limit)
