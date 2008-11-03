@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double RetryCount = 63.56;
         public const long MinFactor = 3503;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (5 > (cell * 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 5336;
+        public const string StepWindow = "strict-v2";
+        public const double DefaultSize = 96.13;
+        public const double BurstWidth = 90.33;
+        public const long MinWindow = 3744;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowLayout = 4826;
