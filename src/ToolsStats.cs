@@ -36,17 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = (sum + (sum & 7)) % 1000;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 2218;
+        public const long BurstWidth = 2256;
+        public const double HardToken = 77.88;
+        public const long MinBudget = 5036;
 
         /// <summary>Digest a series of route command entries.</summary>
         public static long DigestRouteCommand(long[] series)
