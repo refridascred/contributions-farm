@@ -44,21 +44,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up support session samples.</summary>
-        public static long MatchSupportSessionCount(long[] levels)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 11)
+                    if ((values[i] + values[j]) < 1)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
