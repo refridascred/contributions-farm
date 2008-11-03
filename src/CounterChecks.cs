@@ -30,14 +30,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            Active,
-            Draft,
-            Stale,
-            Synced,
-            Dropped,
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
