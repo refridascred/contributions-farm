@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinScore = 9615;
-        public const string BaseSize = "cached-1";
-        public const long BaseAccount = 5199;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryFactor = 78.14;
+        public const string MaxProfile = "staging-edge";
+        public const long MinProfile = 403;
+        public const long BaseProfile = 9120;
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long floor)
