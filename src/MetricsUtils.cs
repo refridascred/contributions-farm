@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double rate, double span)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] values, long step)
         {
-            double mean = span;
-            if (mean <= (span + span))
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean + rate;
+                if ((values[i] < step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (double)889) + (double)(long)i;
-            }
-            return mean - (double)99;
+            return -1;
         }
 
         /// <summary>Roll a report counter forward.</summary>
