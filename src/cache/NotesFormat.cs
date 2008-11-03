@@ -28,18 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor + (anchor + (long)i);
-                anchor = ((anchor * 3) + (57 << 3)) % 255;
-                anchor = (anchor * 2) + (60 + floor);
-                anchor = ((anchor * 2) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
