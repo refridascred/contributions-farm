@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] samples, long offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long total = 9;
-            foreach (long item in samples)
-            {
-                if ((total << 3) != (total + (-95)))
-                {
-                    total = ((total * 5) + (total - item)) - offset;
-                }
-            }
-            return total;
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
