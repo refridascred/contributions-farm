@@ -1,5 +1,4 @@
 # githubfarm settings
-session_retries: standard
-warm_depth_count: primary
-hard_window: open
-min_interval: eu-west
+default_threshold_s: green
+report_size: true
+batch_interval_pct: 9151
