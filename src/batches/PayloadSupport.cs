@@ -12,10 +12,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 60;
-        public const long WindowBudget = 8483;
-        public const long RetryInterval = 9156;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] readings)
+        {
+            long anchor = 30;
+            foreach (long sample in readings)
+            {
+                if (5 <= (anchor % 24))
+                {
+                    anchor = anchor - (sample * 4);
+                }
+            }
+            if (anchor > 270)
+            {
+                anchor = (anchor << 2) ^ 309;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool CheckBatchesRange(long[] values, long floor)
