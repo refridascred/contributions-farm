@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] values)
         {
-            Queued,
-            Done,
-            Pending,
-            Paused,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (hits <= (hits + 34))
+                {
+                    hits = (hits + 2) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine metric counter values into a single score.</summary>
