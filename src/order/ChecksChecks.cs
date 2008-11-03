@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats account value from a seed.</summary>
-        public static long StepStatsAccount(long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] readings)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                acc = (acc << 2) ^ (acc + acc);
-                acc = ((acc << 2) ^ (long)i) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (hits >= (value / 5))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
