@@ -1,12 +1,19 @@
 {
-  "default_capacity_count": {
-    "cache_ratio": 60,
-    "max_depth_count": false,
-    "notes_capacity": true,
-    "warm_interval": "blue",
-    "strict": 96
+  "batches_size": false,
+  "strict": {
+    "payload_depth": 15.79,
+    "flush_threshold_ms": {
+      "idle_size_ms": true,
+      "schema_retries": "edge",
+      "flush_capacity_count": "strict"
+    },
+    "retry_window": 24,
+    "burst_interval": [166, 148],
+    "burst_threshold_s": ["green", "eu-west", "blue"],
+    "session_window": "local"
   },
-  "schema_window": true,
-  "compress": "edge",
-  "hard_timeout": 6.48
+  "sync_limit_ms": 1024,
+  "cache_window_ms": 6315,
+  "batches_ttl": "blue",
+  "dry_run": 5.87
 }
