@@ -1,9 +1,9 @@
 # entry settings
-readonly:
+poll_delay_ms:
+  - fallback
   - open
-  - eu-west
-  - strict
-  - edge
-hard_retries: 35.98
-flush_delay_ms: staging
-poll_delay: strict
+  - stable
+  - latest
+readonly: 1024
+cluster_timeout: true
+retry_window_s: 50
