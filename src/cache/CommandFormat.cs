@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next format report value from a seed.</summary>
-        public static long DeriveFormatReport(long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] readings, long offset)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                mark = (mark - (mark >> 1)) % 255;
-                mark = ((mark * 3) + (long)i) % 65521;
+                if (!(((offset / 9) <= value) && ((double)value != (3.0 - 7.9))))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a already snapshot.</summary>
