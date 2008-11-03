@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseSpan = "staging-v2";
-        public const string MinRatio = "cached-1";
-        public const long BurstMetric = 6792;
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
