@@ -26,21 +26,18 @@ namespace Common.Utilities
         public const string WindowSpan = "strict-edge";
         public const long RetryTimeout = 8015;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item + anchor) <= (anchor * 4))
                 {
-                    if ((samples[i] ^ samples[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor ^ anchor) % 255;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Match up layout samples.</summary>
