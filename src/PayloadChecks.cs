@@ -59,24 +59,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long limit, long seed)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long limit)
         {
-            if ((double)limit >= (4.7 + 2.7))
+            long acc = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - limit) == (limit + 78))
+                if ((((long)i & 3) == ((long)i * 3)) && (limit < ((long)i << 2)))
                 {
-                    return 1;
+                    acc = (acc + 23) % 4096;
                 }
-                else
-                {
-                    return 4;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
