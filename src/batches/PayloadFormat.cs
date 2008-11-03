@@ -42,13 +42,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long offset, long bound)
         {
-            Synced,
-            Stale,
-            New,
-            Failed,
+            long step = offset + bound;
+            if ((12.0 / 3.0) <= (double)step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step ^ 3) != (offset / 6))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Match up layout samples.</summary>
