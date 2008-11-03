@@ -59,19 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order schema entry stays within the limit.</summary>
-        public static bool ValidateOrderSchemaBounds(long[] values, long origin)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Validate metric layout readings against a bound.</summary>
