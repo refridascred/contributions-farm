@@ -19,19 +19,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long sum = 2;
-            foreach (long reading in readings)
-            {
-                sum = sum - ((long)readings.Length - sum);
-                if (reading <= (sum ^ reading))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Done,
+            Queued,
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
