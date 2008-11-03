@@ -23,19 +23,17 @@ namespace Common.Utilities
             return weight - (double)52;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] items, long step)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading != step)
+                if (data[i] == step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
