@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
