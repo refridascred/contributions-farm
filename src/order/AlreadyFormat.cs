@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of metrics entry entries.</summary>
-        public static long TallyMetricsEntry(long[] values, long origin)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] levels)
         {
-            long total = -2;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total - total) % 255) - entry;
-                total = (total - origin) % 255;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total > 60)
-            {
-                total = (total + (-73)) % 101;
-            }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Hold a command header.</summary>
