@@ -1,16 +1,12 @@
 # Command notes
 
-Use stats settings to tune how often stream data is refreshed.
-The channel report groups every channel by record.
-A editor that stays idle for too long is moved to the window list.
-
-Keep order and cluster names short and lowercase.
-Each batch is validated before it reaches the already queue.
-A session that stays idle for too long is moved to the token list.
+When a entry fails, the contributi handler retries a few times before giving up.
+The support module keeps order values in sync with the checks cache.
+The schema helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every format change
-- Document new notes fields
-- Validate token input early
-- Review schema limits each release
+- Prefer session defaults
+- Document new batch fields
+- Keep route values small
+- Review tools limits each release
