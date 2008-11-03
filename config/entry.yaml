@@ -1,6 +1,7 @@
 # entry settings
-persist: false
-max_capacity_pct: fallback
-max_window_s: green
-idle_depth_pct: 46
-dry_run: 43
+contributi_depth: true
+burst_limit: green
+strict: 1457
+burst_limit_count: 50.02
+record_ratio: 60
+idle_interval: true
