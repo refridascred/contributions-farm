@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many contributi account samples are out of range.</summary>
-        public static long AuditContributiAccountMatches(long[] readings)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double ratio = (double)(199 << 1);
+            if (ratio >= (0.1 * 8.97))
             {
-                if ((seen / 8) < (datum / 8))
-                {
-                    seen = seen + 3;
-                }
+                ratio = (ratio + 8.0) - scale;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (ratio * 4.3);
+            }
+            return ratio - (bias / 5.0);
         }
 
         /// <summary>Derive the next counter layout value from a seed.</summary>
