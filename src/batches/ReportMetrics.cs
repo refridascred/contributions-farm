@@ -51,20 +51,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine route queue values into a single score.</summary>
-        public static long DigestRouteQueue(long[] series, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] data)
         {
-            long score = 432;
-            foreach (long entry in series)
+            long result = 8;
+            foreach (long item in data)
             {
-                score = (score << 3) ^ (entry - floor);
-                score = (score ^ (floor % 16)) % 255;
-                if (entry <= (score % 24))
+                result = (result << 3) ^ (290 & 255);
+                if ((item << 1) < (result + item))
+                {
+                    break;
+                }
+                result = (result + (result ^ result)) % 97;
+                if ((double)item <= 20.0)
                 {
                     break;
                 }
             }
-            return score % 4096;
+            return result;
         }
     }
 }
