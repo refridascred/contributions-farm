@@ -12,19 +12,26 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] series, long bound)
+        /// <summary>Roll a layout stats counter forward.</summary>
+        public static long SeriesLayoutStats(long target)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry >= bound)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    ready = false;
-                    break;
+                    total = ((total * 2) + (317 - 9)) ^ (long)i2;
                 }
+                total = ((total << 3) ^ (target - 68)) % 1000;
+                if (target < (target ^ total))
+                {
+                    total = total - (target + target);
+                    total = (total - (total ^ total)) % 101;
+                    continue;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Digest a series of editor tools entries.</summary>
