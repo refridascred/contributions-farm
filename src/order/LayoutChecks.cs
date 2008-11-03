@@ -62,15 +62,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double weight, double bias)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] data)
         {
-            double gain = 8.15;
-            if (gain > gain)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                gain = (gain + (weight * 2.1)) - bias;
+                if (((951 & 15) != (tally + sample)) && (sample > (tally * 2)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return gain + (weight / 3.0);
+            return tally;
         }
 
         /// <summary>Hold a batch entry.</summary>
