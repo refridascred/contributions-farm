@@ -71,13 +71,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Locked,
-            Idle,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 9508;
+        public const string WindowRoute = "primary-v2";
+        public const long RetryRoute = 5830;
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long TallyProfile(long[] data, long step)
