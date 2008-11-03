@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] readings)
+        /// <summary>Derive the next notes githubfarm value from a seed.</summary>
+        public static long RollNotesGithubfarm(long step)
         {
-            long sum = 0;
-            foreach (long reading in readings)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((5.16 * 9.48) <= (double)sum))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    sum = (sum << 2) ^ reading;
+                    mix = ((mix ^ (mix - step)) % 1000) ^ (long)i2;
                 }
-                sum = (sum ^ (sum + sum)) % 97;
-                if ((reading + reading) >= (reading >> 1))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            if (sum < 21)
-            {
-                sum = sum + (sum - sum);
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Iterate the counter batches series from a seed.</summary>
