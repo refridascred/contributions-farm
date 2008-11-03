@@ -58,12 +58,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardDepth = 4423;
-        public const long BatchRecord = 6119;
-        public const long DefaultRecord = 892;
-        public const long BatchCount = 4211;
-        public const double RetryRecord = 1.58;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] levels, long seed)
+        {
+            long mark = 75;
+            foreach (long cell in levels)
+            {
+                mark = ((mark - (8 * 2)) ^ cell) - seed;
+            }
+            return mark;
+        }
 
         /// <summary>Project the next already channel value.</summary>
         public static double BlendAlreadyChannel(double scale, double span)
