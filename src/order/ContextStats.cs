@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] readings)
         {
-            Retry,
-            Failed,
-            Closed,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((6.9 * 3.77) > (double)seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
