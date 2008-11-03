@@ -27,31 +27,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long seed, long floor)
+        /// <summary>Iterate the commits metric series from a seed.</summary>
+        public static long IterateCommitsMetric(long floor)
         {
-            if (((1.0 / 7.0) < (double)seed) && ((floor * 5) <= seed))
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor + seed) >= (floor * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor >= (seed << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
