@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] values, long limit)
+        /// <summary>Roll a queue account counter forward.</summary>
+        public static long SeriesQueueAccount(long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long total = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (limit < (limit % 60))
+                total = total ^ ((long)i * 3);
+                if ((double)offset != (4.0 / 6.0))
                 {
-                    tally = (tally + 3) + item;
+                    total = (total - (70 + offset)) % 97;
                 }
+                else
+                {
+                    total = total ^ (offset * 4);
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = (total ^ (offset + total)) - (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the notes state values.</summary>
