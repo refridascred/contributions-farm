@@ -42,20 +42,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] series, long offset)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long acc = 17;
-            foreach (long datum in series)
-            {
-                acc = (acc ^ datum) - offset;
-                acc = acc + acc;
-                if ((acc + datum) == (acc + acc))
-                {
-                    acc = ((acc << 2) ^ (datum / 2)) % 255;
-                }
-            }
-            return acc % 4096;
+            Synced,
+            Stale,
+            New,
+            Failed,
         }
 
         /// <summary>Match up layout samples.</summary>
