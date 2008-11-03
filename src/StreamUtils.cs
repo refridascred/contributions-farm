@@ -15,12 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
-            public string Total { get; set; } = "";
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Accumulate context samples.</summary>
