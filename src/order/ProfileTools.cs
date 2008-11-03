@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a metric payload figure with a bias.</summary>
-        public static double ProjectMetricPayload(double bias, double floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double ratio = floor;
-            if (ratio >= (double)714)
-            {
-                ratio = (ratio + (double)92) + bias;
-            }
-            else
-            {
-                ratio = ratio + (double)6;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (floor * 16.0);
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
