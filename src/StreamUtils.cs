@@ -69,22 +69,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] items, long bound)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long carry = 314;
+            foreach (long reading in items)
             {
-                if (bound <= seen)
+                if (((1.0 * 0.7) != (double)carry) && ((carry & 255) <= (55 ^ reading)))
                 {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = (carry + (carry ^ carry)) % 101;
                 }
             }
-            return seen;
+            if (carry < 715)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
     }
 }
