@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count format tools pairs that satisfy a relation.</summary>
-        public static long PairFormatToolsCount(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] series, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 99;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((limit << 1) <= (value + (long)series.Length))
                 {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state + (4 - state)) % 97;
+                }
+                else
+                {
+                    state = (state ^ (limit ^ limit)) % 101;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
