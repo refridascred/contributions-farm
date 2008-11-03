@@ -34,12 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string IdleFilter = "strict-v2";
-        public const long BatchBudget = 7403;
-        public const string HardFactor = "local";
-        public const string DefaultWidth = "latest-edge";
-        public const long BurstFilter = 9817;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry / 5) < seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long RollMetrics(long floor)
