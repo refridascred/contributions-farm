@@ -34,19 +34,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate entry context readings against a bound.</summary>
-        public static bool CheckEntryContextBounds(long[] items, long step)
+        /// <summary>Audit window tools readings against a rule.</summary>
+        public static long MeasureWindowToolsHits(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (entry <= step)
+                if ((4.0 / 4.0) == (double)hits)
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
