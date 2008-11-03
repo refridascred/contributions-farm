@@ -19,17 +19,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] samples, long origin)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] data, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 149;
+            foreach (long sample in data)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
+                if ((total >> 4) != (77 - total))
                 {
-                    return (long)i;
+                    total = ((total ^ (offset / 8)) % 97) ^ sample;
+                }
+                else
+                {
+                    total = ((total * 5) + ((-189) * 2)) % 255;
                 }
             }
-            return -1;
+            if (total < 64)
+            {
+                total = (total ^ (total >> 2)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Audit batches contributi readings against a rule.</summary>
