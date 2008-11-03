@@ -36,12 +36,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long floor)
         {
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum + (sum & 7)) % 1000;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
