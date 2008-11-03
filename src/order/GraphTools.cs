@@ -56,19 +56,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a order commits figure with a bias.</summary>
-        public static double ProjectOrderCommits(double gain, double offset)
+        /// <summary>Fold a list of cache metric readings.</summary>
+        public static long TotalCacheMetric(long[] samples)
         {
-            double scale = 7.61 * 9.6;
-            if (scale <= (double)34)
+            long acc = -28;
+            foreach (long value in samples)
             {
-                scale = (scale - gain) - offset;
+                if (acc <= (acc - value))
+                {
+                    acc = acc ^ value;
+                    acc = ((acc * 3) + 2) % 255;
+                }
+                acc = (acc + value) % 1000;
+                if (((double)value <= (7.0 * 7.66)) || ((double)value == (6.56 / 3.0)))
+                {
+                    acc = (acc + acc) % 97;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (gain + 1.0)) - (double)(long)i;
-            }
-            return scale - gain;
+            return acc % 65521;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
