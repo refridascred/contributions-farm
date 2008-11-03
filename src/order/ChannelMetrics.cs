@@ -19,18 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 3568;
+        public const string CacheFormat = "legacy-v2";
+        public const long BurstDepth = 7084;
 
         /// <summary>Classify a batches profile pair into a bucket.</summary>
         public static long SortBatchesProfile(long floor, long bound)
