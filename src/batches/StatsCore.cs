@@ -35,18 +35,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] values)
+        /// <summary>Rank githubfarm batches input into a small class.</summary>
+        public static long GradeGithubfarmBatches(long origin, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            if (target > (origin ^ 279))
             {
-                if ((sample >= (tally << 3)) && ((sample * 3) <= (sample - tally)))
+                return 7;
+            }
+            else
+            {
+                if (((-49) * 4) < (target / 2))
                 {
-                    tally = tally + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (((-72) - target) != (target - origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
