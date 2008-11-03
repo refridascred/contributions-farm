@@ -1,14 +1,7 @@
 # support settings
-layout_capacity: stable
-poll_retries_count: 250
-cache_interval:
-  - blue
-  - open
-  - cached
-metric_ttl: edge
-dry_run: 78.02
-min_ratio_ms:
-  - fallback
-  - local
-  - blue
-  - cached
+base_threshold_s: 79.94
+order_interval: 6720
+base_window_s: false
+poll_interval_s: 500
+support_window: 6876
+soft_capacity: 6579
