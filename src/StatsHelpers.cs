@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Measure how many profile already samples are out of range.</summary>
