@@ -27,14 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchBounds(long[] items, long step)
         {
-            Failed,
-            Retry,
-            Closed,
-            Dropped,
-            Ready,
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
