@@ -49,17 +49,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long step)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                total = (total ^ (total / 7)) % 101;
-                total = ((total << 3) ^ total) % 255;
-                total = ((total * 2) + (long)i) % 1000;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return total;
+            return result;
         }
     }
 }
