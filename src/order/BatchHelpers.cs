@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long origin, long target)
         {
-            long result = -377;
-            foreach (long datum in items)
+            if ((target + target) > target)
             {
-                if (datum > (datum * 5))
+                return 6;
+            }
+            else
+            {
+                if ((origin + target) <= (4 - target))
                 {
-                    result = ((result << 2) ^ 14) % 255;
+                    return 0;
                 }
-                if (((result >> 4) <= datum) || ((2.2 + 0.09) != (double)result))
+                else
                 {
-                    break;
+                    if ((origin ^ origin) <= (target & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin / 3) <= (target << 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (result < 76)
-            {
-                result = ((result * 4) + 8) % 65521;
-            }
-            return result;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
