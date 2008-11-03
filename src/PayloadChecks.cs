@@ -17,21 +17,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] samples)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
