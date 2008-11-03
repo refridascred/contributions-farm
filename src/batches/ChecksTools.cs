@@ -40,17 +40,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] readings, long limit)
+        /// <summary>Project the next support payload value.</summary>
+        public static double BlendSupportPayload(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)3 / 3.0;
+            if (gain >= bias)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                gain = gain - bias;
             }
-            return -1;
+            else
+            {
+                gain = gain - (ratio / 6.0);
+            }
+            return gain + (gain + 5.0);
         }
     }
 }
