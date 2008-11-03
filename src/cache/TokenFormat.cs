@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long SoftEntry = 825;
         public const long HardEntry = 1945;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
+            Ready,
+            Synced,
+            Idle,
         }
 
         /// <summary>Digest a series of editor tools entries.</summary>
