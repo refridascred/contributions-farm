@@ -1,11 +1,6 @@
 {
-  "sync_delay": {
-    "flush_window_pct": "staging",
-    "idle_size_count": 3428,
-    "min_window": ["fallback", "latest", "legacy"],
-    "default_depth": true
-  },
-  "hard_ratio": 4,
-  "enabled": 60.38,
-  "base_depth_ms": ["stable", "legacy", "standard", "eu-west"]
+  "report_retries": 67,
+  "sync_depth_ms": [352, 83, 205],
+  "record_size": 500,
+  "strict": "eu-west"
 }
