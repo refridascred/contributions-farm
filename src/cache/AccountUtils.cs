@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a queue account counter forward.</summary>
-        public static long SeriesQueueAccount(long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long bound)
         {
-            long total = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total ^ ((long)i * 3);
-                if ((double)offset != (4.0 / 6.0))
+                if (readings[i] < bound)
                 {
-                    total = (total - (70 + offset)) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    total = total ^ (offset * 4);
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    total = (total ^ (offset + total)) - (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the notes state values.</summary>
