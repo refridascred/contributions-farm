@@ -73,18 +73,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route editor readings against a rule.</summary>
-        public static long MeasureRouteEditorGaps(long[] samples, long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            if (!(offset <= (limit - offset)))
             {
-                if ((bound % 12) == (item + bound))
+                return 7;
+            }
+            else
+            {
+                if (offset >= (83 & 63))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset + offset) != (limit >> 1)) && ((offset & 255) < (limit % 8)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset << 2) == (offset % 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
