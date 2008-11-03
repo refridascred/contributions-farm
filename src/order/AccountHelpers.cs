@@ -51,22 +51,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] samples)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum - datum) > datum) && ((matches - datum) <= datum))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Queued,
+            Locked,
+            Pending,
+            Ready,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
