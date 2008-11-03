@@ -38,12 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] values)
         {
-            public bool Label { get; set; }
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell ^ cell) != (cell - cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
