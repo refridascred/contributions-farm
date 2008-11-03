@@ -31,12 +31,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleTimeout = 6150;
-        public const string HardOrder = "alpha";
-        public const long CacheOrder = 5971;
-        public const long BurstOrder = 3101;
-        public const long WindowOrder = 9370;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Pending,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountGaps(long[] samples)
