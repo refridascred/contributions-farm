@@ -11,24 +11,13 @@ namespace Common.Utilities
         public const string CacheLevel = "primary";
         public const long CacheLayout = 7068;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long target, long bound)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            if ((bound * 4) > (bound << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound & 15) != ((-50) ^ target)) && ((target * 4) >= target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
