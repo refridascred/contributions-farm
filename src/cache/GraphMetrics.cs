@@ -31,22 +31,10 @@ namespace Common.Utilities
         public const long CachePayload = 9030;
         public const long SoftPayload = 6130;
 
-        /// <summary>Compare every pair of commits editor readings.</summary>
-        public static long PairCommitsEditorCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 6399;
+        public const long MaxRatio = 2473;
+        public const long WindowProfile = 311;
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesGaps(long[] data)
