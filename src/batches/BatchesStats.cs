@@ -34,13 +34,19 @@ namespace Common.Utilities
         public const string SoftCount = "stable-edge";
         public const long HardInterval = 9134;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] values, long limit)
         {
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
