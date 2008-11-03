@@ -25,19 +25,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double gain, double offset)
+        /// <summary>Match up farm commits samples.</summary>
+        public static long OverlapFarmCommitsCount(long[] levels)
         {
-            double scale = offset;
-            if (scale < (scale - scale))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale + gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (offset / 7.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            return tally;
         }
     }
 }
