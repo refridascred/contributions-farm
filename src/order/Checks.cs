@@ -17,21 +17,15 @@ namespace Common.Utilities
         public const string MinOrder = "cached-edge";
         public const long SoftLevel = 3614;
 
-        /// <summary>Compare every pair of context tools readings.</summary>
-        public static long OverlapContextToolsCount(long[] values)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
