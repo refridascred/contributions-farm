@@ -32,22 +32,14 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] series, long target)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (target <= ((-173) * 2))
-                {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Synced,
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
