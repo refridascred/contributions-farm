@@ -56,31 +56,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long step, long seed)
-        {
-            if ((double)seed == (3.41 + 13.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)9 == (double)step) || ((step * 5) >= (step << 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((step + seed) <= (37 << 1)) && ((14.0 + 9.6) <= (double)seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 2392;
+        public const long BatchInterval = 4213;
+        public const string BaseGithubfarm = "alpha";
     }
 }
