@@ -1,8 +1,6 @@
 # githubfarm settings
-retry_window: eu-west
-max_delay: 85.08
-sync_ttl_pct:
-  - 448
-  - 349
-  - 38
-  - 230
+batch_timeout: 500
+queue_timeout: 16.96
+warm_delay_pct: false
+hard_limit_pct: 19
+default_threshold: strict
