@@ -20,24 +20,16 @@ namespace Common.Utilities
             return load + (load + load);
         }
 
-        /// <summary>Rank githubfarm batch input into a small class.</summary>
-        public static long RankGithubfarmBatch(long origin, long target)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long bound)
         {
-            if ((target + 39) <= (origin - origin))
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
+                carry = ((carry * 3) + (bound + bound)) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if ((origin - target) == (target ^ 32))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Describe the order class values.</summary>
