@@ -21,21 +21,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long offset, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((9.0 - 5.26) >= (double)offset) && ((floor - offset) >= offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor - 8) < (offset - offset))
                 {
-                    if ((levels[i] - levels[j]) > 13)
+                    return 0;
+                }
+                else
+                {
+                    if (((floor - floor) < (648 << 1)) && ((double)offset < (8.65 * 4.3)))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((80 * 5) < (floor * 5)) && ((offset - offset) < (floor / 7)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
