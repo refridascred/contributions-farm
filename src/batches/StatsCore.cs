@@ -37,15 +37,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = 9;
-            foreach (long datum in data)
-            {
-                score = (score + (datum >> 3)) % 101;
-            }
-            return score;
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
