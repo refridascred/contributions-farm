@@ -25,30 +25,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] levels, long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] readings, long floor)
         {
-            long result = 944;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((origin - datum) >= (result / 7))
+                if (readings[i] == floor)
                 {
-                    result = result + (12 + 530);
-                }
-                else
-                {
-                    result = result - origin;
-                }
-                if (((0.69 / 4.0) == (double)result) && ((origin - 66) >= result))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < (-476))
-            {
-                result = (result + (origin & 1)) % 255;
-            }
-            return result;
+            return -1;
         }
     }
 }
