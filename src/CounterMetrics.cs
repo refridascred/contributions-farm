@@ -33,18 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] series, long step)
+        /// <summary>Derive the next batch entry value from a seed.</summary>
+        public static long IterateBatchEntry(long step)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((1 % 12) == (tally ^ sample))
+                score = score - score;
+                score = (score - (step & 7)) % 97;
+                if ((5 + step) < score)
                 {
-                    tally = (tally + 3) + step;
+                    score = (score << 3) ^ ((long)i - step);
+                    break;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Adjust a context reading.</summary>
