@@ -1,8 +1,12 @@
 {
-  "route_limit": "fallback",
-  "filter_capacity": 60,
-  "checks_window": "standard",
-  "readonly": 60,
-  "soft_limit": true,
-  "default_limit_count": "stable"
+  "max_threshold": "staging",
+  "flush_timeout": "primary",
+  "commits_window": 29.68,
+  "warm_retries_s": {
+    "retry_threshold_ms": [77, 346, 64],
+    "profile_delay": "cached",
+    "soft_size_ms": ["primary", "blue", "strict", "staging"],
+    "dry_run": 31.34
+  },
+  "editor_size": ["legacy", "green", "fallback", "open"]
 }
