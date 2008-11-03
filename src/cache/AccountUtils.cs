@@ -53,12 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double rate, double offset)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
+            double weight = (rate * 1.1) + (6.07 + offset);
+            if (weight < (weight - 4.6))
+            {
+                weight = weight + rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (double)868) - (double)(long)i;
+            }
+            return weight + (weight / 6.0);
         }
     }
 }
