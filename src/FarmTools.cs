@@ -12,32 +12,15 @@ namespace Common.Utilities
         public const long HardDepth = 3454;
         public const long BatchSize = 1932;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long bound, long step)
+        /// <summary>Scale a profile githubfarm figure with a bias.</summary>
+        public static double SmoothProfileGithubfarm(double rate, double floor)
         {
-            long offset = bound + step;
-            if ((offset >> 5) != (744 ^ offset))
+            double weight = (double)366 + (rate * 6.69);
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
+                weight = ((weight - (weight * 8.0)) + (double)(long)i) + floor;
             }
-            else
-            {
-                if (offset <= (bound / 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step ^ bound) <= bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return weight - (double)52;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
