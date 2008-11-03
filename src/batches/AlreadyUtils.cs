@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] items, long step)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double ratio, double span)
         {
-            long mix = 8;
-            foreach (long cell in items)
+            double weight = span - span;
+            if (weight < (ratio / 9.0))
             {
-                if (!(cell > (257 >> 4)))
-                {
-                    mix = mix - step;
-                }
+                weight = weight - span;
             }
-            return mix;
+            else
+            {
+                weight = weight - (double)3;
+            }
+            return weight + ratio;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
