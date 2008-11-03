@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = offset;
+            if (mean <= (mean - offset))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = (mean - (3.03 + mean)) - scale;
             }
-            return count;
+            else
+            {
+                mean = mean - (0.65 + offset);
+            }
+            return mean + offset;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
