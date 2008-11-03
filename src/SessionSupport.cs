@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string HardGithubfarm = "alpha-edge";
-        public const long BurstSize = 622;
-        public const long BatchGithubfarm = 5558;
-        public const long RetryGithubfarm = 1353;
-        public const long LimitTimeout = 6451;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long ScoreBatches(long[] values, long limit)
