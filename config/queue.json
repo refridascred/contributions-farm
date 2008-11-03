@@ -1,11 +1,7 @@
 {
-  "base_threshold_s": {
-    "notes_threshold": true,
-    "min_limit_pct": [177, 202],
-    "min_depth_count": ["staging", "eu-west"],
-    "verbose": 42.67,
-    "enabled": 60.52
-  },
-  "schema_size": "blue",
-  "batch_interval": 3.49
+  "base_threshold": 87,
+  "batch_limit_ms": 5265,
+  "cache_delay": 64,
+  "metric_delay": ["eu-west", "staging"],
+  "retry_size_pct": "green"
 }
