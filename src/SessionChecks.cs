@@ -42,22 +42,22 @@ namespace Common.Utilities
             return gain2 - floor;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] readings, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (value < (value << 2))
+                if ((double)312 >= (double)origin)
                 {
-                    matches = (matches + 1) + step;
+                    hits = (hits + 1) ^ item;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
