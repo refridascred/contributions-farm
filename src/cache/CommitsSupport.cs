@@ -25,12 +25,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 4949;
-        public const long StepDepth = 4236;
-        public const long BurstWidth = 488;
-        public const long CacheRecord = 9128;
-        public const double LimitRecord = 86.27;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmRange(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the report mode values.</summary>
         public enum ReportMode
