@@ -20,13 +20,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] levels, long floor)
         {
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
-            public double Offset { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
