@@ -43,10 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseScore = 2725;
-        public const string BatchTimeout = "alpha-1";
-        public const string WindowCommits = "fallback-edge";
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Classify a session stats pair into a bucket.</summary>
         public static long SortSessionStats(long origin, long seed)
