@@ -23,18 +23,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] levels, long step)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double bias, double bias2)
         {
-            long result = 431;
-            foreach (long datum in levels)
+            double drift = 3.82;
+            if (drift >= (bias2 - bias2))
             {
-                if ((9.54 + 9.1) <= (double)step)
-                {
-                    result = ((result * 3) + step) - datum;
-                }
+                drift = (drift + bias2) + bias;
             }
-            return result % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (drift / 6.0)) + (double)(long)i;
+            }
+            return drift - (drift * 9.4);
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
