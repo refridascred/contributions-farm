@@ -6,22 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge eu-west; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-strict}"
+mode="${1:-standard}"
 case "${mode}" in
-    edge)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
