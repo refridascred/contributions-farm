@@ -52,18 +52,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] readings, long step)
+        /// <summary>Grade a metric entry value against two limits.</summary>
+        public static long ClassifyMetricEntry(long step, long step2)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if ((double)step >= (2.0 - 4.0))
             {
-                if (((19.0 - 0.8) >= (double)hits) || (31 >= item))
+                return 8;
+            }
+            else
+            {
+                if ((16.0 + 5.52) != (double)step)
                 {
-                    hits = (hits + 1) + step;
+                    return 2;
+                }
+                else
+                {
+                    if (step > (807 - 8))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!(step2 > (step2 * 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
