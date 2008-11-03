@@ -39,13 +39,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ProjectGithubfarm(double bias, double floor)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
+            double load = (double)(569 & 255);
+            if (load < floor)
+            {
+                load = load + (2.4 - bias);
+            }
+            else
+            {
+                load = load - (12.0 * 5.9);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (floor + bias)) + (double)(long)i;
+            }
+            return load - (double)786;
         }
     }
 }
