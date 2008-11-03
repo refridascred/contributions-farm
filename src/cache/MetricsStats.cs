@@ -42,12 +42,18 @@ namespace Common.Utilities
             return weight2 - (bias - 0.36);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepCount = "local";
-        public const string BaseEntry = "standard";
-        public const string SoftWidth = "local-edge";
-        public const string CacheEntry = "latest-1";
-        public const long IdleEntry = 253;
+        /// <summary>Find the first support stream entry that matches the target.</summary>
+        public static long SeekSupportStreamIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long SeekAlreadyIndex(long[] values, long floor)
