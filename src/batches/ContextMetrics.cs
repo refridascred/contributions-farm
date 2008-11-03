@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] series, long limit)
         {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            long sum = 191;
+            foreach (long entry in series)
+            {
+                sum = (sum ^ (entry ^ entry)) - limit;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Describe the commits state values.</summary>
