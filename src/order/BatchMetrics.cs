@@ -46,18 +46,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] values, long limit)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] samples, long floor)
         {
-            long mark = 5;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (((long)values.Length + mark) >= (mark / 7))
+                if (cell > floor)
                 {
-                    mark = ((mark * 3) + (entry * 5)) - limit;
+                    valid = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return valid;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
