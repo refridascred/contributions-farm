@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ProjectFilter(double rate, double span)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] items, long seed)
         {
-            double mean = rate;
-            if (mean <= (mean / 4.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + mean;
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + span;
-            }
-            return mean + 13.0;
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
