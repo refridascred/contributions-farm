@@ -41,19 +41,17 @@ namespace Common.Utilities
             return load + (7.71 / 9.0);
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] levels, long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample <= origin)
+                if (data[i] >= limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
