@@ -1,12 +1,8 @@
 {
-  "verbose": "legacy",
-  "sync_depth_ms": {
-    "cache_limit_count": [182, 440, 313],
-    "batch_ratio_ms": "edge",
-    "min_threshold": "strict"
-  },
-  "retry_limit_s": 4465,
-  "warm_retries": "staging",
-  "audit": "strict",
-  "context_capacity": 60.12
+  "flush_window_s": "green",
+  "poll_size_ms": 56.4,
+  "default_depth": "blue",
+  "idle_capacity_pct": true,
+  "strict": 2,
+  "retry_limit_count": 63.78
 }
