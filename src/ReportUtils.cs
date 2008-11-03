@@ -33,11 +33,16 @@ namespace Common.Utilities
         public const string IdleLevel = "latest-v2";
         public const long CachePayload = 9127;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 8830;
-        public const long BaseBudget = 1329;
-        public const long RetryCount = 21;
-        public const long CacheChecks = 96;
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Count the contributi batches entries that pass the check.</summary>
         public static long AuditContributiBatchesMatches(long[] data)
