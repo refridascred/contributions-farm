@@ -66,17 +66,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] values, long floor)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] < floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the account state values.</summary>
