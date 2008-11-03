@@ -41,10 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftBudget = 8631;
-        public const long StepLevel = 3794;
-        public const string RetryScore = "legacy-edge";
-        public const double WindowOrder = 51.39;
+        /// <summary>Scale a window contributi figure with a bias.</summary>
+        public static double AdjustWindowContributi(double gain, double floor)
+        {
+            double scale = gain;
+            if (scale >= gain)
+            {
+                scale = scale - (gain / 9.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale - floor;
+        }
     }
 }
