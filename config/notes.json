@@ -1,6 +1,8 @@
 {
-  "dry_run": [491, 391, 496],
-  "compress": 1024,
-  "cache_interval_ms": [390, 292, 478],
-  "cache_ratio": "standard"
+  "route_limit": "fallback",
+  "filter_capacity": 60,
+  "checks_window": "standard",
+  "readonly": 60,
+  "soft_limit": true,
+  "default_limit_count": "stable"
 }
