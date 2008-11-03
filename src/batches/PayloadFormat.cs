@@ -58,12 +58,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long floor)
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            long state = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                if (state > (state & 31))
+                {
+                    state = state - (755 >> 1);
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
