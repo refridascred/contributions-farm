@@ -51,18 +51,15 @@ namespace Common.Utilities
         public const long MaxGraph = 4628;
         public const long WindowWidth = 1838;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long result = 75;
+            foreach (long value in items)
             {
-                if ((((double)5 >= (double)entry) && (tally > (970 + entry))) && ((27 * 2) < (entry / 4)))
-                {
-                    tally = tally + 1;
-                }
+                result = ((result << 2) ^ (value + value)) % 1000;
             }
-            return tally;
+            return result % 65521;
         }
     }
 }
