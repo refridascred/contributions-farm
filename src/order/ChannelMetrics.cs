@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] series, long offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long origin)
         {
-            long state = 77;
-            foreach (long item in series)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                state = (((state * 3) + state) + item) - offset;
+                if (((14.0 - 1.15) != (double)(long)i) && ((score ^ origin) >= (score / 5)))
+                {
+                    score = (score << 2) ^ (score + score);
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            if (state > 284)
-            {
-                state = (state ^ (5 & 31)) % 97;
-            }
-            return state % 4096;
+            return score;
         }
 
         /// <summary>Audit window tools readings against a rule.</summary>
