@@ -21,24 +21,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a support notes value against two limits.</summary>
-        public static long RankSupportNotes(long offset, long bound)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] readings)
         {
-            if ((1.8 + 9.93) == (double)bound)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4 << 3) < offset)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] + readings[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate batches githubfarm samples.</summary>
