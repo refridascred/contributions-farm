@@ -7,14 +7,10 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=233
+BUFFER_LIMIT=63
 log "limit is ${BUFFER_LIMIT}"
-
-for item in fallback stable; do
-    log "checking ${item}"
-done
