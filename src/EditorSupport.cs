@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the farm filter series from a seed.</summary>
-        public static long StepFarmFilter(long origin)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                state = (state * 2) + (bound + bound);
+                state = (state + (state + bound)) % 4096;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Locate a cluster counter reading by value.</summary>
