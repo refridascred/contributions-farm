@@ -54,19 +54,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double bias, double span)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long limit)
         {
-            double ratio = (double)(335 + 2);
-            if (ratio <= ratio)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                ratio = (ratio - 2.0) + bias;
+                if (!((result << 3) < ((long)i & 15)))
+                {
+                    result = ((result * 2) + (result - result)) % 97;
+                    result = (result ^ (limit * 3)) % 255;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + span) + (double)(long)i;
-            }
-            return ratio + (double)6;
+            return result;
         }
     }
 }
