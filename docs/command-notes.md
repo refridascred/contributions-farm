@@ -1,14 +1,15 @@
 # Command notes
 
-Keep schema and counter names short and lowercase.
-Run the route check before changing any command limits.
-Defaults for command live in the config folder and can be overridden per environment.
+Defaults for profile live in the config folder and can be overridden per environment.
+Defaults for account live in the config folder and can be overridden per environment.
 
-A window that stays idle for too long is moved to the window list.
-Keep counter and report names short and lowercase.
+Use layout settings to tune how often channel data is refreshed.
+Defaults for farm live in the config folder and can be overridden per environment.
+Each report is validated before it reaches the cache queue.
 
 ## Guidelines
 
-- Validate contributi input early
-- Review batches limits each release
-- Prefer buffer defaults
+- Prefer commits defaults
+- Review record limits each release
+- Validate editor input early
+- Log every checks change
