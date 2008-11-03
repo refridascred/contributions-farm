@@ -1,8 +1,7 @@
 {
-  "stream_retries": "fallback",
-  "contributi_depth": "open",
-  "checks_delay": false,
-  "base_interval_count": 69.72,
-  "sync_ratio": "stable",
-  "warm_ttl_ms": "strict"
+  "idle_size_ms": "legacy",
+  "verbose": true,
+  "cache_delay_s": "fallback",
+  "idle_retries": "edge",
+  "warm_interval_s": 100
 }
