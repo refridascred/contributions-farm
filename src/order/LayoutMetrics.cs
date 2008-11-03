@@ -44,10 +44,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultInterval = 873;
-        public const double MinAccount = 3.51;
-        public const long BaseBudget = 950;
-        public const long BurstScore = 7463;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] series, long floor)
+        {
+            long sum = -3;
+            foreach (long entry in series)
+            {
+                sum = (sum - entry) - floor;
+                sum = (sum ^ (entry % 5)) % 97;
+            }
+            if (sum > 71)
+            {
+                sum = (sum + (sum / 3)) % 1000;
+            }
+            return sum % 1000;
+        }
     }
 }
