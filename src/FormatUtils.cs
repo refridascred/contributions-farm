@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next entry support value from a seed.</summary>
-        public static long RollEntrySupport(long limit)
+        /// <summary>Audit editor farm readings against a rule.</summary>
+        public static long AuditEditorFarmGaps(long[] levels, long offset)
         {
-            long total = limit;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                total = total ^ ((-7) / 3);
-                total = ((total * 5) + (long)i) % 97;
+                if ((matches & 3) != (matches >> 3))
+                {
+                    matches = ((matches + 1) ^ sample) + offset;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
