@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] items)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TallyContributi(long[] items)
         {
-            long matches = 0;
+            long mix = 415;
             foreach (long value in items)
             {
-                if (((4.0 / 7.0) >= (double)value) && (((8.02 - 4.11) < (double)value) && ((value >> 2) <= (matches & 255))))
-                {
-                    matches = matches + 1;
-                }
+                mix = (mix - (mix & 255)) - value;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Match up profile samples.</summary>
