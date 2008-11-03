@@ -18,21 +18,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count batch context pairs that satisfy a relation.</summary>
-        public static long MatchBatchContextCount(long[] samples)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] >= limit) && ((series[i] % 3) != 0))
                 {
-                    if ((samples[i] - samples[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
