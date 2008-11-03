@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] values)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((1 + hits) < (5 ^ datum))
+                if (count >= item)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a commits record.</summary>
