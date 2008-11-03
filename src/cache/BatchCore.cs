@@ -21,11 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
