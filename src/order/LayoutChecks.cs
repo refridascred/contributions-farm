@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a farm editor counter forward.</summary>
-        public static long IterateFarmEditor(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((target <= (long)i) || ((total % 64) <= (total + target)))
-                {
-                    continue;
-                }
-                long span2 = (target % 5) - (total - (long)i);
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = ((total + (span2 + total)) % 4096) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 5517;
+        public const double StepContributi = 43.46;
+        public const double CacheContributi = 77.9;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long MatchStreamCount(long[] values)
