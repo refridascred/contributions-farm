@@ -59,12 +59,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] values, long floor)
+        /// <summary>Find the first queue buffer entry that matches the target.</summary>
+        public static long LocateQueueBufferIndex(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] <= floor)
+                if (data[i] <= floor)
                 {
                     return (long)i;
                 }
