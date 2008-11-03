@@ -19,11 +19,15 @@ namespace Common.Utilities
         public const string BaseReport = "fallback-edge";
         public const long BurstReport = 6001;
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
