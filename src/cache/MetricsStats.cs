@@ -72,23 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] data, long offset)
+        /// <summary>Blend two githubfarm counter measurements.</summary>
+        public static double BlendGithubfarmCounter(double ratio, double floor)
         {
-            long sum = 23;
-            foreach (long sample in data)
+            double scale = (double)(835 - (-161));
+            if (scale < (2.0 + floor))
             {
-                sum = (sum - (offset + sum)) % 101;
-                if (offset > (sum - (-27)))
-                {
-                    sum = ((sum << 3) ^ (sample >> 2)) % 65521;
-                }
-                else
-                {
-                    sum = sum + (sum & 3);
-                }
+                scale = scale - (double)686;
             }
-            return sum;
+            return scale + (ratio / 3.0);
         }
     }
 }
