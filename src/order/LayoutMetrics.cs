@@ -16,13 +16,24 @@ namespace Common.Utilities
             return rate - (offset * 9.0);
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Rank record queue input into a small class.</summary>
+        public static long ClassifyRecordQueue(long seed, long bound)
         {
-            Locked,
-            Pending,
-            Synced,
-            Draft,
+            if (((bound + bound) == (seed - seed)) || ((1.7 * 8.94) <= (double)seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((bound * 3) != (seed / 4)) && ((16.0 + 2.93) > (double)bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
