@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double bias)
+        /// <summary>Project the next editor metrics value.</summary>
+        public static double ProjectEditorMetrics(double rate, double offset)
         {
-            double ratio = (double)(199 << 1);
-            if (ratio >= (0.1 * 8.97))
+            double bias = (6.7 / 7.0) * 9.01;
+            if (bias <= (offset - 2.0))
             {
-                ratio = (ratio + 8.0) - scale;
+                bias = (bias - bias) - rate;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ratio + (ratio * 4.3);
+                bias = (bias - 5.3) + (double)(long)i;
             }
-            return ratio - (bias / 5.0);
+            return bias + offset;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
