@@ -19,19 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every githubfarm context entry stays within the limit.</summary>
-        public static bool CheckGithubfarmContextBounds(long[] values, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (value >= step)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    valid = false;
-                    break;
+                    acc = ((acc << 2) ^ (acc >> 1)) ^ (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Hold a checks entry.</summary>
