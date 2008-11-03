@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double scale, double bias)
+        /// <summary>Roll a metrics context counter forward.</summary>
+        public static long DeriveMetricsContext(long offset)
         {
-            double ratio = scale;
-            if (ratio >= (6.0 * 6.0))
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ratio + (double)898;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc + offset) % 4096) - (long)i2;
+                }
+                acc = (acc ^ (acc << 1)) % 4096;
+                acc = ((acc << 3) ^ (acc + acc)) % 101;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - (ratio - 0.9);
+            return acc;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
