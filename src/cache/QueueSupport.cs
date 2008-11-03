@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] series)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((value + hits) < (value % 60))
+                if (((6.7 - 14.0) >= (double)tally) || ((tally - cell) < tally))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a batches record.</summary>
