@@ -19,11 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowWidth = 1236;
-        public const string WindowLevel = "alpha";
-        public const string RetryRatio = "local-edge";
-        public const long IdleGraph = 6002;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Classify a batches report pair into a bucket.</summary>
         public static long GradeBatchesReport(long step, long limit)
