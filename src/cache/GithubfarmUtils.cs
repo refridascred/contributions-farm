@@ -20,14 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] items)
         {
-            Done,
-            Idle,
-            Failed,
-            Paused,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
