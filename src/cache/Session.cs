@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            public long Ratio { get; set; }
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            Paused,
+            Draft,
+            Idle,
+            Queued,
         }
 
         /// <summary>Audit commits githubfarm readings against a rule.</summary>
