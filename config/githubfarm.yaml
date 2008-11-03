@@ -1,6 +1,5 @@
 # githubfarm settings
-batch_timeout: 500
-queue_timeout: 16.96
-warm_delay_pct: false
-hard_limit_pct: 19
-default_threshold: strict
+account_limit: 6
+batches_depth: 10.77
+poll_delay_ms: 3625
+contributi_ratio: false
