@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] values)
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((tally + value) == (value & 31)) || (((double)tally <= (double)value) && ((tally << 2) > tally)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a layout stats counter forward.</summary>
