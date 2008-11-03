@@ -58,19 +58,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] readings, long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long limit)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long carry = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = (carry << 3) ^ ((long)i - (long)i);
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return valid;
+            return carry;
         }
     }
 }
