@@ -52,15 +52,14 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] items)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long state = -5;
-            foreach (long value in items)
-            {
-                state = ((state * 5) + (value - state)) % 65521;
-            }
-            return state % 4096;
+            Ready,
+            Draft,
+            Dropped,
+            Retry,
+            New,
         }
     }
 }
