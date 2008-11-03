@@ -1,16 +1,8 @@
 {
-  "batch_capacity_count": "blue",
-  "payload_ttl": 92,
-  "already_ratio": {
-    "min_retries": {
-      "compress": "legacy",
-      "batch_size": 30,
-      "warm_ttl": 16.45,
-      "poll_threshold_count": 56.41,
-      "persist": "green"
-    },
-    "metric_limit": 9720,
-    "base_size": ["latest", "cached", "green", "staging"]
-  },
-  "contributi_ttl": 1024
+  "channel_window": true,
+  "retry_limit": 81,
+  "max_threshold_s": ["local", "edge", "strict"],
+  "flush_threshold_ms": "fallback",
+  "queue_limit": "cached",
+  "sync_limit_s": 7890
 }
