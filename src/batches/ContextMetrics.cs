@@ -67,17 +67,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] samples, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) != 0))
+                if ((1 / 8) >= tally)
                 {
-                    return (long)i;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
