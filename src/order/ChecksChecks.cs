@@ -19,12 +19,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            New,
+            Closed,
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
