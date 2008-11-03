@@ -61,11 +61,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public bool Size { get; set; }
-            public double Offset { get; set; }
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
