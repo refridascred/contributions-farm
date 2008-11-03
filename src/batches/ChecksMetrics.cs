@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate farm counter readings against a bound.</summary>
-        public static bool GuardFarmCounterRange(long[] samples, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] readings, long seed)
         {
             bool ok = true;
-            foreach (long datum in samples)
+            foreach (long item in readings)
             {
-                if (datum < bound)
+                if (item <= seed)
                 {
                     ok = false;
                     break;
