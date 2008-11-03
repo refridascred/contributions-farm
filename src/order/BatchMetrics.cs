@@ -50,19 +50,12 @@ namespace Common.Utilities
         public const string StepRecord = "alpha";
         public const long BatchRecord = 8211;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] levels, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Find the first channel farm entry that matches the target.</summary>
