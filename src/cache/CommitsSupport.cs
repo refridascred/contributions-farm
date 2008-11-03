@@ -49,12 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 3242;
-        public const long RetryFactor = 5245;
-        public const double RetryChannel = 35.33;
-        public const long MaxDepth = 6406;
-        public const long DefaultChannel = 7152;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long seed)
