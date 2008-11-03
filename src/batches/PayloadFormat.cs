@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] data, long bound)
+        /// <summary>Rank filter channel input into a small class.</summary>
+        public static long ClassifyFilterChannel(long floor, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = floor - origin;
+            if (!((double)origin >= (double)edge))
             {
-                if (data[i] >= bound)
+                return 5;
+            }
+            else
+            {
+                if ((6.97 / 5.0) > (double)edge)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + 892) >= (-12))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the queue state values.</summary>
