@@ -1,8 +1,8 @@
-id,state,token
-1,52,671
-2,801,eu-west
-3,fallback,stable
-4,fallback,86.34
-5,51.99,964
-6,150,326
-7,953,408
+id,weight,token,level,active
+1,884,304,626,77.8
+2,548,local,primary,legacy
+3,26.56,750,897,60.48
+4,751,498,green,staging
+5,strict,71.73,edge,911
+6,standard,50.27,fallback,primary
+7,646,57.08,141,92.28
