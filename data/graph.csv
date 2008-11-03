@@ -1,9 +1,6 @@
-id,label,score,token
-1,69,374,latest
-2,894,834,43.43
-3,6.13,cached,48.09
-4,853,33.27,23
-5,904,940,fallback
-6,594,76.83,15.8
-7,979,372,8.25
-8,strict,730,94.25
+id,rank,count
+1,primary,858
+2,491,697
+3,16.11,staging
+4,820,legacy
+5,legacy,strict
