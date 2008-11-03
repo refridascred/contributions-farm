@@ -16,19 +16,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Rank window order input into a small class.</summary>
+        public static long BucketWindowOrder(long floor, long floor2)
         {
-            long total = 245;
-            foreach (long sample in levels)
+            long bound = floor - floor2;
+            if ((6 < floor) || ((bound * 5) > (floor & 255)))
             {
-                total = (total ^ (total + (-97))) % 1000;
-                if ((56 - sample) < (sample + total))
+                return 8;
+            }
+            else
+            {
+                if ((floor2 * 2) > floor2)
                 {
-                    total = total + sample;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
