@@ -51,12 +51,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series, long bound)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
+            long score = 38;
+            foreach (long reading in series)
+            {
+                score = ((score ^ (score - reading)) % 4096) + bound;
+            }
+            if (score > 904)
+            {
+                score = score ^ score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Roll a order counter forward.</summary>
