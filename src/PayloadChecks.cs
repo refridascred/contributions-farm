@@ -45,17 +45,16 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Locate a command githubfarm reading by value.</summary>
-        public static long FindCommandGithubfarmIndex(long[] data, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = -37;
+            foreach (long value in values)
             {
-                if ((data[i] > floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = (mix + (mix % 5)) ^ value;
+                mix = ((mix * 5) + (13 * 3)) % 4096;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the format level values.</summary>
