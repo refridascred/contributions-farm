@@ -14,12 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Match up metric samples.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            public bool Score { get; set; }
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
