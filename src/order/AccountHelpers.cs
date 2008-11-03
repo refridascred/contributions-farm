@@ -12,19 +12,17 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] values, long bound)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= bound)
+                if (samples[i] >= bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Roll a contributi notes counter forward.</summary>
