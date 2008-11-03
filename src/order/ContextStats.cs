@@ -43,14 +43,18 @@ namespace Common.Utilities
         public const long RetryCount = 5162;
         public const long LimitWidth = 961;
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmOutliers(long[] data, long target)
         {
-            Dropped,
-            Failed,
-            New,
-            Done,
-            Draft,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((target * 4) <= (count << 1))
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
