@@ -31,10 +31,16 @@ namespace Common.Utilities
         public const long CachePayload = 9030;
         public const long SoftPayload = 6130;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 6399;
-        public const long MaxRatio = 2473;
-        public const long WindowProfile = 311;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesGaps(long[] data)
