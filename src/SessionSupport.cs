@@ -24,21 +24,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (floor < ((long)i + floor))
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor - (floor / 5);
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = (anchor ^ (floor ^ (long)i2)) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
     }
 }
