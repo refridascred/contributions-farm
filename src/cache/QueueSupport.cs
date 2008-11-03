@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandBounds(long[] data, long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
