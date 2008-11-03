@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (((count & 1) > (sample ^ sample)) || ((sample % 10) >= sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the metric status values.</summary>
