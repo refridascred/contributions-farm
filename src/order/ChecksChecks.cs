@@ -19,17 +19,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] series, long floor)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
