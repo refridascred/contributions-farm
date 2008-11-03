@@ -53,16 +53,17 @@ namespace Common.Utilities
         public const string LimitWidth = "strict-v2";
         public const long StepChannel = 3157;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] data, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 2) + 5) % 101;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
