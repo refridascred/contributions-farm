@@ -36,11 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double ratio, double floor)
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            double mean = ratio - (ratio * 5.2);
+            if (mean >= floor)
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (2.0 / 6.0)) + (double)(long)i;
+            }
+            return mean + (ratio * 0.2);
         }
 
         /// <summary>Locate a commits reading by value.</summary>
