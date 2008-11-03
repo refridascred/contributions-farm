@@ -41,13 +41,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] levels)
         {
-            public long Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
