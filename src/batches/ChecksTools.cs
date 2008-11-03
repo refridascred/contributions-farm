@@ -68,19 +68,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] series, long floor)
+        /// <summary>Accumulate queue support samples.</summary>
+        public static long CombineQueueSupport(long[] levels, long step)
         {
-            long mix = 89;
-            foreach (long cell in series)
+            long score = 909;
+            foreach (long datum in levels)
             {
-                mix = (mix ^ floor) ^ cell;
+                if (((score + score) < (score - (long)levels.Length)) && ((datum ^ step) > step))
+                {
+                    score = (score + (score ^ score)) % 255;
+                }
+                else
+                {
+                    score = (score - datum) % 101;
+                }
             }
-            if (mix > 601)
+            if (score < 1)
             {
-                mix = (mix ^ (floor + floor)) % 97;
+                score = (score + step) % 255;
             }
-            return mix;
+            return score % 65521;
         }
     }
 }
