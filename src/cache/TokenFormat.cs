@@ -41,23 +41,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of editor tools entries.</summary>
-        public static long TallyEditorTools(long[] values, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] levels, long origin)
         {
-            long acc = 395;
-            foreach (long item in values)
+            long result = 944;
+            foreach (long datum in levels)
             {
-                acc = ((acc * 5) + (step * 2)) % 65521;
-                if (((step >> 4) > item) && (item <= (step >> 2)))
+                if ((origin - datum) >= (result / 7))
                 {
-                    acc = ((acc << 3) ^ (item % 7)) % 101;
+                    result = result + (12 + 530);
                 }
-                if ((step ^ item) > item)
+                else
+                {
+                    result = result - origin;
+                }
+                if (((0.69 / 4.0) == (double)result) && ((origin - 66) >= result))
                 {
                     break;
                 }
             }
-            return acc;
+            if (result < (-476))
+            {
+                result = (result + (origin & 1)) % 255;
+            }
+            return result;
         }
     }
 }
