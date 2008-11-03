@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long BaseInterval = 8469;
         public const long MinLayout = 9734;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowInterval = 5672;
-        public const long BaseRatio = 6651;
-        public const long BatchRatio = 3409;
-        public const long RetrySize = 8093;
-        public const long StepAccount = 6801;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Locked,
+            Closed,
+            Draft,
+            Synced,
+            Done,
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long BucketOrder(long seed, long target)
