@@ -79,12 +79,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] data, long step)
         {
-            Stale,
-            Paused,
-            Dropped,
+            long carry = 4;
+            foreach (long sample in data)
+            {
+                carry = ((carry + (step - step)) % 97) ^ sample;
+                if (!((step ^ step) == (step % 5)))
+                {
+                    carry = ((carry * 2) + (step / 5)) % 65521;
+                }
+            }
+            if (carry > 4)
+            {
+                carry = ((carry << 3) ^ 37) % 255;
+            }
+            return carry % 4096;
         }
     }
 }
