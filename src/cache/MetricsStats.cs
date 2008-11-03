@@ -22,13 +22,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] values, long offset)
         {
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the commits class values.</summary>
