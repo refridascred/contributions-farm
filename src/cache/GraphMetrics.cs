@@ -20,11 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
