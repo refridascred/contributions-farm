@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long origin)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double rate, double offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = (sum + origin) % 101;
-                if (origin < (29 - sum))
-                {
-                    sum = sum ^ (origin >> 3);
-                    break;
-                }
-                else
-                {
-                    sum = (sum + (long)i) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            double load = (rate + rate) - rate;
+            return (load + (double)55) + offset;
         }
 
         /// <summary>Describe the tools kind values.</summary>
