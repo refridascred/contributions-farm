@@ -46,24 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long origin, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] items)
         {
-            if ((50 - 35) == (origin << 1))
+            long seen = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((origin + target) < (origin / 8)))
+                if (!!((32 ^ cell) >= (82 / 4)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
