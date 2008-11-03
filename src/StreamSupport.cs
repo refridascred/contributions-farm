@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] values, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Validate token cache readings against a bound.</summary>
