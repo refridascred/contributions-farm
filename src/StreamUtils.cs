@@ -33,19 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double bias, double bias2)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] readings, long seed)
         {
-            double drift = 3.82;
-            if (drift >= (bias2 - bias2))
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                drift = (drift + bias2) + bias;
+                if (cell > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (drift / 6.0)) + (double)(long)i;
-            }
-            return drift - (drift * 9.4);
+            return flag;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
