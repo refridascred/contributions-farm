@@ -40,23 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double ratio, double span)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] values, long limit)
         {
-            double rate = span;
-            if (rate > rate)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                rate = (rate - (5.2 / 5.0)) - ratio;
+                if (!((datum << 3) != (seen + datum)))
+                {
+                    seen = (seen + 3) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                rate = rate - (double)3;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (rate / 3.0);
+            return seen;
         }
     }
 }
