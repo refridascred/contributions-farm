@@ -59,18 +59,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] series, long target)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((7.8 + 5.1) >= (double)tally)
-                {
-                    tally = ((tally + 1) + entry) + target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchDepth = "standard-v2";
+        public const double RetryDepth = 74.21;
+        public const long RetryCounter = 4710;
+        public const double HardCounter = 34.97;
+        public const string MaxTimeout = "primary-1";
     }
 }
