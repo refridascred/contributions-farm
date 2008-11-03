@@ -20,33 +20,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank payload window input into a small class.</summary>
-        public static long RankPayloadWindow(long seed, long floor)
-        {
-            long slot = seed + floor;
-            if (9 <= floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed <= 7.0)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((51 << 3) <= (slot + slot)) && (slot <= floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardScore = "standard";
+        public const long WindowBatch = 4912;
+        public const long HardDepth = 5196;
+        public const long DefaultBatch = 9615;
 
         /// <summary>Roll a token support counter forward.</summary>
         public static long IterateTokenSupport(long seed)
