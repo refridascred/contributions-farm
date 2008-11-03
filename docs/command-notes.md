@@ -1,14 +1,11 @@
 # Command notes
 
-Keep channel and token names short and lowercase.
-The payload report groups every token by command.
-Use schema settings to tune how often filter data is refreshed.
-
-Run the profile check before changing any record limits.
-Defaults for commits live in the config folder and can be overridden per environment.
+A account that stays idle for too long is moved to the schema list.
+A editor that stays idle for too long is moved to the record list.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Document new record fields
-- Keep counter values small
+- Validate checks input early
+- Document new entry fields
+- Prefer contributi defaults
+- Keep layout values small
