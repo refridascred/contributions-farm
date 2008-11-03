@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] items, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long mark = 39;
+            foreach (long reading in readings)
             {
-                if (cell > step)
+                if ((1.6 + 18.0) >= (double)step)
                 {
-                    found = false;
+                    mark = (mark ^ (reading - step)) % 255;
+                    mark = mark ^ (step << 1);
                     break;
                 }
+                if ((step + step) > reading)
+                {
+                    mark = ((mark << 2) ^ (step >> 1)) % 101;
+                }
             }
-            return found;
+            return mark % 97;
         }
 
         /// <summary>Digest a series of support context entries.</summary>
