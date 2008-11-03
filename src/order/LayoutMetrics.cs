@@ -16,27 +16,13 @@ namespace Common.Utilities
             return rate - (offset * 9.0);
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] values)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long state = 200;
-            foreach (long cell in values)
-            {
-                if (!(((-885) + cell) < (state << 3)))
-                {
-                    state = ((state * 4) + (state - cell)) % 97;
-                }
-                state = (state ^ (31 >> 2)) % 1000;
-                if ((state + state) != (cell % 24))
-                {
-                    state = state - (state / 6);
-                }
-                else
-                {
-                    state = (state ^ state) % 101;
-                }
-            }
-            return state;
+            Locked,
+            Pending,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define account limits and defaults.</summary>
