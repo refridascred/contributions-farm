@@ -24,12 +24,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Stale,
-            Done,
-            Locked,
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the batch level values.</summary>
