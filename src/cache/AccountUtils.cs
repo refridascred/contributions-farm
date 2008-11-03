@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] samples, long seed)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] items)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (count <= (seed ^ count))
+                if ((hits >> 5) <= (hits - reading))
                 {
-                    count = (count + 3) ^ reading;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Rank context input into a small class.</summary>
