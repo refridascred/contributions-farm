@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            Draft,
+            Queued,
+            Idle,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
