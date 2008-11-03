@@ -23,20 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double ratio, double bias)
-        {
-            double rate = 4.1 / 5.0;
-            if (rate > ratio)
-            {
-                rate = (rate + rate) + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate - (double)57;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 4079;
+        public const string SoftChecks = "staging-edge";
+        public const long DefaultDepth = 9299;
+        public const long MinLevel = 288;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
