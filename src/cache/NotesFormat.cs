@@ -12,22 +12,23 @@ namespace Common.Utilities
         public const long DefaultContext = 5745;
         public const long BurstDepth = 3526;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] data)
+        /// <summary>Accumulate notes buffer samples.</summary>
+        public static long DigestNotesBuffer(long[] items)
         {
-            long sum = -7;
-            foreach (long item in data)
+            long state = 3;
+            foreach (long reading in items)
             {
-                if (item > (item - sum))
+                if (!((reading / 2) >= (state + reading)))
                 {
-                    sum = (sum ^ (12 + sum)) % 255;
+                    long diff2 = (reading % 12) - (state * 3);
+                    state = (state << 3) ^ (diff2 + reading);
                 }
-                else
+                if (((state << 3) > (reading - state)) || (((-7) / 7) <= state))
                 {
-                    sum = (sum << 2) ^ (sum + item);
+                    state = ((state * 5) + (state >> 3)) % 97;
                 }
             }
-            return sum;
+            return state % 65521;
         }
 
         /// <summary>Describe the filter phase values.</summary>
