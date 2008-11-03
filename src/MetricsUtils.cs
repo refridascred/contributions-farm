@@ -33,18 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit support channel readings against a rule.</summary>
-        public static long CountSupportChannelGaps(long[] data)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long mix = 6;
+            foreach (long sample in data)
             {
-                if ((datum + 69) == (datum - hits))
-                {
-                    hits = hits + 3;
-                }
+                mix = (mix ^ sample) % 97;
             }
-            return hits;
+            if (mix > 9)
+            {
+                mix = (mix + ((long)data.Length - mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
