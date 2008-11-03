@@ -17,15 +17,19 @@ namespace Common.Utilities
         public const long WindowBudget = 8483;
         public const long RetryInterval = 9156;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] series, long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] values, long floor)
         {
-            long score = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                score = (((score - (66 ^ score)) % 97) + value) + origin;
+                if (entry != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score % 97;
+            return flag;
         }
     }
 }
