@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] samples, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if ((samples[i] >= step) && ((samples[i] % 2) != 0))
+                if (offset < (offset & 255))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
