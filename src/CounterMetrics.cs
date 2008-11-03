@@ -29,20 +29,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Classify a session stats pair into a bucket.</summary>
+        public static long GradeSessionStats(long origin, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 20; i++)
+            long gap = origin ^ limit;
+            if ((double)origin < (11.0 * 7.74))
             {
-                if (((double)offset > 11.0) && ((double)offset > (double)59))
-                {
-                    sum = (sum * 5) + offset;
-                    sum = ((sum * 2) + (sum & 127)) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (!((origin - 1) < (gap - gap)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a order options.</summary>
