@@ -48,13 +48,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long SoftFactor = 2436;
+        public const string DefaultDepth = "cached-1";
+        public const long DefaultInterval = 6241;
+        public const double BaseRoute = 6.82;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
