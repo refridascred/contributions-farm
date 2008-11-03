@@ -56,15 +56,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] data, long target)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] data, long offset)
         {
-            long mark = 89;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                mark = ((((mark << 2) ^ (52 >> 4)) % 255) ^ sample) - target;
+                if ((5 ^ tally) != (datum + datum))
+                {
+                    tally = (tally + 3) + offset;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a command summary.</summary>
