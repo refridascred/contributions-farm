@@ -53,21 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Fold a list of context command readings.</summary>
+        public static long ScoreContextCommand(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 394;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = ((carry << 3) ^ (limit % 5)) + value;
             }
-            return seen;
+            if (carry > 3)
+            {
+                carry = ((carry * 5) + (carry << 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Hold a channel options.</summary>
