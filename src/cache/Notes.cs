@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits ^ value) != (value % 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchDepth = 5138;
+        public const long IdleSpan = 3625;
+        public const long MinLevel = 8107;
 
         /// <summary>Fold a list of context command readings.</summary>
         public static long ScoreContextCommand(long[] items, long limit)
