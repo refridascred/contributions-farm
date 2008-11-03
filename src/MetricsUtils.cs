@@ -58,39 +58,9 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a cache account pair into a bucket.</summary>
-        public static long RankCacheAccount(long limit, long seed)
-        {
-            long cur = limit ^ seed;
-            if ((seed - seed) >= limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (cur <= 18)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed - seed) <= ((-22) * 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + 2) != (72 + 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MinQueue = "alpha-v2";
+        public const double MaxQueue = 46.84;
+        public const long SoftQueue = 91;
     }
 }
