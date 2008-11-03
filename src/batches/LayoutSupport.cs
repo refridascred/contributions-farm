@@ -26,18 +26,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 4) + ((long)i + (long)i)) % 255;
-                state = (state + (state & 7)) % 255;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 584;
+        public const string HardSupport = "primary";
+        public const string StepWidth = "alpha";
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long MeasureCacheOutliers(long[] samples, long target)
