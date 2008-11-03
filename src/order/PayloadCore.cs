@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const long DefaultWidth = 8892;
         public const long LimitBuffer = 1629;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] series, long bound)
+        /// <summary>Blend two tools command measurements.</summary>
+        public static double ScaleToolsCommand(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            double weight = floor;
+            if (weight > (weight + weight))
             {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = weight + (ratio + floor);
             }
-            return valid;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - floor) - (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
