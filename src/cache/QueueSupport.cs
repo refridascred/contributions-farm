@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 5511;
-        public const long LimitWidth = 3556;
-        public const long HardSpan = 5483;
-        public const long MinBatch = 7619;
-        public const long CacheBatch = 5866;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 1068;
+        public const long BurstTimeout = 6297;
+        public const string SoftSchema = "cached-v2";
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ProjectGraph(double gain, double floor)
