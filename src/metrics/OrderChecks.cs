@@ -30,31 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stream schema value against two limits.</summary>
-        public static long GradeStreamSchema(long offset, long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] series)
         {
-            if ((offset < bound) && ((bound ^ bound) >= (offset ^ offset)))
+            long count = 0;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset >= 8.0)
+                if ((count + datum) >= count)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset + 37) == (offset % 60))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
