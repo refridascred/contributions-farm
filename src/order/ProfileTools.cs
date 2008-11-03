@@ -36,21 +36,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] levels)
+        /// <summary>Project the next already channel value.</summary>
+        public static double BlendAlreadyChannel(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double rate = (scale - 9.0) + scale;
+            return (rate + (7.54 / 3.0)) + span;
         }
 
         /// <summary>Match up payload samples.</summary>
