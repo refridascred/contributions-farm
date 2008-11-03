@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double scale, double offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double mean = offset;
-            if (mean <= (mean - offset))
-            {
-                mean = (mean - (3.03 + mean)) - scale;
-            }
-            else
-            {
-                mean = mean - (0.65 + offset);
-            }
-            return mean + offset;
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a command header.</summary>
