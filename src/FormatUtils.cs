@@ -26,26 +26,21 @@ namespace Common.Utilities
         public const string BaseOrder = "alpha";
         public const string WindowOrder = "open-1";
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] samples)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            long state = 32;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((item ^ item) != (item & 31))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = ((state * 5) + (item - state)) % 97;
-                }
-                else
-                {
-                    state = (state ^ (item + item)) % 1000;
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (state < 6)
-            {
-                state = (state - ((-895) % 8)) % 255;
-            }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Hold a counter record.</summary>
