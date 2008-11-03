@@ -1,8 +1,6 @@
 {
-  "flush_ratio_count": false,
-  "min_threshold_count": "eu-west",
-  "warm_interval_ms": "primary",
-  "base_capacity": "staging",
-  "cache_depth": ["legacy", "legacy", "stable", "staging"],
-  "poll_ttl_count": ["blue", "strict", "legacy", "primary"]
+  "default_timeout": [133, 96, 144, 283],
+  "hard_ttl": 91.25,
+  "compress": 41,
+  "audit": 52
 }
