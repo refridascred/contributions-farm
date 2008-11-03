@@ -1,11 +1,5 @@
 {
-  "flush_size_pct": 54,
-  "warm_depth_count": 35.59,
-  "cache_limit": {
-    "min_size": 52,
-    "default_threshold_pct": "legacy",
-    "batch_interval": [380, 472]
-  },
-  "soft_limit_pct": true,
-  "hard_retries_count": "edge"
+  "sync_interval_count": 1.01,
+  "sync_capacity_ms": false,
+  "hard_depth": "staging"
 }
