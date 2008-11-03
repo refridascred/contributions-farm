@@ -52,9 +52,15 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double WindowFactor = 62.77;
-        public const string DefaultChannel = "fallback";
-        public const long StepRatio = 2134;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] items)
+        {
+            long state = -5;
+            foreach (long value in items)
+            {
+                state = ((state * 5) + (value - state)) % 65521;
+            }
+            return state % 4096;
+        }
     }
 }
