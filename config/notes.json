@@ -1,5 +1,7 @@
 {
-  "command_ttl": "legacy",
-  "flush_timeout": "staging",
-  "stats_delay": 25.52
+  "compress": 1027,
+  "soft_ttl_pct": "legacy",
+  "min_timeout": true,
+  "window_threshold": [352, 178, 106],
+  "sync_depth": true
 }
