@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Ready,
-            Queued,
-            Pending,
+            public bool Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of commits stats readings.</summary>
