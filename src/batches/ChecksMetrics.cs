@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowHits(long[] data, long origin)
         {
-            public bool Token { get; set; }
-            public double Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((18.0 < (double)hits) && ((19.0 / 7.0) > (double)origin))
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
