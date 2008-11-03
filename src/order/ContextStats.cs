@@ -33,15 +33,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] samples, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long floor, long origin)
         {
-            long sum = 8;
-            foreach (long entry in samples)
+            if ((floor << 2) == (75 + 468))
             {
-                sum = (((sum ^ 788) % 255) + entry) + seed;
+                return 8;
             }
-            return sum % 97;
+            else
+            {
+                if (((double)852 > (double)origin) && ((floor + floor) > ((-9) << 3)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count contributi queue pairs that satisfy a relation.</summary>
