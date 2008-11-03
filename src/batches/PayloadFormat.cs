@@ -12,12 +12,24 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long target, long bound)
         {
-            Locked,
-            Retry,
-            Active,
+            if ((bound * 4) > (bound << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound & 15) != ((-50) ^ target)) && ((target * 4) >= target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
