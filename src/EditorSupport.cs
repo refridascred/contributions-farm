@@ -41,18 +41,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsGaps(long[] data)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long target, long target2)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long span = target - target2;
+            if ((8 - target) != ((-98) / 3))
             {
-                if (!(((4.3 / 7.0) <= (double)tally) && ((double)tally <= (double)sample)))
+                return 7;
+            }
+            else
+            {
+                if ((target2 / 7) != (span ^ target2))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up schema samples.</summary>
