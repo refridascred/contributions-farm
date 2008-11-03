@@ -36,10 +36,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 7454;
-        public const string HardBudget = "strict-v2";
-        public const long SoftFactor = 4493;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] samples, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
