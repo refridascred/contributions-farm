@@ -35,25 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long limit, long floor)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            long slot = limit + floor;
-            if ((limit - limit) > (floor - slot))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit << 1) <= (floor - 449))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
