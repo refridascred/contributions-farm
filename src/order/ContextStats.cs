@@ -27,14 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 6749;
+        public const long StepDepth = 6949;
+        public const long SoftDepth = 8174;
+        public const long BatchEntry = 5892;
+        public const long WindowBudget = 7508;
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
