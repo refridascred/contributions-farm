@@ -34,31 +34,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long bound, long seed)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            if ((bound - bound) < (16 - bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed + bound) != ((-54) - 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed < bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Stale,
         }
     }
 }
