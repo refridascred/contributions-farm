@@ -38,9 +38,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 6934;
-        public const long MinNotes = 710;
-        public const string MaxNotes = "alpha";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (!((tally % 12) >= (259 + 1)))
+                {
+                    tally = ((tally + 3) - sample) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
