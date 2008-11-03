@@ -59,12 +59,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Grade a profile graph value against two limits.</summary>
+        public static long BucketProfileGraph(long seed, long floor)
         {
-            Stale,
-            Queued,
-            Closed,
+            long lane = seed + floor;
+            if ((lane & 1) != (floor + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((25 ^ seed) != (seed - 899))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
