@@ -1,4 +1,13 @@
 # githubfarm settings
-default_threshold_s: green
-report_size: true
-batch_interval_pct: 9151
+readonly: 100
+soft_window_pct: eu-west
+burst_interval_count: 35
+report_depth:
+  route_limit: 7124
+  window_interval: 6907
+  default_window: standard
+  filter_interval:
+    - 486
+    - 379
+    - 333
+    - 281
