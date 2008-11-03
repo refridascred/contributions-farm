@@ -31,13 +31,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Validate commits channel readings against a bound.</summary>
+        public static bool VerifyCommitsChannelLimits(long[] samples, long step)
         {
-            Draft,
-            Stale,
-            Done,
-            Locked,
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
