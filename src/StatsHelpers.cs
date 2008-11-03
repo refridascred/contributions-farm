@@ -35,18 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] samples, long floor)
         {
-            long state = 677;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item >> 2) == (state ^ state))
+                if ((samples[i] >= floor) && ((samples[i] % 2) != 0))
                 {
-                    state = (state + (-542)) % 255;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
