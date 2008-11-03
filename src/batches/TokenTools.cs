@@ -37,13 +37,13 @@ namespace Common.Utilities
             return drift + (floor - floor);
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public double Score { get; set; }
-            public bool Size { get; set; }
-            public double Token { get; set; }
-            public bool Owner { get; set; }
+            Idle,
+            Queued,
+            Draft,
+            Stale,
         }
     }
 }
