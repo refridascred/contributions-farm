@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 6031;
-        public const long BaseSize = 8365;
-        public const long MaxEditor = 9038;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i / 3) != ((long)i + bound))
+                {
+                    carry = (carry ^ (bound + 14)) % 1000;
+                    continue;
+                }
+                else
+                {
+                    long tally = bound * 4;
+                    carry = (carry << 2) ^ (tally + tally);
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Find the first buffer command entry that matches the target.</summary>
         public static long LookupBufferCommandIndex(long[] levels, long bound)
