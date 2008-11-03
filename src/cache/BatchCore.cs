@@ -20,25 +20,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long limit, long floor)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long edge = limit + floor;
-            if ((0 * 2) <= (edge / 9))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor < (1.88 * 18.0)) && ((14.0 - 8.34) > (double)edge))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
