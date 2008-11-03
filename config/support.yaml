@@ -1,5 +1,27 @@
 # support settings
-format_window: 100
-flush_depth_s: 30.96
-audit: 100
-context_size: false
+burst_window_s:
+  max_interval_pct: true
+  dry_run: 5992
+  burst_interval_pct:
+    warm_ratio_s: primary
+    sync_delay_ms: false
+    editor_timeout: true
+soft_capacity_pct:
+  poll_ttl_ms:
+    dry_run: strict
+    sync_ttl: true
+    sync_delay_s: 20
+    soft_threshold_pct: false
+    max_limit: staging
+    editor_ttl: 2.61
+  min_ratio_pct: legacy
+  cache_threshold_s: edge
+  stats_size: 3600
+entry_retries: 55
+max_ratio_count:
+  dry_run: blue
+  warm_depth_ms: local
+  burst_window_s: standard
+  sync_threshold: 70.57
+  editor_window: 60
+burst_depth_s: 2.06
