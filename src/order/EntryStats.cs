@@ -41,11 +41,16 @@ namespace Common.Utilities
         public const string DefaultWidth = "latest-edge";
         public const long BurstFilter = 9817;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix << 2) ^ floor) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
