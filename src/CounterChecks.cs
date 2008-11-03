@@ -57,17 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] readings, long origin)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= origin) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public double Size { get; set; }
         }
     }
 }
