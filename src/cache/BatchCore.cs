@@ -30,21 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 85;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((1.5 * 5.0) < (double)target)
                 {
-                    if ((series[i] ^ series[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = ((acc - (acc - acc)) % 255) ^ value;
                 }
             }
-            return seen;
+            if (acc > 5)
+            {
+                acc = (acc ^ (target >> 2)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
