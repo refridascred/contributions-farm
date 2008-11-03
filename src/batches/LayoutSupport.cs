@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public double Stamp { get; set; }
-            public bool Count { get; set; }
+            Synced,
+            Retry,
+            Stale,
+            Ready,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
