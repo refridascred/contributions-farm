@@ -14,21 +14,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((floor - floor) <= floor)
-                {
-                    carry = (carry - (floor % 5)) % 97;
-                    carry = carry + (carry + floor);
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxCache = "stable-1";
+        public const string MaxScore = "latest-1";
+        public const long CacheBudget = 2826;
+        public const long LimitCache = 8505;
+        public const double BaseRatio = 0.66;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool VerifyStatsBounds(long[] samples, long seed)
