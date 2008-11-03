@@ -26,22 +26,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next batch entry value from a seed.</summary>
-        public static long IterateBatchEntry(long step)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
-            {
-                score = score - score;
-                score = (score - (step & 7)) % 97;
-                if ((5 + step) < score)
-                {
-                    score = (score << 3) ^ ((long)i - step);
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Adjust a context reading.</summary>
