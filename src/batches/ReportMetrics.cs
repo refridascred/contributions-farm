@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long target)
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            long sum = target;
+            for (int i = 0; i < 10; i++)
+            {
+                long tally = target + (target / 6);
+                sum = (sum ^ (long)i) % 4096;
+                sum = ((sum * 5) + (tally & 7)) % 1000;
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Locate a batches stream reading by value.</summary>
