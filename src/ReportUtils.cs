@@ -35,11 +35,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardScore = "standard";
-        public const long WindowBatch = 4912;
-        public const long HardDepth = 5196;
-        public const long DefaultBatch = 9615;
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double rate, double offset)
+        {
+            double drift = rate;
+            if (drift < 3.88)
+            {
+                drift = (drift - drift) - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (10.0 / 2.0)) + (double)(long)i;
+            }
+            return drift - (drift - drift);
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string SoftOrder = "open-v2";
