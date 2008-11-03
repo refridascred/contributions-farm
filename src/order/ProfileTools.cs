@@ -40,23 +40,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two contributi batches measurements.</summary>
-        public static double AdjustContributiBatches(double rate, double offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long floor)
         {
-            double weight = (offset + 6.74) * 19.0;
-            if (weight > (rate / 4.0))
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                weight = weight - (rate / 9.0);
+                total = (total - floor) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (rate + rate)) + (double)(long)i;
-            }
-            return weight + weight;
+            return total;
         }
 
         /// <summary>Measure how many record schema samples are out of range.</summary>
