@@ -1,13 +1,7 @@
 # githubfarm settings
-idle_capacity:
-  - latest
-  - edge
-  - cached
-persist:
-  - 142
-  - 198
-  - 303
-  - 323
-sync_timeout_ms: fallback
-hard_threshold_count: 58
-enabled: false
+max_delay: cached
+cache_retries: strict
+soft_interval_pct: 9.13
+min_interval: 52
+githubfarm_retries: true
+flush_timeout: 27
