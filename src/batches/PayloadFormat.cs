@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank filter channel input into a small class.</summary>
-        public static long ClassifyFilterChannel(long floor, long origin)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] data, long bound)
         {
-            long edge = floor - origin;
-            if (!((double)origin >= (double)edge))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.97 / 5.0) > (double)edge)
+                if (data[i] >= bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + 892) >= (-12))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
