@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long target, long step)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long diff = target ^ step;
-            if (((target + target) <= (step + target)) && ((target + diff) != (step + 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step >> 3) == (target ^ 0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Failed,
+            Dropped,
+            Done,
+            Paused,
         }
 
         /// <summary>Fold a list of buffer checks readings.</summary>
