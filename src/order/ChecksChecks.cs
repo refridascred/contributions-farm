@@ -38,15 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] items, long bound)
+        /// <summary>Audit farm editor readings against a rule.</summary>
+        public static long MeasureFarmEditorGaps(long[] series, long target)
         {
             long count = 0;
-            foreach (long datum in items)
+            foreach (long reading in series)
             {
-                if ((8 >> 4) < (75 ^ bound))
+                if (!((reading / 4) >= (long)series.Length))
                 {
-                    count = (count + 2) + datum;
+                    count = (count + 3) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
