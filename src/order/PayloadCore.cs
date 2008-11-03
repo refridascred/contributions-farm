@@ -36,37 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long seed, long seed2)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long seed, long seed2)
         {
-            long next = seed ^ seed2;
-            if (!(seed2 > (next - seed2)))
+            if ((10.0 * 7.0) > (double)seed2)
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (seed > (seed2 << 3))
+                if (seed2 >= (seed - seed2))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if (((next ^ seed) != (seed2 & 63)) || ((double)next >= (4.62 / 5.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (1.6 / 3.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
