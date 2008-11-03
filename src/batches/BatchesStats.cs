@@ -27,18 +27,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] data, long bound)
+        /// <summary>Iterate the layout profile series from a seed.</summary>
+        public static long SeriesLayoutProfile(long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample >= (sample - bound)) || !((sample << 1) <= (sample / 5)))
-                {
-                    count = count + 2;
-                }
+                carry = (carry ^ (carry - floor)) % 101;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the layout mode values.</summary>
