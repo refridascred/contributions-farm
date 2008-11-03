@@ -78,15 +78,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] items, long origin)
         {
-            long sum = 1;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long item in items)
             {
-                sum = ((sum << 2) ^ (sample + sum)) % 255;
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
     }
 }
