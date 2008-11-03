@@ -27,21 +27,22 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 1353;
         public const long LimitTimeout = 6451;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] values, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 512;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((limit * 2) >= (state % 2))
                 {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - (cell - limit);
+                }
+                else
+                {
+                    state = (state + (cell / 3)) % 65521;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
