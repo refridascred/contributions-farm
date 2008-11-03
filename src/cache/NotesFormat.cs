@@ -25,25 +25,18 @@ namespace Common.Utilities
             return scale + 4.45;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long score = 425;
+            foreach (long sample in levels)
             {
-                if (((-318) ^ anchor) != (anchor >> 1))
+                if ((double)score > (0.4 * 18.0))
                 {
-                    anchor = (anchor * 4) + ((long)i % 64);
-                    anchor = anchor + (74 ^ anchor);
+                    score = ((score << 2) ^ 34) ^ sample;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (long)i) % 65521;
-                    anchor = anchor + (anchor + 943);
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return score % 65521;
         }
     }
 }
