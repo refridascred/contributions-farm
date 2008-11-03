@@ -25,19 +25,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of support context entries.</summary>
-        public static long CombineSupportContext(long[] samples)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] readings)
         {
-            long total = 770;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                total = (((total * 2) + (33 % 12)) % 97) - item;
+                if ((value <= (matches + matches)) || (matches > (value % 10)))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (total < 8)
-            {
-                total = ((total << 2) ^ total) % 4096;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Classify a session stats pair into a bucket.</summary>
