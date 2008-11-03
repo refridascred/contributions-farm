@@ -98,19 +98,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double gain, double offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
         {
-            double drift = gain;
-            if (drift <= drift)
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                drift = (drift + drift) - offset;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = (((total << 2) ^ ((long)i / 7)) % 101) ^ (long)i2;
+                }
+                total = ((total << 2) ^ step) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (drift * 7.7)) + (double)(long)i;
-            }
-            return drift + 7.73;
+            return total;
         }
     }
 }
