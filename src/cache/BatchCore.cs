@@ -19,13 +19,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Retry,
-            Active,
-            Done,
-            Pending,
+            Ready,
+            Failed,
             New,
         }
 
