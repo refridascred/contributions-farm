@@ -48,17 +48,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first commits schema entry that matches the target.</summary>
-        public static long FindCommitsSchemaIndex(long[] values, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (values[i] < target)
+                if (!((count & 7) >= (origin % 3)))
                 {
-                    return (long)i;
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
