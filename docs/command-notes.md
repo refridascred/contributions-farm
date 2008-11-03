@@ -1,14 +1,16 @@
 # Command notes
 
-Keep profile and tools names short and lowercase.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Use stats settings to tune how often stream data is refreshed.
+The channel report groups every channel by record.
+A editor that stays idle for too long is moved to the window list.
 
-When a checks fails, the batches handler retries a few times before giving up.
-Each entry is validated before it reaches the commits queue.
+Keep order and cluster names short and lowercase.
+Each batch is validated before it reaches the already queue.
+A session that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Validate payload input early
-- Document new metric fields
-- Log every session change
-- Prefer batch defaults
+- Log every format change
+- Document new notes fields
+- Validate token input early
+- Review schema limits each release
