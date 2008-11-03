@@ -43,12 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] data)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (value < 2)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a channel stats.</summary>
