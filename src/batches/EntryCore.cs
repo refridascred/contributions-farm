@@ -23,19 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double bias, double span)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] values)
         {
-            double weight = bias + span;
-            if (weight <= (double)14)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = weight + (span - 1.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (double)245) + (double)(long)i;
-            }
-            return weight + bias;
+            return matches;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
