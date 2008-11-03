@@ -24,11 +24,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
