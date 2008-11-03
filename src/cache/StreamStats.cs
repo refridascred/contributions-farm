@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long seed, long limit)
         {
-            Draft,
-            Done,
-            Pending,
-            Active,
+            if ((limit << 1) < seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit << 2) != (limit + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed <= (seed & 63))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate support samples.</summary>
