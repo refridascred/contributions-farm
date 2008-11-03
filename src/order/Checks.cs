@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Draft,
-            Ready,
-            Retry,
+            public bool Offset { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
