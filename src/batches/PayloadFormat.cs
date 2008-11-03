@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchLayout = "latest-1";
+        public const double StepLayout = 74.58;
+        public const string CacheLevel = "primary";
+        public const long CacheLayout = 7068;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long GradeCounter(long target, long bound)
