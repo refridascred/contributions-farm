@@ -1,8 +1,5 @@
 {
-  "default_timeout_count": "primary",
-  "command_timeout": ["open", "blue", "latest"],
-  "cache_capacity": [279, 133, 319],
-  "dry_run": 100,
-  "retry_window_count": 78.42,
-  "sync_ratio_ms": "eu-west"
+  "order_capacity": "stable",
+  "warm_depth_count": false,
+  "context_capacity": 250
 }
