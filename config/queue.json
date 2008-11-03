@@ -1,5 +1,7 @@
 {
-  "record_window": true,
-  "poll_threshold": 17,
-  "soft_interval": "local"
+  "batch_delay_s": false,
+  "cache_interval": 100,
+  "audit": [82, 458, 400],
+  "soft_depth_s": true,
+  "editor_ratio": 4945
 }
