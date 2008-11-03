@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long bound, long origin)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            if ((75 & 31) <= bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin ^ bound) != (750 % 8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Draft,
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the record phase values.</summary>
