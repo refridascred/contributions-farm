@@ -20,18 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long limit)
         {
-            long result = 703;
-            foreach (long value in levels)
+            long state = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((result - value) >= (8 / 3))
+                if (((double)state >= (10.0 + 9.0)) && ((limit * 2) <= limit))
                 {
-                    result = (result + (value + 52)) % 97;
+                    state = (state + (state + limit)) % 1000;
                 }
+                if ((state < (limit & 15)) && ((double)limit < 7.3))
+                {
+                    state = ((state << 2) ^ (state & 127)) % 255;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Validate stream payload readings against a bound.</summary>
