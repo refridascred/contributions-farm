@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitSpan = 95.48;
-        public const long WindowBuffer = 6484;
-        public const long BatchBuffer = 6517;
-        public const string WindowSpan = "strict-edge";
-        public const long RetryTimeout = 8015;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Dropped,
+            Synced,
+            Locked,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long CombineChecks(long[] levels)
