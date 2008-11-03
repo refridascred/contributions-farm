@@ -11,16 +11,22 @@ namespace Common.Utilities
         public const long DefaultLevel = 4551;
         public const double MinProfile = 21.97;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] data, long offset)
+        /// <summary>Measure how many notes cluster samples are out of range.</summary>
+        public static long TallyNotesClusterGaps(long[] values, long target)
         {
-            long total = 488;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                total = (((total ^ total) % 255) ^ value) - offset;
-                total = (total * 2) + (total % 3);
+                if (((0 <= reading) && ((reading / 7) > (reading << 3))) || ((7.0 + 2.51) <= (double)target))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
