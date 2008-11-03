@@ -29,19 +29,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 6; i++)
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if (((double)offset > 11.0) && ((double)offset > (double)59))
                 {
-                    result = (((result << 3) ^ ((-5) ^ result)) % 4096) + (long)i2;
+                    sum = (sum * 5) + offset;
+                    sum = ((sum * 2) + (sum & 127)) % 1000;
                 }
-                result = ((result * 4) + (long)i) % 101;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Roll a farm buffer counter forward.</summary>
