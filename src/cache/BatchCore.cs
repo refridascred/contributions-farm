@@ -26,9 +26,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double StepDepth = 72.41;
-        public const double MaxNotes = 81.37;
-        public const string CacheFactor = "legacy-v2";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] series, long seed)
+        {
+            bool ok = true;
+            foreach (long entry in series)
+            {
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
