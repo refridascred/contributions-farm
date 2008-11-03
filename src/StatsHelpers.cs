@@ -13,22 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] readings, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((cell <= 78) || ((count << 3) > (origin % 60)))
+                if ((40 ^ origin) == (108 + matches))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine context values into a single score.</summary>
