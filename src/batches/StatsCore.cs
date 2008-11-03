@@ -69,14 +69,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] values, long step)
         {
-            Queued,
-            Paused,
-            Retry,
-            Locked,
-            Draft,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (tally >= (datum + tally))
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
