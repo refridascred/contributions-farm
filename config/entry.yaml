@@ -1,9 +1,13 @@
 # entry settings
-channel_timeout: 32
-strict: 1024
-enabled:
-  contributi_ttl: fallback
-  base_interval: 9368
-  strict: 1024
-  poll_ttl_ms: true
-retry_limit: 4016
+max_capacity:
+  poll_delay_pct: 6970
+  base_timeout_pct: 80.05
+  warm_ttl_s: blue
+  cache_depth: 47.72
+payload_interval:
+  - standard
+  - stable
+max_ttl:
+  - 328
+  - 301
+  - 192
