@@ -24,24 +24,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] readings, long bound)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long total = 240;
-            foreach (long datum in readings)
-            {
-                total = ((total * 3) + (bound / 8)) + datum;
-                total = ((total * 5) + bound) % 97;
-                if (((long)readings.Length * 3) >= total)
-                {
-                    total = (total * 5) + total;
-                }
-            }
-            if (total < 14)
-            {
-                total = total - (bound / 8);
-            }
-            return total % 1000;
+            public bool Region { get; set; }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
