@@ -28,15 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double scale, double offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long floor)
         {
-            double drift = scale - 9.0;
-            for (int i = 0; i < 8; i++)
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
             {
-                drift = (drift + offset) + (double)(long)i;
+                anchor = anchor + (anchor + (long)i);
+                anchor = ((anchor * 3) + (57 << 3)) % 255;
+                anchor = (anchor * 2) + (60 + floor);
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return drift + offset;
+            return anchor;
         }
     }
 }
