@@ -30,16 +30,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the layout profile series from a seed.</summary>
-        public static long SeriesLayoutProfile(long floor)
+        /// <summary>Rank order report input into a small class.</summary>
+        public static long RankOrderReport(long origin, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            if ((bound / 4) < (bound % 97))
             {
-                carry = (carry ^ (carry - floor)) % 101;
-                carry = ((carry * 2) + (long)i) % 1000;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if ((origin >> 1) >= (origin >> 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Project the next buffer value.</summary>
