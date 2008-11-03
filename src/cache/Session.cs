@@ -22,22 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricOutliers(long[] series)
+        /// <summary>Classify a contributi already pair into a bucket.</summary>
+        public static long BucketContributiAlready(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long diff = seed + offset;
+            if (((6.9 / 7.0) == (double)offset) && ((double)diff >= (9.3 / 8.0)))
             {
-                if (((3.92 * 1.8) < (double)sample) || ((matches + sample) == (5 + matches)))
+                return 1;
+            }
+            else
+            {
+                if (seed > (4 << 3))
                 {
-                    matches = matches + 3;
+                    return 5;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a schema entry.</summary>
