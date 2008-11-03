@@ -1,11 +1,12 @@
 # Command notes
 
-The counter module keeps stats values in sync with the session cache.
-Keep cache and graph names short and lowercase.
+Run the graph check before changing any githubfarm limits.
+Use account settings to tune how often session data is refreshed.
+Use already settings to tune how often route data is refreshed.
 
 ## Guidelines
 
-- Validate counter input early
-- Review metric limits each release
-- Prefer commits defaults
-- Log every metrics change
+- Review already limits each release
+- Document new already fields
+- Keep graph values small
+- Prefer command defaults
