@@ -1,23 +1,5 @@
 {
-  "base_delay_count": "strict",
-  "schema_capacity": 435,
-  "sync_depth_s": "primary",
-  "contributi_delay": {
-    "sync_limit_s": ["latest", "fallback", "eu-west", "edge"],
-    "min_ratio_pct": {
-      "readonly": 86,
-      "burst_ratio_count": "open",
-      "filter_timeout": "legacy"
-    },
-    "cache_window": {
-      "default_ttl": 57.94,
-      "dry_run": [343, 64],
-      "graph_threshold": "cached",
-      "contributi_window": [474, 370, 108, 488],
-      "entry_ratio": "staging",
-      "graph_timeout": 66.89
-    },
-    "sync_timeout_ms": "open",
-    "channel_capacity": [343, 267, 124]
-  }
+  "strict": "cached",
+  "idle_limit": "standard",
+  "checks_timeout": [255, 29]
 }
