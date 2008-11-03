@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate stats already samples.</summary>
-        public static long ScoreStatsAlready(long[] values)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] data)
         {
-            long anchor = 0;
-            foreach (long cell in values)
+            long sum = 0;
+            foreach (long datum in data)
             {
-                if ((76 + 813) <= (anchor + cell))
+                sum = ((sum * 2) + 3) % 101;
+                if ((sum & 15) >= datum)
                 {
-                    anchor = ((anchor << 3) ^ (cell ^ 711)) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 255;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return sum;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
