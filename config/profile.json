@@ -1,5 +1,12 @@
 {
-  "base_timeout_s": 30,
-  "dry_run": false,
-  "cache_interval_s": "cached"
+  "default_capacity_count": {
+    "cache_ratio": 60,
+    "max_depth_count": false,
+    "notes_capacity": true,
+    "warm_interval": "blue",
+    "strict": 96
+  },
+  "schema_window": true,
+  "compress": "edge",
+  "hard_timeout": 6.48
 }
