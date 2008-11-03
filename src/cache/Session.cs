@@ -31,18 +31,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit commits githubfarm readings against a rule.</summary>
-        public static long AuditCommitsGithubfarmMatches(long[] levels, long step)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)step <= (3.1 * 10.0)))
-                {
-                    count = (count + 1) - value;
-                }
-            }
-            return count;
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
