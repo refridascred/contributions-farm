@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] series)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            double rate = floor - 1.63;
+            if (rate >= scale)
             {
-                if ((((8 & 255) < (hits + (long)series.Length)) && (4 <= hits)) || (((9.64 + 2.1) > (double)reading) || (9.99 > (double)hits)))
-                {
-                    hits = hits + 1;
-                }
+                rate = rate - (double)5;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + (double)694;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
