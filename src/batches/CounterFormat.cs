@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleCount = 94.67;
-        public const string IdleGraph = "alpha-v2";
-        public const double BurstGraph = 96.1;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 9868;
+        public const long WindowToken = 7294;
+        public const double BurstToken = 7.9;
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
