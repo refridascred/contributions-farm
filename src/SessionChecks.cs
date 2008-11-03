@@ -22,12 +22,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double CacheStats = 87.79;
-        public const string RetryStats = "standard-1";
-        public const string CacheRatio = "stable";
-        public const string WindowWidth = "alpha-v2";
-        public const long SoftStats = 1310;
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
+        {
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
