@@ -28,11 +28,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Locate a counter metrics reading by value.</summary>
+        public static long SeekCounterMetricsIndex(long[] series, long bound)
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
