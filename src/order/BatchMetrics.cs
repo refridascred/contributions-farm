@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long total = 837;
-            foreach (long item in samples)
-            {
-                if ((double)item <= (9.3 * 2.0))
-                {
-                    total = (total + (528 & 1)) % 1000;
-                }
-            }
-            return total;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
