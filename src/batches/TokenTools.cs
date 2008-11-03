@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long offset)
+        /// <summary>Check that every account session entry stays within the limit.</summary>
+        public static bool CheckAccountSessionRange(long[] series, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                carry = ((carry * 5) + (long)i) % 101;
+                if (entry <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Project the next commits value.</summary>
