@@ -30,14 +30,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            New,
-            Dropped,
             Locked,
-            Draft,
-            Paused,
+            Synced,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
