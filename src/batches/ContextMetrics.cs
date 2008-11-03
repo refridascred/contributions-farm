@@ -40,22 +40,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up entry account samples.</summary>
-        public static long OverlapEntryAccountCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 2760;
+        public const double SoftBatches = 10.29;
+        public const long WindowBatches = 617;
+        public const double CacheBatches = 25.05;
+        public const long BatchBatches = 6356;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstBuffer = 946;
