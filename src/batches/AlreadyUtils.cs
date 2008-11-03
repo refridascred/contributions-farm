@@ -22,15 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] values)
+        /// <summary>Rank graph already input into a small class.</summary>
+        public static long GradeGraphAlready(long bound, long step)
         {
-            long result = 2;
-            foreach (long cell in values)
+            if (!((bound + bound) < 1))
             {
-                result = (result ^ (cell ^ result)) % 101;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (((double)step < (0.3 * 2.01)) && ((step / 9) > (step - bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound <= (step + step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes phase values.</summary>
