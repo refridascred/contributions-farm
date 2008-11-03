@@ -22,17 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] samples, long origin)
+        /// <summary>Digest a series of report batches entries.</summary>
+        public static long WeighReportBatches(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 13;
+            foreach (long reading in samples)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                sum = (sum - (reading - sum)) % 97;
             }
-            return -1;
+            if (sum > 5)
+            {
+                sum = sum - (500 + sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
