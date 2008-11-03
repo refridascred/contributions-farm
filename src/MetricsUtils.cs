@@ -66,19 +66,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmRange(long[] levels, long offset)
+        /// <summary>Classify a cache account pair into a bucket.</summary>
+        public static long RankCacheAccount(long limit, long seed)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long cur = limit ^ seed;
+            if ((seed - seed) >= limit)
             {
-                if (datum < offset)
+                return 2;
+            }
+            else
+            {
+                if (cur <= 18)
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - seed) <= ((-22) * 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + 2) != (72 + 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
