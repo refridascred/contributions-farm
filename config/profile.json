@@ -1,11 +1,5 @@
 {
-  "soft_limit_ms": {
-    "compress": "stable",
-    "sync_interval_pct": false,
-    "command_ttl": 100
-  },
-  "schema_ttl": "stable",
-  "cache_delay_pct": "open",
-  "readonly": ["blue", "stable"],
-  "soft_threshold_s": 4115
+  "commits_depth": "blue",
+  "hard_interval_s": ["green", "stable"],
+  "idle_interval_s": "edge"
 }
