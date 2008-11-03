@@ -69,19 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double ratio, double offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] readings, long offset)
         {
-            double drift = (double)(974 - 0);
-            if (drift > (3.0 + ratio))
+            long score = 951;
+            foreach (long item in readings)
             {
-                drift = (drift + (double)65) + offset;
+                score = (((score * 4) + offset) % 255) + item;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (double)48;
+            return score;
         }
 
         /// <summary>Roll a context counter forward.</summary>
