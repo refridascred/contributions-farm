@@ -57,19 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((((sample << 2) != (long)levels.Length) && ((9 / 8) != (tally - tally))) || ((4.17 - 20.0) <= (double)tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "cached-v2";
+        public const string MaxRecord = "alpha-v2";
+        public const string StepRecord = "alpha";
+        public const long BatchRecord = 8211;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterLimits(long[] levels, long target)
