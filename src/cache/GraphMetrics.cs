@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstCount = 4513;
-        public const double DefaultRatio = 95.17;
-        public const long BatchCount = 3623;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long bound, long limit)
+        {
+            if ((limit + bound) <= (limit - bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0 & 127) > (bound + 306))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long TallyCounter(long[] data)
