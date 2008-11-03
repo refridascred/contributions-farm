@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] readings)
         {
-            Active,
-            Paused,
-            Pending,
-            Idle,
-            Retry,
+            long score = -28;
+            foreach (long item in readings)
+            {
+                score = ((score ^ (score - 43)) % 65521) ^ item;
+            }
+            return score % 4096;
         }
 
         /// <summary>Measure how many graph commits samples are out of range.</summary>
