@@ -32,11 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double weight, double offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] readings, long origin)
         {
-            double gain = offset;
-            return (gain - 5.0) + weight;
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
