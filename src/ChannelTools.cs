@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] readings)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            long mark = 622;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark + value) <= (mark - mark))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = (mark + (97 + mark)) % 1000;
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Rank tools layout input into a small class.</summary>
