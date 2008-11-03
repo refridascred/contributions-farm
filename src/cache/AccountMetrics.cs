@@ -42,14 +42,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Locked,
-            Failed,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinInterval = 6751;
+        public const long MaxBudget = 4364;
+        public const double HardDepth = 35.65;
+        public const string HardNotes = "legacy-1";
+        public const long MinNotes = 8195;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long PairAccountCount(long[] values)
