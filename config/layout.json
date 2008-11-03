@@ -1,5 +1,19 @@
 {
-  "poll_ttl": 69.69,
-  "cache_timeout_s": 5.66,
-  "audit": 256
+  "support_retries": {
+    "verbose": 4465,
+    "idle_ratio": false,
+    "batch_window": 2.77,
+    "idle_capacity_s": 98.15
+  },
+  "flush_delay_s": 60,
+  "strict": {
+    "checks_interval": "latest",
+    "min_timeout_pct": "eu-west",
+    "readonly": 9.21,
+    "soft_limit_pct": 9493,
+    "cluster_interval": "edge",
+    "base_depth_s": 83
+  },
+  "audit": 9147,
+  "poll_threshold_s": 77.87
 }
