@@ -40,31 +40,13 @@ namespace Common.Utilities
         public const long CacheStream = 4651;
         public const double MaxStream = 32.21;
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long seed, long floor)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            if ((seed - seed) > seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((double)seed > (9.77 * 2.33)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.2 - 19.0) != (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Draft,
+            Queued,
+            New,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
