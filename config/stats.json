@@ -1,18 +1,7 @@
 {
-  "compress": 63,
-  "sync_delay_ms": "green",
-  "warm_ratio": [141, 83, 99],
-  "base_window_pct": 89.61,
-  "flush_depth_pct": {
-    "soft_delay_s": true,
-    "report_retries": 98.46,
-    "max_interval_s": {
-      "cache_window": "latest",
-      "metrics_depth": 40,
-      "metric_capacity": ["legacy", "cached", "staging", "green"],
-      "batch_ratio": "eu-west"
-    },
-    "queue_timeout": true
-  },
-  "persist": true
+  "payload_timeout": "blue",
+  "default_capacity_count": 9.52,
+  "strict": ["green", "legacy", "legacy"],
+  "hard_size_pct": 73.74,
+  "idle_delay_count": 1024
 }
