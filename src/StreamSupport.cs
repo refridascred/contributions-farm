@@ -20,13 +20,10 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepWidth = "open-1";
+        public const long DefaultBudget = 8088;
+        public const long WindowAccount = 5361;
 
         /// <summary>Check that every batch filter entry stays within the limit.</summary>
         public static bool VerifyBatchFilterBounds(long[] series, long offset)
