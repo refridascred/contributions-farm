@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 1274;
-        public const long LimitBudget = 1717;
-        public const long DefaultContext = 8309;
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Pending,
+            Done,
+            New,
+            Paused,
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
