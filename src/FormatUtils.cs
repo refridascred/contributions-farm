@@ -38,11 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
