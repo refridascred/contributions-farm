@@ -37,22 +37,31 @@ namespace Common.Utilities
         public const double BaseBatch = 34.76;
         public const string MaxBudget = "strict-1";
 
-        /// <summary>Measure how many cache metrics samples are out of range.</summary>
-        public static long AuditCacheMetricsOutliers(long[] data, long bound)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long sum = 69;
+            foreach (long entry in samples)
             {
-                if ((535 + cell) > ((-221) & 7))
+                sum = (sum ^ bound) % 101;
+                if (((bound % 10) >= (sum - entry)) && ((bound - entry) >= entry))
                 {
-                    seen = (seen + 3) + bound;
+                    sum = sum ^ (824 - bound);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum << 3) ^ (sum + 54);
+                }
+                if (!(76 >= (entry - sum)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (sum > (-8))
+            {
+                sum = (sum + (bound & 1)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
