@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-staging}"
 case "${mode}" in
-    latest)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in cached blue strict primary; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=193
-log "limit is ${BUFFER_LIMIT}"
