@@ -15,18 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowHits(long[] data, long origin)
+        /// <summary>Measure how many graph commits samples are out of range.</summary>
+        public static long MeasureGraphCommitsHits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((18.0 < (double)hits) && ((19.0 / 7.0) > (double)origin))
+                if ((step - step) <= seen)
                 {
-                    hits = (hits + 3) ^ entry;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
