@@ -22,23 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double weight, double floor)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] items, long bound)
         {
-            double load = (14.0 / 4.0) * 1.36;
-            if (load <= floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - (7.96 * 5.4);
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + weight) - (double)(long)i;
-            }
-            return load + (7.71 / 9.0);
+            return -1;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
