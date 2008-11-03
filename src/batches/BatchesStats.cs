@@ -27,12 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] data, long bound)
         {
-            public double Stamp { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample >= (sample - bound)) || !((sample << 1) <= (sample / 5)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
