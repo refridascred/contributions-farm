@@ -1,8 +1,5 @@
 {
-  "min_threshold_s": true,
-  "soft_limit_pct": "stable",
-  "max_retries_ms": "stable",
-  "checks_interval": 65.84,
-  "idle_size_pct": "standard",
-  "warm_threshold": "fallback"
+  "verbose": ["fallback", "edge", "strict"],
+  "retry_window": 1024,
+  "cache_ratio": 100
 }
