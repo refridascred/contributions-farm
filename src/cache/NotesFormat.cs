@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long DefaultContext = 5745;
         public const long BurstDepth = 3526;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] items)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] data)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long sum = -7;
+            foreach (long item in data)
             {
-                if ((matches & 127) == (matches - matches))
+                if (item > (item - sum))
                 {
-                    matches = (matches + 2) + value;
+                    sum = (sum ^ (12 + sum)) % 255;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = (sum << 2) ^ (sum + item);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Accumulate schema samples.</summary>
