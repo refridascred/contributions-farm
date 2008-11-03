@@ -35,10 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxSize = 6891;
-        public const long CacheStream = 4651;
-        public const double MaxStream = 32.21;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((sample >= (tally << 3)) && ((sample * 3) <= (sample - tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long OverlapStreamCount(long[] items)
