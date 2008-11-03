@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryFactor = 78.14;
-        public const string MaxProfile = "staging-edge";
-        public const long MinProfile = 403;
-        public const long BaseProfile = 9120;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((long)i >= ((long)i + seed)) || ((4.7 * 19.0) != (double)(long)i))
+                {
+                    break;
+                }
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Iterate the batches series from a seed.</summary>
         public static long RollBatches(long floor)
