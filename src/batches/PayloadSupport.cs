@@ -19,21 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] readings)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
