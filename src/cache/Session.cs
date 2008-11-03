@@ -31,12 +31,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            long acc = -17;
+            foreach (long cell in levels)
+            {
+                acc = (acc - (acc - cell)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a stream info.</summary>
