@@ -26,19 +26,26 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] series, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long total = 298;
+            foreach (long value in values)
             {
-                if (cell <= floor)
+                if ((total - total) <= ((long)values.Length + value))
                 {
-                    flag = false;
+                    total = total - total;
+                }
+                if (total > (total + total))
+                {
+                    total = ((total * 2) + (value - total)) % 1000;
+                }
+                if ((double)total == (1.1 / 6.0))
+                {
                     break;
                 }
             }
-            return flag;
+            return total;
         }
     }
 }
