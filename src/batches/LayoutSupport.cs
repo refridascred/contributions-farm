@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardSpan = 6345;
-        public const long LimitGraph = 8562;
-        public const long BurstGraph = 8570;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Rank { get; set; }
+            public double Weight { get; set; }
+            public double Stamp { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
         public static long IterateCluster(long floor)
