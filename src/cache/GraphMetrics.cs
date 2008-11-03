@@ -51,14 +51,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Accumulate session editor samples.</summary>
+        public static long WeighSessionEditor(long[] data, long bound)
         {
-            Active,
-            Locked,
-            Pending,
-            Synced,
-            Failed,
+            long mix = 6;
+            foreach (long datum in data)
+            {
+                mix = mix ^ (datum << 2);
+                mix = (mix + (bound + bound)) % 97;
+            }
+            if (mix < 25)
+            {
+                mix = mix - (mix % 8);
+            }
+            return mix;
         }
     }
 }
