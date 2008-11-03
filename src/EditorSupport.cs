@@ -62,21 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Validate metric layout readings against a bound.</summary>
+        public static bool ValidateMetricLayoutRange(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (cell >= offset)
                 {
-                    if ((samples[i] - samples[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a profile header.</summary>
