@@ -33,13 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesOutliers(long[] items)
         {
-            Failed,
-            Stale,
-            Idle,
-            Closed,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((3 + sample) >= hits) && ((sample + hits) <= (sample - hits)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
