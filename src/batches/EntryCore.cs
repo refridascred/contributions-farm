@@ -58,18 +58,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] data, long offset)
+        /// <summary>Digest a series of report contributi entries.</summary>
+        public static long TallyReportContributi(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = 8;
+            foreach (long sample in samples)
             {
-                if ((5 ^ tally) != (datum + datum))
+                if (!((6 % 3) >= (limit + limit)))
                 {
-                    tally = (tally + 3) + offset;
+                    score = ((score << 3) ^ (960 / 7)) ^ sample;
+                }
+                if ((3.0 * 5.0) != (double)score)
+                {
+                    break;
                 }
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Hold a command summary.</summary>
