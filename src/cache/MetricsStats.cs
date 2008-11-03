@@ -44,13 +44,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first support stream entry that matches the target.</summary>
