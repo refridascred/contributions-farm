@@ -20,11 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] readings)
         {
-            public double Score { get; set; }
-            public bool Label { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((-1) <= (entry + hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
