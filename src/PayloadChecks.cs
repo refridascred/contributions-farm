@@ -59,21 +59,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] samples, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)value > (15.0 + 8.01))
                 {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 3) ^ (740 / 8)) - origin;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
