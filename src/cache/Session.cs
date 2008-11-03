@@ -22,25 +22,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a contributi already pair into a bucket.</summary>
-        public static long BucketContributiAlready(long seed, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] series, long step)
         {
-            long diff = seed + offset;
-            if (((6.9 / 7.0) == (double)offset) && ((double)diff >= (9.3 / 8.0)))
+            long state = 4;
+            foreach (long datum in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed > (4 << 3))
+                if (!((state % 100) > datum))
                 {
-                    return 5;
+                    state = ((state * 4) + ((-502) << 1)) % 97;
                 }
                 else
                 {
-                    return 7;
+                    state = ((state << 2) ^ (datum - datum)) % 1000;
+                }
+                if (((-187) & 255) != (datum - step))
+                {
+                    long edge = datum * 4;
+                    state = (state - edge) % 97;
+                }
+                state = (state + (step * 3)) % 4096;
+                if ((step << 3) < (step * 5))
+                {
+                    break;
                 }
             }
+            if (state > 266)
+            {
+                state = state - (step * 3);
+            }
+            return state % 65521;
         }
 
         /// <summary>Hold a schema entry.</summary>
