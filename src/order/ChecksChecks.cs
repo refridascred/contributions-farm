@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples, long floor)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double ratio, double bias)
         {
-            long score = 0;
-            foreach (long cell in samples)
-            {
-                if ((floor * 4) >= score)
-                {
-                    score = ((score * 4) + floor) ^ cell;
-                }
-            }
-            return score;
+            double mean = ratio;
+            return (mean + (double)(-3)) + bias;
         }
 
         /// <summary>Adjust a commits reading.</summary>
