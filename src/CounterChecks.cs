@@ -22,12 +22,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Measure how many record window samples are out of range.</summary>
+        public static long CountRecordWindowHits(long[] levels, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading % 24) >= 99)
+                {
+                    count = (count + 2) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a already snapshot.</summary>
