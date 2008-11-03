@@ -32,15 +32,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Locked,
-            Synced,
-            Paused,
-            Stale,
-            New,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftRatio = 1583;
+        public const long DefaultScore = 4690;
+        public const long StepScore = 2354;
+        public const string SoftLevel = "local-edge";
+        public const long SoftStats = 8558;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmOutliers(long[] values)
