@@ -1,6 +1,5 @@
 {
-  "default_size_ms": 73.72,
-  "cache_capacity": true,
-  "soft_delay": true,
-  "hard_timeout_s": "latest"
+  "hard_depth": 26.55,
+  "graph_retries": true,
+  "hard_delay": "stable"
 }
