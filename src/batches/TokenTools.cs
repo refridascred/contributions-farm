@@ -31,13 +31,10 @@ namespace Common.Utilities
             return drift + (floor - floor);
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Idle,
-            Queued,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetrySpan = 65.74;
+        public const long StepBuffer = 4810;
+        public const long IdleLevel = 5999;
+        public const string MinTimeout = "local";
     }
 }
