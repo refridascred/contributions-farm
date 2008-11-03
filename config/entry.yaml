@@ -1,9 +1,9 @@
 # entry settings
-poll_delay_ms:
-  - fallback
+default_ttl_s:
+  - strict
   - open
-  - stable
-  - latest
-readonly: 1024
-cluster_timeout: true
-retry_window_s: 50
+  - legacy
+base_window:
+  - open
+  - open
+editor_depth: 5737
