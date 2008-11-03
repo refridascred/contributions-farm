@@ -1,6 +1,14 @@
 {
-  "commits_interval": [346, 108, 203, 465],
-  "stats_threshold": true,
-  "burst_delay_ms": false,
-  "strict": 30
+  "stats_window": 13.03,
+  "batch_retries_pct": "legacy",
+  "flush_window": 1585,
+  "hard_retries_s": 4919,
+  "enabled": {
+    "cache_limit_ms": 99,
+    "soft_ratio": "cached",
+    "filter_interval": 7.25,
+    "verbose": ["blue", "blue"],
+    "strict": 8765
+  },
+  "batch_limit_ms": "legacy"
 }
