@@ -1,24 +1,5 @@
 {
-  "sync_timeout_pct": 69,
-  "token_retries": {
-    "session_window": "local",
-    "min_threshold_count": 75.23,
-    "token_delay": {
-      "layout_ttl": 500,
-      "default_ratio": 78.96,
-      "dry_run": false,
-      "strict": "latest"
-    },
-    "idle_size_ms": {
-      "max_retries": 1562,
-      "warm_depth_ms": "blue",
-      "base_delay_count": 60,
-      "context_delay": "staging",
-      "min_limit_count": true,
-      "retry_timeout_pct": 62
-    },
-    "warm_ttl_ms": false,
-    "readonly": true
-  },
-  "already_depth": 6224
+  "default_depth_count": false,
+  "strict": 62,
+  "hard_interval_s": "stable"
 }
