@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstSpan = 8702;
+        public const double WindowContext = 25.24;
+        public const long BaseSize = 9622;
+        public const long DefaultContext = 5745;
+        public const long BurstDepth = 3526;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long MeasureMetricsOutliers(long[] items)
