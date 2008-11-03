@@ -26,19 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long DeriveBuffer(long seed)
         {
-            long carry = origin;
+            long acc = seed;
             for (int i = 0; i < 23; i++)
             {
-                if ((696 ^ 246) == (carry - carry))
-                {
-                    carry = (carry * 3) + (carry >> 3);
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                acc = (acc * 3) + ((long)i - (long)i);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
