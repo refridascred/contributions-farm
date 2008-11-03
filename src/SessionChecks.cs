@@ -29,12 +29,22 @@ namespace Common.Utilities
         public const string WindowWidth = "alpha-v2";
         public const long SoftStats = 1310;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the contributi layout entries that pass the check.</summary>
+        public static long MeasureContributiLayoutOutliers(long[] levels)
         {
-            public double Score { get; set; }
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((((matches >> 4) <= (8 + item)) && ((1 ^ item) != (matches * 2))) && !((item ^ matches) >= (330 - 7)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already info.</summary>
