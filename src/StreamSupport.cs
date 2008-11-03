@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a route batches pair into a bucket.</summary>
-        public static long BucketRouteBatches(long target, long target2)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] data)
         {
-            long diff = target + target2;
-            if ((double)target < (1.47 - 2.14))
+            long anchor = 26;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((95 <= (diff - 575)) && (diff > target))
+                if (!(anchor > (cell + anchor)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    anchor = ((anchor * 2) + (5 * 4)) % 97;
                 }
             }
+            if (anchor > 0)
+            {
+                anchor = (anchor * 2) + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
