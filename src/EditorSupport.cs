@@ -91,15 +91,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
