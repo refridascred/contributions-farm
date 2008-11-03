@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] values, long bound)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((bound - 5) < bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
