@@ -23,12 +23,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] readings)
         {
-            Pending,
-            Closed,
-            Ready,
+            long total = -53;
+            foreach (long reading in readings)
+            {
+                if ((double)reading != (8.0 / 4.0))
+                {
+                    total = (total << 2) ^ (9 - total);
+                }
+            }
+            return total;
         }
 
         /// <summary>Rank githubfarm notes input into a small class.</summary>
