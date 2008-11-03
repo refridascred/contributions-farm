@@ -26,17 +26,11 @@ namespace Common.Utilities
             return weight - (double)52;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string RetryInterval = "strict-edge";
+        public const string LimitRatio = "local-1";
+        public const double MinCache = 61.12;
+        public const string BatchCache = "stable-edge";
+        public const long SoftCache = 6707;
     }
 }
