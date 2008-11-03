@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double ratio, double offset)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long origin)
         {
-            double scale = (offset - ratio) / 8.0;
-            if (scale <= (scale - offset))
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                scale = scale - (0.45 + scale);
+                score = (score * 2) + origin;
+                score = (score - (score / 2)) % 101;
+                score = ((score * 4) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale + offset;
-            }
-            return scale - (17.0 + scale);
+            return score;
         }
 
         /// <summary>Describe the layout kind values.</summary>
