@@ -68,11 +68,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double rate, double floor)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double weight = 20.0;
-            return (weight - floor) + rate;
+            public double Region { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
