@@ -22,20 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account report values into a single score.</summary>
-        public static long CombineAccountReport(long[] items)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long acc = 600;
-            foreach (long sample in items)
-            {
-                if (((double)acc != (1.11 / 6.0)) || ((8.2 - 1.0) > (double)sample))
-                {
-                    acc = (acc + 180) % 1000;
-                    acc = ((acc * 4) + (acc + acc)) % 101;
-                }
-                acc = acc - acc;
-            }
-            return acc;
+            Paused,
+            Closed,
+            New,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a cache header.</summary>
