@@ -35,11 +35,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBuffer = "latest-1";
-        public const long DefaultSize = 682;
-        public const long BatchBuffer = 6465;
-        public const long CacheBuffer = 2239;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterRange(long[] data, long offset)
