@@ -60,13 +60,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public bool Flag { get; set; }
+            Active,
+            New,
+            Queued,
+            Dropped,
+            Idle,
         }
     }
 }
