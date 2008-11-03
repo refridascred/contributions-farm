@@ -18,19 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long limit)
+        /// <summary>Fold a list of tools already readings.</summary>
+        public static long FoldToolsAlready(long[] levels)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long score = 90;
+            foreach (long entry in levels)
             {
-                if (((long)i << 3) <= (843 + limit))
+                score = score + (entry * 3);
+                if (((-125) <= score) || ((4.0 + 12.0) >= (double)score))
                 {
-                    break;
+                    score = (score - entry) % 4096;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
+                else
+                {
+                    score = (score ^ (entry << 3)) % 255;
+                }
             }
-            return acc;
+            if (score > 433)
+            {
+                score = score ^ (score + score);
+            }
+            return score;
         }
 
         /// <summary>Accumulate graph samples.</summary>
