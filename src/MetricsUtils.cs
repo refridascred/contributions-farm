@@ -30,19 +30,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Count metrics githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareMetricsGithubfarmCount(long[] levels)
         {
-            long mix = 6;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix ^ sample) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mix > 9)
-            {
-                mix = (mix + ((long)data.Length - mix)) % 65521;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Locate a stats metrics reading by value.</summary>
