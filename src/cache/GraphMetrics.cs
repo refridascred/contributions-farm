@@ -24,18 +24,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] values, long target)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double scale, double floor)
         {
-            long carry = 73;
-            foreach (long item in values)
+            double mean = (double)(-7) - (scale * 0.8);
+            if (mean <= mean)
             {
-                if ((8.3 - 4.4) < (double)carry)
-                {
-                    carry = ((carry * 5) + target) - item;
-                }
+                mean = mean + floor;
             }
-            return carry;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Audit notes farm readings against a rule.</summary>
