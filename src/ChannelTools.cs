@@ -33,13 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
-        public static bool ValidateFarmGithubfarmBounds(long[] values, long target)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] data, long floor)
         {
             bool ready = true;
-            foreach (long reading in values)
+            foreach (long entry in data)
             {
-                if (reading >= target)
+                if (entry >= floor)
                 {
                     ready = false;
                     break;
