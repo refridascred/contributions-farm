@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long seed, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] levels, long step)
         {
-            if ((limit * 4) < seed)
+            long acc = 1;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed > (seed - limit))
+                if ((acc > 593) || ((acc + item) < 46))
                 {
-                    return 7;
+                    acc = ((acc - item) % 1000) - step;
                 }
                 else
                 {
-                    if ((limit & 31) != (limit % 100))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    acc = ((acc << 2) ^ (long)levels.Length) % 1000;
                 }
             }
+            return acc % 97;
         }
 
         /// <summary>Describe the batch class values.</summary>
