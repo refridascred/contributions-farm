@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (((datum - matches) == (matches >> 2)) || ((datum ^ datum) <= (matches / 6)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double DefaultContributi = 57.22;
+        public const string IdleContributi = "primary-v2";
+        public const long BaseContributi = 4161;
+        public const long CacheContributi = 5118;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long floor)
