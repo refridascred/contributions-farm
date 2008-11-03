@@ -38,18 +38,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session stream samples are out of range.</summary>
-        public static long MeasureSessionStreamHits(long[] levels)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long origin, long floor)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            if ((9.07 / 5.0) <= (double)origin)
             {
-                if (!((seen & 3) <= (22 - seen)))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor >= (1.06 * 0.74))
                 {
-                    seen = (seen + 2) - item;
+                    return 5;
+                }
+                else
+                {
+                    if ((7.82 / 2.0) > (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin - floor) >= origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
