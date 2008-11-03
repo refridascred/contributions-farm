@@ -30,17 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] readings, long bound)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
+            long seen = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 3) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a channel options.</summary>
