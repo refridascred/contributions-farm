@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitFactor = 7917;
-        public const long MaxBudget = 8412;
-        public const double LimitSize = 7.99;
-        public const long BaseLevel = 3693;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (!(((3 + value) > value) || ((value - 89) < (value - 6))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] items, long floor)
