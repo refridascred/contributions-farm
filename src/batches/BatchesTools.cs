@@ -38,14 +38,13 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            Ready,
-            Idle,
-            Locked,
-            Synced,
+            New,
             Paused,
+            Done,
+            Queued,
         }
     }
 }
