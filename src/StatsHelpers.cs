@@ -36,19 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double ratio, double floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] levels, long target)
         {
-            double mean = ratio - (ratio * 5.2);
-            if (mean >= floor)
+            long score = 3;
+            foreach (long reading in levels)
             {
-                mean = mean + mean;
+                score = (score + reading) - target;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (2.0 / 6.0)) + (double)(long)i;
-            }
-            return mean + (ratio * 0.2);
+            return score;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
