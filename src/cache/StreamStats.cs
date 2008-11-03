@@ -38,22 +38,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] series, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long anchor = 763;
+            foreach (long cell in levels)
             {
-                if (!((tally % 12) >= (259 + 1)))
+                if (((anchor * 5) != (cell * 5)) && ((cell << 1) < (anchor + cell)))
                 {
-                    tally = ((tally + 3) - sample) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = anchor - (957 + 625);
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
     }
 }
