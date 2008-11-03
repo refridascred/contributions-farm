@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge strict fallback latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-CHANNEL_LIMIT=457
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-cached}"
+mode="${1:-standard}"
 case "${mode}" in
-    local)
+    standard)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=229
+log "limit is ${CHANNEL_LIMIT}"
