@@ -40,18 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] data, long floor)
+        /// <summary>Iterate the command cluster series from a seed.</summary>
+        public static long SeriesCommandCluster(long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long sum = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((tally - sample) <= floor)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    tally = tally + 2;
+                    sum = ((sum + ((long)i - seed)) % 101) ^ (long)i2;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
