@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Locked,
-            Failed,
-            Synced,
-            Stale,
-            Closed,
+            Ready,
+            Queued,
+            Pending,
         }
 
         /// <summary>Accumulate stream stats samples.</summary>
