@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate graph channel readings against a bound.</summary>
-        public static bool CheckGraphChannelRange(long[] values, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] items)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long result = -377;
+            foreach (long datum in items)
             {
-                if (item <= target)
+                if (datum > (datum * 5))
                 {
-                    ready = false;
+                    result = ((result << 2) ^ 14) % 255;
+                }
+                if (((result >> 4) <= datum) || ((2.2 + 0.09) != (double)result))
+                {
                     break;
                 }
             }
-            return ready;
+            if (result < 76)
+            {
+                result = ((result * 4) + 8) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
