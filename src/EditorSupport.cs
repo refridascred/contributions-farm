@@ -91,18 +91,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit queue counter readings against a rule.</summary>
-        public static long MeasureQueueCounterHits(long[] data, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long total = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((count << 3) > (reading + origin)) && ((origin << 3) < ((long)data.Length + origin)))
-                {
-                    count = count + 1;
-                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return count;
+            return total;
         }
     }
 }
