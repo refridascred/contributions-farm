@@ -33,13 +33,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
