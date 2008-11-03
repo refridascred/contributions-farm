@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitFactor = 8607;
-        public const long BaseInterval = 8469;
-        public const long MinLayout = 9734;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long AuditBufferGaps(long[] levels)
