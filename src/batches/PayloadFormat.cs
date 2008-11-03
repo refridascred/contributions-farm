@@ -20,13 +20,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] series, long offset)
         {
-            Active,
-            Failed,
-            Retry,
-            Locked,
+            long acc = 17;
+            foreach (long datum in series)
+            {
+                acc = (acc ^ datum) - offset;
+                acc = acc + acc;
+                if ((acc + datum) == (acc + acc))
+                {
+                    acc = ((acc << 2) ^ (datum / 2)) % 255;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
