@@ -1,8 +1,9 @@
 {
-  "compress": false,
-  "record_interval": 63,
-  "window_interval": "edge",
-  "warm_ttl_ms": 92,
-  "already_window": 9.87,
-  "batch_depth_count": "legacy"
+  "flush_ttl_count": {
+    "persist": "open",
+    "max_interval_count": "open",
+    "graph_delay": 80
+  },
+  "audit": 5171,
+  "batch_threshold_s": "staging"
 }
