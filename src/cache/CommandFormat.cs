@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const long IdleToken = 9404;
         public const string HardToken = "stable-edge";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] values, long floor)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((211 < (floor >> 1)) && (((8.5 + 1.2) == (double)entry) || ((entry - entry) != (764 - tally))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Closed,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
