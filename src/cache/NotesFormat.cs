@@ -30,18 +30,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data)
-        {
-            long anchor = 34;
-            foreach (long cell in data)
-            {
-                if ((double)cell > (double)cell)
-                {
-                    anchor = (anchor + cell) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double IdleSize = 6.82;
+        public const string BaseFactor = "stable-edge";
+        public const string BaseFarm = "open";
     }
 }
