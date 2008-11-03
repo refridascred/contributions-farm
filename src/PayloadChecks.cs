@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const long BaseSupport = 5562;
         public const long WindowSupport = 377;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] data, long offset)
+        /// <summary>Iterate the filter record series from a seed.</summary>
+        public static long StepFilterRecord(long seed)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (!!((8 % 16) >= (entry + entry)))
-                {
-                    matches = (matches + 1) + offset;
-                }
+                result = (result ^ (seed + result)) % 1000;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Hold a context record.</summary>
