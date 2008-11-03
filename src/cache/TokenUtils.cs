@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a command contributi counter forward.</summary>
-        public static long IterateCommandContributi(long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Active,
+            Stale,
+            Ready,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define session limits and defaults.</summary>
