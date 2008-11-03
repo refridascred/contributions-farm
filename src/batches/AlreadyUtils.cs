@@ -72,38 +72,26 @@ namespace Common.Utilities
         public const long MaxGraph = 4628;
         public const long WindowWidth = 1838;
 
-        /// <summary>Grade a token profile value against two limits.</summary>
-        public static long BucketTokenProfile(long origin, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] levels, long floor)
         {
-            if ((origin + bound) >= (origin % 64))
+            long sum = 390;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)(-46) > (double)origin)
+                if (3.9 > (double)floor)
                 {
-                    return 3;
+                    sum = (sum + (sum - value)) % 65521;
                 }
-                else
+                if ((floor ^ sum) < (floor + sum))
                 {
-                    if (((bound - 8) == (origin * 3)) || ((bound >> 1) != (origin + 456)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((6 << 2) <= (bound + 970)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = (sum - (sum / 8)) % 4096;
                 }
             }
+            if (sum > 779)
+            {
+                sum = (sum + sum) % 65521;
+            }
+            return sum;
         }
     }
 }
