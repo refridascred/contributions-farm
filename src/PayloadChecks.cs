@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long BaseSupport = 5562;
         public const long WindowSupport = 377;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            Failed,
-            Idle,
-            Retry,
-            Stale,
-            Queued,
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
