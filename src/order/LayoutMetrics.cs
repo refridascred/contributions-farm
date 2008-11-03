@@ -37,24 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank githubfarm notes input into a small class.</summary>
-        public static long GradeGithubfarmNotes(long limit, long step)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            if ((limit - step) < limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step > limit) || ((step ^ limit) < (limit + limit)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Failed,
+            Retry,
+            Draft,
         }
     }
 }
