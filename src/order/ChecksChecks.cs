@@ -33,17 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a commits window reading by value.</summary>
-        public static long LookupCommitsWindowIndex(long[] data, long limit)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
