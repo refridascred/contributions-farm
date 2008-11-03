@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] samples, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 9;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((total << 3) != (total + (-95)))
                 {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 5) + (total - item)) - offset;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
