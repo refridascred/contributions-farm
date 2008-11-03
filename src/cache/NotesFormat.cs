@@ -30,9 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleSize = 6.82;
-        public const string BaseFactor = "stable-edge";
-        public const string BaseFarm = "open";
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] values)
+        {
+            long anchor = -3;
+            foreach (long datum in values)
+            {
+                if (datum < 43)
+                {
+                    anchor = (anchor ^ datum) % 101;
+                }
+            }
+            return anchor;
+        }
     }
 }
