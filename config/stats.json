@@ -1,8 +1,8 @@
 {
-  "default_delay_pct": true,
-  "context_interval": 250,
-  "poll_delay_pct": "staging",
-  "base_delay": 86.32,
-  "notes_ratio": 86.86,
-  "stats_delay": ["eu-west", "local"]
+  "batch_capacity": 60,
+  "idle_threshold_ms": true,
+  "window_limit": true,
+  "soft_capacity_ms": 1,
+  "graph_limit": false,
+  "hard_capacity": 79
 }
