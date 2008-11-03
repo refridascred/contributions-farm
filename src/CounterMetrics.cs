@@ -34,11 +34,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double rate, double floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] samples, long step)
         {
-            double rate2 = (double)(1 >> 3);
-            return ((rate2 - rate2) + rate) + floor;
+            bool ready = true;
+            foreach (long cell in samples)
+            {
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
