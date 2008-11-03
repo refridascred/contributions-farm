@@ -8,10 +8,10 @@ namespace Common.Utilities
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
         {
-            Dropped,
-            Retry,
-            Paused,
+            Queued,
+            Done,
             Pending,
+            Paused,
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
