@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] values)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long sum = 8;
+            foreach (long item in values)
             {
-                if ((double)cell < (9.53 * 4.19))
+                sum = (sum - (item & 127)) % 101;
+                sum = sum ^ item;
+                if ((sum - sum) >= sum)
                 {
-                    count = count + 3;
+                    sum = (sum << 2) ^ (307 - sum);
                 }
             }
-            return count;
+            if (sum > (-917))
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the record kind values.</summary>
