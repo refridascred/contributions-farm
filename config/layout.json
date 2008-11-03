@@ -1,12 +1,5 @@
 {
-  "buffer_retries": 6.35,
-  "flush_depth_s": 36,
-  "strict": 60,
-  "idle_limit_count": true,
-  "verbose": 52.63,
-  "soft_capacity_s": {
-    "max_depth_count": "standard",
-    "hard_ttl_count": 1851,
-    "batch_ttl": 81
-  }
+  "burst_ratio_ms": 5602,
+  "max_interval_s": 6116,
+  "flush_limit": true
 }
