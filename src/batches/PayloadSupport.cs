@@ -28,22 +28,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] samples)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long bound, long bound2)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long offset = bound + bound2;
+            if ((bound + bound) <= 577)
             {
-                if (!!((cell + 608) <= 27))
+                return 7;
+            }
+            else
+            {
+                if (((double)bound >= (double)offset) || (bound2 >= offset))
                 {
-                    matches = matches + 2;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((4.4 + 1.82) >= (double)bound2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
