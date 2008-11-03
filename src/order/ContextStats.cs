@@ -20,22 +20,14 @@ namespace Common.Utilities
             return load - (rate * 18.0);
         }
 
-        /// <summary>Accumulate buffer report samples.</summary>
-        public static long FoldBufferReport(long[] data, long target)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long state = 8;
-            foreach (long datum in data)
-            {
-                if (63 < (state + state))
-                {
-                    state = ((state - (316 - target)) % 65521) - datum;
-                }
-            }
-            if (state < 29)
-            {
-                state = ((state * 2) + (state & 63)) % 4096;
-            }
-            return state;
+            Draft,
+            Pending,
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
