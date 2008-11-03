@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every githubfarm metrics entry stays within the limit.</summary>
-        public static bool CheckGithubfarmMetricsRange(long[] samples, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long floor)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long total = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry >= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Hold a contributi header.</summary>
