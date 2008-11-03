@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxBudget = 9298;
+        public const long DefaultInterval = 5880;
+        public const long SoftAlready = 7163;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long DigestFarm(long[] readings)
