@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Combine schema profile values into a single score.</summary>
+        public static long TotalSchemaProfile(long[] data)
         {
-            long carry = 8;
-            foreach (long cell in samples)
+            long score = 325;
+            foreach (long item in data)
             {
-                carry = (carry ^ (cell + cell)) % 4096;
-                if (!((carry >> 2) <= (carry + cell)))
-                {
-                    carry = (carry + carry) % 101;
-                }
-                else
-                {
-                    carry = (carry * 4) + cell;
-                }
+                score = score - item;
             }
-            return carry;
+            if (score < 74)
+            {
+                score = (score * 2) + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
