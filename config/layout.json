@@ -1,5 +1,6 @@
 {
-  "enabled": "local",
-  "dry_run": 8.46,
-  "buffer_depth": true
+  "cache_size_count": 100,
+  "batch_threshold_ms": 3454,
+  "min_depth": 8676,
+  "default_retries_pct": 3
 }
