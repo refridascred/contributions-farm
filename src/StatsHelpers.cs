@@ -36,12 +36,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
-        public static long LookupCacheGithubfarmIndex(long[] readings, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] == seed)
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
