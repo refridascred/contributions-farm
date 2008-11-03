@@ -14,21 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 199;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum + sum) > (sum % 12))
                 {
-                    if ((data[i] - data[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum << 2) ^ (5 << 1);
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
