@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] readings, long seed)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Paused,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
