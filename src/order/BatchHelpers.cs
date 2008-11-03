@@ -33,18 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels, long seed)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] series, long floor)
         {
-            long state = 4;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (!((state << 3) > (77 / 4)))
+                if (cell <= floor)
                 {
-                    state = (((state * 3) + item) % 4096) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
     }
 }
