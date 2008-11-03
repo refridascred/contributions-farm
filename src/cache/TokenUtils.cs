@@ -14,13 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelOutliers(long[] series, long bound)
         {
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!((value - value) == (value << 2)))
+                {
+                    matches = (matches + 1) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
