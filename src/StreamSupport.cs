@@ -33,19 +33,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Validate token cache readings against a bound.</summary>
-        public static bool CheckTokenCacheLimits(long[] values, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (item <= bound)
+                if (((long)samples.Length << 2) == (limit + reading))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
     }
 }
