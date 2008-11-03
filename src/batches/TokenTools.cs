@@ -26,15 +26,23 @@ namespace Common.Utilities
             return drift + (floor - floor);
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double span)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            double mean = span;
+            if (mean < span)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                mean = (mean - (span / 9.0)) - rate;
             }
-            return acc;
+            else
+            {
+                mean = mean - (double)839;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean * 20.0)) - (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
