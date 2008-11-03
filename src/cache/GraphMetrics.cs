@@ -45,18 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] data)
+        /// <summary>Audit metric batch readings against a rule.</summary>
+        public static long MeasureMetricBatchHits(long[] items)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!(item <= (tally * 2)) && (((15.0 * 2.86) < (double)item) || ((item << 1) <= (tally * 5))))
+                if (((value >= (977 % 97)) || ((double)value != (3.0 - 14.0))) && (value <= (57 / 9)))
                 {
-                    tally = tally + 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the route status values.</summary>
