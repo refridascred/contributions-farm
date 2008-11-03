@@ -26,26 +26,17 @@ namespace Common.Utilities
         public const long CacheRatio = 1152;
         public const long RetrySize = 633;
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] values)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] values, long seed)
         {
-            long total = 298;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((total - total) <= ((long)values.Length + value))
+                if (values[i] == seed)
                 {
-                    total = total - total;
-                }
-                if (total > (total + total))
-                {
-                    total = ((total * 2) + (value - total)) % 1000;
-                }
-                if ((double)total == (1.1 / 6.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
