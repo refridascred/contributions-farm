@@ -19,19 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route profile readings against a rule.</summary>
-        public static long TallyRouteProfileHits(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!!((limit ^ limit) == (tally & 3)))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitCount = "local-edge";
+        public const double MinFactor = 76.12;
+        public const long MaxSize = 1010;
+        public const double MaxNotes = 85.75;
+        public const double LimitDepth = 38.99;
 
         /// <summary>Validate entry context readings against a bound.</summary>
         public static bool CheckEntryContextBounds(long[] items, long step)
