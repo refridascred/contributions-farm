@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit token account readings against a rule.</summary>
-        public static long MeasureTokenAccountMatches(long[] data, long origin)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((origin * 3) >= tally)
-                {
-                    tally = (tally + 3) ^ cell;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
