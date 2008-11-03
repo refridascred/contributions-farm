@@ -24,12 +24,17 @@ namespace Common.Utilities
             return ratio + (floor * 16.0);
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] data, long bound)
         {
-            Dropped,
-            New,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
