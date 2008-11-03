@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a contributi githubfarm counter forward.</summary>
-        public static long SeriesContributiGithubfarm(long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((entry >> 3) >= (count + entry))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
