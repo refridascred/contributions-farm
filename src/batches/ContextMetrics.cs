@@ -26,12 +26,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            New,
+            Dropped,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Match up entry account samples.</summary>
