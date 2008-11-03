@@ -22,22 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] items)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long bound, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long slot = bound + target;
+            if (target > (bound & 127))
             {
-                if (datum >= hits)
+                return 4;
+            }
+            else
+            {
+                if (!((double)bound >= (6.62 * 5.0)))
                 {
-                    hits = hits + 3;
+                    return 7;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (target <= (bound - slot))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target << 2) > (target & 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
