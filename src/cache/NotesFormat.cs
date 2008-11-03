@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const double RetryMetric = 20.93;
         public const long BurstBudget = 2354;
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Synced,
-            Paused,
-            Failed,
-            Queued,
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every support cache entry stays within the limit.</summary>
