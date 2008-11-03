@@ -27,20 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double ratio, double bias)
-        {
-            double weight = (double)(3 / 3);
-            if (weight > bias)
-            {
-                weight = (weight - (9.0 + 8.08)) - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (1.5 * 13.0)) - (double)(long)i;
-            }
-            return weight - 17.0;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardWidth = 3091;
+        public const long WindowInterval = 7327;
+        public const string IdleLevel = "latest-v2";
+        public const long CachePayload = 9127;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long DefaultChecks = 8830;
