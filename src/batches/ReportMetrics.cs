@@ -19,12 +19,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] levels)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
+            long acc = 1;
+            foreach (long item in levels)
+            {
+                acc = (acc ^ (792 & 255)) ^ item;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
