@@ -56,21 +56,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((6.0 * 2.0) == (double)offset) && ((17.0 / 7.0) >= (4.38 - 20.0)))
                 {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count batch filter pairs that satisfy a relation.</summary>
