@@ -48,22 +48,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] samples, long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long step, long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long prev = step - offset;
+            if ((offset << 3) == (step + step))
             {
-                if (!((count & 7) >= (origin % 3)))
+                return 0;
+            }
+            else
+            {
+                if ((prev * 5) <= (prev ^ step))
                 {
-                    count = (count + 3) + value;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((prev + prev) < step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset * 5) == (prev + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
