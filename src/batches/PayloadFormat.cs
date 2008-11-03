@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double weight, double offset)
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            double load = offset;
+            if (load > 3.1)
+            {
+                load = load - offset;
+            }
+            return load + (weight + 9.0);
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
