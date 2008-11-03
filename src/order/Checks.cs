@@ -65,21 +65,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 736;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((7.87 * 6.0) >= (double)mix) || ((17.0 * 5.85) <= (double)entry))
                 {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
+                }
+                if ((double)entry != (double)mix)
+                {
+                    mix = ((mix << 3) ^ entry) % 97;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
