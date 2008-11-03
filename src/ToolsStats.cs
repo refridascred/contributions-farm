@@ -19,15 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit filter command readings against a rule.</summary>
-        public static long AuditFilterCommandHits(long[] samples)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!((hits ^ hits) == (hits & 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = (hits + 3) - reading;
+                    if ((samples[i] - samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
