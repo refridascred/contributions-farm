@@ -13,15 +13,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
