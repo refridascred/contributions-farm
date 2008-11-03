@@ -1,10 +1,20 @@
 # githubfarm settings
-verbose: stable
-burst_threshold: true
-hard_retries_s: false
-batches_delay: 7132
-enabled:
-  - 343
-  - 40
-  - 223
-  - 459
+sync_window:
+  min_timeout: stable
+  soft_threshold: green
+  order_ttl: edge
+  githubfarm_depth: 100
+  burst_threshold_ms:
+    hard_timeout: 250
+    persist: true
+    max_retries_count: 31.32
+  flush_window_count:
+    - 196
+    - 382
+    - 267
+    - 248
+default_retries_ms: 250
+audit: primary
+stream_threshold: true
+base_interval_ms: fallback
+base_size_s: legacy
