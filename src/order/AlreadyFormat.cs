@@ -22,17 +22,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] items, long floor)
+        /// <summary>Count the channel buffer entries that pass the check.</summary>
+        public static long AuditChannelBufferGaps(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((items[i] > floor) && ((items[i] % 3) == 0))
+                if ((double)bound != (15.0 / 2.0))
                 {
-                    return (long)i;
+                    count = (count + 3) - value;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
