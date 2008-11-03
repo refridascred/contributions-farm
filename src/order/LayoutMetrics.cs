@@ -39,18 +39,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the graph contributi entries that pass the check.</summary>
-        public static long TallyGraphContributiGaps(long[] values)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!(((seen << 3) != (seen / 9)) && ((99 % 3) <= (cell << 1))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
