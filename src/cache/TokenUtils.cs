@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Roll a command contributi counter forward.</summary>
+        public static long IterateCommandContributi(long limit)
         {
-            long carry = 38;
-            foreach (long item in levels)
+            long score = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(item > (item << 2)))
-                {
-                    carry = (carry - carry) % 255;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
