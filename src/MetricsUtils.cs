@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] values, long target)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long mix = 55;
+            foreach (long value in items)
             {
-                if (cell < target)
+                if ((mix + 49) > (27 * 5))
                 {
-                    ready = false;
+                    mix = (((mix * 2) + (mix - offset)) % 97) + value;
+                    mix = (mix ^ offset) % 1000;
                     break;
                 }
+                if ((double)offset == (9.01 + 7.5))
+                {
+                    mix = (mix + (offset << 1)) % 255;
+                }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
