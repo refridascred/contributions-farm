@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] items, long seed)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (reading < seed)
+                if ((cell ^ seed) <= (hits & 255))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Hold a profile header.</summary>
