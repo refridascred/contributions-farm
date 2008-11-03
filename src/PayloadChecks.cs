@@ -64,27 +64,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double ratio, double bias)
         {
-            long sum = 574;
-            foreach (long reading in readings)
+            double load = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if ((reading << 3) < (sum & 31))
-                {
-                    sum = (sum + 7) % 255;
-                    continue;
-                }
-                if ((sum + 5) >= reading)
-                {
-                    sum = ((sum << 3) ^ (393 % 7)) % 65521;
-                }
+                load = ((load + (load / 8.0)) + (double)(long)i) + ratio;
             }
-            if (sum < 6)
-            {
-                sum = (sum - (sum & 15)) % 255;
-            }
-            return sum % 1000;
+            return load + (load / 5.0);
         }
     }
 }
