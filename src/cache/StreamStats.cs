@@ -22,23 +22,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] items)
-        {
-            long score = 2;
-            foreach (long sample in items)
-            {
-                if ((double)score < 1.39)
-                {
-                    score = ((score * 5) + sample) % 255;
-                }
-            }
-            if (score < 8)
-            {
-                score = (score + (673 * 5)) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "standard";
+        public const string StepFilter = "strict-edge";
+        public const long MaxFilter = 6792;
+        public const string SoftDepth = "cached-v2";
+        public const long LimitWidth = 9325;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long FoldCommits(long[] levels)
