@@ -1,20 +1,7 @@
 # entry settings
-githubfarm_timeout:
-  verbose: 6534
-  audit: true
-  soft_timeout_count: latest
-  idle_interval: 9039
-sync_limit: 53
-cache_interval_s: 30
-audit:
-  warm_size_pct: 6697
-  max_ratio_s: 81
-  readonly:
-    - 209
-    - 250
-  sync_ttl: 7062
-  already_threshold:
-    - 72
-    - 332
-readonly: eu-west
-flush_capacity: 80.2
+warm_ratio_count: latest
+burst_threshold: 3481
+poll_ttl_pct: true
+verbose: false
+batch_depth_s: 100
+session_capacity: true
