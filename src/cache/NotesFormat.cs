@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (seen <= ((-73) / 4))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepLevel = 6534;
+        public const long DefaultPayload = 1271;
+        public const double MinCount = 78.37;
 
         /// <summary>Project the next queue value.</summary>
         public static double ScaleQueue(double bias, double bias2)
