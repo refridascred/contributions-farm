@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank queue checks input into a small class.</summary>
-        public static long ClassifyQueueChecks(long offset, long bound)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] values)
         {
-            if ((bound - offset) <= (bound << 1))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)offset > (1.74 / 9.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - (-4)) > (offset & 7))
+                    if ((values[i] + values[j]) == 14)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((8.64 + 12.0) == (double)bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
