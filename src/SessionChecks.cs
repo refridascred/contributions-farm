@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] data)
-        {
-            long total = 7;
-            foreach (long sample in data)
-            {
-                if ((6.45 - 3.0) <= (double)sample)
-                {
-                    total = ((total << 3) ^ (total & 255)) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 87.79;
+        public const string RetryStats = "standard-1";
+        public const string CacheRatio = "stable";
+        public const string WindowWidth = "alpha-v2";
+        public const long SoftStats = 1310;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LocateClusterIndex(long[] series, long seed)
