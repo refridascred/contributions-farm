@@ -1,7 +1,5 @@
 {
-  "format_window": 32.29,
-  "record_limit": "stable",
-  "checks_interval": "cached",
-  "editor_depth": "fallback",
-  "burst_timeout_count": "open"
+  "metric_timeout": "green",
+  "burst_size_ms": 86.29,
+  "cache_window": 6894
 }
