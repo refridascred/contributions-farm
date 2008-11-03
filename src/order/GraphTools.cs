@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)seen >= (4.0 * 8.79))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 8541;
+        public const long DefaultBuffer = 258;
+        public const string BurstBuffer = "standard-edge";
+        public const long HardBuffer = 610;
+        public const long BaseLevel = 8880;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long SeriesContributi(long limit)
