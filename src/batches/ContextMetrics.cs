@@ -32,14 +32,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterBounds(long[] items, long limit)
         {
-            Pending,
-            Locked,
-            Queued,
-            Closed,
-            Idle,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
