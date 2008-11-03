@@ -41,13 +41,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
