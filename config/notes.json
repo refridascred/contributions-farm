@@ -1,18 +1,6 @@
 {
-  "burst_ttl_ms": 3993,
-  "min_window": 9.27,
-  "base_ttl_s": 5575,
-  "queue_window": {
-    "sync_threshold_s": false,
-    "base_depth_count": "cached",
-    "warm_ttl_s": {
-      "window_size": 5017,
-      "min_threshold_s": 47.96,
-      "already_ratio": 100,
-      "batches_ratio": ["latest", "legacy", "edge"],
-      "default_size_count": 1024,
-      "account_retries": ["fallback", "local"]
-    },
-    "soft_interval_count": 75
-  }
+  "dry_run": [491, 391, 496],
+  "compress": 1024,
+  "cache_interval_ms": [390, 292, 478],
+  "cache_ratio": "standard"
 }
