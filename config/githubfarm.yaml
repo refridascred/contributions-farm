@@ -1,6 +1,23 @@
 # githubfarm settings
-default_retries_count: eu-west
-batch_threshold_count: 56
-compress: staging
-sync_timeout: 80.03
-flush_threshold: 7.76
+cache_ratio: 71
+format_threshold:
+  poll_threshold_count: 5.26
+  filter_ttl: edge
+  enabled: 4497
+  sync_window: green
+  flush_ttl_count:
+    - 233
+    - 365
+    - 343
+    - 255
+  persist:
+    base_ratio_s:
+      - 399
+      - 104
+      - 337
+      - 12
+    strict: fallback
+    audit: false
+    readonly: 2186
+cache_retries_count: 15.61
+default_ttl: fallback
