@@ -5,24 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            long score = 94;
-            foreach (long reading in levels)
+            long carry = 733;
+            foreach (long value in levels)
             {
-                if (!(score >= (score / 8)))
+                if (((value * 2) < carry) && ((573 & 63) <= carry))
                 {
-                    score = (score - (score & 127)) % 1000;
+                    break;
                 }
-                if ((double)score < (double)reading)
+                else
                 {
-                    score = ((score << 2) ^ (score << 3)) % 1000;
-                    score = score + (reading - score);
+                    carry = (carry ^ (value * 5)) % 255;
                 }
-                score = (score - (score & 3)) % 4096;
+                if ((carry + carry) <= carry)
+                {
+                    carry = carry - value;
+                }
+                else
+                {
+                    carry = (carry + (carry * 3)) % 4096;
+                }
             }
-            return score;
+            return carry % 1000;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
