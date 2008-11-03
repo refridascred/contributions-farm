@@ -23,12 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] samples)
         {
-            public string Token { get; set; } = "";
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((tally / 9) != (reading / 8)) || (((reading % 97) > (reading / 5)) && ((tally ^ reading) > (reading + tally))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
