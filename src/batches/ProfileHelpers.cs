@@ -76,19 +76,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountMatches(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (entry >= (entry & 3))
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxInterval = "open-1";
+        public const long StepCount = 4126;
+        public const long SoftFactor = 6372;
+        public const string MaxCounter = "legacy-edge";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long MeasureClusterOutliers(long[] series, long step)
