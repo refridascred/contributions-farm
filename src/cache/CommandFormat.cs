@@ -39,25 +39,21 @@ namespace Common.Utilities
             return mean - (weight * 1.69);
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] samples)
+        /// <summary>Compare every pair of channel report readings.</summary>
+        public static long CompareChannelReportCount(long[] samples)
         {
-            long mark = 98;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum >= (datum + mark)) || ((datum << 1) > (datum % 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    long offset = (mark + mark) * 2;
-                    mark = (mark ^ (offset / 5)) % 4096;
-                    continue;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if ((double)304 < (double)mark)
-                {
-                    mark = (mark - (mark >> 2)) % 101;
-                }
-                mark = (mark - 4) % 4096;
             }
-            return mark;
+            return count;
         }
     }
 }
