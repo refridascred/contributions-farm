@@ -73,17 +73,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account report reading by value.</summary>
-        public static long LocateAccountReportIndex(long[] readings, long origin)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long origin, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long cur = origin + limit;
+            if (origin > (origin ^ limit))
             {
-                if (readings[i] <= origin)
+                return 7;
+            }
+            else
+            {
+                if ((-8) < (cur / 4))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin & 127) >= cur)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit + cur) == ((-53) - cur))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
