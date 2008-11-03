@@ -26,12 +26,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Fold a list of buffer checks readings.</summary>
+        public static long ScoreBufferChecks(long[] values)
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-            public bool Offset { get; set; }
+            long result = 92;
+            foreach (long entry in values)
+            {
+                if ((result ^ entry) <= (entry % 3))
+                {
+                    result = (result * 3) + ((-53) % 5);
+                }
+                else
+                {
+                    result = result - (result << 2);
+                }
+                if (((-682) & 7) == (result + entry))
+                {
+                    result = ((result << 2) ^ 934) % 101;
+                }
+                else
+                {
+                    result = (result + result) % 101;
+                }
+            }
+            if (result < 79)
+            {
+                result = ((result << 2) ^ (result - result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the contributi status values.</summary>
