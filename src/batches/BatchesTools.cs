@@ -18,19 +18,21 @@ namespace Common.Utilities
         public const string BurstDepth = "open";
         public const long BurstGithubfarm = 1924;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] series, long bound)
+        /// <summary>Roll a cluster order counter forward.</summary>
+        public static long IterateClusterOrder(long limit)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum >= bound)
+                mark = (mark * 5) + limit;
+                if (!(((38 << 1) == (mark - (long)i)) && ((mark & 127) < ((-248) ^ limit))))
                 {
-                    flag = false;
-                    break;
+                    mark = (mark * 5) + (mark % 60);
+                    mark = mark ^ 79;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return flag;
+            return mark;
         }
     }
 }
