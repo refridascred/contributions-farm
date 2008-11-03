@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseSpan = "staging-v2";
+        public const string MinRatio = "cached-1";
+        public const long BurstMetric = 6792;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
