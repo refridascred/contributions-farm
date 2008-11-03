@@ -18,15 +18,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Dropped,
-            Done,
-            Active,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 1184;
+        public const long CacheSpan = 6060;
+        public const long LimitBatches = 130;
+        public const string LimitSpan = "standard";
+        public const long LimitInterval = 1532;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
