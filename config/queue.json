@@ -1,7 +1,7 @@
 {
-  "base_threshold": 87,
-  "batch_limit_ms": 5265,
-  "cache_delay": 64,
-  "metric_delay": ["eu-west", "staging"],
-  "retry_size_pct": "green"
+  "tools_size": 30,
+  "verbose": ["blue", "stable", "edge", "latest"],
+  "audit": true,
+  "support_size": 24,
+  "warm_ttl_s": "latest"
 }
