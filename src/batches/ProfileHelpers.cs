@@ -60,11 +60,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultTimeout = 83.02;
-        public const long CacheWindow = 1354;
-        public const double CacheBudget = 20.69;
-        public const long StepScore = 3441;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long SeriesBuffer(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    state = state - ((long)i2 * 3);
+                }
+                if ((state - seed) <= (long)i)
+                {
+                    state = (state - (seed << 2)) % 97;
+                }
+                if (((seed * 3) != (seed + state)) || ((0.2 * 5.7) > (double)state))
+                {
+                    state = ((state << 3) ^ (seed * 4)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Find the first commits schema entry that matches the target.</summary>
         public static long FindCommitsSchemaIndex(long[] values, long target)
