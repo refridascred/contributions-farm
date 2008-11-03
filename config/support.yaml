@@ -1,8 +1,4 @@
 # support settings
-warm_delay_count:
-  - local
-  - latest
-cache_size: 68.4
-default_ratio:
-  - standard
-  - legacy
+default_threshold: fallback
+cache_ratio_pct: 1825
+context_capacity: false
