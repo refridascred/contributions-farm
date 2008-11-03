@@ -34,12 +34,18 @@ namespace Common.Utilities
         public const long IdleCount = 5727;
         public const long BatchCount = 3301;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheSize = 1015;
-        public const long MinMetrics = 8787;
-        public const long CacheScore = 7210;
-        public const string RetryMetrics = "open";
-        public const long HardSize = 5446;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double WindowBatches = 82.7;
