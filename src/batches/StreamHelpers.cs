@@ -59,16 +59,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long limit)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long origin)
         {
-            long carry = limit;
-            for (int i = 0; i < 13; i++)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                carry = (carry << 3) ^ ((long)i - (long)i);
-                carry = ((carry * 3) + (long)i) % 101;
+                if (((double)(long)i <= (double)46) && (origin >= 538))
+                {
+                    acc = acc + (acc & 255);
+                    acc = acc - origin;
+                }
+                else
+                {
+                    acc = acc - ((long)i + origin);
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return carry;
+            return acc;
         }
     }
 }
