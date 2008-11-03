@@ -1,7 +1,6 @@
 # support settings
-idle_ttl: legacy
-cache_threshold_s: 1024
-min_ttl: strict
-warm_retries_ms: true
-max_capacity_pct: 30.48
-sync_size_pct: false
+max_ratio_pct: staging
+persist: legacy
+default_capacity_pct:
+  - open
+  - fallback
