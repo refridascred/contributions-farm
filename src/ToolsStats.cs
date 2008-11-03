@@ -62,22 +62,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] samples)
+        /// <summary>Count the stats contributi entries that pass the check.</summary>
+        public static long TallyStatsContributiHits(long[] samples)
         {
-            long acc = -33;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (10.0 <= 4.75)
+                if ((datum % 64) != (matches + datum))
                 {
-                    acc = ((acc << 3) ^ 863) % 255;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    acc = ((acc << 3) ^ (sample + acc)) % 1000;
+                    matches = matches - 1;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
