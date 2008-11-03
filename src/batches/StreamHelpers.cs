@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepProfile = 27.69;
-        public const long BurstProfile = 4186;
-        public const long DefaultLevel = 4551;
-        public const double MinProfile = 21.97;
+        /// <summary>Digest a series of tools contributi entries.</summary>
+        public static long ScoreToolsContributi(long[] items)
+        {
+            long mix = 133;
+            foreach (long sample in items)
+            {
+                if (mix <= (sample >> 2))
+                {
+                    mix = ((mix << 3) ^ 98) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ (sample ^ sample)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many notes cluster samples are out of range.</summary>
         public static long TallyNotesClusterGaps(long[] values, long target)
