@@ -1,7 +1,12 @@
 {
-  "context_ratio": 60,
-  "base_retries_ms": true,
-  "context_size": 500,
-  "persist": "standard",
-  "sync_threshold": 8630
+  "cache_ratio_s": {
+    "batch_ratio": "blue",
+    "verbose": 100,
+    "warm_retries_ms": 97.03
+  },
+  "flush_delay_count": 500,
+  "payload_timeout": 1024,
+  "notes_capacity": true,
+  "stats_ttl": "legacy",
+  "schema_capacity": false
 }
