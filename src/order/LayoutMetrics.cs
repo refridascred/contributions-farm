@@ -23,18 +23,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] series, long limit)
         {
-            long total = -53;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((double)reading != (8.0 / 4.0))
+                if (reading <= limit)
                 {
-                    total = (total << 2) ^ (9 - total);
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Describe the metric class values.</summary>
