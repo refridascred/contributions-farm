@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleTimeout = 79.14;
+        public const double BaseChannel = 35.42;
+        public const double MinChannel = 15.26;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long MeasureMetricMatches(long[] samples, long floor)
