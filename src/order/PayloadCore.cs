@@ -29,39 +29,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long origin, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] samples, long step)
         {
-            long cur = origin + limit;
-            if (origin > (origin ^ limit))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((-8) < (cur / 4))
+                if (samples[i] > step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin & 127) >= cur)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit + cur) == ((-53) - cur))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
