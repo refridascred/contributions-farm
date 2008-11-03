@@ -40,14 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleTimeout = 6150;
+        public const string HardOrder = "alpha";
+        public const long CacheOrder = 5971;
+        public const long BurstOrder = 3101;
+        public const long WindowOrder = 9370;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountGaps(long[] samples)
