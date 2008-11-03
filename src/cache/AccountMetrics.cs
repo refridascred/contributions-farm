@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Audit contributi payload readings against a rule.</summary>
+        public static long AuditContributiPayloadOutliers(long[] samples, long floor)
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen > (6 + seen)) && (((double)seen > (double)sample) && ((double)sample > 9.13)))
+                {
+                    seen = (seen + 1) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the commits class values.</summary>
