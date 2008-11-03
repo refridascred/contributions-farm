@@ -1,10 +1,7 @@
-id,token,count,region
-1,cached,854,32
-2,63.89,103,788
-3,staging,staging,467
-4,906,549,green
-5,977,84.88,edge
-6,72.12,strict,526
-7,blue,primary,cached
-8,88.41,33.74,838
-9,203,37.79,45.99
+id,rank,weight
+1,edge,538
+2,local,open
+3,44.83,820
+4,475,797
+5,open,632
+6,25.27,61.98
