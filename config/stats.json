@@ -1,6 +1,5 @@
 {
-  "flush_size_pct": false,
-  "soft_delay_count": "primary",
-  "enabled": "standard",
-  "base_depth_ms": false
+  "warm_timeout_count": "standard",
+  "retry_interval_s": 9233,
+  "compress": ["edge", "latest"]
 }
