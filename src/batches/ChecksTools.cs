@@ -23,13 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Derive the next counter layout value from a seed.</summary>
+        public static long RollCounterLayout(long limit)
         {
-            public string Flag { get; set; } = "";
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                if (limit <= (642 - mix))
+                {
+                    mix = ((mix << 3) ^ ((long)i & 255)) % 101;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
