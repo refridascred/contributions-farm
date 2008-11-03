@@ -16,25 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long target)
-        {
-            if (!((bound + bound) >= (target + bound)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (5.29 >= (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 7017;
+        public const long MaxSession = 5016;
+        public const long LimitSession = 6620;
+        public const long HardSession = 7068;
+        public const double IdleSize = 78.67;
 
         /// <summary>Roll a githubfarm record counter forward.</summary>
         public static long StepGithubfarmRecord(long floor)
