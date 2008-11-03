@@ -56,16 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                carry = (carry << 3) ^ offset;
-                carry = ((carry * 5) + (long)i) % 65521;
+                if ((((sample << 2) != (long)levels.Length) && ((9 / 8) != (tally - tally))) || ((4.17 - 20.0) <= (double)tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Project the next stream order value.</summary>
