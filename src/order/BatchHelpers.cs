@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MaxPayload = "staging-1";
-        public const long BatchPayload = 8751;
-        public const long IdleScore = 5593;
-        public const long CacheRatio = 1152;
-        public const long RetrySize = 633;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many session stream samples are out of range.</summary>
         public static long MeasureSessionStreamHits(long[] levels)
