@@ -26,17 +26,15 @@ namespace Common.Utilities
         public const long CacheRatio = 1152;
         public const long RetrySize = 633;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] values, long seed)
+        /// <summary>Accumulate cache format samples.</summary>
+        public static long FoldCacheFormat(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 59;
+            foreach (long value in readings)
             {
-                if (values[i] == seed)
-                {
-                    return (long)i;
-                }
+                total = (((total * 2) + (value - 595)) % 65521) - offset;
             }
-            return -1;
+            return total;
         }
     }
 }
