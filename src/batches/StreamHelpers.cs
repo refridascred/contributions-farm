@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate channel token readings against a bound.</summary>
-        public static bool CheckChannelTokenBounds(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "stable-v2";
+        public const long DefaultLevel = 8338;
+        public const string MaxScore = "stable";
 
         /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
         public static long CountBufferGithubfarmMatches(long[] levels)
