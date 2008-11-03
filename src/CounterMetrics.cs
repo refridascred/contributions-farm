@@ -25,12 +25,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Derive the next filter cluster value from a seed.</summary>
+        public static long StepFilterCluster(long bound)
         {
-            Active,
-            Idle,
-            Ready,
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a support info.</summary>
