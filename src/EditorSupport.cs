@@ -79,13 +79,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] data)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((tally % 64) >= tally) && ((item - item) < tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
