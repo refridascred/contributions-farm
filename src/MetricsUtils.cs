@@ -64,9 +64,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinQueue = "alpha-v2";
-        public const double MaxQueue = 46.84;
-        public const long SoftQueue = 91;
+        /// <summary>Look up the position of a cluster filter sample.</summary>
+        public static long LocateClusterFilterIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
