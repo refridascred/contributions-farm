@@ -30,22 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] readings, long target)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double rate, double bias)
         {
-            long acc = 85;
-            foreach (long value in readings)
-            {
-                if ((1.5 * 5.0) < (double)target)
-                {
-                    acc = ((acc - (acc - acc)) % 255) ^ value;
-                }
-            }
-            if (acc > 5)
-            {
-                acc = (acc ^ (target >> 2)) % 4096;
-            }
-            return acc % 4096;
+            double gain = (double)(26 + (-68));
+            return ((gain - (double)3) + rate) + bias;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
