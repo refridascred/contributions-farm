@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long seed, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            if ((limit * 4) < seed)
             {
-                if ((target + total) <= ((long)i >> 2))
-                {
-                    total = (total * 4) + (total >> 4);
-                }
-                total = ((total * 5) + (long)i) % 1000;
+                return 3;
             }
-            return total;
+            else
+            {
+                if (seed > (seed - limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((limit & 31) != (limit % 100))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch class values.</summary>
