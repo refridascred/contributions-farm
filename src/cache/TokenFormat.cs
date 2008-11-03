@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] data, long limit)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long mix = 373;
-            foreach (long reading in data)
-            {
-                if (!((double)limit == (3.03 / 8.0)))
-                {
-                    mix = (mix + (mix / 6)) ^ reading;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (limit - (-2));
-                }
-            }
-            if (mix < 555)
-            {
-                mix = mix - ((-238) + limit);
-            }
-            return mix % 65521;
+            public bool Level { get; set; }
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
