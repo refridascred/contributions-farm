@@ -20,14 +20,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Derive the next batch format value from a seed.</summary>
+        public static long RollBatchFormat(long origin)
         {
-            Queued,
-            Dropped,
-            Idle,
-            Done,
-            Locked,
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((mark << 2) < mark)
+                {
+                    mark = ((mark * 2) + (mark * 2)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ 1) % 4096;
+                }
+                mark = ((mark << 3) ^ (origin / 8)) % 1000;
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
