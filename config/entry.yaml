@@ -1,42 +1,10 @@
 # entry settings
-stream_interval:
-  warm_ttl_s:
-    - 471
-    - 31
-    - 32
-  retry_capacity: 90
-  readonly:
-    - edge
-    - stable
-  batch_interval_pct: false
-  already_retries: standard
-default_delay_ms: true
-warm_timeout_ms:
-  githubfarm_ttl: 4703
-  flush_interval_count:
-    - green
-    - eu-west
-    - strict
-  format_capacity: 19
-  support_retries: 2277
-  min_window_ms: 2992
-  flush_timeout_s: 1024
-checks_interval: 100
-contributi_window:
-  - 409
-  - 399
-  - 213
-  - 252
-layout_timeout:
-  max_depth_ms: 3680
-  persist: eu-west
-  retry_limit_pct:
-    - edge
-    - local
-  format_retries:
-    dry_run:
-      - 170
-      - 49
-    soft_ttl: blue
-    batches_threshold: 60
-    compress: cached
+profile_interval:
+  - 289
+  - 360
+  - 96
+  - 125
+persist: cached
+enabled:
+  - stable
+  - cached
