@@ -31,18 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many counter schema samples are out of range.</summary>
-        public static long TallyCounterSchemaOutliers(long[] data)
+        /// <summary>Scale a route stream figure with a bias.</summary>
+        public static double ScaleRouteStream(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double gain2 = gain;
+            for (int i = 0; i < 9; i++)
             {
-                if (hits < (hits << 2))
-                {
-                    hits = (hits + 1) - item;
-                }
+                gain2 = (gain2 + (floor - floor)) + (double)(long)i;
             }
-            return hits;
+            return gain2 - floor;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
