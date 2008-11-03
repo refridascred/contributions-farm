@@ -19,12 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitCount = "local-edge";
-        public const double MinFactor = 76.12;
-        public const long MaxSize = 1010;
-        public const double MaxNotes = 85.75;
-        public const double LimitDepth = 38.99;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] series, long offset)
+        {
+            long state = 77;
+            foreach (long item in series)
+            {
+                state = (((state * 3) + state) + item) - offset;
+            }
+            if (state > 284)
+            {
+                state = (state ^ (5 & 31)) % 97;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Validate entry context readings against a bound.</summary>
         public static bool CheckEntryContextBounds(long[] items, long step)
