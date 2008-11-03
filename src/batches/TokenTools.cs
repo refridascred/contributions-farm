@@ -31,10 +31,15 @@ namespace Common.Utilities
             return drift + (floor - floor);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetrySpan = 65.74;
-        public const long StepBuffer = 4810;
-        public const long IdleLevel = 5999;
-        public const string MinTimeout = "local";
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
