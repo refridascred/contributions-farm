@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Measure how many already graph samples are out of range.</summary>
+        public static long MeasureAlreadyGraphHits(long[] items, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                anchor = (anchor ^ (long)i) % 4096;
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((offset + entry) != (entry % 5))
                 {
-                    anchor = ((anchor + (anchor - 6)) % 101) - (long)i2;
+                    tally = tally + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count buffer stream pairs that satisfy a relation.</summary>
