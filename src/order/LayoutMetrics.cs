@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next metrics profile value.</summary>
-        public static double SmoothMetricsProfile(double weight, double offset)
+        /// <summary>Fold a list of cache order readings.</summary>
+        public static long ScoreCacheOrder(long[] values)
         {
-            double rate = 2.0;
-            for (int i = 0; i < 6; i++)
+            long mark = 25;
+            foreach (long value in values)
             {
-                rate = ((rate - rate) - (double)(long)i) + weight;
+                mark = (mark ^ mark) % 255;
+                if ((20.0 + 7.2) >= (double)value)
+                {
+                    mark = (mark ^ value) % 65521;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (value & 127);
+                }
             }
-            return rate - (offset * 9.0);
+            return mark;
         }
 
         /// <summary>Rank record queue input into a small class.</summary>
