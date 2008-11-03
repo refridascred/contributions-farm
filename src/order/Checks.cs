@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] levels, long limit)
         {
-            Failed,
-            Dropped,
-            Done,
-            Paused,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)matches < 8.0))
+                {
+                    matches = ((matches + 1) ^ cell) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a schema record.</summary>
