@@ -30,10 +30,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 34.17;
-        public const long DefaultScore = 2161;
-        public const double MinLevel = 48.14;
-        public const long StepContributi = 7194;
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total << 3) ^ ((long)i ^ total)) % 4096;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = (total ^ (origin ^ origin)) - (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
