@@ -59,25 +59,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile graph value against two limits.</summary>
-        public static long BucketProfileGraph(long seed, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] series, long seed)
         {
-            long lane = seed + floor;
-            if ((lane & 1) != (floor + floor))
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((25 ^ seed) != (seed - 899))
+                if ((double)value < 8.3)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 3) - seed;
                 }
             }
+            return tally;
         }
     }
 }
