@@ -23,18 +23,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 6706;
+        public const double RetryScore = 12.19;
+        public const long BatchDepth = 4736;
+        public const double WindowMetric = 0.41;
 
         /// <summary>Grade a notes tools value against two limits.</summary>
         public static long SortNotesTools(long floor, long limit)
