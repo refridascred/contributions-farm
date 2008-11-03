@@ -16,18 +16,18 @@ namespace Common.Utilities
             return load + (weight + 9.0);
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] data)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((double)matches == (6.0 * 7.2))
+                if (((4 + count) >= entry) && (entry > (count + count)))
                 {
-                    matches = (matches + 3) ^ datum;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the route status values.</summary>
