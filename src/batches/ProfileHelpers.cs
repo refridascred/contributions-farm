@@ -85,22 +85,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterOutliers(long[] series, long step)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (sample > (long)series.Length)
+                if (reading >= (tally * 3))
                 {
-                    seen = (seen + 2) + step;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
