@@ -40,13 +40,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
-        {
-            Dropped,
-            Queued,
-            Synced,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 4627;
+        public const long RetryTimeout = 5496;
+        public const double BatchSize = 78.84;
+        public const double IdleWidth = 64.92;
     }
 }
