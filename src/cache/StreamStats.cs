@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long limit)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
+            long bound = step - offset;
+            if ((step + offset) <= bound)
             {
-                result = ((result << 3) ^ (result - result)) % 4096;
-                result = ((result * 4) + (long)i) % 65521;
+                return 0;
             }
-            return result;
+            else
+            {
+                if (((step + offset) > offset) || ((5.0 * 1.08) < (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + bound) == (bound + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph state values.</summary>
