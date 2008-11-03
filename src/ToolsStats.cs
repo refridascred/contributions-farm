@@ -48,39 +48,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long floor, long step)
+        /// <summary>Digest a series of route command entries.</summary>
+        public static long DigestRouteCommand(long[] series)
         {
-            long span = floor - step;
-            if ((floor >> 4) >= 91)
+            long total = 27;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (span < (floor + floor))
+                total = (total ^ (datum + 28)) % 255;
+                if ((double)datum <= (4.0 / 3.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(floor >= (13 * 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((22 << 2) < span)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    total = total ^ (59 + 9);
                 }
             }
+            if (total < 33)
+            {
+                total = ((total << 3) ^ (total << 3)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Define record limits and defaults.</summary>
