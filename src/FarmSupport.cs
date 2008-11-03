@@ -50,12 +50,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Scale a batch filter figure with a bias.</summary>
+        public static double AdjustBatchFilter(double gain, double bias)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
+            double weight = bias + (bias / 8.0);
+            if (weight > (gain * 12.0))
+            {
+                weight = weight + weight;
+            }
+            return weight - (double)(-55);
         }
 
         /// <summary>Accumulate window samples.</summary>
