@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (matches > cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 6657;
+        public const long BaseProfile = 212;
+        public const double HardProfile = 63.75;
+        public const double RetryProfile = 64.78;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
