@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] readings, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long seed, long offset)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            if ((1.27 * 0.2) <= (double)offset)
             {
-                if (entry >= limit)
+                return 3;
+            }
+            else
+            {
+                if ((double)seed != (3.0 - 1.0))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + seed) == (offset - seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up batch samples.</summary>
