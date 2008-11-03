@@ -29,21 +29,12 @@ namespace Common.Utilities
         public const string WindowWidth = "alpha-v2";
         public const long SoftStats = 1310;
 
-        /// <summary>Count layout counter pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCounterCount(long[] levels)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Score { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
