@@ -30,13 +30,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Look up the position of a session payload sample.</summary>
+        public static long SeekSessionPayloadIndex(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer options.</summary>
