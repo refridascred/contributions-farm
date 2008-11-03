@@ -28,22 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] series, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long acc = 92;
+            foreach (long item in values)
             {
-                if (((double)tally >= (double)cell) || (((double)(long)series.Length >= (double)tally) && ((bound - 38) != (cell + tally))))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = (acc ^ item) % 101;
             }
-            return tally;
+            if (acc < 640)
+            {
+                acc = acc ^ (origin - acc);
+            }
+            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
