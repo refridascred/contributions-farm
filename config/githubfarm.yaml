@@ -1,7 +1,17 @@
 # githubfarm settings
-max_delay: cached
-cache_retries: strict
-soft_interval_pct: 9.13
-min_interval: 52
-githubfarm_retries: true
-flush_timeout: 27
+cache_size_s: stable
+default_threshold_ms: 19
+warm_capacity_ms:
+  channel_ttl:
+    support_delay: 75.14
+    poll_ttl_count: latest
+    strict: standard
+    batches_size: 1024
+    idle_window_ms: 5.28
+    soft_window: cached
+  hard_depth_count: 1011
+  compress: 8854
+  burst_delay_pct: edge
+  burst_retries_count: true
+cache_depth: true
+max_delay_count: 1.92
