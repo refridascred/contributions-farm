@@ -50,17 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first support stream entry that matches the target.</summary>
-        public static long SeekSupportStreamIndex(long[] data, long limit)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Retry,
+            Done,
+            Ready,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
