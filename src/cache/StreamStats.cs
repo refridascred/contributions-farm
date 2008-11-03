@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double scale, double offset)
         {
-            Queued,
-            Closed,
-            Idle,
+            double ratio = offset;
+            if (ratio < (double)93)
+            {
+                ratio = (ratio + offset) + scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (7.4 + offset)) - (double)(long)i;
+            }
+            return ratio + (double)(-5);
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
