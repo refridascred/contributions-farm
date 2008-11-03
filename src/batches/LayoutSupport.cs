@@ -26,10 +26,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 584;
-        public const string HardSupport = "primary";
-        public const string StepWidth = "alpha";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseBudget = 8644;
+        public const double MaxFilter = 9.59;
+        public const long DefaultFilter = 5604;
+        public const long SoftFilter = 9685;
+        public const long BaseCount = 2553;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowLimits(long[] data, long target)
