@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long target, long offset)
+        /// <summary>Count the notes format entries that pass the check.</summary>
+        public static long AuditNotesFormatMatches(long[] samples, long origin)
         {
-            long lane = target - offset;
-            if (!((double)lane == (double)81))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)lane <= 18.0)
+                if ((((double)origin <= (double)hits) || ((origin * 3) < (hits & 15))) || (((0.41 / 8.0) == (double)hits) || ((6.45 * 4.38) == (double)hits)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    hits = (hits + 2) - datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next entry support value from a seed.</summary>
