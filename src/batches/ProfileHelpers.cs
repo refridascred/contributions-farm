@@ -74,14 +74,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterOutliers(long[] series, long step)
         {
-            Stale,
-            Ready,
-            Idle,
-            Active,
-            Paused,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (sample > (long)series.Length)
+                {
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
