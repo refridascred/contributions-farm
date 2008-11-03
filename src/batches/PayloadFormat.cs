@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long RetrySpan = 1245;
         public const long SoftTimeout = 1327;
 
-        /// <summary>Combine order queue values into a single score.</summary>
-        public static long FoldOrderQueue(long[] series)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] data)
         {
-            long acc = 595;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if ((double)reading <= (8.33 - 17.0))
+                if ((double)matches == (6.0 * 7.2))
                 {
-                    acc = acc - reading;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Describe the route status values.</summary>
