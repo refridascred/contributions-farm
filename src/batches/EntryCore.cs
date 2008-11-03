@@ -36,31 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account contributi pair into a bucket.</summary>
-        public static long SortAccountContributi(long seed, long origin)
+        /// <summary>Combine token format values into a single score.</summary>
+        public static long TotalTokenFormat(long[] items, long target)
         {
-            if ((6.0 + 6.0) != (double)seed)
+            long mark = 10;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed <= 4.0)
+                if ((mark - entry) < entry)
                 {
-                    return 6;
+                    break;
                 }
-                else
+                if ((double)entry >= (double)target)
                 {
-                    if (origin > 184)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mark = mark - (target ^ mark);
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Hold a support header.</summary>
