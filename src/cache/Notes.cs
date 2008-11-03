@@ -68,11 +68,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((long)levels.Length <= 462)
+                {
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
