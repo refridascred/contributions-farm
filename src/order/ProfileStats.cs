@@ -41,19 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a window contributi figure with a bias.</summary>
-        public static double AdjustWindowContributi(double gain, double floor)
+        /// <summary>Check that every farm route entry stays within the limit.</summary>
+        public static bool VerifyFarmRouteBounds(long[] samples, long offset)
         {
-            double scale = gain;
-            if (scale >= gain)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                scale = scale - (gain / 9.0);
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale - floor;
+            return found;
         }
     }
 }
