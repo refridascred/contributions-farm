@@ -1,12 +1,11 @@
 {
-  "poll_interval": 60.86,
-  "cache_capacity_count": 39,
-  "queue_depth": {
-    "max_capacity_ms": true,
-    "strict": true,
-    "min_size_pct": 3,
-    "format_size": "blue"
+  "hard_threshold_ms": 316,
+  "verbose": 1901,
+  "sync_depth_count": {
+    "flush_limit_ms": 22.51,
+    "readonly": 68.23,
+    "strict": 1
   },
-  "schema_threshold": 7367,
-  "flush_interval_s": "strict"
+  "hard_threshold_pct": 51,
+  "batch_retries_ms": "latest"
 }
