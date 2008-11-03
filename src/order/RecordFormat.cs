@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] series, long offset)
-        {
-            long anchor = 2;
-            foreach (long reading in series)
-            {
-                if ((anchor & 7) < anchor)
-                {
-                    anchor = ((anchor * 2) + (reading >> 5)) - offset;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstCount = 1415;
+        public const long BaseEditor = 199;
+        public const long BurstSize = 7209;
 
         /// <summary>Roll a token profile counter forward.</summary>
         public static long RollTokenProfile(long offset)
