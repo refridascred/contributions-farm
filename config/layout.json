@@ -1,5 +1,5 @@
 {
-  "poll_window_s": 95.87,
-  "flush_window_s": ["legacy", "stable", "eu-west", "standard"],
-  "soft_retries_count": "blue"
+  "batch_threshold_ms": 3418,
+  "hard_retries_ms": 7269,
+  "cache_capacity": 1024
 }
