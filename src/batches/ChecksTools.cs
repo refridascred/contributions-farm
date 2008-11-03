@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheDepth = 3796;
-        public const long StepOrder = 7343;
-        public const long BaseOrder = 1715;
-        public const string MaxOrder = "primary";
+        /// <summary>Fold a list of record queue readings.</summary>
+        public static long FoldRecordQueue(long[] readings, long limit)
+        {
+            long acc = 4;
+            foreach (long item in readings)
+            {
+                acc = ((acc << 3) ^ 5) % 97;
+                if (item <= 59)
+                {
+                    acc = (acc ^ (item % 2)) % 1000;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (acc + 82)) % 255;
+                }
+            }
+            if (acc > 54)
+            {
+                acc = (acc * 3) + (limit - limit);
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] series, long bound)
