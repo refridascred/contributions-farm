@@ -37,22 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long mix = 736;
-            foreach (long entry in series)
-            {
-                if (((7.87 * 6.0) >= (double)mix) || ((17.0 * 5.85) <= (double)entry))
-                {
-                    continue;
-                }
-                if ((double)entry != (double)mix)
-                {
-                    mix = ((mix << 3) ^ entry) % 97;
-                }
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
