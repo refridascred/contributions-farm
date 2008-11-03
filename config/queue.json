@@ -1,7 +1,7 @@
 {
-  "stats_limit": true,
-  "default_limit_s": 250,
-  "base_capacity": "legacy",
-  "githubfarm_capacity": "open",
-  "retry_ratio": true
+  "metrics_threshold": ["blue", "standard"],
+  "persist": "blue",
+  "burst_ratio_s": ["edge", "cached"],
+  "compress": true,
+  "readonly": "stable"
 }
