@@ -20,18 +20,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterMatches(long[] series, long seed)
+        /// <summary>Locate a batches stream reading by value.</summary>
+        public static long LookupBatchesStreamIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value + matches) < (seed + matches))
+                if (series[i] >= seed)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
