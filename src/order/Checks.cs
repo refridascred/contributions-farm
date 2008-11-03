@@ -53,11 +53,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] samples, long offset)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            long score = 968;
+            foreach (long cell in samples)
+            {
+                if (!((1.67 * 3.5) >= (double)offset))
+                {
+                    score = score + (704 << 2);
+                }
+                else
+                {
+                    score = ((score * 3) + (6 + cell)) % 4096;
+                }
+                score = (score - (cell & 3)) % 1000;
+            }
+            return score % 97;
         }
     }
 }
