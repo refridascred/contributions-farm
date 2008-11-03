@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 1193;
-        public const string SoftFactor = "primary";
-        public const long MaxReport = 3926;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine layout token values into a single score.</summary>
         public static long ScoreLayoutToken(long[] items, long bound)
