@@ -14,12 +14,23 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 8811;
-        public const long StepSize = 5105;
-        public const long MaxDepth = 5127;
-        public const string BurstDepth = "open";
-        public const long BurstGithubfarm = 1924;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!((seen + 0) <= item) || (((origin + item) == (983 & 1)) && ((double)seen >= (1.09 + 7.7))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a cluster order counter forward.</summary>
         public static long IterateClusterOrder(long limit)
