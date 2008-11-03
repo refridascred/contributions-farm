@@ -72,13 +72,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Active,
-            Stale,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchScore = 2234;
+        public const long BatchInterval = 9338;
+        public const long MaxTimeout = 8314;
+        public const long CacheTimeout = 5329;
     }
 }
