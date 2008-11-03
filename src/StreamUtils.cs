@@ -29,32 +29,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a farm context value against two limits.</summary>
-        public static long GradeFarmContext(long bound, long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] levels, long step)
         {
-            long bound2 = bound + origin;
-            if ((origin + 43) < (bound2 >> 3))
+            long result = 431;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + origin) >= bound)
+                if ((9.54 + 9.1) <= (double)step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((91 - bound) < (125 - bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    result = ((result * 3) + step) - datum;
                 }
             }
+            return result % 1000;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
