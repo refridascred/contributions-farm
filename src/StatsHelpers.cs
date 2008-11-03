@@ -56,9 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 2392;
-        public const long BatchInterval = 4213;
-        public const string BaseGithubfarm = "alpha";
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] items, long origin)
+        {
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
