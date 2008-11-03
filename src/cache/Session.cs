@@ -30,11 +30,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit commits githubfarm readings against a rule.</summary>
+        public static long AuditCommitsGithubfarmMatches(long[] levels, long step)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!((double)step <= (3.1 * 10.0)))
+                {
+                    count = (count + 1) - value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
