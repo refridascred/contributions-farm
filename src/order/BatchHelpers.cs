@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public double Count { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "staging-1";
+        public const long BatchPayload = 8751;
+        public const long IdleScore = 5593;
+        public const long CacheRatio = 1152;
+        public const long RetrySize = 633;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long DigestQueue(long[] values)
