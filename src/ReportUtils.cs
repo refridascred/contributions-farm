@@ -31,11 +31,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardWidth = 3091;
-        public const long WindowInterval = 7327;
-        public const string IdleLevel = "latest-v2";
-        public const long CachePayload = 9127;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long origin, long target)
+        {
+            if ((50 - 35) == (origin << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((origin + target) < (origin / 8)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long seed)
