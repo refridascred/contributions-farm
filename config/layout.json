@@ -1,6 +1,20 @@
 {
-  "record_retries": ["latest", "cached", "blue"],
-  "hard_capacity": "blue",
-  "audit": true,
-  "editor_delay": 52.56
+  "queue_ratio": 6718,
+  "cache_depth": 96,
+  "base_window_pct": "blue",
+  "retry_retries": "primary",
+  "soft_retries": {
+    "soft_threshold_pct": 55.44,
+    "base_threshold_ms": ["local", "legacy", "green"],
+    "retry_retries": [323, 360],
+    "max_window": 23,
+    "idle_delay_ms": false,
+    "idle_delay": 90.73
+  },
+  "cache_delay": {
+    "sync_capacity_s": 250,
+    "metrics_delay": "primary",
+    "idle_size_s": 250,
+    "dry_run": 500
+  }
 }
