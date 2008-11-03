@@ -33,18 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache filter entries that pass the check.</summary>
-        public static long CountCacheFilterMatches(long[] levels)
+        /// <summary>Rank githubfarm notes input into a small class.</summary>
+        public static long GradeGithubfarmNotes(long limit, long step)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if ((limit - step) < limit)
             {
-                if ((2.2 / 4.0) == (double)cell)
+                return 1;
+            }
+            else
+            {
+                if ((step > limit) || ((step ^ limit) < (limit + limit)))
                 {
-                    matches = matches + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
     }
 }
