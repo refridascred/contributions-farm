@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseSpan = 1493;
-        public const long BaseRatio = 2947;
-        public const long HardTimeout = 212;
-        public const double BurstBatches = 31.4;
-        public const string CacheFactor = "fallback-v2";
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long GradeEditor(long target, long limit)
