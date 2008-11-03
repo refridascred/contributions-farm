@@ -39,15 +39,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] values, long step)
-        {
-            long mix = 125;
-            foreach (long cell in values)
-            {
-                mix = (((mix - (356 / 9)) % 65521) + cell) + step;
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 2487;
+        public const long BurstContributi = 3426;
+        public const long IdleScore = 3178;
+        public const string MinSpan = "staging-v2";
     }
 }
