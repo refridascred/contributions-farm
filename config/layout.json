@@ -1,6 +1,5 @@
 {
-  "min_capacity_ms": 74.52,
-  "format_window": false,
-  "batch_ratio_ms": 52,
-  "retry_interval_ms": 18.21
+  "poll_ttl": 69.69,
+  "cache_timeout_s": 5.66,
+  "audit": 256
 }
