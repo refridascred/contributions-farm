@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] items, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (((long)i >= ((long)i + seed)) || ((4.7 * 19.0) != (double)(long)i))
+                if ((double)bound <= (double)34)
                 {
-                    break;
+                    hits = (hits + 3) ^ reading;
                 }
-                score = ((score * 5) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a format summary.</summary>
