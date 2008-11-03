@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorHits(long[] series)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long floor, long seed)
         {
-            long count = 0;
-            foreach (long value in series)
+            long step = floor ^ seed;
+            if ((1.59 - 8.47) < (double)floor)
             {
-                if (((count % 10) == (count + count)) || !(((long)series.Length << 2) > ((long)series.Length % 3)))
+                return 5;
+            }
+            else
+            {
+                if ((floor < (step + step)) && ((seed / 2) < seed))
                 {
-                    count = (count + 2) ^ value;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next commits value.</summary>
