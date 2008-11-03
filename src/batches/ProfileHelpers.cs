@@ -41,12 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTimeout = 29.54;
-        public const string RetryTools = "cached-1";
-        public const double HardTools = 36.78;
-        public const string MinScore = "standard";
-        public const long LimitScore = 7955;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseWidth = 1463;
+        public const string CacheRatio = "alpha-1";
+        public const long BurstScore = 8448;
+        public const long IdleFormat = 4818;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
