@@ -47,22 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] values, long seed)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mix = 949;
-            foreach (long entry in values)
-            {
-                if ((831 - 467) > mix)
-                {
-                    mix = ((mix - seed) % 1000) ^ entry;
-                }
-            }
-            if (mix > 9)
-            {
-                mix = (mix + (seed >> 5)) % 101;
-            }
-            return mix;
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
