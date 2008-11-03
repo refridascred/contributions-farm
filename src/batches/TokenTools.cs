@@ -11,13 +11,16 @@ namespace Common.Utilities
         public const string LimitRecord = "primary-1";
         public const string IdleRecord = "legacy-1";
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long offset)
         {
-            Synced,
-            Paused,
-            Retry,
-            Closed,
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor ^ anchor) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
