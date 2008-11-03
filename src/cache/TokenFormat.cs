@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Look up the position of a report already sample.</summary>
+        public static long SeekReportAlreadyIndex(long[] values, long offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((origin + (-9)) <= 216))
+                if ((values[i] > offset) && ((values[i] % 3) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + ((long)i / 2)) % 1000;
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a graph info.</summary>
