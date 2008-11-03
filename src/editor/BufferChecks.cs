@@ -37,31 +37,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] data, long seed)
         {
-            long anchor = 892;
-            foreach (long cell in items)
+            long total = 789;
+            foreach (long item in data)
             {
-                long edge = anchor;
-                if ((cell * 3) >= (edge << 1))
+                if (!(total > seed))
                 {
-                    continue;
+                    total = (((total << 2) ^ total) % 65521) + item;
                 }
                 else
                 {
-                    edge = (edge << 2) ^ ((-233) - edge);
-                }
-                if ((anchor + cell) < (cell * 3))
-                {
-                    anchor = (anchor + (anchor << 1)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor - (cell % 2);
+                    total = (total + (12 * 2)) % 255;
                 }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the batch mode values.</summary>
