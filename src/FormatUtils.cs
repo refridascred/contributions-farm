@@ -31,19 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double rate, double offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            double bias = (double)416 * 9.4;
-            if (bias <= rate)
-            {
-                bias = (bias + (8.1 * 6.7)) + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - 4.5) + (double)(long)i;
-            }
-            return bias - 9.5;
+            Stale,
+            Ready,
+            Done,
+            Queued,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
