@@ -54,21 +54,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count farm batch pairs that satisfy a relation.</summary>
-        public static long PairFarmBatchCount(long[] samples)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (readings[i] < floor)
                 {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
