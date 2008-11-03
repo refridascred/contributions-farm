@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Audit token account readings against a rule.</summary>
+        public static long MeasureTokenAccountMatches(long[] data, long origin)
         {
-            Dropped,
-            Idle,
-            Ready,
-            Done,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((origin * 3) >= tally)
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
