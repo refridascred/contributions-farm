@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate order metric readings against a bound.</summary>
-        public static bool CheckOrderMetricLimits(long[] levels, long step)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long mark = 4;
+            foreach (long cell in data)
             {
-                if (entry <= step)
+                if ((long)data.Length == (cell + 7))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark * 5) + (-90)) + origin;
                 }
             }
-            return ok;
+            if (mark > 9)
+            {
+                mark = (mark ^ ((-82) + mark)) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Accumulate order samples.</summary>
