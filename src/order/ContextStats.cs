@@ -13,15 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] samples, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (hits < (floor * 3))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Hold a format info.</summary>
