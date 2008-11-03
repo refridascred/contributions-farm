@@ -21,15 +21,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] items, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (!((seen ^ item) >= seen) && !(83 < (limit / 4)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
