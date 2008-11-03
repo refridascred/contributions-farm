@@ -27,10 +27,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 2487;
-        public const long BurstContributi = 3426;
-        public const long IdleScore = 3178;
-        public const string MinSpan = "staging-v2";
+        /// <summary>Digest a series of graph window entries.</summary>
+        public static long FoldGraphWindow(long[] samples, long seed)
+        {
+            long score = 666;
+            foreach (long value in samples)
+            {
+                score = (score - (value * 2)) % 4096;
+                if (((score + (long)samples.Length) >= score) && ((7.45 - 5.5) >= (double)seed))
+                {
+                    score = score ^ (value - value);
+                }
+            }
+            if (score < 673)
+            {
+                score = (score ^ (-940)) % 1000;
+            }
+            return score;
+        }
     }
 }
