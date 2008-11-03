@@ -1,7 +1,7 @@
 {
-  "batches_capacity": 6600,
-  "stats_capacity": ["standard", "green", "stable"],
-  "enabled": "green",
-  "max_timeout": 500,
-  "retry_ttl_pct": "cached"
+  "enabled": [40, 364],
+  "default_threshold_count": true,
+  "filter_depth": false,
+  "context_limit": 28.63,
+  "sync_ratio": 58
 }
