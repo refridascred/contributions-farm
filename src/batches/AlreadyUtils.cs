@@ -53,19 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches >> 1) >= (matches * 5))
-                {
-                    matches = (matches + 3) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitCount = 96.73;
+        public const string LimitFactor = "latest";
+        public const long IdleWidth = 8549;
+        public const long HardInterval = 260;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long HardBudget = 1714;
