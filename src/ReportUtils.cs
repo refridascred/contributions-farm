@@ -64,26 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] levels, long target)
-        {
-            long anchor = 65;
-            foreach (long item in levels)
-            {
-                if ((anchor % 16) > (anchor + 712))
-                {
-                    anchor = (anchor ^ (anchor - item)) - target;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor >> 5)) % 4096;
-                }
-            }
-            if (anchor > 79)
-            {
-                anchor = (anchor << 3) ^ (5 & 63);
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstBatches = 21.58;
+        public const double BatchBatches = 14.5;
+        public const double RetryBatches = 90.34;
+        public const string IdleBatches = "standard-1";
+        public const long CacheBatches = 6784;
     }
 }
