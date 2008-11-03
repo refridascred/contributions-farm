@@ -17,10 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 2709;
-        public const long BatchSchema = 408;
-        public const long MinSpan = 2425;
+        /// <summary>Adjust a githubfarm cluster reading.</summary>
+        public static double AdjustGithubfarmCluster(double ratio, double span)
+        {
+            double weight = (ratio * 0.32) + ratio;
+            return (weight - (double)869) + span;
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long FoldBatches(long[] readings)
