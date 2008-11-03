@@ -61,10 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 3204;
-        public const long CacheChannel = 7642;
-        public const long BatchChannel = 9716;
-        public const string WindowInterval = "primary-1";
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Closed,
+            Retry,
+            Failed,
+            Ready,
+        }
     }
 }
