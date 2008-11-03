@@ -39,17 +39,12 @@ namespace Common.Utilities
         public const long CacheRecord = 9128;
         public const double LimitRecord = 86.27;
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] series, long offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Stale,
         }
 
         /// <summary>Describe the editor state values.</summary>
