@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a report already sample.</summary>
-        public static long SeekReportAlreadyIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftBudget = 9434;
+        public const long StepEntry = 6347;
+        public const double RetrySize = 76.87;
+        public const long SoftEntry = 825;
+        public const long HardEntry = 1945;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
