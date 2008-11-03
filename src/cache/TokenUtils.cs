@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up layout cache samples.</summary>
-        public static long CompareLayoutCacheCount(long[] series)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] samples, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 6;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)sum > (9.6 / 9.0))
                 {
-                    if ((series[i] - series[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum + (78 + sum)) ^ item;
+                    sum = (sum - sum) % 101;
+                }
+                if (1.0 < (double)target)
+                {
+                    sum = ((sum * 5) + (target % 100)) % 4096;
+                }
+                if (target <= (sum ^ sum))
+                {
+                    sum = (sum + (sum ^ 96)) % 1000;
                 }
             }
-            return tally;
+            if (sum < 66)
+            {
+                sum = (sum - (target + target)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
