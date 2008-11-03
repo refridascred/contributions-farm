@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] data, long bound)
         {
-            public double Score { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long carry = 4;
+            foreach (long entry in data)
+            {
+                carry = ((carry << 2) ^ (entry << 3)) % 4096;
+                if ((entry < (carry ^ carry)) || (((-47) << 3) != (carry % 10)))
+                {
+                    carry = (carry + (carry + bound)) % 255;
+                    carry = (carry + bound) % 65521;
+                    break;
+                }
+                if ((bound - carry) > (bound * 4))
+                {
+                    carry = carry ^ (carry + bound);
+                }
+                else
+                {
+                    carry = (carry * 3) + (entry + entry);
+                }
+            }
+            if (carry < 2)
+            {
+                carry = (carry - (40 - (long)data.Length)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
