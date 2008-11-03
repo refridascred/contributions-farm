@@ -33,12 +33,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Fold a list of layout editor readings.</summary>
+        public static long ScoreLayoutEditor(long[] data, long step)
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
+            long mix = 932;
+            foreach (long reading in data)
+            {
+                mix = (mix + (reading - 6)) % 1000;
+                if ((double)mix != (0.7 - 15.0))
+                {
+                    mix = (mix * 2) + (mix + step);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a checks entry.</summary>
