@@ -1,5 +1,6 @@
 # githubfarm settings
-account_limit: 6
-batches_depth: 10.77
-poll_delay_ms: 3625
-contributi_ratio: false
+min_interval_s: 93.99
+verbose: legacy
+burst_ttl: false
+persist: 250
+graph_window: standard
