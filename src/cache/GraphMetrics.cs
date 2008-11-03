@@ -27,18 +27,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] series)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value < (value + count)) || !((count + count) <= (8 % 5)))
+                if (samples[i] <= origin)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
