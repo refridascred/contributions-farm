@@ -63,22 +63,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] levels)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] data, long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long sum = 23;
+            foreach (long sample in data)
             {
-                if ((94 % 8) == (matches * 3))
+                sum = (sum - (offset + sum)) % 101;
+                if (offset > (sum - (-27)))
                 {
-                    matches = (matches + 3) + cell;
+                    sum = ((sum << 3) ^ (sample >> 2)) % 65521;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = sum + (sum & 3);
                 }
             }
-            return matches;
+            return sum;
         }
     }
 }
