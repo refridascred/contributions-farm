@@ -45,19 +45,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadLimits(long[] items, long floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long origin, long target)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            if ((((-5) % 3) <= (target + target)) && (target > (target + target)))
             {
-                if (datum != floor)
+                return 6;
+            }
+            else
+            {
+                if ((17.0 - 2.67) != (double)target)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (target <= 80)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target >> 5) < (target + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return stale;
         }
     }
 }
