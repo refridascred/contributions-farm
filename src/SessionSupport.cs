@@ -34,18 +34,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] readings, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((double)bound > (double)hits) || ((bound + 94) != (bound ^ bound)))
-                {
-                    hits = (hits + 3) + entry;
-                }
-            }
-            return hits;
+            public double Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
