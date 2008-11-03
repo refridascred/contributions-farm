@@ -41,15 +41,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double ratio, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long seed, long seed2)
         {
-            double drift = ratio;
-            if (drift > span)
+            if ((seed - 4) > seed2)
             {
-                drift = drift + (drift * 9.29);
+                return 7;
             }
-            return drift + (drift - ratio);
+            else
+            {
+                if ((seed2 >> 5) >= seed2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (19.0 >= (double)seed2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate account samples.</summary>
