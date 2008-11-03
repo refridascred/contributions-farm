@@ -22,19 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report batches entries.</summary>
-        public static long WeighReportBatches(long[] samples)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            long sum = 13;
-            foreach (long reading in samples)
+            long result = 8;
+            foreach (long reading in levels)
             {
-                sum = (sum - (reading - sum)) % 97;
+                result = result - 88;
+                result = ((result * 3) + (result / 4)) % 1000;
+                if ((double)reading > (0.52 - 6.7))
+                {
+                    result = (result + (result - reading)) % 255;
+                }
             }
-            if (sum > 5)
-            {
-                sum = sum - (500 + sum);
-            }
-            return sum % 65521;
+            return result;
         }
 
         /// <summary>Hold a cluster summary.</summary>
