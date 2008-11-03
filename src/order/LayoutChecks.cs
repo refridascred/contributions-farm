@@ -20,17 +20,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] data, long offset)
+        /// <summary>Grade a commits counter value against two limits.</summary>
+        public static long ClassifyCommitsCounter(long seed, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!((seed + 631) > (limit - limit)))
             {
-                if (data[i] < offset)
+                return 2;
+            }
+            else
+            {
+                if ((limit - (-8)) != (limit ^ 4))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
