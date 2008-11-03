@@ -69,11 +69,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next already channel value.</summary>
-        public static double BlendAlreadyChannel(double scale, double span)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long limit, long offset)
         {
-            double rate = (scale - 9.0) + scale;
-            return (rate + (7.54 / 3.0)) + span;
+            long prev = limit - offset;
+            if ((limit & 127) > prev)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit / 3) <= (prev + limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a notes entry.</summary>
