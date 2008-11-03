@@ -41,18 +41,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmOutliers(long[] data, long target)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((target * 4) <= (count << 1))
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
