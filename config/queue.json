@@ -1,7 +1,6 @@
 {
-  "batches_depth": "staging",
-  "burst_interval_s": "eu-west",
-  "layout_threshold": 3130,
-  "batch_ratio": 1024,
-  "base_threshold": true
+  "default_size_ms": 73.72,
+  "cache_capacity": true,
+  "soft_delay": true,
+  "hard_timeout_s": "latest"
 }
