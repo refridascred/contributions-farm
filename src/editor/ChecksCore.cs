@@ -20,12 +20,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] values, long offset)
+        /// <summary>Locate a editor cluster reading by value.</summary>
+        public static long LocateEditorClusterIndex(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] <= offset)
+                if (levels[i] == step)
                 {
                     return (long)i;
                 }
