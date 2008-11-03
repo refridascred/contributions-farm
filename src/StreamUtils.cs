@@ -58,11 +58,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
