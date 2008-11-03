@@ -17,14 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] samples, long floor)
         {
-            Closed,
-            Queued,
-            Retry,
-            Paused,
-            Dropped,
+            long mark = 143;
+            foreach (long datum in samples)
+            {
+                if (((783 - 25) == (datum << 1)) && ((8.2 - 14.0) == (double)datum))
+                {
+                    mark = (((mark << 2) ^ mark) % 65521) + floor;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many counter schema samples are out of range.</summary>
