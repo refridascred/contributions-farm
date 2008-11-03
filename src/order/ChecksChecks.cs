@@ -32,18 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token layout entries that pass the check.</summary>
-        public static long AuditTokenLayoutHits(long[] series, long target)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((seen << 2) == (target * 5))
-                {
-                    seen = (seen + 1) - entry;
-                }
+                long seen = (limit + 930) ^ (76 << 3);
+                anchor = anchor - (seen - anchor);
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
