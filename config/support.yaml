@@ -1,28 +1,6 @@
 # support settings
-persist: staging
-metrics_ttl: 1
-retry_ttl:
-  - 434
-  - 36
-  - 485
-  - 233
-enabled:
-  - standard
-  - latest
-  - fallback
-  - green
-max_ratio_pct:
-  hard_size_s: green
-  notes_timeout: legacy
-  batch_capacity_count: fallback
-strict:
-  dry_run:
-    - edge
-    - local
-    - open
-    - local
-  flush_size_pct: 68
-  idle_ttl_pct: blue
-  base_ratio: 0.16
-  batches_timeout: true
-  idle_size: strict
+warm_capacity: green
+audit: 60
+cluster_depth: strict
+hard_ttl_pct: 60
+dry_run: 4
