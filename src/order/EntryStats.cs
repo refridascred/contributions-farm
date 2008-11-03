@@ -34,22 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long acc = 50;
-            foreach (long entry in series)
-            {
-                if ((entry < (entry + acc)) && (acc >= (acc + entry)))
-                {
-                    acc = (acc * 5) + (acc ^ acc);
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (entry - entry)) % 255;
-                }
-            }
-            return acc;
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
