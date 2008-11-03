@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks core helpers.</summary>
     public static class ChecksCore
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "standard-edge";
+        public const long CacheStream = 5836;
+        public const long BatchCount = 591;
+        public const long DefaultFactor = 199;
+        public const long SoftSize = 5330;
 
         /// <summary>Hold a booking summary.</summary>
         public sealed class BookingSummary
