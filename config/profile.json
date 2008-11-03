@@ -1,19 +1,6 @@
 {
-  "verbose": 40,
-  "default_retries_s": {
-    "queue_depth": [147, 237, 15, 66],
-    "default_size": "strict",
-    "sync_timeout_ms": {
-      "min_capacity": 1769,
-      "context_retries": "eu-west",
-      "compress": [367, 22, 383],
-      "flush_retries": "stable"
-    },
-    "enabled": [275, 363, 317],
-    "batch_window": "stable"
-  },
-  "min_ttl_ms": 46.58,
-  "warm_depth": 15.4,
-  "batch_window_pct": 56.69,
-  "payload_retries": 60.25
+  "burst_timeout_s": 44,
+  "persist": 78,
+  "metric_ttl": true,
+  "schema_retries": [388, 113, 30]
 }
