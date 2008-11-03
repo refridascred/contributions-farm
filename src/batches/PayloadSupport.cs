@@ -36,17 +36,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] values, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 0;
+            foreach (long value in series)
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                score = (((score - (66 ^ score)) % 97) + value) + origin;
             }
-            return -1;
+            return score % 97;
         }
     }
 }
