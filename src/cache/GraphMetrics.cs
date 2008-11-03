@@ -48,19 +48,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes farm readings against a rule.</summary>
-        public static long CountNotesFarmGaps(long[] levels)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] data)
         {
             long tally = 0;
-            foreach (long item in levels)
+            foreach (long item in data)
             {
-                if (item < (tally - item))
+                if (!(item <= (tally * 2)) && (((15.0 * 2.86) < (double)item) || ((item << 1) <= (tally * 5))))
                 {
                     tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
                 }
             }
             return tally;
