@@ -37,21 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] levels)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
