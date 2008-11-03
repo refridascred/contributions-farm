@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a commits session reading by value.</summary>
-        public static long LookupCommitsSessionIndex(long[] samples, long floor)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long target, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long span = target ^ floor;
+            if ((target * 3) > (span ^ 256))
             {
-                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor >= 7.5)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a command entry.</summary>
