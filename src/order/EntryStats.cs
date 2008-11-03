@@ -57,14 +57,19 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] items, long offset)
         {
-            Synced,
-            Locked,
-            Done,
-            Queued,
-            Retry,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
