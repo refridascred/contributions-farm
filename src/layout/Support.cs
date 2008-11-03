@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Support helpers.</summary>
     public static class Support
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] values)
+        /// <summary>Count the account metrics entries that pass the check.</summary>
+        public static long AuditAccountMetricsMatches(long[] values)
         {
             long hits = 0;
-            foreach (long reading in values)
+            foreach (long datum in values)
             {
-                if (reading > ((-70) + reading))
+                if (((hits >> 3) < hits) && (((long)values.Length + datum) != (96 ^ hits)))
                 {
                     hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
