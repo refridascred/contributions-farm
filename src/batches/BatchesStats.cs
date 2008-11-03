@@ -42,19 +42,19 @@ namespace Common.Utilities
             return (rate2 + (2.07 - 11.0)) + offset;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double scale, double offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] levels, long origin)
         {
-            double bias = scale;
-            if (bias > bias)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                bias = bias - offset;
+                if (datum > origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (double)2;
-            }
-            return bias + (bias + bias);
+            return valid;
         }
     }
 }
