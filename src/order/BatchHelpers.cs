@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] readings)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!((59 + cell) <= (954 << 3)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
