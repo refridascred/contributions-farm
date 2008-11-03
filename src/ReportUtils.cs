@@ -46,10 +46,20 @@ namespace Common.Utilities
         public const long HardBudget = 3595;
         public const long MaxOrder = 5535;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseCount = "standard-1";
-        public const long BatchLevel = 3525;
-        public const long BaseSchema = 9399;
+        /// <summary>Validate account contributi readings against a bound.</summary>
+        public static bool ValidateAccountContributiLimits(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
