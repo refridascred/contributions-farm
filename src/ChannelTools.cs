@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] readings, long seed)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long origin, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = origin ^ bound;
+            if ((slot >> 2) < (origin - origin))
             {
-                if (readings[i] > seed)
+                return 5;
+            }
+            else
+            {
+                if ((slot * 3) < bound)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin > (2.25 + 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
