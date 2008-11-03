@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch buffer readings against a rule.</summary>
-        public static long MeasureBatchBufferOutliers(long[] values, long step)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally >> 5) < (723 + step))
+                if ((series[i] <= floor) && ((series[i] % 3) != 0))
                 {
-                    tally = (tally + 3) + entry;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
