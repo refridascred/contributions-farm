@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitFactor = 8607;
+        public const long BaseInterval = 8469;
+        public const long MinLayout = 9734;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long WindowInterval = 5672;
