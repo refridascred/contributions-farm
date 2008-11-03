@@ -76,19 +76,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] items, long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Locked,
+            Done,
+            Paused,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
