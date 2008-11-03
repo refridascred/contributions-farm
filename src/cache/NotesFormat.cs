@@ -25,18 +25,15 @@ namespace Common.Utilities
             return scale + 4.45;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] levels)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double scale, double offset)
         {
-            long score = 425;
-            foreach (long sample in levels)
+            double drift = scale - 9.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)score > (0.4 * 18.0))
-                {
-                    score = ((score << 2) ^ 34) ^ sample;
-                }
+                drift = (drift + offset) + (double)(long)i;
             }
-            return score % 65521;
+            return drift + offset;
         }
     }
 }
