@@ -33,15 +33,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] levels, long seed)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long mark = 75;
-            foreach (long cell in levels)
-            {
-                mark = ((mark - (8 * 2)) ^ cell) - seed;
-            }
-            return mark;
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
