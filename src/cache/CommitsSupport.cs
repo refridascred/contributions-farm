@@ -21,19 +21,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmRange(long[] samples, long step)
+        /// <summary>Check that every format cache entry stays within the limit.</summary>
+        public static bool ValidateFormatCacheBounds(long[] readings, long limit)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (reading != step)
+                if (sample <= limit)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Describe the report mode values.</summary>
