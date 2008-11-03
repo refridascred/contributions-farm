@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksOutliers(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                score = ((score * 5) + (40 + floor)) % 65521;
-                score = ((score * 2) + (long)i) % 97;
+                if ((hits & 7) < hits)
+                {
+                    hits = (hits + 2) - sample;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a record info.</summary>
