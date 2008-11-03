@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long HardDepth = 3454;
         public const long BatchSize = 1932;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 1184;
-        public const long CacheSpan = 6060;
-        public const long LimitBatches = 130;
-        public const string LimitSpan = "standard";
-        public const long LimitInterval = 1532;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionBounds(long[] items, long step)
