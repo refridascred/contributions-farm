@@ -98,18 +98,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the support queue entries that pass the check.</summary>
-        public static long TallySupportQueueOutliers(long[] levels, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((target - hits) == (hits << 3))
+                if ((seed - count) > (entry - entry))
                 {
-                    hits = (hits + 2) ^ entry;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
