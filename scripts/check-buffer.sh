@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in latest standard green strict; do
+    log "checking ${item}"
+done
 
-BUFFER_LIMIT=463
+BUFFER_LIMIT=11
 log "limit is ${BUFFER_LIMIT}"
