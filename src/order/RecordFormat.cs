@@ -14,15 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double weight, double bias)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] readings, long floor)
         {
-            double drift = (double)37 - (bias / 3.0);
-            if (drift <= bias)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                drift = drift - bias;
+                if (((entry - entry) <= 575) || ((double)floor > (double)45))
+                {
+                    matches = matches + 2;
+                }
             }
-            return drift - weight;
+            return matches;
         }
 
         /// <summary>Accumulate context schema samples.</summary>
