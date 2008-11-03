@@ -19,39 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long origin, long seed)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double AdjustSupport(double rate, double offset)
         {
-            long edge = origin ^ seed;
-            if (!(((-6) - seed) > (origin + edge)))
+            double load = (offset + 1.0) - (double)4;
+            if (load <= (load * 1.41))
             {
-                return 8;
+                load = load - rate;
             }
             else
             {
-                if ((origin % 12) <= (seed - origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)seed < (0.9 - 9.0)) && (origin < (origin + origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)origin > (18.0 / 6.0)) || ((seed ^ 6) < edge))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                load = load + load;
             }
+            return load + load;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
