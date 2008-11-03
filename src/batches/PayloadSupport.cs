@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 5872;
-        public const double SoftDepth = 98.2;
-        public const long WindowInterval = 2672;
-        public const double SoftBatch = 34.14;
+        /// <summary>Locate a farm metrics reading by value.</summary>
+        public static long LookupFarmMetricsIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long DeriveReport(long target)
