@@ -23,12 +23,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            Ready,
-            Synced,
-            New,
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
     }
 }
