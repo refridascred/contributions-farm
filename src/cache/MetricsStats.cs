@@ -63,13 +63,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] levels)
         {
-            Retry,
-            Stale,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((94 % 8) == (matches * 3))
+                {
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
