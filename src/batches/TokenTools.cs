@@ -31,13 +31,22 @@ namespace Common.Utilities
             return drift + (floor - floor);
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] data)
         {
-            Stale,
-            Active,
-            Queued,
-            Ready,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((33 + (long)data.Length) >= (entry * 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
