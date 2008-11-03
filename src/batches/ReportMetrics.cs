@@ -23,12 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
             Queued,
-            New,
-            Retry,
+            Active,
+            Failed,
+            Stale,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
