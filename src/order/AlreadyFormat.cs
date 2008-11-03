@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the batches report series from a seed.</summary>
-        public static long DeriveBatchesReport(long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(((long)i * 5) > target))
-                {
-                    anchor = (anchor - (anchor & 15)) % 97;
-                }
-                anchor = (anchor + ((long)i + target)) % 1000;
-                anchor = (anchor - (anchor * 4)) % 4096;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the channel buffer entries that pass the check.</summary>
