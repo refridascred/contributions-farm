@@ -30,24 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
+        /// <summary>Roll a githubfarm record counter forward.</summary>
+        public static long StepGithubfarmRecord(long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((mix + limit) == ((-4) << 1))
+                long next = (floor >> 4) % 8;
+                if ((total - (long)i) > (next + 6))
                 {
-                    mix = mix ^ ((-68) ^ limit);
+                    next = next + (total ^ next);
+                    total = total + (total % 60);
                 }
                 else
                 {
-                    mix = mix - (limit << 3);
+                    total = total - floor;
                 }
-                mix = (mix - (mix + limit)) % 4096;
-                mix = ((mix * 3) + (long)i) % 101;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return mix;
+            return total;
         }
     }
 }
