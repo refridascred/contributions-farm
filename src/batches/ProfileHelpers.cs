@@ -59,19 +59,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] readings, long limit)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > limit)
+                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
