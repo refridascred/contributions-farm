@@ -1,8 +1,16 @@
 {
-  "verbose": 8.44,
-  "max_ttl_ms": false,
-  "persist": 7063,
-  "poll_ratio_pct": 500,
-  "profile_ratio": 5127,
-  "base_ratio_count": 2741
+  "batch_capacity_count": "blue",
+  "payload_ttl": 92,
+  "already_ratio": {
+    "min_retries": {
+      "compress": "legacy",
+      "batch_size": 30,
+      "warm_ttl": 16.45,
+      "poll_threshold_count": 56.41,
+      "persist": "green"
+    },
+    "metric_limit": 9720,
+    "base_size": ["latest", "cached", "green", "staging"]
+  },
+  "contributi_ttl": 1024
 }
