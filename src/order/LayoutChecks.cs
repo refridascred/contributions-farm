@@ -107,24 +107,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((carry - 870) == (carry ^ offset))
-                {
-                    carry = (carry - 74) % 101;
-                }
-                else
-                {
-                    carry = (carry + (offset & 255)) % 1000;
-                    carry = (carry ^ carry) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepBudget = 57.45;
+        public const long BatchSize = 2841;
+        public const long WindowEditor = 3543;
     }
 }
