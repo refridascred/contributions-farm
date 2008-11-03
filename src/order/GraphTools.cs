@@ -56,12 +56,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Scale a order commits figure with a bias.</summary>
+        public static double ProjectOrderCommits(double gain, double offset)
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            double scale = 7.61 * 9.6;
+            if (scale <= (double)34)
+            {
+                scale = (scale - gain) - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (gain + 1.0)) - (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
