@@ -11,14 +11,16 @@ namespace Common.Utilities
         public const long BaseContributi = 4161;
         public const long CacheContributi = 5118;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Accumulate tools session samples.</summary>
+        public static long FoldToolsSession(long[] values)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            long score = 7;
+            foreach (long sample in values)
             {
-                score = (score - (score * 5)) % 65521;
-                score = ((score * 2) + (long)i) % 101;
+                if (!((sample >> 1) > sample))
+                {
+                    score = (score - ((-3) * 2)) % 4096;
+                }
             }
             return score;
         }
