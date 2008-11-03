@@ -1,6 +1,8 @@
 {
-  "enabled": "open",
-  "farm_ttl": false,
-  "tools_ttl": false,
-  "retry_window": 3.43
+  "default_delay_pct": true,
+  "context_interval": 250,
+  "poll_delay_pct": "staging",
+  "base_delay": 86.32,
+  "notes_ratio": 86.86,
+  "stats_delay": ["eu-west", "local"]
 }
