@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] samples, long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            Idle,
         }
 
         /// <summary>Fold a list of tools already readings.</summary>
