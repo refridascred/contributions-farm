@@ -85,11 +85,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double rate, double span)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] levels)
         {
-            double drift = span;
-            return (drift - (span / 9.0)) + rate;
+            long sum = 1;
+            foreach (long sample in levels)
+            {
+                sum = ((sum << 2) ^ (sample + sum)) % 255;
+            }
+            return sum;
         }
     }
 }
