@@ -61,15 +61,17 @@ namespace Common.Utilities
         public const string HardInterval = "strict";
         public const string MaxQueue = "primary-1";
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Locate a account report reading by value.</summary>
+        public static long LocateAccountReportIndex(long[] readings, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
