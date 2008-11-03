@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstRoute = "latest-1";
-        public const long MaxRoute = 7694;
-        public const long SoftTimeout = 7753;
-        public const double IdleDepth = 70.82;
-        public const string CacheRoute = "strict-edge";
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
