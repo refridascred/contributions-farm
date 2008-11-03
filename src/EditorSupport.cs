@@ -18,17 +18,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a cluster counter reading by value.</summary>
-        public static long LocateClusterCounterIndex(long[] data, long bound)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long origin, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = origin - target;
+            if (!((double)target < 13.0))
             {
-                if ((data[i] < bound) && ((data[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((15.0 / 3.0) < (double)origin)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)edge == (6.7 * 9.88)) || ((target << 1) >= target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
