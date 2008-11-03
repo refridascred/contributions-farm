@@ -57,21 +57,31 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of filter context readings.</summary>
-        public static long PairFilterContextCount(long[] levels)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long offset, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (17.0 <= (double)offset)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!(step < (step << 2)))
                 {
-                    if ((levels[i] - levels[j]) == 11)
+                    return 1;
+                }
+                else
+                {
+                    if ((2.3 + 7.67) != (double)step)
                     {
-                        matches = matches + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
