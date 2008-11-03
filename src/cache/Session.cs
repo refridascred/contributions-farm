@@ -49,15 +49,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "standard-v2";
+        public const long WindowProfile = 2137;
+        public const long HardProfile = 4057;
     }
 }
