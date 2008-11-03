@@ -1,6 +1,8 @@
 {
-  "cluster_depth": 22.13,
-  "burst_limit_ms": ["stable", "open"],
-  "compress": 41.27,
-  "default_threshold": false
+  "default_timeout_count": "primary",
+  "command_timeout": ["open", "blue", "latest"],
+  "cache_capacity": [279, 133, 319],
+  "dry_run": 100,
+  "retry_window_count": 78.42,
+  "sync_ratio_ms": "eu-west"
 }
