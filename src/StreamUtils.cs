@@ -70,18 +70,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] items, long seed)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long anchor = 348;
+            foreach (long cell in data)
             {
-                if ((457 - tally) > seed)
+                if ((anchor - cell) < (cell & 7))
                 {
-                    tally = (tally + 1) ^ sample;
+                    anchor = (anchor ^ (cell ^ anchor)) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ cell;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
