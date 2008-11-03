@@ -50,19 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metrics metric readings.</summary>
-        public static long CombineMetricsMetric(long[] values, long step)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] values)
         {
-            long score = 2;
+            long matches = 0;
             foreach (long item in values)
             {
-                score = ((score + (item % 16)) % 65521) - step;
+                if ((item % 16) >= 63)
+                {
+                    matches = matches + 1;
+                }
             }
-            if (score < 49)
-            {
-                score = (score + score) % 101;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
