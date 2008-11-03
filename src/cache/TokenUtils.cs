@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] samples, long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long offset)
         {
-            long sum = 6;
-            foreach (long item in samples)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)sum > (9.6 / 9.0))
-                {
-                    sum = (sum + (78 + sum)) ^ item;
-                    sum = (sum - sum) % 101;
-                }
-                if (1.0 < (double)target)
-                {
-                    sum = ((sum * 5) + (target % 100)) % 4096;
-                }
-                if (target <= (sum ^ sum))
-                {
-                    sum = (sum + (sum ^ 96)) % 1000;
-                }
+                mix = (mix + (mix / 3)) % 4096;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (sum < 66)
-            {
-                sum = (sum - (target + target)) % 4096;
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
