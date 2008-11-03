@@ -26,22 +26,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] readings)
         {
-            long carry = 4;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((2.28 - 13.0) <= (double)carry)
+                if ((count * 4) <= (cell >> 5))
                 {
-                    carry = carry ^ (cell << 2);
+                    count = count + 2;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ (cell + carry);
+                    count = count - 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
