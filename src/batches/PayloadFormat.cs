@@ -39,19 +39,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double weight, double offset)
-        {
-            double ratio = (double)(46 - 14);
-            if (ratio <= (double)316)
-            {
-                ratio = (ratio - ratio) + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (ratio + offset)) + (double)(long)i;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 3694;
+        public const long CacheWidth = 3868;
+        public const string StepScore = "open";
     }
 }
