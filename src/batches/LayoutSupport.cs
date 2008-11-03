@@ -26,17 +26,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] readings, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((readings[i] >= step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + ((long)i + (long)i)) % 255;
+                state = (state + (state & 7)) % 255;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
