@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const double DefaultRatio = 95.17;
         public const long BatchCount = 3623;
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] readings)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long acc = -84;
+            foreach (long entry in data)
             {
-                if ((-1) <= (entry + hits))
+                if ((19.0 <= (double)entry) || ((acc * 3) != (entry * 3)))
                 {
-                    hits = hits + 3;
+                    acc = (acc ^ (entry & 31)) % 101;
                 }
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Compare every pair of commits editor readings.</summary>
