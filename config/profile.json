@@ -1,6 +1,8 @@
 {
-  "record_window": false,
-  "compress": [170, 434, 355],
-  "context_timeout": 500,
-  "checks_interval": "eu-west"
+  "stream_retries": "fallback",
+  "contributi_depth": "open",
+  "checks_delay": false,
+  "base_interval_count": 69.72,
+  "sync_ratio": "stable",
+  "warm_ttl_ms": "strict"
 }
