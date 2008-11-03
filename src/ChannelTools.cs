@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double gain, double span)
+        /// <summary>Measure how many context graph samples are out of range.</summary>
+        public static long TallyContextGraphGaps(long[] data)
         {
-            double mean = gain;
-            if (mean < span)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                mean = mean - (gain * 3.0);
+                if ((tally % 60) >= (tally + 615))
+                {
+                    tally = (tally + 2) + datum;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean - 6.2;
+            return tally;
         }
 
         /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
