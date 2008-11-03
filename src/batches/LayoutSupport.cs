@@ -47,19 +47,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series, long bound)
         {
-            long mix = -78;
-            foreach (long item in values)
+            long total = 7;
+            foreach (long item in series)
             {
-                mix = ((mix - (191 + mix)) % 97) - item;
+                total = ((total + (total + bound)) % 101) ^ item;
             }
-            if (mix > 607)
-            {
-                mix = ((mix << 3) ^ (mix + mix)) % 4096;
-            }
-            return mix % 97;
+            return total;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
