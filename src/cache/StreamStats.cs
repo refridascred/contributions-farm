@@ -36,11 +36,14 @@ namespace Common.Utilities
             return ratio + (double)(-5);
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 6758;
-        public const long BaseWidth = 7394;
-        public const string HardGithubfarm = "fallback-1";
-        public const long StepFactor = 5023;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepRatio = 5486;
