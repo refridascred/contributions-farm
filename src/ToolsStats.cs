@@ -44,17 +44,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                state = (state * 4) + (floor & 255);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryCommits = 2.35;
+        public const double BaseCommits = 53.51;
+        public const long DefaultCommits = 1750;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
