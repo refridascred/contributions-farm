@@ -13,25 +13,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of tools already readings.</summary>
-        public static long FoldToolsAlready(long[] levels)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            long score = 90;
-            foreach (long entry in levels)
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                score = score + (entry * 3);
-                if (((-125) <= score) || ((4.0 + 12.0) >= (double)score))
-                {
-                    score = (score - entry) % 4096;
-                }
-                else
-                {
-                    score = (score ^ (entry << 3)) % 255;
-                }
-            }
-            if (score > 433)
-            {
-                score = score ^ (score + score);
+                score = ((score * 3) + seed) % 4096;
+                score = ((score * 3) + (long)i) % 101;
             }
             return score;
         }
