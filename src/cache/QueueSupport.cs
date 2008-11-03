@@ -18,11 +18,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchInterval = 38.87;
-        public const long DefaultCount = 4781;
-        public const long RetryCount = 5986;
-        public const long LimitScore = 3074;
-        public const double CacheDepth = 31.99;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
