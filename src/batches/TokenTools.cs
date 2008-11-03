@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long floor, long seed)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long seed)
         {
-            long step = floor ^ seed;
-            if ((1.59 - 8.47) < (double)floor)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor < (step + step)) && ((seed / 2) < seed))
+                if (!((3.0 >= (double)seed) || ((seed + seed) <= (118 + 16))))
                 {
-                    return 6;
+                    total = ((total * 3) + (55 << 3)) % 97;
                 }
-                else
-                {
-                    return 3;
-                }
+                total = ((total * 3) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Project the next commits value.</summary>
