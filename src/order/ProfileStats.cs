@@ -40,19 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm route entry stays within the limit.</summary>
-        public static bool VerifyFarmRouteBounds(long[] samples, long offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
