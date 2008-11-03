@@ -55,13 +55,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
-            public bool Ratio { get; set; }
+            Active,
+            Locked,
+            Pending,
+            Synced,
+            Failed,
         }
     }
 }
