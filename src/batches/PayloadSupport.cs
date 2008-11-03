@@ -19,22 +19,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 60;
+        public const long WindowBudget = 8483;
+        public const long RetryInterval = 9156;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long CombineBatch(long[] series, long origin)
