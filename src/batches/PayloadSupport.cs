@@ -14,13 +14,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
