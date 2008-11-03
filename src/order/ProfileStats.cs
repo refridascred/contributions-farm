@@ -40,19 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the command cluster series from a seed.</summary>
-        public static long SeriesCommandCluster(long seed)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 22; i++)
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = ((sum + ((long)i - seed)) % 101) ^ (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return sum;
+            return anchor;
         }
     }
 }
