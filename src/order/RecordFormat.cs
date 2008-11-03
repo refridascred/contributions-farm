@@ -72,13 +72,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Paused,
-            Synced,
+            Active,
+            Stale,
+            Draft,
             Queued,
-            Idle,
         }
     }
 }
