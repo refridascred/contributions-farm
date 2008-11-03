@@ -26,18 +26,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster report readings against a rule.</summary>
-        public static long TallyClusterReportGaps(long[] values)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (!(origin > (step ^ step)))
             {
-                if ((entry * 2) > 63)
+                return 8;
+            }
+            else
+            {
+                if ((double)origin >= (3.62 / 9.0))
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((step - origin) == (486 - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
