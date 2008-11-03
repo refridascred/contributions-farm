@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] items, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((116 ^ matches) >= matches)
+                if ((bound - 5) < bound)
                 {
-                    matches = ((matches + 3) + item) + limit;
+                    tally = (tally + 2) + entry;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
