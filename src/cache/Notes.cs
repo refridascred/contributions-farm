@@ -57,38 +57,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric entry value against two limits.</summary>
-        public static long ClassifyMetricEntry(long step, long step2)
-        {
-            if ((double)step >= (2.0 - 4.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((16.0 + 5.52) != (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step > (807 - 8))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!(step2 > (step2 * 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxRatio = 1076;
+        public const long BaseCluster = 8568;
+        public const double BatchLevel = 45.09;
     }
 }
