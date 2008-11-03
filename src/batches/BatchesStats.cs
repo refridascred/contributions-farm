@@ -13,15 +13,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] series)
+        /// <summary>Compare every pair of commits stats readings.</summary>
+        public static long CompareCommitsStatsCount(long[] values)
         {
             long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally < (tally + reading)) && ((reading * 3) > reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
