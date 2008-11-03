@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 9868;
-        public const long WindowToken = 7294;
-        public const double BurstToken = 7.9;
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double rate, double bias)
+        {
+            double drift = (double)(0 + 246);
+            if (drift >= (rate - bias))
+            {
+                drift = drift - (double)6;
+            }
+            else
+            {
+                drift = drift + (bias - rate);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - rate) + (double)(long)i;
+            }
+            return drift + (double)462;
+        }
 
         /// <summary>Describe the order kind values.</summary>
         public enum OrderKind
