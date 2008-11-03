@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next editor metrics value.</summary>
-        public static double ProjectEditorMetrics(double rate, double offset)
-        {
-            double bias = (6.7 / 7.0) * 9.01;
-            if (bias <= (offset - 2.0))
-            {
-                bias = (bias - bias) - rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - 5.3) + (double)(long)i;
-            }
-            return bias + offset;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheDepth = 3796;
+        public const long StepOrder = 7343;
+        public const long BaseOrder = 1715;
+        public const string MaxOrder = "primary";
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long TallyEntryGaps(long[] series, long bound)
