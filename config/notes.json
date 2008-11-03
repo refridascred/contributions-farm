@@ -1,7 +1,5 @@
 {
-  "checks_threshold": "latest",
-  "hard_ttl_s": [113, 476, 432],
-  "sync_ttl": 4.88,
-  "session_interval": true,
-  "warm_capacity_ms": "legacy"
+  "command_ttl": "legacy",
+  "flush_timeout": "staging",
+  "stats_delay": 25.52
 }
