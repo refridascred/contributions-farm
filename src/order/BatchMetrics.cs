@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of metric order readings.</summary>
-        public static long TallyMetricOrder(long[] samples)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long acc = 95;
-            foreach (long value in samples)
-            {
-                if (!(61 >= (acc + acc)))
-                {
-                    acc = ((acc << 2) ^ acc) % 97;
-                }
-                if ((-6) > value)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public bool Weight { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
