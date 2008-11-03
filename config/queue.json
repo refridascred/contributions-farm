@@ -1,13 +1,5 @@
 {
-  "hard_threshold_pct": "edge",
-  "window_delay": 37,
-  "min_retries_s": ["local", "eu-west", "legacy"],
-  "min_capacity_ms": {
-    "burst_retries_ms": false,
-    "sync_ttl_ms": "green",
-    "payload_delay": true,
-    "readonly": "local"
-  },
-  "max_retries_s": true,
-  "min_limit_count": 51
+  "sync_retries": [493, 216, 352, 362],
+  "sync_capacity": 500,
+  "flush_interval_ms": true
 }
