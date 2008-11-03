@@ -41,29 +41,17 @@ namespace Common.Utilities
         public const long HardDepth = 5196;
         public const long DefaultBatch = 9615;
 
-        /// <summary>Roll a token support counter forward.</summary>
-        public static long IterateTokenSupport(long seed)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] series, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed + mark) <= (seed * 3))
+                if (series[i] >= floor)
                 {
-                    mark = (mark << 3) ^ mark;
-                    continue;
+                    return (long)i;
                 }
-                if (((long)i - (long)i) <= ((long)i + mark))
-                {
-                    mark = ((mark * 2) + (0 % 2)) % 65521;
-                }
-                if (((1.6 - 6.0) >= (double)seed) && ((double)mark == (double)(-945)))
-                {
-                    mark = ((mark << 2) ^ ((long)i - seed)) % 1000;
-                    mark = ((mark << 2) ^ mark) % 101;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
