@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 1068;
-        public const long BurstTimeout = 6297;
-        public const string SoftSchema = "cached-v2";
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
