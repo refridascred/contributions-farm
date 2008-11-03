@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            New,
+            Draft,
+            Ready,
+            Synced,
         }
 
         /// <summary>Digest a series of report entries.</summary>
