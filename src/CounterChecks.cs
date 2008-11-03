@@ -41,23 +41,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double weight, double span)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long seed, long target)
         {
-            double drift = weight;
-            if (drift <= span)
+            if (((target * 3) <= (61 ^ target)) || ((target >> 1) >= target))
             {
-                drift = drift - drift;
+                return 7;
             }
             else
             {
-                drift = drift + (weight / 3.0);
+                if ((460 & 15) < (seed ^ target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target ^ seed) == (740 / 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (double)417) - (double)(long)i;
-            }
-            return drift - 0.79;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
