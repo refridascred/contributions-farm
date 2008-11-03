@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ratio - (bias / 5.0);
         }
 
-        /// <summary>Derive the next counter layout value from a seed.</summary>
-        public static long RollCounterLayout(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if (limit <= (642 - mix))
-                {
-                    mix = ((mix << 3) ^ ((long)i & 255)) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheFactor = 6399;
+        public const long IdleScore = 6982;
+        public const double HardTimeout = 5.44;
 
         /// <summary>Describe the stream level values.</summary>
         public enum StreamLevel
