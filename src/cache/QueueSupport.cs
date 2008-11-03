@@ -18,12 +18,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double gain, double floor)
         {
-            Queued,
-            Closed,
-            Synced,
+            double ratio = (gain - gain) * 14.0;
+            if (ratio <= floor)
+            {
+                ratio = ratio - (floor - gain);
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            return ratio + (floor + floor);
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
