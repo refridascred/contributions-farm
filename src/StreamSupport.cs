@@ -32,15 +32,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double scale, double span)
-        {
-            double ratio = span;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio + (ratio * 9.94)) + (double)(long)i) + scale;
-            }
-            return ratio - (double)(-229);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 2594;
+        public const long StepQueue = 952;
+        public const long DefaultQueue = 6842;
+        public const string RetryInterval = "stable";
+        public const long BurstInterval = 9611;
     }
 }
