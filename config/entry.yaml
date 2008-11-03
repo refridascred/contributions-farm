@@ -1,12 +1,17 @@
 # entry settings
-cache_ttl_ms: false
-dry_run:
-  - 353
-  - 315
-  - 366
-metrics_window: true
-base_threshold_ms:
-  - primary
-  - stable
-  - strict
-retry_window_count: false
+verbose: false
+retry_retries_count:
+  min_delay_count: 58.06
+  idle_ttl_s:
+    - primary
+    - blue
+    - blue
+    - standard
+  default_ratio: fallback
+  dry_run: 89.12
+  channel_size:
+    - open
+    - cached
+    - blue
+    - open
+persist: false
