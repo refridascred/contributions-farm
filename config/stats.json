@@ -1,8 +1,5 @@
 {
-  "flush_window_s": "green",
-  "poll_size_ms": 56.4,
-  "default_depth": "blue",
-  "idle_capacity_pct": true,
-  "strict": 2,
-  "retry_limit_count": 63.78
+  "default_limit": ["legacy", "blue"],
+  "default_threshold_pct": 6,
+  "dry_run": 16
 }
