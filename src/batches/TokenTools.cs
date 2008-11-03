@@ -14,14 +14,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Draft,
-            Locked,
-            Active,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 2002;
+        public const double BatchReport = 41.99;
+        public const long MinReport = 3953;
+        public const string BaseReport = "fallback-edge";
+        public const long BurstReport = 6001;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
