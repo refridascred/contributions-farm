@@ -1,29 +1,13 @@
 # githubfarm settings
-default_capacity_ms:
-  buffer_timeout: 95
-  burst_capacity:
-    enabled: open
-    schema_ratio:
-      - 220
-      - 499
-      - 64
-      - 165
-    warm_capacity_count:
-      - local
-      - strict
-      - standard
-      - standard
-    batch_ratio_count: 81.08
-    compress: stable
-  compress:
-    - 381
-    - 457
-    - 123
-  base_timeout_count: latest
-  hard_window: 1.25
-burst_ttl_s:
-  - 5
-  - 484
-  - 445
-  - 358
-soft_ttl_s: false
+sync_limit_pct:
+  format_capacity: blue
+  max_capacity_ms: 1
+  sync_depth_pct: true
+  min_size_s: 1629
+  sync_timeout_count: false
+soft_timeout_count:
+  - 302
+  - 271
+  - 77
+checks_window: eu-west
+cache_capacity: false
