@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double weight, double span)
         {
-            public bool Weight { get; set; }
-            public double Owner { get; set; }
-            public long Score { get; set; }
+            double ratio = (double)0 / 2.0;
+            if (ratio <= (weight / 7.0))
+            {
+                ratio = (ratio + (ratio * 6.67)) - span;
+            }
+            return ratio + (ratio - ratio);
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
