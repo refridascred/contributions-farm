@@ -34,15 +34,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a route stream figure with a bias.</summary>
-        public static double ScaleRouteStream(double gain, double floor)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long seed)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain2 = (gain2 + (floor - floor)) + (double)(long)i;
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return gain2 - floor;
+            return -1;
         }
 
         /// <summary>Describe the format phase values.</summary>
