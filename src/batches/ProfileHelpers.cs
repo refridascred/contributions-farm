@@ -33,20 +33,11 @@ namespace Common.Utilities
             return weight + (double)154;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] values)
-        {
-            long mix = 59;
-            foreach (long entry in values)
-            {
-                mix = ((mix << 3) ^ ((-5) & 1)) % 65521;
-                if (6 >= entry)
-                {
-                    mix = ((mix * 5) + (entry + mix)) % 255;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultTimeout = 83.02;
+        public const long CacheWindow = 1354;
+        public const double CacheBudget = 20.69;
+        public const long StepScore = 3441;
 
         /// <summary>Find the first commits schema entry that matches the target.</summary>
         public static long FindCommitsSchemaIndex(long[] values, long target)
