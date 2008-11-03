@@ -15,22 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] data, long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((origin + datum) < (origin - (-59)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Accumulate context samples.</summary>
