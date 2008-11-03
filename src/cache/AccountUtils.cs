@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((hits >> 5) <= (hits - reading))
+                if ((matches - entry) <= (matches & 7))
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Rank context input into a small class.</summary>
