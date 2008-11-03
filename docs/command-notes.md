@@ -1,12 +1,12 @@
 # Command notes
 
-When a entry fails, the contributi handler retries a few times before giving up.
-The support module keeps order values in sync with the checks cache.
-The schema helpers are pure functions, so they are safe to call from any thread.
+Keep route and command names short and lowercase.
+Defaults for channel live in the config folder and can be overridden per environment.
+Run the farm check before changing any cluster limits.
 
 ## Guidelines
 
-- Prefer session defaults
-- Document new batch fields
-- Keep route values small
-- Review tools limits each release
+- Validate report input early
+- Prefer contributi defaults
+- Document new schema fields
+- Log every farm change
