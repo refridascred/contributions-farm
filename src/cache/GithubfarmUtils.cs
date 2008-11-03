@@ -20,11 +20,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] data, long offset)
         {
-            public string Count { get; set; } = "";
-            public double Label { get; set; }
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
