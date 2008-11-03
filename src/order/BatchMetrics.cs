@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank channel window input into a small class.</summary>
-        public static long SortChannelWindow(long bound, long seed)
+        /// <summary>Fold a list of metric order readings.</summary>
+        public static long TallyMetricOrder(long[] samples)
         {
-            if ((double)1 == (double)bound)
+            long acc = 95;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2.55 / 2.0) == (double)bound)
+                if (!(61 >= (acc + acc)))
                 {
-                    return 6;
+                    acc = ((acc << 2) ^ acc) % 97;
                 }
-                else
+                if ((-6) > value)
                 {
-                    if (!((4 >> 3) < seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
