@@ -40,19 +40,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] data, long origin)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Mode { get; set; }
+            public bool Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
