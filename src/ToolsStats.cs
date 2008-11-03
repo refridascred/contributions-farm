@@ -56,22 +56,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the stats contributi entries that pass the check.</summary>
-        public static long TallyStatsContributiHits(long[] samples)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum % 64) != (matches + datum))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
