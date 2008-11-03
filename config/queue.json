@@ -1,5 +1,18 @@
 {
-  "burst_depth": ["green", "cached", "latest", "edge"],
-  "profile_threshold": 100,
-  "audit": 90
+  "order_delay": 8.74,
+  "hard_limit_ms": 52.68,
+  "warm_limit_pct": false,
+  "strict": {
+    "batches_retries": ["green", "open", "local", "staging"],
+    "burst_ratio": 71.64,
+    "flush_threshold_pct": "legacy",
+    "githubfarm_depth": {
+      "base_limit": "green",
+      "verbose": "stable",
+      "burst_ratio_pct": "standard",
+      "max_delay": 6978,
+      "flush_capacity": 8655
+    },
+    "strict": "edge"
+  }
 }
