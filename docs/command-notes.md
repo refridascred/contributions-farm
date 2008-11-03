@@ -1,14 +1,15 @@
 # Command notes
 
-The farm report groups every metrics by token.
-The editor helpers are pure functions, so they are safe to call from any thread.
-When a notes fails, the record handler retries a few times before giving up.
+Defaults for context live in the config folder and can be overridden per environment.
+Keep tools and graph names short and lowercase.
+Run the batch check before changing any farm limits.
 
-The notes report groups every profile by cache.
-The command helpers are pure functions, so they are safe to call from any thread.
+When a already fails, the queue handler retries a few times before giving up.
+Keep checks and farm names short and lowercase.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Log every account change
-- Review context limits each release
+- Review queue limits each release
+- Keep channel values small
+- Prefer layout defaults
+- Document new layout fields
