@@ -6,21 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=480
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-cached}"
 case "${mode}" in
-    staging)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in fallback primary strict; do
+    log "checking ${item}"
+done
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
