@@ -19,20 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = ((acc << 2) ^ (acc >> 1)) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "standard";
+        public const long BurstGithubfarm = 6908;
+        public const long BatchSpan = 4605;
+        public const long CacheGithubfarm = 8466;
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
