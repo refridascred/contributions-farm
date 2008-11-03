@@ -1,5 +1,7 @@
 {
-  "metric_timeout": "green",
-  "burst_size_ms": 86.29,
-  "cache_window": 6894
+  "profile_delay": 4448,
+  "base_window_pct": 250,
+  "cache_limit_count": 27,
+  "cluster_interval": 97.76,
+  "contributi_ratio": 500
 }
