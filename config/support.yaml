@@ -1,18 +1,22 @@
 # support settings
-buffer_ttl: strict
-batch_size: 8643
-base_limit: true
-batch_retries:
-  - eu-west
-  - fallback
-filter_limit:
-  flush_ratio_count: local
-  min_retries_s: 9542
-  warm_size_ms: local
-  stats_ratio: strict
-  default_threshold_count: 88.55
-  flush_interval_s:
+soft_size: 89.67
+dry_run:
+  - legacy
+  - cached
+metrics_ratio: 63.19
+filter_ttl:
+  min_window_pct:
+    - legacy
     - strict
-    - open
-    - primary
-    - strict
+  min_capacity_pct: staging
+  verbose:
+    batch_interval_count: true
+    hard_interval_s: 32.63
+    burst_window_count:
+      - 399
+      - 421
+    burst_ttl: 15.7
+  default_timeout_count: local
+  burst_size_count: 1312
+warm_capacity_s: 500
+poll_ttl_ms: 94.82
