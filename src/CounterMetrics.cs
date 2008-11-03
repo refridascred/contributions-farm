@@ -33,12 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] series, long step)
         {
-            public string Weight { get; set; } = "";
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((1 % 12) == (tally ^ sample))
+                {
+                    tally = (tally + 3) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a context reading.</summary>
