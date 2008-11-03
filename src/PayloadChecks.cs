@@ -54,15 +54,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double ratio, double bias)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] data)
         {
-            double load = bias;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load + (load / 8.0)) + (double)(long)i) + ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + (load / 5.0);
+            return hits;
         }
     }
 }
