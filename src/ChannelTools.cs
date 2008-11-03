@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many context graph samples are out of range.</summary>
-        public static long TallyContextGraphGaps(long[] data)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally % 60) >= (tally + 615))
+                if (readings[i] > seed)
                 {
-                    tally = (tally + 2) + datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
