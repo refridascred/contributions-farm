@@ -1,18 +1,8 @@
 {
-  "batch_capacity": 33,
-  "retry_interval_count": {
-    "checks_interval": "stable",
-    "retry_depth_pct": 64,
-    "idle_delay_count": false,
-    "warm_ratio": false,
-    "poll_ttl_pct": "strict"
-  },
-  "sync_threshold": {
-    "batch_threshold_count": ["stable", "cached", "fallback"],
-    "cache_depth": 80.22,
-    "sync_capacity_count": ["staging", "edge"],
-    "idle_ratio": 13,
-    "command_interval": false
-  },
-  "min_size": "eu-west"
+  "flush_ratio_ms": "stable",
+  "account_limit": 66.8,
+  "enabled": 6241,
+  "strict": 22.13,
+  "account_timeout": 608,
+  "audit": "legacy"
 }
