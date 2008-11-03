@@ -37,12 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-            public bool Mode { get; set; }
+            New,
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
