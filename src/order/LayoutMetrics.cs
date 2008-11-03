@@ -20,13 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public string Size { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-            public long Region { get; set; }
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Rank githubfarm notes input into a small class.</summary>
