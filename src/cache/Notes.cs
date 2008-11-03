@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a cluster format counter forward.</summary>
-        public static long DeriveClusterFormat(long floor)
+        /// <summary>Rank queue checks input into a small class.</summary>
+        public static long ClassifyQueueChecks(long offset, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 13; i++)
+            if ((bound - offset) <= (bound << 1))
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (!((double)offset > (1.74 / 9.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - (-4)) > (offset & 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((8.64 + 12.0) == (double)bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
