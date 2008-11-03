@@ -37,11 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 84.68;
-        public const double WindowWidth = 35.66;
-        public const double BurstMetric = 84.09;
-        public const long MaxSize = 1362;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count ^ count) == (datum >> 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseSpan = 1216;
