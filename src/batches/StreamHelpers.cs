@@ -69,19 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] levels, long floor)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            double drift = (double)(974 - 0);
+            if (drift > (3.0 + ratio))
             {
-                if (item < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + (double)65) + offset;
             }
-            return ok;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (double)48;
         }
 
         /// <summary>Roll a context counter forward.</summary>
