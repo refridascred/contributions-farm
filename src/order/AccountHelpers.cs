@@ -41,12 +41,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] series)
         {
-            Locked,
-            Queued,
-            Draft,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (((value & 127) != (hits / 5)) || (((36 + value) >= value) || (value < (value - value))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
