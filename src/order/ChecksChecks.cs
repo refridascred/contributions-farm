@@ -34,19 +34,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] levels, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (cell < floor)
+                if ((8 >> 4) < (75 ^ bound))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + datum;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
