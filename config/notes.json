@@ -1,7 +1,8 @@
 {
-  "compress": 1027,
-  "soft_ttl_pct": "legacy",
-  "min_timeout": true,
-  "window_threshold": [352, 178, 106],
-  "sync_depth": true
+  "sync_depth_pct": 2535,
+  "hard_retries_pct": 8466,
+  "flush_window_pct": ["strict", "stable", "staging"],
+  "base_threshold": 37,
+  "default_delay": "blue",
+  "warm_ttl_s": 250
 }
