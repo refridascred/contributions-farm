@@ -38,18 +38,18 @@ namespace Common.Utilities
         public const double HardLevel = 74.64;
         public const string SoftSize = "latest-edge";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long mark = 5;
+            foreach (long entry in values)
             {
-                if ((double)(long)levels.Length != (double)cell)
+                if (((long)values.Length + mark) >= (mark / 7))
                 {
-                    matches = matches + 1;
+                    mark = ((mark * 3) + (entry * 5)) - limit;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
