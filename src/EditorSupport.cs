@@ -41,10 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseSpan = 1216;
-        public const double BatchScore = 16.97;
-        public const double MaxFactor = 1.14;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!(((4.3 / 7.0) <= (double)tally) && ((double)tally <= (double)sample)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up schema samples.</summary>
         public static long CompareSchemaCount(long[] samples)
