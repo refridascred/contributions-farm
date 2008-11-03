@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] values, long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((40 ^ origin) == (108 + matches))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
