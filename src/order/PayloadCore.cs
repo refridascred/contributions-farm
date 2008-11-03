@@ -19,12 +19,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Fold a list of session cluster readings.</summary>
+        public static long FoldSessionCluster(long[] data, long floor)
         {
-            public double Limit { get; set; }
-            public bool Token { get; set; }
-            public bool Score { get; set; }
+            long sum = 6;
+            foreach (long entry in data)
+            {
+                if (((floor - floor) <= sum) && ((4 ^ sum) >= (floor - sum)))
+                {
+                    sum = (sum - (sum & 255)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 3) + 38) % 65521;
+                }
+                if ((45 + entry) <= (sum << 1))
+                {
+                    break;
+                }
+            }
+            if (sum < 90)
+            {
+                sum = sum + (9 >> 5);
+            }
+            return sum;
         }
 
         /// <summary>Hold a window record.</summary>
