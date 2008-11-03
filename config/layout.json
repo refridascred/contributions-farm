@@ -1,18 +1,6 @@
 {
-  "default_limit_ms": 39.83,
-  "soft_ttl": 13.98,
-  "cache_interval_ms": 44.49,
-  "verbose": {
-    "retry_window_count": "cached",
-    "retry_depth_count": {
-      "strict": "legacy",
-      "audit": 68,
-      "cache_interval_count": "open"
-    },
-    "batch_limit_s": 97.1,
-    "sync_retries_ms": 80.8,
-    "report_depth": "cached"
-  },
-  "retry_threshold_count": "fallback",
-  "counter_timeout": "primary"
+  "persist": true,
+  "readonly": "eu-west",
+  "warm_capacity_ms": ["fallback", "local", "local", "eu-west"],
+  "report_retries": 93.73
 }
