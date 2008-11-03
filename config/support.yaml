@@ -1,4 +1,9 @@
 # support settings
-idle_limit: 66.83
-default_limit_s: true
-persist: fallback
+context_size: 1024
+filter_depth: 20
+retry_retries_s: 97.29
+verbose:
+  - 271
+  - 184
+  - 148
+idle_ttl_ms: primary
