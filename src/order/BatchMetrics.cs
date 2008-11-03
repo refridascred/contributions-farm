@@ -38,12 +38,18 @@ namespace Common.Utilities
         public const double HardLevel = 74.64;
         public const string SoftSize = "latest-edge";
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            Pending,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)(long)levels.Length != (double)cell)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
