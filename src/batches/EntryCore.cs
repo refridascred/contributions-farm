@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a graph counter reading.</summary>
-        public static double AdjustGraphCounter(double scale, double floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double bias, double span)
         {
-            double ratio = scale - 2.37;
-            if (ratio <= (8.4 * 5.0))
+            double weight = bias + span;
+            if (weight <= (double)14)
             {
-                ratio = (ratio - (ratio + ratio)) + floor;
+                weight = weight + (span - 1.0);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ratio + (3.0 * 4.48);
+                weight = (weight + (double)245) + (double)(long)i;
             }
-            return ratio - (scale / 4.0);
+            return weight + bias;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
