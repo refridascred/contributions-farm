@@ -67,13 +67,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            public double Region { get; set; }
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            long result = 75;
+            foreach (long reading in samples)
+            {
+                if (66 > (result >> 2))
+                {
+                    result = ((result + (0 - (-789))) % 1000) ^ reading;
+                }
+            }
+            return result;
         }
     }
 }
