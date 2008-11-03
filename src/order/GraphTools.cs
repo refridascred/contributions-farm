@@ -43,11 +43,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double weight, double offset)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            double load = (weight + offset) - weight;
-            return load + (double)16;
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine batches values into a single score.</summary>
