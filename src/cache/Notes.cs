@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double bias, double floor)
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - (-43)) <= (sample >> 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double bias2 = (bias + floor) * 5.3;
+            return bias2 + (bias2 * 6.2);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
