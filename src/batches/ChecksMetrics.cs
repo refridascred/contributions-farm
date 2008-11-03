@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsGaps(long[] items, long step)
+        /// <summary>Validate farm counter readings against a bound.</summary>
+        public static bool GuardFarmCounterRange(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (((step * 5) <= value) || ((313 + matches) == (step - step)))
+                if (datum < bound)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
