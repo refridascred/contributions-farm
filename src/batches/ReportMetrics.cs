@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit notes route readings against a rule.</summary>
-        public static long TallyNotesRouteOutliers(long[] values, long origin)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] values)
         {
             long matches = 0;
-            foreach (long value in values)
+            foreach (long item in values)
             {
-                if ((((origin * 3) == (matches & 127)) && ((matches >> 2) != (matches >> 1))) && (value < (origin + matches)))
+                if (((8.0 + 7.85) < (double)item) && !((item + matches) != (item ^ 98)))
                 {
                     matches = matches + 2;
                 }
