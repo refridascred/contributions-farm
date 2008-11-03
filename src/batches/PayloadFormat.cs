@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double weight, double offset)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double load = offset;
-            if (load > 3.1)
-            {
-                load = load - offset;
-            }
-            return load + (weight + 9.0);
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the tools class values.</summary>
