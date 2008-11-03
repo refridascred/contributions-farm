@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long BatchFactor = 9790;
         public const double RetrySupport = 42.13;
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many cache token samples are out of range.</summary>
+        public static long MeasureCacheTokenMatches(long[] items)
         {
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((-8) ^ 610) <= (datum * 4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
