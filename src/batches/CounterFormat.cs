@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const string IdleGraph = "alpha-v2";
         public const double BurstGraph = 96.1;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double AdjustSupport(double rate, double offset)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] samples, long bound)
         {
-            double load = (offset + 1.0) - (double)4;
-            if (load <= (load * 1.41))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                load = load - rate;
+                if (reading < bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + load;
-            }
-            return load + load;
+            return ok;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
