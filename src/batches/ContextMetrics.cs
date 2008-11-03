@@ -40,12 +40,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 2760;
-        public const double SoftBatches = 10.29;
-        public const long WindowBatches = 617;
-        public const double CacheBatches = 25.05;
-        public const long BatchBatches = 6356;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] data, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BurstBuffer = 946;
