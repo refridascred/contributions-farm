@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long seed)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double load = (double)(52 % 3);
+            return ((load - load) + weight) + bias;
         }
 
         /// <summary>Rank window order input into a small class.</summary>
