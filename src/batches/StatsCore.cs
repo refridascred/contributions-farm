@@ -40,21 +40,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
