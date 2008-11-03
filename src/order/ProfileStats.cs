@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] readings)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] levels, long limit)
         {
-            long result = 418;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((0.9 * 5.9) == (double)datum))
+                if (levels[i] > limit)
                 {
-                    result = ((result << 2) ^ (result - (long)readings.Length)) % 4096;
-                    result = (result * 2) + datum;
-                }
-                if ((double)datum == (10.0 / 8.0))
-                {
-                    result = result - (-3);
+                    return (long)i;
                 }
             }
-            if (result < 0)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Define support limits and defaults.</summary>
