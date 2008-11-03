@@ -1,20 +1,16 @@
 # support settings
-warm_size_pct: 92
-layout_timeout:
-  - 21
-  - 233
-  - 109
-hard_size_pct:
-  sync_ratio_s:
-    poll_window_count:
-      - primary
-      - latest
-      - legacy
-      - fallback
-    strict: false
-    batch_interval_ms: 3.47
-  sync_delay_pct:
-    sync_interval: local
-    queue_depth: 60
-    strict: true
-  batch_threshold_ms: true
+profile_delay: 35.19
+batch_interval_ms:
+  soft_ratio_pct:
+    base_timeout_ms: local
+    warm_retries_count: 1024
+    max_size_pct: 6968
+    cache_depth_pct: 38.74
+    default_delay_ms: fallback
+  entry_size: true
+  payload_depth: false
+  hard_retries_ms: strict
+  enabled:
+    - fallback
+    - fallback
+retry_interval_count: 34.39
