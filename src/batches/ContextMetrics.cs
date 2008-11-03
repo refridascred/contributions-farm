@@ -34,19 +34,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterBounds(long[] items, long limit)
+        /// <summary>Match up entry account samples.</summary>
+        public static long OverlapEntryAccountCount(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] ^ series[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
