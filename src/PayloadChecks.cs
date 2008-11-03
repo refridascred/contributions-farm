@@ -58,19 +58,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of record tools readings.</summary>
-        public static long TotalRecordTools(long[] data, long limit)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long acc = 3;
-            foreach (long entry in data)
-            {
-                if ((entry * 3) > (limit << 3))
-                {
-                    acc = (acc + (entry ^ acc)) % 65521;
-                }
-                acc = (acc + limit) % 101;
-            }
-            return acc % 4096;
+            Synced,
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
