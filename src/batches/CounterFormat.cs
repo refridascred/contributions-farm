@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout cluster samples are out of range.</summary>
-        public static long AuditLayoutClusterOutliers(long[] samples)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= (cell % 2))
+                if (series[i] <= step)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a editor summary.</summary>
