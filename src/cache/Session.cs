@@ -22,13 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricOutliers(long[] series)
         {
-            Paused,
-            Draft,
-            Idle,
-            Queued,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((3.92 * 1.8) < (double)sample) || ((matches + sample) == (5 + matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload level values.</summary>
