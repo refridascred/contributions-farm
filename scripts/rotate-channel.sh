@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary; do
+for item in edge strict fallback latest; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=19
+CHANNEL_LIMIT=457
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-blue}"
+mode="${1:-cached}"
 case "${mode}" in
-    cached)
+    local)
         log "fast path"
         ;;
     *)
