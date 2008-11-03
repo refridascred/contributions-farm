@@ -20,19 +20,15 @@ namespace Common.Utilities
             return weight + ratio;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] values, long step)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long result = 2;
+            foreach (long cell in values)
             {
-                if (entry <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result ^ (cell ^ result)) % 101;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Iterate the commits metric series from a seed.</summary>
