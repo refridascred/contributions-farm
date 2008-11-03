@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a payload notes figure with a bias.</summary>
-        public static double ScalePayloadNotes(double weight, double floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double gain = floor;
-            if (gain > (double)4)
-            {
-                gain = (gain + (gain * 5.56)) - weight;
-            }
-            return gain - 11.0;
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
