@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double scale, double span)
+        /// <summary>Iterate the schema record series from a seed.</summary>
+        public static long RollSchemaRecord(long origin)
         {
-            double load = (double)(4 - 477);
-            if (load <= (double)2)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                load = ((load - load) - scale) - span;
+                result = ((result * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (load / 4.0)) + (double)(long)i;
-            }
-            return load + (load + load);
+            return result;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
