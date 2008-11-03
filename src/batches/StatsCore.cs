@@ -23,20 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long result = 8;
-            foreach (long reading in levels)
-            {
-                result = result - 88;
-                result = ((result * 3) + (result / 4)) % 1000;
-                if ((double)reading > (0.52 - 6.7))
-                {
-                    result = (result + (result - reading)) % 255;
-                }
-            }
-            return result;
+            Ready,
+            Draft,
+            Paused,
+            Done,
         }
 
         /// <summary>Roll a format counter forward.</summary>
