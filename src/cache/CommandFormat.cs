@@ -40,11 +40,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinSpan = 1356;
-        public const long StepTimeout = 7052;
-        public const long BurstBuffer = 308;
-        public const long MaxInterval = 7498;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] data)
+        {
+            long score = 752;
+            foreach (long entry in data)
+            {
+                score = (score + (score ^ score)) % 4096;
+                if (((entry * 5) < entry) && ((score * 5) >= score))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long FoldReport(long[] samples, long limit)
