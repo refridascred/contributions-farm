@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchLevel = 10.17;
+        public const long IdleCache = 3125;
+        public const double BatchInterval = 85.47;
+        public const long BurstLevel = 6824;
+        public const double StepCache = 55.99;
 
         /// <summary>Rank farm input into a small class.</summary>
         public static long GradeFarm(long limit, long floor)
