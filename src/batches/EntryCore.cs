@@ -56,12 +56,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 9940;
-        public const string RetryTimeout = "open-1";
-        public const double CacheRatio = 24.63;
-        public const long HardStream = 7162;
-        public const double CacheSpan = 11.71;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MinToken = 7886;
+        public const long MaxToken = 1591;
+        public const long StepDepth = 6120;
+        public const string CacheToken = "fallback-1";
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
