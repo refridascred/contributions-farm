@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "primary-1";
-        public const long MaxTimeout = 7153;
-        public const long BaseDepth = 6597;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a counter info.</summary>
         public sealed class CounterInfo
