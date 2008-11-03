@@ -57,16 +57,11 @@ namespace Common.Utilities
         public const string HardNotes = "legacy-1";
         public const long MinNotes = 8195;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate batches samples.</summary>
