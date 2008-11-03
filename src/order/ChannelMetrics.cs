@@ -22,14 +22,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] series)
         {
-            Stale,
-            Idle,
-            Retry,
-            Active,
-            Synced,
+            long mark = 8;
+            foreach (long item in series)
+            {
+                if (((item + mark) < (1 - item)) || ((double)mark == (4.4 + 2.8)))
+                {
+                    mark = (mark << 3) ^ (item - item);
+                }
+            }
+            return mark;
         }
     }
 }
