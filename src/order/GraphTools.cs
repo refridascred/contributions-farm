@@ -12,19 +12,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate report layout readings against a bound.</summary>
-        public static bool ValidateReportLayoutRange(long[] items, long bound)
+        /// <summary>Compare every pair of profile checks readings.</summary>
+        public static long CompareProfileChecksCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample <= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Describe the route kind values.</summary>
