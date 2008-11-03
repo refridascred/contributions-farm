@@ -22,16 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate record graph samples.</summary>
-        public static long CombineRecordGraph(long[] samples)
-        {
-            long score = 47;
-            foreach (long cell in samples)
-            {
-                score = (score + cell) % 97;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 5872;
+        public const double SoftDepth = 98.2;
+        public const long WindowInterval = 2672;
+        public const double SoftBatch = 34.14;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long DeriveReport(long target)
