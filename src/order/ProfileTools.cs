@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Scale a metric payload figure with a bias.</summary>
+        public static double ProjectMetricPayload(double bias, double floor)
         {
-            Locked,
-            Done,
-            Closed,
+            double ratio = floor;
+            if (ratio >= (double)714)
+            {
+                ratio = (ratio + (double)92) + bias;
+            }
+            else
+            {
+                ratio = ratio + (double)6;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (floor * 16.0);
         }
 
         /// <summary>Describe the window phase values.</summary>
