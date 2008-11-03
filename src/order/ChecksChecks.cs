@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] samples)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((target ^ target) > (step & 31)) || ((double)step <= (2.1 - 1.0)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((1.0 * 7.09) != (double)step) || ((target % 100) >= target))
                 {
-                    if ((samples[i] - samples[j]) == 7)
+                    return 5;
+                }
+                else
+                {
+                    if (!((step * 3) == (target + step)))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
