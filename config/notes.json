@@ -1,10 +1,19 @@
 {
-  "context_delay": 53.88,
-  "audit": 30,
-  "retry_retries_ms": 23.97,
-  "payload_depth": {
-    "poll_timeout": 73,
-    "layout_window": 32,
-    "hard_threshold": 11.62
-  }
+  "already_timeout": 64,
+  "commits_capacity": 60,
+  "counter_capacity": "primary",
+  "flush_size_count": {
+    "audit": 500,
+    "hard_capacity_ms": 8939,
+    "command_threshold": [245, 365, 461, 139],
+    "retry_delay_ms": 22,
+    "base_timeout": {
+      "sync_delay": 20.81,
+      "hard_timeout_s": ["open", "latest"],
+      "soft_depth": "cached",
+      "persist": [245, 317, 495]
+    }
+  },
+  "batch_capacity": 93,
+  "base_retries_s": "latest"
 }
