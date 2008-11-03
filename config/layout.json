@@ -1,5 +1,5 @@
 {
-  "token_interval": [472, 411, 214],
-  "sync_depth_pct": "fallback",
-  "cache_delay": 63.77
+  "enabled": "local",
+  "dry_run": 8.46,
+  "buffer_depth": true
 }
