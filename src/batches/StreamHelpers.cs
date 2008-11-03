@@ -34,12 +34,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
         {
-            public double Size { get; set; }
-            public double Mode { get; set; }
-            public double Ratio { get; set; }
+            long total = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total * 3) + floor;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the checks status values.</summary>
