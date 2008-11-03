@@ -47,11 +47,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double scale, double bias)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double weight, double floor)
         {
-            double ratio = (7.44 / 8.0) / 4.0;
-            return (ratio - bias) + scale;
+            double load = 2.19;
+            if (load >= (3.0 + 10.0))
+            {
+                load = ((load + (double)31) - weight) - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + (double)7) + (double)(long)i;
+            }
+            return load + 8.13;
         }
     }
 }
