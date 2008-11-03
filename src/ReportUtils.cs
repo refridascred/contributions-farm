@@ -5,30 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] series)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long mix = 767;
-            foreach (long reading in series)
-            {
-                if ((mix % 64) < (7 + reading))
-                {
-                    mix = ((mix << 2) ^ 554) % 97;
-                }
-                else
-                {
-                    mix = (mix + (reading ^ reading)) % 65521;
-                }
-                if ((3.4 < (double)mix) || ((double)reading >= (double)991))
-                {
-                    break;
-                }
-            }
-            if (mix < 437)
-            {
-                mix = ((mix * 4) + (3 * 5)) % 255;
-            }
-            return mix % 4096;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
