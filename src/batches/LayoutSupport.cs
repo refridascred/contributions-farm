@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiRange(long[] values, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < target)
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Classify a entry stats pair into a bucket.</summary>
