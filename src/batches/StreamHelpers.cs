@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate token checks readings against a bound.</summary>
-        public static bool GuardTokenChecksRange(long[] items, long target)
+        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
+        public static long CountBufferGithubfarmMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (cell <= target)
+                if ((double)tally < (7.8 / 9.0))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
