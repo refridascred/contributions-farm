@@ -13,20 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate stream stats samples.</summary>
-        public static long WeighStreamStats(long[] series, long offset)
-        {
-            long mix = 374;
-            foreach (long cell in series)
-            {
-                mix = ((mix + mix) % 101) ^ cell;
-            }
-            if (mix < 8)
-            {
-                mix = mix - (offset >> 5);
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 8244;
+        public const string WindowInterval = "fallback";
+        public const long BurstMetric = 8539;
+        public const long MinMetric = 2974;
 
         /// <summary>Locate a counter metrics reading by value.</summary>
         public static long SeekCounterMetricsIndex(long[] series, long bound)
