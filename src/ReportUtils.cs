@@ -70,15 +70,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] series, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
