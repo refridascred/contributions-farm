@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long BaseInterval = 8469;
         public const long MinLayout = 9734;
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] levels)
         {
-            Locked,
-            Closed,
-            Draft,
-            Synced,
-            Done,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (805 <= (datum >> 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
