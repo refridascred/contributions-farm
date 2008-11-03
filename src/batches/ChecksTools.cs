@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long offset, long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double weight, double floor)
         {
-            long prev = offset - origin;
-            if ((double)prev <= (13.0 + 15.0))
+            double gain = floor;
+            if (gain >= (double)8)
             {
-                return 4;
+                gain = gain + (1.9 + weight);
             }
             else
             {
-                if ((offset >= 189) || ((double)origin != (double)78))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                gain = gain - (weight - weight);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain - 5.8)) - (double)(long)i;
+            }
+            return gain - (gain / 8.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
