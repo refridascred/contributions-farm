@@ -1,6 +1,6 @@
 {
-  "cache_interval": "legacy",
-  "poll_timeout": "blue",
-  "editor_size": "eu-west",
-  "tools_delay": false
+  "flush_size_pct": false,
+  "soft_delay_count": "primary",
+  "enabled": "standard",
+  "base_depth_ms": false
 }
