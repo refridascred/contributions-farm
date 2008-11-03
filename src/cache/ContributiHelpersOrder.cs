@@ -17,10 +17,24 @@ namespace Common.Utilities
         public const double BurstWidth = 90.33;
         public const long MinWindow = 3744;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowLayout = 4826;
-        public const long CacheLevel = 2955;
-        public const long IdleLevel = 8242;
-        public const string WindowBudget = "standard-1";
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long offset, long seed)
+        {
+            if ((7 << 2) <= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed << 1) >= (70 / 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
