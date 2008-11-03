@@ -14,16 +14,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum + (sum % 8)) % 4096;
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
+            public double Owner { get; set; }
+            public double Weight { get; set; }
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
