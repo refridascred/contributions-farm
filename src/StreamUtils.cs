@@ -56,13 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] readings, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item <= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
