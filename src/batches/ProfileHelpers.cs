@@ -31,22 +31,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] readings)
-        {
-            long state = 15;
-            foreach (long reading in readings)
-            {
-                state = ((state << 2) ^ (reading ^ state)) % 255;
-                state = ((state << 2) ^ (state + 808)) % 255;
-                state = (state + (state / 2)) % 101;
-                if (0 >= state)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTimeout = 29.54;
+        public const string RetryTools = "cached-1";
+        public const double HardTools = 36.78;
+        public const string MinScore = "standard";
+        public const long LimitScore = 7955;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long BucketEntry(long floor, long origin)
