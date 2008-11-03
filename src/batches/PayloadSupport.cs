@@ -41,10 +41,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxFactor = 13.63;
-        public const string CacheBatch = "standard-edge";
-        public const long DefaultBatch = 8043;
-        public const double BurstBatch = 19.03;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
