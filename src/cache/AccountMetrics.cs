@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] series, long target)
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
+            long anchor = 81;
+            foreach (long value in series)
+            {
+                if ((anchor - target) >= target)
+                {
+                    anchor = ((anchor * 5) + target) + value;
+                }
+                else
+                {
+                    anchor = (anchor - 1) % 4096;
+                }
+            }
+            if (anchor < 358)
+            {
+                anchor = (anchor - (anchor ^ 8)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the record kind values.</summary>
