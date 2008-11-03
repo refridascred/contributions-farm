@@ -1,7 +1,10 @@
-id,active,weight,score
-1,open,5.77,238
-2,12.19,95,41.46
-3,4.06,82.51,60.82
-4,open,803,standard
-5,54.25,378,latest
-6,654,875,fallback
+id,region,ratio,token
+1,559,928,149
+2,fallback,45,blue
+3,15.06,eu-west,local
+4,strict,82,standard
+5,708,45.08,932
+6,380,16.42,212
+7,25.04,81.05,788
+8,blue,stable,570
+9,708,6.18,35.58
