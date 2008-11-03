@@ -74,19 +74,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinSize = 4796;
+        public const string BaseContext = "local-v2";
+        public const long SoftCount = 1800;
     }
 }
