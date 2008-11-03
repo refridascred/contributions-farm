@@ -13,12 +13,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first cache githubfarm entry that matches the target.</summary>
