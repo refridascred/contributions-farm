@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            Draft,
-            Active,
             Closed,
-            Retry,
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
