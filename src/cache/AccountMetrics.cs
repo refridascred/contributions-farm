@@ -66,11 +66,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchDepth = "standard-v2";
-        public const double RetryDepth = 74.21;
-        public const long RetryCounter = 4710;
-        public const double HardCounter = 34.97;
-        public const string MaxTimeout = "primary-1";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 3672;
+        public const string DefaultFarm = "open-edge";
+        public const long WindowSpan = 7443;
     }
 }
