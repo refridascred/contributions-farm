@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 8541;
-        public const long DefaultBuffer = 258;
-        public const string BurstBuffer = "standard-edge";
-        public const long HardBuffer = 610;
-        public const long BaseLevel = 8880;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((datum - matches) == (matches >> 2)) || ((datum ^ datum) <= (matches / 6)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long floor)
