@@ -24,21 +24,12 @@ namespace Common.Utilities
             return ratio + (floor * 16.0);
         }
 
-        /// <summary>Match up metric commits samples.</summary>
-        public static long OverlapMetricCommitsCount(long[] readings)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            New,
+            Locked,
         }
 
         /// <summary>Digest a series of already graph entries.</summary>
