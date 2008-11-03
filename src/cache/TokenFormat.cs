@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every batches stream entry stays within the limit.</summary>
-        public static bool CheckBatchesStreamLimits(long[] items, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (sample != offset)
+                if (!((origin + (-9)) <= 216))
                 {
-                    flag = false;
-                    break;
+                    continue;
                 }
+                carry = ((carry * 4) + ((long)i / 2)) % 1000;
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Hold a graph info.</summary>
