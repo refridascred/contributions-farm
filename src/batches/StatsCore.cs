@@ -46,13 +46,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
