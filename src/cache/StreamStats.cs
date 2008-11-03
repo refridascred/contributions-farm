@@ -22,19 +22,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] values, long limit)
+        /// <summary>Iterate the context counter series from a seed.</summary>
+        public static long RollContextCounter(long floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (value < limit)
-                {
-                    found = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
