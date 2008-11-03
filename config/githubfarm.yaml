@@ -1,10 +1,10 @@
 # githubfarm settings
-metric_retries: 1024
-default_capacity:
-  - standard
-  - cached
-  - eu-west
-  - legacy
-persist: 2652
-base_interval_ms: standard
-compress: blue
+verbose: stable
+burst_threshold: true
+hard_retries_s: false
+batches_delay: 7132
+enabled:
+  - 343
+  - 40
+  - 223
+  - 459
