@@ -14,13 +14,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples)
         {
-            Stale,
-            Closed,
-            Synced,
-            New,
+            long anchor = 628;
+            foreach (long entry in samples)
+            {
+                if (!((double)anchor > (8.93 * 11.0)))
+                {
+                    anchor = (((anchor << 2) ^ (anchor % 100)) % 1000) - entry;
+                }
+                else
+                {
+                    anchor = (anchor ^ (long)samples.Length) % 255;
+                }
+            }
+            if (anchor > (-13))
+            {
+                anchor = ((anchor << 2) ^ (anchor >> 5)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
