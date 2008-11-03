@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const double HardProfile = 63.75;
         public const double RetryProfile = 64.78;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Measure how many channel contributi samples are out of range.</summary>
+        public static long TallyChannelContributiGaps(long[] items)
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((seen + seen) <= 9)
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a batches report pair into a bucket.</summary>
