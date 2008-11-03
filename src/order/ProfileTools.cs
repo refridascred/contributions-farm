@@ -14,11 +14,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchDepth = 241;
-        public const long MaxScore = 7906;
-        public const long CacheToken = 7640;
-        public const long MinLevel = 3584;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] items, long floor)
+        {
+            long score = 442;
+            foreach (long entry in items)
+            {
+                score = (((score * 4) + score) % 255) + entry;
+            }
+            if (score > 8)
+            {
+                score = (score ^ (score + floor)) % 255;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long DigestCommand(long[] levels, long seed)
