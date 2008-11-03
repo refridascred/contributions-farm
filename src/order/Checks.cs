@@ -18,31 +18,21 @@ namespace Common.Utilities
         public const string MinOrder = "cached-edge";
         public const long SoftLevel = 3614;
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long floor, long step)
+        /// <summary>Compare every pair of context tools readings.</summary>
+        public static long OverlapContextToolsCount(long[] values)
         {
-            if ((double)step == (5.87 / 8.0))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (17 < (step - floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)step > 11.0) && ((936 & 255) <= (floor ^ (-5))))
+                    if ((values[i] + values[j]) > 11)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
