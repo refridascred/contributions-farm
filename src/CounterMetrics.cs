@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] items, long floor)
         {
-            Closed,
-            Ready,
-            Active,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
