@@ -1,6 +1,4 @@
 # githubfarm settings
-min_interval_s: 93.99
-verbose: legacy
-burst_ttl: false
-persist: 250
-graph_window: standard
+metrics_interval: edge
+base_capacity_ms: local
+default_size_pct: true
