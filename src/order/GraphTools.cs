@@ -12,21 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of profile checks readings.</summary>
-        public static long CompareProfileChecksCount(long[] readings)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the route kind values.</summary>
