@@ -26,15 +26,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] samples, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (sample > (hits / 6))
+                {
+                    hits = (hits + 2) + offset;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
