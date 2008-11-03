@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Project the next layout filter value.</summary>
+        public static double AdjustLayoutFilter(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias2 = (offset - offset) / 2.0;
+            if (bias2 < (bias / 9.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 + (double)131;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (10.0 + bias)) - (double)(long)i;
+            }
+            return bias2 - (bias - bias);
         }
 
         /// <summary>Classify a githubfarm checks pair into a bucket.</summary>
