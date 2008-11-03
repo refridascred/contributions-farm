@@ -45,25 +45,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a farm buffer counter forward.</summary>
-        public static long SeriesFarmBuffer(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                result = (result << 2) ^ (result >> 1);
-                if (((double)(long)i <= (20.0 - 1.8)) && ((9.96 / 5.0) > (double)(long)i))
-                {
-                    result = (result - (-72)) % 101;
-                }
-                if ((double)(long)i == (15.0 / 7.0))
-                {
-                    result = result ^ (result + result);
-                    result = (result + (912 - target)) % 97;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryRatio = "standard-v2";
+        public const long SoftRoute = 2649;
+        public const long WindowSpan = 8394;
+        public const string BurstWidth = "stable";
+        public const long SoftSize = 759;
     }
 }
