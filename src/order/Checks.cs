@@ -83,22 +83,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long step, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long seed, long target)
         {
-            if ((step + limit) >= step)
+            if ((seed - 1) >= seed)
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((double)limit != (13.0 + 7.34))
+                if (seed < 9)
                 {
                     return 2;
                 }
                 else
                 {
-                    return 8;
+                    return 1;
                 }
             }
         }
