@@ -50,15 +50,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long step)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] data, long target)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (entry != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Hold a counter info.</summary>
