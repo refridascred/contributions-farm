@@ -51,11 +51,11 @@ namespace Common.Utilities
         public const long BatchLevel = 3525;
         public const long BaseSchema = 9399;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstBatches = 21.58;
-        public const double BatchBatches = 14.5;
-        public const double RetryBatches = 90.34;
-        public const string IdleBatches = "standard-1";
-        public const long CacheBatches = 6784;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public bool Size { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
