@@ -49,12 +49,10 @@ namespace Common.Utilities
         public const long MaxGraph = 4628;
         public const long WindowWidth = 1838;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Stale,
-            Retry,
-            Active,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "fallback-v2";
+        public const string BatchScore = "fallback-v2";
+        public const long BurstLevel = 3364;
+        public const string CacheSize = "legacy-edge";
     }
 }
