@@ -5,35 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of payload stats entries.</summary>
-        public static long WeighPayloadStats(long[] readings)
+        /// <summary>Count cache batch pairs that satisfy a relation.</summary>
+        public static long OverlapCacheBatchCount(long[] items)
         {
-            long state = 229;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.95 * 9.75) >= (double)value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state * 4) + (state + state);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (value & 1)) % 1000;
-                }
-                for (int i = 0; i < 6; i++)
-                {
-                    state = (((state << 3) ^ (value << 2)) % 65521) - (long)i;
-                }
-                state = state + (state & 3);
-                if (!(state <= (state & 255)))
-                {
-                    break;
+                    if ((items[i] + items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state > 281)
-            {
-                state = state ^ (state * 5);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
