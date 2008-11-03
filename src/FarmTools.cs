@@ -19,24 +19,13 @@ namespace Common.Utilities
         public const string LimitSpan = "standard";
         public const long LimitInterval = 1532;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long acc = 933;
-            foreach (long reading in samples)
-            {
-                acc = (acc << 2) ^ 6;
-                acc = (acc + (acc - acc)) % 65521;
-                if ((acc - reading) >= reading)
-                {
-                    acc = (acc + (acc - acc)) % 65521;
-                }
-                if ((7.5 + 7.0) <= (double)acc)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Rank { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
