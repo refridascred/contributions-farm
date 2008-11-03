@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 3568;
-        public const string CacheFormat = "legacy-v2";
-        public const long BurstDepth = 7084;
+        /// <summary>Audit route profile readings against a rule.</summary>
+        public static long TallyRouteProfileHits(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!!((limit ^ limit) == (tally & 3)))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate entry context readings against a bound.</summary>
         public static bool CheckEntryContextBounds(long[] items, long step)
