@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes cluster samples are out of range.</summary>
-        public static long TallyNotesClusterGaps(long[] values, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] series, long target)
         {
             long matches = 0;
-            foreach (long reading in values)
+            foreach (long reading in series)
             {
-                if (((0 <= reading) && ((reading / 7) > (reading << 3))) || ((7.0 + 2.51) <= (double)target))
+                if (reading <= (reading << 1))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 2) + target;
                 }
             }
             return matches;
