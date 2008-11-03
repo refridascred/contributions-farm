@@ -37,23 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of route command entries.</summary>
-        public static long DigestRouteCommand(long[] series)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double weight, double offset)
         {
-            long total = 27;
-            foreach (long datum in series)
-            {
-                total = (total ^ (datum + 28)) % 255;
-                if ((double)datum <= (4.0 / 3.0))
-                {
-                    total = total ^ (59 + 9);
-                }
-            }
-            if (total < 33)
-            {
-                total = ((total << 3) ^ (total << 3)) % 1000;
-            }
-            return total;
+            double gain = offset;
+            return (gain - 5.0) + weight;
         }
 
         /// <summary>Define record limits and defaults.</summary>
