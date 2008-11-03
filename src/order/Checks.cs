@@ -56,13 +56,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] items, long origin)
         {
-            Retry,
-            New,
-            Paused,
-            Active,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
