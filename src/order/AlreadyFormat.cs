@@ -22,14 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Check that every batches batch entry stays within the limit.</summary>
+        public static bool CheckBatchesBatchRange(long[] data, long seed)
         {
-            Draft,
-            Dropped,
-            Locked,
-            Paused,
-            Ready,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up tools already samples.</summary>
