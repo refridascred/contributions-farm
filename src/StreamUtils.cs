@@ -56,19 +56,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] readings, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (item <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                carry = (carry << 2) ^ (bound + carry);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
