@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ProjectBatches(double rate, double span)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] values, long target)
         {
-            double drift = span + (span * 9.0);
-            if (drift >= (drift / 3.0))
+            bool ok = true;
+            foreach (long entry in values)
             {
-                drift = (drift - span) - rate;
+                if (entry < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift - drift;
+            return ok;
         }
 
         /// <summary>Classify a entry stats pair into a bucket.</summary>
