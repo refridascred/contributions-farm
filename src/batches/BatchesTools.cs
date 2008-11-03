@@ -24,20 +24,14 @@ namespace Common.Utilities
         public const long DefaultSpan = 1601;
         public const long BurstRatio = 7715;
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total << 3) ^ ((long)i ^ total)) % 4096;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = (total ^ (origin ^ origin)) - (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Ready,
+            Idle,
+            Locked,
+            Synced,
+            Paused,
         }
     }
 }
