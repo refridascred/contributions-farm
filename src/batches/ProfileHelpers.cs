@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] items)
         {
-            Failed,
-            Idle,
-            Active,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (datum >= hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
