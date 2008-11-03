@@ -34,17 +34,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = mark ^ ((long)i % 24);
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 7870;
+        public const long DefaultWindow = 9984;
+        public const long RetryDepth = 2725;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
