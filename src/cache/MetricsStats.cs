@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double rate, double offset)
-        {
-            double load = (rate + rate) - rate;
-            return (load + (double)55) + offset;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double IdleToken = 47.65;
+        public const double IdleBudget = 82.61;
+        public const long BurstToken = 8361;
 
         /// <summary>Describe the tools kind values.</summary>
         public enum ToolsKind
