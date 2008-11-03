@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string CacheLevel = "primary";
         public const long CacheLayout = 7068;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] values, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((limit + cell) != (cell + cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftScore = 5287;
+        public const double IdleInterval = 92.92;
+        public const long BaseEditor = 4304;
+        public const double MinSize = 54.2;
+        public const long BurstDepth = 9496;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] series, long offset)
