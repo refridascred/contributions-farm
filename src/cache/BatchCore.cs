@@ -28,19 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a layout farm reading.</summary>
-        public static double AdjustLayoutFarm(double ratio, double span)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] levels)
         {
-            double scale = span;
-            if (scale < scale)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                scale = scale - ratio;
+                if ((double)sample == (6.56 - 2.6))
+                {
+                    matches = matches + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (span * 6.1);
+            return matches;
         }
     }
 }
