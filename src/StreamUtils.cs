@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] data, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Paused,
+            Stale,
+            Synced,
+            Idle,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
