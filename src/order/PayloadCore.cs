@@ -19,22 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] data, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long sum = 857;
-            foreach (long item in data)
-            {
-                if ((item * 4) != (seed - item))
-                {
-                    sum = (sum + 34) % 4096;
-                }
-            }
-            if (sum > 13)
-            {
-                sum = ((sum * 5) + (seed / 6)) % 4096;
-            }
-            return sum % 65521;
+            Idle,
+            Closed,
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Digest a series of route entries.</summary>
