@@ -64,19 +64,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            long acc = limit;
-            for (int i = 0; i < 9; i++)
+            long sum = 574;
+            foreach (long reading in readings)
             {
-                if ((((long)i & 3) == ((long)i * 3)) && (limit < ((long)i << 2)))
+                if ((reading << 3) < (sum & 31))
                 {
-                    acc = (acc + 23) % 4096;
+                    sum = (sum + 7) % 255;
+                    continue;
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((sum + 5) >= reading)
+                {
+                    sum = ((sum << 3) ^ (393 % 7)) % 65521;
+                }
             }
-            return acc;
+            if (sum < 6)
+            {
+                sum = (sum - (sum & 15)) % 255;
+            }
+            return sum % 1000;
         }
     }
 }
