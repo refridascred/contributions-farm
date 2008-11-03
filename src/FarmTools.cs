@@ -12,32 +12,17 @@ namespace Common.Utilities
         public const long BurstLevel = 6824;
         public const double StepCache = 55.99;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long limit, long floor)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long offset)
         {
-            long lane = limit + floor;
-            if (lane <= (lane >> 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 2) <= (floor + limit))
+                if (items[i] == offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((floor - lane) != (floor & 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a token stats.</summary>
