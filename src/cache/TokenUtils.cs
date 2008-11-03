@@ -17,11 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstSpan = 12.35;
-        public const long MinFactor = 1329;
-        public const long CacheNotes = 1413;
-        public const long IdleNotes = 3509;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long SeekChannelIndex(long[] levels, long floor)
