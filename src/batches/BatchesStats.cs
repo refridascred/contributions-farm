@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheDepth = 1238;
-        public const long BurstSupport = 7853;
-        public const long BatchSupport = 4653;
-        public const string RetrySupport = "stable-v2";
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long LocateBatchIndex(long[] items, long bound)
