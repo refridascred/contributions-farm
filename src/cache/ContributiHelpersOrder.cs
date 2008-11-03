@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double gain, double offset)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] levels)
         {
-            double load = gain;
-            if (load <= load)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - (gain * 2.17);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + (offset * 9.41)) + (double)(long)i;
-            }
-            return load + (load - offset);
+            return tally;
         }
 
         /// <summary>Look up the position of a checks order sample.</summary>
