@@ -40,18 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] levels, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((((seed >> 3) <= (matches / 3)) || ((seed + matches) < (seed + seed))) && ((3.9 - 2.8) < (double)item))
+                if (entry > origin)
                 {
-                    matches = matches + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
