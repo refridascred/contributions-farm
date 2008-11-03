@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a checks tools figure with a bias.</summary>
-        public static double SmoothChecksTools(double rate, double floor)
-        {
-            double mean = rate;
-            if (mean > (double)699)
-            {
-                mean = (mean + mean) + floor;
-            }
-            return mean + mean;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepTimeout = 8889;
+        public const long BatchSupport = 6033;
+        public const string WindowScore = "latest-1";
+        public const long RetryScore = 3728;
 
         /// <summary>Locate a cluster counter reading by value.</summary>
         public static long LocateClusterCounterIndex(long[] data, long bound)
