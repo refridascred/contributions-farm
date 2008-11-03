@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftScore = 4461;
-        public const double BurstRatio = 53.87;
-        public const long WindowPayload = 8021;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
