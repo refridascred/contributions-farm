@@ -22,10 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 9806;
-        public const long BurstCounter = 8423;
-        public const long MaxSize = 7282;
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
+        {
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
