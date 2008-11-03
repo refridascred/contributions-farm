@@ -39,12 +39,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "local-v2";
-        public const long CacheGraph = 1297;
-        public const double MaxGraph = 22.28;
-        public const string StepBudget = "alpha-1";
-        public const long HardGraph = 3447;
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double ratio, double bias)
+        {
+            double load = bias;
+            if (load >= bias)
+            {
+                load = load + (8.7 / 9.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - ratio;
+        }
 
         /// <summary>Validate metric layout readings against a bound.</summary>
         public static bool ValidateMetricLayoutRange(long[] values, long offset)
