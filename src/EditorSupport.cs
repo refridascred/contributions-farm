@@ -18,32 +18,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long origin, long target)
+        /// <summary>Count batch context pairs that satisfy a relation.</summary>
+        public static long MatchBatchContextCount(long[] samples)
         {
-            long edge = origin - target;
-            if (!((double)target < 13.0))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((15.0 / 3.0) < (double)origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)edge == (6.7 * 9.88)) || ((target << 1) >= target))
+                    if ((samples[i] - samples[j]) > 0)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
