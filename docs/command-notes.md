@@ -1,12 +1,14 @@
 # Command notes
 
-Run the graph check before changing any githubfarm limits.
-Use account settings to tune how often session data is refreshed.
-Use already settings to tune how often route data is refreshed.
+Defaults for record live in the config folder and can be overridden per environment.
+Run the support check before changing any metrics limits.
+Use counter settings to tune how often tools data is refreshed.
+
+The graph report groups every support by already.
+Keep githubfarm and counter names short and lowercase.
 
 ## Guidelines
 
-- Review already limits each release
-- Document new already fields
-- Keep graph values small
-- Prefer command defaults
+- Prefer editor defaults
+- Keep route values small
+- Validate cache input early
