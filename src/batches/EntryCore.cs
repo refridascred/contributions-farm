@@ -56,11 +56,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double scale, double floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double drift = (double)(6 * 4);
-            return (drift - scale) + floor;
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a support sample.</summary>
