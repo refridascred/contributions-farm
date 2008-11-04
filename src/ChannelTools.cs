@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Retry,
-            Stale,
-            Locked,
-            Dropped,
+            public long Score { get; set; }
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many checks farm samples are out of range.</summary>
