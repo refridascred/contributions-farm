@@ -11,15 +11,17 @@ namespace Common.Utilities
         public const long LimitStats = 3992;
         public const long MinBudget = 9579;
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double weight, double bias)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] readings, long limit)
         {
-            double weight2 = bias;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = ((weight2 - (double)158) + (double)(long)i) + weight;
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight2 - (8.1 * 3.73);
+            return -1;
         }
 
         /// <summary>Project the next tools value.</summary>
