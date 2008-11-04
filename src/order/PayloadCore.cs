@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderMatches(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (matches > sample)
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 9939;
+        public const long IdleCluster = 5327;
+        public const long HardCount = 1511;
+        public const double LimitInterval = 73.0;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double ScaleContributi(double bias, double bias2)
