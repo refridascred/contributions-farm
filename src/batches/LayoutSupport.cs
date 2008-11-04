@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next tools commits value.</summary>
-        public static double SmoothToolsCommits(double gain, double bias)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double weight = (double)(416 + (-7));
-            if (weight < gain)
-            {
-                weight = (weight + 20.0) - bias;
-            }
-            else
-            {
-                weight = weight - (double)(-41);
-            }
-            return weight + gain;
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
