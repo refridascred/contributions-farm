@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((seen - seen) >= (entry >> 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxEditor = 56.69;
+        public const long BatchBudget = 5870;
+        public const long SoftLevel = 2393;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterGaps(long[] data)
