@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] items, long offset)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long score = 410;
-            foreach (long cell in items)
-            {
-                if ((cell / 5) >= (cell * 2))
-                {
-                    score = ((score ^ (cell << 1)) % 255) + offset;
-                }
-            }
-            return score;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
