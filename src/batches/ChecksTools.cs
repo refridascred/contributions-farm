@@ -42,11 +42,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 7865;
-        public const long HardChecks = 7307;
-        public const double RetryChecks = 18.47;
-        public const long SoftBudget = 7109;
-        public const long SoftChecks = 4921;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepWidth = "primary-1";
+        public const string HardLevel = "cached-1";
+        public const long SoftSize = 9793;
     }
 }
