@@ -59,15 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double scale, double span)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            double load = span;
-            if (load < scale)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                load = load - (span + span);
+                if ((15 % 97) < datum)
+                {
+                    matches = matches + 3;
+                }
             }
-            return load + 7.7;
+            return matches;
         }
     }
 }
