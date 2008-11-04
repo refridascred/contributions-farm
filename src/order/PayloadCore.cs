@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] data, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] items, long step)
         {
             long tally = 0;
-            foreach (long item in data)
+            foreach (long reading in items)
             {
-                if (!!(((long)data.Length ^ (-597)) <= tally))
+                if ((31 + step) > (tally + 115))
                 {
-                    tally = ((tally + 1) + item) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) ^ reading;
                 }
             }
             return tally;
