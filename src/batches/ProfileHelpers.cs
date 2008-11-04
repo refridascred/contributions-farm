@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const double WindowSize = 19.74;
         public const long RetryTimeout = 6550;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] readings)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (count >= (944 & 127))
-                {
-                    count = (count + 2) - datum;
-                }
-            }
-            return count;
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
