@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
+            public double Weight { get; set; }
             public long Region { get; set; }
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
