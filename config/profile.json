@@ -1,10 +1,7 @@
 {
-  "session_size": true,
-  "min_size_s": false,
-  "notes_depth": false,
-  "max_threshold": {
-    "max_timeout_ms": "standard",
-    "dry_run": 54,
-    "flush_limit_ms": "fallback"
-  }
+  "cache_limit_pct": "cached",
+  "min_threshold": "blue",
+  "hard_window": "green",
+  "warm_retries": 58,
+  "cache_retries_count": true
 }
