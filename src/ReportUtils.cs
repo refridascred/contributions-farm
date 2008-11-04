@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Digest a series of buffer profile entries.</summary>
+        public static long ScoreBufferProfile(long[] levels)
         {
-            Retry,
-            Draft,
-            Queued,
-            Idle,
+            long total = 52;
+            foreach (long entry in levels)
+            {
+                total = total + entry;
+                total = (total ^ total) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a layout record.</summary>
