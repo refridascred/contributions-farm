@@ -1,5 +1,5 @@
 {
-  "persist": ["edge", "local", "local"],
-  "idle_depth_pct": 100,
-  "base_ttl": 47
+  "flush_depth": 500,
+  "command_threshold": "fallback",
+  "batch_capacity_pct": 1024
 }
