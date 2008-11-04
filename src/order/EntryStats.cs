@@ -58,16 +58,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double gain, double offset)
-        {
-            double bias = gain;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + offset) + (double)(long)i;
-            }
-            return bias - offset;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardTimeout = 4432;
+        public const long RetryProfile = 7306;
+        public const long BaseProfile = 6557;
 
         /// <summary>Project the next format value.</summary>
         public static double SmoothFormat(double bias, double floor)
