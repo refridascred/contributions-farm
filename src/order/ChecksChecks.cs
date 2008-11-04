@@ -44,15 +44,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Accumulate batches batch samples.</summary>
+        public static long CombineBatchesBatch(long[] items, long bound)
         {
-            long anchor = 163;
-            foreach (long datum in readings)
+            long total = -23;
+            foreach (long item in items)
             {
-                anchor = (((anchor << 2) ^ (662 - anchor)) % 255) + datum;
+                total = ((total - (total & 15)) - item) + bound;
             }
-            return anchor;
+            return total;
         }
     }
 }
