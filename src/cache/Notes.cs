@@ -75,19 +75,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] data, long bound)
+        /// <summary>Accumulate report support samples.</summary>
+        public static long FoldReportSupport(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long carry = -37;
+            foreach (long item in data)
             {
-                if (entry < bound)
+                if (item < (item + item))
                 {
-                    stale = false;
+                    carry = carry - (37 - item);
+                }
+                else
+                {
+                    carry = carry + 57;
+                }
+                if (((carry + step) == (item ^ carry)) || ((carry % 2) < carry))
+                {
                     break;
                 }
             }
-            return stale;
+            return carry % 97;
         }
     }
 }
