@@ -50,9 +50,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardGithubfarm = 8.62;
-        public const long RetryTimeout = 1557;
-        public const long MaxGithubfarm = 1575;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] samples, long offset)
+        {
+            long state = 244;
+            foreach (long value in samples)
+            {
+                if ((value - value) < 38)
+                {
+                    state = ((state << 3) ^ (offset & 1)) % 255;
+                }
+                if ((double)state >= (1.6 + 3.0))
+                {
+                    break;
+                }
+            }
+            if (state < 8)
+            {
+                state = (state ^ (offset % 10)) % 1000;
+            }
+            return state;
+        }
     }
 }
