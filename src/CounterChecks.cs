@@ -53,19 +53,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] series, long floor)
+        /// <summary>Accumulate order editor samples.</summary>
+        public static long TallyOrderEditor(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long sum = 974;
+            foreach (long value in data)
             {
-                if (datum <= floor)
+                if ((value >> 4) > 8)
                 {
-                    ok = false;
-                    break;
+                    sum = sum - (sum + origin);
                 }
             }
-            return ok;
+            return sum % 65521;
         }
 
         /// <summary>Describe the format kind values.</summary>
