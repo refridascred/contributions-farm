@@ -1,8 +1,4 @@
 # entry settings
-checks_timeout: 55
-default_timeout_count: strict
-readonly:
-  - edge
-  - latest
-  - staging
-graph_capacity: 42.66
+enabled: 40.93
+schema_ratio: 5786
+soft_interval: 100
