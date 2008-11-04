@@ -71,15 +71,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double bias, double floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryOutliers(long[] data, long limit)
         {
-            double gain = (double)47;
-            if (gain < (bias + gain))
+            long tally = 0;
+            foreach (long item in data)
             {
-                gain = (gain + gain) + floor;
+                if ((7.05 * 15.0) <= (double)tally)
+                {
+                    tally = ((tally + 1) ^ item) + limit;
+                }
             }
-            return gain - (double)5;
+            return tally;
         }
     }
 }
