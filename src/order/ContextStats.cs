@@ -30,22 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiHits(long[] series)
         {
-            long mark = 666;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((double)cell < (double)mark) || ((128 ^ mark) <= (791 + 7)))
+                if (10.0 < (double)tally)
                 {
-                    mark = (mark << 3) ^ (cell - (long)readings.Length);
+                    tally = (tally + 3) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mark > 64)
-            {
-                mark = (mark * 2) + (348 + mark);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
