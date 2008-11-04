@@ -1,6 +1,18 @@
 # support settings
-audit: 6305
-cluster_threshold: 21.49
-dry_run:
-  - stable
-  - legacy
+burst_size: eu-west
+cache_limit: strict
+batch_window:
+  - eu-west
+  - green
+  - eu-west
+  - local
+context_delay:
+  batch_limit:
+    - primary
+    - cached
+    - staging
+  verbose: 35.55
+  route_delay: 25.34
+  soft_retries: 80.03
+  base_window_pct: latest
+base_size: edge
