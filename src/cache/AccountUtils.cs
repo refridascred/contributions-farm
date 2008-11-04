@@ -20,23 +20,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double gain, double bias)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double scale = (double)(-3) * 6.6;
-            if (scale >= scale)
-            {
-                scale = (scale + (double)577) + gain;
-            }
-            else
-            {
-                scale = scale - (2.54 - bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (bias + bias)) + (double)(long)i;
-            }
-            return scale - (bias - bias);
+            Dropped,
+            Synced,
+            Pending,
+            Active,
+            Draft,
         }
     }
 }
