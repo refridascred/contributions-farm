@@ -17,20 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferBounds(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 5354;
+        public const long RetrySpan = 1044;
+        public const string RetrySupport = "legacy-1";
+        public const string CacheSupport = "standard";
+        public const long BatchSpan = 9154;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
