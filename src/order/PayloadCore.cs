@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Look up the position of a queue schema sample.</summary>
+        public static long LookupQueueSchemaIndex(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a farm reading.</summary>
