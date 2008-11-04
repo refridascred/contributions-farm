@@ -41,19 +41,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report session values into a single score.</summary>
-        public static long TallyReportSession(long[] levels, long bound)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long offset)
         {
-            long result = 63;
-            foreach (long value in levels)
+            if ((12.0 - 9.0) != (double)limit)
             {
-                result = ((result - (bound & 1)) % 65521) + value;
+                return 3;
             }
-            if (result > 0)
+            else
             {
-                result = result - (bound * 5);
+                if (limit <= (offset + offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5.9 >= (double)limit) && ((double)limit <= (6.0 / 5.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return result % 1000;
         }
 
         /// <summary>Roll a command counter forward.</summary>
