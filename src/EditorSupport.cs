@@ -18,24 +18,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long seed, long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterMatches(long[] data, long offset)
         {
-            if ((seed - seed) < (1 & 63))
+            long seen = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed ^ bound) < seed)
+                if (offset >= (offset % 7))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    seen = (seen + 2) ^ sample;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
