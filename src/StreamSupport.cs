@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long offset, long offset2)
-        {
-            long step = offset ^ offset2;
-            if ((offset * 3) < (step / 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset % 97) >= (66 + step)) || ((0.26 * 7.05) < (double)step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset * 2) < offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 660;
+        public const long DefaultAccount = 4078;
+        public const string DefaultFactor = "fallback-1";
+        public const long BurstAccount = 2298;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordOutliers(long[] series, long offset)
