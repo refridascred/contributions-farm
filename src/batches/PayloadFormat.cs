@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long mix = 20;
+            foreach (long cell in series)
             {
-                if ((hits / 5) <= reading)
+                if (((cell >> 2) != (mix - cell)) && ((mix ^ mix) >= mix))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    mix = (mix ^ (942 ^ cell)) % 1000;
                 }
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Describe the record class values.</summary>
