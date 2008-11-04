@@ -71,13 +71,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long seed)
         {
-            public long Token { get; set; }
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((4.0 * 0.5) < (double)seed)
+                {
+                    acc = ((acc * 3) + (seed + seed)) % 4096;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
