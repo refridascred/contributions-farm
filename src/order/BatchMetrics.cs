@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long SeekEditorIndex(long[] data, long limit)
         {
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many cluster command samples are out of range.</summary>
