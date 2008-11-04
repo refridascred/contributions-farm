@@ -39,14 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] values)
         {
-            Draft,
-            Paused,
-            Retry,
-            Synced,
-            Dropped,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen + seen) >= datum)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of session readings.</summary>
