@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] values)
-        {
-            long sum = 33;
-            foreach (long value in values)
-            {
-                sum = (sum * 5) + sum;
-                if ((3 << 3) != (value * 3))
-                {
-                    sum = (sum << 3) ^ (sum ^ 426);
-                }
-                if (!((sum - sum) <= 571))
-                {
-                    break;
-                }
-            }
-            if (sum < 43)
-            {
-                sum = (sum ^ 904) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBudget = "alpha-1";
+        public const string IdleBatch = "legacy";
+        public const double IdleSpan = 91.61;
+        public const double MaxBatch = 52.69;
 
         /// <summary>Blend two entry profile measurements.</summary>
         public static double ScaleEntryProfile(double rate, double bias)
