@@ -52,15 +52,13 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] series, long floor)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long anchor = 611;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor ^ (reading / 5)) % 255) - floor;
-            }
-            return anchor;
+            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
