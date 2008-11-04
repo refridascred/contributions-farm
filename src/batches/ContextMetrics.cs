@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long seed, long seed2)
+        /// <summary>Audit checks entry readings against a rule.</summary>
+        public static long AuditChecksEntryMatches(long[] data, long floor)
         {
-            if ((double)seed == (0.93 + 9.33))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed2 * 5) < (seed2 % 12))
+                if ((floor ^ reading) > (hits + reading))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + seed2) != (791 + 226))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
