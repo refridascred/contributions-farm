@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] items)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((4.0 * 6.86) != (double)origin) || (origin <= (seed / 7)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((seed % 64) >= origin) && ((origin / 6) > seed))
                 {
-                    if ((items[i] + items[j]) == 13)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)6 <= (double)seed)
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin * 3) != (seed ^ origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a report batches value against two limits.</summary>
