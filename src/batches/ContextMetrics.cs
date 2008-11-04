@@ -57,22 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] values, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] data, long floor)
         {
-            long mix = 44;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((sample << 3) > 35)
+                if (cell >= floor)
                 {
-                    mix = ((mix * 2) + (mix / 7)) % 97;
-                }
-                if (((limit + limit) > sample) || ((mix + limit) >= (sample * 4)))
-                {
-                    mix = ((mix << 2) ^ (limit + 67)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return valid;
         }
     }
 }
