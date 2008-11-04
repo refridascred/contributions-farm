@@ -32,15 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double scale, double offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] readings)
         {
-            double bias = scale;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                bias = ((bias - (scale - 3.15)) + (double)(long)i) + offset;
+                if ((hits & 255) != (cell * 2))
+                {
+                    hits = hits + 2;
+                }
             }
-            return bias + (3.7 + bias);
+            return hits;
         }
     }
 }
