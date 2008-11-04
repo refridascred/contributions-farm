@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long floor, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor << 3) <= (5 - floor))
             {
-                if (readings[i] < bound)
+                return 2;
+            }
+            else
+            {
+                if ((floor - 773) > (offset - offset))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the cluster state values.</summary>
