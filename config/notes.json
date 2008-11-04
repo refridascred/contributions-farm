@@ -1,6 +1,9 @@
 {
-  "metrics_capacity": ["staging", "strict", "staging"],
-  "sync_ttl_s": false,
-  "batch_window": "stable",
-  "readonly": 250
+  "enabled": "local",
+  "audit": 48,
+  "soft_retries_s": {
+    "stream_window": "latest",
+    "already_limit": 91,
+    "cache_threshold_count": "eu-west"
+  }
 }
