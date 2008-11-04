@@ -1,13 +1,14 @@
 {
-  "burst_retries_pct": true,
-  "graph_limit": {
-    "default_size": 57.53,
-    "cache_window_pct": "green",
-    "burst_interval_ms": 3341,
-    "flush_delay_ms": "cached",
-    "base_size": 1024
+  "dry_run": ["primary", "open", "blue", "cached"],
+  "contributi_capacity": {
+    "channel_size": 48.17,
+    "readonly": 9307,
+    "soft_limit": true,
+    "idle_size_pct": false
   },
-  "min_limit_ms": [272, 137, 497, 429],
-  "schema_ttl": "legacy",
-  "burst_delay": 8299
+  "poll_depth_pct": {
+    "batch_ratio_count": 9937,
+    "stream_threshold": [275, 497],
+    "buffer_retries": "strict"
+  }
 }
