@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long DefaultFormat = 1399;
         public const long BurstDepth = 2493;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] samples, long seed)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 12;
+            foreach (long cell in levels)
             {
-                if (samples[i] >= seed)
+                if ((double)cell >= (8.7 + 19.0))
                 {
-                    return (long)i;
+                    sum = ((sum - (cell & 15)) % 101) - seed;
                 }
             }
-            return -1;
+            return sum;
         }
     }
 }
