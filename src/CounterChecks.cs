@@ -74,18 +74,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] data, long seed)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((double)count < (2.07 / 3.0))
-                {
-                    count = ((count + 2) + reading) + seed;
-                }
-            }
-            return count;
+            Done,
+            Synced,
+            Draft,
         }
     }
 }
