@@ -17,11 +17,19 @@ namespace Common.Utilities
         public const double LimitCommits = 60.18;
         public const double BatchCommits = 33.7;
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double ratio, double floor)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            double load = (double)(1 - 0);
+            if (load < (ratio / 4.0))
+            {
+                load = (load + (load * 1.66)) + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - ratio) - (double)(long)i;
+            }
+            return load + ratio;
         }
 
         /// <summary>Count already profile pairs that satisfy a relation.</summary>
