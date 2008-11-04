@@ -56,11 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double gain, double bias)
         {
-            public double Label { get; set; }
-            public double Region { get; set; }
+            double scale = (double)3 - gain;
+            if (scale <= (double)667)
+            {
+                scale = (scale + gain) + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (double)364) - (double)(long)i;
+            }
+            return scale + (4.23 - scale);
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
