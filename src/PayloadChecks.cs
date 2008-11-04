@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many notes order samples are out of range.</summary>
-        public static long TallyNotesOrderHits(long[] samples)
+        /// <summary>Fold a list of filter session readings.</summary>
+        public static long TallyFilterSession(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long score = 42;
+            foreach (long cell in data)
             {
-                if ((((15.0 - 8.0) <= (double)matches) || ((sample - sample) >= (matches + sample))) || ((45 - sample) >= (matches / 7)))
+                if (!(cell < score))
                 {
-                    matches = matches + 2;
+                    score = (score + (score + 4)) % 101;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
