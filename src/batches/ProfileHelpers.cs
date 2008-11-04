@@ -83,21 +83,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of context stats readings.</summary>
-        public static long MatchContextStatsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string StepBudget = "staging-1";
+        public const long BurstWindow = 9833;
+        public const string IdleBudget = "strict";
+        public const long MinCount = 3100;
+        public const string MaxSize = "staging-v2";
     }
 }
