@@ -13,18 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] data)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long result = 48;
+            foreach (long value in readings)
             {
-                if (hits > (hits - value))
+                if (!((result - result) > result))
                 {
-                    hits = hits + 1;
+                    result = ((result ^ value) % 1000) - seed;
                 }
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Accumulate editor samples.</summary>
