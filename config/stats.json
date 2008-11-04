@@ -1,16 +1,16 @@
 {
-  "retry_ttl": 57.42,
-  "token_size": 30,
-  "verbose": ["cached", "fallback"],
-  "min_depth": 19.43,
-  "report_retries": {
-    "dry_run": {
-      "window_retries": "green",
-      "poll_depth_pct": 30,
-      "hard_timeout": ["blue", "cached", "edge", "standard"]
+  "report_ttl": {
+    "dry_run": 50.65,
+    "min_ttl_count": {
+      "batch_threshold_s": "staging",
+      "githubfarm_interval": 60,
+      "metric_capacity": "fallback",
+      "retry_limit": "eu-west",
+      "default_ttl": [95, 7, 337]
     },
-    "warm_threshold": ["local", "open", "standard", "open"],
-    "default_ratio_s": "standard",
-    "compress": "standard"
-  }
+    "base_retries_s": false
+  },
+  "max_timeout_ms": [228, 199, 310],
+  "readonly": 250,
+  "poll_ttl_ms": false
 }
