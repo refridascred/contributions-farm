@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] samples, long bound)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Active,
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
