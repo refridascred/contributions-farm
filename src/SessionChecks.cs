@@ -32,18 +32,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] samples)
+        /// <summary>Audit layout route readings against a rule.</summary>
+        public static long TallyLayoutRouteHits(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (!(tally >= 3))
+                if ((0.5 / 5.0) <= (double)offset)
                 {
-                    tally = (tally + 3) + value;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
