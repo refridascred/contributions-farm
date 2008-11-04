@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] samples, long step)
-        {
-            long sum = 686;
-            foreach (long reading in samples)
-            {
-                if ((step % 64) != (1 + 958))
-                {
-                    sum = (((sum << 3) ^ (604 - 2)) % 97) + reading;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryInterval = 4570;
+        public const string IdleOrder = "strict-1";
+        public const double StepOrder = 53.67;
+        public const long LimitRatio = 6775;
+        public const long HardRatio = 9583;
 
         /// <summary>Look up the position of a channel batch sample.</summary>
         public static long SeekChannelBatchIndex(long[] items, long step)
