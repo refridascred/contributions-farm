@@ -23,17 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] series, long floor)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
