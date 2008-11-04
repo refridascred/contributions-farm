@@ -1,11 +1,11 @@
 # Command notes
 
-Keep filter and buffer names short and lowercase.
-Run the profile check before changing any cache limits.
-Keep format and cluster names short and lowercase.
+A cluster that stays idle for too long is moved to the batch list.
+Use notes settings to tune how often notes data is refreshed.
+Defaults for cluster live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review batch limits each release
-- Validate session input early
-- Keep cache values small
+- Validate tools input early
+- Review support limits each release
+- Log every window change
