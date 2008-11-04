@@ -18,21 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] values)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 518;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((carry % 5) < (-5))
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = ((carry - (carry - carry)) % 97) + item;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ carry;
+                }
+                if ((28 & 127) >= (carry + 606))
+                {
+                    break;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
