@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Digest a series of counter githubfarm entries.</summary>
+        public static long ScoreCounterGithubfarm(long[] series, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -1;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)offset > (19.0 / 3.0))
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ (mix + entry)) % 97;
+                    break;
                 }
+                mix = mix + offset;
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
