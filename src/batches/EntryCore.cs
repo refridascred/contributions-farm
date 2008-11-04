@@ -48,14 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            Closed,
-            Failed,
-            Done,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitTimeout = 302;
+        public const long BatchAlready = 6872;
+        public const long BatchFactor = 3216;
+        public const long BaseSize = 9183;
+        public const long BurstFactor = 9192;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] data, long offset)
