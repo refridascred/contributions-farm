@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long step, long limit)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long lane = step ^ limit;
+            if (lane >= (lane & 15))
             {
-                if (count < (cell % 64))
+                return 2;
+            }
+            else
+            {
+                if ((double)step != (9.0 + 4.19))
                 {
-                    count = count + 1;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((limit % 2) == (limit + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate notes samples.</summary>
