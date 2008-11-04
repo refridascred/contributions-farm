@@ -6,17 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=434
+BUFFER_LIMIT=47
 log "limit is ${BUFFER_LIMIT}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 4))
+for i in $(seq 1 3); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+for item in open fallback local strict; do
+    log "checking ${item}"
+done
