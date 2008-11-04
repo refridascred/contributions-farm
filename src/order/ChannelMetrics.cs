@@ -35,15 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long target)
+        /// <summary>Find the first order schema entry that matches the target.</summary>
+        public static long LocateOrderSchemaIndex(long[] data, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
