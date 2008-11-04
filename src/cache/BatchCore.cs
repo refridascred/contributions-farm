@@ -66,11 +66,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstLevel = 916;
-        public const long BurstChecks = 6131;
-        public const long CacheTimeout = 6699;
-        public const long SoftChecks = 5498;
-        public const string StepRatio = "stable-edge";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((24 * 3) != (58 - datum)) && ((datum * 3) == (origin ^ origin)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
