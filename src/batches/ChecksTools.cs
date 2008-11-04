@@ -24,11 +24,18 @@ namespace Common.Utilities
             return gain - (gain / 8.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 5936;
-        public const long MaxRatio = 5745;
-        public const long BurstBatch = 6404;
-        public const string MinRatio = "primary-edge";
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double IdleSchema = 98.83;
