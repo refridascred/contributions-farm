@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] items)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (seen <= datum)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Queued,
+            Draft,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
