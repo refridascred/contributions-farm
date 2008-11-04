@@ -59,11 +59,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] values)
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((long)values.Length <= cell)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a session summary.</summary>
