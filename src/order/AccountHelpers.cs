@@ -61,12 +61,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "latest-v2";
-        public const long DefaultSpan = 4652;
-        public const string WindowScore = "alpha-v2";
-        public const string RetryInterval = "local";
-        public const double BaseRatio = 17.6;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long PairReportCount(long[] items)
