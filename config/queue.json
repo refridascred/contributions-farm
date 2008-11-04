@@ -1,23 +1,13 @@
 {
-  "dry_run": "standard",
-  "batch_window": {
-    "warm_limit_pct": {
-      "base_depth": 37,
-      "base_size": false,
-      "retry_timeout_s": 37.61
-    },
-    "batch_ratio_count": false,
-    "warm_depth_s": "legacy",
-    "hard_ratio_s": "fallback"
+  "burst_retries_pct": true,
+  "graph_limit": {
+    "default_size": 57.53,
+    "cache_window_pct": "green",
+    "burst_interval_ms": 3341,
+    "flush_delay_ms": "cached",
+    "base_size": 1024
   },
-  "window_ttl": 91,
-  "commits_timeout": {
-    "batch_limit_count": true,
-    "token_ratio": 250,
-    "warm_ttl": 1024,
-    "flush_ratio_pct": "latest",
-    "format_size": [210, 305, 235]
-  },
-  "retry_interval": "primary",
-  "session_delay": 14
+  "min_limit_ms": [272, 137, 497, 429],
+  "schema_ttl": "legacy",
+  "burst_delay": 8299
 }
