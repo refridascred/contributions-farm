@@ -39,24 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report batches value against two limits.</summary>
-        public static long ClassifyReportBatches(long floor, long step)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] values, long offset)
         {
-            if ((step + floor) <= (floor - floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.1 * 3.4) >= (double)floor)
+                if (values[i] > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Match up account samples.</summary>
