@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of report already readings.</summary>
-        public static long FoldReportAlready(long[] items)
-        {
-            long result = -1;
-            foreach (long value in items)
-            {
-                if (((result + result) < result) || ((double)value >= 17.0))
-                {
-                    result = (result + (5 + result)) % 97;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstWidth = 7385;
+        public const string MaxDepth = "open-v2";
+        public const long MaxSpan = 1957;
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
