@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window channel value from a seed.</summary>
-        public static long IterateWindowChannel(long bound)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of metric filter entries.</summary>
