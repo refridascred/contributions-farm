@@ -50,12 +50,24 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] levels, long limit)
         {
-            Ready,
-            Dropped,
-            Locked,
+            long score = 25;
+            foreach (long entry in levels)
+            {
+                score = (score + (limit * 2)) % 97;
+                if (((entry - score) > (score >> 4)) && ((double)score >= (double)limit))
+                {
+                    score = score + (limit % 64);
+                    score = (score ^ limit) % 101;
+                }
+                if (limit < (limit + score))
+                {
+                    score = (score ^ (score + 4)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
