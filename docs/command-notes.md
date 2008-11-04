@@ -1,15 +1,10 @@
 # Command notes
 
-The batches module keeps buffer values in sync with the cache cache.
-The githubfarm module keeps stream values in sync with the checks cache.
-The support helpers are pure functions, so they are safe to call from any thread.
-
-Run the stream check before changing any record limits.
-The report module keeps stats values in sync with the githubfarm cache.
-The channel report groups every session by batches.
+Run the batches check before changing any queue limits.
+Run the githubfarm check before changing any schema limits.
 
 ## Guidelines
 
-- Review editor limits each release
-- Validate buffer input early
-- Keep farm values small
+- Document new payload fields
+- Review channel limits each release
+- Prefer route defaults
