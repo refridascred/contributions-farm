@@ -28,22 +28,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] data, long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            double gain = 9.0;
+            if (gain >= floor)
             {
-                if ((9.94 * 3.1) <= (double)origin)
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = (gain - (gain / 4.0)) - weight;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (double)4) - (double)(long)i;
+            }
+            return gain + (4.1 - gain);
         }
     }
 }
