@@ -35,13 +35,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state << 3) ^ (origin / 7)) % 255;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Blend two session measurements.</summary>
