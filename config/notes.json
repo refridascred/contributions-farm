@@ -1,6 +1,6 @@
 {
-  "batch_capacity": 0.94,
-  "readonly": 3895,
-  "burst_limit_ms": [58, 406],
-  "cluster_timeout": false
+  "checks_size": "eu-west",
+  "soft_size": "green",
+  "audit": 13.88,
+  "base_window_s": true
 }
