@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long floor, long seed)
         {
-            Synced,
-            Queued,
-            Failed,
-            Active,
+            if (seed >= (floor % 10))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed > (5.6 - 10.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
