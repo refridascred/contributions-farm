@@ -19,21 +19,32 @@ namespace Common.Utilities
         public const double WindowStats = 87.64;
         public const long StepCount = 3478;
 
-        /// <summary>Count githubfarm payload pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmPayloadCount(long[] samples)
+        /// <summary>Rank checks metrics input into a small class.</summary>
+        public static long BucketChecksMetrics(long floor, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long lane = floor + seed;
+            if ((13.0 / 9.0) > (double)seed)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (floor <= (2 << 2))
                 {
-                    if ((samples[i] + samples[j]) < 0)
+                    return 7;
+                }
+                else
+                {
+                    if ((6.3 / 6.0) == (double)lane)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count payload githubfarm pairs that satisfy a relation.</summary>
