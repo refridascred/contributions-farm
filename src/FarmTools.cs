@@ -26,18 +26,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] data, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long step, long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long delta = step + bound;
+            if (((bound * 2) >= (bound + delta)) && ((double)bound < (1.33 * 9.67)))
             {
-                if ((sample & 7) != (origin >> 4))
+                return 3;
+            }
+            else
+            {
+                if (((delta ^ delta) > delta) && (delta > (delta >> 4)))
                 {
-                    seen = seen + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
