@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxNotes = 82.64;
-        public const long IdleCount = 5125;
-        public const long RetryNotes = 8457;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+        }
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long RollMetrics(long target)
