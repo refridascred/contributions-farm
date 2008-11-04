@@ -22,18 +22,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many record window samples are out of range.</summary>
-        public static long CountRecordWindowHits(long[] levels, long floor)
+        /// <summary>Audit farm command readings against a rule.</summary>
+        public static long MeasureFarmCommandHits(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((reading % 24) >= 99)
+                if (((472 + entry) >= (entry >> 1)) && !((entry + matches) == (540 << 2)))
                 {
-                    count = (count + 2) + floor;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a already snapshot.</summary>
