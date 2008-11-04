@@ -1,20 +1,6 @@
 # support settings
-report_size: 82.52
-max_window_pct:
-  flush_ttl_ms:
-    warm_capacity: 25.83
-    cache_delay: 1225
-    already_depth: cached
-    readonly: 3016
-    batch_ratio_pct: 53
-    already_threshold: false
-  default_delay_s: legacy
-  idle_timeout: true
-  stats_capacity: local
-token_capacity: 500
-idle_ttl:
-  - 244
-  - 18
-  - 294
-  - 283
-retry_window_count: 6164
+batch_size: staging
+soft_ttl_count:
+  - 261
+  - 115
+verbose: 21
