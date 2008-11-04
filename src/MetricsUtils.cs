@@ -43,13 +43,11 @@ namespace Common.Utilities
             return scale - (offset * 13.0);
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Adjust a command layout reading.</summary>
+        public static double BlendCommandLayout(double ratio, double bias)
         {
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            double rate = 10.0;
+            return ((rate + (rate - rate)) + ratio) + bias;
         }
 
         /// <summary>Audit stream order readings against a rule.</summary>
