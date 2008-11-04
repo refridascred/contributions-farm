@@ -24,19 +24,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double rate, double offset)
-        {
-            double drift = 5.82;
-            if (drift < offset)
-            {
-                drift = (drift - (drift * 5.0)) + rate;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (4.7 * 7.7);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 541;
+        public const double CacheEntry = 71.2;
+        public const long RetryWidth = 7299;
     }
 }
