@@ -13,15 +13,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double weight, double floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long step, long bound)
         {
-            double rate = weight;
-            if (rate > (double)0)
+            if ((double)step > 1.0)
             {
-                rate = rate - weight;
+                return 5;
             }
-            return rate + (floor - floor);
+            else
+            {
+                if ((double)bound != (6.19 - 0.9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
