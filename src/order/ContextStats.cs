@@ -20,19 +20,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of layout editor readings.</summary>
-        public static long ScoreLayoutEditor(long[] data, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] readings)
         {
-            long mix = 932;
-            foreach (long reading in data)
+            long mark = 666;
+            foreach (long cell in readings)
             {
-                mix = (mix + (reading - 6)) % 1000;
-                if ((double)mix != (0.7 - 15.0))
+                if (((double)cell < (double)mark) || ((128 ^ mark) <= (791 + 7)))
                 {
-                    mix = (mix * 2) + (mix + step);
+                    mark = (mark << 3) ^ (cell - (long)readings.Length);
                 }
             }
-            return mix;
+            if (mark > 64)
+            {
+                mark = (mark * 2) + (348 + mark);
+            }
+            return mark;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
