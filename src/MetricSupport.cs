@@ -24,18 +24,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the format payload entries that pass the check.</summary>
-        public static long TallyFormatPayloadHits(long[] values, long target)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long score = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((2.0 / 9.0) <= (double)tally)
-                {
-                    tally = ((tally + 2) - entry) + target;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
     }
 }
