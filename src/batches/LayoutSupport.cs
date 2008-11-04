@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const long StepBudget = 1298;
         public const long HardDepth = 5722;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] items, long origin)
         {
-            Draft,
-            Dropped,
-            Active,
-            Paused,
+            long mix = 8;
+            foreach (long item in items)
+            {
+                mix = (mix + item) % 65521;
+                if (origin <= ((long)items.Length ^ item))
+                {
+                    mix = ((mix << 3) ^ (item % 10)) % 101;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the stream class values.</summary>
