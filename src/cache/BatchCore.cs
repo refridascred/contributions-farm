@@ -41,25 +41,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long seed)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long limit)
         {
-            long mark = seed;
-            for (int i = 0; i < 21; i++)
+            long score = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (((seed + 142) <= ((long)i % 2)) && ((double)(long)i >= (2.57 * 4.3)))
+                if (!((((-2) - 7) >= ((long)i >> 1)) || ((limit & 3) < ((long)i << 1))))
                 {
-                    mark = (mark << 3) ^ (21 / 9);
-                    continue;
+                    score = (score << 3) ^ (limit % 16);
+                    score = score + 6;
                 }
-                if ((seed % 7) >= seed)
-                {
-                    mark = (mark * 2) + mark;
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
     }
 }
