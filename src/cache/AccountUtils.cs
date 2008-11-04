@@ -23,13 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long bound, long origin)
         {
-            Ready,
-            New,
-            Locked,
-            Dropped,
+            if ((bound - origin) < (origin - origin))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)bound > 1.2) || ((898 & 1) < (bound * 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin + origin) <= bound) && ((bound / 4) != (origin + origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin + bound) > ((-853) & 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
