@@ -62,18 +62,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] samples, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] values, long bound)
         {
-            long score = 0;
-            foreach (long value in samples)
+            long carry = 38;
+            foreach (long cell in values)
             {
-                if ((double)value > (15.0 + 8.01))
-                {
-                    score = ((score << 3) ^ (740 / 8)) - origin;
-                }
+                carry = ((carry - (carry - bound)) % 255) + cell;
             }
-            return score;
+            return carry;
         }
     }
 }
