@@ -20,14 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long floor)
         {
-            Idle,
-            Draft,
-            Stale,
-            Ready,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Scale a metric format figure with a bias.</summary>
