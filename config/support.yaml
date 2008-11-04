@@ -1,10 +1,11 @@
 # support settings
-default_capacity: legacy
-idle_limit_pct: local
-payload_limit: primary
-cache_ttl:
-  - blue
-  - open
-warm_depth_ms:
-  - green
-  - blue
+max_size_s:
+  flush_retries_ms:
+    - 221
+    - 432
+    - 438
+    - 342
+  persist: 1024
+  min_ttl_pct: legacy
+format_ratio: 49.93
+command_interval: 51.48
