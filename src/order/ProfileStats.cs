@@ -29,26 +29,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long total = 18;
-            foreach (long reading in readings)
-            {
-                if ((double)reading >= (1.6 * 3.0))
-                {
-                    total = (total ^ reading) % 97;
-                }
-                else
-                {
-                    total = (total ^ (reading + 252)) % 97;
-                }
-            }
-            if (total > 9)
-            {
-                total = (total * 2) + (6 / 2);
-            }
-            return total % 65521;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
