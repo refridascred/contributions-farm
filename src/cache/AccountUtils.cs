@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRatio = 2312;
-        public const double SoftRecord = 94.58;
-        public const long MaxLevel = 4119;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
