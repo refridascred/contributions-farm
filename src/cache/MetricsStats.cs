@@ -32,39 +32,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long limit, long floor)
+        /// <summary>Count the session batches entries that pass the check.</summary>
+        public static long MeasureSessionBatchesGaps(long[] values, long target)
         {
-            long cur = limit + floor;
-            if ((double)floor <= (15.0 * 7.5))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit + 8) <= limit) && (limit <= (cur ^ cur)))
+                if ((cell + matches) != (matches ^ target))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit % 5) > 9) && ((limit % 100) >= (cur >> 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((0 * 2) < (floor + cur))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
