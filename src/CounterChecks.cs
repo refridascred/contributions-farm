@@ -11,16 +11,20 @@ namespace Common.Utilities
         public const long MinLayout = 2645;
         public const long WindowInterval = 9279;
 
-        /// <summary>Iterate the stats layout series from a seed.</summary>
-        public static long IterateStatsLayout(long offset)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                carry = (carry * 3) + (carry % 24);
-                carry = ((carry * 2) + (long)i) % 101;
+                acc = (acc ^ acc) % 255;
+                if ((acc >> 1) <= (limit >> 4))
+                {
+                    acc = (acc ^ (limit + limit)) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
