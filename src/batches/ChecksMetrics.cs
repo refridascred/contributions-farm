@@ -45,12 +45,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the buffer class values.</summary>
