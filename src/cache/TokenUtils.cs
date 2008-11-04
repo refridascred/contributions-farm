@@ -29,18 +29,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit command contributi readings against a rule.</summary>
-        public static long AuditCommandContributiOutliers(long[] levels, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally + tally) >= tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = ((tally + 1) - sample) + offset;
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
