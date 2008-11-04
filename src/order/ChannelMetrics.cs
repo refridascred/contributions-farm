@@ -25,11 +25,38 @@ namespace Common.Utilities
         public const long MaxDepth = 3456;
         public const long CacheScore = 4569;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long limit, long floor)
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            if ((limit % 12) <= (limit << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor ^ 64) != (limit & 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor - floor) < limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor >= (floor - floor)) || (limit > (floor - limit)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
