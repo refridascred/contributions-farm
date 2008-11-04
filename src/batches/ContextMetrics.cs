@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long floor, long seed)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            if (seed >= (floor % 10))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed > (5.6 - 10.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Ready,
+            Failed,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
