@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many support cache samples are out of range.</summary>
-        public static long TallySupportCacheGaps(long[] samples, long offset)
+        /// <summary>Count the contributi notes entries that pass the check.</summary>
+        public static long AuditContributiNotesGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((offset - item) != (long)samples.Length)
+                if ((1.0 - 1.13) <= (double)cell)
                 {
-                    matches = matches + 3;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of record entries.</summary>
