@@ -15,23 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double rate, double bias)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double ratio, double floor)
         {
-            double rate2 = (bias - bias) * 6.19;
-            if (rate2 >= rate2)
+            double scale = floor;
+            if (scale < (ratio * 6.88))
             {
-                rate2 = rate2 + bias;
+                scale = scale + ratio;
             }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 - rate2;
+            return scale - scale;
         }
 
         /// <summary>Hold a report header.</summary>
