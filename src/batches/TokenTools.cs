@@ -20,15 +20,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long offset)
         {
-            long mark = offset;
+            long score = offset;
             for (int i = 0; i < 17; i++)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                score = score - (score ^ offset);
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = ((score - (score & 15)) % 97) ^ (long)i2;
+                }
+                score = score - (score - score);
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return mark;
+            return score;
         }
     }
 }
