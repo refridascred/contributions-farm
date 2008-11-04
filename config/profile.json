@@ -1,7 +1,5 @@
 {
-  "default_capacity": "primary",
-  "max_limit_count": 2414,
-  "batch_window": 70.49,
-  "audit": "stable",
-  "enabled": false
+  "idle_limit_s": 16,
+  "batch_timeout": "cached",
+  "enabled": 6351
 }
