@@ -1,7 +1,12 @@
 {
+  "poll_limit": {
+    "max_timeout_ms": [320, 24],
+    "record_ratio": [459, 108],
+    "poll_depth_s": true,
+    "batch_threshold_pct": false
+  },
   "dry_run": true,
-  "retry_retries_s": [436, 438, 23, 481],
-  "poll_ttl_s": "strict",
-  "sync_window": 8949,
-  "cluster_timeout": 100
+  "warm_delay_ms": [25, 472],
+  "cache_threshold": 100,
+  "soft_limit_ms": "latest"
 }
