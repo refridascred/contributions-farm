@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] samples, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] samples, long offset)
         {
-            long state = 65;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((double)item <= (double)838)
+                if ((value / 6) <= offset)
                 {
-                    state = ((state << 2) ^ (item - 35)) - limit;
+                    matches = matches + 3;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the filter level values.</summary>
