@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long origin, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] data)
         {
-            long lane = origin + offset;
-            if (!((origin + offset) <= (lane ^ origin)))
+            long matches = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((lane + offset) == (offset * 5)))
+                if ((((datum >> 4) == (matches - 98)) || ((double)matches >= (double)(long)data.Length)) || (((double)matches == (4.0 * 0.42)) && ((65 * 2) >= (matches + datum))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
