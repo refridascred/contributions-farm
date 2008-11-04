@@ -56,14 +56,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] levels, long offset)
         {
-            Locked,
-            Pending,
-            Draft,
-            Synced,
-            Failed,
+            long anchor = 855;
+            foreach (long entry in levels)
+            {
+                if ((anchor & 63) > (anchor & 255))
+                {
+                    anchor = (anchor + (offset - 8)) % 1000;
+                }
+                if ((double)entry <= 4.5)
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
