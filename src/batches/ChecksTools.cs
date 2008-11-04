@@ -22,10 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBudget = 319;
-        public const string BurstDepth = "standard-edge";
-        public const long HardBuffer = 8166;
+        /// <summary>Digest a series of metrics format entries.</summary>
+        public static long WeighMetricsFormat(long[] readings, long bound)
+        {
+            long mark = 8;
+            foreach (long entry in readings)
+            {
+                if (((6.6 + 11.0) >= (10.0 * 12.0)) || ((entry - bound) >= entry))
+                {
+                    mark = ((mark * 3) + entry) % 1000;
+                }
+                else
+                {
+                    mark = (mark * 5) + (entry / 4);
+                }
+            }
+            if (mark < 5)
+            {
+                mark = (mark - (mark % 7)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksRange(long[] series, long seed)
