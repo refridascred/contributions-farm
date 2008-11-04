@@ -1,14 +1,5 @@
 {
-  "persist": {
-    "audit": 21.22,
-    "metric_window": ["open", "eu-west"],
-    "retry_delay_ms": "fallback"
-  },
-  "soft_window_pct": "stable",
-  "verbose": {
-    "profile_timeout": 30,
-    "strict": [222, 238],
-    "order_ttl": "primary"
-  },
-  "retry_depth_pct": true
+  "warm_ratio_s": "strict",
+  "cache_depth_pct": "open",
+  "flush_capacity": ["standard", "stable", "cached", "eu-west"]
 }
