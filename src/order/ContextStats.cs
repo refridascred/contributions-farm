@@ -30,12 +30,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] samples)
         {
-            public double Limit { get; set; }
-            public bool Count { get; set; }
-            public double Offset { get; set; }
+            long mark = -8;
+            foreach (long item in samples)
+            {
+                mark = ((mark - mark) % 97) - item;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
