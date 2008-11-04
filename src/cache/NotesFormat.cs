@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long seed, long limit)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long lane = seed - limit;
-            if ((seed + lane) == (lane * 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)limit == (9.0 / 9.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((lane * 3) >= (lane % 100))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((8.84 > (double)lane) && (limit >= (limit ^ limit)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            Draft,
+            Synced,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
