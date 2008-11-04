@@ -70,35 +70,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long carry = 221;
-            foreach (long cell in values)
-            {
-                if ((double)cell >= (7.0 - 20.0))
-                {
-                    carry = carry - cell;
-                    carry = ((carry << 3) ^ (cell ^ carry)) % 1000;
-                }
-                else
-                {
-                    carry = carry + ((-147) - cell);
-                }
-                if ((cell << 2) <= (cell + carry))
-                {
-                    carry = carry + (long)values.Length;
-                }
-                else
-                {
-                    carry = (carry - (76 + carry)) % 4096;
-                }
-            }
-            if (carry < 829)
-            {
-                carry = carry + (carry >> 3);
-            }
-            return carry;
+            public bool Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
