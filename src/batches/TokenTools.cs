@@ -13,15 +13,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long step, long bound)
         {
-            long state = 55;
-            foreach (long item in items)
+            if (((bound * 2) < (bound << 2)) || ((double)bound == (2.8 - 5.1)))
             {
-                state = (state ^ (item >> 1)) % 4096;
+                return 3;
             }
-            return state % 65521;
+            else
+            {
+                if (!((bound ^ 19) < (step + bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.0 / 4.0) == (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter info.</summary>
