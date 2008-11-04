@@ -23,10 +23,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepTimeout = 8993;
-        public const string BurstOrder = "alpha-v2";
-        public const long RetryOrder = 892;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] items, long step)
