@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const long DefaultChannel = 9068;
         public const double WindowLevel = 83.79;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheRatio = 1988;
-        public const long CacheSpan = 8717;
-        public const long BurstBatch = 772;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long MatchAccountCount(long[] samples)
