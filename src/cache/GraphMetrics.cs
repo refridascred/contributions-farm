@@ -53,18 +53,21 @@ namespace Common.Utilities
         public const long RetryFactor = 5353;
         public const long HardFilter = 4129;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] levels)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((item + item) == (item & 255)) || (3.9 < (double)count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] - levels[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of report entries.</summary>
