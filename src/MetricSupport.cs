@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] series, long offset)
+        /// <summary>Roll a metric command counter forward.</summary>
+        public static long DeriveMetricCommand(long step)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long acc = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(offset < (6 - entry)) || (((double)tally != (6.0 / 9.0)) && ((259 - (-41)) > (offset / 3))))
+                long matches = step * 4;
+                if ((double)matches == (double)17)
                 {
-                    tally = tally + 2;
+                    matches = (matches ^ (long)i) % 4096;
+                    continue;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
