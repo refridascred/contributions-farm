@@ -1,8 +1,13 @@
 {
-  "retry_delay_pct": 90,
-  "max_interval": false,
-  "poll_size_count": false,
-  "persist": false,
-  "soft_ratio": 9514,
-  "default_ttl": [230, 176, 112]
+  "readonly": "primary",
+  "poll_ttl_ms": 43.09,
+  "entry_delay": [134, 9, 1, 435],
+  "counter_ttl": {
+    "retry_capacity_ms": ["open", "blue", "edge"],
+    "enabled": 15.92,
+    "sync_window_pct": "cached",
+    "min_ttl_ms": 618
+  },
+  "cache_window_pct": 7632,
+  "burst_delay_count": "green"
 }
