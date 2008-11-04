@@ -1,22 +1,6 @@
 {
-  "cluster_limit": "open",
-  "hard_interval_count": {
-    "persist": 232,
-    "sync_ratio_count": 299,
-    "enabled": "fallback",
-    "dry_run": {
-      "default_window": false,
-      "metrics_depth": "edge",
-      "audit": false,
-      "warm_window_s": 250
-    }
-  },
-  "batches_size": "eu-west",
-  "persist": 500,
-  "order_retries": true,
-  "max_delay": {
-    "min_window_ms": 13,
-    "base_capacity_pct": "stable",
-    "min_window_count": false
-  }
+  "strict": 79.06,
+  "soft_retries_pct": true,
+  "compress": ["blue", "staging"],
+  "sync_delay": ["staging", "blue", "primary"]
 }
