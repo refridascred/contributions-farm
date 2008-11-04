@@ -22,15 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double ratio, double offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double ratio2 = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = ((ratio2 - offset) + (double)(long)i) - ratio;
-            }
-            return ratio2 + offset;
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Compare every pair of token readings.</summary>
