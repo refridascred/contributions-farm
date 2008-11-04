@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first metrics entry entry that matches the target.</summary>
-        public static long SeekMetricsEntryIndex(long[] readings, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((readings[i] >= target) && ((readings[i] % 5) == 0))
+                if ((double)tally == (16.0 + 6.27))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
