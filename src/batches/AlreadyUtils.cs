@@ -48,10 +48,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxFactor = 6922;
-        public const long MaxSpan = 2211;
-        public const double MinBatch = 73.95;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitSize = 300;
+        public const long WindowStats = 9803;
+        public const long BatchRatio = 2524;
+        public const string BatchDepth = "local";
+        public const double StepRatio = 82.28;
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long SortFilter(long floor, long seed)
