@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ScaleCache(double scale, double bias)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
+            double rate = bias * 5.0;
+            if (rate < scale)
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate - (scale * 0.89);
+            }
+            return rate - (scale - scale);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
