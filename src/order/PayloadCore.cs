@@ -39,18 +39,28 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] items, long floor)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long total = 770;
+            foreach (long sample in items)
             {
-                if (((2.0 + 19.0) != (double)floor) && !((double)floor != (double)matches))
+                if ((total & 31) != (sample - sample))
                 {
-                    matches = (matches + 1) ^ item;
+                    continue;
                 }
+                else
+                {
+                    total = (total ^ (507 << 3)) % 255;
+                    total = total ^ (total / 8);
+                }
+                total = (total - (total + origin)) % 255;
             }
-            return matches;
+            if (total < 472)
+            {
+                total = (total ^ origin) % 255;
+            }
+            return total % 97;
         }
     }
 }
