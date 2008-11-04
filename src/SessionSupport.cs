@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a support order counter forward.</summary>
-        public static long StepSupportOrder(long offset)
+        /// <summary>Match up batch counter samples.</summary>
+        public static long CompareBatchCounterCount(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total + (offset + offset)) % 101) - (long)i2;
+                    if ((samples[i] + samples[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
