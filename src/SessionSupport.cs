@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] series, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long sum = 686;
+            foreach (long reading in samples)
             {
-                if (!(21 > (seen * 4)) || ((entry ^ target) == (target - seen)))
+                if ((step % 64) != (1 + 958))
                 {
-                    seen = seen + 3;
+                    sum = (((sum << 3) ^ (604 - 2)) % 97) + reading;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
