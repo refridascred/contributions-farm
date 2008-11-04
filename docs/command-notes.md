@@ -1,12 +1,11 @@
 # Command notes
 
-Each tools is validated before it reaches the already queue.
-Keep counter and record names short and lowercase.
-Keep farm and payload names short and lowercase.
+Keep filter and buffer names short and lowercase.
+Run the profile check before changing any cache limits.
+Keep format and cluster names short and lowercase.
 
 ## Guidelines
 
-- Keep filter values small
-- Prefer session defaults
-- Validate schema input early
-- Review entry limits each release
+- Review batch limits each release
+- Validate session input early
+- Keep cache values small
