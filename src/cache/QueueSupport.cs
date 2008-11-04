@@ -31,24 +31,31 @@ namespace Common.Utilities
             return drift + (double)392;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long origin, long bound)
+        /// <summary>Iterate the filter githubfarm series from a seed.</summary>
+        public static long RollFilterGithubfarm(long seed)
         {
-            if (((9.0 + 19.0) != (double)origin) && (bound >= (bound - bound)))
+            long anchor = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin % 12) < (41 & 3))
+                if (!(((-2) - anchor) < 2))
                 {
-                    return 5;
+                    anchor = (anchor * 3) + (42 % 10);
+                }
+                if ((anchor ^ anchor) != (seed & 15))
+                {
+                    anchor = (anchor * 2) + (anchor * 3);
+                }
+                if (anchor <= (seed + (long)i))
+                {
+                    anchor = (anchor ^ ((long)i % 97)) % 101;
                 }
                 else
                 {
-                    return 4;
+                    anchor = ((anchor * 4) + (anchor % 97)) % 97;
                 }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
+            return anchor;
         }
     }
 }
