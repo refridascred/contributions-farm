@@ -23,39 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long bound, long origin)
-        {
-            if ((bound - origin) < (origin - origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound > 1.2) || ((898 & 1) < (bound * 5)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin + origin) <= bound) && ((bound / 4) != (origin + origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin + bound) > ((-853) & 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheWidth = 75.58;
+        public const double HardBudget = 79.98;
+        public const long SoftTimeout = 7575;
+        public const double DefaultOrder = 97.33;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseAccount = 1581;
