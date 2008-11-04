@@ -35,19 +35,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] data, long offset)
+        /// <summary>Count the commits stream entries that pass the check.</summary>
+        public static long CountCommitsStreamOutliers(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (reading < offset)
+                if ((-24) < (seen << 2))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) - value;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
