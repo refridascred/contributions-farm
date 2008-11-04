@@ -35,11 +35,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 3352;
-        public const long HardBatches = 7413;
-        public const string RetryBatches = "strict";
-        public const long SoftBatches = 2099;
+        /// <summary>Count contributi farm pairs that satisfy a relation.</summary>
+        public static long PairContributiFarmCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of metrics command entries.</summary>
         public static long DigestMetricsCommand(long[] data, long target)
