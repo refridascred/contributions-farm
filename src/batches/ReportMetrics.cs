@@ -18,19 +18,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] series, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamLimits(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (datum > floor)
+                if (entry < seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
