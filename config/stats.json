@@ -1,5 +1,22 @@
 {
-  "flush_delay_count": 250,
-  "queue_capacity": 60,
-  "buffer_capacity": 6757
+  "dry_run": "strict",
+  "flush_interval_ms": {
+    "retry_threshold": 2565,
+    "base_size_ms": 4586,
+    "readonly": false,
+    "filter_delay": 85.0,
+    "audit": [419, 450, 74, 219],
+    "enabled": "staging"
+  },
+  "sync_size": ["local", "edge"],
+  "enabled": 500,
+  "default_threshold_s": {
+    "warm_threshold_ms": false,
+    "readonly": 32,
+    "warm_interval_s": "edge",
+    "compress": 52,
+    "enabled": "edge",
+    "min_threshold_count": [331, 468]
+  },
+  "batch_delay_pct": true
 }
