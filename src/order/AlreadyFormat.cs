@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
+            Dropped,
+            Closed,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Count the channel buffer entries that pass the check.</summary>
