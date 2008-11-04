@@ -39,22 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] values)
+        /// <summary>Measure how many record order samples are out of range.</summary>
+        public static long CountRecordOrderOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((seen + seen) >= datum)
+                if (!((43 ^ entry) < (entry + count)))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
