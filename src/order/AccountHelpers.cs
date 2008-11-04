@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Roll a farm graph counter forward.</summary>
+        public static long IterateFarmGraph(long seed)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = (anchor ^ seed) % 101;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
