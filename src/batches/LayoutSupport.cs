@@ -23,13 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
-        {
-            New,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 2527;
+        public const long StepBudget = 1298;
+        public const long HardDepth = 5722;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
