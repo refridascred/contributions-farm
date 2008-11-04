@@ -40,31 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long floor, long step)
+        /// <summary>Combine already counter values into a single score.</summary>
+        public static long WeighAlreadyCounter(long[] data)
         {
-            if ((step + floor) >= 296)
+            long total = 418;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step <= 10) || ((floor >> 2) < step))
+                if (entry > (total + total))
                 {
-                    return 3;
+                    break;
                 }
-                else
-                {
-                    if ((floor << 3) < (floor << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                total = total - (entry * 4);
+                total = (total - (entry - total)) % 255;
             }
+            return total;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
