@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Measure how many notes order samples are out of range.</summary>
+        public static long TallyNotesOrderHits(long[] samples)
         {
-            Idle,
-            Closed,
-            Stale,
-            New,
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((((15.0 - 8.0) <= (double)matches) || ((sample - sample) >= (matches + sample))) || ((45 - sample) >= (matches / 7)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
