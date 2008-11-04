@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=154
+COMMAND_LIMIT=100
 log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-local}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
+for item in strict open local primary; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
