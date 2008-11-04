@@ -1,13 +1,13 @@
 # githubfarm settings
-compress: cached
-burst_timeout_pct:
-  strict:
-    tools_delay: 74.01
-    idle_threshold: 100
-    soft_threshold: 1611
-  base_depth: 8475
-  warm_delay_pct: 89.35
-  min_ratio: edge
-soft_retries: open
-max_depth_ms: 100
-min_ttl_ms: edge
+min_size_s: latest
+warm_size:
+  - 346
+  - 220
+  - 197
+idle_retries_ms:
+  - blue
+  - local
+  - legacy
+  - strict
+soft_limit_count: strict
+route_ratio: false
