@@ -13,19 +13,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] series, long seed)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
