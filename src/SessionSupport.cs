@@ -29,11 +29,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string DefaultSchema = "local-1";
-        public const long BurstRatio = 9889;
-        public const long MaxTimeout = 9132;
-        public const long MaxSchema = 4031;
-        public const long MinSchema = 2388;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
