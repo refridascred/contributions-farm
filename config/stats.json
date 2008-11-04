@@ -1,7 +1,5 @@
 {
-  "default_threshold_ms": 83,
-  "format_depth": 73.08,
-  "warm_limit_count": ["fallback", "strict"],
-  "window_interval": "green",
-  "cluster_retries": 8315
+  "batch_depth_count": 89,
+  "cache_timeout": "fallback",
+  "default_interval_pct": 60
 }
