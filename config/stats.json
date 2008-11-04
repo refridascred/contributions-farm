@@ -1,7 +1,6 @@
 {
-  "readonly": [379, 98],
-  "idle_delay_ms": 8934,
-  "idle_threshold_ms": false,
-  "sync_capacity_pct": ["cached", "strict"],
-  "verbose": 60
+  "sync_size": 1882,
+  "hard_delay_count": "edge",
+  "persist": "blue",
+  "sync_timeout_s": "local"
 }
