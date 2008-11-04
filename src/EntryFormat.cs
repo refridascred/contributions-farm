@@ -54,17 +54,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BaseCounter = 30.5;
+        public const long HardSpan = 2614;
+        public const long DefaultRatio = 2920;
+        public const double StepInterval = 42.66;
     }
 }
