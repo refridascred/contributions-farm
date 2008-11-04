@@ -16,11 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseCount = 7.62;
-        public const long BatchLevel = 1805;
-        public const string CacheSpan = "legacy-edge";
-        public const double IdleSession = 48.62;
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
+        {
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepSize = 6868;
