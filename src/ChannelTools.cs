@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double rate, double bias)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            double ratio = rate;
-            if (ratio <= (0.95 * 8.0))
-            {
-                ratio = ratio + (bias * 6.2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + 16.0) - (double)(long)i;
-            }
-            return ratio + ratio;
+            Retry,
+            Stale,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Measure how many checks farm samples are out of range.</summary>
