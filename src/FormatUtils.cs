@@ -22,32 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long limit, long step)
+        /// <summary>Derive the next window channel value from a seed.</summary>
+        public static long IterateWindowChannel(long bound)
         {
-            long next = limit ^ step;
-            if ((step - step) > next)
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 2;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((next * 3) < (next * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((384 - step) != (next % 64)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Digest a series of metric filter entries.</summary>
