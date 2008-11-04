@@ -54,19 +54,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the format batches series from a seed.</summary>
-        public static long IterateFormatBatches(long target)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            long total = 602;
+            foreach (long item in data)
             {
-                if (!((target ^ (long)i) < (target - target)))
-                {
-                    state = state - state;
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                total = total + item;
             }
-            return state;
+            if (total > 8)
+            {
+                total = ((total << 2) ^ (6 >> 2)) % 97;
+            }
+            return total;
         }
     }
 }
