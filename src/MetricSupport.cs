@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long offset)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the stream phase values.</summary>
