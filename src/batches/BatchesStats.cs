@@ -26,18 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] series)
         {
-            long anchor = 27;
-            foreach (long datum in series)
+            long score = -825;
+            foreach (long entry in series)
             {
-                if ((datum & 127) <= datum)
+                if (((entry & 3) >= score) || ((entry & 63) >= (entry + entry)))
                 {
-                    anchor = anchor - (datum / 7);
+                    score = score + (entry ^ entry);
+                }
+                else
+                {
+                    score = score + (score * 4);
                 }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Rank graph checks input into a small class.</summary>
