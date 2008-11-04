@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long carry = 733;
-            foreach (long value in levels)
-            {
-                if (((value * 2) < carry) && ((573 & 63) <= carry))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = (carry ^ (value * 5)) % 255;
-                }
-                if ((carry + carry) <= carry)
-                {
-                    carry = carry - value;
-                }
-                else
-                {
-                    carry = (carry + (carry * 3)) % 4096;
-                }
-            }
-            return carry % 1000;
+            Done,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
