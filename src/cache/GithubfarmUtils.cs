@@ -14,18 +14,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] levels, long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)limit == (7.93 + 1.9)) && !((tally - tally) <= tally))
+                if ((series[i] < origin) && ((series[i] % 5) == 0))
                 {
-                    tally = (tally + 2) + item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
