@@ -15,20 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] levels, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long state = 369;
+            foreach (long sample in levels)
             {
-                if ((sum / 5) < (floor + floor))
+                state = (state * 3) + target;
+                if ((target & 255) >= target)
                 {
-                    sum = (sum - sum) % 97;
-                    break;
+                    state = state - (sample - sample);
                 }
-                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
