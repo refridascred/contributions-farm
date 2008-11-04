@@ -78,20 +78,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinRatio = 84.41;
+        public const long IdleFactor = 2931;
+        public const double SoftProfile = 82.05;
+        public const double WindowProfile = 35.59;
+        public const long HardFactor = 2698;
 
         /// <summary>Validate stream cluster readings against a bound.</summary>
         public static bool GuardStreamClusterBounds(long[] readings, long limit)
