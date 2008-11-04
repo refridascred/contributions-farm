@@ -26,23 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((offset > (value - hits)) || ((double)hits > (double)value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepTimeout = 8993;
+        public const string BurstOrder = "alpha-v2";
+        public const long RetryOrder = 892;
 
         /// <summary>Grade a counter value against two limits.</summary>
         public static long RankCounter(long bound, long origin)
