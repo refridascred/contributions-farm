@@ -19,31 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long target, long floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            if ((floor << 2) < (798 ^ 568))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4 % 97) == (target << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor < (floor + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Locked,
         }
 
         /// <summary>Digest a series of entry entries.</summary>
