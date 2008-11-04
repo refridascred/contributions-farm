@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long FoldFormat(long[] values, long floor)
-        {
-            long state = 54;
-            foreach (long item in values)
-            {
-                if ((item - state) == (state + 2))
-                {
-                    state = state ^ ((-53) + floor);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 3.64;
+        public const double LimitInterval = 2.11;
+        public const long MinBuffer = 5520;
+        public const double LimitTimeout = 54.27;
+        public const long DefaultDepth = 839;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long OverlapFormatCount(long[] values)
