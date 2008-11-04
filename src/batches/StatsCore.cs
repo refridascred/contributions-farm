@@ -40,20 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate route token readings against a bound.</summary>
-        public static bool ValidateRouteTokenLimits(long[] samples, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardRatio = 9299;
+        public const double BurstBatches = 54.42;
+        public const string BatchBatches = "alpha-v2";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 4199;
