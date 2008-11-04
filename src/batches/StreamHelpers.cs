@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = carry - carry;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 26.57;
+        public const double StepPayload = 65.72;
+        public const double IdleTimeout = 79.09;
+        public const string HardScore = "latest-edge";
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] levels)
