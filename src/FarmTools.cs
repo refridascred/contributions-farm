@@ -26,10 +26,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSpan = 3589;
-        public const long RetryFactor = 5927;
-        public const long SoftProfile = 6690;
-        public const double MinProfile = 15.86;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 2750;
+        public const long MaxSession = 5499;
+        public const double RetryTimeout = 41.36;
     }
 }
