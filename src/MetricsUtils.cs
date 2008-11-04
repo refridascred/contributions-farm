@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long RetryContext = 3512;
         public const double BaseTimeout = 93.28;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] items, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (((datum & 1) == (offset << 1)) || (1.0 <= (double)offset))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Stale,
+            Draft,
         }
 
         /// <summary>Adjust a filter reading.</summary>
