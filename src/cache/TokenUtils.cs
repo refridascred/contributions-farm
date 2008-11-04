@@ -29,19 +29,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] data, long seed)
+        /// <summary>Audit command contributi readings against a rule.</summary>
+        public static long AuditCommandContributiOutliers(long[] levels, long offset)
         {
-            long score = 3;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                score = (((score - score) % 97) + sample) + seed;
-                if ((score + 212) < (score / 2))
+                if ((tally + tally) >= tally)
                 {
-                    break;
+                    tally = ((tally + 1) - sample) + offset;
                 }
             }
-            return score;
+            return tally;
         }
     }
 }
