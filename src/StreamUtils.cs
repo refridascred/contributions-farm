@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long LimitRatio = 3263;
         public const string BaseCount = "cached-edge";
 
-        /// <summary>Measure how many entry stats samples are out of range.</summary>
-        public static long AuditEntryStatsHits(long[] values)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (920 < (sample + sample))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
