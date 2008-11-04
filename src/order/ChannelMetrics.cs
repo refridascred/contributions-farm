@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long limit, long offset)
         {
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            if ((double)limit == (4.13 - 1.93))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset < (738 << 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (4.95 >= (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(limit < offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
