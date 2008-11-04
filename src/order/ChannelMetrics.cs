@@ -23,18 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many schema window samples are out of range.</summary>
-        public static long MeasureSchemaWindowMatches(long[] levels, long offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((value << 3) > value) && (matches > (offset >> 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
