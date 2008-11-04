@@ -31,14 +31,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] values, long limit)
         {
-            Retry,
-            Failed,
-            Stale,
-            Pending,
-            Paused,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((limit + matches) > (-378)) || ((23 ^ matches) > matches))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
