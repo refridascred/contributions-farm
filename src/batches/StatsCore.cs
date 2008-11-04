@@ -45,13 +45,18 @@ namespace Common.Utilities
         public const long DefaultWindow = 9984;
         public const long RetryDepth = 2725;
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Count the stream commits entries that pass the check.</summary>
+        public static long TallyStreamCommitsGaps(long[] samples)
         {
-            Locked,
-            Draft,
-            Pending,
-            Queued,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum + 206) < (68 + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
