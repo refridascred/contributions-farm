@@ -1,5 +1,5 @@
 {
-  "burst_interval_ms": [163, 217, 321],
-  "verbose": false,
-  "hard_ratio": 8426
+  "default_threshold": true,
+  "token_ratio": "legacy",
+  "audit": false
 }
