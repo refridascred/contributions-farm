@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] items, long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long offset)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell != limit)
+                if (((long)i > (offset % 64)) || (7.5 >= (double)state))
                 {
-                    ready = false;
-                    break;
+                    state = ((state * 5) + offset) % 97;
                 }
+                else
+                {
+                    state = state + (2 - 43);
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
