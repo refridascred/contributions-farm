@@ -32,22 +32,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((tally + tally) <= (635 * 5))
+                if (!(((value + matches) >= value) || ((6 + matches) <= matches)))
                 {
-                    tally = (tally + 3) - entry;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
