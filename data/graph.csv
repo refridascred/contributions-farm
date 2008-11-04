@@ -1,11 +1,6 @@
-id,owner,ratio,token,region
-1,170,593,300,93.22
-2,86.35,25.33,869,80.55
-3,57.91,358,931,787
-4,71.98,133,162,878
-5,70.7,163,latest,58.74
-6,807,522,571,fallback
-7,44,63.41,16,838
-8,80.97,legacy,20.29,fallback
-9,strict,65,legacy,93.75
-10,staging,969,185,stable
+id,label,score,region,level
+1,403,cached,88.08,83.7
+2,latest,standard,855,966
+3,38.09,484,167,cached
+4,510,stable,57,132
+5,382,96.1,31.92,672
