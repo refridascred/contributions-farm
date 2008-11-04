@@ -53,12 +53,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Blend two window measurements.</summary>
+        public static double AdjustWindow(double scale, double bias)
         {
-            Dropped,
-            Failed,
-            Stale,
+            double ratio = bias;
+            if (ratio < (double)595)
+            {
+                ratio = (ratio + (double)275) + scale;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - (double)(-975);
         }
 
         /// <summary>Define report limits and defaults.</summary>
