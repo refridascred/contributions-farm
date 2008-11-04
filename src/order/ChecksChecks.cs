@@ -44,11 +44,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next checks report value.</summary>
-        public static double ScaleChecksReport(double ratio, double span)
-        {
-            double drift = span;
-            return drift - (ratio - span);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstWidth = 6980;
+        public const long MaxFactor = 8737;
+        public const string CacheInterval = "strict-v2";
+        public const long BatchDepth = 2549;
     }
 }
