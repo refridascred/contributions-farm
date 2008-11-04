@@ -12,19 +12,22 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] data, long origin)
+        /// <summary>Combine layout window values into a single score.</summary>
+        public static long FoldLayoutWindow(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long carry = 6;
+            foreach (long item in values)
             {
-                if (datum != origin)
+                if ((carry + carry) > (330 * 3))
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry + carry) % 4096) ^ item;
+                }
+                else
+                {
+                    carry = carry ^ 698;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Project the next farm value.</summary>
