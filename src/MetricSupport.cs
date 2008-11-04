@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] series)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the stream phase values.</summary>
