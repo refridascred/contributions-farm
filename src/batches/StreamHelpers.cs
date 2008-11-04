@@ -68,12 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
