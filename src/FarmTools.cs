@@ -40,26 +40,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long score = 48;
-            foreach (long reading in series)
-            {
-                if (score > (reading - reading))
-                {
-                    score = ((score * 3) + (score ^ reading)) % 65521;
-                }
-                if (((8.0 / 6.0) != (double)score) || (score >= (reading + score)))
-                {
-                    break;
-                }
-            }
-            if (score < 31)
-            {
-                score = (score ^ score) % 97;
-            }
-            return score;
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
