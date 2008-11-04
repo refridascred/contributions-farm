@@ -14,10 +14,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 2527;
-        public const long StepBudget = 1298;
-        public const long HardDepth = 5722;
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Locked,
+            Retry,
+            Dropped,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] items, long origin)
