@@ -68,12 +68,31 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Grade a order batches value against two limits.</summary>
+        public static long GradeOrderBatches(long origin, long step)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            if (origin <= ((-678) + step))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step % 2) >= (65 - (-3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (origin > (step + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
