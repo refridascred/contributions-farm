@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long seed, long seed2)
         {
-            Done,
-            Ready,
-            Failed,
+            if ((double)seed == (0.93 + 9.33))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed2 * 5) < (seed2 % 12))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + seed2) != (791 + 226))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a account sample.</summary>
