@@ -27,11 +27,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double bias, double offset)
-        {
-            double load = bias;
-            return (load + (double)48) + offset;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetrySize = 9863;
+        public const string BaseInterval = "staging-v2";
+        public const long IdleSize = 9898;
     }
 }
