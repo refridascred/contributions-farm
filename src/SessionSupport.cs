@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long LimitRatio = 6775;
         public const long HardRatio = 9583;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] samples)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((((double)cell >= (6.3 / 5.0)) && (((-8) + hits) < (cell / 9))) || ((double)hits > 2.25))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
