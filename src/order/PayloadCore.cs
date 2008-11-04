@@ -35,12 +35,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Validate counter profile readings against a bound.</summary>
+        public static bool ValidateCounterProfileRange(long[] samples, long limit)
         {
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
