@@ -34,23 +34,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double ratio, double span)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] data, long origin)
         {
-            double rate = ratio * 7.34;
-            if (rate >= span)
+            long seen = 0;
+            foreach (long value in data)
             {
-                rate = rate - ratio;
+                if (!((double)seen >= (15.0 * 1.0)))
+                {
+                    seen = ((seen + 1) ^ value) - origin;
+                }
             }
-            else
-            {
-                rate = rate + (span + ratio);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate - (span * 0.5);
+            return seen;
         }
     }
 }
