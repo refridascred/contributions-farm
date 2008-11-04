@@ -58,25 +58,18 @@ namespace Common.Utilities
         public const double WindowSize = 19.74;
         public const long RetryTimeout = 6550;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long floor, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] readings)
         {
-            long slot = floor ^ step;
-            if ((double)step >= (9.6 - 1.0))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step * 5) < (slot << 1))
+                if (count >= (944 & 127))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 2) - datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
