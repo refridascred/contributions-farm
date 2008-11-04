@@ -39,38 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long bound, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] values, long floor)
         {
-            if ((offset + offset) > (0 - (-7)))
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.0 / 5.0) == (double)offset)
+                if ((value + value) <= hits)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset != (double)64)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((bound & 31) == (bound + 713)) || ((offset - 90) > offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = (hits + 3) + floor;
                 }
             }
+            return hits;
         }
     }
 }
