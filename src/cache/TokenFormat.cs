@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Paused,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheWindow = "local";
+        public const long IdleSize = 4416;
+        public const string BurstDepth = "staging-edge";
+        public const long RetryWindow = 6080;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long LocateBatchIndex(long[] series, long step)
