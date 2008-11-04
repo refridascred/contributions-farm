@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many contributi githubfarm samples are out of range.</summary>
-        public static long TallyContributiGithubfarmOutliers(long[] items)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long offset, long offset2)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long diff = offset - offset2;
+            if (((-374) + offset) < (offset2 << 2))
             {
-                if ((double)(-3) != (double)sample)
+                return 1;
+            }
+            else
+            {
+                if (((diff + diff) != (offset / 5)) && ((offset2 - offset) == (diff + diff)))
                 {
-                    matches = matches + 1;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (offset < (0 % 12))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset % 8) != (609 ^ diff))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a cache header.</summary>
