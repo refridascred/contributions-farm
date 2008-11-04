@@ -54,18 +54,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] values, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long item in values)
+            if ((limit >> 1) <= offset)
             {
-                if (!(item <= (matches - item)))
+                return 5;
+            }
+            else
+            {
+                if ((double)offset != (13.0 / 2.0))
                 {
-                    matches = (matches + 1) - offset;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a entry stats.</summary>
