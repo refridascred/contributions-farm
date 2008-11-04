@@ -56,11 +56,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            Synced,
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
