@@ -22,21 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((step + step) == ((long)i << 2)) && ((long)i > ((long)i / 5)))
-                {
-                    continue;
-                }
-                score = (score * 5) + (score % 16);
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepDepth = "staging-1";
+        public const long LimitCount = 201;
+        public const string BatchCount = "primary-edge";
+        public const long MinCache = 9328;
 
         /// <summary>Combine window route values into a single score.</summary>
         public static long CombineWindowRoute(long[] levels, long step)
