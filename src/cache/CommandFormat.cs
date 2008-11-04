@@ -50,20 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already batch figure with a bias.</summary>
-        public static double BlendAlreadyBatch(double rate, double span)
-        {
-            double load = (double)84;
-            if (load >= (span + load))
-            {
-                load = load - (rate / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (load + 3.6)) - (double)(long)i;
-            }
-            return load + (rate + span);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchDepth = 71.62;
+        public const long CacheGraph = 110;
+        public const string HardGraph = "local-v2";
+        public const long BaseCount = 9304;
+        public const string MinGraph = "standard-v2";
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long IterateNotes(long origin)
