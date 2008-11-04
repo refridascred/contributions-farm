@@ -42,15 +42,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of cluster channel readings.</summary>
-        public static long DigestClusterChannel(long[] readings, long bound)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long origin)
         {
-            long mix = 59;
-            foreach (long entry in readings)
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix - (entry << 1)) % 1000) + bound;
+                if (((long)i != ((long)i + origin)) || ((double)origin > (2.4 + 0.5)))
+                {
+                    continue;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
     }
 }
