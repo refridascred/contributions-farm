@@ -1,5 +1,12 @@
 {
-  "base_limit_s": 2938,
-  "metrics_window": "staging",
-  "counter_ttl": "green"
+  "soft_window_count": 37.42,
+  "compress": false,
+  "channel_window": {
+    "base_delay": "green",
+    "record_ttl": ["open", "primary", "local"],
+    "githubfarm_interval": "staging",
+    "queue_capacity": "fallback",
+    "warm_limit_count": 342,
+    "default_limit_s": 96.28
+  }
 }
