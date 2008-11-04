@@ -59,22 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((long)values.Length <= cell)
+                if (datum <= offset)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
