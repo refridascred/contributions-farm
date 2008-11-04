@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const double IdleBudget = 82.61;
         public const long BurstToken = 8361;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] series)
         {
-            Stale,
-            Synced,
-            Pending,
-            Active,
+            long anchor = 8;
+            foreach (long reading in series)
+            {
+                if (!((12 / 6) == (anchor % 8)))
+                {
+                    anchor = ((anchor << 2) ^ reading) % 255;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a batch info.</summary>
