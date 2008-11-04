@@ -67,17 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] levels, long bound)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 3;
+            foreach (long reading in data)
             {
-                if (levels[i] < bound)
+                total = (((total * 4) + (seed & 255)) % 4096) ^ reading;
+                if (8.28 > (double)total)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total;
         }
     }
 }
