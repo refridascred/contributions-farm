@@ -1,6 +1,6 @@
-id,ratio,state,rank
-1,561,42.22,44.34
-2,open,745,cached
-3,34,342,38.0
-4,331,778,open
-5,872,staging,70.97
+id,state,count
+1,990,555
+2,879,staging
+3,55.9,567
+4,239,22
+5,373,blue
