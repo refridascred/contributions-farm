@@ -1,12 +1,5 @@
 {
-  "verbose": "stable",
-  "persist": 83.27,
-  "poll_ttl_ms": "eu-west",
-  "metrics_ttl": {
-    "hard_size_ms": "cached",
-    "soft_size_ms": 89.22,
-    "layout_ttl": "edge",
-    "context_ratio": "legacy"
-  },
-  "batch_retries": "fallback"
+  "cache_limit": false,
+  "payload_interval": "standard",
+  "window_window": [283, 274, 377, 294]
 }
