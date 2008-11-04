@@ -27,19 +27,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] readings, long seed)
+        /// <summary>Audit payload record readings against a rule.</summary>
+        public static long CountPayloadRecordHits(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (datum <= seed)
+                if ((origin - 9) >= (count + datum))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
