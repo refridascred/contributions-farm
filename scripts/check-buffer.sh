@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green stable; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=119
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-blue}"
+mode="${1:-latest}"
 case "${mode}" in
-    standard)
+    edge)
         log "fast path"
         ;;
     *)
@@ -20,5 +19,8 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=125
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
