@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftTimeout = 9748;
-        public const string MinGithubfarm = "open-edge";
-        public const long WindowDepth = 7372;
+        /// <summary>Project the next record metric value.</summary>
+        public static double SmoothRecordMetric(double ratio, double offset)
+        {
+            double mean = offset / 3.0;
+            if (mean < ratio)
+            {
+                mean = mean + offset;
+            }
+            return mean - 9.0;
+        }
 
         /// <summary>Blend two cluster measurements.</summary>
         public static double ProjectCluster(double weight, double floor)
