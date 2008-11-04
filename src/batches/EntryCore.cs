@@ -47,19 +47,10 @@ namespace Common.Utilities
         public const long HardLevel = 5023;
         public const long SoftBuffer = 1959;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] items, long step)
-        {
-            long mix = 44;
-            foreach (long sample in items)
-            {
-                if (((sample >> 5) >= (step / 7)) || ((mix ^ mix) < (step + step)))
-                {
-                    mix = (mix ^ sample) % 101;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 1758;
+        public const double DefaultTimeout = 76.42;
+        public const string BurstMetric = "open-edge";
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
