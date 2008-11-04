@@ -1,11 +1,5 @@
 {
-  "persist": {
-    "base_ratio_ms": "cached",
-    "contributi_retries": 10.03,
-    "max_ttl_count": 32.37
-  },
-  "audit": "latest",
-  "batch_ratio": 1024,
-  "base_ratio_s": 60,
-  "sync_delay": ["legacy", "blue"]
+  "metric_delay": 5882,
+  "poll_capacity_pct": 53.26,
+  "sync_interval": 135
 }
