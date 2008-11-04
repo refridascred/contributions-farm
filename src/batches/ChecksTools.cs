@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long floor, long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long origin)
         {
-            long next = floor - limit;
-            if ((7 << 2) > (floor >> 3))
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 4;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (9.01 >= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit >> 2) > floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (limit < next)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Roll a record counter forward.</summary>
