@@ -41,30 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] data, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] readings, long floor)
         {
-            long sum = 78;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((floor / 8) < sample)
+                if ((((tally >> 4) <= (413 << 3)) || ((3 % 64) > (entry + tally))) || (((315 << 1) != ((long)readings.Length + tally)) && ((double)floor < (0.1 / 4.0))))
                 {
-                    sum = sum ^ (sum % 7);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (1 >> 2)) % 255;
-                }
-                if (10.0 < (double)sum)
-                {
-                    sum = ((sum << 2) ^ (sample * 4)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sample << 3)) % 4096;
+                    tally = tally + 1;
                 }
             }
-            return sum % 97;
+            return tally;
         }
     }
 }
