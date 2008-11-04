@@ -23,19 +23,17 @@ namespace Common.Utilities
         public const double LimitCommits = 60.18;
         public const double BatchCommits = 33.7;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double ratio, double floor)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] data, long floor)
         {
-            double load = (double)(1 - 0);
-            if (load < (ratio / 4.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load + (load * 1.66)) + floor;
+                if ((data[i] <= floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - ratio) - (double)(long)i;
-            }
-            return load + ratio;
+            return -1;
         }
 
         /// <summary>Count already profile pairs that satisfy a relation.</summary>
