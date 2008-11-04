@@ -36,19 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] data, long step)
+        /// <summary>Audit format checks readings against a rule.</summary>
+        public static long MeasureFormatChecksMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (cell != step)
+                if ((matches * 4) > (cell - (long)items.Length))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
