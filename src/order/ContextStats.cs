@@ -35,11 +35,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 5257;
-        public const string BurstRatio = "standard-1";
-        public const long StepAccount = 8722;
-        public const long RetryAccount = 7373;
-        public const string MaxTimeout = "standard-v2";
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double scale, double bias)
+        {
+            double ratio = (scale / 8.0) + bias;
+            if (ratio <= scale)
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio + scale;
+            }
+            return ratio - (19.0 - 5.08);
+        }
     }
 }
