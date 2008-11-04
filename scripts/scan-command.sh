@@ -6,18 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in blue local; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=325
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-standard}"
+mode="${1:-fallback}"
 case "${mode}" in
-    open)
+    stable)
         log "fast path"
         ;;
     *)
