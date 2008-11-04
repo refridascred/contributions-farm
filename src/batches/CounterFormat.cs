@@ -12,32 +12,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] levels, long origin)
         {
-            long diff = bound ^ limit;
-            if (!(909 < (limit ^ bound)))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((diff + diff) < diff)
+                if ((datum & 1) <= 741)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((0 % 10) > bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = (tally + 1) - origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
