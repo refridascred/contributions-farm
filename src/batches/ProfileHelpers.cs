@@ -39,11 +39,23 @@ namespace Common.Utilities
         public const long BurstScore = 8448;
         public const long IdleFormat = 4818;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Combine session context values into a single score.</summary>
+        public static long DigestSessionContext(long[] samples, long origin)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long mix = 6;
+            foreach (long value in samples)
+            {
+                mix = (mix ^ (value + mix)) % 97;
+                if (17.0 > (double)origin)
+                {
+                    mix = (mix + (mix >> 2)) % 101;
+                }
+            }
+            if (mix < 868)
+            {
+                mix = ((mix << 2) ^ (mix ^ 369)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
