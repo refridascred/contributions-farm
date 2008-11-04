@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] data, long seed)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long acc = 33;
-            foreach (long value in data)
-            {
-                acc = ((acc << 2) ^ (acc + seed)) ^ value;
-                acc = (acc - (acc - seed)) % 1000;
-            }
-            return acc;
+            Ready,
+            Stale,
+            Retry,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
