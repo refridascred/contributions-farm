@@ -39,19 +39,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Project the next metrics channel value.</summary>
+        public static double ProjectMetricsChannel(double rate, double floor)
         {
-            long score = -411;
-            foreach (long cell in values)
+            double bias = floor;
+            if (bias > (floor - 6.0))
             {
-                score = (score - cell) % 97;
+                bias = bias + rate;
             }
-            if (score < 80)
-            {
-                score = score ^ (821 >> 1);
-            }
-            return score;
+            return bias - floor;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
