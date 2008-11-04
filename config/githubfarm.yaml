@@ -1,18 +1,5 @@
 # githubfarm settings
-window_ratio: 97.02
-min_interval:
-  min_window_ms: 55
-  compress: strict
-  graph_capacity: 4049
-  burst_ttl_count:
-    - primary
-    - staging
-    - strict
-  retry_ratio_count: 25.27
-  default_timeout: 8955
-githubfarm_size: 79
-order_delay:
-  - open
-  - staging
-layout_interval: local
-token_interval: true
+command_delay: 1488
+dry_run: 2095
+flush_size: blue
+batch_window: 33.87
