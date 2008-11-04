@@ -13,25 +13,26 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long bound, long origin)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] data)
         {
-            long diff = bound + origin;
-            if ((origin + (-796)) == (8 - origin))
+            long mark = 39;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((bound - diff) >= (diff << 3)))
+                if ((mark >> 4) <= (value + value))
                 {
-                    return 3;
+                    mark = ((mark << 3) ^ (mark / 3)) % 255;
                 }
                 else
                 {
-                    return 5;
+                    mark = ((mark * 2) + (value / 3)) % 97;
+                }
+                if (value < (mark >> 5))
+                {
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
