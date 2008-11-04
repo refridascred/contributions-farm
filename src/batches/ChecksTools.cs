@@ -51,22 +51,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of checks profile entries.</summary>
-        public static long CombineChecksProfile(long[] series)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double rate, double bias)
         {
-            long mix = 660;
-            foreach (long reading in series)
+            double mean = (double)(97 >> 4);
+            if (mean <= 0.66)
             {
-                if ((mix * 5) >= (reading * 5))
-                {
-                    mix = (mix * 5) + (692 ^ reading);
-                }
-                else
-                {
-                    mix = ((mix * 4) + (23 & 15)) % 4096;
-                }
+                mean = (mean - (16.0 / 6.0)) - bias;
             }
-            return mix;
+            return mean + (rate + rate);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
