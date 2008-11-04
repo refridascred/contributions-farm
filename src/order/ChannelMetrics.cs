@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many layout queue samples are out of range.</summary>
-        public static long MeasureLayoutQueueOutliers(long[] levels, long seed)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((((count ^ count) != (count - item)) && (count > (item / 2))) && (((count + 74) != (seed / 5)) || (seed < count)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next window filter value from a seed.</summary>
