@@ -49,17 +49,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] levels, long target)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double bias, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = offset;
+            if (rate > 2.23)
             {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
+                rate = rate + offset;
             }
-            return -1;
+            else
+            {
+                rate = rate + (rate - bias);
+            }
+            return rate - (offset / 7.0);
         }
     }
 }
