@@ -34,19 +34,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] data, long origin)
+        /// <summary>Derive the next entry commits value from a seed.</summary>
+        public static long DeriveEntryCommits(long limit)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
     }
 }
