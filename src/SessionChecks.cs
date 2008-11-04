@@ -41,21 +41,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count batches farm pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesFarmCount(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally + tally) <= (635 * 5))
                 {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 3) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
