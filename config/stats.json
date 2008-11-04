@@ -1,7 +1,7 @@
 {
-  "hard_limit_ms": [392, 207, 266, 299],
-  "counter_threshold": true,
-  "max_threshold_ms": 100,
-  "warm_timeout_pct": "green",
-  "context_window": "fallback"
+  "cache_ttl_ms": "legacy",
+  "default_depth": "strict",
+  "min_threshold_count": "open",
+  "metric_interval": true,
+  "sync_timeout_ms": false
 }
