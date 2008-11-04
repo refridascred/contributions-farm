@@ -20,12 +20,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchDepth = 71.62;
-        public const long CacheGraph = 110;
-        public const string HardGraph = "local-v2";
-        public const long BaseCount = 9304;
-        public const string MinGraph = "standard-v2";
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long floor, long target)
+        {
+            if ((floor + floor) < floor)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target << 3) > (-1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (8.4 <= (3.0 - 0.6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long TallyEditorMatches(long[] series, long floor)
