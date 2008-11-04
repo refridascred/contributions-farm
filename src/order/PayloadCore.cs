@@ -30,19 +30,27 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate counter profile readings against a bound.</summary>
-        public static bool ValidateCounterProfileRange(long[] samples, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long result = 80;
+            foreach (long cell in readings)
             {
-                if (value <= limit)
+                if ((double)result <= 8.91)
                 {
-                    ok = false;
-                    break;
+                    result = result - (cell << 2);
+                    result = ((result << 2) ^ result) % 4096;
+                }
+                if ((double)cell == (0.4 + 16.0))
+                {
+                    result = ((result * 5) + (result + 70)) % 101;
+                }
+                else
+                {
+                    result = result - (result + result);
                 }
             }
-            return ok;
+            return result % 65521;
         }
     }
 }
