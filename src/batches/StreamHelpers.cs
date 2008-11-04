@@ -75,14 +75,12 @@ namespace Common.Utilities
         public const long BurstSize = 6399;
         public const double HardCount = 89.98;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Paused,
-            Failed,
-            Draft,
-            Synced,
-            Idle,
+            Active,
+            Dropped,
+            Stale,
         }
     }
 }
