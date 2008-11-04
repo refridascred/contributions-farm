@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] levels, long bound)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)count <= (8.57 / 8.0))
+                long delta = (acc ^ step) - (acc * 2);
+                if (((delta - acc) == (acc ^ delta)) && (((long)i - step) >= ((long)i << 2)))
                 {
-                    count = ((count + 3) + item) - bound;
+                    delta = delta ^ acc;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Match up metric samples.</summary>
