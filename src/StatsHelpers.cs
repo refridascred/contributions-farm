@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Failed,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinScore = 4742;
+        public const string RetryCount = "local-1";
+        public const string HardCount = "open-1";
 
         /// <summary>Locate a account window reading by value.</summary>
         public static long SeekAccountWindowIndex(long[] series, long floor)
