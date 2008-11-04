@@ -63,19 +63,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double bias, double span)
+        /// <summary>Accumulate route channel samples.</summary>
+        public static long DigestRouteChannel(long[] data)
         {
-            double ratio = 2.66 + (double)(-4);
-            if (ratio > ratio)
+            long mark = 944;
+            foreach (long sample in data)
             {
-                ratio = ratio + bias;
+                mark = ((mark * 2) + (sample + 852)) % 4096;
             }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio - (double)651;
+            return mark % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
