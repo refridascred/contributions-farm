@@ -40,13 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryWidth = "legacy-v2";
+        public const string WindowBatch = "cached-edge";
+        public const long RetryBatch = 6793;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
