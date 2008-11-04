@@ -34,15 +34,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine account buffer values into a single score.</summary>
-        public static long FoldAccountBuffer(long[] data)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long floor, long origin)
         {
-            long total = 41;
-            foreach (long cell in data)
+            if ((double)origin > 2.4)
             {
-                total = (total * 2) + (total ^ cell);
+                return 1;
             }
-            return total % 1000;
+            else
+            {
+                if ((origin > floor) || ((origin >> 5) >= origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((91 % 5) <= floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin & 31) < origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
