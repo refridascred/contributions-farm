@@ -23,11 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double ratio, double floor)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
+            double rate = floor;
+            return (rate - (floor / 3.0)) + ratio;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
