@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((bound + bound) >= (matches ^ entry))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long WindowEntry = 3216;
+        public const string LimitEntry = "cached";
+        public const long BurstEntry = 6712;
+        public const double IdleEntry = 42.39;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmLimits(long[] values, long seed)
