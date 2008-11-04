@@ -1,8 +1,8 @@
 {
-  "min_threshold_s": 33.63,
-  "audit": 71.27,
-  "batch_retries": 41,
-  "poll_threshold_pct": true,
-  "hard_depth_count": "green",
-  "poll_window_s": ["fallback", "edge"]
+  "route_window": false,
+  "cache_depth_s": "fallback",
+  "hard_limit_count": 48.35,
+  "batch_interval_ms": 47,
+  "sync_delay": 2160,
+  "strict": ["fallback", "eu-west"]
 }
