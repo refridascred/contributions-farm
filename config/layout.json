@@ -1,7 +1,18 @@
 {
-  "cache_ratio_ms": false,
-  "poll_timeout_ms": true,
-  "warm_size": 29.37,
-  "retry_window": "standard",
-  "default_depth_ms": 1024
+  "default_retries": 30,
+  "verbose": 2690,
+  "persist": "standard",
+  "poll_retries": 4003,
+  "default_timeout_ms": {
+    "enabled": {
+      "flush_ttl": [312, 225, 171],
+      "default_limit_count": "local",
+      "audit": false,
+      "hard_timeout_pct": 30
+    },
+    "max_window_ms": 8958,
+    "min_timeout_count": 250,
+    "compress": 1024,
+    "editor_ttl": "standard"
+  }
 }
