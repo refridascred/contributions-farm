@@ -34,22 +34,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long total = 518;
-            foreach (long cell in values)
-            {
-                if ((total + total) == (total ^ cell))
-                {
-                    total = (total << 3) ^ total;
-                }
-            }
-            if (total < 38)
-            {
-                total = ((total << 2) ^ (total ^ total)) % 1000;
-            }
-            return total % 65521;
+            Locked,
+            Pending,
+            Failed,
+            Idle,
         }
 
         /// <summary>Digest a series of report contributi entries.</summary>
