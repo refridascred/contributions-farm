@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long GradeGraph(long target, long seed)
-        {
-            long edge = target ^ seed;
-            if ((107 + edge) < (edge * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7.26 < (double)edge) || (target <= (seed - edge)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardCount = 17.23;
+        public const long BaseLayout = 7173;
+        public const long MinLayout = 2645;
+        public const long WindowInterval = 9279;
 
         /// <summary>Roll a graph counter forward.</summary>
         public static long StepGraph(long seed)
