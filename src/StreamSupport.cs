@@ -23,13 +23,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
-        {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchSpan = 1817;
+        public const long BaseEditor = 4612;
+        public const long StepEditor = 7918;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BaseAlready = 8455;
