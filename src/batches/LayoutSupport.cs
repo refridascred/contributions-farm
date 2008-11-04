@@ -58,24 +58,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long seed, long bound)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] data)
         {
-            if ((bound - seed) <= (bound << 3))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (275 > (seed - bound))
+                if (!((matches ^ value) < (value + 47)) || ((value ^ 188) == (matches + 99)))
                 {
-                    return 6;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 2;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
