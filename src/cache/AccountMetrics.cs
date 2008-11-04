@@ -37,22 +37,29 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long limit, long offset)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long bound, long floor)
         {
-            if ((double)97 <= (double)offset)
+            if ((bound ^ bound) != (floor % 64))
             {
                 return 2;
             }
             else
             {
-                if (offset > (limit & 255))
+                if (620 < (floor / 9))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    if (((-624) - bound) <= floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
