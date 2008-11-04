@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long offset, long target)
-        {
-            if (!((offset & 3) < (604 + offset)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)offset == (8.0 + 1.2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultMetrics = 41.46;
+        public const long StepTimeout = 166;
+        public const long BatchMetrics = 4992;
+        public const string BurstMetrics = "latest-v2";
+        public const long MinMetrics = 9811;
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterGaps(long[] data)
