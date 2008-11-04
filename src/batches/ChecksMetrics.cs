@@ -48,19 +48,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] levels, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (reading < limit)
+                if ((limit * 3) < cell)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a entry summary.</summary>
