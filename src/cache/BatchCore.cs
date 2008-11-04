@@ -45,12 +45,11 @@ namespace Common.Utilities
         public const long WindowLevel = 9983;
         public const long MinLevel = 1803;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            public bool Score { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
