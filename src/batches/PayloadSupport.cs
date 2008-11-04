@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double DefaultMetrics = 41.46;
-        public const long StepTimeout = 166;
-        public const long BatchMetrics = 4992;
-        public const string BurstMetrics = "latest-v2";
-        public const long MinMetrics = 9811;
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long floor)
+        {
+            if (((floor * 5) < floor) || ((1.8 - 11.0) != (double)floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step < (step & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor + step) != (step + floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor & 63) < (floor % 60))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long WeighFilter(long[] data)
