@@ -1,11 +1,11 @@
 # Command notes
 
-Keep cluster and format names short and lowercase.
-Keep channel and queue names short and lowercase.
+A filter that stays idle for too long is moved to the session list.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
 - Log every cluster change
-- Keep already values small
-- Review stream limits each release
-- Prefer format defaults
+- Validate entry input early
+- Review route limits each release
+- Document new stream fields
