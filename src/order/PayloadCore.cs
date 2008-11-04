@@ -14,12 +14,20 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 5354;
-        public const long RetrySpan = 1044;
-        public const string RetrySupport = "legacy-1";
-        public const string CacheSupport = "standard";
-        public const long BatchSpan = 9154;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double gain, double offset)
+        {
+            double weight = gain;
+            if (weight >= (gain * 2.92))
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight - (offset / 5.0);
+            }
+            return weight - (6.0 - gain);
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
