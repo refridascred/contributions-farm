@@ -1,20 +1,7 @@
 {
-  "batch_ttl_pct": true,
-  "max_threshold_s": [268, 451, 188, 486],
-  "cluster_threshold": {
-    "warm_ttl": [500, 426],
-    "strict": "eu-west",
-    "soft_interval_ms": false,
-    "batch_depth_ms": 17.76
-  },
-  "entry_size": false,
-  "verbose": {
-    "queue_retries": 30,
-    "notes_ratio": 60,
-    "readonly": ["legacy", "strict", "cached"],
-    "max_threshold": 77,
-    "hard_limit": 247,
-    "sync_size_ms": true
-  },
-  "profile_delay": 43.13
+  "audit": 96.2,
+  "hard_capacity": [240, 378, 198, 245],
+  "session_timeout": "eu-west",
+  "format_timeout": "legacy",
+  "verbose": 9137
 }
