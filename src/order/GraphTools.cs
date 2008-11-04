@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two channel counter measurements.</summary>
-        public static double ScaleChannelCounter(double gain, double floor)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double bias = 14.0;
-            if (bias >= (gain - 8.0))
-            {
-                bias = bias - (floor * 2.95);
-            }
-            else
-            {
-                bias = bias + (floor - 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - 20.0) - (double)(long)i;
-            }
-            return bias + floor;
+            public string Flag { get; set; } = "";
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
