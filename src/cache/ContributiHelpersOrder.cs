@@ -19,14 +19,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Synced,
-            New,
-            Dropped,
-            Queued,
-            Idle,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstDepth = 7181;
+        public const string WindowFactor = "latest-edge";
+        public const long CacheWindow = 8020;
+        public const string BaseWindow = "fallback-edge";
+        public const long CacheLevel = 6448;
     }
 }
