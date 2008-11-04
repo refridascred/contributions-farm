@@ -35,12 +35,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long limit)
         {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
