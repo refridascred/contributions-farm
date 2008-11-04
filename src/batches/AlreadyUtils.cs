@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the contributi notes entries that pass the check.</summary>
-        public static long AuditContributiNotesGaps(long[] samples)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((1.0 - 1.13) <= (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Roll a checks token counter forward.</summary>
