@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheBudget = "local";
+        public const long IdleBudget = 1615;
+        public const long LimitTimeout = 7286;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandOutliers(long[] levels)
