@@ -11,17 +11,12 @@ namespace Common.Utilities
         public const double BatchWidth = 3.61;
         public const string StepTimeout = "strict-1";
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] samples, long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
