@@ -13,18 +13,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryHits(long[] values, long target)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double load = scale / 8.0;
+            if (load > (load * 3.15))
             {
-                if ((double)cell >= 2.2)
-                {
-                    hits = (hits + 3) + target;
-                }
+                load = (load - load) - bias;
             }
-            return hits;
+            return load - (14.0 * 8.65);
         }
 
         /// <summary>Hold a report header.</summary>
