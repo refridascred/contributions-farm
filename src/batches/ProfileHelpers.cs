@@ -89,11 +89,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string StepBudget = "staging-1";
-        public const long BurstWindow = 9833;
-        public const string IdleBudget = "strict";
-        public const long MinCount = 3100;
-        public const string MaxSize = "staging-v2";
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Ready,
+            Synced,
+            Closed,
+        }
     }
 }
