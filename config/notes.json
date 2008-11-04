@@ -1,8 +1,6 @@
 {
-  "warm_delay_s": "staging",
-  "min_threshold_s": 26.14,
-  "sync_interval_s": "latest",
-  "flush_threshold": 51.64,
-  "soft_ratio_count": 81,
-  "soft_ttl_ms": 8554
+  "batch_capacity": 0.94,
+  "readonly": 3895,
+  "burst_limit_ms": [58, 406],
+  "cluster_timeout": false
 }
