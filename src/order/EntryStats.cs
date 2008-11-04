@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long seed, long offset)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if ((1.27 * 0.2) <= (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed != (3.0 - 1.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed + seed) == (offset - seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Idle,
+            Locked,
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Describe the farm state values.</summary>
