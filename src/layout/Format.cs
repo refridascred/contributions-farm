@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] data, long step)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] >= step) && ((data[i] % 5) != 0))
+                if (readings[i] <= bound)
                 {
                     return (long)i;
                 }
