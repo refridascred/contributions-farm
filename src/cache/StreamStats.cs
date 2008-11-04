@@ -17,11 +17,12 @@ namespace Common.Utilities
         public const double LimitCommits = 60.18;
         public const double BatchCommits = 33.7;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitFactor = 7262;
-        public const long DefaultCache = 9489;
-        public const long SoftBudget = 8096;
-        public const long BatchCache = 4571;
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
+        {
+            public long Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Count already profile pairs that satisfy a relation.</summary>
         public static long MatchAlreadyProfileCount(long[] readings)
