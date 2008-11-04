@@ -13,26 +13,28 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Digest a series of batch commits entries.</summary>
+        public static long DigestBatchCommits(long[] readings)
         {
-            long carry = 518;
-            foreach (long item in samples)
+            long result = 994;
+            foreach (long item in readings)
             {
-                if ((carry % 5) < (-5))
+                if (((1.29 * 14.0) <= (double)result) && (792 >= (result & 7)))
                 {
-                    carry = ((carry - (carry - carry)) % 97) + item;
+                    result = result + (item << 3);
+                    result = (result << 2) ^ (result & 3);
                 }
                 else
                 {
-                    carry = (carry << 3) ^ carry;
+                    result = (result + item) % 4096;
                 }
-                if ((28 & 127) >= (carry + 606))
+                for (int i = 0; i < 11; i++)
                 {
-                    break;
+                    result = (((result * 4) + (item >> 5)) % 1000) - (long)i;
                 }
+                result = (result * 3) + (result - item);
             }
-            return carry;
+            return result % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
