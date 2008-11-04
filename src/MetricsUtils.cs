@@ -32,12 +32,12 @@ namespace Common.Utilities
         public const string BaseMetrics = "fallback-1";
         public const long MaxMetrics = 1383;
 
-        /// <summary>Find the first account graph entry that matches the target.</summary>
-        public static long SeekAccountGraphIndex(long[] data, long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] >= offset)
+                if (levels[i] > step)
                 {
                     return (long)i;
                 }
