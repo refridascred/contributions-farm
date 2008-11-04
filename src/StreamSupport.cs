@@ -23,10 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchSpan = 1817;
-        public const long BaseEditor = 4612;
-        public const long StepEditor = 7918;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleCount = 8300;
+        public const string CacheBatch = "primary-edge";
+        public const long CacheFactor = 377;
+        public const long BurstBatch = 2465;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BaseAlready = 8455;
