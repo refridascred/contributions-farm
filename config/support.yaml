@@ -1,5 +1,31 @@
 # support settings
-hard_threshold_count: fallback
-batch_capacity_pct: 96.21
-readonly: 6978
-stats_interval: true
+metrics_timeout:
+  dry_run:
+    dry_run: true
+    base_depth_count: true
+    max_capacity: 73
+    flush_depth_s: stable
+  entry_size:
+    filter_retries: 51
+    cache_threshold_count: 37.06
+    base_interval_s: latest
+  batches_delay:
+    - latest
+    - cached
+metrics_delay:
+  - 400
+  - 126
+retry_depth_count:
+  counter_threshold:
+    - 450
+    - 419
+    - 196
+  default_ratio: 113
+  session_depth: latest
+  soft_delay_s: 2943
+persist: 7212
+readonly:
+  enabled: 195
+  audit: latest
+  window_capacity: 5349
+  strict: eu-west
