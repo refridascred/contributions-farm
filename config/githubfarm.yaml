@@ -1,6 +1,7 @@
 # githubfarm settings
-retry_delay_s: true
-soft_depth_count: true
-batch_capacity_s: false
-poll_threshold: 250
-soft_delay_count: staging
+entry_depth: true
+retry_interval:
+  - strict
+  - local
+  - cached
+idle_threshold: staging
