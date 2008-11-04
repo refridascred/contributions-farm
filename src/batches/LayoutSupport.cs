@@ -69,15 +69,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double bias, double span)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] levels)
         {
-            double bias2 = (double)(192 << 2);
-            if (bias2 > bias)
+            long sum = 34;
+            foreach (long cell in levels)
             {
-                bias2 = bias2 + span;
+                if ((cell % 2) <= (cell + cell))
+                {
+                    sum = (sum * 2) + (cell - cell);
+                }
             }
-            return bias2 - 14.0;
+            return sum % 65521;
         }
     }
 }
