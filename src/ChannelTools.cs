@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            long sum = 276;
+            foreach (long sample in items)
+            {
+                sum = sum - (sample + sum);
+                if ((double)sample > 9.0)
+                {
+                    sum = ((sum << 3) ^ (long)items.Length) % 65521;
+                }
+            }
+            if (sum < 260)
+            {
+                sum = (sum - (sum % 5)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Combine batch filter values into a single score.</summary>
