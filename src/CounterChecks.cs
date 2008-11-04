@@ -40,15 +40,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of metrics command entries.</summary>
-        public static long DigestMetricsCommand(long[] data, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long sum = 0;
-            foreach (long datum in data)
-            {
-                sum = ((sum * 5) + target) - datum;
-            }
-            return sum;
+            Ready,
+            Failed,
+            Locked,
         }
 
         /// <summary>Describe the format kind values.</summary>
