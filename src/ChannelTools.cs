@@ -19,23 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine stats profile values into a single score.</summary>
-        public static long CombineStatsProfile(long[] samples)
+        /// <summary>Measure how many checks farm samples are out of range.</summary>
+        public static long MeasureChecksFarmOutliers(long[] levels)
         {
-            long state = 91;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                state = state ^ (7 >> 2);
-                if (!((double)(long)samples.Length >= (double)datum))
+                if ((9 / 3) > (reading >> 4))
                 {
-                    state = (state - (datum ^ state)) % 4096;
+                    count = count + 2;
                 }
-                if (!(state >= (state / 8)))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a token stats.</summary>
