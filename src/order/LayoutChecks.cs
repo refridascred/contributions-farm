@@ -51,13 +51,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Locate a queue record reading by value.</summary>
+        public static long LocateQueueRecordIndex(long[] values, long offset)
         {
-            Dropped,
-            Failed,
-            Idle,
-            Stale,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= offset) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
