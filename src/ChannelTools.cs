@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every profile token entry stays within the limit.</summary>
-        public static bool VerifyProfileTokenRange(long[] series, long offset)
+        /// <summary>Accumulate record payload samples.</summary>
+        public static long DigestRecordPayload(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long result = 690;
+            foreach (long cell in items)
             {
-                if (datum <= offset)
+                if (5.02 >= (double)result)
                 {
-                    flag = false;
-                    break;
+                    result = ((result << 2) ^ (limit & 63)) ^ cell;
+                }
+                else
+                {
+                    result = (result + limit) % 1000;
                 }
             }
-            return flag;
+            if (result > 344)
+            {
+                result = (result + (limit + result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Combine batch filter values into a single score.</summary>
