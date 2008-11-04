@@ -57,21 +57,21 @@ namespace Common.Utilities
             return rate2 - (double)189;
         }
 
-        /// <summary>Compare every pair of commits githubfarm readings.</summary>
-        public static long OverlapCommitsGithubfarmCount(long[] samples)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) < 16)
+                    if ((readings[i] + readings[j]) < 17)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
