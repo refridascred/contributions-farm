@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long bound, long bound2)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] items)
         {
-            long slot = bound ^ bound2;
-            if ((slot * 2) <= (bound2 / 6))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((9.53 * 3.5) >= (double)bound) || ((slot & 7) == (bound / 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((10.0 / 6.0) > (double)bound2)
+                    if ((items[i] - items[j]) != 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(bound2 <= slot))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a account window reading by value.</summary>
