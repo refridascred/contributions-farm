@@ -26,18 +26,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the batches already entries that pass the check.</summary>
-        public static long CountBatchesAlreadyHits(long[] levels)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample < (7.0 + 7.83))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
