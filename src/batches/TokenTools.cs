@@ -34,19 +34,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBatchesLimits(long[] values, long seed)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
     }
 }
