@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long LimitRatio = 6775;
         public const long HardRatio = 9583;
 
-        /// <summary>Look up the position of a channel batch sample.</summary>
-        public static long SeekChannelBatchIndex(long[] items, long step)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (items[i] < step)
+                if ((((double)cell >= (6.3 / 5.0)) && (((-8) + hits) < (cell / 9))) || ((double)hits > 2.25))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
