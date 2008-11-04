@@ -28,21 +28,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Match up layout schema samples.</summary>
-        public static long CompareLayoutSchemaCount(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long limit, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)97 <= (double)offset)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (offset > (limit & 255))
                 {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a cache buffer reading by value.</summary>
