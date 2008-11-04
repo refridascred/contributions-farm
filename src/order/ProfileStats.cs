@@ -32,14 +32,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Done,
-            Paused,
-            Failed,
-            Active,
-            Locked,
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
