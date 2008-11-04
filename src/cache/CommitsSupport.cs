@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Check that every account cluster entry stays within the limit.</summary>
+        public static bool CheckAccountClusterRange(long[] levels, long offset)
         {
-            Failed,
-            Paused,
-            Ready,
-            Dropped,
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the filter mode values.</summary>
