@@ -20,11 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] items, long seed)
         {
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum < (1.0 / 6.0))
+                {
+                    hits = (hits + 3) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
