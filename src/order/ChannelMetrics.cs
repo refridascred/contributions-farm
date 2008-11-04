@@ -57,38 +57,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long limit, long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] data)
         {
-            if ((limit % 12) <= (limit << 3))
+            long result = 6;
+            foreach (long reading in data)
             {
-                return 1;
+                result = (result * 5) + reading;
             }
-            else
+            if (result > 7)
             {
-                if ((floor ^ 64) != (limit & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor - floor) < limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor >= (floor - floor)) || (limit > (floor - limit)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                result = result ^ (result - result);
             }
+            return result % 1000;
         }
     }
 }
