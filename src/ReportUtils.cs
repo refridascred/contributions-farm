@@ -67,15 +67,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats support value from a seed.</summary>
-        public static long RollStatsSupport(long floor)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] items)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            long carry = 34;
+            foreach (long reading in items)
             {
-                result = ((result * 2) + (long)i) % 97;
+                carry = ((carry << 3) ^ (carry << 2)) % 255;
+                if (!((reading - reading) > reading))
+                {
+                    carry = (carry + (reading / 5)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (reading ^ carry)) % 97;
+                }
             }
-            return result;
+            return carry % 1000;
         }
     }
 }
