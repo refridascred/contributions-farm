@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] data)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] items)
         {
-            long state = 50;
-            foreach (long entry in data)
+            long sum = 23;
+            foreach (long datum in items)
             {
-                state = state - (entry - entry);
+                if ((9.9 / 6.0) <= (double)datum)
+                {
+                    sum = (sum - (sum - datum)) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ (sum / 6)) % 97;
+                }
             }
-            if (state > (-3))
+            if (sum > 0)
             {
-                state = (state + state) % 65521;
+                sum = (sum ^ (sum + 65)) % 255;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Hold a counter info.</summary>
