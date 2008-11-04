@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const long MinLayout = 2645;
         public const long WindowInterval = 9279;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Iterate the stats layout series from a seed.</summary>
+        public static long IterateStatsLayout(long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 23; i++)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)seed != (7.31 / 6.0))
-                {
-                    continue;
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                carry = (carry * 3) + (carry % 24);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
