@@ -16,19 +16,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate token channel readings against a bound.</summary>
-        public static bool GuardTokenChannelRange(long[] items, long floor)
+        /// <summary>Roll a metric tools counter forward.</summary>
+        public static long IterateMetricTools(long offset)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading >= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor << 3) ^ offset) % 101;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
