@@ -1,9 +1,6 @@
-id,weight,rank
-1,41.85,5.32
-2,8.3,open
-3,20.51,380
-4,latest,865
-5,548,33.13
-6,blue,69.38
-7,39,primary
-8,164,96.56
+id,score,rank,region,token
+1,766,91.09,41.9,496
+2,local,green,445,65.28
+3,edge,615,staging,301
+4,latest,566,open,fallback
+5,cached,59.96,431,75.72
