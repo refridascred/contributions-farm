@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            Queued,
-            Closed,
-            Pending,
             Synced,
-            Paused,
+            Retry,
+            Queued,
+            Pending,
+            Idle,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
