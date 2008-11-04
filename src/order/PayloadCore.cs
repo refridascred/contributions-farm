@@ -33,13 +33,11 @@ namespace Common.Utilities
             return weight - (6.0 - gain);
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double weight, double span)
         {
-            Dropped,
-            Locked,
-            Synced,
-            Failed,
+            double rate = span - (double)(-1);
+            return (rate + span) + weight;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
