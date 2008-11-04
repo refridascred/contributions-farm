@@ -28,15 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long bound)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long total = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Rank graph checks input into a small class.</summary>
