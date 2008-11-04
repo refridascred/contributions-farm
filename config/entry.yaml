@@ -1,35 +1,27 @@
 # entry settings
-min_ratio_count: 52.42
-retry_depth_count:
-  notes_ratio: legacy
-  cache_threshold_pct: 75
-  strict: 5892
-  editor_window: 7604
-  context_retries: 1332
-cache_timeout_ms:
-  strict:
-    sync_timeout_s: 1.22
-    stats_timeout: 40.1
-    audit: edge
-    compress: blue
-    min_interval_pct: false
-    persist: 61.47
-  soft_interval_s:
-    max_delay_ms:
-      - primary
-      - standard
-      - stable
-      - stable
-    verbose: false
-    flush_threshold_pct: eu-west
-    hard_size_s: 6785
-    readonly: 500
-    metric_threshold: staging
-  token_interval: 69.12
-  audit: 1024
-  retry_ratio_pct:
-    sync_limit_s: blue
-    buffer_depth: 61.46
-    readonly: 48.66
-  batch_threshold: primary
-burst_limit_count: strict
+burst_capacity_pct: false
+burst_limit:
+  account_threshold:
+    counter_ratio: strict
+    dry_run:
+      - 328
+      - 195
+      - 363
+      - 439
+    batch_delay: false
+    burst_timeout_pct: primary
+    retry_ttl_ms: true
+  default_ttl:
+    contributi_limit: standard
+    flush_retries_s: 67.32
+    default_timeout: staging
+    flush_window_count: false
+    cache_capacity_ms: green
+  verbose: 2167
+  hard_ratio_ms: true
+  token_limit:
+    - fallback
+    - cached
+    - eu-west
+readonly: 37.73
+already_depth: 16.69
