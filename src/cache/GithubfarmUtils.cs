@@ -20,17 +20,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long origin)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 569;
+            foreach (long value in samples)
             {
-                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                if ((sum >> 3) <= value)
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (468 ^ 2)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (value + sum)) % 1000;
+                }
+                if ((value + 91) >= (value ^ 861))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
