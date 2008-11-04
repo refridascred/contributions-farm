@@ -23,11 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 4079;
-        public const string SoftChecks = "staging-edge";
-        public const long DefaultDepth = 9299;
-        public const long MinLevel = 288;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long CombineCommits(long[] samples)
