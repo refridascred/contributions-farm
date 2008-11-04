@@ -73,13 +73,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
+            Active,
+            Idle,
+            New,
         }
     }
 }
