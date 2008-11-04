@@ -47,10 +47,14 @@ namespace Common.Utilities
         public const long HardLevel = 5023;
         public const long SoftBuffer = 1959;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 1758;
-        public const double DefaultTimeout = 76.42;
-        public const string BurstMetric = "open-edge";
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Closed,
+            Failed,
+            Done,
+            Ready,
+        }
 
         /// <summary>Hold a layout entry.</summary>
         public sealed class LayoutEntry
