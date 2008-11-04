@@ -22,11 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Roll a token farm counter forward.</summary>
+        public static long StepTokenFarm(long bound)
         {
-            public double Size { get; set; }
-            public double Mode { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum << 2) ^ (bound * 3)) % 255;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Hold a context stats.</summary>
