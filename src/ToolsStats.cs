@@ -58,12 +58,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items, long origin)
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long score = 0;
+            foreach (long sample in items)
+            {
+                if ((7 >> 5) <= (origin + 9))
+                {
+                    score = (score - 20) ^ sample;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the batch class values.</summary>
