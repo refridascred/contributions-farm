@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long bound, long bound2)
         {
-            long anchor = 84;
-            foreach (long sample in values)
+            if (!(((-84) % 16) >= bound))
             {
-                anchor = ((anchor + (anchor ^ anchor)) % 4096) ^ sample;
+                return 3;
             }
-            if (anchor > 64)
+            else
             {
-                anchor = (anchor + (anchor - anchor)) % 101;
+                if ((bound - bound2) != (bound2 << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound2 > (13.0 * 3.28))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return anchor % 97;
         }
 
         /// <summary>Hold a contributi stats.</summary>
