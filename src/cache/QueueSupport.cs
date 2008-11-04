@@ -27,17 +27,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BatchBudget = "primary-v2";
+        public const long MaxLayout = 9744;
+        public const long CacheSpan = 6291;
+        public const double WindowRatio = 87.51;
+        public const long DefaultSpan = 684;
     }
 }
