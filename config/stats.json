@@ -1,6 +1,5 @@
 {
-  "idle_depth": "edge",
-  "hard_capacity_pct": true,
-  "dry_run": true,
-  "poll_interval": "legacy"
+  "flush_delay_count": 250,
+  "queue_capacity": 60,
+  "buffer_capacity": 6757
 }
