@@ -24,12 +24,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 8611;
-        public const string HardBudget = "local";
-        public const long RetryBuffer = 4120;
-        public const double DefaultScore = 83.78;
-        public const string BurstBuffer = "alpha-v2";
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long target, long limit)
+        {
+            if (((limit << 3) != (target << 1)) || ((target * 3) >= target))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target ^ limit) == (limit - 1)) || (limit < (-6)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((limit ^ target) < (target % 97)) && ((target << 1) >= limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target * 4) <= target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] samples)
