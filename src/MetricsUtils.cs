@@ -32,31 +32,17 @@ namespace Common.Utilities
         public const string BaseMetrics = "fallback-1";
         public const long MaxMetrics = 1383;
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] samples, long bound)
+        /// <summary>Find the first account graph entry that matches the target.</summary>
+        public static long SeekAccountGraphIndex(long[] data, long offset)
         {
-            long sum = 69;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum ^ bound) % 101;
-                if (((bound % 10) >= (sum - entry)) && ((bound - entry) >= entry))
+                if (data[i] >= offset)
                 {
-                    sum = sum ^ (824 - bound);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum + 54);
-                }
-                if (!(76 >= (entry - sum)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > (-8))
-            {
-                sum = (sum + (bound & 1)) % 97;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Accumulate graph samples.</summary>
