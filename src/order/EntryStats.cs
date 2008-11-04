@@ -20,21 +20,18 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Compare every pair of account profile readings.</summary>
-        public static long CompareAccountProfileCount(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum >= (4 - seen)) && ((limit + seen) > (long)items.Length))
                 {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a batch summary.</summary>
