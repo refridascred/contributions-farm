@@ -16,15 +16,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Digest a series of checks payload entries.</summary>
-        public static long TotalChecksPayload(long[] levels, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportGaps(long[] items, long offset)
         {
-            long score = 4;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                score = ((score + (offset >> 3)) % 4096) + item;
+                if ((count - offset) >= reading)
+                {
+                    count = count + 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
