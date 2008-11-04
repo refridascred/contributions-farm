@@ -45,12 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 205;
-        public const double BatchReport = 73.11;
-        public const string BatchInterval = "legacy";
-        public const long RetryReport = 9899;
-        public const long BatchLevel = 1190;
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
+        {
+            Paused,
+            Retry,
+            Dropped,
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] values, long bound)
