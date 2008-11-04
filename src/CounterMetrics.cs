@@ -18,21 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long seed, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((offset + offset) >= (seed ^ offset))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset + offset) >= (3 - offset))
                 {
-                    if ((items[i] - items[j]) > 1)
+                    return 4;
+                }
+                else
+                {
+                    if ((seed * 5) == (seed * 2))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed << 3) > (seed + seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
