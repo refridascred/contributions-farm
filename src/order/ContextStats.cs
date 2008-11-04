@@ -53,17 +53,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] items, long limit)
+        /// <summary>Compare every pair of commits githubfarm readings.</summary>
+        public static long OverlapCommitsGithubfarmCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 2) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
