@@ -35,13 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Closed,
-            Active,
+            Failed,
+            Retry,
+            Paused,
             Locked,
-            Pending,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
