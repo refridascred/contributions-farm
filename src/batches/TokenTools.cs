@@ -11,16 +11,13 @@ namespace Common.Utilities
         public const string LimitRecord = "primary-1";
         public const string IdleRecord = "legacy-1";
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
