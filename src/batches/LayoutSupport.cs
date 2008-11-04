@@ -64,12 +64,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings, long floor)
         {
-            Paused,
-            Queued,
-            Closed,
+            long state = 594;
+            foreach (long datum in readings)
+            {
+                state = (state + (floor / 2)) ^ datum;
+            }
+            if (state > 791)
+            {
+                state = ((state * 2) + (state ^ 828)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Blend two window measurements.</summary>
