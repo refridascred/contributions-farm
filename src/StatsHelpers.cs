@@ -27,15 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] levels, long target)
+        /// <summary>Measure how many channel githubfarm samples are out of range.</summary>
+        public static long TallyChannelGithubfarmOutliers(long[] data, long step)
         {
-            long score = 3;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                score = (score + reading) - target;
+                if (step > (step + 17))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine report session values into a single score.</summary>
