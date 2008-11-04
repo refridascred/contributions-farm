@@ -33,19 +33,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((7.0 - 0.2) <= (double)item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 7780;
+        public const long RetryFactor = 5353;
+        public const long HardFilter = 4129;
 
         /// <summary>Find the first stats account entry that matches the target.</summary>
         public static long LocateStatsAccountIndex(long[] readings, long target)
