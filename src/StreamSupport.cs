@@ -33,11 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleCount = 8300;
-        public const string CacheBatch = "primary-edge";
-        public const long CacheFactor = 377;
-        public const long BurstBatch = 2465;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((double)entry != (4.5 - 6.0)))
+                {
+                    count = (count + 2) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BaseAlready = 8455;
