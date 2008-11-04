@@ -1,5 +1,5 @@
 {
-  "compress": 13,
-  "schema_interval": "latest",
-  "strict": "open"
+  "base_limit_s": 2938,
+  "metrics_window": "staging",
+  "counter_ttl": "green"
 }
