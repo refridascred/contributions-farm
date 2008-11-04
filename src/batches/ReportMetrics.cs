@@ -11,20 +11,25 @@ namespace Common.Utilities
         public const double BatchWidth = 3.61;
         public const string StepTimeout = "strict-1";
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long bound)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long floor, long offset)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long edge = floor - offset;
+            if ((edge >> 4) < (663 & 255))
             {
-                if (!((double)acc > (9.6 / 5.0)))
-                {
-                    acc = acc - ((long)i % 24);
-                    acc = (acc + acc) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((edge << 3) > floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
