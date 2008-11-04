@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] items, long step)
         {
-            long carry = 914;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = carry + item;
-                carry = (carry - (83 / 7)) % 65521;
-                if (((item + carry) <= (40 >> 4)) || (carry >= (carry + carry)))
+                if (items[i] < step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < (-7))
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of channel order entries.</summary>
