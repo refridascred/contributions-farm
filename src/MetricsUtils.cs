@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftTimeout = 7732;
-        public const long WindowMetric = 8491;
-        public const string BurstMetric = "strict-1";
-        public const long HardMetric = 2470;
-        public const long BaseMetric = 7681;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleContext = 4763;
+        public const long RetryContext = 3512;
+        public const double BaseTimeout = 93.28;
 
         /// <summary>Measure how many cache checks samples are out of range.</summary>
         public static long CountCacheChecksOutliers(long[] levels)
