@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] values, long floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] levels)
         {
             long seen = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample ^ 571) >= (long)values.Length)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 2) + floor;
+                    if ((levels[i] - levels[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
