@@ -27,22 +27,18 @@ namespace Common.Utilities
         public const long BaseCount = 9304;
         public const string MinGraph = "standard-v2";
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] series, long floor)
         {
-            long carry = 51;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (!(730 > (carry / 4)))
+                if (!(((floor + datum) > (925 * 5)) || (8.2 > (double)floor)))
                 {
-                    carry = (((carry * 5) + (carry & 15)) % 4096) ^ cell;
+                    count = count + 1;
                 }
             }
-            if (carry < 925)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 97;
-            }
-            return carry;
+            return count;
         }
     }
 }
