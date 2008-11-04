@@ -63,19 +63,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next command metrics value.</summary>
-        public static double AdjustCommandMetrics(double rate, double floor)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long origin, long seed)
         {
-            double ratio = rate;
-            if (ratio < (double)56)
+            long diff = origin + seed;
+            if ((diff > (origin + origin)) || ((seed >> 4) >= seed))
             {
-                ratio = ratio - (ratio - ratio);
+                return 8;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                ratio = (ratio + (floor - ratio)) - (double)(long)i;
+                if (origin < (diff / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return ratio + (double)2;
         }
 
         /// <summary>Describe the account state values.</summary>
