@@ -29,15 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Idle,
-            Synced,
-            Dropped,
-            Done,
-            Active,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinDepth = 3878;
+        public const long IdleBudget = 3275;
+        public const double BurstContext = 46.49;
+        public const long WindowTimeout = 8010;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinLevel = 9915;
