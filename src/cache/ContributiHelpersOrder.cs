@@ -33,11 +33,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string CacheToken = "standard";
-        public const long MinCount = 4001;
-        public const long CacheCount = 2652;
-        public const long MinScore = 3114;
-        public const long HardToken = 9291;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Synced,
+            New,
+            Dropped,
+            Queued,
+            Idle,
+        }
     }
 }
