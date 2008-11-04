@@ -1,4 +1,6 @@
 # support settings
-retry_window: 17.65
-readonly: true
-burst_ttl_s: latest
+audit: 6305
+cluster_threshold: 21.49
+dry_run:
+  - stable
+  - legacy
