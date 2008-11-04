@@ -68,15 +68,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] values, long bound)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long carry = 38;
-            foreach (long cell in values)
-            {
-                carry = ((carry - (carry - bound)) % 255) + cell;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
