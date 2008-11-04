@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] values)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] readings, long origin)
         {
             long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((item - 517) >= (24 << 1)))
                 {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + origin;
                 }
             }
             return seen;
