@@ -44,11 +44,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double ratio, double span)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            double weight = (ratio - ratio) + (ratio / 6.0);
-            return (weight + (double)34) + span;
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                result = (result ^ (-982)) % 4096;
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
