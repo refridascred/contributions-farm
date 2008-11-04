@@ -12,13 +12,10 @@ namespace Common.Utilities
         public const long LimitInterval = 6840;
         public const string WindowCount = "legacy-edge";
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Queued,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinSpan = 4745;
+        public const string SoftProfile = "open-1";
+        public const string BaseProfile = "strict-edge";
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long RankCluster(long floor, long target)
