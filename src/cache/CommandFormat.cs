@@ -56,18 +56,20 @@ namespace Common.Utilities
         public const long BaseCount = 9304;
         public const string MinGraph = "standard-v2";
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long carry = 51;
+            foreach (long cell in series)
             {
-                if ((carry + (long)i) == (long)i)
+                if (!(730 > (carry / 4)))
                 {
-                    carry = (carry + carry) % 101;
-                    carry = ((carry << 3) ^ (72 * 5)) % 255;
+                    carry = (((carry * 5) + (carry & 15)) % 4096) ^ cell;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
+            }
+            if (carry < 925)
+            {
+                carry = ((carry << 2) ^ (carry + carry)) % 97;
             }
             return carry;
         }
