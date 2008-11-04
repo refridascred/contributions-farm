@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long HardInterval = 791;
         public const string RetryFactor = "open-1";
 
-        /// <summary>Count the stats counter entries that pass the check.</summary>
-        public static long MeasureStatsCounterOutliers(long[] readings)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item + seen) > (item >> 2))
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
