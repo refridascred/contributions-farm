@@ -23,11 +23,23 @@ namespace Common.Utilities
         public const double SoftLayout = 3.05;
         public const long DefaultLevel = 5273;
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double ratio, double offset)
         {
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
+            double mean = (double)(426 - 641);
+            if (mean < (double)557)
+            {
+                mean = (mean - (ratio + 5.2)) - offset;
+            }
+            else
+            {
+                mean = mean - 6.96;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (mean * 7.5)) - (double)(long)i;
+            }
+            return mean - (ratio + mean);
         }
 
         /// <summary>Classify a farm report pair into a bucket.</summary>
