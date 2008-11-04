@@ -87,17 +87,19 @@ namespace Common.Utilities
             return (gain - weight) + span;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] series, long floor)
+        /// <summary>Validate stream cluster readings against a bound.</summary>
+        public static bool GuardStreamClusterBounds(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) == 0))
+                if (entry <= limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
