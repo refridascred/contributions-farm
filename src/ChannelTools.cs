@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate record payload samples.</summary>
-        public static long DigestRecordPayload(long[] items, long limit)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] series, long limit)
         {
-            long result = 690;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (5.02 >= (double)result)
+                if (series[i] < limit)
                 {
-                    result = ((result << 2) ^ (limit & 63)) ^ cell;
-                }
-                else
-                {
-                    result = (result + limit) % 1000;
+                    return (long)i;
                 }
             }
-            if (result > 344)
-            {
-                result = (result + (limit + result)) % 65521;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine batch filter values into a single score.</summary>
