@@ -35,11 +35,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 5;
-        public const double IdleRatio = 79.0;
-        public const long DefaultSpan = 5009;
-        public const long BatchLevel = 6374;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            New,
+            Done,
+            Dropped,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Digest a series of metrics command entries.</summary>
         public static long DigestMetricsCommand(long[] data, long target)
