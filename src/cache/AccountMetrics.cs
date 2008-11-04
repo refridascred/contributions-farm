@@ -28,11 +28,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxScore = 34.1;
-        public const long StepSession = 8884;
-        public const long HardSession = 2317;
-        public const double IdleBudget = 89.05;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a cache buffer reading by value.</summary>
         public static long FindCacheBufferIndex(long[] values, long target)
