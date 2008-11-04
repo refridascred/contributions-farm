@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] values)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((double)tally == (16.0 + 6.27))
+                if (value < seed)
                 {
-                    tally = (tally + 1) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
