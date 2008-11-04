@@ -57,25 +57,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long floor, long limit)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] data, long seed)
         {
-            long gap = floor - limit;
-            if ((gap * 3) == (limit + (-88)))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + gap) == (gap >> 2))
+                if (cell <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define report limits and defaults.</summary>
