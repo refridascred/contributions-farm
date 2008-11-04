@@ -56,18 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] data)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell > 4.35)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Pending,
+            Paused,
+            Failed,
         }
     }
 }
