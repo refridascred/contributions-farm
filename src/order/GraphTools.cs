@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double DefaultContributi = 57.22;
-        public const string IdleContributi = "primary-v2";
-        public const long BaseContributi = 4161;
-        public const long CacheContributi = 5118;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Accumulate tools session samples.</summary>
         public static long FoldToolsSession(long[] values)
