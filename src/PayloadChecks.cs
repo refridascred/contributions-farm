@@ -45,18 +45,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks payload samples are out of range.</summary>
-        public static long AuditChecksPayloadMatches(long[] levels)
+        /// <summary>Rank metric schema input into a small class.</summary>
+        public static long RankMetricSchema(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if (!((double)limit2 < (8.0 - 2.98)))
             {
-                if ((seen > (9 - 6)) && ((double)reading > (0.48 + 4.0)))
+                return 3;
+            }
+            else
+            {
+                if (7.3 >= (double)limit2)
                 {
-                    seen = seen + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit2 & 255) != (limit - limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
