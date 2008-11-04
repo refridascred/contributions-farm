@@ -45,22 +45,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterGaps(long[] levels, long target)
+        /// <summary>Classify a counter layout pair into a bucket.</summary>
+        public static long SortCounterLayout(long step, long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            if ((19.0 / 8.0) <= (double)step)
             {
-                if ((reading + tally) >= tally)
+                return 7;
+            }
+            else
+            {
+                if (!((step >> 4) > step))
                 {
-                    tally = (tally + 2) + target;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((step / 3) > (origin ^ 749))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
