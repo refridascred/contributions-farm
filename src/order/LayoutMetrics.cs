@@ -39,12 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] series, long seed)
         {
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value - value) > seen)
+                {
+                    seen = (seen + 1) - seed;
+                }
+            }
+            return seen;
         }
     }
 }
