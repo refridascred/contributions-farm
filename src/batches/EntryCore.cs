@@ -61,11 +61,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 63;
-        public const long MaxMetrics = 5322;
-        public const double BaseFactor = 93.36;
-        public const long MaxLevel = 2117;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
