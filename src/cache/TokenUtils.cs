@@ -20,13 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
