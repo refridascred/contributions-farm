@@ -37,19 +37,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] readings, long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            bool ok = true;
-            foreach (long datum in readings)
-            {
-                if (datum != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the order status values.</summary>
