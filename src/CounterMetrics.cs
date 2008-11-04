@@ -42,19 +42,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long origin)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double bias, double bias2)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            double ratio = bias;
+            if (ratio > (6.05 + bias))
             {
-                if (((long)i != ((long)i + origin)) || ((double)origin > (2.4 + 0.5)))
-                {
-                    continue;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
+                ratio = (ratio - (5.7 / 5.0)) - bias2;
             }
-            return mark;
+            return ratio + 2.0;
         }
     }
 }
