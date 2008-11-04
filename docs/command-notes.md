@@ -1,12 +1,11 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the filter list.
-Defaults for command live in the config folder and can be overridden per environment.
-A buffer that stays idle for too long is moved to the entry list.
+A commits that stays idle for too long is moved to the cache list.
+Use context settings to tune how often payload data is refreshed.
+The filter module keeps farm values in sync with the report cache.
 
 ## Guidelines
 
-- Keep profile values small
-- Review profile limits each release
-- Validate schema input early
-- Document new already fields
+- Review queue limits each release
+- Log every contributi change
+- Prefer stats defaults
