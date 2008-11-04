@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] readings)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if ((count - count) <= (entry + 31))
+                if (!(offset < (6 - entry)) || (((double)tally != (6.0 / 9.0)) && ((259 - (-41)) > (offset / 3))))
                 {
-                    count = count + 3;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
