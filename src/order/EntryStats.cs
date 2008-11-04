@@ -19,16 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a checks metrics counter forward.</summary>
-        public static long IterateChecksMetrics(long bound)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long carry = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = (carry + (bound - 24)) % 97;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the editor phase values.</summary>
