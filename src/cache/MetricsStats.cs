@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double IdleToken = 47.65;
-        public const double IdleBudget = 82.61;
-        public const long BurstToken = 8361;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseTools = "primary";
+        public const long DefaultTools = 7757;
+        public const string BurstWidth = "local";
+        public const long BurstTools = 5461;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TallyFormat(long[] series)
