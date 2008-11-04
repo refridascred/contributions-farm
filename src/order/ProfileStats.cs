@@ -54,13 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
