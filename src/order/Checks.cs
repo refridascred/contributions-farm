@@ -31,19 +31,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowLimits(long[] series, long target)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Match up tools samples.</summary>
