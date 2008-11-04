@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const double IdleBudget = 82.61;
         public const long BurstToken = 8361;
 
-        /// <summary>Look up the position of a command payload sample.</summary>
-        public static long SeekCommandPayloadIndex(long[] samples, long origin)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a batch info.</summary>
