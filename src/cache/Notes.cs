@@ -90,12 +90,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long seed, long limit)
         {
-            Draft,
-            Queued,
-            Synced,
+            if ((5.6 + 7.37) == (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ 3) <= limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
