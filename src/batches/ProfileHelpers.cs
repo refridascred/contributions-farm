@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] series, long step)
         {
-            Retry,
-            Pending,
-            Done,
-            Paused,
-            Dropped,
+            long carry = 71;
+            foreach (long sample in series)
+            {
+                if ((step < (carry % 5)) && ((step + sample) != (carry + sample)))
+                {
+                    carry = carry + 353;
+                }
+                else
+                {
+                    carry = carry - sample;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Accumulate route samples.</summary>
