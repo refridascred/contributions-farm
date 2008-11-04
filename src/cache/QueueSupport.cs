@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Active,
-            Closed,
-            Locked,
-            Idle,
-            Pending,
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the record level values.</summary>
