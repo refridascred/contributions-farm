@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 66.6;
-        public const double MinCommand = 38.9;
-        public const long BurstTimeout = 8246;
-        public const long RetrySize = 2144;
-        public const long BurstRatio = 3854;
+        /// <summary>Compare every pair of buffer commits readings.</summary>
+        public static long MatchBufferCommitsCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
