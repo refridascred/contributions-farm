@@ -38,11 +38,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSchema = 98.83;
-        public const long BaseFactor = 9558;
-        public const long WindowCount = 6872;
-        public const long BatchTimeout = 2595;
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long LookupCommitsIndex(long[] levels, long target)
