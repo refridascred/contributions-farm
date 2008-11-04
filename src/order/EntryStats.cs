@@ -46,11 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 7319;
-        public const double DefaultCommand = 83.45;
-        public const long IdleBudget = 9728;
-        public const long LimitSize = 1710;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (((matches >> 3) > (datum / 3)) || (8.6 < (double)datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandGaps(long[] series)
