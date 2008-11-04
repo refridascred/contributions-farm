@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double weight, double floor)
+        /// <summary>Scale a order entry figure with a bias.</summary>
+        public static double BlendOrderEntry(double scale, double offset)
         {
-            double drift = (double)598 + (floor * 8.0);
-            if (drift <= (floor / 7.0))
+            double ratio = (offset + offset) - scale;
+            if (ratio <= (offset / 7.0))
             {
-                drift = (drift - (floor * 1.85)) - weight;
+                ratio = ratio + (double)(-116);
             }
             else
             {
-                drift = drift - drift;
+                ratio = ratio - (double)8;
             }
-            return drift - (4.6 - drift);
+            return ratio + offset;
         }
 
         /// <summary>Hold a contributi stats.</summary>
