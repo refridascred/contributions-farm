@@ -52,15 +52,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long step)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = (score + ((long)i2 - (-947))) % 65521;
+                    score = ((score << 3) ^ (step + step)) % 1000;
+                }
+                if (!((long)i <= (step + score)))
+                {
+                    score = (score * 3) + 799;
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Hold a command summary.</summary>
