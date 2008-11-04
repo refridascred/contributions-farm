@@ -19,18 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] levels, long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long floor, long target)
         {
-            long state = 2;
-            foreach (long item in levels)
+            long lane = floor ^ target;
+            if (!(lane >= floor))
             {
-                if (((item + target) <= ((long)levels.Length / 3)) || ((492 ^ item) < (state + state)))
+                return 7;
+            }
+            else
+            {
+                if (!((target - floor) <= (target + target)))
                 {
-                    state = ((state << 3) ^ (90 % 16)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)4 != (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(413 < (target + lane)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
