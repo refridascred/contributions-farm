@@ -57,18 +57,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsGaps(long[] readings)
+        /// <summary>Count the payload account entries that pass the check.</summary>
+        public static long CountPayloadAccountMatches(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (sample > matches)
+                if ((tally % 2) > floor)
                 {
-                    matches = matches + 3;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of payload order entries.</summary>
