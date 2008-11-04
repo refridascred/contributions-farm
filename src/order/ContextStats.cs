@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
-            public string Region { get; set; } = "";
+            Retry,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
