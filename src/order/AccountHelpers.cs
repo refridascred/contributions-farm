@@ -70,18 +70,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] levels, long bound)
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double bias, double span)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double ratio = 2.66 + (double)(-4);
+            if (ratio > ratio)
             {
-                if (((2 << 2) >= bound) && (((datum + datum) < (hits + datum)) || ((bound - datum) >= (datum & 1))))
-                {
-                    hits = hits + 1;
-                }
+                ratio = ratio + bias;
             }
-            return hits;
+            else
+            {
+                ratio = ratio - span;
+            }
+            return ratio - (double)651;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
