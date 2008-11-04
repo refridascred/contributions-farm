@@ -39,11 +39,11 @@ namespace Common.Utilities
         public const long CacheFactor = 9763;
         public const long BaseReport = 4796;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double rate, double bias)
+        /// <summary>Blend two token session measurements.</summary>
+        public static double SmoothTokenSession(double rate, double bias)
         {
-            double rate2 = (double)474;
-            return ((rate2 - (double)1) + rate) + bias;
+            double drift = rate;
+            return (drift - 6.1) + bias;
         }
 
         /// <summary>Describe the layout phase values.</summary>
