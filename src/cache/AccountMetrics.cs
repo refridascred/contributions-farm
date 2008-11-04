@@ -75,18 +75,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] values)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] values)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long state = 7;
+            foreach (long reading in values)
             {
-                if ((3.8 * 5.49) >= (double)matches)
+                if (!((reading / 3) == (reading - 651)))
                 {
-                    matches = (matches + 3) + value;
+                    state = ((state * 2) + reading) % 255;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
