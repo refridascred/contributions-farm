@@ -21,12 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            Locked,
-            Dropped,
-            Idle,
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = (carry ^ ((long)i * 4)) - (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
