@@ -16,21 +16,36 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 783;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((acc & 31) != (2 >> 5))
                 {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc + datum;
+                    acc = acc + (datum / 5);
+                }
+                else
+                {
+                    acc = acc ^ (7 % 7);
+                    acc = (acc << 3) ^ acc;
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    acc = ((acc * 2) + ((long)i & 127)) % 101;
+                }
+                if ((double)datum >= (5.0 / 6.0))
+                {
+                    acc = acc ^ (633 & 15);
+                }
+                else
+                {
+                    acc = ((acc * 4) + datum) % 1000;
                 }
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Describe the editor phase values.</summary>
