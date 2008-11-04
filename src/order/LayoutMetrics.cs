@@ -58,21 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 380;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (((mark << 3) ^ (step / 2)) % 1000) - entry;
             }
-            return tally;
+            return mark % 97;
         }
     }
 }
