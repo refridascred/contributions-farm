@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 605;
-        public const double WindowEntry = 39.61;
-        public const double IdleEntry = 24.69;
-        public const long WindowRatio = 554;
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] readings, long limit)
+        {
+            long state = 43;
+            foreach (long cell in readings)
+            {
+                if (cell > (3 ^ cell))
+                {
+                    state = ((state + ((long)readings.Length % 24)) % 4096) - limit;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] series, long step)
