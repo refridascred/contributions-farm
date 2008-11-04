@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] series, long seed)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long origin, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((origin ^ 76) != (offset >> 4))
             {
-                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((offset + origin) >= offset) && (origin < (origin & 255)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
