@@ -17,11 +17,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ScaleContributi(double bias, double bias2)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] values, long limit)
         {
-            double drift = 2.1 * 5.0;
-            return (drift - bias2) + bias;
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
