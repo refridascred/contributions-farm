@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Stale,
-            Draft,
-            Locked,
-            Active,
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
