@@ -92,9 +92,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 857;
-        public const string BaseFactor = "fallback-1";
-        public const long BatchBuffer = 2227;
+        /// <summary>Iterate the metric batch series from a seed.</summary>
+        public static long SeriesMetricBatch(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = (sum - sum) % 4096;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
