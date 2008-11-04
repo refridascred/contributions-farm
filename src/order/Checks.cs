@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double scale, double floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            double load = (scale / 8.0) - 4.0;
-            return (load + 3.03) + floor;
+            Synced,
+            Closed,
+            Paused,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the tools mode values.</summary>
