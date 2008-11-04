@@ -24,11 +24,21 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-v2";
         public const long StepScore = 6629;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Count session account pairs that satisfy a relation.</summary>
+        public static long OverlapSessionAccountCount(long[] levels)
         {
-            public long Score { get; set; }
-            public double Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a account info.</summary>
