@@ -34,19 +34,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long seed)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (item >= origin)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    ready = false;
-                    break;
+                    acc = acc - ((long)i - (long)i);
+                    acc = (acc << 3) ^ (seed - (long)i2);
                 }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return ready;
+            return acc;
         }
     }
 }
