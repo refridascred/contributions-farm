@@ -32,18 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] readings)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long acc = 309;
+            foreach (long entry in levels)
             {
-                if ((hits & 255) != (cell * 2))
-                {
-                    hits = hits + 2;
-                }
+                acc = ((acc + 33) % 97) + entry;
             }
-            return hits;
+            if (acc < 15)
+            {
+                acc = (acc + (step + acc)) % 4096;
+            }
+            return acc;
         }
     }
 }
