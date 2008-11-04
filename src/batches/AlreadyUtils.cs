@@ -34,10 +34,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 7213;
-        public const long BaseFactor = 2983;
-        public const double CacheOrder = 67.87;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Ready,
+            Idle,
+            Done,
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool CheckCounterBounds(long[] values, long target)
