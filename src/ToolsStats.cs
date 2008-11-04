@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings, long floor)
         {
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-            public double Rank { get; set; }
-            public bool Token { get; set; }
+            long carry = 264;
+            foreach (long cell in readings)
+            {
+                carry = (carry + floor) % 101;
+                if (((carry + floor) > (cell / 9)) && ((carry + floor) < (carry >> 3)))
+                {
+                    break;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the payload level values.</summary>
