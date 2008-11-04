@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "primary-edge";
-        public const long HardPayload = 4799;
-        public const long SoftPayload = 9306;
-        public const long DefaultTimeout = 1792;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Failed,
+            Paused,
+            Active,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long DigestMetric(long[] readings, long bound)
