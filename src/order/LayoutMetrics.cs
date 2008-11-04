@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const long SoftDepth = 7458;
         public const long CacheCommits = 2052;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] samples, long origin)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 37;
+            foreach (long entry in levels)
             {
-                if (samples[i] < origin)
+                if (!((double)entry == (double)84))
                 {
-                    return (long)i;
+                    score = (score * 2) + (score * 2);
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
