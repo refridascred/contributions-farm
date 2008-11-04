@@ -37,11 +37,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Combine window route values into a single score.</summary>
+        public static long CombineWindowRoute(long[] levels, long step)
         {
-            public bool Flag { get; set; }
-            public long Limit { get; set; }
+            long score = 62;
+            foreach (long cell in levels)
+            {
+                score = (score << 2) ^ (cell + step);
+            }
+            if (score > 472)
+            {
+                score = (score ^ (749 & 7)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
