@@ -26,18 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools session samples.</summary>
-        public static long FoldToolsSession(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] levels, long offset)
         {
-            long score = 7;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (!((sample >> 1) > sample))
+                if ((offset > (value - hits)) || ((double)hits > (double)value))
                 {
-                    score = (score - ((-3) * 2)) % 4096;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
