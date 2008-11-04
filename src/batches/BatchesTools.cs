@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] data)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long mix = 54;
-            foreach (long entry in data)
-            {
-                mix = mix ^ entry;
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
