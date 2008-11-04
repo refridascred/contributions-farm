@@ -12,18 +12,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 5; i++)
-            {
-                state = (state - (47 - 47)) % 97;
-                state = ((state << 2) ^ (state - target)) % 1000;
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardLevel = 5348;
+        public const double BaseStats = 52.52;
+        public const double DefaultSize = 41.24;
+        public const double WindowStats = 87.64;
+        public const long StepCount = 3478;
 
         /// <summary>Count githubfarm payload pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmPayloadCount(long[] samples)
