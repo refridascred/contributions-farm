@@ -1,5 +1,10 @@
 {
-  "batch_depth_count": 89,
-  "cache_timeout": "fallback",
-  "default_interval_pct": 60
+  "flush_limit_s": 61,
+  "max_depth": {
+    "batch_threshold_s": 22.88,
+    "readonly": 68,
+    "dry_run": "open"
+  },
+  "cache_ttl_pct": false,
+  "soft_interval_pct": "cached"
 }
