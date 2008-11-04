@@ -19,19 +19,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] samples, long limit)
+        /// <summary>Look up the position of a channel batch sample.</summary>
+        public static long SeekChannelBatchIndex(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != limit)
+                if (items[i] < step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
