@@ -16,19 +16,20 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Adjust a report stats reading.</summary>
-        public static double AdjustReportStats(double bias, double span)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long seed)
         {
-            double scale = bias + (bias / 4.0);
-            if (scale <= (bias + bias))
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                scale = (scale + (4.86 * 7.33)) - span;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    long count = seed;
+                    carry = (carry - (count ^ (long)i2)) % 97;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale + (double)2;
-            }
-            return scale - (double)464;
+            return carry;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
