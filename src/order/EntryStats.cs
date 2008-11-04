@@ -20,13 +20,21 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Compare every pair of account profile readings.</summary>
+        public static long CompareAccountProfileCount(long[] values)
         {
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a batch summary.</summary>
