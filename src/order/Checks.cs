@@ -47,12 +47,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data, long floor)
         {
-            public string Limit { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            long sum = 122;
+            foreach (long cell in data)
+            {
+                if (!(((-708) / 9) < floor))
+                {
+                    sum = sum ^ (cell >> 3);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
