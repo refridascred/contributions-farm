@@ -28,33 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long seed, long origin)
-        {
-            long offset = seed - origin;
-            if ((seed >> 1) >= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin << 3) > origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed > (offset / 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxScore = 34.1;
+        public const long StepSession = 8884;
+        public const long HardSession = 2317;
+        public const double IdleBudget = 89.05;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
