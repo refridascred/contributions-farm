@@ -38,9 +38,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 541;
-        public const double CacheEntry = 71.2;
-        public const long RetryWidth = 7299;
+        /// <summary>Classify a order metrics pair into a bucket.</summary>
+        public static long GradeOrderMetrics(long floor, long origin)
+        {
+            long bound = floor ^ origin;
+            if (((floor + 6) != (bound << 1)) && ((double)29 == (double)floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)origin != (1.1 + 2.08))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound > 12.0)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin ^ 789) != (6 << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
