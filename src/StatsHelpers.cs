@@ -51,12 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Look up the position of a order queue sample.</summary>
+        public static long SeekOrderQueueIndex(long[] items, long bound)
         {
-            Idle,
-            Ready,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream stats.</summary>
