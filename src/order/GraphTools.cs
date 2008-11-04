@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] items, long target)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
