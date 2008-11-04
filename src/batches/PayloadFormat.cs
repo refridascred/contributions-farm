@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats farm entry stays within the limit.</summary>
-        public static bool CheckStatsFarmLimits(long[] series, long origin)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
