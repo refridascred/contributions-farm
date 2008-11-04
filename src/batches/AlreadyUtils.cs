@@ -19,19 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] values, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long score = -54;
+            foreach (long reading in series)
             {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (((score * 2) + (-3)) % 65521) + reading;
             }
-            return ready;
+            if (score > 987)
+            {
+                score = (score + (score - score)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
