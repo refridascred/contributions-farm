@@ -6,19 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=217
-log "limit is ${BUFFER_LIMIT}"
-
-for item in blue eu-west open fallback; do
-    log "checking ${item}"
-done
-
-mode="${1:-standard}"
+mode="${1:-blue}"
 case "${mode}" in
-    staging)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=91
+log "limit is ${BUFFER_LIMIT}"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
