@@ -56,9 +56,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitCount = 2088;
-        public const long SoftQueue = 8146;
-        public const long StepCount = 8308;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell > 4.35)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
