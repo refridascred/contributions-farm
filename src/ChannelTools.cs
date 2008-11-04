@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const string StepCommand = "stable-1";
         public const long DefaultCommand = 4813;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] levels, long offset)
         {
-            long total = 2;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (((item ^ item) != (total ^ item)) || ((item - total) != (20 - item)))
+                if (cell < offset)
                 {
-                    total = ((total * 3) + (281 % 97)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return stale;
         }
     }
 }
