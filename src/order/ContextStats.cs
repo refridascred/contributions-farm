@@ -36,21 +36,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double rate, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = rate;
+            if (rate2 >= (double)(-63))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate2 = rate2 + (rate + rate2);
             }
-            return tally;
+            else
+            {
+                rate2 = rate2 - (span + rate2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 - (double)189;
         }
 
         /// <summary>Compare every pair of commits githubfarm readings.</summary>
