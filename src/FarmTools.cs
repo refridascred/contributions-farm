@@ -28,12 +28,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            Stale,
-            Ready,
-            Locked,
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
