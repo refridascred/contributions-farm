@@ -43,21 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Scale a report metric figure with a bias.</summary>
+        public static double SmoothReportMetric(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double rate = bias / 7.0;
+            if (rate > (bias + scale))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = rate + bias;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + 1.0) - (double)(long)i;
+            }
+            return rate + (scale - bias);
         }
     }
 }
