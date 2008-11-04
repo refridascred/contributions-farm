@@ -29,11 +29,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
+            Pending,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a record record.</summary>
