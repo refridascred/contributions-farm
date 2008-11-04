@@ -51,12 +51,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a contributi entry.</summary>
