@@ -1,11 +1,7 @@
 # githubfarm settings
-stats_delay: false
-retry_size_s:
-  - 292
-  - 236
+cache_window: 6254
 verbose:
-  - legacy
-  - edge
-context_capacity: stable
-support_capacity: 81
-batches_depth: latest
+  - green
+  - cached
+soft_capacity: latest
+retry_ttl_s: 30
