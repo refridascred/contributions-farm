@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long limit)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] items)
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = state ^ (state + state);
-                state = ((state * 4) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Iterate the stream githubfarm series from a seed.</summary>
