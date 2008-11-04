@@ -1,10 +1,7 @@
-id,owner,label,active
-1,93.43,13.26,85.47
-2,55,staging,80.35
-3,94.65,local,661
-4,edge,552,81.18
-5,73,226,local
-6,13.45,fallback,cached
-7,646,70.39,458
-8,639,legacy,62.97
-9,edge,34.51,eu-west
+id,ratio,count,label,weight
+1,756,965,green,staging
+2,763,6.88,eu-west,481
+3,249,88.71,5.68,48.46
+4,eu-west,24.61,cached,227
+5,239,392,80.32,286
+6,374,standard,686,507
