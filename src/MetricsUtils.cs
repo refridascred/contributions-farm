@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long HardMetric = 2470;
         public const long BaseMetric = 7681;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] data, long step)
+        /// <summary>Measure how many cache checks samples are out of range.</summary>
+        public static long CountCacheChecksOutliers(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (data[i] > step)
+                if ((hits >= ((long)levels.Length + reading)) || (((76 - reading) > (6 + hits)) || ((reading - reading) > 5)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
