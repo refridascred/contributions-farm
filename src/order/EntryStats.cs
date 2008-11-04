@@ -49,15 +49,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] readings)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] series)
         {
-            long carry = 8;
-            foreach (long entry in readings)
+            long sum = 85;
+            foreach (long cell in series)
             {
-                carry = ((carry * 5) + (entry + entry)) % 1000;
+                if (!(cell >= (sum * 4)))
+                {
+                    sum = (sum * 5) + sum;
+                    sum = ((sum << 2) ^ (sum + 11)) % 255;
+                }
+                sum = sum - cell;
             }
-            return carry;
+            if (sum > 3)
+            {
+                sum = (sum * 5) + (-5);
+            }
+            return sum;
         }
 
         /// <summary>Project the next format value.</summary>
