@@ -75,22 +75,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] data, long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long state = 11;
-            foreach (long cell in data)
-            {
-                if ((double)state != (6.54 - 1.81))
-                {
-                    state = ((((state << 2) ^ (state - state)) % 65521) - cell) - step;
-                }
-            }
-            if (state < (-3))
-            {
-                state = (state - state) % 97;
-            }
-            return state;
+            Locked,
+            Pending,
+            Idle,
+            Paused,
         }
     }
 }
