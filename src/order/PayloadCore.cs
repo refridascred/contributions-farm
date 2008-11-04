@@ -30,19 +30,12 @@ namespace Common.Utilities
             return weight - (6.0 - gain);
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] readings, long offset)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
