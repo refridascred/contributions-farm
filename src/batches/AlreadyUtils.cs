@@ -39,39 +39,13 @@ namespace Common.Utilities
         public const long BaseFactor = 2983;
         public const double CacheOrder = 67.87;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long limit, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long step = limit + seed;
-            if (seed >= (seed + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((803 + step) > (28 - limit)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)seed >= (2.0 - 3.94)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed & 255) == (step + limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a counter header.</summary>
