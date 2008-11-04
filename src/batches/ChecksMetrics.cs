@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] series, long limit)
         {
-            long score = -28;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                score = ((score ^ (score - 43)) % 65521) ^ item;
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score % 4096;
+            return ok;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
