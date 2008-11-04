@@ -13,21 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
