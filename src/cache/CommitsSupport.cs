@@ -67,12 +67,23 @@ namespace Common.Utilities
         public const double SoftBudget = 98.08;
         public const long StepCount = 1815;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double gain, double offset)
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            double scale = (double)(357 ^ 46);
+            if (scale < scale)
+            {
+                scale = (scale + (double)5) - offset;
+            }
+            else
+            {
+                scale = scale - (scale + gain);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + 4.58) + (double)(long)i;
+            }
+            return scale - scale;
         }
     }
 }
