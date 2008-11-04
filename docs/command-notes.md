@@ -1,11 +1,11 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the session list.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Run the buffer check before changing any support limits.
+Keep checks and tools names short and lowercase.
+When a token fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cluster change
-- Validate entry input early
-- Review route limits each release
-- Document new stream fields
+- Document new cache fields
+- Prefer session defaults
+- Validate editor input early
