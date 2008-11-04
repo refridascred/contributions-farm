@@ -37,20 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordOutliers(long[] readings)
         {
-            long score = 9;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                score = ((score * 2) + (score << 2)) % 4096;
-                score = score + (score - sample);
-                if (((15.0 * 14.0) < (double)sample) && (((-915) >> 5) != (sample & 127)))
+                if (((long)readings.Length + 5) <= (value + seen))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return score % 65521;
+            return seen;
         }
     }
 }
