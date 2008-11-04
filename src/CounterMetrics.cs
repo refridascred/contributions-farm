@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long HardEntry = 6643;
         public const string HardCount = "local-edge";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 9814;
-        public const double BaseAccount = 15.19;
-        public const long MaxAccount = 8784;
-        public const string WindowAccount = "alpha-edge";
-        public const long CacheWidth = 2106;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a contributi header.</summary>
         public sealed class ContributiHeader
