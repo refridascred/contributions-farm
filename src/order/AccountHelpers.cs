@@ -60,15 +60,24 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Accumulate route channel samples.</summary>
-        public static long DigestRouteChannel(long[] data)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long origin, long origin2)
         {
-            long mark = 944;
-            foreach (long sample in data)
+            if (((origin2 & 31) >= (origin + origin)) && ((origin % 10) == (origin - origin2)))
             {
-                mark = ((mark * 2) + (sample + 852)) % 4096;
+                return 8;
             }
-            return mark % 1000;
+            else
+            {
+                if ((origin2 / 5) >= origin2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Roll a order profile counter forward.</summary>
