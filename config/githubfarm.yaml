@@ -1,4 +1,36 @@
 # githubfarm settings
-metrics_interval: edge
-base_capacity_ms: local
-default_size_pct: true
+retry_ttl_ms: true
+cache_ttl:
+  default_limit_count: 35.75
+  verbose:
+    route_threshold: 82.88
+    sync_threshold_count:
+      - 439
+      - 23
+      - 417
+      - 2
+    sync_ratio_s: 131
+    enabled: 56
+    burst_threshold: edge
+    sync_retries: stable
+  filter_ttl: 31
+  cache_retries_ms: 82.56
+  cache_delay_ms: 84.78
+poll_capacity_ms: 3431
+max_window_s:
+  retry_timeout_pct:
+    - cached
+    - eu-west
+    - eu-west
+    - blue
+  min_size_pct: cached
+  warm_ttl:
+    - latest
+    - fallback
+    - legacy
+    - stable
+  checks_limit: fallback
+  retry_ttl_ms: edge
+  strict: true
+metrics_capacity: 59
+audit: stable
