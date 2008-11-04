@@ -51,9 +51,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 5869;
-        public const double BatchSession = 81.43;
-        public const long RetrySession = 8469;
+        /// <summary>Check that every route order entry stays within the limit.</summary>
+        public static bool VerifyRouteOrderLimits(long[] data, long target)
+        {
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
