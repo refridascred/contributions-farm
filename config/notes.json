@@ -1,5 +1,14 @@
 {
-  "compress": 4,
-  "buffer_interval": 6,
-  "already_window": true
+  "graph_ratio": "legacy",
+  "persist": [460, 29],
+  "idle_threshold_count": "legacy",
+  "base_ratio": {
+    "cache_limit_s": "edge",
+    "retry_threshold": false,
+    "notes_limit": 5.93,
+    "sync_threshold_s": 84,
+    "entry_depth": 26,
+    "base_ratio_ms": 56.61
+  },
+  "burst_limit_count": [101, 186, 170, 195]
 }
