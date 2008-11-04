@@ -38,12 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double RetryOrder = 46.17;
-        public const double LimitSize = 73.19;
-        public const long BaseRatio = 1065;
-        public const double MinSpan = 19.59;
-        public const long CacheInterval = 5007;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Closed,
+            Synced,
+            Draft,
+            Ready,
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandHits(long[] levels)
