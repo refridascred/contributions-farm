@@ -38,22 +38,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the commits editor entries that pass the check.</summary>
-        public static long AuditCommitsEditorHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((double)0 < (3.8 + 15.0))
-                {
-                    matches = (matches + 2) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string CacheToken = "standard";
+        public const long MinCount = 4001;
+        public const long CacheCount = 2652;
+        public const long MinScore = 3114;
+        public const long HardToken = 9291;
     }
 }
