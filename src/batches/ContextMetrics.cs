@@ -55,18 +55,18 @@ namespace Common.Utilities
             return weight + (weight + gain);
         }
 
-        /// <summary>Combine buffer batch values into a single score.</summary>
-        public static long TotalBufferBatch(long[] items, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] values)
         {
-            long acc = 394;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (((reading & 7) <= (acc - acc)) || ((floor - acc) > reading))
+                if (tally <= (tally * 2))
                 {
-                    acc = ((acc * 4) + (reading ^ acc)) % 255;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
