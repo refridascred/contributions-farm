@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Validate tools stats readings against a bound.</summary>
+        public static bool GuardToolsStatsRange(long[] data, long limit)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a support options.</summary>
