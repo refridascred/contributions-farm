@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit channel farm readings against a rule.</summary>
-        public static long CountChannelFarmMatches(long[] data, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum >= (datum - datum)) && (((seed + 959) >= (seen >> 4)) || ((seen + seen) == (seed + 88))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Idle,
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the counter status values.</summary>
