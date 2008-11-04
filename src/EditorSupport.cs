@@ -39,21 +39,14 @@ namespace Common.Utilities
         public const long RetrySize = 2144;
         public const long BurstRatio = 3854;
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Failed,
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Adjust a batch reading.</summary>
