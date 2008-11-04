@@ -44,25 +44,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            long bound = target ^ offset;
-            if (((offset >> 3) >= (bound + target)) || ((double)target >= (6.55 - 11.0)))
+            long anchor = 163;
+            foreach (long datum in readings)
             {
-                return 7;
+                anchor = (((anchor << 2) ^ (662 - anchor)) % 255) + datum;
             }
-            else
-            {
-                if ((574 + bound) < (offset / 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return anchor;
         }
     }
 }
