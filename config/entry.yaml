@@ -1,8 +1,10 @@
 # entry settings
-warm_size_ms:
-  - 188
-  - 87
-burst_ratio_ms: 250
-metrics_size: 985
-retry_limit_s: 20.68
-support_depth: eu-west
+default_size_count:
+  - 10
+  - 339
+  - 134
+  - 249
+cache_limit_pct: 16.31
+retry_depth_s: 56.77
+default_threshold_count: 52.33
+poll_retries_count: 6451
