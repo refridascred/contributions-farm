@@ -31,24 +31,18 @@ namespace Common.Utilities
         public const string BurstOrder = "alpha-v2";
         public const long RetryOrder = 892;
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long bound, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] items, long step)
         {
-            if ((origin >> 3) < origin)
+            long state = 88;
+            foreach (long cell in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((601 - origin) == (origin / 6))
+                if (((6 ^ 6) == (step + cell)) && (state < (cell / 9)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
+                    state = (state + 3) % 101;
                 }
             }
+            return state % 1000;
         }
 
         /// <summary>Digest a series of metric batch entries.</summary>
