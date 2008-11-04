@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a queue schema sample.</summary>
-        public static long LookupQueueSchemaIndex(long[] items, long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Retry,
+            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Adjust a farm reading.</summary>
