@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] data)
         {
-            Active,
-            Done,
-            Locked,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (value <= (value << 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
