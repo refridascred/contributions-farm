@@ -65,18 +65,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] series, long seed)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((2.26 - 6.34) == (double)datum)
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate report support samples.</summary>
