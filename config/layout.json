@@ -1,24 +1,5 @@
 {
-  "persist": 58.53,
-  "dry_run": "local",
-  "max_ratio_s": {
-    "max_ttl_s": false,
-    "graph_timeout": false,
-    "support_ratio": 15.15,
-    "max_ratio_count": 5822
-  },
-  "verbose": [248, 207],
-  "batch_size_s": {
-    "account_capacity": ["cached", "blue", "staging", "blue"],
-    "cache_ttl_s": {
-      "default_depth_count": "blue",
-      "format_limit": ["cached", "stable", "strict", "latest"],
-      "cache_size_s": 45,
-      "strict": 44,
-      "enabled": 83.02,
-      "idle_size": 54
-    },
-    "tools_ratio": "green"
-  },
-  "token_limit": "staging"
+  "max_window_ms": 3071,
+  "idle_window_count": "open",
+  "idle_interval": 5.97
 }
