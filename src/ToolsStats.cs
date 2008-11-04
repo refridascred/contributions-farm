@@ -55,12 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] series)
         {
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((14.0 - 12.0) != (double)reading) && ((76 / 2) == ((long)series.Length << 3)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
