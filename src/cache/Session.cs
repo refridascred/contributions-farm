@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many farm profile samples are out of range.</summary>
-        public static long CountFarmProfileMatches(long[] series, long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)tally >= (0.1 / 9.0))
-                {
-                    tally = ((tally + 1) - value) - limit;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a already options.</summary>
