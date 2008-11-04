@@ -46,22 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series, long step)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphHits(long[] levels, long target)
         {
-            long state = 6;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((state << 3) < (cell / 2))
+                if ((value * 2) == (value % 97))
                 {
-                    state = ((state << 3) ^ state) - step;
+                    hits = (hits + 1) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (state > 6)
-            {
-                state = ((state * 3) + 15) % 4096;
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
