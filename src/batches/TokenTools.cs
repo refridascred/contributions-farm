@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] samples, long floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a schema record.</summary>
