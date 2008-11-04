@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long HardMetric = 2470;
         public const long BaseMetric = 7681;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] series, long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= origin)
+                if (data[i] > step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
