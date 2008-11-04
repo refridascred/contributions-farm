@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long offset, long offset2)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            long diff = offset - offset2;
-            if (((-374) + offset) < (offset2 << 2))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((diff + diff) != (offset / 5)) && ((offset2 - offset) == (diff + diff)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset < (0 % 12))
+                    if ((samples[i] ^ samples[j]) == 0)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset % 8) != (609 ^ diff))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
