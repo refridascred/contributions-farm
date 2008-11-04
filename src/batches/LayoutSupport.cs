@@ -69,18 +69,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] levels)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long sum = 34;
-            foreach (long cell in levels)
-            {
-                if ((cell % 2) <= (cell + cell))
-                {
-                    sum = (sum * 2) + (cell - cell);
-                }
-            }
-            return sum % 65521;
+            public string Weight { get; set; } = "";
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
