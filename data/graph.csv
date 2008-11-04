@@ -1,6 +1,8 @@
-id,weight,region
-1,eu-west,42
-2,green,edge
-3,local,edge
-4,332,32.49
-5,366,latest
+id,state,count
+1,78,79.99
+2,595,20.96
+3,90.67,472
+4,130,945
+5,39.93,98.44
+6,1.36,blue
+7,green,36.2
