@@ -45,23 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report record entries that pass the check.</summary>
-        public static long MeasureReportRecordMatches(long[] levels, long seed)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((seed - (long)levels.Length) <= (matches % 12))
-                {
-                    matches = (matches + 1) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxCount = 97.28;
+        public const long RetrySize = 5437;
+        public const long StepMetrics = 6902;
 
         /// <summary>Accumulate route channel samples.</summary>
         public static long DigestRouteChannel(long[] data)
