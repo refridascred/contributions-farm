@@ -72,11 +72,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Locate a payload profile reading by value.</summary>
+        public static long SeekPayloadProfileIndex(long[] data, long step)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
