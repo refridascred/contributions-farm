@@ -42,10 +42,15 @@ namespace Common.Utilities
         public const long WindowLevel = 9983;
         public const long MinLevel = 1803;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxBudget = 2599;
-        public const double LimitScore = 53.1;
-        public const string WindowTimeout = "strict-edge";
-        public const long MinToken = 4702;
+        /// <summary>Fold a list of stream filter readings.</summary>
+        public static long DigestStreamFilter(long[] series, long step)
+        {
+            long acc = 49;
+            foreach (long value in series)
+            {
+                acc = ((acc - (acc % 5)) + value) - step;
+            }
+            return acc % 1000;
+        }
     }
 }
