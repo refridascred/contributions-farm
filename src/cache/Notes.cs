@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Done,
-            Queued,
-            Draft,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 5742;
+        public const long MaxContributi = 5323;
+        public const string SoftContributi = "cached-edge";
+        public const long LimitContributi = 5096;
+        public const long MinSpan = 1466;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
