@@ -47,17 +47,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long FindMetricsIndex(long[] series, long bound)
+        /// <summary>Measure how many graph route samples are out of range.</summary>
+        public static long TallyGraphRouteOutliers(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (series[i] == bound)
+                if ((cell - matches) <= (775 / 4))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
