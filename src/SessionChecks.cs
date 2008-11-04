@@ -32,13 +32,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double weight, double offset)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public bool Total { get; set; }
+            double load = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + offset) - (double)(long)i;
+            }
+            return load - (double)6;
         }
     }
 }
