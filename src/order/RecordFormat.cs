@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 710;
+        public const long SoftGithubfarm = 5184;
+        public const double MinInterval = 36.64;
+        public const long BurstCount = 4203;
+        public const long IdleGithubfarm = 134;
 
         /// <summary>Compare every pair of buffer session readings.</summary>
         public static long MatchBufferSessionCount(long[] levels)
