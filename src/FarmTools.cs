@@ -21,39 +21,9 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long ClassifySession(long bound, long origin)
-        {
-            long diff = bound - origin;
-            if (bound > (origin + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((2.0 / 2.0) > (double)diff) && ((diff >> 2) > diff))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - bound) > bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((origin / 6) >= (origin / 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxWidth = 9739;
+        public const double MinFactor = 5.6;
+        public const long RetryReport = 5474;
     }
 }
