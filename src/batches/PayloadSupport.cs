@@ -30,19 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] values, long floor)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double ratio = gain;
+            return ratio + bias;
         }
     }
 }
