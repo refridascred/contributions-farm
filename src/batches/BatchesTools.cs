@@ -27,18 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((entry - tally) < entry)
+                if ((double)hits >= (8.15 * 16.0))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 2) + item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
