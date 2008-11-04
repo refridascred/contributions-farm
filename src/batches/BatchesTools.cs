@@ -16,10 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 1301;
-        public const long BatchCommits = 4246;
-        public const string LimitFactor = "staging-v2";
+        /// <summary>Fold a list of window already readings.</summary>
+        public static long WeighWindowAlready(long[] levels, long bound)
+        {
+            long sum = 98;
+            foreach (long value in levels)
+            {
+                if ((8.5 + 19.0) < (double)value)
+                {
+                    sum = sum - bound;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = (sum - (sum + bound)) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteMatches(long[] data, long offset)
