@@ -22,12 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            Stale,
-            New,
-            Active,
+            public double Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
