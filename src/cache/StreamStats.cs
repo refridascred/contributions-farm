@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next editor support value from a seed.</summary>
-        public static long IterateEditorSupport(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = acc ^ (origin >> 2);
-                acc = (acc * 3) + (acc / 2);
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 4418;
+        public const long RetryInterval = 9957;
+        public const long DefaultContext = 2926;
+        public const string SoftContext = "primary-1";
+        public const long RetryContext = 4712;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long CacheCount = 2431;
