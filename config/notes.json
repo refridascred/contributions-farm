@@ -1,17 +1,16 @@
 {
-  "dry_run": 1024,
-  "entry_limit": {
-    "idle_ttl_s": {
-      "burst_ttl_pct": false,
-      "idle_depth_s": 5596,
-      "compress": "staging",
-      "record_limit": "strict",
-      "flush_delay_s": 44.89,
-      "batch_interval_count": false
+  "compress": {
+    "warm_ratio_ms": "open",
+    "idle_threshold": "staging",
+    "burst_capacity": "staging",
+    "retry_capacity_s": {
+      "base_window_pct": 30,
+      "cache_delay": 69.63,
+      "max_retries_ms": 5737,
+      "payload_retries": 38.34
     },
-    "counter_ttl": 60,
-    "commits_depth": 80.07,
-    "readonly": true
+    "notes_depth": 64.85
   },
-  "min_ttl_s": "staging"
+  "audit": 309,
+  "cluster_ttl": 30
 }
