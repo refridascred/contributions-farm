@@ -33,13 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Retry,
-            Done,
-            Stale,
+            New,
             Queued,
+            Closed,
         }
 
         /// <summary>Rank batches filter input into a small class.</summary>
