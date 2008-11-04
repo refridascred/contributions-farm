@@ -63,14 +63,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Paused,
-            Failed,
-            Ready,
-            Draft,
-            Active,
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
