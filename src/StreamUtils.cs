@@ -72,13 +72,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Scale a cluster schema figure with a bias.</summary>
