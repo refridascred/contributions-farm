@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const string MinGithubfarm = "open-edge";
         public const long WindowDepth = 7372;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftInterval = 2855;
-        public const double DefaultSpan = 36.15;
-        public const long BaseEditor = 4216;
-        public const long RetryInterval = 572;
-        public const long DefaultEditor = 5882;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double weight, double floor)
+        {
+            double rate = weight;
+            if (rate > (double)0)
+            {
+                rate = rate - weight;
+            }
+            return rate + (floor - floor);
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
