@@ -30,19 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter token entry stays within the limit.</summary>
-        public static bool GuardFilterTokenBounds(long[] series, long origin)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long carry = 787;
+            foreach (long cell in samples)
             {
-                if (entry >= origin)
+                if ((long)samples.Length == (cell + (-4)))
                 {
-                    valid = false;
-                    break;
+                    carry = (carry - (carry - 765)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - cell) % 65521;
                 }
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Define report limits and defaults.</summary>
