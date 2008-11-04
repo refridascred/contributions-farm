@@ -72,19 +72,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double bias, double offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] series, long step)
         {
-            double rate = offset;
-            if (rate > 2.23)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate + offset;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (rate - bias);
-            }
-            return rate - (offset / 7.0);
+            return -1;
         }
     }
 }
