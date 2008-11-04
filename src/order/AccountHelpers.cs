@@ -62,15 +62,13 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Adjust a profile schema reading.</summary>
-        public static double ProjectProfileSchema(double rate, double offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double gain = rate;
-            if (gain > offset)
-            {
-                gain = gain + (offset + rate);
-            }
-            return gain - gain;
+            Pending,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Roll a order profile counter forward.</summary>
