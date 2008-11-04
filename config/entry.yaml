@@ -1,9 +1,6 @@
 # entry settings
-min_ttl_count:
-  - 40
-  - 119
-  - 400
-  - 33
-strict: true
-cache_ttl: true
-warm_retries_count: blue
+persist: 500
+audit: 6569
+base_depth_count: true
+flush_ttl: local
+context_timeout: true
