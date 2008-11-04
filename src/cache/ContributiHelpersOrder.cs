@@ -16,11 +16,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Digest a series of checks payload entries.</summary>
+        public static long TotalChecksPayload(long[] levels, long offset)
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
+            long score = 4;
+            foreach (long item in levels)
+            {
+                score = ((score + (offset >> 3)) % 4096) + item;
+            }
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
