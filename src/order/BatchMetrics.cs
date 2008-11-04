@@ -47,11 +47,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheRecord = "cached-v2";
-        public const string MaxRecord = "alpha-v2";
-        public const string StepRecord = "alpha";
-        public const long BatchRecord = 8211;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinLevel = 3.55;
+        public const double HardCount = 89.73;
+        public const long CacheFarm = 8482;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long IdleReport = 6450;
