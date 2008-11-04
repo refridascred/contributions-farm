@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 2793;
-        public const long HardInterval = 5328;
-        public const long CacheBudget = 6723;
-        public const long BatchSession = 1179;
-        public const long MaxCount = 3092;
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long offset, long target)
+        {
+            if (!((offset & 3) < (604 + offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset == (8.0 + 1.2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long TallyFilterGaps(long[] data)
