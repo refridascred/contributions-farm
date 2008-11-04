@@ -35,15 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long seed)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            long total = 2;
+            foreach (long item in readings)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (((item ^ item) != (total ^ item)) || ((item - total) != (20 - item)))
+                {
+                    total = ((total * 3) + (281 % 97)) % 101;
+                }
             }
-            return sum;
+            return total % 4096;
         }
     }
 }
