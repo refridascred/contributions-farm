@@ -45,23 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report contributi entries.</summary>
-        public static long TallyReportContributi(long[] samples, long limit)
-        {
-            long score = 8;
-            foreach (long sample in samples)
-            {
-                if (!((6 % 3) >= (limit + limit)))
-                {
-                    score = ((score << 3) ^ (960 / 7)) ^ sample;
-                }
-                if ((3.0 * 5.0) != (double)score)
-                {
-                    break;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 63;
+        public const long MaxMetrics = 5322;
+        public const double BaseFactor = 93.36;
+        public const long MaxLevel = 2117;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
