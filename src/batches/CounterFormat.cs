@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long floor, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] levels, long step)
         {
-            if (((-575) << 2) == (floor << 3))
+            long carry = 22;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + floor) > floor)
+                if ((value + step) > (-5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((9.99 - 4.1) != (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound != (8.3 / 8.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = (carry * 5) + value;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
