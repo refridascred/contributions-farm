@@ -24,24 +24,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long offset, long bound)
+        /// <summary>Check that every githubfarm batches entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBatchesLimits(long[] values, long seed)
         {
-            if ((offset + (-54)) < (3 % 3))
+            bool valid = true;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((2 > (bound / 9)) || ((offset >> 1) <= ((-12) & 3)))
+                if (value < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
