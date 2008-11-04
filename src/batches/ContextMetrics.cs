@@ -13,19 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] levels, long target)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long state = 369;
-            foreach (long sample in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state * 3) + target;
-                if ((target & 255) >= target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state - (sample - sample);
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
