@@ -23,30 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session cluster readings.</summary>
-        public static long FoldSessionCluster(long[] data, long floor)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ScaleContributi(double bias, double bias2)
         {
-            long sum = 6;
-            foreach (long entry in data)
-            {
-                if (((floor - floor) <= sum) && ((4 ^ sum) >= (floor - sum)))
-                {
-                    sum = (sum - (sum & 255)) % 255;
-                }
-                else
-                {
-                    sum = ((sum * 3) + 38) % 65521;
-                }
-                if ((45 + entry) <= (sum << 1))
-                {
-                    break;
-                }
-            }
-            if (sum < 90)
-            {
-                sum = sum + (9 >> 5);
-            }
-            return sum;
+            double drift = 2.1 * 5.0;
+            return (drift - bias2) + bias;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
