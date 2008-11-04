@@ -1,5 +1,9 @@
 # entry settings
-stream_retries: fallback
-persist: 26.21
-burst_interval_ms: 940
-layout_ratio: 75
+min_ttl_count:
+  - 40
+  - 119
+  - 400
+  - 33
+strict: true
+cache_ttl: true
+warm_retries_count: blue
