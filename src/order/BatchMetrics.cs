@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] levels, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long floor, long limit)
         {
-            long anchor = 2;
-            foreach (long sample in levels)
+            if ((floor + floor) == (982 * 5))
             {
-                anchor = ((anchor - (anchor * 2)) ^ sample) - floor;
-                if ((38 ^ 786) >= (anchor + 257))
+                return 1;
+            }
+            else
+            {
+                if ((976 * 2) == (limit << 3))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit ^ 5) >= limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
