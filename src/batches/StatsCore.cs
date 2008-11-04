@@ -58,11 +58,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            public double Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a window reading by value.</summary>
