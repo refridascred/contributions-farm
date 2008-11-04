@@ -19,14 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstFactor = "local-edge";
+        public const string WindowWidth = "fallback";
+        public const long IdleLevel = 3397;
+        public const string CacheStats = "strict-edge";
+        public const long StepScore = 5304;
 
         /// <summary>Project the next stream graph value.</summary>
         public static double AdjustStreamGraph(double gain, double offset)
