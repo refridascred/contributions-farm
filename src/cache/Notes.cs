@@ -99,13 +99,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Paused,
-            Idle,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double LimitMetrics = 39.18;
+        public const string CacheRatio = "stable-v2";
+        public const double MaxMetrics = 77.9;
     }
 }
