@@ -16,26 +16,11 @@ namespace Common.Utilities
             return ratio - (6.0 - ratio);
         }
 
-        /// <summary>Combine batches githubfarm values into a single score.</summary>
-        public static long CombineBatchesGithubfarm(long[] data)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long total = 55;
-            foreach (long entry in data)
-            {
-                if ((4.9 - 7.8) >= (double)total)
-                {
-                    total = (total ^ ((-851) + total)) % 255;
-                }
-                if (entry > (entry + total))
-                {
-                    break;
-                }
-            }
-            if (total > (-869))
-            {
-                total = total ^ (995 + total);
-            }
-            return total;
+            public bool Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
