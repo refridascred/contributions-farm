@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const string DefaultFactor = "fallback-1";
         public const long BurstAccount = 2298;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] series, long offset)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (!((double)entry != (4.5 - 6.0)))
+                if (reading <= limit)
                 {
-                    count = (count + 2) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a notes record.</summary>
