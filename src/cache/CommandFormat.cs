@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] readings, long offset)
+        /// <summary>Count the cluster payload entries that pass the check.</summary>
+        public static long CountClusterPayloadGaps(long[] values)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (!(((offset / 9) <= value) && ((double)value != (3.0 - 7.9))))
+                if ((1 + seen) < seen)
                 {
-                    matches = matches + 2;
+                    seen = (seen + 3) + entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a already snapshot.</summary>
