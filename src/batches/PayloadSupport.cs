@@ -39,22 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] series, long step)
         {
-            long mark = -1;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((mark - mark) == (mark & 31))
+                if (sample < step)
                 {
-                    mark = (mark - (value + mark)) % 101;
-                }
-                else
-                {
-                    mark = mark ^ (mark / 8);
+                    found = false;
+                    break;
                 }
             }
-            return mark % 97;
+            return found;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
