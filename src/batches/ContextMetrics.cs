@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksOutliers(long[] data)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((hits & 7) < hits)
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
+            Queued,
+            Closed,
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
