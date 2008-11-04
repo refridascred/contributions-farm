@@ -19,19 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] samples, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long origin, long step)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long diff = origin + step;
+            if ((double)3 > (double)origin)
             {
-                if (item <= bound)
+                return 3;
+            }
+            else
+            {
+                if ((step / 6) < diff)
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
