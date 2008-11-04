@@ -36,22 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Measure how many profile counter samples are out of range.</summary>
+        public static long CountProfileCounterHits(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                long count = (anchor / 7) << 2;
-                long count2 = (long)i & 31;
-                if ((((-7) + count2) >= (seed / 2)) && ((count2 ^ count) == ((long)i * 2)))
+                if ((sample / 7) != (sample ^ seen))
                 {
-                    count2 = ((count2 * 4) + ((long)i * 2)) % 65521;
-                    count2 = (count2 << 3) ^ (5 + count);
+                    seen = seen + 1;
                 }
-                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
     }
 }
