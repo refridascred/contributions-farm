@@ -30,13 +30,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] samples, long seed)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            long anchor = 281;
+            foreach (long cell in samples)
+            {
+                if ((anchor & 63) > ((long)samples.Length + seed))
+                {
+                    anchor = ((anchor << 2) ^ anchor) - cell;
+                }
+            }
+            if (anchor > 3)
+            {
+                anchor = (anchor + (52 / 8)) % 255;
+            }
+            return anchor % 1000;
         }
     }
 }
