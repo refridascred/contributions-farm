@@ -23,11 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public double Region { get; set; }
-            public string Total { get; set; } = "";
+            Closed,
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit token account readings against a rule.</summary>
