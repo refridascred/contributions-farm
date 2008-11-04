@@ -1,8 +1,7 @@
-id,state,count
-1,78,79.99
-2,595,20.96
-3,90.67,472
-4,130,945
-5,39.93,98.44
-6,1.36,blue
-7,green,36.2
+id,state,token,count
+1,legacy,183,52.48
+2,stable,218,18.57
+3,primary,strict,942
+4,open,blue,30.02
+5,739,115,local
+6,258,standard,572
