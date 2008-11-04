@@ -57,16 +57,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a order profile counter forward.</summary>
-        public static long IterateOrderProfile(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleFactor = "strict-1";
+        public const long LimitRecord = 6610;
+        public const double WindowRecord = 51.16;
+        public const long LimitLevel = 3538;
+        public const long MaxRecord = 7860;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long DigestBatch(long[] series, long step)
