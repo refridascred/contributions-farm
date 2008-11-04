@@ -31,21 +31,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            Locked,
+            Stale,
         }
     }
 }
