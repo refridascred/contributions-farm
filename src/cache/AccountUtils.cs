@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((22 / 7) >= tally)
+                if ((seen % 10) >= (datum + origin))
                 {
-                    tally = (tally + 2) - reading;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a cache summary.</summary>
