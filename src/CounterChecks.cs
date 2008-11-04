@@ -28,12 +28,15 @@ namespace Common.Utilities
         public const string RetryBatches = "strict";
         public const long SoftBatches = 2099;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Digest a series of metrics command entries.</summary>
+        public static long DigestMetricsCommand(long[] data, long target)
         {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Token { get; set; }
+            long sum = 0;
+            foreach (long datum in data)
+            {
+                sum = ((sum * 5) + target) - datum;
+            }
+            return sum;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
