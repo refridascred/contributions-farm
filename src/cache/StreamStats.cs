@@ -33,11 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 4065;
-        public const long WindowCommits = 5167;
-        public const long BaseSize = 9775;
-        public const long MaxCommits = 581;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state - (47 - 47)) % 97;
+                state = ((state << 2) ^ (state - target)) % 1000;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] levels, long offset)
