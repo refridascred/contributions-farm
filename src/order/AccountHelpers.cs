@@ -31,17 +31,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first cluster route entry that matches the target.</summary>
-        public static long SeekClusterRouteIndex(long[] samples, long target)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= target) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the filter mode values.</summary>
