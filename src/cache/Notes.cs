@@ -62,18 +62,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics already entries.</summary>
-        public static long TallyMetricsAlready(long[] levels)
+        /// <summary>Digest a series of schema checks entries.</summary>
+        public static long TallySchemaChecks(long[] series)
         {
-            long anchor = 86;
-            foreach (long cell in levels)
+            long score = -71;
+            foreach (long reading in series)
             {
-                if (((double)anchor < (1.1 + 1.16)) && ((anchor & 3) != (cell * 4)))
+                if (score <= (score + score))
                 {
-                    anchor = (anchor << 2) ^ (anchor + cell);
+                    long delta = (reading / 9) & 63;
+                    score = (score - (delta + delta)) % 97;
+                }
+                else
+                {
+                    score = score + score;
+                }
+                if ((reading ^ score) < (score % 16))
+                {
+                    score = score ^ reading;
+                }
+                else
+                {
+                    score = ((score * 3) + ((long)series.Length / 4)) % 101;
                 }
             }
-            return anchor % 4096;
+            if (score < 411)
+            {
+                score = (score - (score - score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Accumulate report support samples.</summary>
