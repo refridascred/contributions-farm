@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] data, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorOutliers(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (sample >= target)
+                if ((double)count >= (5.06 + 1.8))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
