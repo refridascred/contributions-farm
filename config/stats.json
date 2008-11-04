@@ -1,16 +1,7 @@
 {
-  "report_ttl": {
-    "dry_run": 50.65,
-    "min_ttl_count": {
-      "batch_threshold_s": "staging",
-      "githubfarm_interval": 60,
-      "metric_capacity": "fallback",
-      "retry_limit": "eu-west",
-      "default_ttl": [95, 7, 337]
-    },
-    "base_retries_s": false
-  },
-  "max_timeout_ms": [228, 199, 310],
-  "readonly": 250,
-  "poll_ttl_ms": false
+  "readonly": [379, 98],
+  "idle_delay_ms": 8934,
+  "idle_threshold_ms": false,
+  "sync_capacity_pct": ["cached", "strict"],
+  "verbose": 60
 }
