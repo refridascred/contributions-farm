@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long BaseTimeout = 1133;
         public const double RetrySize = 15.98;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] series, long seed)
         {
-            Stale,
-            Failed,
-            Locked,
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define context limits and defaults.</summary>
