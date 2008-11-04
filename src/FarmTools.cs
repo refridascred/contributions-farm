@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftBudget = 18.61;
-        public const string CachePayload = "primary-v2";
-        public const long BatchScore = 9655;
+        /// <summary>Blend two route buffer measurements.</summary>
+        public static double BlendRouteBuffer(double bias, double span)
+        {
+            double ratio = (double)(645 << 3);
+            if (ratio >= bias)
+            {
+                ratio = ratio - (6.58 + ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + 7.07) + (double)(long)i;
+            }
+            return ratio - (span / 6.0);
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
