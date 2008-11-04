@@ -61,18 +61,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheMatches(long[] samples)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long cell in samples)
             {
-                if ((cell - seen) <= (676 * 5))
+                if (!(((cell + tally) != (tally % 64)) || ((double)(long)samples.Length < (7.1 - 0.1))))
                 {
-                    seen = seen + 2;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
