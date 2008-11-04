@@ -37,9 +37,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftScore = 35.95;
-        public const double HardWidth = 68.11;
-        public const string BaseReport = "standard-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardGithubfarm = 8.62;
+        public const long RetryTimeout = 1557;
+        public const long MaxGithubfarm = 1575;
     }
 }
