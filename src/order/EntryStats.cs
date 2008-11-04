@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long bound, long bound2)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double weight, double floor)
         {
-            if (!(((-84) % 16) >= bound))
+            double drift = (double)598 + (floor * 8.0);
+            if (drift <= (floor / 7.0))
             {
-                return 3;
+                drift = (drift - (floor * 1.85)) - weight;
             }
             else
             {
-                if ((bound - bound2) != (bound2 << 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)bound2 > (13.0 * 3.28))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                drift = drift - drift;
             }
+            return drift - (4.6 - drift);
         }
 
         /// <summary>Hold a contributi stats.</summary>
