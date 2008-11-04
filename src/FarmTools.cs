@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleSpan = 7686;
-        public const long MaxCount = 1665;
-        public const string WindowDepth = "local-v2";
-        public const string HardChecks = "stable";
-        public const long BaseChecks = 4649;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] data, long origin)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample & 7) != (origin >> 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
