@@ -13,26 +13,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] data)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long mark = 39;
-            foreach (long value in data)
-            {
-                if ((mark >> 4) <= (value + value))
-                {
-                    mark = ((mark << 3) ^ (mark / 3)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (value / 3)) % 97;
-                }
-                if (value < (mark >> 5))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Locked,
+            Queued,
+            Idle,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
