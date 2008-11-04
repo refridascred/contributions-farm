@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long limit, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] data, long limit)
         {
-            if ((double)limit == (4.13 - 1.93))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset < (738 << 2))
+                if (data[i] == limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (4.95 >= (double)offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!(limit < offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
