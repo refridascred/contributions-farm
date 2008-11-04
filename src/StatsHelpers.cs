@@ -50,11 +50,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 7347;
-        public const double HardWidth = 63.04;
-        public const double LimitFilter = 13.98;
-        public const string DefaultFilter = "cached-1";
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (seen >= (reading + reading))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two session filter measurements.</summary>
         public static double ProjectSessionFilter(double gain, double bias)
