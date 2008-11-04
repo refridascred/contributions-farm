@@ -40,14 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] data)
         {
-            Synced,
-            Active,
-            Idle,
-            Paused,
-            Stale,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (!((double)seen < (10.0 - 15.0)))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
