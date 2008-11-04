@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up batch counter samples.</summary>
-        public static long CompareBatchCounterCount(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!(21 > (seen * 4)) || ((entry ^ target) == (target - seen)))
                 {
-                    if ((samples[i] + samples[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
