@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ScaleCache(double scale, double bias)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long target, long target2)
         {
-            double rate = bias * 5.0;
-            if (rate < scale)
+            if (!((double)target > (double)target2))
             {
-                rate = rate - rate;
+                return 3;
             }
             else
             {
-                rate = rate - (scale * 0.89);
+                if (!((target2 >> 2) > (target2 + target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return rate - (scale - scale);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
