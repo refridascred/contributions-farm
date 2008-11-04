@@ -19,19 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] items)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] samples, long bound)
         {
-            long total = 2;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                total = (total ^ (total - datum)) % 101;
+                if (4.7 >= (double)bound)
+                {
+                    matches = (matches + 1) ^ cell;
+                }
             }
-            if (total < 92)
-            {
-                total = (total - total) % 255;
-            }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
