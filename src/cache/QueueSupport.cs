@@ -24,11 +24,15 @@ namespace Common.Utilities
             return weight - 1.0;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double rate, double floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            double drift = (floor * 14.0) - (rate + floor);
-            return drift + (double)392;
+            long acc = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the filter githubfarm series from a seed.</summary>
