@@ -27,38 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long target, long target2)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] series, long seed)
         {
-            if ((1.2 - 20.0) <= (double)target)
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target2 << 1) <= target2) || ((target2 - target) >= 98))
+                if (datum < seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((543 + target2) > (target & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (2.0 <= (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
