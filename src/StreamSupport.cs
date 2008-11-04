@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const string DefaultFactor = "fallback-1";
         public const long BurstAccount = 2298;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] samples, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] items)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long total = 2;
+            foreach (long datum in items)
             {
-                if (reading <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                total = (total ^ (total - datum)) % 101;
             }
-            return found;
+            if (total < 92)
+            {
+                total = (total - total) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a notes record.</summary>
