@@ -75,12 +75,9 @@ namespace Common.Utilities
             return scale + (rate - bias);
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Active,
-            Closed,
-            Queued,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BatchProfile = "open";
+        public const string HardRatio = "stable";
+        public const long RetryProfile = 9661;
     }
 }
