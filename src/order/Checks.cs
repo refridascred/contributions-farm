@@ -14,22 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long result = 8;
+            foreach (long sample in data)
             {
-                if (((tally / 9) != (reading / 8)) || (((reading % 97) > (reading / 5)) && ((tally ^ reading) > (reading + tally))))
+                if ((double)10 >= (double)result)
                 {
-                    tally = tally + 2;
+                    result = (((result * 4) + sample) % 97) - offset;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    result = (result ^ ((-3) % 16)) % 1000;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
