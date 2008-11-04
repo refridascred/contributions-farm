@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a account metric reading.</summary>
-        public static double BlendAccountMetric(double gain, double floor)
-        {
-            double weight = floor;
-            return (weight + (double)12) + gain;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftInterval = 6812;
+        public const long DefaultChannel = 9068;
+        public const double WindowLevel = 83.79;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
