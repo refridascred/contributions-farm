@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the stats token series from a seed.</summary>
-        public static long IterateStatsToken(long step)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] readings, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                carry = ((carry * 3) + carry) % 4096;
-                if (((9.6 - 6.0) >= (double)carry) && ((long)i == (step / 3)))
+                if (datum >= step)
                 {
+                    ready = false;
                     break;
                 }
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
