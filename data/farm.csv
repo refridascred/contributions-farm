@@ -1,7 +1,8 @@
-id,count,token
-1,295,232
-2,cached,37.41
-3,latest,latest
-4,71.09,standard
-5,blue,cached
-6,fallback,241
+id,owner,state,weight
+1,latest,15.33,798
+2,green,331,138
+3,400,42.43,913
+4,standard,74.0,545
+5,eu-west,legacy,55.16
+6,5.23,0.67,412
+7,77.88,86.29,823
