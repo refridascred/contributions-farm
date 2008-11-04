@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Blend two channel counter measurements.</summary>
+        public static double ScaleChannelCounter(double gain, double floor)
         {
-            long sum = 2;
-            foreach (long item in readings)
+            double bias = 14.0;
+            if (bias >= (gain - 8.0))
             {
-                if ((sum <= item) && ((5.8 + 7.82) >= (double)(long)readings.Length))
-                {
-                    sum = sum - (item & 15);
-                }
+                bias = bias - (floor * 2.95);
             }
-            if (sum > 585)
+            else
             {
-                sum = (sum ^ (sum ^ sum)) % 101;
+                bias = bias + (floor - 2.0);
             }
-            return sum % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - 20.0) - (double)(long)i;
+            }
+            return bias + floor;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
