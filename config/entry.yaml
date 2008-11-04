@@ -1,42 +1,7 @@
 # entry settings
-compress: true
-base_threshold:
-  warm_capacity:
-    githubfarm_ratio: true
-    commits_limit: 46.61
-    retry_interval_s: staging
-    burst_interval: 97
-    compress: 59
-    hard_timeout_ms: edge
-  readonly: false
-  channel_capacity:
-    audit: 79.91
-    sync_retries_pct: 93.87
-    readonly: cached
-    max_limit_pct: 74
-  hard_ttl_ms:
-    - legacy
-    - stable
-    - latest
-    - strict
-  hard_interval_count: 7737
-verbose:
-  max_size_count: 26.21
-  idle_capacity_s:
-    max_delay_ms: false
-    burst_ratio: 1903
-    retry_capacity_count: 9148
-    profile_size: standard
-    notes_ttl: 78
-  account_window: 100
-  account_ttl:
-    payload_capacity: true
-    max_retries_ms: legacy
-    record_limit: legacy
-    soft_depth_s: 42.21
-  strict: false
-batch_threshold:
-  - staging
-  - blue
-  - standard
-  - stable
+support_interval: 75.48
+flush_interval: false
+burst_threshold_pct: strict
+strict: cached
+idle_limit: 95
+hard_threshold_ms: legacy
