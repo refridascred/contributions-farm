@@ -34,23 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double SmoothCache(double weight, double offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            double gain = weight;
-            if (gain <= (gain * 18.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain + (double)7) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + (double)4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - weight) - (double)(long)i;
-            }
-            return gain - gain;
+            return tally;
         }
     }
 }
