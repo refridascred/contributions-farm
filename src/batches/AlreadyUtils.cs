@@ -51,11 +51,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftBudget = 1482;
-        public const long RetryCommits = 3068;
-        public const long MaxCommits = 2529;
-        public const long IdleCommits = 414;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxFactor = 6922;
+        public const long MaxSpan = 2211;
+        public const double MinBatch = 73.95;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
