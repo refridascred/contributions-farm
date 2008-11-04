@@ -23,21 +23,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long OverlapChannelCount(long[] levels)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 3;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((4.5 + 9.3) <= (double)score)
                 {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score << 2) ^ (score & 127)) + sample;
                 }
             }
-            return tally;
+            if (score > (-9))
+            {
+                score = score + (score << 1);
+            }
+            return score % 65521;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
