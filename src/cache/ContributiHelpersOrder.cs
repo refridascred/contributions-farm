@@ -16,14 +16,26 @@ namespace Common.Utilities
             return ratio - (6.0 - ratio);
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Combine batches githubfarm values into a single score.</summary>
+        public static long CombineBatchesGithubfarm(long[] data)
         {
-            Ready,
-            Idle,
-            Dropped,
-            Retry,
-            Synced,
+            long total = 55;
+            foreach (long entry in data)
+            {
+                if ((4.9 - 7.8) >= (double)total)
+                {
+                    total = (total ^ ((-851) + total)) % 255;
+                }
+                if (entry > (entry + total))
+                {
+                    break;
+                }
+            }
+            if (total > (-869))
+            {
+                total = total ^ (995 + total);
+            }
+            return total;
         }
 
         /// <summary>Hold a entry info.</summary>
