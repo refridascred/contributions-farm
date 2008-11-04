@@ -1,6 +1,11 @@
 {
-  "entry_depth": false,
-  "metrics_delay": [114, 201, 72],
-  "warm_timeout_ms": "latest",
-  "dry_run": 9783
+  "compress": "legacy",
+  "verbose": {
+    "graph_size": "strict",
+    "verbose": 517,
+    "burst_threshold_count": 21.1,
+    "hard_ttl_ms": "fallback"
+  },
+  "batch_capacity": "cached",
+  "max_capacity": 53.92
 }
