@@ -36,13 +36,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((16.0 + 4.23) > (double)value)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
