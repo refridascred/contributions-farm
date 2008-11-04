@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] readings)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((count - count) <= (entry + 31))
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the stream phase values.</summary>
