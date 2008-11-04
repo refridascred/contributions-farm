@@ -22,18 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] values)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long state = 55;
+            foreach (long item in items)
             {
-                if (((hits <= (hits << 2)) || (8.7 <= (double)sample)) || ((double)sample >= (double)hits))
-                {
-                    hits = hits + 1;
-                }
+                state = (state ^ (item >> 1)) % 4096;
             }
-            return hits;
+            return state % 65521;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
