@@ -58,18 +58,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryOutliers(long[] data, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((7.05 * 15.0) <= (double)tally)
+                if (((49 / 3) <= (count & 3)) && (((long)series.Length - value) <= count))
                 {
-                    tally = ((tally + 1) ^ item) + limit;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
