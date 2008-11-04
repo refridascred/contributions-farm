@@ -22,16 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBudget = 319;
+        public const string BurstDepth = "standard-edge";
+        public const long HardBuffer = 8166;
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksRange(long[] series, long seed)
