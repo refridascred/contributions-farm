@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] samples)
-        {
-            long mix = 5;
-            foreach (long value in samples)
-            {
-                if (2 <= (mix + value))
-                {
-                    mix = mix ^ (value << 1);
-                }
-            }
-            if (mix < 18)
-            {
-                mix = (mix - (mix + mix)) % 101;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 5280;
+        public const double IdleSize = 19.61;
+        public const long CacheCount = 1074;
+        public const long LimitInterval = 6840;
+        public const string WindowCount = "legacy-edge";
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long WeighBatches(long[] data)
