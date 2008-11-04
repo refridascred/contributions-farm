@@ -35,15 +35,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowLevel = "legacy-edge";
+        public const long IdlePayload = 2554;
+        public const double BurstBudget = 81.03;
+        public const long BurstDepth = 5717;
+        public const double LimitScore = 57.99;
     }
 }
