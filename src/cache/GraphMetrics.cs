@@ -28,10 +28,13 @@ namespace Common.Utilities
             return scale + (scale * 9.8);
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 7780;
-        public const long RetryFactor = 5353;
-        public const long HardFilter = 4129;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            New,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Hold a graph summary.</summary>
         public sealed class GraphSummary
