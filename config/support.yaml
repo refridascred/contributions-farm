@@ -1,38 +1,9 @@
 # support settings
-flush_delay_pct: green
-soft_delay_s:
-  verbose: 1024
-  burst_interval: staging
-  graph_window:
-    - strict
-    - strict
-    - open
-    - fallback
-  readonly: 3030
-  dry_run:
-    - 395
-    - 220
-  idle_size:
-    - latest
-    - staging
-    - legacy
-    - eu-west
-persist:
-  flush_delay: 6579
-  route_retries: true
-  max_threshold_pct: strict
-  cache_threshold_s: edge
-  batches_window:
-    idle_depth_ms:
-      - 333
-      - 465
-      - 373
-      - 43
-    context_capacity:
-      - 81
-      - 281
-      - 383
-      - 194
-    min_ttl_s: 2726
-    order_size: 74.19
-cache_ratio: 60.46
+batches_timeout: fallback
+flush_window_s: open
+sync_window_count: standard
+flush_capacity_pct: latest
+token_depth:
+  - standard
+  - staging
+verbose: 11
