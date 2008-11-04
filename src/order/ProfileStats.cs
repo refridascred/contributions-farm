@@ -53,39 +53,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long origin, long limit)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long gap = origin ^ limit;
-            if (origin >= gap)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit <= (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((origin / 4) > (664 * 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.44 * 4.0) == (double)limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
