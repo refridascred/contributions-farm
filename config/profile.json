@@ -1,6 +1,7 @@
 {
-  "readonly": true,
-  "order_limit": "strict",
-  "audit": 1024,
-  "context_retries": "standard"
+  "soft_timeout": 5243,
+  "warm_interval_ms": 25.77,
+  "min_interval_s": false,
+  "hard_window_pct": 4742,
+  "strict": 56
 }
