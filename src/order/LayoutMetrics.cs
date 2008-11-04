@@ -27,14 +27,13 @@ namespace Common.Utilities
         public const long SoftDepth = 7458;
         public const long CacheCommits = 2052;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Ready,
-            Queued,
-            Idle,
-            Closed,
-            Synced,
+            Stale,
+            Done,
+            Active,
+            Retry,
         }
     }
 }
