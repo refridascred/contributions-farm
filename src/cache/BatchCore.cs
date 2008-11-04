@@ -31,14 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            Failed,
-            Synced,
-            Idle,
-            Dropped,
-            Closed,
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Roll a already counter forward.</summary>
