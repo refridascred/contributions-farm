@@ -59,19 +59,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double gain, double bias)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            double scale = (double)3 - gain;
-            if (scale <= (double)667)
-            {
-                scale = (scale + gain) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (double)364) - (double)(long)i;
-            }
-            return scale + (4.23 - scale);
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
