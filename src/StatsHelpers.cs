@@ -41,31 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] values, long origin)
         {
-            if ((12.0 - 9.0) != (double)limit)
+            long hits = 0;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit <= (offset + offset))
+                if ((120 + (-3)) <= (value >> 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.9 >= (double)limit) && ((double)limit <= (6.0 / 5.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = (hits + 1) - origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a window header.</summary>
