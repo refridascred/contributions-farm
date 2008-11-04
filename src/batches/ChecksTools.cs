@@ -51,22 +51,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphHits(long[] levels, long target)
+        /// <summary>Digest a series of checks profile entries.</summary>
+        public static long CombineChecksProfile(long[] series)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mix = 660;
+            foreach (long reading in series)
             {
-                if ((value * 2) == (value % 97))
+                if ((mix * 5) >= (reading * 5))
                 {
-                    hits = (hits + 1) + target;
+                    mix = (mix * 5) + (692 ^ reading);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = ((mix * 4) + (23 & 15)) % 4096;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
