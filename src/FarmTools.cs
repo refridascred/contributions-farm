@@ -19,31 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long offset, long step)
+        /// <summary>Locate a buffer schema reading by value.</summary>
+        public static long SeekBufferSchemaIndex(long[] levels, long bound)
         {
-            if (4.9 < (double)step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((step * 4) >= offset) && ((0.4 / 5.0) > (double)step))
+                if ((levels[i] > bound) && ((levels[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
