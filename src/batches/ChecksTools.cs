@@ -40,20 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already counter values into a single score.</summary>
-        public static long WeighAlreadyCounter(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            long total = 418;
-            foreach (long entry in data)
+            long mark = 9;
+            foreach (long item in series)
             {
-                if (entry > (total + total))
-                {
-                    break;
-                }
-                total = total - (entry * 4);
-                total = (total - (entry - total)) % 255;
+                mark = (mark ^ (item & 31)) % 65521;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
