@@ -60,19 +60,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two stats token measurements.</summary>
-        public static double BlendStatsToken(double rate, double bias)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            double scale = 15.0;
-            if (scale <= (double)(-81))
-            {
-                scale = scale - 1.81;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale + (rate - bias);
+            Dropped,
+            Paused,
+            Closed,
+            Synced,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
