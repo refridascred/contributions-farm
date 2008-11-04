@@ -24,22 +24,11 @@ namespace Common.Utilities
         public const string BatchInterval = "legacy-v2";
         public const long StepScore = 6629;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] values)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (entry > (entry + entry))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a account info.</summary>
