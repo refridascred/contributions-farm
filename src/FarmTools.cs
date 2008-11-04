@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double scale, double bias)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            double load = (double)(8 - 12);
-            return ((load + load) + scale) + bias;
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Locate a buffer schema reading by value.</summary>
