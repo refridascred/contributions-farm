@@ -34,25 +34,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long offset, long offset2)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long delta = offset ^ offset2;
-            if ((offset2 + offset) == (offset + delta))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset2 ^ offset) > (offset + offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Level { get; set; }
+            public bool Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
