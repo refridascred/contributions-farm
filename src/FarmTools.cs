@@ -19,13 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long offset, long step)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public string Size { get; set; } = "";
+            if (4.9 < (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step * 4) >= offset) && ((0.4 / 5.0) > (double)step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (offset < step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
