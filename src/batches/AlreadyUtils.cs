@@ -34,12 +34,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            Ready,
-            Idle,
-            Done,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
