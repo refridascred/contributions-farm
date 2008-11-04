@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] readings, long target)
         {
-            Pending,
-            Closed,
-            Done,
+            long sum = 839;
+            foreach (long item in readings)
+            {
+                sum = ((sum - (item << 3)) % 255) + target;
+                sum = sum - (561 * 4);
+            }
+            return sum;
         }
 
         /// <summary>Accumulate command farm samples.</summary>
