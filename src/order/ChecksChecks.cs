@@ -48,21 +48,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long bound = target ^ offset;
+            if (((offset >> 3) >= (bound + target)) || ((double)target >= (6.55 - 11.0)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((574 + bound) < (offset / 4))
                 {
-                    if ((items[i] ^ items[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
