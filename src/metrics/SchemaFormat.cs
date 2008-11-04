@@ -43,13 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public double Limit { get; set; }
+            public double Count { get; set; }
         }
     }
 }
