@@ -22,23 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Locate a checks filter reading by value.</summary>
+        public static long SeekChecksFilterIndex(long[] values, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)i > (offset % 64)) || (7.5 >= (double)state))
+                if (values[i] == origin)
                 {
-                    state = ((state * 5) + offset) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    state = state + (2 - 43);
-                }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
