@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] data)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count + entry) >= (entry + entry))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Synced,
+            Ready,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the tools phase values.</summary>
