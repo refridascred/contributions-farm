@@ -19,21 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] series)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long bound, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)limit != (double)bound)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((2.0 + 5.34) > (double)limit))
                 {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a account summary.</summary>
