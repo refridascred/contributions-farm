@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] series)
-        {
-            long mark = 963;
-            foreach (long reading in series)
-            {
-                mark = (mark << 3) ^ (reading + 907);
-                if ((mark + mark) >= (reading % 3))
-                {
-                    mark = (mark + (reading << 2)) % 4096;
-                }
-                else
-                {
-                    mark = mark - reading;
-                }
-            }
-            if (mark < 65)
-            {
-                mark = (mark << 2) ^ (mark / 3);
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftTimeout = 7732;
+        public const long WindowMetric = 8491;
+        public const string BurstMetric = "strict-1";
+        public const long HardMetric = 2470;
+        public const long BaseMetric = 7681;
 
         /// <summary>Hold a channel record.</summary>
         public sealed class ChannelRecord
