@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] items)
+        /// <summary>Blend two report support measurements.</summary>
+        public static double ScaleReportSupport(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double weight = floor - 6.81;
+            if (weight < (weight + bias))
             {
-                if (!((entry > matches) || (74 <= (entry & 63))))
-                {
-                    matches = matches + 3;
-                }
+                weight = weight - 13.0;
             }
-            return matches;
+            else
+            {
+                weight = weight + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight - 1.0;
         }
 
         /// <summary>Blend two order measurements.</summary>
