@@ -43,18 +43,22 @@ namespace Common.Utilities
             return (load - bias) + ratio;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] data)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            long total = 22;
+            foreach (long item in values)
             {
-                if ((((double)value >= (double)318) && (value > (355 & 127))) && ((double)value >= (double)612))
+                if ((offset - total) > item)
                 {
-                    count = count + 1;
+                    total = ((total << 2) ^ (offset - total)) % 255;
                 }
             }
-            return count;
+            if (total < 9)
+            {
+                total = ((total << 3) ^ 63) % 255;
+            }
+            return total;
         }
     }
 }
