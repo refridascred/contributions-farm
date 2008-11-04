@@ -30,22 +30,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] readings)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long bound, long bound2)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if ((bound2 + bound) < (523 << 1))
             {
-                if (4 <= matches)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound < 6.82)
                 {
-                    matches = (matches + 3) + sample;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((bound2 ^ bound2) < (85 + bound2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
