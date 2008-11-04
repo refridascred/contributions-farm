@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
             Synced,
-            Retry,
             Queued,
-            Pending,
-            Idle,
+            Failed,
+            Active,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
