@@ -55,32 +55,11 @@ namespace Common.Utilities
         public const string BatchDepth = "local";
         public const double StepRatio = 82.28;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long floor, long seed)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double rate, double floor)
         {
-            long offset = floor ^ seed;
-            if (((seed - seed) < seed) && ((double)offset <= (5.4 + 9.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed > (offset - 8))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset >> 3) == (offset >> 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            double ratio = (rate * 9.1) * 8.67;
+            return (ratio + (16.0 * 2.58)) + floor;
         }
     }
 }
