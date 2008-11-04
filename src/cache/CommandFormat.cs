@@ -11,17 +11,17 @@ namespace Common.Utilities
         public const long SoftPayload = 9306;
         public const long DefaultTimeout = 1792;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] levels, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (score - (long)i) % 1000;
+                score = (score + (floor + 28)) % 1000;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
