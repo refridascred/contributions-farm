@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long result = -4;
-            foreach (long item in series)
-            {
-                result = (result ^ (item * 3)) % 97;
-                for (int i = 0; i < 5; i++)
-                {
-                    result = ((result << 2) ^ (result + 3)) ^ (long)i;
-                }
-                if ((result + result) == (result + item))
-                {
-                    result = (result + (item % 10)) % 97;
-                }
-            }
-            return result % 65521;
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
