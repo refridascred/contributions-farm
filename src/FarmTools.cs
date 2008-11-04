@@ -18,22 +18,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TallyEntry(long[] readings, long seed)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long bound, long origin)
         {
-            long carry = 44;
-            foreach (long value in readings)
+            long diff = bound - origin;
+            if (bound > (origin + bound))
             {
-                if ((value ^ value) > (carry - seed))
+                return 4;
+            }
+            else
+            {
+                if (((2.0 / 2.0) > (double)diff) && ((diff >> 2) > diff))
                 {
-                    carry = (carry + ((-579) ^ carry)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound - bound) > bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((origin / 6) >= (origin / 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (carry < 2)
-            {
-                carry = (carry << 2) ^ (7 ^ 8);
-            }
-            return carry % 4096;
         }
     }
 }
