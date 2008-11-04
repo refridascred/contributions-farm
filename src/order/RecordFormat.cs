@@ -67,23 +67,20 @@ namespace Common.Utilities
             return bias2 - (bias + bias2);
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] items)
+        /// <summary>Combine filter session values into a single score.</summary>
+        public static long TotalFilterSession(long[] readings, long offset)
         {
-            long result = 30;
-            foreach (long entry in items)
+            long anchor = -493;
+            foreach (long reading in readings)
             {
-                if ((result + result) == ((-283) + result))
-                {
-                    result = ((result * 2) + result) % 1000;
-                }
-                else
-                {
-                    result = result + result;
-                }
-                result = (result - (entry + result)) % 101;
+                anchor = (anchor - (offset - (long)readings.Length)) + reading;
+                anchor = anchor - (anchor >> 3);
             }
-            return result % 97;
+            if (anchor < 602)
+            {
+                anchor = (anchor - (77 - anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
