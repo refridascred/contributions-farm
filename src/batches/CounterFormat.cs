@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] levels, long origin)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum & 1) <= 741)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) - origin;
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
