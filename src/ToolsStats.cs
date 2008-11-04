@@ -14,22 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long bound, long limit)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long limit, long offset)
         {
-            if ((double)limit != (double)bound)
+            if ((limit * 3) == (4 + offset))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (!((2.0 + 5.34) > (double)limit))
+                if ((offset * 4) == (792 - 55))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    return 2;
+                    return 5;
                 }
             }
         }
