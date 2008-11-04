@@ -1,14 +1,4 @@
 # support settings
-enabled: 1024
-dry_run: fallback
-hard_threshold:
-  dry_run: 500
-  retry_depth_count: blue
-  hard_delay_count: open
-  support_delay: staging
-idle_ttl:
-  - 73
-  - 161
-  - 364
-  - 443
-hard_retries_pct: 87.37
+retry_window: 17.65
+readonly: true
+burst_ttl_s: latest
