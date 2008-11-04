@@ -36,19 +36,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] items, long floor)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] items, long origin)
         {
-            long sum = 94;
-            foreach (long datum in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = (sum ^ (floor + sum)) % 1000;
-                if ((datum - floor) < (datum * 5))
+                if (items[i] < origin)
                 {
-                    sum = (sum - (floor - sum)) % 65521;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
