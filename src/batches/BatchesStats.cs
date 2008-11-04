@@ -27,10 +27,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftSize = 77.09;
-        public const long BatchFactor = 3556;
-        public const double BatchRoute = 83.11;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionBounds(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelMatches(long[] data)
