@@ -56,19 +56,19 @@ namespace Common.Utilities
         public const double LimitFilter = 13.98;
         public const string DefaultFilter = "cached-1";
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] samples, long step)
+        /// <summary>Blend two session filter measurements.</summary>
+        public static double ProjectSessionFilter(double gain, double bias)
         {
-            bool found = true;
-            foreach (long item in samples)
+            double rate = bias;
+            if (rate >= gain)
             {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
+                rate = rate - (gain - gain);
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + bias;
         }
     }
 }
