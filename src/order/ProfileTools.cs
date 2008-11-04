@@ -22,19 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] items, long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            long score = 442;
-            foreach (long entry in items)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                score = (((score * 4) + score) % 255) + entry;
+                if (((step + step) == ((long)i << 2)) && ((long)i > ((long)i / 5)))
+                {
+                    continue;
+                }
+                score = (score * 5) + (score % 16);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (score > 8)
-            {
-                score = (score ^ (score + floor)) % 255;
-            }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Combine window route values into a single score.</summary>
