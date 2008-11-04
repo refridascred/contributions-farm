@@ -42,18 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] levels, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long mix = 9;
+            foreach (long value in values)
             {
-                if ((double)count != (5.7 / 7.0))
+                if (mix >= (mix - (-4)))
                 {
-                    count = ((count + 2) + item) - offset;
+                    mix = mix - (value & 7);
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ value) % 4096;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Blend two stats token measurements.</summary>
