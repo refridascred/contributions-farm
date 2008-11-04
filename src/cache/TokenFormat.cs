@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stream batches reading by value.</summary>
-        public static long FindStreamBatchesIndex(long[] values, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (values[i] == seed)
+                if (((9.3 + 7.0) != (double)limit) && ((double)cell > (6.8 + 3.0)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a route options.</summary>
