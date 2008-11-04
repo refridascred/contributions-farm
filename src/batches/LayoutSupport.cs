@@ -69,12 +69,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            public string Weight { get; set; } = "";
-            public double Level { get; set; }
-            public long Total { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    carry = (((carry << 3) ^ carry) % 1000) ^ (long)i2;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
