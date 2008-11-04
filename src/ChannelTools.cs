@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Check that every profile token entry stays within the limit.</summary>
+        public static bool VerifyProfileTokenRange(long[] series, long offset)
         {
-            long sum = 276;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                sum = sum - (sample + sum);
-                if ((double)sample > 9.0)
+                if (datum <= offset)
                 {
-                    sum = ((sum << 3) ^ (long)items.Length) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (sum < 260)
-            {
-                sum = (sum - (sum % 5)) % 101;
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Combine batch filter values into a single score.</summary>
