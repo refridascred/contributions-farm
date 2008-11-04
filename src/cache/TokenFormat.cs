@@ -31,10 +31,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxBudget = "strict";
-        public const long BatchBudget = 7761;
-        public const double CacheProfile = 78.18;
-        public const double IdleTimeout = 60.06;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] data)
+        {
+            long acc = -909;
+            foreach (long reading in data)
+            {
+                if (!((6.0 / 8.0) <= (double)acc))
+                {
+                    acc = ((acc * 5) + (acc & 15)) + reading;
+                }
+                acc = acc + (acc - acc);
+            }
+            if (acc < 2)
+            {
+                acc = (acc ^ (acc % 7)) % 4096;
+            }
+            return acc;
+        }
     }
 }
