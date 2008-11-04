@@ -27,15 +27,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double rate, double bias)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long target, long target2)
         {
-            double mean = (double)(97 >> 4);
-            if (mean <= 0.66)
+            if ((1.2 - 20.0) <= (double)target)
             {
-                mean = (mean - (16.0 / 6.0)) - bias;
+                return 5;
             }
-            return mean + (rate + rate);
+            else
+            {
+                if (((target2 << 1) <= target2) || ((target2 - target) >= 98))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((543 + target2) > (target & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (2.0 <= (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
