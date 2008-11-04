@@ -20,22 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesOutliers(long[] items)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((3 + sample) >= hits) && ((sample + hits) <= (sample - hits)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the route kind values.</summary>
