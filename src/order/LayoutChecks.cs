@@ -43,12 +43,23 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] series, long offset)
         {
-            Closed,
-            Paused,
-            Ready,
+            long total = 2;
+            foreach (long datum in series)
+            {
+                if ((double)total >= (6.8 * 4.69))
+                {
+                    total = (total - (offset >> 1)) % 97;
+                }
+                total = (total - (offset & 15)) % 1000;
+                if ((datum * 5) < 819)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Locate a queue record reading by value.</summary>
