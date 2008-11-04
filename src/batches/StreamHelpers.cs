@@ -68,12 +68,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Retry,
-            Paused,
-            Pending,
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
