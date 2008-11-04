@@ -66,19 +66,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] levels, long origin)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long mark = 94;
-            foreach (long value in levels)
-            {
-                mark = (mark ^ value) % 97;
-                if ((value - mark) >= (origin ^ origin))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Done,
+            Synced,
+            Paused,
         }
 
         /// <summary>Project the next stats buffer value.</summary>
