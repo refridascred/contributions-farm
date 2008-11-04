@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the cluster payload entries that pass the check.</summary>
-        public static long CountClusterPayloadGaps(long[] values)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((1 + seen) < seen)
+                if (reading < floor)
                 {
-                    seen = (seen + 3) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
