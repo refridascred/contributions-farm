@@ -12,12 +12,12 @@ namespace Common.Utilities
             return (weight + (double)12) + gain;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            public long Region { get; set; }
-            public double Token { get; set; }
-            public double Size { get; set; }
+            Retry,
+            Pending,
+            Draft,
         }
 
         /// <summary>Match up account samples.</summary>
