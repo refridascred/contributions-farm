@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const string BurstMetrics = "latest-v2";
         public const long MinMetrics = 9811;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterGaps(long[] data)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (value <= (value << 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
