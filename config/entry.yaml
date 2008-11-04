@@ -1,9 +1,8 @@
 # entry settings
-sync_timeout_s: blue
-flush_window_pct: fallback
-batches_ratio:
-  - stable
+flush_depth:
   - cached
-  - staging
-audit: true
-idle_retries: 7.92
+  - latest
+batch_threshold:
+  - 373
+  - 359
+idle_ttl: 35.84
