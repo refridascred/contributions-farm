@@ -1,5 +1,9 @@
 # githubfarm settings
-command_delay: 1488
-dry_run: 2095
-flush_size: blue
-batch_window: 33.87
+default_capacity:
+  - stable
+  - strict
+  - stable
+  - legacy
+hard_window_count: open
+warm_delay_pct: 250
+readonly: 1024
