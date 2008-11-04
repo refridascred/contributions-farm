@@ -41,18 +41,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many graph route samples are out of range.</summary>
-        public static long TallyGraphRouteOutliers(long[] readings)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((cell - matches) <= (775 / 4))
+                if (item >= target)
                 {
-                    matches = matches + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
