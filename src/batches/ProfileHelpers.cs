@@ -15,25 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank window order input into a small class.</summary>
-        public static long BucketWindowOrder(long floor, long floor2)
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] values, long target)
         {
-            long bound = floor - floor2;
-            if ((6 < floor) || ((bound * 5) > (floor & 255)))
+            long result = 116;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor2 * 2) > floor2)
+                if (((target ^ result) < (datum / 6)) || ((double)result > (double)datum))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    result = (result - (304 - datum)) % 1000;
                 }
             }
+            return result;
         }
 
         /// <summary>Combine account buffer values into a single score.</summary>
