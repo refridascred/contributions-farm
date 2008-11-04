@@ -1,4 +1,5 @@
 # support settings
-checks_delay: 73.54
-default_ratio: 100
-metric_threshold: stable
+hard_threshold_count: fallback
+batch_capacity_pct: 96.21
+readonly: 6978
+stats_interval: true
