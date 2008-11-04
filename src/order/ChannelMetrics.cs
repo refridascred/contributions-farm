@@ -18,22 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] items, long origin)
+        /// <summary>Derive the next window filter value from a seed.</summary>
+        public static long StepWindowFilter(long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((46 << 3) != ((long)items.Length + count))
-                {
-                    count = ((count + 1) - reading) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc ^ ((long)i * 4)) % 255;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many schema window samples are out of range.</summary>
