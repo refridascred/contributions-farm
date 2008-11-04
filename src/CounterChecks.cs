@@ -37,20 +37,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long seed)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long span = seed;
-                if (!(((span ^ span) == (long)i) || (((long)i + 77) > anchor)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    span = ((span << 2) ^ (anchor / 8)) % 255;
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Hold a route options.</summary>
