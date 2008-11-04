@@ -47,17 +47,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long floor)
-        {
-            long acc = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = acc + (acc & 127);
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 205;
+        public const double BatchReport = 73.11;
+        public const string BatchInterval = "legacy";
+        public const long RetryReport = 9899;
+        public const long BatchLevel = 1190;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] values, long bound)
