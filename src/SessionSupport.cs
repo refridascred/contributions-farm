@@ -54,24 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long step, long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if (!((step * 5) >= (step & 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((-5) <= (step + limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
