@@ -51,11 +51,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long origin)
         {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((carry + (long)i) == (long)i)
+                {
+                    carry = (carry + carry) % 101;
+                    carry = ((carry << 3) ^ (72 * 5)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
