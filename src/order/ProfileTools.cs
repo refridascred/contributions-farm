@@ -56,18 +56,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchGaps(long[] data)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if (!((double)datum >= (7.3 + 6.0)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many record schema samples are out of range.</summary>
