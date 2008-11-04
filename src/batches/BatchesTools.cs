@@ -27,13 +27,13 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Paused,
-            Locked,
-            Draft,
-            Ready,
+            public long Token { get; set; }
+            public long Flag { get; set; }
+            public bool Level { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
