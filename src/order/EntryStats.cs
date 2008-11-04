@@ -32,12 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            Paused,
+            Ready,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the editor phase values.</summary>
