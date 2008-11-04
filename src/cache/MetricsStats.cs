@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BaseTools = "primary";
-        public const long DefaultTools = 7757;
-        public const string BurstWidth = "local";
-        public const long BurstTools = 5461;
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string MaxLevel = "stable-v2";
