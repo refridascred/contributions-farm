@@ -1,7 +1,8 @@
 # support settings
-soft_interval_ms: 2093
-format_limit: 9674
-cache_ratio_count:
-  - 237
-  - 3
-audit: edge
+compress: 11
+queue_interval: 30
+queue_timeout: true
+default_delay:
+  cache_interval_count: 36
+  soft_ratio_s: false
+  contributi_depth: false
