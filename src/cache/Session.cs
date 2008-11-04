@@ -33,10 +33,14 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseSpan = 58.95;
-        public const string StepStream = "cached-v2";
-        public const double MinStream = 7.86;
-        public const double WindowStream = 81.43;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Stale,
+            Closed,
+            Done,
+            Synced,
+            Retry,
+        }
     }
 }
