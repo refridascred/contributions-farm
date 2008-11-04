@@ -1,18 +1,6 @@
 # entry settings
-channel_delay:
-  order_capacity:
-    - legacy
-    - green
-  max_window:
-    - edge
-    - staging
-  retry_timeout_ms:
-    - 77
-    - 324
-    - 451
-    - 185
-  hard_depth_pct: 100
-  max_size_s: standard
-min_depth: false
-strict: true
-burst_window: 60
+audit: local
+compress: 87
+schema_retries: 13.28
+cache_delay_s: 29.7
+contributi_retries: 52.15
