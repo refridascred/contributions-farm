@@ -26,20 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] items, long offset)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] values, long step)
         {
-            long acc = 685;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long cell in values)
             {
-                acc = acc - (0 + offset);
-                acc = (acc ^ (offset - acc)) % 97;
-                if ((double)value < (double)acc)
+                if ((-579) > step)
                 {
-                    acc = ((acc * 3) + (offset << 3)) % 255;
+                    count = (count + 2) ^ cell;
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
